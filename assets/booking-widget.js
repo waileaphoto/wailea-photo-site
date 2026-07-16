@@ -134,6 +134,9 @@
       this.nameInput = el('input', { type: 'text', placeholder: 'Full name' });
       this.emailInput = el('input', { type: 'email', placeholder: 'you@example.com' });
       this.phoneInput = el('input', { type: 'tel', placeholder: '(808) 555-1234' });
+      // Defaults checked — this is a day-of logistics reminder (location, map link), not
+      // marketing, but it's still opt-in and easy to uncheck for anyone who'd rather not.
+      this.smsOptInCheckbox = el('input', { type: 'checkbox', checked: true });
 
       this.hearAboutInput = el('select', {}, [
         el('option', { value: '' }, ['Select one']),
@@ -154,6 +157,7 @@
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Name']), this.nameInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Email']), this.emailInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Phone']), this.phoneInput]),
+        el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' Text me a reminder with directions a few hours before my session.']),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['How did you hear about us?']), this.hearAboutInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['What are you celebrating?']), this.celebratingInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Style / pose notes']), this.styleNotesInput]),
@@ -353,7 +357,7 @@
           startTime: this.state.selectedSlot.startTime,
           partySize: Number(this.partySizeInput.value) || 1,
           addonSlugs: this.selectedAddonSlugs(),
-          client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value },
+          client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value, smsOptIn: this.smsOptInCheckbox.checked },
           questionnaire: {
             agreedToPolicies: this.policyCheckbox.checked,
             hearAboutUs: this.hearAboutInput.value,
