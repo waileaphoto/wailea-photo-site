@@ -1,0 +1,111 @@
+/* Wailea Photo booking widget — standalone styles, self-contained so this can be
+   dropped into the real site later without fighting existing rules. */
+
+.wbw-overlay {
+  position: fixed; inset: 0; background: rgba(20, 18, 16, 0.55);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999; padding: 20px; font-family: 'Inter', -apple-system, sans-serif;
+}
+.wbw-overlay[hidden] { display: none; }
+
+.wbw-modal {
+  background: #fff; width: 100%; max-width: 480px; max-height: 90vh;
+  overflow-y: auto; border-radius: 6px; position: relative; padding: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.wbw-close {
+  position: absolute; top: 16px; right: 16px; background: none; border: none;
+  font-size: 24px; line-height: 1; cursor: pointer; color: #999;
+}
+.wbw-close:hover { color: #171716; }
+
+.wbw-eyebrow {
+  font: 600 10px/1 'Inter', sans-serif; letter-spacing: .2em; text-transform: uppercase;
+  color: #b1443a; margin-bottom: 8px;
+}
+.wbw-title { font: 500 26px/1.2 'Cormorant Garamond', serif; margin: 0 0 24px; color: #171716; }
+
+.wbw-step { display: flex; flex-direction: column; gap: 16px; }
+.wbw-step[hidden] { display: none; }
+
+.wbw-month-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.wbw-month-nav button { background: none; border: 1px solid #ddd; border-radius: 4px; padding: 6px 10px; cursor: pointer; }
+.wbw-month-label { font: 500 15px/1 'Inter', sans-serif; }
+
+.wbw-day-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.wbw-day-head { text-align: center; font: 600 10px/1 'Inter', sans-serif; color: #999; padding-bottom: 4px; }
+.wbw-day {
+  aspect-ratio: 1; border: 1px solid #eee; border-radius: 4px; background: #fff;
+  font: 400 13px/1 'Inter', sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: #333;
+}
+.wbw-day:disabled { color: #ddd; cursor: not-allowed; background: #fafafa; }
+.wbw-day.wbw-available { border-color: #b1443a; color: #b1443a; font-weight: 600; }
+.wbw-day.wbw-selected { background: #b1443a; color: #fff; border-color: #b1443a; }
+.wbw-day.wbw-day-past {
+  color: #ccc; border-color: #f2f2f2;
+  background: repeating-linear-gradient(45deg, #f7f7f7, #f7f7f7 4px, #ececec 4px, #ececec 8px);
+}
+.wbw-day-empty { visibility: hidden; }
+
+.wbw-slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.wbw-slot-btn {
+  border: 1px solid #ddd; border-radius: 20px; padding: 8px 16px; background: #fff;
+  cursor: pointer; font: 500 13px/1 'Inter', sans-serif;
+}
+.wbw-slot-btn.wbw-selected { background: #171716; color: #fff; border-color: #171716; }
+
+.wbw-field { display: flex; flex-direction: column; gap: 6px; }
+.wbw-field label { font: 600 11px/1 'Inter', sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #666; }
+.wbw-field input[type="text"], .wbw-field input[type="email"], .wbw-field input[type="tel"], .wbw-field input[type="number"],
+.wbw-field select, .wbw-field textarea {
+  border: 1px solid #ddd; border-radius: 4px; padding: 10px 12px; font: 400 14px/1.3 'Inter', sans-serif;
+  font-family: inherit; width: 100%; box-sizing: border-box; resize: vertical;
+}
+
+.wbw-policy-box {
+  border: 1px solid #eee; border-radius: 4px; padding: 12px 14px; max-height: 140px; overflow-y: auto;
+  background: #fafafa;
+}
+.wbw-policy-box p { font-size: 12px; line-height: 1.5; color: #555; margin: 0 0 10px; }
+.wbw-policy-box p:last-child { margin-bottom: 0; }
+.wbw-policy-agree {
+  display: flex; align-items: flex-start; gap: 8px; font: 400 13px/1.4 'Inter', sans-serif !important;
+  text-transform: none !important; letter-spacing: normal !important; color: #333 !important; cursor: pointer;
+}
+.wbw-policy-agree input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
+
+.wbw-addons { display: flex; flex-direction: column; gap: 8px; }
+.wbw-addon { display: flex; align-items: center; gap: 10px; font: 400 13px/1.3 'Inter', sans-serif; }
+.wbw-addon .wbw-addon-price { margin-left: auto; color: #666; }
+
+.wbw-quote { border-top: 1px solid #eee; padding-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+.wbw-quote-row { display: flex; justify-content: space-between; font: 400 13px/1.4 'Inter', sans-serif; color: #555; }
+.wbw-quote-row.wbw-total { font-weight: 700; color: #171716; font-size: 15px; border-top: 1px solid #eee; padding-top: 8px; margin-top: 4px; }
+.wbw-quote-note { font-size: 11px; color: #999; }
+
+.wbw-due-today { border-top: 1px solid #eee; padding-top: 10px; margin-top: 4px; }
+.wbw-due-today-label { font: 700 11px/1 'Inter', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #171716; }
+.wbw-due-today-amount { font: 700 24px/1.2 'Cormorant Garamond', serif; color: #b1443a; margin-top: 2px; }
+
+.wbw-btn {
+  display: inline-block; text-align: center; padding: 14px 20px; border-radius: 4px; border: none;
+  background: #171716; color: #fff; font: 600 12px/1 'Inter', sans-serif; letter-spacing: .1em;
+  text-transform: uppercase; cursor: pointer;
+}
+.wbw-btn:disabled { background: #ccc; cursor: not-allowed; }
+.wbw-btn-secondary { background: none; color: #171716; border: 1px solid #ddd; }
+
+#wbw-card-element { border: 1px solid #ddd; border-radius: 4px; padding: 12px; }
+
+.wbw-error { color: #b1443a; font-size: 13px; }
+.wbw-success { text-align: center; padding: 20px 0; }
+.wbw-success h3 { font: 500 24px/1.2 'Cormorant Garamond', serif; margin: 12px 0; }
+.wbw-success-icon { font-size: 40px; }
+
+.wbw-spinner {
+  display: inline-block; width: 14px; height: 14px; border: 2px solid #fff; border-top-color: transparent;
+  border-radius: 50%; animation: wbw-spin 0.7s linear infinite; margin-right: 8px; vertical-align: -2px;
+}
+@keyframes wbw-spin { to { transform: rotate(360deg); } }
