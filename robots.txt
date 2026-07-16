@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/booking-calendar.html
+
+Sitemap: https://waileaphoto.com/sitemap.xml
