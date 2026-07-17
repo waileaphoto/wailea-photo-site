@@ -130,13 +130,19 @@
         this.addonInputs[a.slug] = input;
         addonsWrap.appendChild(el('label', { class: 'wbw-addon' }, [input, a.label]));
       });
+      this.cameraUpgradeReviewInput = el('input', { type: 'checkbox' });
+      addonsWrap.appendChild(el('label', { class: 'wbw-addon wbw-review-upgrade' }, [
+        this.cameraUpgradeReviewInput,
+        el('span', {}, [
+          'Add the upgraded camera ',
+          el('strong', { class: 'wbw-free-label' }, ['FREE']),
+          ' in exchange for a review',
+        ]),
+      ]));
 
       this.nameInput = el('input', { type: 'text', placeholder: 'Full name' });
       this.emailInput = el('input', { type: 'email', placeholder: 'you@example.com' });
       this.phoneInput = el('input', { type: 'tel', placeholder: '(808) 555-1234' });
-      // Defaults checked — this is a day-of logistics reminder (location, map link), not
-      // marketing, but it's still opt-in and easy to uncheck for anyone who'd rather not.
-      this.smsOptInCheckbox = el('input', { type: 'checkbox', checked: true });
 
       this.hearAboutInput = el('select', {}, [
         el('option', { value: '' }, ['Select one']),
@@ -157,7 +163,6 @@
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Name']), this.nameInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Email']), this.emailInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Phone']), this.phoneInput]),
-        el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' Text me a reminder with directions a few hours before my session.']),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['How did you hear about us?']), this.hearAboutInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['What are you celebrating?']), this.celebratingInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Style / pose notes']), this.styleNotesInput]),
@@ -209,7 +214,8 @@
 
     open(slug, name) {
       if (!this.overlay) this.buildDom();
-      this.state = { slug, name, month: new Date(), selectedDate: null, selectedSlot: null, bookingId: null, clientSecret: null };
+      this.state = { slug, name, month: new Date(), selectedDate: null, selectedSlot: null, bookingId: null, bookingReference: null, clientSecret: null };
+      this.cameraUpgradeReviewInput.checked = false;
       this.titleEl.textContent = name;
       this.showStep('date');
       this.dateError.textContent = '';
@@ -299,6 +305,14 @@
       return Object.entries(this.addonInputs).filter(([, input]) => input.checked).map(([slug]) => slug);
     }
 
+    bookingStyleNotes() {
+      const notes = this.styleNotesInput.value.trim();
+      const cameraRequest = this.cameraUpgradeReviewInput.checked
+        ? 'FREE upgraded camera requested in exchange for a review.'
+        : '';
+      return [notes, cameraRequest].filter(Boolean).join('\n');
+    }
+
     async refreshQuote() {
       const partySize = Number(this.partySizeInput.value) || 1;
       let quote;
@@ -357,15 +371,16 @@
           startTime: this.state.selectedSlot.startTime,
           partySize: Number(this.partySizeInput.value) || 1,
           addonSlugs: this.selectedAddonSlugs(),
-          client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value, smsOptIn: this.smsOptInCheckbox.checked },
+          client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value },
           questionnaire: {
             agreedToPolicies: this.policyCheckbox.checked,
             hearAboutUs: this.hearAboutInput.value,
             celebrating: this.celebratingInput.value || undefined,
-            styleNotes: this.styleNotesInput.value || undefined,
+            styleNotes: this.bookingStyleNotes() || undefined,
           },
         });
         this.state.bookingId = result.booking.id;
+        this.state.bookingReference = result.booking.booking_reference;
         this.state.clientSecret = result.stripe.clientSecret;
         this.state.quote = result.quote;
 
@@ -426,6 +441,7 @@
       this.successBody.append(
         el('div', { class: 'wbw-success-icon' }, ['✓']),
         el('h3', {}, ['You’re booked!']),
+        el('p', {}, [`Booking reference: ${this.state.bookingReference}`]),
         el('p', {}, [`${this.state.name} — ${this.state.selectedDate} at ${this.state.selectedSlot.startTime} (Hawaii time).`]),
         el('p', { class: 'wbw-quote-note' }, [`Payment status: ${paymentIntent.status}. A confirmation email is on its way once it's fully processed.`]),
         el('a', { class: 'wbw-btn', href: `${API_BASE}/api/bookings/${this.state.bookingId}/ics`, target: '_blank', style: 'display:block;margin-top:16px;text-decoration:none;' }, ['Add to Calendar']),
