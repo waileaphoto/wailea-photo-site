@@ -9,6 +9,10 @@
   const CONFIG = window.WBW_CONFIG || {};
   const API_BASE = CONFIG.apiBase || 'http://localhost:4242';
 
+  function track(eventName, parameters) {
+    if (typeof window.waileaTrack === 'function') window.waileaTrack(eventName, parameters);
+  }
+
   function el(tag, attrs, children) {
     const node = document.createElement(tag);
     if (attrs) for (const [k, v] of Object.entries(attrs)) {
@@ -31,6 +35,7 @@
       this.errorEl.textContent = '';
       [this.nameInput, this.emailInput, this.phoneInput, this.datesInput, this.notesInput].forEach((i) => (i.value = ''));
       this.overlay.hidden = false;
+      track('inquiry_start', { session_type: slug });
     }
 
     close() {
@@ -99,6 +104,7 @@
         });
         const json = await res.json();
         if (!res.ok) throw new Error(json.error || 'Request failed');
+        track('generate_lead', { session_type: this.slug, lead_source: 'website_inquiry' });
         this.formStep.hidden = true;
         this.successStep.hidden = false;
       } catch (err) {

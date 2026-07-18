@@ -78,6 +78,10 @@
     return `$${(cents / 100).toFixed(2)}`;
   }
 
+  function track(eventName, parameters) {
+    if (typeof window.waileaTrack === 'function') window.waileaTrack(eventName, parameters);
+  }
+
   class BookingWidget {
     constructor() {
       this.overlay = null;
@@ -130,15 +134,6 @@
         this.addonInputs[a.slug] = input;
         addonsWrap.appendChild(el('label', { class: 'wbw-addon' }, [input, a.label]));
       });
-      this.cameraUpgradeReviewInput = el('input', { type: 'checkbox' });
-      addonsWrap.appendChild(el('label', { class: 'wbw-addon wbw-review-upgrade' }, [
-        this.cameraUpgradeReviewInput,
-        el('span', {}, [
-          'Add the upgraded camera ',
-          el('strong', { class: 'wbw-free-label' }, ['FREE']),
-          ' in exchange for a review',
-        ]),
-      ]));
 
       this.nameInput = el('input', { type: 'text', placeholder: 'Full name' });
       this.emailInput = el('input', { type: 'email', placeholder: 'you@example.com' });
@@ -214,12 +209,12 @@
 
     open(slug, name) {
       if (!this.overlay) this.buildDom();
-      this.state = { slug, name, month: new Date(), selectedDate: null, selectedSlot: null, bookingId: null, bookingReference: null, clientSecret: null };
-      this.cameraUpgradeReviewInput.checked = false;
+      this.state = { slug, name, month: new Date(), selectedDate: null, selectedSlot: null, bookingId: null, clientSecret: null };
       this.titleEl.textContent = name;
       this.showStep('date');
       this.dateError.textContent = '';
       this.overlay.hidden = false;
+      track('booking_start', { booking_system: 'wailea', session_type: slug });
       this.loadMonth();
     }
 
@@ -305,14 +300,6 @@
       return Object.entries(this.addonInputs).filter(([, input]) => input.checked).map(([slug]) => slug);
     }
 
-    bookingStyleNotes() {
-      const notes = this.styleNotesInput.value.trim();
-      const cameraRequest = this.cameraUpgradeReviewInput.checked
-        ? 'FREE upgraded camera requested in exchange for a review.'
-        : '';
-      return [notes, cameraRequest].filter(Boolean).join('\n');
-    }
-
     async refreshQuote() {
       const partySize = Number(this.partySizeInput.value) || 1;
       let quote;
@@ -376,13 +363,20 @@
             agreedToPolicies: this.policyCheckbox.checked,
             hearAboutUs: this.hearAboutInput.value,
             celebrating: this.celebratingInput.value || undefined,
-            styleNotes: this.bookingStyleNotes() || undefined,
+            styleNotes: this.styleNotesInput.value || undefined,
           },
         });
         this.state.bookingId = result.booking.id;
-        this.state.bookingReference = result.booking.booking_reference;
         this.state.clientSecret = result.stripe.clientSecret;
         this.state.quote = result.quote;
+
+        track('begin_checkout', {
+          currency: 'USD',
+          value: result.booking.total_price_cents / 100,
+          booking_system: 'wailea',
+          session_type: this.state.slug,
+          items: [{ item_id: this.state.slug, item_name: this.state.name, quantity: 1 }],
+        });
 
         this.paymentSummary.innerHTML = '';
         this.paymentSummary.appendChild(el('div', { class: 'wbw-quote-row wbw-total' }, [
@@ -437,11 +431,20 @@
     }
 
     showSuccess(paymentIntent) {
+      if (paymentIntent.status === 'succeeded') {
+        track('purchase', {
+          transaction_id: `wailea-${this.state.bookingId}`,
+          currency: 'USD',
+          value: this.state.quote.totalPriceCents / 100,
+          booking_system: 'wailea',
+          session_type: this.state.slug,
+          items: [{ item_id: this.state.slug, item_name: this.state.name, quantity: 1 }],
+        });
+      }
       this.successBody.innerHTML = '';
       this.successBody.append(
         el('div', { class: 'wbw-success-icon' }, ['✓']),
         el('h3', {}, ['You’re booked!']),
-        el('p', {}, [`Booking reference: ${this.state.bookingReference}`]),
         el('p', {}, [`${this.state.name} — ${this.state.selectedDate} at ${this.state.selectedSlot.startTime} (Hawaii time).`]),
         el('p', { class: 'wbw-quote-note' }, [`Payment status: ${paymentIntent.status}. A confirmation email is on its way once it's fully processed.`]),
         el('a', { class: 'wbw-btn', href: `${API_BASE}/api/bookings/${this.state.bookingId}/ics`, target: '_blank', style: 'display:block;margin-top:16px;text-decoration:none;' }, ['Add to Calendar']),
