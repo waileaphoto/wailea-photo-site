@@ -157,6 +157,7 @@
         <div><label for="moveSessionType">New session type</label><select id="moveSessionType" required></select></div>
         <div><label for="moveDate">New date</label><input type="date" id="moveDate" required></div>
         <div><label for="moveTime">Available or custom time</label><select id="moveTime" required><option value="">Choose a date first</option></select></div>
+        <div id="movePricePreview" class="hint"></div>
         <div id="customTimeRow" class="custom-time-row" hidden>
           <label for="moveCustomTime">Custom start time (Hawaii time)</label>
           <input type="time" id="moveCustomTime" step="300">
@@ -456,14 +457,40 @@
       customOption.value = '__custom__';
       customOption.textContent = 'Custom time…';
       select.appendChild(customOption);
+      if (availability.bookingMode === 'manual') customOption.selected = true;
       if (sameOriginalSession && date === selectedBooking.session_date && !currentTimeMatched) {
         customOption.selected = true;
         document.getElementById('moveCustomTime').value = selectedBooking.start_time;
       }
       syncCustomTimeVisibility();
+      await loadMoveQuote();
     } catch (err) {
       select.innerHTML = '<option value="">Could not load times</option>';
       document.getElementById('moveError').textContent = err.message;
+    }
+  }
+
+  async function loadMoveQuote() {
+    const preview = document.getElementById('movePricePreview');
+    const sessionType = document.getElementById('moveSessionType').value;
+    const date = document.getElementById('moveDate').value;
+    if (!selectedBooking || !sessionType || !date) {
+      preview.textContent = '';
+      return;
+    }
+    try {
+      const addons = JSON.parse(selectedBooking.addons_json || '[]');
+      const quote = await api('POST', '/api/quote', {
+        sessionType,
+        date,
+        partySize: selectedBooking.party_size || 1,
+        addonSlugs: addons.map((addon) => addon.slug).filter(Boolean),
+      });
+      const depositCents = Number(selectedBooking.deposit_cents || 0);
+      const balanceCents = Number(quote.totalCents || 0) - depositCents;
+      preview.textContent = `Updated price: ${fmtDollars(quote.totalCents || 0)} · Deposit remains ${fmtDollars(depositCents)} · New balance ${fmtDollars(balanceCents)}`;
+    } catch (err) {
+      preview.textContent = `Price preview unavailable: ${err.message}`;
     }
   }
 
@@ -471,7 +498,6 @@
     const select = document.getElementById('moveSessionType');
     select.innerHTML = '';
     Object.values(sessionTypesBySlug)
-      .filter((sessionType) => sessionType.booking_mode === 'automated')
       .sort((a, b) => a.name.localeCompare(b.name))
       .forEach((sessionType) => {
         const option = document.createElement('option');
@@ -534,7 +560,8 @@
         customTime,
         reason: document.getElementById('moveReason').value,
       });
-      result.textContent = 'Moved. The change was recorded and updated confirmations were sent.';
+      const updatedBalance = Number(moved.total_price_cents || 0) - Number(moved.deposit_cents || 0);
+      result.textContent = `Moved. Updated total: $${(Number(moved.total_price_cents || 0) / 100).toFixed(2)}; balance due: $${(updatedBalance / 100).toFixed(2)}. Confirmations were sent to the client and team.`;
       const movedSessionSlug = document.getElementById('moveSessionType').value;
       selectedBooking = {
         ...selectedBooking,
