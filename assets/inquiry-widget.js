@@ -1,5 +1,5 @@
 // Lightweight "Request This Session" inquiry form for manual/inquiry session types
-// (Family Legacy, A Poetic Wedding in Maui, Portrait Masters — no calendar, no payment).
+// (Family Legacy and A Poetic Wedding in Maui — no calendar, no payment).
 // Reuses the same CSS classes as booking-widget.js (wbw-overlay, wbw-modal, wbw-field, etc.)
 // so it looks consistent without duplicating styles.
 //
