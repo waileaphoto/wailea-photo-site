@@ -1,0 +1,18 @@
+{
+  "name": "Wailea Photo Calendar",
+  "short_name": "Wailea Calendar",
+  "description": "Private mobile booking calendar for the Wailea Photo team.",
+  "start_url": "./booking-calendar.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5efe5",
+  "theme_color": "#f5efe5",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

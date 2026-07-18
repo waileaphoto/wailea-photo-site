@@ -16,10 +16,16 @@
     { slug: 'film', label: 'Real film (Kodak/FujiFilm)' },
     { slug: 'bw', label: 'Classic Black & White add-on' },
     { slug: 'apo_lens', label: 'Leica APO lens upgrade' },
+    {
+      slug: 'double-sunset',
+      label: 'Special-Double your session time to include Last Half Sunset',
+      priceLabel: '$99',
+      sessionSlugs: ['first-half-sunset'],
+    },
   ];
 
   const HEAR_ABOUT_OPTIONS = [
-    'Baggage Claim Video', 'Maui Visitors Guide Magazine', 'Google Search', 'Google Ad',
+    'Maui Visitors Guide Magazine', 'Google Search', 'Google Ad',
     'Facebook Group', 'Facebook Ad', 'Instagram Post', 'Instagram Ad', 'TikTok', 'Pinterest', 'Other',
   ];
 
@@ -78,10 +84,6 @@
     return `$${(cents / 100).toFixed(2)}`;
   }
 
-  function track(eventName, parameters) {
-    if (typeof window.waileaTrack === 'function') window.waileaTrack(eventName, parameters);
-  }
-
   class BookingWidget {
     constructor() {
       this.overlay = null;
@@ -128,16 +130,24 @@
       const partyField = el('div', { class: 'wbw-field' }, [el('label', {}, ['Party size']), this.partySizeInput]);
 
       this.addonInputs = {};
+      this.addonRows = {};
       const addonsWrap = el('div', { class: 'wbw-addons' });
       ADDON_DEFS.forEach((a) => {
         const input = el('input', { type: 'checkbox', onchange: () => this.refreshQuote() });
         this.addonInputs[a.slug] = input;
-        addonsWrap.appendChild(el('label', { class: 'wbw-addon' }, [input, a.label]));
+        const children = [input, a.label];
+        if (a.priceLabel) children.push(el('span', { class: 'wbw-addon-price' }, [a.priceLabel]));
+        const addonRow = el('label', { class: 'wbw-addon' }, children);
+        this.addonRows[a.slug] = addonRow;
+        addonsWrap.appendChild(addonRow);
       });
 
       this.nameInput = el('input', { type: 'text', placeholder: 'Full name' });
       this.emailInput = el('input', { type: 'email', placeholder: 'you@example.com' });
       this.phoneInput = el('input', { type: 'tel', placeholder: '(808) 555-1234' });
+      // Defaults checked — this is a day-of logistics reminder (location, map link), not
+      // marketing, but it's still opt-in and easy to uncheck for anyone who'd rather not.
+      this.smsOptInCheckbox = el('input', { type: 'checkbox', checked: true });
 
       this.hearAboutInput = el('select', {}, [
         el('option', { value: '' }, ['Select one']),
@@ -158,6 +168,7 @@
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Name']), this.nameInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Email']), this.emailInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Phone']), this.phoneInput]),
+        el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' Text me a reminder with directions a few hours before my session.']),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['How did you hear about us?']), this.hearAboutInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['What are you celebrating?']), this.celebratingInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Style / pose notes']), this.styleNotesInput]),
@@ -207,14 +218,24 @@
       }
     }
 
-    open(slug, name) {
+    open(slug, name, preselect = null) {
       if (!this.overlay) this.buildDom();
-      this.state = { slug, name, month: new Date(), selectedDate: null, selectedSlot: null, bookingId: null, clientSecret: null };
+      const requestedDate = preselect?.date || null;
+      const requestedMonth = requestedDate ? new Date(`${requestedDate}T12:00:00`) : new Date();
+      this.state = {
+        slug, name, month: requestedMonth, selectedDate: null, selectedSlot: null,
+        preselect: requestedDate ? { date: requestedDate, startTime: preselect.startTime || null } : null,
+        bookingId: null, bookingReference: null, clientSecret: null,
+      };
+      ADDON_DEFS.forEach((addon) => {
+        const applies = !addon.sessionSlugs || addon.sessionSlugs.includes(slug);
+        this.addonRows[addon.slug].hidden = !applies;
+        this.addonInputs[addon.slug].checked = false;
+      });
       this.titleEl.textContent = name;
       this.showStep('date');
       this.dateError.textContent = '';
       this.overlay.hidden = false;
-      track('booking_start', { booking_system: 'wailea', session_type: slug });
       this.loadMonth();
     }
 
@@ -266,9 +287,19 @@
         if (isPast || !hasSlots) btn.disabled = true;
         this.dayGrid.appendChild(btn);
       });
+
+      if (this.state.preselect && this.state.preselect.date.startsWith(`${y}-${m}`)) {
+        const requested = this.state.preselect;
+        this.state.preselect = null;
+        const day = data.days.find((candidate) => candidate.date === requested.date);
+        const dayButton = Array.from(this.dayGrid.querySelectorAll('.wbw-day')).find((button) => Number(button.textContent) === Number(requested.date.slice(-2)));
+        const slot = day?.slots?.find((candidate) => !requested.startTime || candidate.startTime === requested.startTime);
+        if (day && dayButton && slot) this.selectDate(day, { target: dayButton }, slot.startTime);
+        else this.dateError.textContent = 'That opening was just filled. Please choose another available date and time.';
+      }
     }
 
-    selectDate(day, e) {
+    selectDate(day, e, preferredStartTime = null) {
       this.state.selectedDate = day.date;
       this.state.selectedSlot = null;
       Array.from(this.dayGrid.children).forEach((c) => c.classList.remove('wbw-selected'));
@@ -284,6 +315,7 @@
           },
         }, [`${slot.startTime} – ${slot.endTime}`]);
         this.slotsWrap.appendChild(btn);
+        if (preferredStartTime && slot.startTime === preferredStartTime) btn.click();
       });
     }
 
@@ -358,7 +390,7 @@
           startTime: this.state.selectedSlot.startTime,
           partySize: Number(this.partySizeInput.value) || 1,
           addonSlugs: this.selectedAddonSlugs(),
-          client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value },
+          client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value, smsOptIn: this.smsOptInCheckbox.checked },
           questionnaire: {
             agreedToPolicies: this.policyCheckbox.checked,
             hearAboutUs: this.hearAboutInput.value,
@@ -367,16 +399,9 @@
           },
         });
         this.state.bookingId = result.booking.id;
+        this.state.bookingReference = result.booking.booking_reference;
         this.state.clientSecret = result.stripe.clientSecret;
         this.state.quote = result.quote;
-
-        track('begin_checkout', {
-          currency: 'USD',
-          value: result.booking.total_price_cents / 100,
-          booking_system: 'wailea',
-          session_type: this.state.slug,
-          items: [{ item_id: this.state.slug, item_name: this.state.name, quantity: 1 }],
-        });
 
         this.paymentSummary.innerHTML = '';
         this.paymentSummary.appendChild(el('div', { class: 'wbw-quote-row wbw-total' }, [
@@ -431,20 +456,11 @@
     }
 
     showSuccess(paymentIntent) {
-      if (paymentIntent.status === 'succeeded') {
-        track('purchase', {
-          transaction_id: `wailea-${this.state.bookingId}`,
-          currency: 'USD',
-          value: this.state.quote.totalPriceCents / 100,
-          booking_system: 'wailea',
-          session_type: this.state.slug,
-          items: [{ item_id: this.state.slug, item_name: this.state.name, quantity: 1 }],
-        });
-      }
       this.successBody.innerHTML = '';
       this.successBody.append(
         el('div', { class: 'wbw-success-icon' }, ['✓']),
         el('h3', {}, ['You’re booked!']),
+        el('p', {}, [`Booking reference: ${this.state.bookingReference}`]),
         el('p', {}, [`${this.state.name} — ${this.state.selectedDate} at ${this.state.selectedSlot.startTime} (Hawaii time).`]),
         el('p', { class: 'wbw-quote-note' }, [`Payment status: ${paymentIntent.status}. A confirmation email is on its way once it's fully processed.`]),
         el('a', { class: 'wbw-btn', href: `${API_BASE}/api/bookings/${this.state.bookingId}/ics`, target: '_blank', style: 'display:block;margin-top:16px;text-decoration:none;' }, ['Add to Calendar']),

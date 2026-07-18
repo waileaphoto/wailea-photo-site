@@ -4,7 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f5efe5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Wailea Calendar">
 <title>Booking Calendar — Wailea Photo Admin</title>
+<link rel="manifest" href="booking-calendar.webmanifest">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   body { font-family: 'Inter', sans-serif; max-width: 960px; margin: 40px auto; padding: 0 20px; color: #171716; }
@@ -24,6 +31,7 @@
   .legend-item { display: flex; align-items: center; gap: 6px; }
   .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 
+  .calendar-scroll { overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: #eee; border: 1px solid #eee; border-radius: 6px; overflow: hidden; }
   .cal-head { background: #fafafa; text-align: center; font: 600 10px/1 'Inter', sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #999; padding: 8px 0; }
   .cal-day { background: #fff; min-height: 92px; padding: 6px; font-size: 12px; }
@@ -38,6 +46,15 @@
   .booking-pill.status-confirmed { background: #e6f4ea; border-left: 3px solid #2e7d32; }
   .booking-pill.status-pending_payment { background: #fdf1e3; border-left: 3px solid #c07d1f; }
   .booking-pill.status-cancelled { background: #f2f2f2; border-left: 3px solid #999; color: #999; text-decoration: line-through; }
+  .booking-pill.source-acuity { background: #eaf0f8; border-left: 3px solid #4b6f9f; }
+  .booking-pill.source-acuity.status-cancelled { background: #f2f2f2; border-left-color: #999; }
+  .booking-pill.capacity-warning { box-shadow: inset 0 0 0 2px #d7a74a; }
+  .booking-pill.capacity-full { box-shadow: inset 0 0 0 2px #b1443a; }
+  .booking-pill.duplicate-warning::after { content: '  ⚠ duplicate?'; color: #9b3b33; font-weight: 600; }
+
+  .sync-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -8px 0 20px; font-size: 12px; color: #666; }
+  .sync-btn { background: #f5f7fa; border: 1px solid #ccd5e1; border-radius: 4px; padding: 7px 11px; cursor: pointer; font: 500 12px/1 'Inter', sans-serif; white-space: nowrap; }
+  .sync-btn:disabled { opacity: .6; cursor: wait; }
 
   .loading { color: #999; font-size: 13px; padding: 20px 0; }
 
@@ -47,12 +64,18 @@
     justify-content: center; z-index: 999; padding: 20px;
   }
   .modal-overlay[hidden] { display: none; }
-  .modal { background: #fff; border-radius: 6px; padding: 28px; max-width: 420px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .modal { background: #fff; border-radius: 6px; padding: 28px; max-width: 460px; width: 100%; max-height: calc(100vh - 40px); overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
   .modal h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; margin: 0 0 4px; }
   .modal .modal-sub { color: #777; font-size: 13px; margin-bottom: 16px; }
   .modal-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid #f2f2f2; }
   .modal-row span:first-child { color: #999; }
   .modal-close { margin-top: 18px; width: 100%; background: #171716; color: #fff; border: none; border-radius: 4px; padding: 10px; font: 600 12px/1 'Inter', sans-serif; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+  .modal-alert { padding: 10px 12px; margin: 12px 0; border-radius: 4px; background: #fff1ef; color: #8f342c; font-size: 12px; }
+  .move-panel { margin-top: 18px; padding-top: 18px; border-top: 1px solid #eee; }
+  .move-panel form { margin: 10px 0 14px; padding: 14px; gap: 10px; }
+  .custom-time-row[hidden] { display: none; }
+  .move-result { font-size: 12px; color: #2e7d32; }
+  .history-list { margin: 10px 0 0; padding-left: 18px; color: #666; font-size: 12px; line-height: 1.5; }
 
   /* --- Blocked dates (reused tool) --- */
   .block-section { margin-top: 56px; border-top: 1px solid #eee; padding-top: 32px; }
@@ -71,13 +94,36 @@
   th { font: 600 10px/1 'Inter', sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #999; }
   .remove-btn { background: none; border: 1px solid #ddd; border-radius: 4px; padding: 4px 10px; cursor: pointer; font-size: 12px; color: #b1443a; }
   .empty { color: #999; font-size: 13px; padding: 12px 0; }
+
+  @media (max-width: 700px) {
+    body { margin: 20px auto 40px; padding: 0 14px; }
+    h1 { font-size: 30px; }
+    .notice { padding: 10px 12px; }
+    .sync-bar { align-items: flex-start; }
+    .calendar-scroll { margin: 0 -14px; padding: 0 14px 8px; }
+    .cal-grid { min-width: 720px; }
+    .cal-day { min-height: 104px; }
+    .cal-nav button, .sync-btn, button[type="submit"], .modal-close { min-height: 44px; }
+    .modal-overlay { align-items: flex-start; padding: 0; overflow-y: auto; }
+    .modal { min-height: 100vh; max-height: none; max-width: none; border-radius: 0; padding: 24px 18px 40px; box-sizing: border-box; }
+    .modal-row { gap: 16px; }
+    .modal-row span:last-child { text-align: right; overflow-wrap: anywhere; }
+    .row { flex-direction: column; }
+    .block-section { margin-top: 40px; overflow-x: auto; }
+    input, select { min-height: 44px; }
+  }
 </style>
 </head>
 <body>
 
 <h1>Booking calendar</h1>
 <div class="sub">Everything on the books at a glance, plus blocking dates off. This talks to the live booking system.</div>
-<div class="notice">No login is on this page yet, so don't share this link publicly — see the booking engine README before making this page harder to guess/link to.</div>
+<div class="notice">Protected by your admin token. Website-booking moves are recorded and send updated confirmations; Acuity appointments remain read-only here.</div>
+
+<div class="sync-bar">
+  <span id="acuitySyncStatus">Acuity mirror status loading…</span>
+  <button class="sync-btn" id="syncAcuityBtn">Sync Acuity now</button>
+</div>
 
 <div id="calError" class="error"></div>
 
@@ -91,16 +137,38 @@
   <div class="legend-item"><span class="legend-dot" style="background:#2e7d32"></span> Confirmed</div>
   <div class="legend-item"><span class="legend-dot" style="background:#c07d1f"></span> Pending payment</div>
   <div class="legend-item"><span class="legend-dot" style="background:#999"></span> Cancelled</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#4b6f9f"></span> Acuity (read-only)</div>
 </div>
 
-<div id="calGrid" class="cal-grid"></div>
+<div class="calendar-scroll" aria-label="Booking calendar; swipe sideways on a phone">
+  <div id="calGrid" class="cal-grid"></div>
+</div>
 <div id="calLoading" class="loading" hidden>Loading…</div>
 
 <div id="modalOverlay" class="modal-overlay" hidden>
   <div class="modal">
     <h3 id="modalTitle"></h3>
     <div class="modal-sub" id="modalSub"></div>
+    <div id="modalAlert" class="modal-alert" hidden></div>
     <div id="modalBody"></div>
+    <div class="move-panel" id="movePanel" hidden>
+      <strong>Move this website booking</strong>
+      <form id="moveForm">
+        <div><label for="moveSessionType">New session type</label><select id="moveSessionType" required></select></div>
+        <div><label for="moveDate">New date</label><input type="date" id="moveDate" required></div>
+        <div><label for="moveTime">Available or custom time</label><select id="moveTime" required><option value="">Choose a date first</option></select></div>
+        <div id="customTimeRow" class="custom-time-row" hidden>
+          <label for="moveCustomTime">Custom start time (Hawaii time)</label>
+          <input type="time" id="moveCustomTime" step="300">
+          <p class="hint">The ending time is calculated automatically from this session's normal length.</p>
+        </div>
+        <div><label for="moveReason">Reason shown in confirmation</label><input type="text" id="moveReason" placeholder="Weather, travel change…" required></div>
+        <div id="moveError" class="error"></div><div id="moveResult" class="move-result"></div>
+        <button type="submit">Move &amp; send confirmations</button>
+      </form>
+      <strong>Change history</strong>
+      <ol id="historyList" class="history-list"><li>Loading…</li></ol>
+    </div>
     <button class="modal-close" id="modalCloseBtn">Close</button>
   </div>
 </div>
@@ -187,10 +255,47 @@
     return `$${(cents / 100).toFixed(2)}`;
   }
 
+  function escapeHtml(value) {
+    return String(value ?? '—').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+  }
+
+  async function loadAcuityStatus() {
+    const el = document.getElementById('acuitySyncStatus');
+    try {
+      const status = await api('GET', '/api/admin/acuity/status');
+      if (!status.configured) {
+        el.textContent = 'Acuity mirror is not configured yet.';
+        return;
+      }
+      const when = status.lastSyncedAt ? new Date(`${status.lastSyncedAt}Z`).toLocaleString() : 'not yet';
+      el.textContent = `Acuity mirror: ${status.active} active appointments · last synced ${when}`;
+    } catch (err) {
+      el.textContent = `Acuity status unavailable: ${err.message}`;
+    }
+  }
+
+  document.getElementById('syncAcuityBtn').addEventListener('click', async (event) => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    button.textContent = 'Syncing…';
+    try {
+      await api('POST', '/api/admin/acuity/sync', {});
+      await Promise.all([loadAcuityStatus(), loadMonth()]);
+    } catch (err) {
+      document.getElementById('acuitySyncStatus').textContent = `Acuity sync failed: ${err.message}`;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Sync Acuity now';
+    }
+  });
+
   // ---------- Calendar ----------
   let currentMonth = new Date();
   let sessionTypesBySlug = {};
   let currentBookings = [];
+  let selectedBooking = null;
 
   const monthLabel = document.getElementById('monthLabel');
   const calGrid = document.getElementById('calGrid');
@@ -261,9 +366,10 @@
         .filter((b) => b.session_date === dateStr && b.status !== 'rescheduled')
         .forEach((b) => {
           const pill = document.createElement('button');
-          pill.className = `booking-pill status-${b.status}`;
+          pill.className = `booking-pill status-${b.status} source-${b.source || 'wp'}${b.capacity_status === 'warning' ? ' capacity-warning' : ''}${b.capacity_status === 'full' ? ' capacity-full' : ''}${b.duplicate_warning ? ' duplicate-warning' : ''}`;
           const firstName = (b.client_name || '?').split(' ')[0];
-          pill.textContent = `${fmtTime12(b.start_time)} ${b.session_type_name || '?'} — ${firstName} (${b.party_size})`;
+          const prefix = b.source === 'acuity' ? '[ACUITY] ' : '';
+          pill.textContent = `${prefix}${fmtTime12(b.start_time)} ${b.session_type_name || '?'} — ${firstName} (${b.party_size || 1}) · team ${b.overlapping_count}/3`;
           pill.addEventListener('click', () => openModal(b));
           cell.appendChild(pill);
         });
@@ -272,26 +378,179 @@
     }
   }
 
-  function openModal(b) {
-    document.getElementById('modalTitle').textContent = b.session_type_name || 'Session';
+  async function openModal(b) {
+    selectedBooking = b;
+    document.getElementById('modalTitle').textContent = `${b.source === 'acuity' ? '[ACUITY] ' : ''}${b.session_type_name || 'Session'}`;
     document.getElementById('modalSub').textContent = `${b.session_date} · ${fmtTime12(b.start_time)}–${fmtTime12(b.end_time)} (Hawaii time)`;
-    const balanceCents = (b.total_price_cents ?? 0) - (b.deposit_cents ?? 0);
     const rows = [
+      ['Source', b.source === 'acuity' ? 'Acuity — change this appointment in Acuity' : 'New website booking system'],
       ['Status', b.status.replace('_', ' ')],
       ['Client', b.client_name || '—'],
       ['Email', b.client_email || '—'],
       ['Phone', b.client_phone || '—'],
-      ['Party size', b.party_size],
-      ['Total', fmtDollars(b.total_price_cents ?? 0)],
-      ['Deposit', `${fmtDollars(b.deposit_cents ?? 0)} (${b.deposit_status})`],
-      ['Balance due', fmtDollars(balanceCents)],
-      ['Booking #', b.id],
+      ['Party size', b.party_size || 1],
+      ...(b.location ? [['Location', b.location]] : []),
     ];
+    if (b.source !== 'acuity') {
+      const balanceCents = (b.total_price_cents ?? 0) - (b.deposit_cents ?? 0);
+      rows.push(
+        ['Total', fmtDollars(b.total_price_cents ?? 0)],
+        ['Deposit', `${fmtDollars(b.deposit_cents ?? 0)} (${b.deposit_status})`],
+        ['Balance due', fmtDollars(balanceCents)]
+      );
+    }
+    rows.push(
+      ['Booking reference', b.booking_reference || `#${b.id}`],
+      ...(b.source === 'acuity' && b.notes ? [['Acuity notes', b.notes]] : [])
+    );
     document.getElementById('modalBody').innerHTML = rows.map(([label, value]) => `
-      <div class="modal-row"><span>${label}</span><span>${value}</span></div>
+      <div class="modal-row"><span>${escapeHtml(label)}</span><span>${escapeHtml(value)}</span></div>
     `).join('');
+    const alert = document.getElementById('modalAlert');
+    const alerts = [];
+    if (b.duplicate_warning) alerts.push(`Possible duplicate of ${b.possible_duplicate_ids.join(', ')}.`);
+    if (b.capacity_status === 'full') alerts.push('This period is at the three-session team limit.');
+    else if (b.capacity_status === 'warning') alerts.push('Two photographers are assigned during this period; one team opening remains.');
+    alert.textContent = alerts.join(' ');
+    alert.hidden = alerts.length === 0;
+    const canMove = b.source === 'wp' && b.status === 'confirmed';
+    document.getElementById('movePanel').hidden = !canMove;
+    if (canMove && Object.keys(sessionTypesBySlug).length === 0) await loadSessionTypes();
+    populateMoveSessionTypes(b.session_type_slug);
+    document.getElementById('moveDate').value = b.session_date;
+    document.getElementById('moveCustomTime').value = b.start_time;
+    document.getElementById('moveReason').value = '';
+    document.getElementById('moveError').textContent = '';
+    document.getElementById('moveResult').textContent = '';
     document.getElementById('modalOverlay').hidden = false;
+    if (canMove) {
+      await loadMoveTimes();
+      loadHistory(b.id);
+    }
   }
+
+  async function loadMoveTimes() {
+    const sessionTypeSlug = document.getElementById('moveSessionType').value || selectedBooking?.session_type_slug;
+    if (!sessionTypeSlug) return;
+    const date = document.getElementById('moveDate').value;
+    const select = document.getElementById('moveTime');
+    select.innerHTML = '<option value="">Loading available times…</option>';
+    if (!date) return;
+    try {
+      const availability = await api('GET', `/api/availability?sessionType=${encodeURIComponent(sessionTypeSlug)}&month=${date.slice(0, 7)}`);
+      const day = availability.days.find((candidate) => candidate.date === date);
+      select.innerHTML = '<option value="">Select a time</option>';
+      let currentTimeMatched = false;
+      const sameOriginalSession = sessionTypeSlug === selectedBooking.session_type_slug;
+      (day?.slots || []).forEach((slot) => {
+        const option = document.createElement('option');
+        option.value = slot.startTime;
+        option.textContent = `${fmtTime12(slot.startTime)}–${fmtTime12(slot.endTime)} · ${slot.spotsLeft} team opening${slot.spotsLeft === 1 ? '' : 's'}`;
+        if (sameOriginalSession && date === selectedBooking.session_date && slot.startTime === selectedBooking.start_time) {
+          option.selected = true;
+          currentTimeMatched = true;
+        }
+        select.appendChild(option);
+      });
+      const customOption = document.createElement('option');
+      customOption.value = '__custom__';
+      customOption.textContent = 'Custom time…';
+      select.appendChild(customOption);
+      if (sameOriginalSession && date === selectedBooking.session_date && !currentTimeMatched) {
+        customOption.selected = true;
+        document.getElementById('moveCustomTime').value = selectedBooking.start_time;
+      }
+      syncCustomTimeVisibility();
+    } catch (err) {
+      select.innerHTML = '<option value="">Could not load times</option>';
+      document.getElementById('moveError').textContent = err.message;
+    }
+  }
+
+  function populateMoveSessionTypes(selectedSlug) {
+    const select = document.getElementById('moveSessionType');
+    select.innerHTML = '';
+    Object.values(sessionTypesBySlug)
+      .filter((sessionType) => sessionType.booking_mode === 'automated')
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .forEach((sessionType) => {
+        const option = document.createElement('option');
+        option.value = sessionType.slug;
+        option.textContent = sessionType.name;
+        option.selected = sessionType.slug === selectedSlug;
+        select.appendChild(option);
+      });
+  }
+
+  function syncCustomTimeVisibility() {
+    const useCustomTime = document.getElementById('moveTime').value === '__custom__';
+    const row = document.getElementById('customTimeRow');
+    const input = document.getElementById('moveCustomTime');
+    row.hidden = !useCustomTime;
+    input.required = useCustomTime;
+  }
+
+  async function loadHistory(bookingId) {
+    const list = document.getElementById('historyList');
+    try {
+      const events = await api('GET', `/api/admin/bookings/${bookingId}/history`);
+      list.innerHTML = '';
+      events.forEach((event) => {
+        const item = document.createElement('li');
+        const move = event.event_type === 'rescheduled'
+          ? ` from ${event.from_date} ${event.from_start_time} to ${event.to_date} ${event.to_start_time}`
+          : '';
+        item.textContent = `${event.created_at}: ${event.event_type}${move}${event.reason ? ` — ${event.reason}` : ''}`;
+        list.appendChild(item);
+      });
+      if (!events.length) list.innerHTML = '<li>No changes recorded yet.</li>';
+    } catch (err) {
+      list.innerHTML = `<li>${escapeHtml(err.message)}</li>`;
+    }
+  }
+
+  document.getElementById('moveDate').addEventListener('change', loadMoveTimes);
+  document.getElementById('moveSessionType').addEventListener('change', loadMoveTimes);
+  document.getElementById('moveTime').addEventListener('change', syncCustomTimeVisibility);
+  document.getElementById('moveForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    const error = document.getElementById('moveError');
+    const result = document.getElementById('moveResult');
+    error.textContent = '';
+    result.textContent = '';
+    const button = event.submitter;
+    button.disabled = true;
+    button.textContent = 'Moving…';
+    try {
+      const timeSelect = document.getElementById('moveTime');
+      const customTime = timeSelect.value === '__custom__';
+      const startTime = customTime ? document.getElementById('moveCustomTime').value : timeSelect.value;
+      if (!startTime) throw new Error('Choose an available time or enter a custom time.');
+      const moved = await api('POST', `/api/bookings/${selectedBooking.id}/reschedule`, {
+        sessionType: document.getElementById('moveSessionType').value,
+        date: document.getElementById('moveDate').value,
+        startTime,
+        customTime,
+        reason: document.getElementById('moveReason').value,
+      });
+      result.textContent = 'Moved. The change was recorded and updated confirmations were sent.';
+      const movedSessionSlug = document.getElementById('moveSessionType').value;
+      selectedBooking = {
+        ...selectedBooking,
+        ...moved,
+        session_type_slug: movedSessionSlug,
+        session_type_name: sessionTypesBySlug[movedSessionSlug]?.name || selectedBooking.session_type_name,
+      };
+      await loadHistory(moved.id);
+      await loadMonth();
+    } catch (err) {
+      error.textContent = err.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Move & send confirmations';
+    }
+  });
 
   document.getElementById('modalCloseBtn').addEventListener('click', () => {
     document.getElementById('modalOverlay').hidden = true;
@@ -371,8 +630,13 @@
   });
 
   loadMonth();
+  loadAcuityStatus();
   loadSessionTypes();
   loadBlockedDates();
+
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    navigator.serviceWorker.register('booking-calendar-sw.js').catch(() => {});
+  }
 </script>
 </body>
 </html>
