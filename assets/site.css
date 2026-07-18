@@ -516,7 +516,7 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .trust-intro .display{font-size:57px}
   .trust-number{font-size:116px}
   .feature{height:82svh;min-height:620px}
-  .feature-copy{left:24px;right:24px;bottom:50px;color:var(--ink)}
+  .feature-copy{left:24px;right:24px;top:58px;bottom:auto;color:var(--ink)}
   .feature-copy h2{font-size:56px}
   .manifesto{padding:110px 24px}
   .manifesto h2{font-size:57px}
