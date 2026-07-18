@@ -104,7 +104,7 @@
         });
         const json = await res.json();
         if (!res.ok) throw new Error(json.error || 'Request failed');
-        track('generate_lead', { session_type: this.slug, lead_source: 'website_inquiry' });
+        track('contact_us', { session_type: this.slug, lead_source: 'website_inquiry' });
         this.formStep.hidden = true;
         this.successStep.hidden = false;
       } catch (err) {
