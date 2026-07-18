@@ -154,7 +154,12 @@
         ...HEAR_ABOUT_OPTIONS.map((o) => el('option', { value: o }, [o])),
       ]);
       this.celebratingInput = el('input', { type: 'text', placeholder: 'Anniversary, birthday, reunion… (optional)' });
-      this.styleNotesInput = el('textarea', { rows: '3', placeholder: 'Describe a look, pose, or style you have in mind (optional)' });
+      this.specialRequestsInput = el('textarea', {
+        rows: '3',
+        maxlength: '2000',
+        placeholder: 'Anything you would like us to know before your session (optional)',
+      });
+      this.floristContactCheckbox = el('input', { type: 'checkbox' });
 
       this.policyBox = el('div', { class: 'wbw-policy-box' }, POLICY_LINES.map((t) => el('p', {}, [t])));
       this.policyCheckbox = el('input', { type: 'checkbox' });
@@ -171,7 +176,11 @@
         el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' Text me a reminder with directions a few hours before my session.']),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['How did you hear about us?']), this.hearAboutInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['What are you celebrating?']), this.celebratingInput]),
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['Style / pose notes']), this.styleNotesInput]),
+        el('div', { class: 'wbw-field' }, [el('label', {}, ['NOTES / SPECIAL REQUESTS']), this.specialRequestsInput]),
+        el('label', { class: 'wbw-policy-agree' }, [
+          this.floristContactCheckbox,
+          ' Have Mya, our florist, contact you for flowers?',
+        ]),
         el('div', { class: 'wbw-field' }, [
           el('label', {}, ['Session Policies']),
           this.policyBox,
@@ -232,6 +241,8 @@
         this.addonRows[addon.slug].hidden = !applies;
         this.addonInputs[addon.slug].checked = false;
       });
+      this.specialRequestsInput.value = '';
+      this.floristContactCheckbox.checked = false;
       this.titleEl.textContent = name;
       this.showStep('date');
       this.dateError.textContent = '';
@@ -395,7 +406,8 @@
             agreedToPolicies: this.policyCheckbox.checked,
             hearAboutUs: this.hearAboutInput.value,
             celebrating: this.celebratingInput.value || undefined,
-            styleNotes: this.styleNotesInput.value || undefined,
+            specialRequests: this.specialRequestsInput.value || undefined,
+            floristContactRequested: this.floristContactCheckbox.checked,
           },
         });
         this.state.bookingId = result.booking.id;
