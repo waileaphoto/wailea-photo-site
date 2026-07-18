@@ -19,6 +19,14 @@
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href]');
     if (!link) return;
+    const experience = link.getAttribute('data-analytics-content');
+    if (experience) {
+      window.waileaTrack('select_content', {
+        content_type: 'photo_experience',
+        item_id: experience,
+        link_location: window.location.pathname,
+      });
+    }
     let url;
     try { url = new URL(link.href, window.location.href); } catch (_) { return; }
     if (url.hostname === 'waileaportrait.as.me') {

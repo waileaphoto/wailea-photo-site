@@ -207,7 +207,6 @@
     const statusEl = document.getElementById('tideStatus');
 
     const LAT = 20.6837, LNG = -156.4460; // Wailea, Maui
-    const NOAA_STATION = '1615680'; // Kahului Harbor, HI — the official NOAA tide station for Maui
 
     function fmtHST(isoUtc){
       try {
@@ -220,19 +219,6 @@
       h = h % 12; if (h === 0) h = 12;
       return `${h}:${String(m).padStart(2, '0')} ${ampm}`;
     }
-    function yyyymmdd(dateStr){ return dateStr.replace(/-/g, ''); }
-
-    // NOAA's tide API doesn't reliably send the CORS headers browsers require for a
-    // direct cross-origin fetch, so requests are routed through a public passthrough
-    // proxy instead. This keeps everything client-side (no server code needed), so it
-    // works the same whether the site is hosted on Netlify, GoDaddy, or anywhere else.
-    // Free public proxies can be flaky individually, so a few are tried in order.
-    const CORS_PROXIES = [
-      url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-      url => `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
-      url => `https://thingproxy.freeboard.io/fetch/${url}`
-    ];
-
     async function fetchWithTimeout(url, ms){
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), ms);
@@ -242,18 +228,6 @@
       } finally {
         clearTimeout(timer);
       }
-    }
-
-    async function fetchViaProxies(targetUrl){
-      for (const buildProxyUrl of CORS_PROXIES) {
-        try {
-          const res = await fetchWithTimeout(buildProxyUrl(targetUrl), 5000);
-          if (!res.ok) continue;
-          const data = await res.json();
-          if (data) return data;
-        } catch (e) { /* try the next proxy */ }
-      }
-      return null;
     }
 
     // Sun and tide come from two independent, unrelated services — fetched and
@@ -275,8 +249,10 @@
 
     async function loadTide(dateStr){
       tideEl.innerHTML = '<p class="tide-empty">Loading…</p>';
-      const noaaUrl = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=predictions&datum=MLLW&station=${NOAA_STATION}&time_zone=lst_ld&units=english&interval=hilo&format=json&begin_date=${yyyymmdd(dateStr)}&end_date=${yyyymmdd(dateStr)}`;
-      const tideRes = await fetchViaProxies(noaaUrl);
+      const tideUrl = `/.netlify/functions/tide?date=${encodeURIComponent(dateStr)}`;
+      const tideRes = await fetchWithTimeout(tideUrl, 10000)
+        .then(res => res.ok ? res.json() : null)
+        .catch(() => null);
       const preds = (tideRes && tideRes.predictions) || [];
       if (preds.length) {
         tideEl.innerHTML = preds.map(p => {
@@ -316,6 +292,7 @@
     initVideoFacades();
     initLightbox('.apo-gallery figure');
     initLightbox('.landscape-gallery figure');
+    initLightbox('.experience-gallery figure');
     initTideTool();
   });
 })();
