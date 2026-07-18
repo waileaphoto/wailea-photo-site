@@ -25,7 +25,7 @@
   ];
 
   const HEAR_ABOUT_OPTIONS = [
-    'Maui Visitors Guide Magazine', 'Google Search', 'Google Ad',
+    'AI referral', 'Google Search', 'Google Ad',
     'Facebook Group', 'Facebook Ad', 'Instagram Post', 'Instagram Ad', 'TikTok', 'Pinterest', 'Other',
   ];
 
