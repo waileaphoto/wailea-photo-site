@@ -593,5 +593,15 @@
         widget.open(btn.getAttribute('data-book-session'), btn.getAttribute('data-session-name') || 'Your Session');
       });
     });
+
+    // Deep-link support for "Calendar" CTAs on the experience landing pages
+    // (maui-family-photographer.html etc.) — e.g. pricing.html?openBooking=babymoon
+    // opens straight into that session's live calendar instead of making the visitor
+    // scroll and pick a card first.
+    const openSlug = new URLSearchParams(window.location.search).get('openBooking');
+    if (openSlug) {
+      const target = document.querySelector(`[data-book-session="${CSS.escape(openSlug)}"]`);
+      if (target) target.click();
+    }
   });
 })();
