@@ -235,6 +235,7 @@
         slug, name, month: requestedMonth, selectedDate: null, selectedSlot: null,
         preselect: requestedDate ? { date: requestedDate, startTime: preselect.startTime || null } : null,
         bookingId: null, bookingReference: null, clientSecret: null,
+        purchased: false, abandonTracked: false,
       };
       ADDON_DEFS.forEach((addon) => {
         const applies = !addon.sessionSlugs || addon.sessionSlugs.includes(slug);
@@ -254,6 +255,7 @@
     }
 
     close() {
+      this.trackAbandoned('closed_widget');
       if (this.overlay) this.overlay.hidden = true;
     }
 
@@ -471,11 +473,13 @@
         });
         if (error) {
           this.payError.textContent = error.message;
+          this.trackAbandoned('payment_declined');
           return;
         }
         this.showSuccess(paymentIntent);
       } catch (err) {
         this.payError.textContent = err.message;
+        this.trackAbandoned('payment_error');
       } finally {
         this.payBtn.disabled = false;
         this.payBtn.textContent = `Pay ${fmtDollars(depositCentsFor(this.state.slug))} Deposit`;
@@ -506,6 +510,7 @@
     trackPurchase(paymentIntent) {
       if (typeof window.waileaTrack !== 'function') return;
       if (!paymentIntent || (paymentIntent.status !== 'succeeded' && paymentIntent.status !== 'processing')) return;
+      this.state.purchased = true;
       const totalDollars = (this.state.totalPriceCents || 0) / 100;
       window.waileaTrack('purchase', {
         transaction_id: this.state.bookingReference || String(this.state.bookingId || paymentIntent.id || ''),
@@ -521,10 +526,48 @@
         }],
       });
     }
+
+    // Fires a GA4 "booking_abandoned" event for a booking that was created on the
+    // server (so we know its real dollar value) but never completed payment —
+    // either the client backed out of the widget, hit a declined/failed card, or
+    // left the tab entirely. Reported alongside `purchase` so revenue reporting can
+    // separate real sales from lost/abandoned attempts. Guards against firing:
+    //  - before a booking record exists (bookingId not set yet — nothing lost)
+    //  - after a successful purchase (trackPurchase sets state.purchased)
+    //  - more than once per booking (state.abandonTracked)
+    trackAbandoned(reason) {
+      if (typeof window.waileaTrack !== 'function') return;
+      if (!this.state || !this.state.bookingId) return;
+      if (this.state.purchased || this.state.abandonTracked) return;
+      this.state.abandonTracked = true;
+      const totalDollars = (this.state.totalPriceCents || 0) / 100;
+      window.waileaTrack('booking_abandoned', {
+        value: totalDollars,
+        currency: 'USD',
+        booking_system: 'wailea',
+        session_type: this.state.slug,
+        reason,
+        transaction_id: this.state.bookingReference || String(this.state.bookingId || ''),
+        items: [{
+          item_id: this.state.slug,
+          item_name: this.state.name,
+          price: totalDollars,
+          quantity: 1,
+        }],
+      });
+    }
   }
 
   const widget = new BookingWidget();
   window.WaileaBookingWidget = widget;
+
+  // Catches abandonment when the client closes the tab / navigates away entirely
+  // instead of clicking the widget's own close button (which already calls
+  // trackAbandoned via close()). pagehide fires reliably on tab close, unlike
+  // beforeunload, and works on mobile Safari where unload doesn't fire.
+  window.addEventListener('pagehide', () => {
+    if (widget.state) widget.trackAbandoned('left_page');
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-book-session]').forEach((btn) => {
