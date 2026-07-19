@@ -414,6 +414,8 @@
         this.state.bookingReference = result.booking.booking_reference;
         this.state.clientSecret = result.stripe.clientSecret;
         this.state.quote = result.quote;
+        this.state.totalPriceCents = result.booking.total_price_cents;
+        this.state.depositCents = result.booking.deposit_cents;
 
         this.paymentSummary.innerHTML = '';
         this.paymentSummary.appendChild(el('div', { class: 'wbw-quote-row wbw-total' }, [
@@ -468,6 +470,7 @@
     }
 
     showSuccess(paymentIntent) {
+      this.trackPurchase(paymentIntent);
       this.successBody.innerHTML = '';
       this.successBody.append(
         el('div', { class: 'wbw-success-icon' }, ['✓']),
@@ -479,6 +482,27 @@
         el('button', { class: 'wbw-btn wbw-btn-secondary', style: 'margin-top:10px;', onclick: () => this.close() }, ['Done'])
       );
       this.showStep('success');
+    }
+
+    // Fires the GA4 purchase event with the real deposit amount charged, so
+    // booking conversions show accurate revenue instead of $0. Only fires once
+    // per completed Stripe payment (called from showSuccess, which itself only
+    // runs after stripe.confirmPayment resolves without an error).
+    trackPurchase(paymentIntent) {
+      if (typeof window.waileaTrack !== 'function') return;
+      if (!paymentIntent || (paymentIntent.status !== 'succeeded' && paymentIntent.status !== 'processing')) return;
+      const depositDollars = (this.state.depositCents || 0) / 100;
+      window.waileaTrack('purchase', {
+        transaction_id: this.state.bookingReference || String(this.state.bookingId || paymentIntent.id || ''),
+        value: depositDollars,
+        currency: 'USD',
+        items: [{
+          item_id: this.state.slug,
+          item_name: this.state.name,
+          price: depositDollars,
+          quantity: 1,
+        }],
+      });
     }
   }
 
