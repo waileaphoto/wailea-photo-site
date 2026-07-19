@@ -141,7 +141,7 @@ button{font:inherit}
 .proof-line{display:block;margin-top:20px;max-width:20ch;text-decoration:none;color:inherit}
 .proof-cta{display:block;font:400 clamp(23px,2.5vw,36px)/1.45 var(--serif);color:var(--ink);border-bottom:1px solid transparent;transition:border-color .2s ease}
 .proof-line:hover .proof-cta{border-color:var(--red)}
-.proof-copy{display:block;margin-top:16px;font:600 9px/1.7 var(--sans);letter-spacing:.2em;color:rgba(27,25,23,.42);text-transform:uppercase}
+.proof-copy{display:block;margin-top:16px;font:600 13px/1.7 var(--sans);letter-spacing:.1em;color:rgba(27,25,23,.55);text-transform:uppercase}
 .proof-rating,#proofCount{color:var(--red);font-weight:700}
 
 /* ---------- feature (full-bleed image + copy) ---------- */
