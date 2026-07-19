@@ -520,8 +520,12 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .trust-intro .display{font-size:57px}
   .trust-number{font-size:116px}
   .feature{height:82svh;min-height:620px}
-  .feature-copy{left:24px;right:24px;top:58px;bottom:auto;color:var(--ink)}
+  .feature-copy{left:24px;right:24px;top:58px;bottom:36px;color:var(--ink);display:flex;flex-direction:column}
   .feature-copy h2{font-size:56px}
+  /* Title (eyebrow + h2) stays put at the top via normal flow; the paragraph is
+     pushed down to the bottom of the box so it clears the person in the photo
+     instead of overlapping her. */
+  .feature-copy .feature-sub{margin-top:auto;padding-top:24px}
   .manifesto{padding:110px 24px}
   .manifesto h2{font-size:57px}
   .manifesto-grid{grid-template-columns:1fr;gap:30px;margin-top:60px}
