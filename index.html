@@ -91,11 +91,40 @@
 
     <section id="reviews" class="reviews">
       <div class="chapter reviews-lead">SEE FOR YOURSELF</div>
-      <div class="elfsight-wrap">
-        <!-- Elfsight All-in-One Reviews | The most reviews in all of Maui -->
+      <a class="proof-line" href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">
+        <span class="proof-stars">★★★★★</span><span class="proof-rating" id="proofRating">5.0</span><span class="proof-copy">from <span id="proofCount">1,000+</span> real reviews on Google, Yelp, Facebook, Tripadvisor, Viator &amp; Airbnb</span>
+      </a>
+      <!-- Elfsight does the real work of aggregating live review counts across all six
+           platforms — it's rendered here but visually hidden; the script below reads its
+           live numbers straight out of the DOM and mirrors them into the styled proof-line
+           above, so the figures never go stale without us needing Elfsight's own visual card. -->
+      <div class="elfsight-source" aria-hidden="true">
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba" data-elfsight-app-lazy></div>
       </div>
+      <script>
+      (function(){
+        var root = document.querySelector('.elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba');
+        var ratingEl = document.getElementById('proofRating');
+        var countEl = document.getElementById('proofCount');
+        if (!root || !ratingEl || !countEl) return;
+        var applied = false;
+        function tryApply(){
+          if (applied) return;
+          var ratingSrc = root.querySelector('[class*="es-rating-value"]');
+          var countSrc = root.querySelector('[class*="es-badge-reviews-count"]');
+          if (ratingSrc && countSrc && ratingSrc.textContent.trim() && countSrc.textContent.trim()) {
+            ratingEl.textContent = ratingSrc.textContent.trim();
+            countEl.textContent = countSrc.textContent.trim().replace(/\s*reviews?$/i, '');
+            applied = true;
+            observer.disconnect();
+          }
+        }
+        var observer = new MutationObserver(tryApply);
+        observer.observe(root, { childList: true, subtree: true });
+        tryApply();
+      })();
+      </script>
     </section>
 
     <section id="motion" class="feature">
