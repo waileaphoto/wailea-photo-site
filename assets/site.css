@@ -101,20 +101,21 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 .promo-banner{
   position:fixed;z-index:120;top:0;left:0;right:0;
   display:flex;align-items:center;justify-content:center;gap:18px;
-  padding:12px 44px 12px 20px;background:var(--ink);color:var(--paper);
+  padding:22px 56px 22px 24px;background:var(--ink);color:var(--paper);
   text-align:center;
 }
-.promo-banner-copy{font:400 13px/1.5 var(--sans);letter-spacing:.01em}
-.promo-banner-copy strong{color:var(--paper);font-weight:600}
+.promo-banner-copy{font:400 16px/1.6 var(--sans);letter-spacing:.01em;max-width:900px}
+.promo-banner-copy strong{color:var(--paper);font-weight:600;font-size:17px}
 .promo-banner-close{
-  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
   border:0;background:none;color:var(--paper);opacity:.65;
-  font:300 22px/1 var(--serif);cursor:pointer;padding:6px 10px;
+  font:300 28px/1 var(--serif);cursor:pointer;padding:6px 10px;
 }
 .promo-banner-close:hover{opacity:1}
 @media(max-width:780px){
-  .promo-banner{padding:10px 40px 10px 16px;gap:10px}
-  .promo-banner-copy{font-size:12px;line-height:1.45}
+  .promo-banner{padding:16px 44px 16px 18px;gap:10px}
+  .promo-banner-copy{font-size:13.5px;line-height:1.5}
+  .promo-banner-copy strong{font-size:14.5px}
 }
 
 .menu{

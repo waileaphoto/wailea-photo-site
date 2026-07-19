@@ -13,7 +13,37 @@
   document.head.appendChild(tag);
 
   window.waileaTrack = function (eventName, parameters) {
-    window.gtag('event', eventName, parameters || {});
+    const params = parameters || {};
+    window.gtag('event', eventName, params);
+
+    // Mirror key funnel events to the Meta/Facebook Pixel (fb-pixel.js) using
+    // Meta's standard event names, so Ads Manager can build conversion
+    // campaigns off the same funnel GA4 tracks.
+    if (typeof window.fbq === 'function') {
+      if (eventName === 'booking_start') {
+        window.fbq('track', 'Lead', { content_name: params.session_type || 'session', content_category: 'booking_start' });
+      } else if (eventName === 'begin_checkout') {
+        window.fbq('track', 'InitiateCheckout', {
+          value: params.value,
+          currency: params.currency || 'USD',
+          content_ids: [params.session_type],
+          content_type: 'product',
+        });
+      } else if (eventName === 'purchase') {
+        window.fbq('track', 'Purchase', {
+          value: params.value,
+          currency: params.currency || 'USD',
+          content_ids: [params.session_type],
+          content_type: 'product',
+        });
+      } else if (eventName === 'promo_redeemed') {
+        window.fbq('trackCustom', 'PromoRedeemed', {
+          promo: params.promo,
+          value: params.value,
+          currency: params.currency || 'USD',
+        });
+      }
+    }
   };
 
   document.addEventListener('click', (event) => {
