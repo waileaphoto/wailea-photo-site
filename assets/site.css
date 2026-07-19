@@ -106,7 +106,6 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 }
 .promo-banner-copy{font:400 13px/1.5 var(--sans);letter-spacing:.01em}
 .promo-banner-copy strong{color:var(--paper);font-weight:600}
-.promo-banner-timer{display:inline-block;min-width:52px;font:700 13px/1 var(--sans);color:var(--red);letter-spacing:.04em}
 .promo-banner-close{
   position:absolute;right:12px;top:50%;transform:translateY(-50%);
   border:0;background:none;color:var(--paper);opacity:.65;
