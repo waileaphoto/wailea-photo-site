@@ -247,6 +247,9 @@
       this.showStep('date');
       this.dateError.textContent = '';
       this.overlay.hidden = false;
+      if (typeof window.waileaTrack === 'function') {
+        window.waileaTrack('booking_start', { booking_system: 'wailea', session_type: slug });
+      }
       this.loadMonth();
     }
 
@@ -417,6 +420,16 @@
         this.state.totalPriceCents = result.booking.total_price_cents;
         this.state.depositCents = result.booking.deposit_cents;
 
+        if (typeof window.waileaTrack === 'function') {
+          window.waileaTrack('begin_checkout', {
+            currency: 'USD',
+            value: result.booking.total_price_cents / 100,
+            booking_system: 'wailea',
+            session_type: this.state.slug,
+            items: [{ item_id: this.state.slug, item_name: this.state.name, quantity: 1 }],
+          });
+        }
+
         this.paymentSummary.innerHTML = '';
         this.paymentSummary.appendChild(el('div', { class: 'wbw-quote-row wbw-total' }, [
           el('span', {}, [`${this.state.name} — ${this.state.selectedDate} ${this.state.selectedSlot.startTime}`]),
@@ -484,22 +497,26 @@
       this.showStep('success');
     }
 
-    // Fires the GA4 purchase event with the real deposit amount charged, so
-    // booking conversions show accurate revenue instead of $0. Only fires once
-    // per completed Stripe payment (called from showSuccess, which itself only
-    // runs after stripe.confirmPayment resolves without an error).
+    // Fires the GA4 purchase event with the booking's real total value, so
+    // conversions show accurate revenue instead of $0. Value matches
+    // begin_checkout's value (full session price, not just today's deposit)
+    // for a consistent funnel. Only fires once per completed Stripe payment
+    // (called from showSuccess, which itself only runs after
+    // stripe.confirmPayment resolves without an error).
     trackPurchase(paymentIntent) {
       if (typeof window.waileaTrack !== 'function') return;
       if (!paymentIntent || (paymentIntent.status !== 'succeeded' && paymentIntent.status !== 'processing')) return;
-      const depositDollars = (this.state.depositCents || 0) / 100;
+      const totalDollars = (this.state.totalPriceCents || 0) / 100;
       window.waileaTrack('purchase', {
         transaction_id: this.state.bookingReference || String(this.state.bookingId || paymentIntent.id || ''),
-        value: depositDollars,
+        value: totalDollars,
         currency: 'USD',
+        booking_system: 'wailea',
+        session_type: this.state.slug,
         items: [{
           item_id: this.state.slug,
           item_name: this.state.name,
-          price: depositDollars,
+          price: totalDollars,
           quantity: 1,
         }],
       });
