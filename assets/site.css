@@ -101,10 +101,10 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 .promo-banner{
   position:fixed;z-index:120;top:0;left:0;right:0;
   display:flex;align-items:center;justify-content:center;gap:18px;
-  padding:22px 56px 22px 24px;background:var(--ink);color:var(--paper);
+  padding:22px 56px;background:var(--red);color:var(--paper);
   text-align:center;
 }
-.promo-banner-copy{font:400 16px/1.6 var(--sans);letter-spacing:.01em;max-width:900px}
+.promo-banner-copy{font:400 16px/1.6 var(--sans);letter-spacing:.01em;max-width:900px;text-align:center}
 .promo-banner-copy strong{color:var(--paper);font-weight:600;font-size:17px}
 .promo-banner-close{
   position:absolute;right:16px;top:50%;transform:translateY(-50%);
@@ -113,7 +113,7 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 }
 .promo-banner-close:hover{opacity:1}
 @media(max-width:780px){
-  .promo-banner{padding:16px 44px 16px 18px;gap:10px}
+  .promo-banner{padding:16px 44px;gap:10px}
   .promo-banner-copy{font-size:13.5px;line-height:1.5}
   .promo-banner-copy strong{font-size:14.5px}
 }

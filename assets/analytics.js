@@ -44,6 +44,29 @@
         });
       }
     }
+
+    // Mirror the same funnel to the Pinterest Tag (pinterest-tag.js) using
+    // Pinterest's standard event names.
+    if (typeof window.pintrk === 'function') {
+      if (eventName === 'booking_start') {
+        window.pintrk('track', 'lead', { lead_type: params.session_type || 'session' });
+      } else if (eventName === 'begin_checkout') {
+        window.pintrk('track', 'addtocart', {
+          value: params.value,
+          currency: params.currency || 'USD',
+          line_items: [{ product_id: params.session_type, product_name: params.session_type }],
+        });
+      } else if (eventName === 'purchase') {
+        window.pintrk('track', 'checkout', {
+          value: params.value,
+          currency: params.currency || 'USD',
+          order_id: params.transaction_id,
+          line_items: [{ product_id: params.session_type, product_name: params.session_type }],
+        });
+      } else if (eventName === 'promo_redeemed') {
+        window.pintrk('track', 'custom', { event_name: 'PromoRedeemed', promo: params.promo });
+      }
+    }
   };
 
   document.addEventListener('click', (event) => {

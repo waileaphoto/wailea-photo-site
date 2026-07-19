@@ -34,7 +34,7 @@
     bar.className = 'promo-banner';
     bar.innerHTML = [
       '<span class="promo-banner-copy">',
-      'This month, your session includes a complimentary <strong>24-Pack of Holiday Cards</strong> — reserved for our next 10 bookings.',
+      'Bookings for August and September include a complimentary <strong>24-Pack of Holiday Cards</strong> with your favorite photo, reserved only for the next 10 client bookings.',
       '</span>',
       '<button type="button" class="promo-banner-close" aria-label="Dismiss offer">×</button>',
     ].join('');
