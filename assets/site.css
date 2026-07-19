@@ -252,11 +252,15 @@ button{font:inherit}
 .step p{line-height:1.65}
 
 /* ---------- reviews ---------- */
-.reviews{padding:13vh 5vw;background:var(--paper2)}
+/* Sits directly beneath trust-intro (same background, no top padding) so the
+   "1,000+ Five-Star Reviews" claim and the live, real reviews that back it up
+   read as one continuous moment instead of two separate stops on the page. */
+.reviews{padding:0 5vw 13vh;background:var(--paper)}
+.reviews-lead{text-align:center;margin:0 0 26px;color:rgba(27,25,23,.5)}
 .reviews-head{text-align:center;max-width:980px;margin:0 auto 70px}
 .reviews-head h2{font:400 clamp(58px,8vw,108px)/.9 var(--serif);margin:.18em 0}
 .reviews-head p{font:400 clamp(20px,2vw,29px)/1.5 var(--serif);margin:0 auto;max-width:28ch}
-.elfsight-wrap{max-width:1180px;margin:0 auto;background:var(--paper);padding:34px;border:1px solid rgba(27,25,23,.08)}
+.elfsight-wrap{max-width:640px;margin:0 auto;background:var(--paper);padding:34px;border:1px solid rgba(27,25,23,.08);box-shadow:0 20px 55px rgba(40,31,22,.08)}
 .elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba{max-width:1100px;margin:auto}
 .elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba .elfsight-reviews-counter{font-family:var(--serif)!important;font-size:82px!important;font-weight:400!important;color:var(--red)!important;text-shadow:none!important}
 .elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba .elfsight-reviews-rating{color:var(--ink)!important;font-weight:600!important;letter-spacing:.12em!important}
@@ -553,9 +557,9 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .experience{padding:110px 24px}
   .experience h2{font-size:57px;margin-bottom:65px}
   .steps{grid-template-columns:1fr;gap:55px}
-  .reviews{padding:105px 14px}
+  .reviews{padding:60px 14px 90px}
   .reviews-head h2{font-size:56px}
-  .elfsight-wrap{padding:12px}
+  .elfsight-wrap{padding:18px}
   .reserve{padding:110px 24px}
   .reserve h2{font-size:58px}
   .family-story{grid-template-columns:1fr;padding:70px 18px;gap:35px}
