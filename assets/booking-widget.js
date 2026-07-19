@@ -399,7 +399,16 @@
       const btn = event?.target;
       const originalLabel = btn ? btn.textContent : null;
       if (btn) { btn.disabled = true; btn.textContent = 'Please wait…'; }
+      // Checked once, right when the client commits to booking — this is the moment that
+      // matters for the promo, not whether the banner happens to still be visible (they
+      // may have dismissed it earlier in the same real window). See promo-banner.js for
+      // the honest-timer logic behind WP_PROMO_HOLIDAYCARDS_ACTIVE.
+      const promoActive = typeof window.WP_PROMO_HOLIDAYCARDS_ACTIVE === 'function' && window.WP_PROMO_HOLIDAYCARDS_ACTIVE();
+      const promoCode = window.WP_PROMO_HOLIDAYCARDS_CODE || 'HOLIDAYCARDS';
+      this.state.promoActive = promoActive;
       try {
+        const promoNote = promoActive ? `PROMO ${promoCode}: Free 24-pack of holiday cards — apply to Pic-Time gallery order.` : null;
+        const combinedNotes = [promoNote, this.specialRequestsInput.value || null].filter(Boolean).join(' | ') || undefined;
         const result = await api('POST', '/api/bookings', {
           sessionType: this.state.slug,
           date: this.state.selectedDate,
@@ -411,7 +420,7 @@
             agreedToPolicies: this.policyCheckbox.checked,
             hearAboutUs: this.hearAboutInput.value,
             celebrating: this.celebratingInput.value || undefined,
-            specialRequests: this.specialRequestsInput.value || undefined,
+            specialRequests: combinedNotes,
             floristContactRequested: this.floristContactCheckbox.checked,
           },
         });
@@ -525,6 +534,14 @@
           quantity: 1,
         }],
       });
+      if (this.state.promoActive) {
+        window.waileaTrack('promo_redeemed', {
+          promo: 'holidaycards',
+          session_type: this.state.slug,
+          value: totalDollars,
+          currency: 'USD',
+        });
+      }
     }
 
     // Fires a GA4 "booking_abandoned" event for a booking that was created on the

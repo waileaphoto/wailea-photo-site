@@ -96,6 +96,28 @@ button{font:inherit}
 .menu-open-btn{border:0;background:none;color:inherit;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.22em;padding:2px 0;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 @media(min-width:781px){ .header-call{display:inline-block} }
 
+/* ---------- promo banner (assets/promo-banner.js) ---------- */
+body.promo-active .site-header{top:var(--promo-h,0)}
+.promo-banner{
+  position:fixed;z-index:120;top:0;left:0;right:0;
+  display:flex;align-items:center;justify-content:center;gap:18px;
+  padding:12px 44px 12px 20px;background:var(--ink);color:var(--paper);
+  text-align:center;
+}
+.promo-banner-copy{font:400 13px/1.5 var(--sans);letter-spacing:.01em}
+.promo-banner-copy strong{color:var(--paper);font-weight:600}
+.promo-banner-timer{display:inline-block;min-width:52px;font:700 13px/1 var(--sans);color:var(--red);letter-spacing:.04em}
+.promo-banner-close{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  border:0;background:none;color:var(--paper);opacity:.65;
+  font:300 22px/1 var(--serif);cursor:pointer;padding:6px 10px;
+}
+.promo-banner-close:hover{opacity:1}
+@media(max-width:780px){
+  .promo-banner{padding:10px 40px 10px 16px;gap:10px}
+  .promo-banner-copy{font-size:12px;line-height:1.45}
+}
+
 .menu{
   position:fixed;z-index:80;inset:0;background:var(--paper);color:var(--ink);
   display:flex;flex-direction:column;justify-content:center;padding:9vw;
