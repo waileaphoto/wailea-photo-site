@@ -346,6 +346,7 @@ button{font:inherit}
 .light-bright-tile img{transform:scale(1.15);transform-origin:right center}
 .session-card:hover .light-bright-tile img{transform:scale(1.19)}
 .babymoon-tile img{object-position:38% center}
+.turquoise-tile img{object-position:39% center}
 .last-half-tile img{object-position:43% center}
 .session-card-price{position:absolute;z-index:2;top:16px;left:16px;background:rgba(49,95,105,.62);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.4);color:#fff;font:400 19px/1 var(--serif);letter-spacing:.01em;padding:10px 19px;border-radius:999px}
 .session-popular-ribbon{position:absolute;z-index:4;top:27px;right:-48px;width:190px;padding:9px 12px;text-align:center;transform:rotate(35deg);background:var(--red);color:#f5d58f;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);box-shadow:0 6px 18px rgba(44,20,18,.28);font:700 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;pointer-events:none}
