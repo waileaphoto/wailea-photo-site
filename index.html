@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=20260718-proofline2">
+  <link rel="stylesheet" href="assets/site.css?v=20260718-merged">
 </head>
 <body>
   <header class="site-header">
@@ -80,29 +80,26 @@
         <div class="chapter">TRUSTED BY VISITORS ACROSS THE WORLD</div>
         <h2 class="display">Thousands of stories told. With one enduring promise.</h2>
       </div>
-      <div class="reveal visible">
+      <div class="reveal visible" id="reviews">
         <div class="trust-number" data-count-target="1000" aria-label="More than 1,000">1,000+</div>
         <div class="trust-stars" aria-label="Five stars">★★★★★</div>
         <div class="trust-label">Five-Star Reviews</div>
-        <p class="trust-copy">Families have entrusted us with their most precious archive.</p>
-        <div class="trust-sources">Google · Yelp · Facebook · Tripadvisor · Viator · Airbnb</div>
+        <a class="proof-line" href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">
+          <span class="proof-cta">Click to read real client reviews</span>
+          <span class="proof-copy"><span id="proofRating">5.0</span> rating from <span id="proofCount">1,000+</span> reviews on Google, Yelp, Facebook, Tripadvisor, Viator &amp; Airbnb</span>
+        </a>
       </div>
     </section>
 
-    <section id="reviews" class="reviews">
-      <div class="chapter reviews-lead">SEE FOR YOURSELF</div>
-      <a class="proof-line" href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">
-        <span class="proof-stars">★★★★★</span><span class="proof-rating" id="proofRating">5.0</span><span class="proof-copy">from <span id="proofCount">1,000+</span> real reviews on Google, Yelp, Facebook, Tripadvisor, Viator &amp; Airbnb</span>
-      </a>
-      <!-- Elfsight does the real work of aggregating live review counts across all six
-           platforms — it's rendered here but visually hidden; the script below reads its
-           live numbers straight out of the DOM and mirrors them into the styled proof-line
-           above, so the figures never go stale without us needing Elfsight's own visual card. -->
-      <div class="elfsight-source" aria-hidden="true">
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba" data-elfsight-app-lazy></div>
-      </div>
-      <script>
+    <!-- Elfsight does the real work of aggregating live review counts across all six
+         platforms — it's rendered here but visually hidden; the script below reads its
+         live numbers straight out of the DOM and mirrors them into the proof-line above,
+         so the figures never go stale without us needing Elfsight's own visual card. -->
+    <div class="elfsight-source" aria-hidden="true">
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba" data-elfsight-app-lazy></div>
+    </div>
+    <script>
       (function(){
         var root = document.querySelector('.elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba');
         var ratingEl = document.getElementById('proofRating');
@@ -128,7 +125,6 @@
         tryApply();
       })();
       </script>
-    </section>
 
     <section id="motion" class="feature">
       <img src="assets/wailea-photo-sunrise.jpg" alt="A couple at sunrise on a Maui beach" loading="lazy">
