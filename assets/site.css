@@ -321,7 +321,7 @@ button{font:inherit}
 /* ---------- reserve / CTA band ---------- */
 .reserve{min-height:82svh;padding:13vh 7vw;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--paper)}
 .reserve h2{font:400 clamp(58px,8vw,112px)/.9 var(--serif);margin:.2em 0;max-width:10ch}
-.reserve.short{min-height:auto;padding:5vh 7vw 8vh}
+.reserve.short{min-height:auto;padding:1.5vh 7vw 8vh}
 .button{display:inline-block;text-decoration:none;background:var(--red);color:#fff;padding:18px 28px;margin-top:32px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--red);transition:background .2s ease,color .2s ease}
 .button:hover{background:transparent;color:var(--red)}
 .button.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
@@ -334,7 +334,7 @@ button{font:inherit}
 .session-fact .chapter{margin-bottom:12px}
 .session-fact p{font:400 19px/1.65 var(--serif);margin:0;max-width:34ch}
 .session-card-meta{font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 10px}
-.session-menu{padding:14vh 6vw;background:var(--paper)}
+.session-menu{padding:14vh 6vw 5vh;background:var(--paper)}
 .session-group{margin-bottom:9vh}
 .session-group:last-child{margin-bottom:0}
 .session-group-label{font:600 10px/1 var(--sans);letter-spacing:.26em;color:var(--red);text-transform:uppercase;margin-bottom:18px}
