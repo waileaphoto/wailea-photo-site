@@ -254,17 +254,20 @@ button{font:inherit}
 /* ---------- reviews ---------- */
 /* Sits directly beneath trust-intro (same background, no top padding) so the
    "1,000+ Five-Star Reviews" claim and the live, real reviews that back it up
-   read as one continuous moment instead of two separate stops on the page. */
-.reviews{padding:0 5vw 13vh;background:var(--paper)}
-.reviews-lead{text-align:center;margin:0 0 26px;color:rgba(27,25,23,.5)}
-.reviews-head{text-align:center;max-width:980px;margin:0 auto 70px}
-.reviews-head h2{font:400 clamp(58px,8vw,108px)/.9 var(--serif);margin:.18em 0}
-.reviews-head p{font:400 clamp(20px,2vw,29px)/1.5 var(--serif);margin:0 auto;max-width:28ch}
-.elfsight-wrap{max-width:640px;margin:0 auto;background:var(--paper);padding:34px;border:1px solid rgba(27,25,23,.08);box-shadow:0 20px 55px rgba(40,31,22,.08)}
-.elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba{max-width:1100px;margin:auto}
-.elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba .elfsight-reviews-counter{font-family:var(--serif)!important;font-size:82px!important;font-weight:400!important;color:var(--red)!important;text-shadow:none!important}
-.elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba .elfsight-reviews-rating{color:var(--ink)!important;font-weight:600!important;letter-spacing:.12em!important}
-.reviews-note{text-align:center;font-size:10px;letter-spacing:.24em;text-transform:uppercase;margin-top:36px}
+   read as one continuous moment instead of two separate stops on the page.
+   Hand-built to match the site's own type system (serif rating number, gold
+   stars, red accent) rather than a third-party widget's default card chrome —
+   see conversation 2026-07-18 for why this replaced the Elfsight embed. */
+.reviews{position:relative;padding:0 5vw 13vh;background:var(--paper);text-align:center}
+.reviews-lead{margin:0 0 26px;color:rgba(27,25,23,.5)}
+.proof-line{display:inline-flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:6px 14px;max-width:640px;margin:0 auto;text-decoration:none;color:inherit}
+.proof-stars{color:var(--gold);font-size:20px;letter-spacing:.16em;line-height:1}
+.proof-rating{font:400 34px/1 var(--serif);color:var(--red)}
+.proof-copy{font:400 clamp(17px,1.8vw,20px)/1.6 var(--serif);color:var(--ink);border-bottom:1px solid transparent;transition:border-color .2s ease}
+.proof-line:hover .proof-copy{border-color:var(--red)}
+/* Elfsight mounts here to compute live counts — kept in normal DOM flow (not display:none)
+   so its own lazy-load/render logic still fires normally, just clipped from view. */
+.elfsight-source{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .review-sources{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px 26px;margin:0 0 42px;padding:0;list-style:none}
 .review-sources li{position:relative;display:flex;align-items:center;gap:8px;font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:rgba(27,25,23,.5)}
 .review-sources li:not(:last-child):after{content:"";position:absolute;right:-14px;top:50%;width:3px;height:3px;border-radius:50%;background:rgba(27,25,23,.28);transform:translateY(-50%)}
@@ -558,8 +561,8 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .experience h2{font-size:57px;margin-bottom:65px}
   .steps{grid-template-columns:1fr;gap:55px}
   .reviews{padding:60px 14px 90px}
-  .reviews-head h2{font-size:56px}
-  .elfsight-wrap{padding:18px}
+  .proof-line{gap:4px 10px}
+  .proof-rating{font-size:28px}
   .reserve{padding:110px 24px}
   .reserve h2{font-size:58px}
   .family-story{grid-template-columns:1fr;padding:70px 18px;gap:35px}
