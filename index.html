@@ -108,17 +108,20 @@
         var ratingEl = document.getElementById('proofRating');
         var countEl = document.getElementById('proofCount');
         if (!root || !ratingEl || !countEl) return;
-        var applied = false;
+        // Elfsight repaints this widget more than once while it finishes aggregating
+        // across platforms (an early/partial count, then the settled final one), so this
+        // keeps syncing on every DOM change rather than locking in the first value seen —
+        // then settles down once nothing has changed for a couple seconds.
+        var settleTimer = null;
         function tryApply(){
-          if (applied) return;
           var ratingSrc = root.querySelector('[class*="es-rating-value"]');
           var countSrc = root.querySelector('[class*="es-badge-reviews-count"]');
           if (ratingSrc && countSrc && ratingSrc.textContent.trim() && countSrc.textContent.trim()) {
             ratingEl.textContent = ratingSrc.textContent.trim();
             countEl.textContent = countSrc.textContent.trim().replace(/\s*reviews?$/i, '');
-            applied = true;
-            observer.disconnect();
           }
+          clearTimeout(settleTimer);
+          settleTimer = setTimeout(function(){ observer.disconnect(); }, 4000);
         }
         var observer = new MutationObserver(tryApply);
         observer.observe(root, { childList: true, subtree: true });
