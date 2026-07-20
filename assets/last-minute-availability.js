@@ -19,7 +19,6 @@
     ['first-half-sunset', 'First Half of Sunset'],
     ['last-half-sunset', 'Last Half of Sunset'],
     ['turquoise-water', 'Turquoise + Water Experience'],
-    ['babymoon', 'Maternity Experience'],
     ['sunrise-max', 'Sunrise with Max'],
   ];
 
