@@ -538,7 +538,7 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .site-header{padding:20px}
   .hero{min-height:650px}
   .hero:after{background:linear-gradient(180deg,rgba(24,65,75,.64),rgba(24,65,75,.18) 34%,rgba(24,65,75,.04) 58%,rgba(24,65,75,.42) 100%)}
-  .hero-copy{left:22px;right:22px;top:72px;bottom:auto;max-width:none}
+  .hero-copy{left:22px;right:22px;bottom:8vh;max-width:none}
   .hero h1{font-size:46px;max-width:11ch}
   .hero-sub{font-size:11px;margin-top:6px}
   .page-hero{min-height:420px}
