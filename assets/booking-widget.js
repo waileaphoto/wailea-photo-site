@@ -153,7 +153,7 @@
         el('option', { value: '' }, ['Select one']),
         ...HEAR_ABOUT_OPTIONS.map((o) => el('option', { value: o }, [o])),
       ]);
-      this.celebratingInput = el('input', { type: 'text', placeholder: 'Anniversary, birthday, reunion… (optional)' });
+      this.celebratingInput = el('input', { type: 'text', placeholder: 'Anniversary, Honeymoon, Maternity, Graduation… (optional)' });
       this.specialRequestsInput = el('textarea', {
         rows: '3',
         maxlength: '2000',
@@ -179,7 +179,7 @@
         el('div', { class: 'wbw-field' }, [el('label', {}, ['NOTES / SPECIAL REQUESTS']), this.specialRequestsInput]),
         el('label', { class: 'wbw-policy-agree' }, [
           this.floristContactCheckbox,
-          ' Have Mya, our florist, contact you for flowers?',
+          ' Have Mya our florist contact you for flowers? (48 hr min lead time required)',
         ]),
         el('div', { class: 'wbw-field' }, [
           el('label', {}, ['Session Policies']),
@@ -372,7 +372,7 @@
         el('div', { class: 'wbw-due-today-label' }, ['Due Today:']),
         el('div', { class: 'wbw-due-today-amount' }, [fmtDollars(depositCentsFor(this.state.slug))]),
       ]));
-      this.quoteBox.appendChild(el('div', { class: 'wbw-quote-note' }, ['Remainder due at your session.']));
+      this.quoteBox.appendChild(el('div', { class: 'wbw-quote-note' }, ['Balance due at end of session in Cash or Zelle only. If using Credit Card or Venmo a $30 fee will be added.']));
 
       function row(label, value, isTotal) {
         return el('div', { class: `wbw-quote-row${isTotal ? ' wbw-total' : ''}` }, [
