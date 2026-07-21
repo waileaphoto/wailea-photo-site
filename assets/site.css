@@ -615,6 +615,7 @@ instead of overlapping her. */
 .session-menu{padding:100px 20px}
 .session-grid{gap:24px}
 .session-card{flex:1 1 100%;max-width:460px;margin:0 auto}
+.session-card-price{font-size:17px;padding:8px 16px}
 .faq-list{padding:100px 20px}
 .contact-band{padding:100px 20px}
 .tide-tool{padding:100px 20px}
