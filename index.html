@@ -35,7 +35,6 @@
 "address": { "@type": "PostalAddress", "addressLocality": "Wailea", "addressRegion": "HI", "addressCountry": "US" },
 "geo": { "@type": "GeoCoordinates", "latitude": 20.6835, "longitude": -156.4460 },
 "priceRange": "$$-$$$",
-"aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "bestRating": "5", "ratingCount": "1000" },
 "url": "https://waileaphoto.com/",
 "sameAs": ["https://www.instagram.com/waileaphoto", "https://www.facebook.com/waileaphoto"]
 }
@@ -90,49 +89,13 @@
 </div>
 <div class="reveal visible" id="reviews">
 <div class="trust-number" data-count-target="1000" aria-label="More than 1,000">1,000+</div>
-<div class="trust-stars" aria-label="Five stars">★★★★★</div>
-<div class="trust-label">Five-Star Reviews</div>
+<div class="trust-label">Published Client Reviews</div>
 <div class="proof-line">
 <a class="proof-cta" href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">Click to read real client reviews</a>
-<span class="proof-copy"><span id="proofRating">5.0</span> rating from <span id="proofCount">1,000+</span> reviews on <a href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">Google</a>, <a href="https://www.yelp.com/biz/wailea-photo-wailea" target="_blank" rel="noopener">Yelp</a>, <a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener">Facebook</a>, <a href="https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a>, Viator &amp; <a href="https://www.airbnb.com/experiences/2386762" target="_blank" rel="noopener">Airbnb</a></span>
+<span class="proof-copy">More than 1,000 published ratings and reviews across <a href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">Google</a>, <a href="https://www.yelp.com/biz/wailea-photo-wailea" target="_blank" rel="noopener">Yelp</a>, <a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener">Facebook</a>, <a href="https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a>, Viator and <a href="https://www.airbnb.com/experiences/2386762" target="_blank" rel="noopener">Airbnb</a>. Totals combine our linked platform profiles and may change as platforms add, remove or syndicate reviews.</span>
 </div>
 </div>
 </section>
-
-<!-- Elfsight does the real work of aggregating live review counts across all six
-platforms — it's rendered here but visually hidden; the script below reads its
-live numbers straight out of the DOM and mirrors them into the proof-line above,
-so the figures never go stale without us needing Elfsight's own visual card. -->
-<div class="elfsight-source" aria-hidden="true">
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba" data-elfsight-app-lazy></div>
-</div>
-<script>
-(function(){
-var root = document.querySelector('.elfsight-app-befd2998-eb1b-4c78-88ce-bea5dc308fba');
-var ratingEl = document.getElementById('proofRating');
-var countEl = document.getElementById('proofCount');
-if (!root || !ratingEl || !countEl) return;
-// Elfsight repaints this widget more than once while it finishes aggregating
-// across platforms (an early/partial count, then the settled final one), so this
-// keeps syncing on every DOM change rather than locking in the first value seen —
-// then settles down once nothing has changed for a couple seconds.
-var settleTimer = null;
-function tryApply(){
-var ratingSrc = root.querySelector('[class*="es-rating-value"]');
-var countSrc = root.querySelector('[class*="es-badge-reviews-count"]');
-if (ratingSrc && countSrc && ratingSrc.textContent.trim() && countSrc.textContent.trim()) {
-ratingEl.textContent = ratingSrc.textContent.trim();
-countEl.textContent = countSrc.textContent.trim().replace(/\s*reviews?$/i, '');
-}
-clearTimeout(settleTimer);
-settleTimer = setTimeout(function(){ observer.disconnect(); }, 4000);
-}
-var observer = new MutationObserver(tryApply);
-observer.observe(root, { childList: true, subtree: true });
-tryApply();
-})();
-</script>
 
 <section id="motion" class="feature">
 <img src="assets/wailea-photo-sunrise.jpg" alt="A couple at sunrise on a Maui beach" loading="lazy">
