@@ -79,9 +79,13 @@ button{font:inherit}
 /* ---------- header / nav ---------- */
 .site-header{
   position:fixed;z-index:50;top:0;left:0;right:0;
-  display:flex;flex-direction:row-reverse;justify-content:space-between;align-items:flex-start;
+  display:flex;flex-direction:column;align-items:flex-end;
   padding:24px 28px;color:#fff;
 }
+.header-top-row{
+  display:flex;flex-direction:row-reverse;justify-content:space-between;align-items:flex-start;width:100%;
+}
+.header-subbar{margin-top:8px}
 .site-header:before{
   content:"";position:fixed;z-index:-1;top:0;left:0;right:0;height:170px;
   background:linear-gradient(180deg,rgba(24,65,75,.66),rgba(24,65,75,0));pointer-events:none;
@@ -90,8 +94,6 @@ button{font:inherit}
 .brand strong{font-size:18px;font-weight:500}
 .brand small{display:block;font-size:9px;margin:10px 22px 0 0;letter-spacing:.43em}
 .header-right{display:flex;align-items:center;gap:24px}
-.header-atlas{color:inherit;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.22em;text-shadow:0 1px 12px rgba(0,0,0,.35);border-bottom:1px solid transparent;padding:2px 0;transition:border-color .2s ease}
-.header-atlas:hover,.header-atlas[aria-current="page"]{border-color:currentColor}
 .header-call{
   text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.2em;
   display:none;text-shadow:0 1px 12px rgba(0,0,0,.35);
@@ -654,4 +656,51 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   html{scroll-snap-type:y proximity}
   main{display:block}
   main > section{scroll-snap-align:start;scroll-snap-stop:normal}
+}
+
+/* ---------- Atlas page (atlas.html) ---------- */
+.atlas-intro{max-width:1180px;margin:0 auto;padding:12vh 7vw 10vh}
+.atlas-intro>.chapter{margin-bottom:20px}
+.atlas-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:start}
+.atlas-intro-grid h2{font:400 clamp(34px,4vw,54px)/1.05 var(--serif);margin:0;max-width:9ch}
+.atlas-intro-grid p{font:400 17px/1.75 var(--sans);color:rgba(27,25,23,.78);margin:0 0 1.2em}
+.atlas-intro-grid p:last-child{margin-bottom:0}
+
+.atlas-explore{background:var(--paper2);padding:11vh 7vw}
+.atlas-section-head{max-width:640px;margin:0 auto 6vh;text-align:center}
+.atlas-section-head h2{font:400 clamp(32px,4vw,50px)/1.08 var(--serif);margin:14px 0 0}
+.atlas-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.atlas-card{background:var(--paper2);padding:44px 34px;display:flex;flex-direction:column;gap:10px}
+.atlas-card span{font:600 12px/1 var(--sans);letter-spacing:.15em;color:var(--red)}
+.atlas-card h3{font:400 26px/1.1 var(--serif);margin:6px 0 0}
+.atlas-card p{font:400 15px/1.65 var(--sans);color:rgba(27,25,23,.72);margin:0;flex:1}
+.atlas-card a{font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ocean);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;align-self:flex-start}
+.atlas-card a:hover{color:var(--red)}
+.atlas-coming{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.4);align-self:flex-start}
+
+.atlas-philosophy{background:var(--ocean);color:#fff;padding:12vh 7vw;display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;align-items:center}
+.atlas-philosophy .chapter{color:rgba(255,255,255,.7)}
+.atlas-philosophy-copy h2{font:400 clamp(32px,4vw,50px)/1.08 var(--serif);margin:14px 0 18px;max-width:11ch}
+.atlas-philosophy-copy p{font:400 16px/1.7 var(--sans);color:rgba(255,255,255,.82);margin:0 0 1.1em;max-width:44ch}
+.atlas-philosophy-copy p:last-child{margin-bottom:0}
+.atlas-philosophy figure{margin:0;overflow:hidden;border-radius:2px}
+.atlas-philosophy figure img{width:100%;height:100%;object-fit:cover;display:block}
+
+.atlas-cta{max-width:820px;margin:0 auto;padding:13vh 7vw;text-align:center}
+.atlas-cta h2{font:400 clamp(30px,4vw,46px)/1.12 var(--serif);margin:14px auto 18px;max-width:14ch}
+.atlas-cta p{font:400 17px/1.7 var(--sans);color:rgba(27,25,23,.75);max-width:46ch;margin:0 auto}
+.atlas-cta .button{margin-top:28px}
+
+@media(max-width:900px){
+  .atlas-intro-grid{grid-template-columns:1fr;gap:24px}
+  .atlas-grid{grid-template-columns:1fr 1fr}
+  .atlas-philosophy{grid-template-columns:1fr;gap:40px}
+  .atlas-philosophy figure{order:-1;max-height:340px}
+}
+@media(max-width:620px){
+  .atlas-intro{padding:10vh 6vw 8vh}
+  .atlas-explore{padding:9vh 6vw}
+  .atlas-cta{padding:10vh 6vw}
+  .atlas-grid{grid-template-columns:1fr}
+  .atlas-card{padding:34px 26px}
 }
