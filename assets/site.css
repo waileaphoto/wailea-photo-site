@@ -154,6 +154,7 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 .page-hero.wear-hero{height:min(100svh,56.21875vw);min-height:520px}
 .page-hero.wear-hero > img{object-position:center 60%}
 .page-hero-copy{position:absolute;z-index:2;left:7vw;bottom:8vh;max-width:900px}
+.pricing-hero .page-hero-copy{bottom:4vh}
 .page-hero-copy h1{font-family:var(--serif);font-weight:400;line-height:.92;margin:.2em 0;font-size:clamp(46px,7vw,92px);max-width:11ch}
 .page-hero-copy p{font:400 clamp(18px,1.7vw,24px)/1.5 var(--serif);max-width:34ch;margin:0}
 
