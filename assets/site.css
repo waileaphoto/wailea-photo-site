@@ -136,6 +136,8 @@ background:linear-gradient(180deg,rgba(24,65,75,.66),rgba(24,65,75,0));pointer-e
 .brand strong{font-size:18px;font-weight:500}
 .brand small{display:block;font-size:9px;margin:10px 22px 0 0;letter-spacing:.43em}
 .header-right{display:flex;align-items:center;gap:24px}
+.header-atlas{color:inherit;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.22em;text-shadow:0 1px 12px rgba(0,0,0,.35);border-bottom:1px solid transparent;padding:2px 0;transition:border-color .2s ease}
+.header-atlas:hover,.header-atlas[aria-current="page"]{border-color:currentColor}
 .header-call{
 text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.2em;
 display:none;text-shadow:0 1px 12px rgba(0,0,0,.35);
