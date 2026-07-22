@@ -29,6 +29,7 @@ so every page stays visually consistent.
 .last-minute-card div{display:grid;gap:4px}
 .last-minute-card span,.last-minute-card small{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(27,25,23,.65)}
 .last-minute-card strong{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600}
+.last-minute-price{display:inline-block;margin-left:8px;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--red);vertical-align:middle}
 .last-minute-book{flex:none;padding:11px 15px;background:var(--ocean);color:#fff;text-decoration:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
 
 /* Maui wardrobe guide */
@@ -379,8 +380,8 @@ instead of showing Elfsight's own widget card — see conversation 2026-07-18. *
 .last-half-tile img{object-position:43% center}
 .session-card-price{position:absolute;z-index:2;top:14px;left:14px;background:rgba(49,95,105,.62);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.4);color:#fff;font:400 15px/1 var(--serif);letter-spacing:.01em;padding:7px 14px;border-radius:999px}
 .session-popular-ribbon{position:absolute;z-index:4;top:27px;right:-48px;width:190px;padding:9px 12px;text-align:center;transform:rotate(35deg);background:var(--red);color:#f5d58f;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);box-shadow:0 6px 18px rgba(44,20,18,.28);font:700 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;pointer-events:none}
-.session-card-book-pill{position:absolute;z-index:3;left:14px;bottom:14px;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 15px;border:1px solid rgba(245,239,229,.72);border-radius:999px;background:rgba(185,146,84,.84);box-shadow:0 8px 24px rgba(44,34,20,.2);color:var(--charcoal);text-decoration:none;text-transform:uppercase;letter-spacing:.13em;font:700 9px/1 var(--sans);transition:transform .25s ease,background .25s ease,box-shadow .25s ease}
-.session-card-book-pill:hover{transform:translateY(-2px);background:rgba(185,146,84,.98);box-shadow:0 11px 28px rgba(44,34,20,.28)}
+.session-card-book-pill{position:absolute;z-index:3;left:14px;bottom:14px;display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 17px;border:1px solid rgba(245,239,229,.72);border-radius:999px;background:rgba(158,43,35,.92);box-shadow:0 8px 24px rgba(74,17,13,.28);color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.13em;font:700 10.5px/1 var(--sans);transition:transform .25s ease,background .25s ease,box-shadow .25s ease}
+.session-card-book-pill:hover{transform:translateY(-2px);background:rgba(158,43,35,1);box-shadow:0 11px 28px rgba(74,17,13,.35)}
 .session-card-book-pill.legacy-request-pill{background:#fff;border-color:#fff;color:var(--charcoal)}
 .session-card-book-pill.legacy-request-pill:hover{background:#fff}
 .session-card-book-pill:focus-visible{outline:3px solid #fff;outline-offset:3px}
@@ -540,6 +541,7 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 .hero-sub{font-size:11px;margin-top:6px}
 .page-hero{min-height:420px}
 .page-hero-copy{left:22px;right:22px;bottom:8vh}
+.page-hero.tide-hero .page-hero-copy{bottom:2vh}
 .page-hero.wear-hero{height:auto;min-height:0;padding-top:56.21875%;overflow:visible;background:var(--ocean)}
 .page-hero.wear-hero > img{height:auto;aspect-ratio:3200/1799;object-fit:cover;object-position:center top}
 .page-hero.wear-hero:after{height:56.21875vw;bottom:auto;background:linear-gradient(180deg,rgba(24,65,75,.06),rgba(24,65,75,.18))}

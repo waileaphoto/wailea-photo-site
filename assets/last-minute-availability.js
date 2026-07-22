@@ -20,7 +20,19 @@
     ['last-half-sunset', 'Last Half of Sunset'],
     ['turquoise-water', 'Turquoise + Water Experience'],
     ['sunrise-max', 'Sunrise with Max'],
+    ['family-legacy', 'The Large Family Legacy'],
   ];
+
+  // Mirrors the price badges shown on each session card in pricing.html. Family Legacy's
+  // final price depends on group size (quoted after contact), so it shows "TBD" here
+  // rather than a number that may not match what the client is actually quoted.
+  const sessionPrices = {
+    'first-half-sunset': 'From $399',
+    'last-half-sunset': 'From $499',
+    'turquoise-water': 'From $499',
+    'sunrise-max': 'From $249',
+    'family-legacy': 'TBD',
+  };
 
   const hawaiiDate = (offsetDays) => {
     const now = new Date();
@@ -73,7 +85,8 @@
         const item = document.createElement('article');
         item.className = 'last-minute-card';
         const spaces = opening.spotsLeft === 1 ? '1 space' : `${opening.spotsLeft} spaces`;
-        item.innerHTML = `<div><span>${formatDate(opening.date)} · ${formatTime(opening.startTime)}</span><strong>${opening.sessionName}</strong><small>${spaces} currently open</small></div>`;
+        const price = sessionPrices[opening.sessionType] || '';
+        item.innerHTML = `<div><span>${formatDate(opening.date)} · ${formatTime(opening.startTime)}</span><strong>${opening.sessionName}${price ? ` <span class="last-minute-price">${price}</span>` : ''}</strong><small>${spaces} currently open</small></div>`;
         const button = document.createElement('a');
         button.href = '#';
         button.className = 'last-minute-book';
