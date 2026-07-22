@@ -336,6 +336,9 @@ content:"";position:absolute;inset:0;background:rgba(24,65,75,.62);
 .reviews-showcase-head p{font:400 clamp(18px,1.8vw,23px)/1.55 var(--serif);color:rgba(27,25,23,.67);max-width:42ch;margin:0 auto}
 .reviews-widget-shell{max-width:1280px;margin:0 auto;padding:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 22px 60px rgba(27,25,23,.07);overflow:hidden}
 .reviews-widget-shell [class*="elfsight-app-"]{min-height:240px}
+.reviews-disclosure{max-width:1040px;margin:24px auto 0;text-align:center;font:500 10px/1.7 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:rgba(27,25,23,.46)}
+.reviews-disclosure a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(27,25,23,.25)}
+.reviews-disclosure a:hover{color:var(--red);border-color:var(--red)}
 .review-sources{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px 26px;margin:0 0 42px;padding:0;list-style:none}
 .review-sources li{position:relative;display:flex;align-items:center;gap:8px;font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:rgba(27,25,23,.5)}
 .review-sources li:not(:last-child):after{content:"";position:absolute;right:-14px;top:50%;width:3px;height:3px;border-radius:50%;background:rgba(27,25,23,.28);transform:translateY(-50%)}
@@ -665,6 +668,7 @@ instead of overlapping her. */
 .reviews-showcase-head{margin-bottom:42px;padding:0 10px}
 .reviews-showcase-head h2{font-size:52px}
 .reviews-widget-shell{padding:10px}
+.reviews-disclosure{margin-top:20px;padding:0 8px;font-size:9px;line-height:1.65}
 .experience-intro{grid-template-columns:1fr;padding:100px 24px;gap:55px}
 .experience-intro h2{font-size:56px}
 .experience-highlights{padding-left:24px}
