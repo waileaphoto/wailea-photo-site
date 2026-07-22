@@ -60,6 +60,51 @@ so every page stays visually consistent.
 .wear-cta{text-align:center;background:var(--paper2);padding:100px 24px}
 .wear-cta .book{display:inline-block;margin-top:20px}
 
+/* ---------- Wailea Photo Atlas ---------- */
+.atlas-hero .page-hero-copy{max-width:min(1000px,88vw)}
+.atlas-hero .page-hero-copy h1{font-size:clamp(64px,10vw,150px);max-width:9ch}
+.atlas-hero .page-hero-copy p{max-width:38em}
+.atlas-intro{padding:13vh 8vw;background:var(--paper)}
+.atlas-intro-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:9vw;max-width:1320px;margin:34px auto 0}
+.atlas-intro h2,.atlas-section-head h2,.atlas-philosophy h2{font:400 clamp(48px,6.7vw,94px)/.96 var(--serif);margin:0}
+.atlas-intro p,.atlas-philosophy p{font:300 clamp(17px,1.45vw,21px)/1.85 var(--sans);margin:0 0 1.25em;color:rgba(27,25,23,.78)}
+.atlas-explore{padding:13vh 6vw;background:#ece4d7}
+.atlas-section-head{max-width:980px;margin:0 auto 70px;text-align:center}
+.atlas-section-head h2{margin-top:22px}
+.atlas-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;max-width:1440px;margin:0 auto;background:rgba(27,25,23,.16)}
+.atlas-card{min-height:460px;padding:54px 42px;background:var(--paper);display:flex;flex-direction:column}
+.atlas-card>span:first-child{font:600 10px/1 var(--sans);letter-spacing:.2em;color:var(--red)}
+.atlas-card h3{font:400 clamp(35px,3.3vw,54px)/1 var(--serif);margin:45px 0 25px}
+.atlas-card p{font:300 16px/1.75 var(--sans);color:rgba(27,25,23,.72);margin:0 0 35px}
+.atlas-card a,.atlas-coming{margin-top:auto;font:600 10px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--red);text-decoration:none}
+.atlas-card a:after{content:"  →"}
+.atlas-philosophy{display:grid;grid-template-columns:1fr 1fr;min-height:90svh;background:var(--ocean);color:#fff}
+.atlas-philosophy-copy{padding:12vh 7vw;display:flex;flex-direction:column;justify-content:center}
+.atlas-philosophy h2{margin:24px 0 45px}
+.atlas-philosophy p{color:rgba(255,255,255,.78)}
+.atlas-philosophy figure{margin:0;min-height:620px}
+.atlas-philosophy img{width:100%;height:100%;object-fit:cover}
+.atlas-cta{padding:15vh 7vw;text-align:center;background:var(--paper)}
+.atlas-cta .display{font-size:clamp(56px,8vw,118px);margin:30px auto;max-width:13ch}
+.atlas-cta p{font:300 17px/1.7 var(--sans);max-width:620px;margin:0 auto}
+
+@media(max-width:900px){
+.atlas-intro-grid,.atlas-philosophy{grid-template-columns:1fr}
+.atlas-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.atlas-philosophy figure{min-height:72svh;order:-1}
+}
+@media(max-width:620px){
+.atlas-hero .page-hero-copy h1{font-size:clamp(54px,18vw,82px)}
+.atlas-hero .page-hero-copy p{font-size:12px;line-height:1.65}
+.atlas-intro,.atlas-explore{padding:100px 24px}
+.atlas-intro-grid{gap:42px}
+.atlas-grid{grid-template-columns:1fr}
+.atlas-card{min-height:390px;padding:44px 30px}
+.atlas-philosophy-copy{padding:90px 28px}
+.atlas-philosophy figure{min-height:62svh}
+.atlas-cta{padding:110px 24px}
+}
+
 @media(max-width:760px){
 .last-minute{margin:50px 20px 0;padding:55px 22px}.last-minute-list{grid-template-columns:1fr}.last-minute-card{align-items:flex-start;padding:20px 18px}.last-minute-book{margin-top:4px}
 .wear-intro{grid-template-columns:1fr;padding:75px 20px;gap:45px}.palette-chip{min-height:105px;padding:12px}.wear-section{padding:75px 20px}.wear-cards{grid-template-columns:1fr}.wear-checklist{columns:1}.wear-cta{padding:80px 20px}
