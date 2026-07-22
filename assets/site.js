@@ -16,6 +16,31 @@
     menuLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
   }
 
+  // Fix: on a fresh page load that lands with a URL hash (e.g. clicking a menu
+  // link like index.html#story-paths from another page), html{scroll-behavior:
+  // smooth} can start an animated scroll that gets interrupted by images/fonts
+  // still loading and shifting the page height, leaving the browser stuck near
+  // the top instead of at the target section. Force an instant, header-offset-
+  // aware jump once everything has finished loading.
+  function jumpToHash(){
+    if (!location.hash) return;
+    let target;
+    try { target = document.querySelector(location.hash); } catch (e) { return; }
+    if (!target) return;
+    const header = document.querySelector('.site-header');
+    const offset = (header ? header.offsetHeight : 0) + 16;
+    const prevBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo(0, Math.max(y, 0));
+    document.documentElement.style.scrollBehavior = prevBehavior;
+  }
+  if (document.readyState === 'complete') {
+    setTimeout(jumpToHash, 60);
+  } else {
+    window.addEventListener('load', () => setTimeout(jumpToHash, 60));
+  }
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
