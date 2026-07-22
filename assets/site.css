@@ -83,7 +83,7 @@ so every page stays visually consistent.
 .atlas-philosophy h2{margin:24px 0 45px}
 .atlas-philosophy p{color:rgba(255,255,255,.78)}
 .atlas-philosophy figure{margin:0;min-height:620px}
-.atlas-philosophy img{width:100%;height:100%;object-fit:cover}
+.atlas-philosophy img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
 .atlas-cta{padding:15vh 7vw;text-align:center;background:var(--paper)}
 .atlas-cta .display{font-size:clamp(56px,8vw,118px);margin:30px auto;max-width:13ch}
 .atlas-cta p{font:300 17px/1.7 var(--sans);max-width:620px;margin:0 auto}
@@ -102,6 +102,7 @@ so every page stays visually consistent.
 .atlas-card{min-height:390px;padding:44px 30px}
 .atlas-philosophy-copy{padding:90px 28px}
 .atlas-philosophy figure{min-height:62svh}
+.atlas-philosophy img{object-position:50% 38%}
 .atlas-cta{padding:110px 24px}
 }
 
