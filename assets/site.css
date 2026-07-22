@@ -213,6 +213,9 @@ transform:translateY(-104%);transition:transform .48s cubic-bezier(.76,0,.24,1);
 .proof-copy{display:block;margin-top:16px;font:600 13px/1.7 var(--sans);letter-spacing:.1em;color:rgba(27,25,23,.55);text-transform:uppercase}
 .proof-copy a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(27,25,23,.3);transition:border-color .2s ease,color .2s ease}
 .proof-copy a:hover{color:var(--red);border-color:var(--red)}
+.quick-facts{display:grid;gap:10px;margin:28px 0 0;padding:0;list-style:none;max-width:430px}
+.quick-facts li{font:400 clamp(18px,1.65vw,23px)/1.35 var(--serif);color:rgba(27,25,23,.72);padding-left:20px;position:relative}
+.quick-facts li:before{content:"\2014";position:absolute;left:0;top:0;color:var(--red)}
 .proof-rating,#proofCount{color:var(--red);font-weight:700}
 
 /* ---------- feature (full-bleed image + copy) ---------- */
