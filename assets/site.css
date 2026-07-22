@@ -558,6 +558,9 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 .footer-mark-col .mark{font:400 44px/1 var(--serif)}
 .footer-mark-col .mark i{font-style:normal;color:var(--red)}
 .footer-mark-col p{font-size:15px;line-height:1.75;color:rgba(245,239,229,.7);max-width:26ch;margin-top:16px}
+.footer-mark-col .footer-brand-family{margin-top:18px;font-size:12px;line-height:1.7;color:rgba(245,239,229,.5)}
+.footer-brand-family a{color:rgba(245,239,229,.78);text-decoration:none;border-bottom:1px solid rgba(245,239,229,.3)}
+.footer-brand-family a:hover{color:var(--gold);border-color:var(--gold)}
 .footer-col h5{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,229,.55);margin:0 0 18px}
 .footer-col a{display:block;text-decoration:none;font-size:16px;line-height:2.1;color:var(--paper)}
 .footer-col a:hover{color:var(--gold)}
