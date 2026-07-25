@@ -708,3 +708,10 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 
 /* Proposal page: intro-column photo, placed just under the intro copy text */
 .experience-intro-copy .intro-photo{width:100%;max-width:460px;aspect-ratio:3/2;object-fit:cover;border-radius:18px;margin:22px 0 28px;display:block}
+
+
+/* FAQ section headings ("X, Answered") were nowrap+left at up to 92px, which
+   overflows on laptop-width screens between the 780px mobile breakpoint and
+   full desktop. Center and cap the size so it always fits and wraps cleanly. */
+.faq-list .section-head{text-align:center}
+.faq-list .section-head h2{font-size:clamp(30px,4.4vw,52px);white-space:normal;max-width:26ch;margin:.2em auto}
