@@ -704,3 +704,7 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .atlas-grid{grid-template-columns:1fr}
   .atlas-card{padding:34px 26px}
 }
+
+
+/* Proposal page: intro-column photo, placed just under the intro copy text */
+.experience-intro-copy .intro-photo{width:100%;max-width:460px;aspect-ratio:3/2;object-fit:cover;border-radius:18px;margin:22px 0 28px;display:block}
