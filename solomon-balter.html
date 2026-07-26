@@ -62,6 +62,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=20260726-review">
+<style>
+/* Page-specific override: show this quote band's photo without the
+   shared teal overlay used elsewhere, so it reads as a clean frame
+   with white text laid directly over it. */
+.solomon-quote-clear:before{background:none}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -113,7 +119,7 @@
 </div>
 </section>
 
-<section class="quote-band quote-band-photo" style="background-image:url('assets/Solomon-Balter-McLarenAuto-magazine.jpg')">
+<section class="quote-band quote-band-photo solomon-quote-clear" style="background-image:url('assets/Solomon-Balter-McLarenAuto-magazine.jpg')">
 <p class="reveal visible">"I look for the frame that feels like a scene from your story, not just a photo of it."</p>
 </section>
 
