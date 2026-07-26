@@ -51,6 +51,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=20260726-review">
+<style>
+/* Page-specific override: show this quote band's photo without the
+   shared teal overlay used elsewhere, so it reads as a clean black-and-white
+   frame with white text laid directly over it. */
+.jude-quote-clear:before{background:none}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -80,7 +86,7 @@
 
 <main>
 <section class="page-hero">
-<img src="assets/wailea-photo-sunrise.jpg" alt="A couple at sunrise on a Maui beach" loading="eager" fetchpriority="high">
+<img src="assets/monochrom-jude-balter-syle.jpg" alt="A black-and-white photograph in Jude Balter's signature style" loading="eager" fetchpriority="high">
 <div class="page-hero-copy reveal visible">
 <div class="eyebrow">MEET THE PHOTOGRAPHER</div>
 <h1>Jude Balter</h1>
@@ -101,7 +107,7 @@
 </div>
 </section>
 
-<section class="quote-band quote-band-photo" style="background-image:url('assets/monochrom-jude-balter-syle.jpg')">
+<section class="quote-band quote-band-photo jude-quote-clear" style="background-image:url('assets/monochrom-jude-balter-syle.jpg')">
 <p class="reveal visible">"Black and white strips everything back to what actually matters — the light, the connection, the moment."</p>
 </section>
 
