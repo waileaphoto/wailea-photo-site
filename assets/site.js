@@ -1,3 +1,137 @@
+
+/* ---------- session-finder: "Find Your Session" recommender (pricing.html only) ---------- */
+document.addEventListener('DOMContentLoaded', function(){
+  var form = document.querySelector('.session-finder-form');
+  if(!form) return; // section only exists on pricing.html — safe no-op elsewhere
+
+  var groupSel = document.getElementById('session-finder-group');
+  var styleSel = document.getElementById('session-finder-style');
+  var timingSel = document.getElementById('session-finder-timing');
+  var resultEl = document.getElementById('session-finder-result');
+  var nameEl = document.getElementById('session-finder-result-name');
+  var copyEl = document.getElementById('session-finder-result-copy');
+  var socialProofEl = document.getElementById('session-finder-social-proof');
+  var viewBtn = document.getElementById('session-finder-view');
+  var bookBtn = document.getElementById('session-finder-book');
+  var resetBtn = document.getElementById('session-finder-reset');
+  if(!groupSel || !styleSel || !timingSel || !resultEl) return;
+
+  // Maps each outcome to the matching, already-existing session card (by the
+  // stable id added to that card) and its exact current display name. No new
+  // products, prices or booking links are introduced — this only points to
+  // real cards already on the page.
+  var SESSIONS = {
+    'family-legacy': {
+      cardId: 'session-card-family-legacy',
+      displayName: 'The Large Family Legacy',
+      explanation: 'Large and multigenerational families need more time for the full group, individual households, grandparents, couples and children without feeling rushed.'
+    },
+    'poetic-wedding': {
+      cardId: 'session-card-poetic-wedding',
+      displayName: 'A Poetic Wedding in Maui',
+      explanation: 'This experience allows the ceremony, family groupings and couple’s portraits to unfold together in beautiful Maui light.'
+    },
+    'turquoise-water': {
+      cardId: 'session-card-turquoise-water',
+      displayName: 'The Turquoise + Water Experience',
+      explanation: 'This longer session prioritizes vivid water, open coastal scenery and greater separation from Wailea’s resort beaches.'
+    },
+    'last-half-sunset': {
+      cardId: 'session-card-last-half-sunset',
+      displayName: 'The Last Half of Sunset',
+      explanation: 'The final light of the day creates richer color, deeper contrast and the most cinematic sunset atmosphere.'
+    },
+    'first-half-sunset': {
+      cardId: 'session-card-first-half-sunset',
+      displayName: 'The First Half of Sunset — “Light & Bright”',
+      explanation: 'This is the best fit for families who want bright, natural color and a relaxed session during the softer opening portion of golden hour.'
+    },
+    'sunrise-max': {
+      cardId: 'session-card-sunrise-max',
+      displayName: 'The Sunrise with Max',
+      explanation: 'A short sunrise session gives young children a comfortable, low-pressure start while Maui’s beaches are quieter and the light is soft.'
+    }
+  };
+  // Used only when the "maternity or babymoon" answer drives the outcome (see recommend()).
+  var MATERNITY_EXPLANATION = 'Sunrise offers soft, flattering light, cooler temperatures and a quieter beach for an unhurried maternity experience.';
+
+  // Priority order per spec: occasion/group size first, then requested visual
+  // style, then timing. NOTE: the site's earlier standalone maternity/babymoon
+  // session has since been retired (maternity portraits are now offered within
+  // Sunrise with Max or Last Half of Sunset), so the "maternity or babymoon"
+  // answer is routed to whichever of those two real sessions matches the
+  // requested timing rather than a now-nonexistent product.
+  function recommend(group, style, timing){
+    if(group === 'family-10-plus') return 'family-legacy';
+    if(group === 'wedding' || style === 'ceremony-portraits') return 'poetic-wedding';
+    if(group === 'maternity'){
+      return timing === 'sunrise' ? 'sunrise-max' : 'last-half-sunset';
+    }
+    if(style === 'turquoise-water') return 'turquoise-water';
+    if(style === 'dramatic-sunset' || timing === 'final-light') return 'last-half-sunset';
+    if(style === 'bright-natural' || timing === 'early-golden-hour') return 'first-half-sunset';
+    if(style === 'short-easy' || timing === 'sunrise') return 'sunrise-max';
+    if(style === 'large-family-time') return 'last-half-sunset';
+    return 'first-half-sunset';
+  }
+
+  function showResult(){
+    var group = groupSel.value, style = styleSel.value, timing = timingSel.value;
+    if(!group || !style || !timing){ resultEl.hidden = true; return; }
+
+    var key = recommend(group, style, timing);
+    var s = SESSIONS[key];
+    if(!s) return;
+
+    nameEl.textContent = s.displayName;
+    copyEl.textContent = (group === 'maternity') ? MATERNITY_EXPLANATION : s.explanation;
+
+    if(socialProofEl){ socialProofEl.hidden = (key !== 'first-half-sunset'); }
+
+    resultEl.dataset.sessionKey = key;
+    resultEl.hidden = false;
+  }
+
+  [groupSel, styleSel, timingSel].forEach(function(sel){
+    sel.addEventListener('change', showResult);
+  });
+
+  if(viewBtn){
+    viewBtn.addEventListener('click', function(){
+      var key = resultEl.dataset.sessionKey;
+      if(!key || !SESSIONS[key]) return;
+      var card = document.getElementById(SESSIONS[key].cardId);
+      if(!card) return;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    });
+  }
+
+  if(bookBtn){
+    bookBtn.addEventListener('click', function(){
+      var key = resultEl.dataset.sessionKey;
+      if(!key || !SESSIONS[key]) return;
+      var card = document.getElementById(SESSIONS[key].cardId);
+      if(!card) return;
+      // Reuse whatever booking action already exists on the real session card
+      // (the widget-driven data-book-session button, or the wedding mailto
+      // link) instead of duplicating any booking logic here.
+      var bookLink = card.querySelector('.session-card-actions a.book');
+      if(bookLink) bookLink.click();
+    });
+  }
+
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      groupSel.value = '';
+      styleSel.value = '';
+      timingSel.value = '';
+      resultEl.hidden = true;
+      delete resultEl.dataset.sessionKey;
+      groupSel.focus();
+    });
+  }
+});
 /* Wailea Photo — shared site behavior (menu, reveal animation, counters, sliders) */
 (function(){
   const menu = document.querySelector('.menu');
@@ -327,3 +461,137 @@ fetch('footer.html')
     document.getElementById('footer-placeholder').innerHTML = data;
     document.getElementById('year').textContent = new Date().getFullYear();
   });
+
+/* ---------- session-finder: "Find Your Session" recommender (pricing.html only) ---------- */
+document.addEventListener('DOMContentLoaded', function(){
+  var form = document.querySelector('.session-finder-form');
+  if(!form) return; // section only exists on pricing.html — safe no-op elsewhere
+
+  var groupSel = document.getElementById('session-finder-group');
+  var styleSel = document.getElementById('session-finder-style');
+  var timingSel = document.getElementById('session-finder-timing');
+  var resultEl = document.getElementById('session-finder-result');
+  var nameEl = document.getElementById('session-finder-result-name');
+  var copyEl = document.getElementById('session-finder-result-copy');
+  var socialProofEl = document.getElementById('session-finder-social-proof');
+  var viewBtn = document.getElementById('session-finder-view');
+  var bookBtn = document.getElementById('session-finder-book');
+  var resetBtn = document.getElementById('session-finder-reset');
+  if(!groupSel || !styleSel || !timingSel || !resultEl) return;
+
+  // Maps each outcome to the matching, already-existing session card (by the
+  // stable id added to that card) and its exact current display name. No new
+  // products, prices or booking links are introduced — this only points to
+  // real cards already on the page.
+  var SESSIONS = {
+    'family-legacy': {
+      cardId: 'session-card-family-legacy',
+      displayName: 'The Large Family Legacy',
+      explanation: 'Large and multigenerational families need more time for the full group, individual households, grandparents, couples and children without feeling rushed.'
+    },
+    'poetic-wedding': {
+      cardId: 'session-card-poetic-wedding',
+      displayName: 'A Poetic Wedding in Maui',
+      explanation: 'This experience allows the ceremony, family groupings and couple’s portraits to unfold together in beautiful Maui light.'
+    },
+    'turquoise-water': {
+      cardId: 'session-card-turquoise-water',
+      displayName: 'The Turquoise + Water Experience',
+      explanation: 'This longer session prioritizes vivid water, open coastal scenery and greater separation from Wailea’s resort beaches.'
+    },
+    'last-half-sunset': {
+      cardId: 'session-card-last-half-sunset',
+      displayName: 'The Last Half of Sunset',
+      explanation: 'The final light of the day creates richer color, deeper contrast and the most cinematic sunset atmosphere.'
+    },
+    'first-half-sunset': {
+      cardId: 'session-card-first-half-sunset',
+      displayName: 'The First Half of Sunset — “Light & Bright”',
+      explanation: 'This is the best fit for families who want bright, natural color and a relaxed session during the softer opening portion of golden hour.'
+    },
+    'sunrise-max': {
+      cardId: 'session-card-sunrise-max',
+      displayName: 'The Sunrise with Max',
+      explanation: 'A short sunrise session gives young children a comfortable, low-pressure start while Maui’s beaches are quieter and the light is soft.'
+    }
+  };
+  // Used only when the "maternity or babymoon" answer drives the outcome (see recommend()).
+  var MATERNITY_EXPLANATION = 'Sunrise offers soft, flattering light, cooler temperatures and a quieter beach for an unhurried maternity experience.';
+
+  // Priority order per spec: occasion/group size first, then requested visual
+  // style, then timing. NOTE: the site's earlier standalone maternity/babymoon
+  // session has since been retired (maternity portraits are now offered within
+  // Sunrise with Max or Last Half of Sunset), so the "maternity or babymoon"
+  // answer is routed to whichever of those two real sessions matches the
+  // requested timing rather than a now-nonexistent product.
+  function recommend(group, style, timing){
+    if(group === 'family-10-plus') return 'family-legacy';
+    if(group === 'wedding' || style === 'ceremony-portraits') return 'poetic-wedding';
+    if(group === 'maternity'){
+      return timing === 'sunrise' ? 'sunrise-max' : 'last-half-sunset';
+    }
+    if(style === 'turquoise-water') return 'turquoise-water';
+    if(style === 'dramatic-sunset' || timing === 'final-light') return 'last-half-sunset';
+    if(style === 'bright-natural' || timing === 'early-golden-hour') return 'first-half-sunset';
+    if(style === 'short-easy' || timing === 'sunrise') return 'sunrise-max';
+    if(style === 'large-family-time') return 'last-half-sunset';
+    return 'first-half-sunset';
+  }
+
+  function showResult(){
+    var group = groupSel.value, style = styleSel.value, timing = timingSel.value;
+    if(!group || !style || !timing){ resultEl.hidden = true; return; }
+
+    var key = recommend(group, style, timing);
+    var s = SESSIONS[key];
+    if(!s) return;
+
+    nameEl.textContent = s.displayName;
+    copyEl.textContent = (group === 'maternity') ? MATERNITY_EXPLANATION : s.explanation;
+
+    if(socialProofEl){ socialProofEl.hidden = (key !== 'first-half-sunset'); }
+
+    resultEl.dataset.sessionKey = key;
+    resultEl.hidden = false;
+  }
+
+  [groupSel, styleSel, timingSel].forEach(function(sel){
+    sel.addEventListener('change', showResult);
+  });
+
+  if(viewBtn){
+    viewBtn.addEventListener('click', function(){
+      var key = resultEl.dataset.sessionKey;
+      if(!key || !SESSIONS[key]) return;
+      var card = document.getElementById(SESSIONS[key].cardId);
+      if(!card) return;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    });
+  }
+
+  if(bookBtn){
+    bookBtn.addEventListener('click', function(){
+      var key = resultEl.dataset.sessionKey;
+      if(!key || !SESSIONS[key]) return;
+      var card = document.getElementById(SESSIONS[key].cardId);
+      if(!card) return;
+      // Reuse whatever booking action already exists on the real session card
+      // (the widget-driven data-book-session button, or the wedding mailto
+      // link) instead of duplicating any booking logic here.
+      var bookLink = card.querySelector('.session-card-actions a.book');
+      if(bookLink) bookLink.click();
+    });
+  }
+
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      groupSel.value = '';
+      styleSel.value = '';
+      timingSel.value = '';
+      resultEl.hidden = true;
+      delete resultEl.dataset.sessionKey;
+      groupSel.focus();
+    });
+  }
+});
