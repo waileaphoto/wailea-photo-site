@@ -768,3 +768,12 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .session-finder-actions{flex-direction:column;align-items:stretch}
   .session-finder-btn{width:100%}
 }
+
+
+/* All-in-One Reviews widget (homepage) — restyled to match site theme */
+.eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-badge-container{background:var(--paper);border:1px solid var(--line);border-radius:2px;box-shadow:none;transition:border-color .25s ease}
+.eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-badge-container:hover{border-color:var(--ink)}
+.eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-card-badge-container{font-family:var(--sans)}
+.eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-badge-label{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.03em;text-transform:uppercase;color:rgba(27,25,23,.65)}
+.eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-rating-value{font-family:var(--serif);color:var(--ink);font-weight:600;font-size:30px}
+.eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-badge-reviews-count{font-family:var(--sans);font-weight:500}
