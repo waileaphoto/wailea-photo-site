@@ -30,8 +30,8 @@
     'first-half-sunset': 'From $399',
     'last-half-sunset': 'From $499',
     'turquoise-water': 'From $499',
-    'sunrise-max': 'From $249',
-    'family-legacy': 'TBD',
+    'sunrise-max': 'From $299',
+      'family-legacy': 'TBD',
   };
 
   const hawaiiDate = (offsetDays) => {
