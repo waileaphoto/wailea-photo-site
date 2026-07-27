@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // When a chosen timing overrides a conflicting style preference, we say so
   // plainly instead of silently picking one. Each entry's "key" must match
   // the outcome recommend() actually produces for that exact combination, so
-  var LARGE_FAMILY_TIME_FACTS = 'Half hour from $399 · Full-hour upgrade +$199 (a $499 value)';
+  var LARGE_FAMILY_TIME_FACTS = 'Half hour from $399 · Add the Last Half Sunset—a $499 value—for $199';
   // this can never override an unrelated group-level result (family/wedding).
   var TRADEOFFS = {
     'bright-natural|final-light': {
