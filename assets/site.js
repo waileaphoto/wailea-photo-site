@@ -405,6 +405,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // When a chosen timing overrides a conflicting style preference, we say so
   // plainly instead of silently picking one. Each entry's "key" must match
   // the outcome recommend() actually produces for that exact combination, so
+  var LARGE_FAMILY_TIME_FACTS = 'Half hour from $399 · Full-hour upgrade +$199 (a $499 value)';
   // this can never override an unrelated group-level result (family/wedding).
   var TRADEOFFS = {
     'bright-natural|final-light': {
@@ -458,6 +459,13 @@ document.addEventListener('DOMContentLoaded', function(){
     return s.explanation;
   }
 
+  function factsFor(style, key, s){
+    if(style === 'large-family-time' && key === 'first-half-sunset'){
+      return LARGE_FAMILY_TIME_FACTS;
+    }
+    return s.facts || '';
+  }
+
   function showResult(){
     var group = groupSel.value, style = styleSel.value, timing = timingSel.value;
     if(!group || !style || !timing){ resultEl.hidden = true; return; }
@@ -468,9 +476,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     nameEl.textContent = s.displayName;
     copyEl.textContent = explanationFor(group, style, timing, key, s);
-    if(factsEl){ factsEl.textContent = s.facts || ''; }
+    if(factsEl){ factsEl.textContent = factsFor(style, key, s); }
 
-    if(socialProofEl){ socialProofEl.hidden = (key !== 'first-half-sunset'); }
+    if(socialProofEl){ socialProofEl.hidden = !(key === 'first-half-sunset' && style !== 'large-family-time'); }
 
     resultEl.dataset.sessionKey = key;
     resultEl.hidden = false;
