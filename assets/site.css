@@ -140,11 +140,11 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 .hero img{position:absolute;inset:0;animation:heroZoom 16s ease-out both}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,65,75,.08),rgba(24,65,75,.08) 48%,rgba(24,65,75,.44))}
 @keyframes heroZoom{from{transform:scale(1.01)}to{transform:scale(1.085)}}
-.hero-copy{position:absolute;z-index:2;left:7vw;bottom:10vh;max-width:min(620px,34vw)}
+.hero-copy{position:absolute;z-index:2;left:7vw;bottom:10vh;max-width:min(760px,48vw)}
 .eyebrow,.chapter,.micro{font:600 10px/1.4 var(--sans);letter-spacing:.29em}
 .hero h1,.display{font-family:var(--serif);font-weight:400;line-height:.88;margin:.2em 0}
-.hero h1{font-size:clamp(56px,6.2vw,108px);max-width:8.7ch}
-.hero-sub{font-size:13px;letter-spacing:.09em;line-height:1.7;max-width:440px}
+.hero h1{font-size:clamp(30px,3.6vw,60px);max-width:42ch;line-height:1.1}
+.hero-sub{font-size:13px;letter-spacing:.09em;line-height:1.7;max-width:480px}
 .scroll{position:absolute;z-index:2;right:30px;bottom:26px;text-decoration:none;font-size:25px;color:#fff}
 
 /* ---------- page hero (interior pages) ---------- */
@@ -360,6 +360,11 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 .reserve{min-height:82svh;padding:13vh 7vw;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--paper)}
 .reserve h2{font:400 clamp(58px,8vw,112px)/.9 var(--serif);margin:.2em 0;max-width:10ch}
 .reserve.short{min-height:auto;padding:1.5vh 7vw 8vh}
+
+/* ---------- honest price interlude (before reserve) ---------- */
+.honest-price{max-width:900px;margin:6vh auto 0;padding:9vh 7vw 1vh;text-align:center;border-top:1px solid var(--line)}
+.honest-price h2{font:400 clamp(36px,4.2vw,60px)/1.15 var(--serif);margin:.35em auto 0;max-width:19ch}
+.honest-price p{font:400 clamp(17px,1.6vw,21px)/1.65 var(--serif);max-width:56ch;margin:22px auto 0}
 .button{display:inline-block;text-decoration:none;background:var(--red);color:#fff;padding:18px 28px;margin-top:32px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--red);transition:background .2s ease,color .2s ease}
 .button:hover{background:transparent;color:var(--red)}
 
@@ -552,7 +557,7 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .hero{min-height:650px}
   .hero:after{background:linear-gradient(180deg,rgba(24,65,75,.64),rgba(24,65,75,.18) 34%,rgba(24,65,75,.04) 58%,rgba(24,65,75,.42) 100%)}
   .hero-copy{left:22px;right:22px;bottom:8vh;max-width:none}
-  .hero h1{font-size:46px;max-width:11ch}
+  .hero h1{font-size:34px;max-width:16ch;line-height:1.15}
   .hero-sub{font-size:11px;margin-top:6px}
   .page-hero{min-height:420px}
   .page-hero-copy{left:22px;right:22px;bottom:8vh}
@@ -602,6 +607,9 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .proof-line{max-width:none}
   .reserve{padding:110px 24px}
   .reserve h2{font-size:58px}
+  .honest-price{margin-top:0;padding:70px 24px 6px}
+  .honest-price h2{font-size:32px;max-width:15ch}
+  .honest-price p{font-size:17px;max-width:32ch}
   .family-story{grid-template-columns:1fr;padding:70px 18px;gap:35px}
   .family-story-image{min-height:0;aspect-ratio:4/3}
   .family-story-copy{padding:95px 24px}
