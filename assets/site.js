@@ -327,3 +327,213 @@ fetch('footer.html')
     document.getElementById('footer-placeholder').innerHTML = data;
     document.getElementById('year').textContent = new Date().getFullYear();
   });
+
+/* ---------- session-finder: "Find Your Session" recommender (pricing.html only) ---------- */
+document.addEventListener('DOMContentLoaded', function(){
+  var form = document.querySelector('.session-finder-form');
+  if(!form) return; // section only exists on pricing.html — safe no-op elsewhere
+
+  var groupSel = document.getElementById('session-finder-group');
+  var styleSel = document.getElementById('session-finder-style');
+  var timingSel = document.getElementById('session-finder-timing');
+  var resultEl = document.getElementById('session-finder-result');
+  var nameEl = document.getElementById('session-finder-result-name');
+  var copyEl = document.getElementById('session-finder-result-copy');
+  var factsEl = document.getElementById('session-finder-result-facts');
+  var socialProofEl = document.getElementById('session-finder-social-proof');
+  var viewBtn = document.getElementById('session-finder-view');
+  var bookBtn = document.getElementById('session-finder-book');
+  var resetBtn = document.getElementById('session-finder-reset');
+  if(!groupSel || !styleSel || !timingSel || !resultEl) return;
+
+  // Maps each outcome to the matching, already-existing session card (by the
+  // stable id added to that card) and its exact current display name and
+  // facts (duration / image count / starting price), copied verbatim from
+  // that card's own meta line and price pill. No new products, prices or
+  // booking links are introduced — this only points to real cards already
+  // on the page.
+  var SESSIONS = {
+    'family-legacy': {
+      cardId: 'session-card-family-legacy',
+      displayName: 'The Large Family Legacy',
+      explanation: 'Large and multigenerational families need more time for the full group, individual households, grandparents, couples and children without feeling rushed.',
+      facts: '100+ images · Starting at $995'
+    },
+    'poetic-wedding': {
+      cardId: 'session-card-poetic-wedding',
+      displayName: 'A Poetic Wedding in Maui',
+      explanation: 'This experience allows the ceremony, family groupings and couple’s portraits to unfold together in beautiful Maui light.',
+      facts: 'Starts at $995'
+    },
+    'turquoise-water': {
+      cardId: 'session-card-turquoise-water',
+      displayName: 'Turquoise + Water Experience',
+      explanation: 'This longer session prioritizes vivid water, open coastal scenery and greater separation from Wailea’s resort beaches.',
+      facts: '45 minutes · 50+ images · From $499'
+    },
+    'last-half-sunset': {
+      cardId: 'session-card-last-half-sunset',
+      displayName: 'Last Half of Sunset',
+      explanation: 'The final light of the day creates richer color, deeper contrast and the most cinematic sunset atmosphere.',
+      facts: 'Half hour · 50+ images · From $499'
+    },
+    'first-half-sunset': {
+      cardId: 'session-card-first-half-sunset',
+      displayName: 'First Half of Sunset — “Light & Bright”',
+      explanation: 'This is the best fit for families who want bright, natural color and a relaxed session during the softer opening portion of golden hour.',
+      facts: 'Half hour · 50+ images · From $399'
+    },
+    'sunrise-max': {
+      cardId: 'session-card-sunrise-max',
+      displayName: 'Sunrise with Max',
+      explanation: 'A short sunrise session gives young children a comfortable, low-pressure start while Maui’s beaches are quieter and the light is soft.',
+      facts: '20 minutes · 50+ images · From $249'
+    }
+  };
+
+  // Maternity/babymoon copy depends on which real timing-driven outcome was
+  // chosen (see recommend()) so the explanation always matches the session
+  // actually being recommended.
+  var MATERNITY_SUNRISE_EXPLANATION = 'Sunrise offers soft, flattering light, cooler temperatures and a quieter beach for an unhurried maternity experience.';
+  var MATERNITY_SUNSET_EXPLANATION = 'The warm, gentle light at the end of the day is equally flattering for an unhurried maternity session, without an early wake-up call.';
+
+  // "Plenty of time for a large family" points to First Half of Sunset's own
+  // real, documented full-hour upgrade into Last Half of Sunset, rather than
+  // a half-hour session that would contradict the priority selected.
+  var LARGE_FAMILY_TIME_EXPLANATION = 'For a fuller group without feeling rushed, we recommend First Half of Sunset with its full-hour upgrade into Last Half of Sunset — giving everyone unhurried time for the whole group, individual households and separate portraits.';
+
+  // When a chosen timing overrides a conflicting style preference, we say so
+  // plainly instead of silently picking one. Each entry's "key" must match
+  // the outcome recommend() actually produces for that exact combination, so
+  var LARGE_FAMILY_TIME_FACTS = 'Half hour from $399 · Add the Last Half Sunset—a $499 value—for $199';
+  // this can never override an unrelated group-level result (family/wedding).
+  var TRADEOFFS = {
+    'bright-natural|final-light': {
+      key: 'last-half-sunset',
+      note: 'You chose bright, natural color, but the final light before sunset leans warmer and more dramatic by nature. We recommend Last Half of Sunset for that golden, cinematic feel — First Half of Sunset is the closer match if brighter daylight color matters most.'
+    },
+    'short-easy|final-light': {
+      key: 'last-half-sunset',
+      note: 'Because you chose the final light before sunset, we recommend Last Half of Sunset. It’s still a concise half-hour session, just timed for richer sunset color instead of sunrise.'
+    },
+    'short-easy|early-golden-hour': {
+      key: 'first-half-sunset',
+      note: 'Because early golden hour was your priority, we recommend First Half of Sunset. It’s still a concise half-hour session, just timed for that brighter early light instead of sunrise.'
+    }
+  };
+
+  // Priority order: occasion/group size first, then requested visual style,
+  // then timing. NOTE: the site's earlier standalone maternity/babymoon
+  // session has since been retired (maternity portraits are now offered
+  // within Sunrise with Max or Last Half of Sunset), so the "maternity or
+  // babymoon" answer is routed to whichever of those two real sessions
+  // matches the requested timing rather than a now-nonexistent product.
+  // "Plenty of time for a large family" is checked ahead of the timing rules
+  // so an explicit request for more time is never silently overridden by a
+  // shorter-session timing choice.
+  function recommend(group, style, timing){
+    if(group === 'family-10-plus') return 'family-legacy';
+    if(group === 'wedding' || style === 'ceremony-portraits') return 'poetic-wedding';
+    if(group === 'maternity'){
+      return timing === 'sunrise' ? 'sunrise-max' : 'last-half-sunset';
+    }
+    if(style === 'large-family-time') return 'first-half-sunset';
+    if(style === 'turquoise-water') return 'turquoise-water';
+    if(style === 'dramatic-sunset' || timing === 'final-light') return 'last-half-sunset';
+    if(style === 'bright-natural' || timing === 'early-golden-hour') return 'first-half-sunset';
+    if(style === 'short-easy' || timing === 'sunrise') return 'sunrise-max';
+    return 'first-half-sunset';
+  }
+
+  function explanationFor(group, style, timing, key, s){
+    if(group === 'maternity'){
+      return key === 'sunrise-max' ? MATERNITY_SUNRISE_EXPLANATION : MATERNITY_SUNSET_EXPLANATION;
+    }
+    if(style === 'large-family-time' && key === 'first-half-sunset'){
+      return LARGE_FAMILY_TIME_EXPLANATION;
+    }
+    var tradeoff = TRADEOFFS[style + '|' + timing];
+    if(tradeoff && tradeoff.key === key){
+      return tradeoff.note;
+    }
+    return s.explanation;
+  }
+
+  function factsFor(style, key, s){
+    if(style === 'large-family-time' && key === 'first-half-sunset'){
+      return LARGE_FAMILY_TIME_FACTS;
+    }
+    return s.facts || '';
+  }
+
+  function showResult(){
+    var group = groupSel.value, style = styleSel.value, timing = timingSel.value;
+    if(!group || !style || !timing){ resultEl.hidden = true; return; }
+
+    var key = recommend(group, style, timing);
+    var s = SESSIONS[key];
+    if(!s) return;
+
+    nameEl.textContent = s.displayName;
+    copyEl.textContent = explanationFor(group, style, timing, key, s);
+    if(factsEl){ factsEl.textContent = factsFor(style, key, s); }
+
+    if(socialProofEl){ socialProofEl.hidden = !(key === 'first-half-sunset' && style !== 'large-family-time'); }
+
+    resultEl.dataset.sessionKey = key;
+    resultEl.hidden = false;
+  }
+
+  [groupSel, styleSel, timingSel].forEach(function(sel){
+    sel.addEventListener('change', showResult);
+  });
+
+  function scrollToCard(card, behavior){
+    var header = document.querySelector('.site-header');
+    var offset = (header ? header.offsetHeight : 0) + 16;
+    var y = card.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: Math.max(y, 0), behavior: behavior });
+  }
+
+  if(viewBtn){
+    viewBtn.addEventListener('click', function(){
+      var key = resultEl.dataset.sessionKey;
+      if(!key || !SESSIONS[key]) return;
+      var card = document.getElementById(SESSIONS[key].cardId);
+      if(!card) return;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      scrollToCard(card, reduceMotion ? 'auto' : 'smooth');
+      // Images that haven't finished lazy-loading above the target can shift
+      // the page height after the initial scroll; re-correct once things
+      // settle so the card doesn't end up short of where it should land.
+      setTimeout(function(){ scrollToCard(card, 'auto'); }, 500);
+      card.classList.add('session-finder-target');
+      setTimeout(function(){ card.classList.remove('session-finder-target'); }, 2200);
+    });
+  }
+
+  if(bookBtn){
+    bookBtn.addEventListener('click', function(){
+      var key = resultEl.dataset.sessionKey;
+      if(!key || !SESSIONS[key]) return;
+      var card = document.getElementById(SESSIONS[key].cardId);
+      if(!card) return;
+      // Reuse whatever booking action already exists on the real session card
+      // (the widget-driven data-book-session button, or the wedding mailto
+      // link) instead of duplicating any booking logic here.
+      var bookLink = card.querySelector('.session-card-actions a.book');
+      if(bookLink) bookLink.click();
+    });
+  }
+
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      groupSel.value = '';
+      styleSel.value = '';
+      timingSel.value = '';
+      resultEl.hidden = true;
+      delete resultEl.dataset.sessionKey;
+      groupSel.focus();
+    });
+  }
+});

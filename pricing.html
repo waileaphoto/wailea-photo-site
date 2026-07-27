@@ -135,7 +135,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=20260722-navphoto">
+<link rel="stylesheet" href="assets/site.css?v=20260726-sessionfinder">
 <link rel="stylesheet" href="assets/booking-widget.css">
 </head>
 <body>
@@ -173,6 +173,69 @@
 </div>
 </section>
 
+<section class="session-finder" id="session-finder" aria-labelledby="session-finder-heading">
+<div class="session-finder-intro-block">
+<div class="eyebrow session-finder-eyebrow">FIND YOUR SESSION</div>
+<h2 id="session-finder-heading" class="session-finder-heading">What would make this feel perfect?</h2>
+<p class="session-finder-intro">Tell us a little about the people, light and experience you have in mind. We&rsquo;ll point you toward the Wailea Photo session that fits best.</p>
+<p class="session-finder-reassurance">Three quick questions. No email required.</p>
+<noscript><p class="session-finder-noscript">This quick tool needs JavaScript to work &mdash; but every session is listed below, ready to browse.</p></noscript>
+</div>
+
+<form class="session-finder-form" novalidate>
+<div class="session-finder-field">
+<label for="session-finder-group">Who are we photographing?</label>
+<select id="session-finder-group" name="session-finder-group">
+<option value="">Select one</option>
+<option value="couple">Couple or proposal</option>
+<option value="family-5">Family of up to five</option>
+<option value="family-6-9">Family of six to nine</option>
+<option value="family-10-plus">Large or multigenerational family of ten or more</option>
+<option value="maternity">Maternity or babymoon</option>
+<option value="wedding">Wedding, elopement or vow renewal</option>
+</select>
+</div>
+
+<div class="session-finder-field">
+<label for="session-finder-style">What matters most to you?</label>
+<select id="session-finder-style" name="session-finder-style">
+<option value="">Select one</option>
+<option value="short-easy">A short, easy session&mdash;especially with young children</option>
+<option value="bright-natural">Bright, natural and true-to-life color</option>
+<option value="dramatic-sunset">Rich, dramatic sunset color</option>
+<option value="turquoise-water">Turquoise water and a less resort-like setting</option>
+<option value="large-family-time">Plenty of time for a large family</option>
+<option value="ceremony-portraits">A ceremony and portraits together</option>
+</select>
+</div>
+
+<div class="session-finder-field">
+<label for="session-finder-timing">Which timing feels best?</label>
+<select id="session-finder-timing" name="session-finder-timing">
+<option value="">Select one</option>
+<option value="sunrise">Sunrise</option>
+<option value="early-golden-hour">Early golden hour</option>
+<option value="final-light">The final light before sunset</option>
+<option value="flexible">We are flexible&mdash;recommend the best fit</option>
+</select>
+</div>
+</form>
+
+<div class="session-finder-result" id="session-finder-result" role="region" aria-live="polite" hidden>
+<div class="session-finder-result-eyebrow">WE RECOMMEND</div>
+<h3 class="session-finder-result-name" id="session-finder-result-name"></h3>
+<p class="session-finder-result-copy" id="session-finder-result-copy"></p>
+  <p class="session-finder-result-facts" id="session-finder-result-facts"></p>
+<p class="session-finder-social-proof" id="session-finder-social-proof" hidden>Most families looking for bright, natural color choose an early golden-hour session.</p>
+<p class="session-finder-fine-print">Availability is shown live in the session calendar. Based on more than 25 years photographing families, couples and weddings in Maui.</p>
+<div class="session-finder-actions">
+<button type="button" class="session-finder-btn session-finder-btn-primary" id="session-finder-view">View This Session</button>
+<button type="button" class="session-finder-btn session-finder-btn-secondary" id="session-finder-book">Book This Session</button>
+<button type="button" class="session-finder-reset" id="session-finder-reset">Start over</button>
+</div>
+</div>
+</section>
+
 <section class="session-menu" id="sessions">
 <div class="session-group">
 <div class="session-group-label">Weddings &amp; Portrait Series</div>
@@ -192,7 +255,7 @@
 </div>
 </div>
 
-<div class="session-card">
+<div class="session-card" id="session-card-poetic-wedding">
 <div class="session-card-image" data-tile-slider><span class="session-card-price">Starts at $995</span><a class="session-card-book-pill" href="mailto:photo@waileaphoto.com?subject=Wedding%20Inquiry" aria-label="Inquire about A Poetic Wedding in Maui">Inquire</a><div class="tile-slider"><figure class="active"><img src="assets/wedding-ceremony-hires.jpg" alt="A wedding ceremony beneath a floral arch overlooking the ocean in Maui" loading="lazy"></figure><figure><img src="assets/maui-wedding-elopement.jpg" alt="An elopement couple photographed on a Maui beach" loading="lazy"></figure><figure><img src="assets/WaileaPortrait-IG-243.jpg" alt="A wedding portrait session in soft Wailea light" loading="lazy"></figure><figure><img src="assets/vow-renewal-wailea-photo.jpg" alt="A vow renewal ceremony overlooking the ocean in Wailea" loading="lazy"></figure><figure><img src="assets/wedding-couple-beach.jpg" alt="A wedding couple photographed together on a Maui beach" loading="lazy"></figure><figure><img src="assets/elopement-maui.jpg" alt="An elopement couple photographed on a Maui beach at sunset" loading="lazy"></figure><figure><img src="assets/apuakes-flowers-wedding.jpeg" alt="Tropical flowers for a Maui wedding" loading="lazy"></figure><figure><img src="assets/poetic-wedding-maui-wailea.jpg" alt="A poetic wedding moment photographed in Wailea, Maui" loading="lazy"></figure></div><button class="tile-arrow tile-prev" type="button" aria-label="Previous photo">‹</button><button class="tile-arrow tile-next" type="button" aria-label="Next photo">›</button></div>
 <div class="session-card-body">
 <h4>A Poetic Wedding in Maui</h4>
@@ -212,7 +275,7 @@
 <h3>Beautiful styles, performed at precisely calculated start times.</h3>
 <div class="session-grid">
 
-<div class="session-card">
+<div class="session-card" id="session-card-first-half-sunset">
 <div class="session-card-image light-bright-tile" data-tile-slider><span class="session-card-price">From $399</span><span class="session-popular-ribbon">Most Popular</span><a class="session-card-book-pill" href="#" data-book-session="first-half-sunset" data-session-name="First Half of Sunset" aria-label="Book the First Half of Sunset session">Book Now</a><div class="tile-slider"><figure class="active"><img src="assets/Lightandbright-wailea-photo.jpg" alt="A family in coordinated white outfits on a Wailea beach in soft morning light" loading="lazy"></figure><figure><img src="assets/WaileaPhoto-LightandBright.jpg" alt="A family walking hand in hand through the surf in soft morning light in Wailea" loading="lazy"></figure><figure><img src="assets/wailea-photo-family-session.JPG" alt="A family portrait session in soft morning light in Wailea" loading="lazy"></figure><figure><img src="assets/Family-photographer-wailea.jpg" alt="A family photographed together on a Wailea beach" loading="lazy"></figure><figure><img src="assets/gallery-2.jpg" alt="A family portrait session in bright Wailea light" loading="lazy"></figure><figure><img src="assets/gallery-4.jpg" alt="A family portrait session on a Wailea beach" loading="lazy"></figure><figure><img src="assets/Family Archive Wailea Photo.jpg" alt="A multi-generation family portrait in Wailea" loading="lazy" style="object-position:40% center;"></figure><figure><img src="assets/L1002796_websize.jpg" alt="A family portrait session in soft Wailea light" loading="lazy"></figure><figure><img src="assets/proposal-during-light-and-bright-session.jpg" alt="A marriage proposal during a Light and Bright session in Wailea" loading="lazy"></figure></div><button class="tile-arrow tile-prev" type="button" aria-label="Previous photo">‹</button><button class="tile-arrow tile-next" type="button" aria-label="Next photo">›</button></div>
 <div class="session-card-body">
 <h4>First Half of Sunset — "Light &amp; Bright"</h4>
@@ -224,8 +287,8 @@
 </div>
 </div>
 
-<div class="session-card">
-<div class="session-card-image last-half-tile" data-tile-slider><span class="session-card-price">From $499</span><a class="session-card-book-pill" href="#" data-book-session="last-half-sunset" data-session-name="Last Half of Sunset" aria-label="Book the Last Half of Sunset session">Book Now</a><div class="tile-slider"><figure class="active"><img src="assets/Wailea-Photo-Family-Sunset.jpg" alt="A family portrait at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/Engagementcouple-wailea.jpg" alt="An engaged couple embracing at sunset on a Wailea beach" loading="lazy" style="object-position:center;transform:none;"></figure><figure><img src="assets/Maternity-photographer-wailea.jpg" alt="An expecting mother in the surf at sunset in Wailea" loading="lazy" style="object-position:center;transform:none;"></figure><figure><img src="assets/Maui-Babymoon-Photographer-Wailea.jpg" alt="An expecting couple photographed at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/Portrait-who-belong.jpg" alt="A family portrait at golden hour in Maui" loading="lazy"></figure><figure><img src="assets/WaileaPortrait-IG-697.jpg" alt="A joyful family portrait at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/Viator-couples-photographer-Maui.jpeg" alt="A couple photographed together at sunset in Maui" loading="lazy"></figure><figure><img src="assets/apo-1.jpg" alt="A family portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/apo-2.jpg" alt="A couple embracing on the beach at sunset in Maui" loading="lazy"></figure><figure><img src="assets/apo-3.jpg" alt="A portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/cinematic-sunset-wailea-photo.jpg" alt="A cinematic portrait at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/best-senior-photos-maui.jpg" alt="A senior portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/Maui-Family-Portraits.jpg" alt="A family portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/Last-Half-sunset-wailea-photo.jpg" alt="A family in white attire on a Wailea beach at sunset" loading="lazy"></figure><figure><img src="assets/WaileaPortrait-17_websize.jpg" alt="A portrait session at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/bold-colors-golden-sunset.jpg" alt="A family in rich colors photographed against a golden Maui sunset" loading="lazy"></figure><figure><img src="assets/Maui-Senior-Portraits.jpeg" alt="A senior portrait session on a Maui beach at sunset" loading="lazy"></figure><figure><img src="assets/portrait-last-half-deep-sunset.jpg" alt="A portrait session during the deep colors of the last half of sunset in Wailea" loading="lazy"></figure><figure><img src="assets/maternity-sunset-wailea.jpg" alt="An expecting mother photographed at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/couple-deep-passion-sunset-wailea.jpg" alt="A couple sharing an intimate moment at deep sunset in Wailea" loading="lazy"></figure><figure><img src="assets/Portraits-last-half.jpg" alt="A portrait session captured in the last half of sunset in Wailea" loading="lazy"></figure><figure><img src="assets/deep-sunset-portrait-wailea-photo.jpg" alt="A portrait bathed in the deep colors of a Wailea sunset" loading="lazy"></figure><figure><img src="assets/engagement-maluaka-beach-makena.jpg" alt="An engagement session at sunset on Maluaka Beach in Makena" loading="lazy"></figure></div><button class="tile-arrow tile-prev" type="button" aria-label="Previous photo">‹</button><button class="tile-arrow tile-next" type="button" aria-label="Next photo">›</button></div>
+<div class="session-card" id="session-card-last-half-sunset">
+<div class="session-card-image last-half-tile" data-tile-slider><span class="session-card-price">From $499</span><a class="session-card-book-pill" href="#" data-book-session="last-half-sunset" data-session-name="Last Half of Sunset" aria-label="Book the Last Half of Sunset session">Book Now</a><div class="tile-slider"><figure class="active"><img src="assets/Wailea-Photo-Family-Sunset.jpg" alt="A family portrait at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/Engagementcouple-wailea.jpg" alt="An engaged couple embracing at sunset on a Wailea beach" loading="lazy" style="object-position:center;transform:none;"></figure><figure><img src="assets/Maternity-photographer-wailea.jpg" alt="An expecting mother in the surf at sunset in Wailea" loading="lazy" style="object-position:center;transform:none;"></figure><figure><img src="assets/Maui-Babymoon-Photographer-Wailea.jpg" alt="An expecting couple photographed at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/Portrait-who-belong.jpg" alt="A family portrait at golden hour in Maui" loading="lazy"></figure><figure><img src="assets/WaileaPortrait-IG-697.jpg" alt="A joyful family portrait at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/Viator-couples-photographer-Maui.jpeg" alt="A couple photographed together at sunset in Maui" loading="lazy"></figure><figure><img src="assets/apo-1.jpg" alt="A family portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/apo-2.jpg" alt="A couple embracing on the beach at sunset in Maui" loading="lazy"></figure><figure><img src="assets/apo-3.jpg" alt="A portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/cinematic-sunset-wailea-photo.jpg" alt="A cinematic portrait at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/best-senior-photos-maui.jpg" alt="A senior portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/Maui-Family-Portraits.jpg" alt="A family portrait session at sunset in Maui" loading="lazy"></figure><figure><img src="assets/Last-Half-sunset-wailea-photo.jpg" alt="A family in white attire on a Wailea beach at sunset" loading="lazy"></figure><figure><img src="assets/WaileaPortrait-17_websize.jpg" alt="A portrait session at sunset in Wailea" loading="lazy"></figure><figure><img src="assets/bold-colors-golden-sunset.jpg" alt="A family in rich colors photographed against a golden Maui sunset" loading="lazy"></figure><figure><img src="assets/Maui-Senior-Portraits.jpeg" alt="A senior portrait session on a Maui beach at sunset" loading="lazy"></figure></div><button class="tile-arrow tile-prev" type="button" aria-label="Previous photo">‹</button><button class="tile-arrow tile-next" type="button" aria-label="Next photo">›</button></div>
 <div class="session-card-body">
 <h4>Last Half of Sunset</h4>
 <div class="session-card-meta">HALF HOUR &middot; 50+ IMAGES</div>
@@ -254,7 +317,7 @@
 </div>
 </div>
 
-<div class="session-card">
+<div class="session-card" id="session-card-sunrise-max">
 <div class="session-card-image" data-tile-slider><span class="session-card-price">From $249</span><a class="session-card-book-pill" href="#" data-book-session="sunrise-max" data-session-name="Sunrise with Max" aria-label="Book the Sunrise with Max session">Book Now</a><div class="tile-slider"><figure class="active"><img src="assets/Sunrise-Maui-Mini-Session.jpg" alt="A family in white outfits smiling on a Wailea beach at sunrise" loading="lazy"></figure><figure><img src="assets/Maui-Maternity-Photographer.jpg" alt="An expecting mother photographed at sunrise in Maui" loading="lazy"></figure><figure><img src="assets/wailea-photo-sunrise.jpg" alt="A woman walking into the water at sunrise in Maui" loading="lazy"></figure><figure><img src="assets/engagement-wailea-photo.jpg" alt="A couple photographed together at sunrise in Wailea" loading="lazy"></figure><figure><img src="assets/Maui-Mini-Session-5.jpg" alt="A family mini session at sunrise in Maui" loading="lazy"></figure></div><button class="tile-arrow tile-prev" type="button" aria-label="Previous photo">‹</button><button class="tile-arrow tile-next" type="button" aria-label="Next photo">›</button></div>
 <div class="session-card-body">
 <h4>Sunrise with Max</h4>
