@@ -2,4 +2,31 @@ User-agent: *
 Allow: /
 Disallow: /assets/booking-calendar.html
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Allow: /llms.txt
+Allow: /llms-full.txt
+
 Sitemap: https://waileaphoto.com/sitemap.xml
