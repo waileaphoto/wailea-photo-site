@@ -543,6 +543,6 @@
     <div class="footer-bottom"><div>WAILEA PHOTO · MAUI, HAWAII</div><div>© <span id="year"></span> WAILEA PHOTO</div></div>
   </footer>
   <script src="assets/site.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());</script>
 </body>
 </html>
