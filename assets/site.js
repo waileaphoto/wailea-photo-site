@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function(){
       cardId: 'session-card-first-half-sunset',
       displayName: 'First Half of Sunset — “Light & Bright”',
       explanation: 'This is the best fit for families who want bright, natural color and a relaxed session during the softer opening portion of golden hour.',
-      facts: 'Half hour · 50+ images · From $399'
+      facts: 'Half hour · From $399 · Add the Last Half—a $499 value—for $199 (special offer)'
     },
     'sunrise-max': {
       cardId: 'session-card-sunrise-max',
