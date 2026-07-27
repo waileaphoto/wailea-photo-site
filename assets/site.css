@@ -777,3 +777,14 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 .eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-badge-label{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.03em;text-transform:uppercase;color:rgba(27,25,23,.65)}
 .eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-rating-value{font-family:var(--serif);color:var(--ink);font-weight:600;font-size:30px}
 .eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-badge-reviews-count{font-family:var(--sans);font-weight:500}
+
+
+/* Combined reviews summary card (replaces 5-source grid; totals summed live via JS from hidden #all-reviews-widget) */
+.combined-reviews-card{max-width:400px;margin:36px auto 0;padding:34px 40px;background:var(--paper);border:1px solid var(--line);border-radius:2px;text-align:center;transition:border-color .25s ease}
+.combined-reviews-card:hover{border-color:var(--ink)}
+.combined-reviews-logos{display:flex;align-items:center;justify-content:center;gap:16px;min-height:28px}
+.combined-reviews-label{margin-top:16px;font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.03em;text-transform:uppercase;color:rgba(27,25,23,.65)}
+.combined-reviews-rating{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:12px}
+.combined-reviews-rating span:first-child{font-family:var(--serif);font-weight:600;font-size:32px;color:var(--ink)}
+.combined-reviews-stars{color:var(--gold);font-size:19px;letter-spacing:.14em}
+.combined-reviews-count{margin-top:10px;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--red)}
