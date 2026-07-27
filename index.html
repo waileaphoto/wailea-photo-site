@@ -548,13 +548,13 @@
 
   <script src="assets/site.js"></script>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
     if (location.protocol.startsWith('http')) {
       fetch('footer.html')
         .then(res => res.ok ? res.text() : Promise.reject())
         .then(html => {
           document.getElementById('footer-placeholder').outerHTML = html;
-          document.getElementById('year').textContent = new Date().getFullYear();
+          document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
         })
         .catch(() => {});
     }
