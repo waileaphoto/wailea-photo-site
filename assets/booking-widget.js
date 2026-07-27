@@ -18,7 +18,7 @@
     { slug: 'apo_lens', label: 'Leica APO lens upgrade' },
     {
       slug: 'double-sunset',
-      label: 'Special-Double your session time to include Last Half Sunset',
+      label: 'Special-Double your session time to include Last Half Sunset ($499 value)',
       priceLabel: '$199',
       sessionSlugs: ['first-half-sunset'],
     },
