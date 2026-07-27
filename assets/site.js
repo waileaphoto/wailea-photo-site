@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function(){
       cardId: 'session-card-sunrise-max',
       displayName: 'Sunrise with Max',
       explanation: 'A short sunrise session gives young children a comfortable, low-pressure start while Maui’s beaches are quieter and the light is soft.',
-      facts: '20 minutes · 50+ images · From $249'
+      facts: '20 minutes · 50+ images · From $299'
     }
   };
 
