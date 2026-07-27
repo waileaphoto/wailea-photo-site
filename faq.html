@@ -235,7 +235,11 @@
 <h2>Let's talk story.</h2>
 </div>
 <div class="contact-grid">
-<form class="contact-form" action="mailto:photo@waileaphoto.com" method="post" enctype="text/plain">
+<form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="contact">
+<p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+<label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+</p>
 <div>
 <label for="name">Name</label>
 <input id="name" name="Name" type="text" required>
@@ -254,6 +258,12 @@
 </div>
 <button class="button" type="submit">Send Message</button>
 </form>
+<div id="contact-success" style="display:none;padding:24px;background:#f5f0e8;border-radius:8px;text-align:center;">
+<p style="margin:0;font:500 17px/1.5 var(--serif);">Thanks — your message is on its way. We'll get back to you shortly.</p>
+</div>
+<div id="contact-error" style="display:none;padding:16px;margin-top:12px;background:#fdecea;border-radius:8px;">
+<p style="margin:0;">Something went wrong sending your message. Please call <a href="tel:+18082985188" style="color:var(--red)">808.298.5188</a> or email <a href="mailto:photo@waileaphoto.com" style="color:var(--red)">photo@waileaphoto.com</a> directly.</p>
+</div>
 <div class="contact-info">
 <h3>Wailea, Maui</h3>
 <p>Serving Wailea, Makena and South Maui.</p>
@@ -273,4 +283,31 @@
 
 <script src="assets/site.js"></script>
 <script>document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());</script>
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var success = document.getElementById('contact-success');
+  var error = document.getElementById('contact-error');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (error) error.style.display = 'none';
+    var data = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    }).then(function (res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        if (success) success.style.display = 'block';
+      } else if (error) {
+        error.style.display = 'block';
+      }
+    }).catch(function () {
+      if (error) error.style.display = 'block';
+    });
+  });
+})();
+</script>
 </body></html>
