@@ -298,6 +298,34 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 .review-sources li:not(:last-child):after{content:"";position:absolute;right:-14px;top:50%;width:3px;height:3px;border-radius:50%;background:rgba(27,25,23,.28);transform:translateY(-50%)}
 .review-sources svg{width:15px;height:15px;fill:currentColor;opacity:.85;flex-shrink:0}
 
+/* ---------- crawlable client review excerpts ---------- */
+.client-voices{padding:12vh 7vw 13vh;background:var(--paper2);border-top:1px solid var(--line)}
+.client-voices-head{max-width:760px;margin:0 auto 7vh;text-align:center}
+.client-voices-head h2{font:400 clamp(46px,6vw,82px)/.94 var(--serif);margin:.2em auto .25em;max-width:12ch}
+.client-voices-head>p{font:400 15px/1.7 var(--sans);color:rgba(27,25,23,.62);margin:0}
+.client-voices-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;max-width:1240px;margin:0 auto;background:rgba(27,25,23,.14)}
+.client-voice{display:flex;flex-direction:column;min-height:390px;margin:0;padding:48px 38px 40px;background:var(--paper)}
+.client-voice-stars{color:var(--gold);font-size:17px;letter-spacing:.16em;line-height:1}
+.client-voice blockquote{margin:28px 0 36px}
+.client-voice blockquote p{font:400 clamp(24px,2vw,31px)/1.38 var(--serif);margin:0}
+.client-voice figcaption{display:flex;flex-direction:column;gap:7px;margin-top:auto}
+.client-voice figcaption strong{font:600 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase}
+.client-voice figcaption span{font:500 10px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:rgba(27,25,23,.52)}
+.client-voices-link{display:table;margin:42px auto 0;font:600 10px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--red);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
+.client-voices-link:hover{color:var(--ink)}
+@media(max-width:900px){
+  .client-voices-grid{grid-template-columns:1fr}
+  .client-voice{min-height:0}
+  .client-voices-head h2{font-size:56px}
+}
+@media(max-width:620px){
+  .client-voices{padding:95px 20px}
+  .client-voices-head{margin-bottom:52px}
+  .client-voices-head h2{font-size:48px}
+  .client-voice{padding:38px 26px 34px}
+  .client-voice blockquote p{font-size:27px}
+}
+
 /* ---------- audience pathways / experience pages ---------- */
 .story-paths{padding:14vh 5vw;background:var(--charcoal);color:var(--paper)}
 .story-paths-head{max-width:850px;margin:0 auto 8vh;text-align:center}
