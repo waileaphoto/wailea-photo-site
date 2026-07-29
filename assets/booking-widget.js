@@ -84,6 +84,15 @@
     return `$${(cents / 100).toFixed(2)}`;
   }
 
+  function fmtTime12(value) {
+    const [hourText, minute = '00'] = String(value || '').split(':');
+    const hour = Number(hourText);
+    if (!Number.isInteger(hour) || hour < 0 || hour > 23) return value || '';
+    const suffix = hour >= 12 ? 'PM' : 'AM';
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minute} ${suffix}`;
+  }
+
   class BookingWidget {
     constructor() {
       this.overlay = null;
@@ -329,7 +338,7 @@
             Array.from(this.slotsWrap.children).forEach((c) => c.classList.remove('wbw-selected'));
             e.target.classList.add('wbw-selected');
           },
-        }, [`${slot.startTime} – ${slot.endTime}`]);
+        }, [`${fmtTime12(slot.startTime)} – ${fmtTime12(slot.endTime)}`]);
         this.slotsWrap.appendChild(btn);
         if (preferredStartTime && slot.startTime === preferredStartTime) btn.click();
       });
@@ -443,7 +452,7 @@
 
         this.paymentSummary.innerHTML = '';
         this.paymentSummary.appendChild(el('div', { class: 'wbw-quote-row wbw-total' }, [
-          el('span', {}, [`${this.state.name} — ${this.state.selectedDate} ${this.state.selectedSlot.startTime}`]),
+          el('span', {}, [`${this.state.name} — ${this.state.selectedDate} ${fmtTime12(this.state.selectedSlot.startTime)}`]),
           el('span', {}, [fmtDollars(result.booking.total_price_cents)]),
         ]));
         this.payBtn.textContent = `Pay ${fmtDollars(result.booking.deposit_cents)} Deposit`;
@@ -502,7 +511,7 @@
         el('div', { class: 'wbw-success-icon' }, ['✓']),
         el('h3', {}, ['You’re booked!']),
         el('p', {}, [`Booking reference: ${this.state.bookingReference}`]),
-        el('p', {}, [`${this.state.name} — ${this.state.selectedDate} at ${this.state.selectedSlot.startTime} (Hawaii time).`]),
+        el('p', {}, [`${this.state.name} — ${this.state.selectedDate} at ${fmtTime12(this.state.selectedSlot.startTime)} (Hawaii time).`]),
         el('p', { class: 'wbw-quote-note' }, [`Payment status: ${paymentIntent.status}. A confirmation email is on its way once it's fully processed.`]),
         el('a', { class: 'wbw-btn', href: `${API_BASE}/api/bookings/${this.state.bookingId}/ics`, target: '_blank', style: 'display:block;margin-top:16px;text-decoration:none;' }, ['Add to Calendar']),
         el('button', { class: 'wbw-btn wbw-btn-secondary', style: 'margin-top:10px;', onclick: () => this.close() }, ['Done'])
