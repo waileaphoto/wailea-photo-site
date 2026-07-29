@@ -300,8 +300,8 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 
 /* ---------- crawlable client review excerpts ---------- */
 .client-voices{padding:24px 7vw 70px;background:var(--paper2);border-top:1px solid var(--line)}
-.client-voices-head{max-width:760px;margin:0 auto 28px;text-align:center}
-.client-voices-head h2{font:400 clamp(38px,5vw,68px)/.96 var(--serif);margin:.15em auto .2em;max-width:12ch}
+.client-voices-head{max-width:1100px;margin:0 auto 28px;text-align:center}
+.client-voices-head h2{font:400 clamp(38px,4vw,62px)/.96 var(--serif);margin:.15em auto .2em;max-width:none;white-space:nowrap}
 .client-voices-head>p{font:400 15px/1.7 var(--sans);color:rgba(27,25,23,.62);margin:0}
 .client-voices-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;max-width:1240px;margin:0 auto;background:rgba(27,25,23,.14)}
 .client-voice{display:flex;flex-direction:column;min-height:390px;margin:0;padding:48px 38px 40px;background:var(--paper)}
@@ -576,6 +576,7 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 }
 @media(max-width:780px){
   .art-gallery-section{padding:100px 14px}
+  .client-voices-head h2{white-space:normal}
   .art-gallery-copy h2{font-size:56px}
   .art-slider{height:68svh;min-height:500px;max-height:760px}
   .art-arrow{width:46px;height:46px;font-size:34px}
