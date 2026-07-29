@@ -299,7 +299,7 @@ body.promo-active .site-header{top:var(--promo-h,0)}
 .review-sources svg{width:15px;height:15px;fill:currentColor;opacity:.85;flex-shrink:0}
 
 /* ---------- crawlable client review excerpts ---------- */
-.client-voices{padding:12vh 7vw 13vh;background:var(--paper2);border-top:1px solid var(--line)}
+.client-voices{padding:6vh 7vw 11vh;background:var(--paper2);border-top:1px solid var(--line)}
 .client-voices-head{max-width:760px;margin:0 auto 7vh;text-align:center}
 .client-voices-head h2{font:400 clamp(46px,6vw,82px)/.94 var(--serif);margin:.2em auto .25em;max-width:12ch}
 .client-voices-head>p{font:400 15px/1.7 var(--sans);color:rgba(27,25,23,.62);margin:0}
