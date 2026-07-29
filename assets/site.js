@@ -321,12 +321,39 @@
     initTideTool();
   });
 })();
-fetch('footer.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('footer-placeholder').innerHTML = data;
-    document.getElementById('year').textContent = new Date().getFullYear();
-  });
+/* Keep the shared footer consistent across both newer template pages and
+   older pages that still contain an inline footer. */
+(function initSharedFooter(){
+  function ensureAtlasLink(){
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+    const exploreHeading = [...footer.querySelectorAll('.footer-col h5')]
+      .find(heading => heading.textContent.trim().toLowerCase() === 'explore');
+    const exploreColumn = exploreHeading && exploreHeading.closest('.footer-col');
+    if (!exploreColumn || exploreColumn.querySelector('a[href="atlas.html"], a[href="/atlas"], a[href="/atlas.html"]')) return;
+    const atlasLink = document.createElement('a');
+    atlasLink.href = 'atlas.html';
+    atlasLink.textContent = 'The Atlas';
+    exploreColumn.appendChild(atlasLink);
+  }
+
+  const placeholder = document.getElementById('footer-placeholder');
+  if (!placeholder) {
+    ensureAtlasLink();
+    return;
+  }
+
+  fetch('footer.html')
+    .then(response => response.ok ? response.text() : Promise.reject())
+    .then(data => {
+      if (placeholder.tagName === 'FOOTER') placeholder.outerHTML = data;
+      else placeholder.innerHTML = data;
+      const year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
+      ensureAtlasLink();
+    })
+    .catch(ensureAtlasLink);
+})();
 
 /* ---------- session-finder: "Find Your Session" recommender (pricing.html only) ---------- */
 document.addEventListener('DOMContentLoaded', function(){
