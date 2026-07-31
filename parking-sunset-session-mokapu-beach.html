@@ -70,14 +70,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260730-mokapu-sunset">
   <style>
-    /* Dynamic Picture Hero Layout with Balanced Desktop Typography */
+    /* Hero Layout matching site design system */
     .page-hero-responsive {
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 5;
       display: flex;
       align-items: flex-start;
-      padding: 36px 20px;
+      padding: 36px 24px;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #171716;
@@ -86,7 +86,7 @@
     @media (min-width: 768px) {
       .page-hero-responsive {
         aspect-ratio: 16 / 9;
-        padding: 56px 40px;
+        padding: 56px 48px;
       }
     }
 
@@ -100,7 +100,7 @@
       z-index: 0;
     }
 
-    /* Soft top gradient scrim */
+    /* Gradient overlay for contrast */
     .page-hero-responsive::before {
       content: '';
       position: absolute;
@@ -115,43 +115,31 @@
       max-width: 680px;
     }
 
-    /* Exact scale match to section h2 typography */
-    .page-hero-responsive h1.hero-title-matched {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.85rem;
-      font-weight: 500;
-      line-height: 1.25;
+    /* Matches standard section h2 typography and colors from site.css */
+    .page-hero-responsive h1 {
       color: #ffffff;
       margin: 8px 0 0;
-      letter-spacing: -0.01em;
-    }
-
-    @media (min-width: 768px) {
-      .page-hero-responsive h1.hero-title-matched {
-        font-size: 2.25rem;
-        line-height: 1.2;
-      }
     }
 
     .hero-subtitle {
-      margin-top: 10px;
-      font-size: 0.98rem;
-      line-height: 1.5;
+      margin-top: 12px;
+      font-size: 1.05rem;
+      line-height: 1.55;
       color: rgba(255, 255, 255, 0.92);
     }
 
     .hero-byline {
-      margin-top: 14px;
-      font: 600 11px/1 var(--sans);
+      margin-top: 16px;
+      font: 600 11px/1 var(--sans, 'Inter', sans-serif);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.75);
     }
 
     .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid #b69557;background:#f3ecdf}
-    .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 var(--sans);letter-spacing:.13em;text-transform:uppercase}
+    .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 var(--sans, 'Inter', sans-serif);letter-spacing:.13em;text-transform:uppercase}
     .map-actions{margin:26px 0 8px;display:flex;flex-wrap:wrap;gap:12px}
-    .map-actions a{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:5px;color:#fff;font:600 12px/1 var(--sans);letter-spacing:.06em;text-decoration:none;text-transform:uppercase}
+    .map-actions a{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:5px;color:#fff;font:600 12px/1 var(--sans, 'Inter', sans-serif);letter-spacing:.06em;text-decoration:none;text-transform:uppercase}
     .map-google{background:#3f76d3}.map-apple{background:#171716}
     .arrival-list{margin:20px 0 0;padding:0;list-style:none}
     .arrival-list li{padding:14px 0;border-top:1px solid rgba(23,23,22,.15)}
@@ -182,7 +170,7 @@
     </picture>
     <div class="hero-content-wrapper reveal visible">
       <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
-      <h1 class="hero-title-matched">Where to park for a sunset session at Mokapu Beach.</h1>
+      <h1>Where to park for a sunset session at Mokapu Beach.</h1>
       <p class="hero-subtitle">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
       <p class="hero-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
     </div>
