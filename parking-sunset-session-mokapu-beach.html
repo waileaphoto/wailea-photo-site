@@ -115,36 +115,36 @@
       max-width: 780px;
     }
 
-    /* Scaled up H1 to match section H2 sizing, font weight, and letter spacing */
+    /* Explicit override for H1 title typography and scaling */
     .page-hero-responsive h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 500;
-      line-height: 1.15;
-      color: #ffffff;
-      margin: 8px 0 0;
-      letter-spacing: -0.01em;
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+      font-weight: 500 !important;
+      line-height: 1.15 !important;
+      color: #ffffff !important;
+      margin: 8px 0 0 !important;
+      letter-spacing: -0.01em !important;
     }
 
-    /* Subtitle matching site body text font, size, and line-height */
+    /* Explicit override for subtitle body typography */
     .hero-subtitle {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 0.98rem;
-      line-height: 1.6;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.92);
-      margin-top: 14px;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 0.98rem !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      color: rgba(255, 255, 255, 0.92) !important;
+      margin-top: 14px !important;
     }
 
     .hero-byline {
-      margin-top: 18px;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
+      margin-top: 18px !important;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      line-height: 1 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: rgba(255, 255, 255, 0.75) !important;
     }
 
     .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid #b69557;background:#f3ecdf}
@@ -181,8 +181,8 @@
     </picture>
     <div class="hero-content-wrapper reveal visible">
       <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
-      <h1>Where to park for a sunset session at Mokapu Beach.</h1>
-      <p class="hero-subtitle">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
+      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">Where to park for a sunset session at Mokapu Beach.</h1>
+      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
       <p class="hero-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
     </div>
   </section>
