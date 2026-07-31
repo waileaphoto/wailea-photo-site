@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171716">
+  
+  <!-- Analytics & Tracking -->
+  <script defer src="assets/analytics.js"></script>
+  <script src="assets/fb-pixel.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=823300302049467&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
+  <script src="assets/pinterest-tag.js"></script>
+
+  <!-- Page Title & Meta -->
+  <title>Unveiling the Magic of Maui Luaus: A Feast for the Senses | The Wailea Photo Atlas</title>
+  <meta name="description" content="Explore the diverse luaus of Maui, from traditional celebrations in Lahaina and waterfall backdrops to luxurious oceanfront evenings in Wailea—plus why to book a family portrait session first.">
+  <link rel="canonical" href="https://waileaphoto.com/maui-luaus-guide.html">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Preload Hero Assets -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=1600&q=80" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=1080&q=80" media="(max-width: 767px)" fetchpriority="high">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Unveiling the Magic of Maui Luaus: A Feast for the Senses">
+  <meta property="og:description" content="Explore the diverse luaus of Maui, from traditional celebrations in Lahaina and waterfall backdrops to luxurious oceanfront evenings in Wailea—plus why to book a family portrait session first.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=1600&q=80">
+  <meta property="og:image:alt" content="Hawaiian luau celebration with traditional elements and warm lighting">
+  <meta property="og:url" content="https://waileaphoto.com/maui-luaus-guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unveiling the Magic of Maui Luaus: A Feast for the Senses">
+  <meta name="twitter:description" content="Explore the diverse luaus of Maui, from traditional celebrations in Lahaina and waterfall backdrops to luxurious oceanfront evenings in Wailea—plus why to book a family portrait session first.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=1600&q=80">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Unveiling the Magic of Maui Luaus: A Feast for the Senses",
+    "description":"Explore the diverse luaus of Maui, from traditional celebrations in Lahaina and waterfall backdrops to luxurious oceanfront evenings in Wailea—plus why to book a family portrait session first.",
+    "image":[
+      "https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=1600&q=80"
+    ],
+    "author":{"@type":"Person","@id":"https://waileaphoto.com/#laurence-balter","name":"Laurence Balter","jobTitle":"Founder & Lead Photographer","url":"https://waileaphoto.com/laurence-balter.html"},
+    "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo","logo":{"@type":"ImageObject","url":"https://waileaphoto.com/assets/favicon.svg"}},
+    "datePublished":"2026-07-31",
+    "dateModified":"2026-07-31",
+    "mainEntityOfPage":"https://waileaphoto.com/maui-luaus-guide.html",
+    "isPartOf":{"@type":"CollectionPage","name":"The Wailea Photo Atlas","url":"https://waileaphoto.com/atlas.html"}
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://waileaphoto.com/"},
+      {"@type":"ListItem","position":2,"name":"Atlas","item":"https://waileaphoto.com/atlas.html"},
+      {"@type":"ListItem","position":3,"name":"Maui Luaus Guide","item":"https://waileaphoto.com/maui-luaus-guide.html"}
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css?v=20260731">
+
+  <style>
+    /* Hero Container Setup */
+    .page-hero-responsive {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: flex-start;
+      padding: 36px 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #171716;
+    }
+
+    @media (min-width: 768px) {
+      .page-hero-responsive {
+        aspect-ratio: 16 / 9;
+        padding: 56px 48px;
+      }
+    }
+
+    .page-hero-responsive picture,
+    .page-hero-responsive picture img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+      z-index: 0;
+    }
+
+    /* Hero Gradient Overlay */
+    .page-hero-responsive::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 80%);
+      z-index: 1;
+    }
+
+    .page-hero-responsive .hero-content-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    /* H1 Typography matched explicitly to H2 section standards */
+    .page-hero-responsive h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+      font-weight: 500 !important;
+      line-height: 1.15 !important;
+      color: #ffffff !important;
+      margin: 8px 0 0 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    /* Hero Subtitle matched to body paragraph standards */
+    .hero-subtitle {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 0.98rem !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      color: rgba(255, 255, 255, 0.92) !important;
+      margin-top: 14px !important;
+    }
+
+    .hero-byline {
+      margin-top: 18px !important;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      line-height: 1 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top-row">
+    <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
+    <div class="header-right"><button class="menu-open-btn" aria-expanded="false" aria-label="Open menu">MENU</button></div>
+  </div>
+  <div class="header-subbar"><a class="header-call" href="tel:+18082985188">808.298.5188</a></div>
+</header>
+
+<nav class="menu" aria-hidden="true">
+  <button class="menu-close" aria-label="Close menu">×</button>
+  <a href="index.html#story-paths">Photography</a>
+  <a href="pricing.html#sessions">Sessions &amp; Pricing</a>
+  <a href="index.html#experience">Our Family</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="faq.html">FAQ &amp; Contact</a>
+  <div class="menu-foot">
+    <a href="tides.html">Tides &amp; Sunset Times</a>
+    <a href="what-to-wear-maui-photos.html">What to Wear Guide</a>
+    <a href="the-apo-difference.html">The APO Difference</a>
+    <a href="our-florist.html">Our Florist</a>
+    <a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
+    <a href="corporate-events.html">Corporate Events</a>
+    <a href="atlas.html" aria-current="page">The Atlas</a>
+    <a href="tel:+18082985188">808.298.5188</a>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO SECTION -->
+  <section class="page-hero-responsive">
+    <picture>
+      <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=1600&q=80" width="1600" height="900">
+      <img src="https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=1080&q=80" width="1080" height="1350" alt="Hawaiian evening celebration and tropical ambiance" loading="eager" fetchpriority="high">
+    </picture>
+    <div class="hero-content-wrapper reveal visible">
+      <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
+      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">Unveiling the Magic of Maui Luaus: A Feast for the Senses</h1>
+      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">Nestled in the heart of the Pacific, Maui is a tropical paradise that beckons travelers with its stunning landscapes, vibrant culture, and enchanting luaus.</p>
+      <p class="hero-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION: INTRODUCTION -->
+  <section class="content-split">
+    <div class="content-split-image reveal visible">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1442&q=80" width="1442" height="960" alt="Tropical Maui coastline and golden light" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">CULTURAL TRADITIONS</div>
+      <h2>A Feast for the Senses</h2>
+      <p>Luaus are not just events; they're experiences that blend Hawaiian tradition, delicious cuisine, and mesmerizing entertainment. In this blog post, we'll take you on a journey through the diverse luaus of Maui, each offering a unique taste of the island's rich heritage.</p>
+      <p>Whether you are seeking ancient historical storytelling in Lahaina, lush waterfall gardens in West Maui, or chic modern oceanfront dining in Wailea, Maui’s luaus provide an unforgettable evening under the Pacific stars.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 2: OLD LAHAINA & WAILELE -->
+  <section class="content-split reverse">
+    <div class="content-split-image reveal visible">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1442&q=80" width="1442" height="960" alt="Family enjoying a sunny day in Maui" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">TRADITION &amp; WATERFALLS</div>
+      <h2>Old Lahaina &amp; Wailele Polynesian Luau</h2>
+      <h3>1. Old Lahaina Luau: Embracing Tradition</h3>
+      <p>The Old Lahaina Luau stands as a beacon of authenticity, drawing inspiration from the rich history and cultural tapestry of Hawaii. Nestled in Lahaina, this luau invites guests to step back in time with its traditional Hawaiian feast, complete with imu-roasted pig, poi, and other local delicacies. The evening is complemented by captivating hula performances and live music, creating an immersive experience that transports visitors to a bygone era.</p>
+      
+      <h3 style="margin-top: 24px;">3. Wailele Polynesian Luau: Waterfall Wonderland</h3>
+      <p>Nestled in the West Maui Mountains, the Wailele Polynesian Luau at The Westin Maui Resort &amp; Spa offers a unique twist to the traditional luau setting. Surrounded by lush greenery and overlooking a cascading waterfall, this luau captivates guests with a stunning natural backdrop. The evening includes cultural performances, a delectable buffet, and the chance to witness the mesmerizing stories of the Polynesian people unfold under the starlit Hawaiian sky.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 3: GRAND WAILEA & ANDAZ -->
+  <section class="content-split">
+    <div class="content-split-image reveal visible">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=80" width="2000" height="1326" alt="Luxury resort and oceanfront views in Wailea" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">WAILEA ELEGANCE</div>
+      <h2>Grand Wailea &amp; Andaz Luau</h2>
+      <h3>4. Grand Wailea Luau: A Luxurious Affair</h3>
+      <p>For those desiring a touch of luxury, the Grand Wailea Luau at the Grand Wailea Resort is the epitome of opulence. Known for its world-class amenities, this luau combines the island's flavors with elegant entertainment. Guests can indulge in a sumptuous buffet featuring locally sourced ingredients and relax in the lap of luxury as they enjoy the breathtaking sunset over Wailea Beach.</p>
+      
+      <h3 style="margin-top: 24px;">5. Andaz Luau: Modern Elegance in Wailea</h3>
+      <p>Situated at the Andaz Maui at Wailea Resort, this luau seamlessly blends traditional Hawaiian elements with a modern, chic vibe. The feast here is a fusion of classic Polynesian flavors and contemporary culinary artistry. The oceanfront setting, coupled with fire dancers and live music, creates an atmosphere that's both sophisticated and authentically Hawaiian.</p>
+    </div>
+  </section>
+
+  <!-- CONCLUSION & BOOKING PROMPT -->
+  <section class="faq-list" style="max-width: 900px; margin: 0 auto; padding: 60px 24px;">
+    <div class="section-head reveal visible" style="text-align: center; margin-bottom: 30px;">
+      <div class="chapter">CONCLUSION</div>
+      <h2>Gateways to the Soul of Hawaii</h2>
+    </div>
+    <p style="font-size: 1.05rem; line-height: 1.7; text-align: center; color: #444; margin-bottom: 24px;">
+      Maui's luaus are not just events; they are gateways to the soul of Hawaii. From the traditional charm of Old Lahaina to the luxurious celebrations in Wailea, each luau tells a unique story of culture, cuisine, and community. As you embark on this cultural journey, let the rhythm of the hula, the aroma of imu-roasted pig, and the warmth of Hawaiian hospitality transport you to a world where every moment is a celebration of the aloha spirit.
+    </p>
+    <div style="background: #f3ecdf; border-left: 2px solid #b69557; padding: 24px; text-align: center; margin-top: 30px;">
+      <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 500; color: #171716; margin: 0 0 12px;">Before you book a luau, consider booking a family photoshoot...</p>
+      <p style="font-size: 0.95rem; line-height: 1.6; color: #555; margin: 0 0 20px;">Capture your family's precious memories in Maui with Wailea Portrait™ before treating everyone to an unforgettable evening of food and entertainment.</p>
+      <a class="button" href="pricing.html#sessions" style="background: #171716; color: #fff; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; display: inline-block;">View Sessions &amp; Pricing</a>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION SECTION -->
+  <section id="reserve" class="reserve short">
+    <div class="chapter">READY FOR YOUR SESSION?</div>
+    <h2>Let's make something beautiful.</h2>
+    <a class="button" href="pricing.html#sessions">View Sessions &amp; Pricing</a>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="assets/site.js"></script>
+<script>
+if (location.protocol.startsWith('http')) {
+  fetch('footer.html').then(res => res.ok ? res.text() : Promise.reject()).then(html => {
+    document.getElementById('footer-placeholder').outerHTML = html;
+    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>
