@@ -112,39 +112,32 @@
     .page-hero-responsive .hero-content-wrapper {
       position: relative;
       z-index: 2;
-      max-width: 680px;
+      max-width: 780px;
     }
 
-    /* Exact H2 font match to "Meet us at Mokapu Beach beside the Andaz Maui." */
+    /* Scaled up H1 to match section H2 sizing, font weight, and letter spacing */
     .page-hero-responsive h1 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.85rem;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
       font-weight: 500;
-      line-height: 1.25;
+      line-height: 1.15;
       color: #ffffff;
       margin: 8px 0 0;
       letter-spacing: -0.01em;
     }
 
-    @media (min-width: 768px) {
-      .page-hero-responsive h1 {
-        font-size: 2.25rem;
-        line-height: 1.2;
-      }
-    }
-
-    /* Exact paragraph font match to section body copy */
+    /* Subtitle matching site body text font, size, and line-height */
     .hero-subtitle {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       font-size: 0.98rem;
       line-height: 1.6;
       font-weight: 400;
       color: rgba(255, 255, 255, 0.92);
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .hero-byline {
-      margin-top: 16px;
+      margin-top: 18px;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       font-size: 11px;
       font-weight: 600;
