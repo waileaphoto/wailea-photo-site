@@ -10,17 +10,18 @@
   <link rel="canonical" href="https://waileaphoto.com/parking-sunset-session-mokapu-beach">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="preload" as="image" href="assets/mokapu-beach-sunset-portrait.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/mokapu-beach-sunset-portrait16x9.jpg" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/mokapu-beach-sunset-portrait4x5.jpg" media="(max-width: 767px)" fetchpriority="high">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Where to Park for a Sunset Photo Session at Mokapu Beach">
   <meta property="og:description" content="A practical guide to parking, meeting us and preparing for your Mokapu Beach sunset portrait session.">
-  <meta property="og:image" content="https://waileaphoto.com/assets/mokapu-beach-sunset-portrait.jpg">
+  <meta property="og:image" content="https://waileaphoto.com/assets/mokapu-beach-sunset-portrait16x9.jpg">
   <meta property="og:image:alt" content="Sunset portrait on the lava rocks at Mokapu Beach in Wailea, Maui">
   <meta property="og:url" content="https://waileaphoto.com/parking-sunset-session-mokapu-beach">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sunset Photo Sessions at Mokapu Beach">
   <meta name="twitter:description" content="Parking, arrival, meeting and preparation instructions for a Wailea sunset photography session.">
-  <meta name="twitter:image" content="https://waileaphoto.com/assets/mokapu-beach-sunset-portrait.jpg">
+  <meta name="twitter:image" content="https://waileaphoto.com/assets/mokapu-beach-sunset-portrait16x9.jpg">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -28,7 +29,7 @@
     "headline":"Where to Park for a Sunset Photo Session at Mokapu Beach",
     "description":"Parking, walking directions, meeting instructions and preparation advice for a sunset photography session at Mokapu Beach in Wailea, Maui.",
     "image":[
-      "https://waileaphoto.com/assets/mokapu-beach-sunset-portrait.jpg",
+      "https://waileaphoto.com/assets/mokapu-beach-sunset-portrait16x9.jpg",
       "https://waileaphoto.com/assets/mokapu-beach-sunset-wedding.jpg",
       "https://waileaphoto.com/assets/mokapu-beach-behind-the-scenes.jpg"
     ],
@@ -69,52 +70,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260730-mokapu-sunset">
   <style>
-    /* Option 2: Full-Bleed Viewport Hero */
-    .page-hero-full {
+    /* Dynamic Picture Hero Layout */
+    .page-hero-responsive {
       position: relative;
       width: 100%;
-      min-height: 85vh;
+      min-height: 70vh;
       display: flex;
       align-items: flex-start;
-      padding: 48px 24px;
+      padding: 40px 20px;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #171716;
     }
 
     @media (min-width: 768px) {
-      .page-hero-full {
+      .page-hero-responsive {
+        min-height: 80vh;
         padding: 64px 32px;
       }
     }
 
-    .page-hero-full img {
+    .page-hero-responsive picture,
+    .page-hero-responsive picture img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover !important;
-      object-position: center 80% !important;
       z-index: 0;
     }
 
-    /* Soft top gradient scrim */
-    .page-hero-full::before {
+    /* Soft top gradient scrim for optimal text contrast */
+    .page-hero-responsive::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.35) 45%, rgba(23, 23, 22, 0) 75%);
+      background: linear-gradient(180deg, rgba(23, 23, 22, 0.78) 0%, rgba(23, 23, 22, 0.35) 45%, rgba(23, 23, 22, 0) 75%);
       z-index: 1;
     }
 
-    .page-hero-full .hero-content-wrapper {
+    .page-hero-responsive .hero-content-wrapper {
       position: relative;
       z-index: 2;
       max-width: 720px;
     }
 
-    /* Title matching section heading h2 styles exactly */
-    .page-hero-full h1.hero-title-matched {
+    /* Section heading match for h1 */
+    .page-hero-responsive h1.hero-title-matched {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 400;
@@ -150,8 +152,13 @@
 </nav>
 
 <main>
-  <section class="page-hero-full">
-    <img src="assets/mokapu-beach-sunset-portrait.jpg" width="1600" height="1065" alt="Portrait of a woman in a red dress standing on lava rock at Mokapu Beach in Wailea near sunset" loading="eager" fetchpriority="high">
+  <section class="page-hero-responsive">
+    <picture>
+      <!-- Desktop & Tablet (768px and up) uses the 16:9 crop -->
+      <source media="(min-width: 768px)" srcset="assets/mokapu-beach-sunset-portrait16x9.jpg" width="1600" height="900">
+      <!-- Mobile (<768px) uses the 4:5 vertical crop -->
+      <img src="assets/mokapu-beach-sunset-portrait4x5.jpg" width="1080" height="1350" alt="Portrait of a woman in a red dress standing on lava rock at Mokapu Beach in Wailea near sunset" loading="eager" fetchpriority="high">
+    </picture>
     <div class="hero-content-wrapper reveal visible">
       <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
       <h1 class="hero-title-matched">Where to park for a sunset session at Mokapu Beach.</h1>
