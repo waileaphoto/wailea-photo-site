@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171716">
+  
+  <!-- Analytics & Tracking -->
+  <script defer src="assets/analytics.js"></script>
+  <script src="assets/fb-pixel.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=823300302049467&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
+  <script src="assets/pinterest-tag.js"></script>
+
+  <!-- Page Title & Meta -->
+  <title>{{PAGE_TITLE}} | The Wailea Photo Atlas</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="canonical" href="https://waileaphoto.com/{{SLUG}}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Preload Hero Assets -->
+  <link rel="preload" as="image" href="assets/{{HERO_IMG_16X9}}" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/{{HERO_IMG_4X5}}" media="(max-width: 767px)" fetchpriority="high">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{PAGE_TITLE}}">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:image" content="https://waileaphoto.com/assets/{{HERO_IMG_16X9}}">
+  <meta property="og:image:alt" content="{{HERO_IMG_ALT}}">
+  <meta property="og:url" content="https://waileaphoto.com/{{SLUG}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{PAGE_TITLE}}">
+  <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+  <meta name="twitter:image" content="https://waileaphoto.com/assets/{{HERO_IMG_16X9}}">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"{{PAGE_TITLE}}",
+    "description":"{{META_DESCRIPTION}}",
+    "image":[
+      "https://waileaphoto.com/assets/{{HERO_IMG_16X9}}"
+    ],
+    "author":{"@type":"Person","@id":"https://waileaphoto.com/#laurence-balter","name":"Laurence Balter","jobTitle":"Founder & Lead Photographer","url":"https://waileaphoto.com/laurence-balter.html"},
+    "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo","logo":{"@type":"ImageObject","url":"https://waileaphoto.com/assets/favicon.svg"}},
+    "datePublished":"2026-07-31",
+    "dateModified":"2026-07-31",
+    "mainEntityOfPage":"https://waileaphoto.com/{{SLUG}}",
+    "isPartOf":{"@type":"CollectionPage","name":"The Wailea Photo Atlas","url":"https://waileaphoto.com/atlas.html"}
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://waileaphoto.com/"},
+      {"@type":"ListItem","position":2,"name":"Atlas","item":"https://waileaphoto.com/atlas.html"},
+      {"@type":"ListItem","position":3,"name":"{{BREADCRUMB_NAME}}","item":"https://waileaphoto.com/{{SLUG}}"}
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css?v=20260731">
+
+  <style>
+    /* Hero Container Setup */
+    .page-hero-responsive {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: flex-start;
+      padding: 36px 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #171716;
+    }
+
+    @media (min-width: 768px) {
+      .page-hero-responsive {
+        aspect-ratio: 16 / 9;
+        padding: 56px 48px;
+      }
+    }
+
+    .page-hero-responsive picture,
+    .page-hero-responsive picture img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+      z-index: 0;
+    }
+
+    /* Hero Gradient Overlay */
+    .page-hero-responsive::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 80%);
+      z-index: 1;
+    }
+
+    .page-hero-responsive .hero-content-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    /* H1 Typography matched explicitly to H2 section standards */
+    .page-hero-responsive h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+      font-weight: 500 !important;
+      line-height: 1.15 !important;
+      color: #ffffff !important;
+      margin: 8px 0 0 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    /* Hero Subtitle matched to body paragraph standards */
+    .hero-subtitle {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 0.98rem !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      color: rgba(255, 255, 255, 0.92) !important;
+      margin-top: 14px !important;
+    }
+
+    .hero-byline {
+      margin-top: 18px !important;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      line-height: 1 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    /* Custom Component Extensions */
+    .location-note { margin: 28px 0 0; padding: 22px 24px; border-left: 2px solid #b69557; background: #f3ecdf; }
+    .location-note strong { display: block; margin-bottom: 7px; font: 600 11px/1.2 'Inter', sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .map-actions { margin: 26px 0 8px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .map-actions a { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border-radius: 5px; color: #fff; font: 600 12px/1 'Inter', sans-serif; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+    .map-google { background: #3f76d3; } .map-apple { background: #171716; }
+    .arrival-list { margin: 20px 0 0; padding: 0; list-style: none; }
+    .arrival-list li { padding: 14px 0; border-top: 1px solid rgba(23, 23, 22, .15); }
+    .arrival-list strong { font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top-row">
+    <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
+    <div class="header-right"><button class="menu-open-btn" aria-expanded="false" aria-label="Open menu">MENU</button></div>
+  </div>
+  <div class="header-subbar"><a class="header-call" href="tel:+18082985188">808.298.5188</a></div>
+</header>
+
+<nav class="menu" aria-hidden="true">
+  <button class="menu-close" aria-label="Close menu">×</button>
+  <a href="index.html#story-paths">Photography</a>
+  <a href="pricing.html#sessions">Sessions &amp; Pricing</a>
+  <a href="index.html#experience">Our Family</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="faq.html">FAQ &amp; Contact</a>
+  <div class="menu-foot">
+    <a href="tides.html">Tides &amp; Sunset Times</a>
+    <a href="what-to-wear-maui-photos.html">What to Wear Guide</a>
+    <a href="the-apo-difference.html">The APO Difference</a>
+    <a href="our-florist.html">Our Florist</a>
+    <a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
+    <a href="corporate-events.html">Corporate Events</a>
+    <a href="atlas.html" aria-current="page">The Atlas</a>
+    <a href="tel:+18082985188">808.298.5188</a>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO SECTION -->
+  <section class="page-hero-responsive">
+    <picture>
+      <source media="(min-width: 768px)" srcset="assets/{{HERO_IMG_16X9}}" width="1600" height="900">
+      <img src="assets/{{HERO_IMG_4X5}}" width="1080" height="1350" alt="{{HERO_IMG_ALT}}" loading="eager" fetchpriority="high">
+    </picture>
+    <div class="hero-content-wrapper reveal visible">
+      <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
+      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">{{MAIN_TITLE}}</h1>
+      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">{{SUBTITLE}}</p>
+      <p class="hero-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 1 (IMAGE LEFT / TEXT RIGHT) -->
+  <section class="content-split">
+    <div class="content-split-image reveal visible">
+      <img src="assets/{{SECTION1_IMG}}" width="1442" height="960" alt="{{SECTION1_ALT}}" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">{{SECTION1_CHAPTER}}</div>
+      <h2>{{SECTION1_HEADING}}</h2>
+      <p>{{SECTION1_PARAGRAPH_1}}</p>
+      <p>{{SECTION1_PARAGRAPH_2}}</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
+  <section class="content-split reverse">
+    <div class="content-split-image reveal visible">
+      <img src="assets/{{SECTION2_IMG}}" width="2000" height="1326" alt="{{SECTION2_ALT}}" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">{{SECTION2_CHAPTER}}</div>
+      <h2>{{SECTION2_HEADING}}</h2>
+      <p>{{SECTION2_PARAGRAPH_1}}</p>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-list">
+    <div class="section-head reveal visible">
+      <div class="chapter">QUICK ANSWERS</div>
+      <h2>What to know before your session.</h2>
+    </div>
+    <details class="faq-item" open>
+      <summary>{{FAQ_1_QUESTION}}</summary>
+      <p>{{FAQ_1_ANSWER}}</p>
+    </details>
+    <details class="faq-item">
+      <summary>{{FAQ_2_QUESTION}}</summary>
+      <p>{{FAQ_2_ANSWER}}</p>
+    </details>
+  </section>
+
+  <!-- CALL TO ACTION SECTION -->
+  <section id="reserve" class="reserve short">
+    <div class="chapter">READY FOR YOUR SESSION?</div>
+    <h2>Let's make something beautiful.</h2>
+    <a class="button" href="pricing.html#sessions">View Sessions &amp; Pricing</a>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="assets/site.js"></script>
+<script>
+if (location.protocol.startsWith('http')) {
+  fetch('footer.html').then(res => res.ok ? res.text() : Promise.reject()).then(html => {
+    document.getElementById('footer-placeholder').outerHTML = html;
+    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>
