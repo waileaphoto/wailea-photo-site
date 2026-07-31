@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171716">
+  
+  <!-- Analytics & Tracking -->
+  <script defer src="assets/analytics.js"></script>
+  <script src="assets/fb-pixel.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=823300302049467&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
+  <script src="assets/pinterest-tag.js"></script>
+
+  <!-- Page Title & Meta -->
+  <title>A Blissful Babymoon in Maui: Embrace Tranquility and Capture Memories | The Wailea Photo Atlas</title>
+  <meta name="description" content="Plan your dream babymoon in Wailea, Maui, featuring serene resorts, island relaxation, and timeless maternity and baby moon photoshoots with Wailea Portrait.">
+  <link rel="canonical" href="https://waileaphoto.com/maui-babymoon-maternity-guide.html">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Preload Hero Assets -->
+  <link rel="preload" as="image" href="assets/maternity-wailea-photo-hero.jpg" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/maternity-wailea-photo-hero.jpg" media="(max-width: 767px)" fetchpriority="high">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Blissful Babymoon in Maui: Embrace Tranquility and Capture Memories">
+  <meta property="og:description" content="Plan your dream babymoon in Wailea, Maui, featuring serene resorts, island relaxation, and timeless maternity and baby moon photoshoots with Wailea Portrait.">
+  <meta property="og:image" content="https://waileaphoto.com/assets/maternity-wailea-photo-hero.jpg">
+  <meta property="og:image:alt" content="Expectant mother enjoying a tranquil maternity session in Wailea, Maui">
+  <meta property="og:url" content="https://waileaphoto.com/maui-babymoon-maternity-guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A Blissful Babymoon in Maui: Embrace Tranquility and Capture Memories">
+  <meta name="twitter:description" content="Plan your dream babymoon in Wailea, Maui, featuring serene resorts, island relaxation, and timeless maternity and baby moon photoshoots with Wailea Portrait.">
+  <meta name="twitter:image" content="https://waileaphoto.com/assets/maternity-wailea-photo-hero.jpg">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"A Blissful Babymoon in Maui: Embrace Tranquility and Capture Memories",
+    "description":"Plan your dream babymoon in Wailea, Maui, featuring serene resorts, island relaxation, and timeless maternity and baby moon photoshoots with Wailea Portrait.",
+    "image":[
+      "https://waileaphoto.com/assets/maternity-wailea-photo-hero.jpg"
+    ],
+    "author":{"@type":"Person","@id":"https://waileaphoto.com/#laurence-balter","name":"Laurence Balter","jobTitle":"Founder & Lead Photographer","url":"https://waileaphoto.com/laurence-balter.html"},
+    "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo","logo":{"@type":"ImageObject","url":"https://waileaphoto.com/assets/favicon.svg"}},
+    "datePublished":"2026-07-31",
+    "dateModified":"2026-07-31",
+    "mainEntityOfPage":"https://waileaphoto.com/maui-babymoon-maternity-guide.html",
+    "isPartOf":{"@type":"CollectionPage","name":"The Wailea Photo Atlas","url":"https://waileaphoto.com/atlas.html"}
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://waileaphoto.com/"},
+      {"@type":"ListItem","position":2,"name":"Atlas","item":"https://waileaphoto.com/atlas.html"},
+      {"@type":"ListItem","position":3,"name":"Maui Babymoon & Maternity Guide","item":"https://waileaphoto.com/maui-babymoon-maternity-guide.html"}
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css?v=20260731">
+
+  <style>
+    /* Hero Container Setup */
+    .page-hero-responsive {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: flex-start;
+      padding: 36px 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #171716;
+    }
+
+    @media (min-width: 768px) {
+      .page-hero-responsive {
+        aspect-ratio: 16 / 9;
+        padding: 56px 48px;
+      }
+    }
+
+    .page-hero-responsive picture,
+    .page-hero-responsive picture img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+      z-index: 0;
+    }
+
+    /* Hero Gradient Overlay */
+    .page-hero-responsive::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 80%);
+      z-index: 1;
+    }
+
+    .page-hero-responsive .hero-content-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    /* H1 Typography matched explicitly to H2 section standards */
+    .page-hero-responsive h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+      font-weight: 500 !important;
+      line-height: 1.15 !important;
+      color: #ffffff !important;
+      margin: 8px 0 0 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    /* Hero Subtitle matched to body paragraph standards */
+    .hero-subtitle {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 0.98rem !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      color: rgba(255, 255, 255, 0.92) !important;
+      margin-top: 14px !important;
+    }
+
+    .hero-byline {
+      margin-top: 18px !important;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      line-height: 1 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top-row">
+    <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
+    <div class="header-right"><button class="menu-open-btn" aria-expanded="false" aria-label="Open menu">MENU</button></div>
+  </div>
+  <div class="header-subbar"><a class="header-call" href="tel:+18082985188">808.298.5188</a></div>
+</header>
+
+<nav class="menu" aria-hidden="true">
+  <button class="menu-close" aria-label="Close menu">×</button>
+  <a href="index.html#story-paths">Photography</a>
+  <a href="pricing.html#sessions">Sessions &amp; Pricing</a>
+  <a href="index.html#experience">Our Family</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="faq.html">FAQ &amp; Contact</a>
+  <div class="menu-foot">
+    <a href="tides.html">Tides &amp; Sunset Times</a>
+    <a href="what-to-wear-maui-photos.html">What to Wear Guide</a>
+    <a href="the-apo-difference.html">The APO Difference</a>
+    <a href="our-florist.html">Our Florist</a>
+    <a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
+    <a href="corporate-events.html">Corporate Events</a>
+    <a href="atlas.html" aria-current="page">The Atlas</a>
+    <a href="tel:+18082985188">808.298.5188</a>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO SECTION -->
+  <section class="page-hero-responsive">
+    <picture>
+      <source media="(min-width: 768px)" srcset="assets/maternity-wailea-photo-hero.jpg" width="1600" height="900">
+      <img src="assets/maternity-wailea-photo-hero.jpg" width="1080" height="1350" alt="Expectant mother during a tranquil maternity session in Wailea, Maui" loading="eager" fetchpriority="high">
+    </picture>
+    <div class="hero-content-wrapper reveal visible">
+      <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
+      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">A Blissful Babymoon in Maui: Embrace Tranquility and Capture Memories</h1>
+      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">Pregnancy is a remarkable journey filled with joy, anticipation, and a whirlwind of emotions. As you prepare to welcome your little bundle of joy, taking a babymoon is the ultimate way to cherish your relationship and unwind.</p>
+      <p class="hero-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION: INTRODUCTION -->
+  <section class="content-split">
+    <div class="content-split-image reveal visible">
+      <img src="assets/maternity-wailea-photo-1.jpg" width="1442" height="960" alt="Expectant mother relaxing by the ocean in Wailea, Maui" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">BABYMOON ESSENTIALS</div>
+      <h2>Cherish the Journey</h2>
+      <p>As you prepare to welcome your little bundle of joy into the world, taking a babymoon becomes an essential way to cherish your relationship, indulge in relaxation, and create everlasting memories. And what better place to experience the perfect blend of serenity and beauty than the enchanting island of Maui?</p>
+      <p>In this blog post, we will guide you through planning a dream babymoon in Maui, with a special focus on including a baby moon or maternity photoshoot to capture the magic of this precious time.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 2: DESTINATIONS & RELAXATION -->
+  <section class="content-split reverse">
+    <div class="content-split-image reveal visible">
+      <img src="assets/maternity-wailea-photo-2.jpg" width="1442" height="960" alt="Serene beach views during a Maui babymoon" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">SERENITY &amp; STAYS</div>
+      <h2>Selecting Destinations &amp; Embracing Relaxation</h2>
+      <h3>1. Selecting the Ideal Babymoon Destination</h3>
+      <p>Maui, Hawaii's second-largest island, is renowned for its breathtaking landscapes, pristine beaches, and a serene atmosphere that will sweep you off your feet. As you plan your babymoon, consider staying in popular areas such as Kaanapali, Lahaina, or Wailea, where you can find a range of luxurious resorts and stunning oceanfront accommodations. Look for properties that offer amenities catering to expectant parents, such as spa services, prenatal yoga classes, and comfortable lounging areas.</p>
+      
+      <h3 style="margin-top: 24px;">2. Embracing Relaxation and Tranquility</h3>
+      <p>The key to a memorable babymoon is to prioritize relaxation and tranquility. Maui offers an abundance of opportunities to unwind and indulge in rejuvenating experiences. Take leisurely walks along the pristine beaches, feel the soothing breeze, and listen to the gentle lull of the ocean waves. Consider booking couples' massages or prenatal spa treatments to pamper yourself and ease any pregnancy-related discomfort. Don't forget to stay hydrated and take breaks whenever needed to ensure a stress-free and enjoyable babymoon.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 3: WONDERS & PHOTOSHOOT -->
+  <section class="content-split">
+    <div class="content-split-image reveal visible">
+      <img src="assets/maternity-wailea-photo-3.jpg" width="1442" height="960" alt="Beautiful golden hour maternity portrait in Wailea" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">WONDERS &amp; PHOTOGRAPHY</div>
+      <h2>Exploring Maui &amp; Capturing the Magic</h2>
+      <h3>3. Exploring Maui's Natural Wonders</h3>
+      <p>Maui is a treasure trove of natural wonders, and exploring its breathtaking landscapes is an absolute must during your babymoon. Take a scenic drive along the iconic Road to Hana, marvel at the cascading waterfalls, and soak in the lush greenery surrounding you. Consider taking a leisurely hike to witness the majestic sunrise at Haleakala National Park or embark on a romantic sunset cruise along the coastline to create unforgettable memories with your partner.</p>
+      
+      <h3 style="margin-top: 24px;">4. Capturing the Magic: Baby Moon or Maternity Photoshoot</h3>
+      <p>One of the most cherished aspects of a babymoon is capturing the beauty of this precious time through a baby moon or maternity photoshoot. Maui's stunning backdrop serves as the perfect canvas for these memorable photographs. Wailea Portrait™ specializes in capturing the glow of expectant mothers amidst the island's breathtaking scenery. Discuss your vision, and let us immortalize your love and anticipation in timeless images. We help with posing, direction and styling.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 4: DINING -->
+  <section class="content-split reverse">
+    <div class="content-split-image reveal visible">
+      <img src="assets/maternity-wailea-photo-4.jpg" width="1442" height="960" alt="Romantic oceanfront dining in Wailea" loading="lazy">
+    </div>
+    <div class="content-split-copy reveal visible">
+      <div class="chapter">CULINARY DELIGHTS</div>
+      <h2>5. Dining on Culinary Delights</h2>
+      <p>No babymoon in Maui is complete without savoring the island's delectable culinary offerings. Embark on a gastronomic journey by indulging in fresh seafood, tropical fruits, and traditional Hawaiian dishes. Maui boasts a vibrant food scene with renowned restaurants helmed by talented chefs who expertly blend local flavors with international influences.</p>
+      <p>Don't hesitate to treat yourself to romantic candlelit dinners or beachside picnics, reveling in the delightful flavors that the island has to offer during this special milestone.</p>
+    </div>
+  </section>
+
+  <!-- CONCLUSION SECTION -->
+  <section class="faq-list" style="max-width: 900px; margin: 0 auto; padding: 60px 24px;">
+    <div class="section-head reveal visible" style="text-align: center; margin-bottom: 30px;">
+      <div class="chapter">CONCLUSION</div>
+      <h2>An Enchanting Backdrop for Your Memories</h2>
+    </div>
+    <p style="font-size: 1.05rem; line-height: 1.7; text-align: center; color: #444; margin-bottom: 30px;">
+      A babymoon in Maui offers the perfect blend of tranquility, breathtaking landscapes, and unforgettable experiences. From unwinding on pristine beaches to exploring natural wonders and capturing the magic of your pregnancy through a baby moon or maternity photoshoot, this idyllic island destination provides an enchanting backdrop for your babymoon memories. Cherish this special time with your partner, pamper yourself, and embrace the serenity of Maui, as you eagerly anticipate the arrival of baby!
+    </p>
+    <div style="text-align: center;">
+      <a class="button" href="pricing.html#sessions" style="background: #171716; color: #fff; padding: 12px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; display: inline-block;">Book Your Maternity Session</a>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION SECTION -->
+  <section id="reserve" class="reserve short">
+    <div class="chapter">READY FOR YOUR SESSION?</div>
+    <h2>Let's make something beautiful.</h2>
+    <a class="button" href="pricing.html#sessions">View Sessions &amp; Pricing</a>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="assets/site.js"></script>
+<script>
+if (location.protocol.startsWith('http')) {
+  fetch('footer.html').then(res => res.ok ? res.text() : Promise.reject()).then(html => {
+    document.getElementById('footer-placeholder').outerHTML = html;
+    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>
