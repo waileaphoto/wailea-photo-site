@@ -69,44 +69,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260730-mokapu-sunset">
   <style>
-    /* Editorial Two-Column Hero Layout */
-    .hero-editorial {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 36px;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 32px 20px 48px;
+    /* Option 2: Full-Bleed Viewport Hero */
+    .page-hero-full {
+      position: relative;
+      width: 100%;
+      min-height: 85vh; /* Provides plenty of vertical room for the 3:2 frame */
+      display: flex;
+      align-items: flex-start;
+      padding: 60px 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #171716;
     }
 
-    @media (min-width: 900px) {
-      .hero-editorial {
-        grid-template-columns: 1fr 1.15fr;
-        gap: 56px;
-        padding: 56px 32px 64px;
+    @media (min-width: 768px) {
+      .page-hero-full {
+        padding: 80px 48px;
       }
     }
 
-    .hero-editorial-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .page-hero-full img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+      object-position: center 80% !important; /* Locks onto lower portion to keep lava rocks fully exposed */
+      z-index: 0;
     }
 
-    .hero-editorial-image {
-      width: 100%;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-      background-color: #f3ecdf;
+    /* Soft gradient overlay at the top for maximum text legibility */
+    .page-hero-full::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23, 23, 22, 0.72) 0%, rgba(23, 23, 22, 0.25) 45%, rgba(23, 23, 22, 0) 70%);
+      z-index: 1;
     }
 
-    .hero-editorial-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
+    .page-hero-copy-overlay {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      max-width: 680px;
     }
 
     .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid #b69557;background:#f3ecdf}
@@ -134,15 +139,13 @@
 </nav>
 
 <main>
-  <section class="hero-editorial">
-    <div class="hero-editorial-copy reveal visible">
-      <div class="eyebrow">THE WAILEA PHOTO ATLAS</div>
-      <h1 style="color:#171716;margin-top:14px;font-size:clamp(2.2rem,4.2vw,3.2rem);line-height:1.12;font-family:var(--serif, 'Cormorant Garamond', serif)">Where to park for a sunset session at Mokapu Beach.</h1>
-      <p style="margin-top:16px;font-size:1.1rem;line-height:1.55;color:#4a4a46">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
-      <p style="margin-top:20px;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;opacity:.85">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
-    </div>
-    <div class="hero-editorial-image reveal visible">
-      <img src="assets/mokapu-beach-sunset-portrait.jpg" width="1600" height="1065" alt="Portrait of a woman in a red dress standing on lava rock at Mokapu Beach in Wailea near sunset" loading="eager" fetchpriority="high">
+  <section class="page-hero-full">
+    <img src="assets/mokapu-beach-sunset-portrait.jpg" width="1600" height="1065" alt="Portrait of a woman in a red dress standing on lava rock at Mokapu Beach in Wailea near sunset" loading="eager" fetchpriority="high">
+    <div class="page-hero-copy-overlay reveal visible">
+      <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
+      <h1 style="color:#ffffff;margin-top:12px;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.12;font-family:var(--serif, 'Cormorant Garamond', serif)">Where to park for a sunset session at Mokapu Beach.</h1>
+      <p style="margin-top:14px;font-size:1.1rem;line-height:1.5;color:rgba(255,255,255,0.9)">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
+      <p style="margin-top:18px;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.75)">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
     </div>
   </section>
 
