@@ -66,17 +66,17 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260730-mokapu-sunset">
   <style>
-    /* Full-Bleed Viewport Hero with Native Typography */
+    /* Option 2: Full-Bleed Viewport Hero */
     .page-hero-full {
       position: relative;
       width: 100%;
       min-height: 85vh;
       display: flex;
       align-items: flex-start;
-      padding: 40px 20px;
+      padding: 48px 24px;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #171716;
@@ -84,7 +84,7 @@
 
     @media (min-width: 768px) {
       .page-hero-full {
-        padding: 60px 32px;
+        padding: 64px 32px;
       }
     }
 
@@ -98,24 +98,31 @@
       z-index: 0;
     }
 
-    /* Gradient overlay to preserve text legibility over the sky */
+    /* Soft top gradient scrim */
     .page-hero-full::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 75%);
+      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.35) 45%, rgba(23, 23, 22, 0) 75%);
       z-index: 1;
     }
 
-    .page-hero-full .page-hero-copy {
+    .page-hero-full .hero-content-wrapper {
       position: relative;
       z-index: 2;
-      color: #ffffff;
-      padding-top: 0;
+      max-width: 720px;
     }
 
-    .page-hero-full .page-hero-copy h1 {
-      color: #ffffff !important;
+    /* Title matching section heading h2 styles exactly */
+    .page-hero-full h1.hero-title-matched {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-top: 12px;
+      margin-bottom: 0;
+      letter-spacing: -0.01em;
     }
 
     .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid #b69557;background:#f3ecdf}
@@ -145,11 +152,11 @@
 <main>
   <section class="page-hero-full">
     <img src="assets/mokapu-beach-sunset-portrait.jpg" width="1600" height="1065" alt="Portrait of a woman in a red dress standing on lava rock at Mokapu Beach in Wailea near sunset" loading="eager" fetchpriority="high">
-    <div class="page-hero-copy reveal visible">
-      <div class="eyebrow">THE WAILEA PHOTO ATLAS</div>
-      <h1>Where to park for a sunset session at Mokapu Beach.</h1>
-      <p style="margin-top:12px;opacity:.95">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
-      <p style="margin-top:14px;font:600 11px/1 var(--sans);letter-spacing:.1em;opacity:.85">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
+    <div class="hero-content-wrapper reveal visible">
+      <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
+      <h1 class="hero-title-matched">Where to park for a sunset session at Mokapu Beach.</h1>
+      <p style="margin-top:14px;font-size:1.05rem;line-height:1.55;color:rgba(255,255,255,0.9)">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
+      <p style="margin-top:18px;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.75)">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
     </div>
   </section>
 
