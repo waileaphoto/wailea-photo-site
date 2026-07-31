@@ -70,7 +70,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260730-mokapu-sunset">
   <style>
-    /* Hero Layout matching site design system */
+    /* Hero Container Setup */
     .page-hero-responsive {
       position: relative;
       width: 100%;
@@ -100,7 +100,7 @@
       z-index: 0;
     }
 
-    /* Gradient overlay for contrast */
+    /* Gradient Overlay */
     .page-hero-responsive::before {
       content: '';
       position: absolute;
@@ -115,30 +115,49 @@
       max-width: 680px;
     }
 
-    /* Matches standard section h2 typography and colors from site.css */
+    /* Exact H2 font match to "Meet us at Mokapu Beach beside the Andaz Maui." */
     .page-hero-responsive h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.85rem;
+      font-weight: 500;
+      line-height: 1.25;
       color: #ffffff;
       margin: 8px 0 0;
+      letter-spacing: -0.01em;
     }
 
-    /* Subtitle inherits site body text font, size, and line-height directly */
+    @media (min-width: 768px) {
+      .page-hero-responsive h1 {
+        font-size: 2.25rem;
+        line-height: 1.2;
+      }
+    }
+
+    /* Exact paragraph font match to section body copy */
     .hero-subtitle {
-      margin-top: 14px;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      font-weight: 400;
       color: rgba(255, 255, 255, 0.92);
+      margin-top: 12px;
     }
 
     .hero-byline {
       margin-top: 16px;
-      font: 600 11px/1 var(--sans, 'Inter', sans-serif);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.75);
     }
 
     .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid #b69557;background:#f3ecdf}
-    .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 var(--sans, 'Inter', sans-serif);letter-spacing:.13em;text-transform:uppercase}
+    .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter', sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .map-actions{margin:26px 0 8px;display:flex;flex-wrap:wrap;gap:12px}
-    .map-actions a{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:5px;color:#fff;font:600 12px/1 var(--sans, 'Inter', sans-serif);letter-spacing:.06em;text-decoration:none;text-transform:uppercase}
+    .map-actions a{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:5px;color:#fff;font:600 12px/1 'Inter', sans-serif;letter-spacing:.06em;text-decoration:none;text-transform:uppercase}
     .map-google{background:#3f76d3}.map-apple{background:#171716}
     .arrival-list{margin:20px 0 0;padding:0;list-style:none}
     .arrival-list li{padding:14px 0;border-top:1px solid rgba(23,23,22,.15)}
