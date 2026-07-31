@@ -69,36 +69,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260730-mokapu-sunset">
   <style>
-    /* Responsive aspect-ratio container to prevent any cropping */
-    .hero-container {
-      width: 100%;
+    /* Editorial Two-Column Hero Layout */
+    .hero-editorial {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 0 16px;
-    }
-    
-    .page-hero {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 2; /* Matches exact original photo proportions */
-      max-height: 80vh;
-      overflow: hidden;
-      border-radius: 4px;
-      background-color: #171716;
-    }
-    
-    .page-hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain !important; /* Preserves entire frame without cropping head or lava rocks */
-      object-position: center center !important;
-      display: block;
+      padding: 32px 20px 48px;
     }
 
-    .hero-header-text {
-      max-width: 1400px;
-      margin: 24px auto 0;
-      padding: 0 16px;
+    @media (min-width: 900px) {
+      .hero-editorial {
+        grid-template-columns: 1fr 1.15fr;
+        gap: 56px;
+        padding: 56px 32px 64px;
+      }
+    }
+
+    .hero-editorial-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-editorial-image {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      background-color: #f3ecdf;
+    }
+
+    .hero-editorial-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
 
     .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid #b69557;background:#f3ecdf}
@@ -126,20 +134,19 @@
 </nav>
 
 <main>
-  <div class="hero-container">
-    <section class="page-hero">
+  <section class="hero-editorial">
+    <div class="hero-editorial-copy reveal visible">
+      <div class="eyebrow">THE WAILEA PHOTO ATLAS</div>
+      <h1 style="color:#171716;margin-top:14px;font-size:clamp(2.2rem,4.2vw,3.2rem);line-height:1.12;font-family:var(--serif, 'Cormorant Garamond', serif)">Where to park for a sunset session at Mokapu Beach.</h1>
+      <p style="margin-top:16px;font-size:1.1rem;line-height:1.55;color:#4a4a46">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
+      <p style="margin-top:20px;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;opacity:.85">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
+    </div>
+    <div class="hero-editorial-image reveal visible">
       <img src="assets/mokapu-beach-sunset-portrait.jpg" width="1600" height="1065" alt="Portrait of a woman in a red dress standing on lava rock at Mokapu Beach in Wailea near sunset" loading="eager" fetchpriority="high">
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <div class="hero-header-text">
-    <div class="eyebrow">THE WAILEA PHOTO ATLAS</div>
-    <h1 style="color:#171716;margin-top:12px;font-size:clamp(2rem,4vw,3rem);line-height:1.15">Where to park for a sunset session at Mokapu Beach.</h1>
-    <p style="margin-top:12px">A practical, no-surprises guide to parking, finding the beach, and arriving ready for beautiful evening light.</p>
-    <p style="margin-top:14px;font:600 11px/1 var(--sans);letter-spacing:.1em;opacity:.85">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
-  </div>
-
-  <section class="content-split" style="margin-top: 40px;">
+  <section class="content-split">
     <div class="content-split-image reveal visible">
       <img src="assets/mokapu-beach-sunset-wedding.jpg" width="1442" height="960" alt="Wedding couple photographed at sunset on Mokapu Beach in Wailea, Maui" loading="lazy">
     </div>
