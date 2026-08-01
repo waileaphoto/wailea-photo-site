@@ -142,6 +142,8 @@ button{font:inherit}
 .trust-intro{min-height:78svh;padding:13vh 8vw;display:grid;grid-template-columns:1.15fr .85fr;gap:8vw;align-items:center}
 .trust-intro .display{font-size:clamp(56px,8vw,112px);max-width:10ch}
 .trust-number{font:300 clamp(82px,13vw,178px)/.82 var(--sans);color:var(--red);letter-spacing:-.075em}
+.trust-number-link{display:inline-block;text-decoration:none;transition:opacity .2s ease}
+.trust-number-link:hover,.trust-number-link:focus-visible{opacity:.72}
 .trust-stars{margin-top:22px;color:var(--gold);font-size:clamp(25px,2.8vw,40px);letter-spacing:.18em;line-height:1}
 .trust-label{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-top:20px}
 .proof-line{display:block;margin-top:20px;max-width:22ch}
@@ -786,12 +788,27 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 .eapps-all-in-one-reviews-474fef62-afe0-49b5-ba3a-0147fd8aacc5-custom-css-root .es-badge-reviews-count{font-family:var(--sans);font-weight:500}
 
 
-/* Combined reviews summary card (replaces 5-source grid; totals summed live via JS from hidden #all-reviews-widget) */
-.combined-reviews-card{max-width:260px;margin:26px 0 0;padding:20px 22px;background:var(--paper);border:1px solid var(--line);border-radius:2px;text-align:center;transition:border-color .25s ease}
+/* Combined reviews summary card; the total updates from Elfsight, but platform links never depend on it. */
+.combined-reviews-card{max-width:430px;margin:26px 0 0;padding:20px 22px;background:var(--paper);border:1px solid var(--line);border-radius:2px;text-align:center;transition:border-color .25s ease}
 .combined-reviews-card:hover{border-color:var(--ink)}
-.combined-reviews-logos{display:flex;align-items:center;justify-content:center;gap:10px;min-height:22px}.combined-reviews-logos>div{width:22px!important;height:22px!important}
-.combined-reviews-label{margin-top:12px;font-family:var(--serif);font-weight:600;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:rgba(27,25,23,.65)}
+.combined-reviews-label{font-family:var(--serif);font-weight:600;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:rgba(27,25,23,.65)}
 .combined-reviews-rating{margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px}
 .combined-reviews-rating span:first-child{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--ink)}
 .combined-reviews-stars{color:var(--gold);font-size:14px;letter-spacing:.12em}
-.combined-reviews-count{margin-top:6px;font-family:var(--sans);font-weight:600;font-size:12px;color:var(--red)}
+.combined-reviews-count{display:inline-block;margin-top:6px;font-family:var(--sans);font-weight:700;font-size:13px;color:var(--red);text-decoration:none;border-bottom:1px solid rgba(146,43,33,.3)}
+.combined-reviews-count:hover,.combined-reviews-count:focus-visible{border-color:var(--red)}
+.review-platforms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:18px;scroll-margin-top:110px}
+.review-platform{min-height:48px;display:flex;align-items:center;justify-content:flex-start;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:3px;background:#fff;color:var(--ink);font:600 11px/1.2 var(--sans);text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+.review-platform:hover,.review-platform:focus-visible{border-color:var(--ink);transform:translateY(-1px)}
+.review-platform-logo{flex:0 0 25px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;color:#fff;font:700 14px/1 var(--sans);letter-spacing:-.03em}
+.review-platform-google .review-platform-logo{background:conic-gradient(from -45deg,#4285f4 0 25%,#34a853 0 50%,#fbbc05 0 75%,#ea4335 0)}
+.review-platform-tripadvisor .review-platform-logo{background:#00aa6c;font-size:8px;letter-spacing:-.12em}
+.review-platform-facebook .review-platform-logo{background:#1877f2;font-family:Arial,sans-serif;font-size:20px}
+.review-platform-yelp .review-platform-logo{background:#d32323;font-size:17px}
+.review-platform-viator .review-platform-logo{background:#2a2a2a}
+.review-platform-airbnb .review-platform-logo{background:#ff385c}
+@media(max-width:520px){
+  .combined-reviews-card{max-width:none;width:100%;padding:20px 14px}
+  .review-platforms{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .review-platform{min-height:52px;padding:9px 11px;font-size:12px}
+}
