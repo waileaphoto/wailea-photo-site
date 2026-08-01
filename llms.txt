@@ -39,6 +39,7 @@
 - Wailea vs. Kihei vs. Makena: https://waileaphoto.com/wailea-vs-kihei-vs-makena-photo-locations - Wailea has the calmest, most reliably turquoise water and suits portraits; Kihei is more public and casual; Makena's Big Beach is wide open and suits weddings and large groups.
 - What to wear: https://waileaphoto.com/what-to-wear-maui-photos - Soft neutrals, ocean blues, greens and earth tones photograph best; avoid neon, large logos and busy patterns.
 - The APO Difference: https://waileaphoto.com/the-apo-difference - Clients can choose a Leica APO-Summicron lens for true color and no chromatic aberration, even shooting into Maui's brightest light.
+- Leica M9 vs Kodak Portra 160: https://waileaphoto.com/leica-m9-vs-kodak-portra-160 - A field comparison using the same Leica 50mm APO-Summicron lens. The M9 is generally more saturated, especially in reds and blues; after modest balancing its skin tones and texture can be surprisingly difficult to distinguish from the Portra 160 scan. The experiment demonstrates resemblance, not proof of Kodak sensor-design intent.
 
 - Maui snorkeling spots: https://waileaphoto.com/snorkelspots.html
 - Reef-conscious sunscreen guide: https://waileaphoto.com/sunscreen.html
@@ -59,3 +60,4 @@ https://waileaphoto.com/faq
 
 ## Full Content
 See /llms-full.txt for a fuller text summary of this site.
+
