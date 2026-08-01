@@ -3,371 +3,426 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#171716">
-  
-  <!-- Analytics & Tracking -->
-  <script defer src="assets/analytics.js"></script>
-  <script src="assets/fb-pixel.js"></script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=823300302049467&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
-  <script src="assets/pinterest-tag.js"></script>
+  <meta name="theme-color" content="#315f69">
+  <meta name="facebook-domain-verification" content="vuj5023ys5ztnxhs95ayexcfv6sg86" />
 
-  <!-- Page Title & Meta -->
-  <title>The Wailea Photo Atlas: Maui Guides &amp; Island Insights | Wailea Photo</title>
-  <meta name="description" content="Explore The Wailea Photo Atlas—your definitive guide to Maui, featuring expert advice on the best snorkel spots, Road to Hana tips, reef-safe sunscreens, catamaran tours, helicopter flights, and maternity sessions.">
+  <title>The Wailea Photo Atlas | Maui Portrait Photography Guide</title>
+  <meta name="description" content="Explore the Wailea Photo Atlas—a growing reference to Maui portrait photography, family sessions, beaches, light, weather, Leica cameras, film, and the craft behind timeless photographs.">
   <link rel="canonical" href="https://waileaphoto.com/atlas.html">
-  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="robots" content="index,follow">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Preload Hero Assets -->
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" media="(min-width: 768px)" fetchpriority="high">
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1080&q=80" media="(max-width: 767px)" fetchpriority="high">
-
-  <!-- Open Graph / Social -->
+  <!-- OPEN GRAPH / TWITTER CARDS -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Wailea Photo Atlas: Maui Guides &amp; Island Insights">
-  <meta property="og:description" content="Explore The Wailea Photo Atlas—your definitive guide to Maui, featuring expert advice on the best snorkel spots, Road to Hana tips, reef-safe sunscreens, catamaran tours, helicopter flights, and maternity sessions.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80">
-  <meta property="og:image:alt" content="Pristine Maui ocean and coastline from The Wailea Photo Atlas">
+  <meta property="og:title" content="The Wailea Photo Atlas | Maui Portrait Photography Guide">
+  <meta property="og:description" content="The art, science, and local knowledge behind portrait photography in Maui.">
+  <meta property="og:image" content="https://waileaphoto.com/assets/Family%20Archive%20Wailea%20Photo.jpg">
   <meta property="og:url" content="https://waileaphoto.com/atlas.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Wailea Photo Atlas: Maui Guides &amp; Island Insights">
-  <meta name="twitter:description" content="Explore The Wailea Photo Atlas—your definitive guide to Maui, featuring expert advice on the best snorkel spots, Road to Hana tips, reef-safe sunscreens, catamaran tours, helicopter flights, and maternity sessions.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80">
+  <meta name="twitter:title" content="The Wailea Photo Atlas | Maui Portrait Photography Guide">
+  <meta name="twitter:description" content="The art, science, and local knowledge behind portrait photography in Maui.">
+  <meta name="twitter:image" content="https://waileaphoto.com/assets/Family%20Archive%20Wailea%20Photo.jpg">
 
-  <!-- Schema Markup -->
+  <!-- ASSET PRECONNECTS & STYLES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css?v=20260722-navphoto">
+
+  <!-- SCRIPTS -->
+  <script defer src="assets/analytics.js"></script>
+  <script defer src="assets/fb-pixel.js"></script>
+  <script defer src="assets/pinterest-tag.js"></script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=823300302049467&amp;ev=PageView&amp;noscript=1" alt=""/>
+    <img height="1" width="1" style="display:none" src="https://ct.pinterest.com/v3/?event=init&amp;tid=2614053312824&amp;pd[em]=&amp;noscript=1" alt=""/>
+  </noscript>
+
+  <!-- SCHEMA MARKUP (COLLECTION PAGE & BREADCRUMBS) -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"CollectionPage",
-    "name":"The Wailea Photo Atlas",
-    "description":"Your definitive guide to Maui, featuring expert advice on snorkel spots, Road to Hana, reef-safe sunscreen, catamaran tours, helicopter flights, and maternity photography.",
-    "url":"https://waileaphoto.com/atlas.html",
-    "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo"}
-  }
-  </script>
-  
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://waileaphoto.com/"},
-      {"@type":"ListItem","position":2,"name":"Atlas","item":"https://waileaphoto.com/atlas.html"}
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://waileaphoto.com/atlas.html#webpage",
+    "name": "The Wailea Photo Atlas",
+    "description": "A growing reference to the art, science, and local knowledge behind portrait photography in Maui.",
+    "url": "https://waileaphoto.com/atlas.html",
+    "isPartOf": { 
+      "@type": "WebSite", 
+      "@id": "https://waileaphoto.com/#website",
+      "name": "Wailea Photo", 
+      "url": "https://waileaphoto.com/" 
+    },
+    "about": [
+      "Maui portrait photography",
+      "family photography",
+      "Maui beaches",
+      "portrait lighting",
+      "Leica cameras",
+      "film photography"
+    ],
+    "hasPart": [
+      {
+        "@type": "CreativeWork",
+        "name": "Best Beaches in Maui for Family Pictures",
+        "url": "https://waileaphoto.com/best-beaches-maui-family-pictures.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Best Time of Day for Family Beach Photos",
+        "url": "https://waileaphoto.com/best-time-of-day-family-beach-photos-wailea.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Parking for a Sunrise Session at Keawakapu Beach",
+        "url": "https://waileaphoto.com/parking-sunrise-session-keawakapu-beach.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Parking for a Sunset Session at Mokapu Beach",
+        "url": "https://waileaphoto.com/parking-sunset-session-mokapu-beach.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Directions to the Turquoise + Water Session at Kanahā Beach",
+        "url": "https://waileaphoto.com/parking-turquoise-water-session-kanaha-beach.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Wailea vs. Kihei vs. Makena Photo Locations",
+        "url": "https://waileaphoto.com/wailea-vs-kihei-vs-makena-photo-locations.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Why We Don’t Hide for Maui Proposals",
+        "url": "https://waileaphoto.com/why-we-dont-hide-for-maui-proposals.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "What to Wear for Maui Beach Photos",
+        "url": "https://waileaphoto.com/what-to-wear-maui-photos.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Where to Eat After Your Photo Session in Wailea & Kihei",
+        "url": "https://waileaphoto.com/where-to-eat-after-photo-session-wailea.html"
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "The Top 3 Catamaran Tours and Activities to Experience in Maui",
+        "url": "https://waileaphoto.com/maui-catamaran-tours-guide.html"
+      }
     ]
   }
   </script>
 
-  <!-- Google Fonts & Stylesheets -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=20260731">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://waileaphoto.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Atlas", "item": "https://waileaphoto.com/atlas.html" }
+    ]
+  }
+  </script>
 
-  <style>
-    /* Hero Container Setup */
-    .page-hero-responsive {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      display: flex;
-      align-items: flex-start;
-      padding: 36px 24px;
-      box-sizing: border-box;
-      overflow: hidden;
-      background-color: #171716;
-    }
-
-    @media (min-width: 768px) {
-      .page-hero-responsive {
-        aspect-ratio: 16 / 9;
-        padding: 56px 48px;
+  <!-- LOCAL BUSINESS & PROFESSIONAL SERVICE SCHEMA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://waileaphoto.com/#organization",
+    "name": "Wailea Photo",
+    "url": "https://waileaphoto.com/",
+    "logo": "https://waileaphoto.com/assets/favicon.svg",
+    "image": "https://waileaphoto.com/assets/Family%20Archive%20Wailea%20Photo.jpg",
+    "description": "Local, family-run Maui photography studio specializing in family, couples, and wedding portraits across Wailea, Makena, and South Maui.",
+    "disambiguatingDescription": "Not to be confused with the unrelated Kihei business \"Wailea Photography\" -- Wailea Photo is the family-run studio operated by Laurence, Jude, Max and Solomon Balter.",
+    "telephone": "+1-808-298-5188",
+    "email": "photo@waileaphoto.com",
+    "priceRange": "$$-$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wailea",
+      "addressRegion": "HI",
+      "postalCode": "96753",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 20.6897,
+      "longitude": -156.4419
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Wailea, HI" },
+      { "@type": "AdministrativeArea", "name": "Makena, HI" },
+      { "@type": "AdministrativeArea", "name": "Kihei, HI" },
+      { "@type": "AdministrativeArea", "name": "South Maui, HI" }
+    ],
+    "member": [
+      {
+        "@type": "Person",
+        "@id": "https://waileaphoto.com/#laurence-balter",
+        "name": "Laurence Balter",
+        "jobTitle": "Founder & Lead Photographer",
+        "description": "Founded Wailea Photo more than 25 years ago and has personally photographed thousands of families, couples and weddings across Wailea, Keawakapu and South Maui.",
+        "image": "https://waileaphoto.com/assets/laurence-balter-owner-wailea-photo.jpg",
+        "url": "https://waileaphoto.com/laurence-balter.html",
+        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://waileaphoto.com/#jude-balter",
+        "name": "Jude Balter",
+        "jobTitle": "Photographer",
+        "description": "Laurence Balter's wife and Wailea Photo's black-and-white specialist, photographing family, couples and wedding sessions across South Maui.",
+        "image": "https://waileaphoto.com/assets/laurence-jude-balter-hiking-maui.jpg",
+        "url": "https://waileaphoto.com/jude-balter.html",
+        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://waileaphoto.com/#max-balter",
+        "name": "Max Balter",
+        "jobTitle": "Photographer",
+        "description": "Second-generation Wailea Photo photographer specializing in Keawakapu and Wailea Sunrise sessions.",
+        "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
+        "url": "https://waileaphoto.com/max-balter.html",
+        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://waileaphoto.com/#solomon-balter",
+        "name": "Solomon Balter",
+        "jobTitle": "Photographer",
+        "description": "Second-generation Wailea Photo photographer with a cinematic style, photographing family and couples sessions.",
+        "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
+        "url": "https://waileaphoto.com/solomon-balter.html",
+        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" }
       }
-    }
-
-    .page-hero-responsive picture,
-    .page-hero-responsive picture img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover !important;
-      z-index: 0;
-    }
-
-    /* Hero Gradient Overlay */
-    .page-hero-responsive::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 80%);
-      z-index: 1;
-    }
-
-    .page-hero-responsive .hero-content-wrapper {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-    }
-
-    /* H1 Typography matched explicitly to H2 section standards */
-    .page-hero-responsive h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif !important;
-      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
-      font-weight: 500 !important;
-      line-height: 1.15 !important;
-      color: #ffffff !important;
-      margin: 8px 0 0 !important;
-      letter-spacing: -0.01em !important;
-    }
-
-    /* Hero Subtitle matched to body paragraph standards */
-    .hero-subtitle {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-      font-size: 0.98rem !important;
-      line-height: 1.6 !important;
-      font-weight: 400 !important;
-      color: rgba(255, 255, 255, 0.92) !important;
-      margin-top: 14px !important;
-    }
-
-    .hero-byline {
-      margin-top: 18px !important;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-      font-size: 11px !important;
-      font-weight: 600 !important;
-      line-height: 1 !important;
-      letter-spacing: 0.12em !important;
-      text-transform: uppercase !important;
-      color: rgba(255, 255, 255, 0.75) !important;
-    }
-
-    /* Atlas Grid Styles */
-    .atlas-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-
-    @media (min-width: 768px) {
-      .atlas-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        padding: 80px 48px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .atlas-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .atlas-card {
-      background: #fdfbf7;
-      border: 1px solid #e8e2d5;
-      border-radius: 6px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      text-decoration: none;
-    }
-
-    .atlas-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-    }
-
-    .atlas-card-img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-    }
-
-    .atlas-card-body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .atlas-card-category {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #b69557;
-      margin-bottom: 8px;
-    }
-
-    .atlas-card-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.45rem;
-      font-weight: 500;
-      color: #171716;
-      line-height: 1.25;
-      margin: 0 0 12px;
-    }
-
-    .atlas-card-excerpt {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 0.92rem;
-      line-height: 1.6;
-      color: #555;
-      margin: 0 0 20px;
-      flex-grow: 1;
-    }
-
-    .atlas-card-link {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #171716;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-  </style>
+    ],
+    "sameAs": [
+      "https://www.instagram.com/waileaphoto",
+      "https://www.facebook.com/waileaphoto",
+      "https://www.yelp.com/biz/wailea-photo-wailea",
+      "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html",
+      "https://g.page/r/Cc3XQvgWZf3-EAI/review"
+    ]
+  }
+  </script>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="header-top-row">
-    <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
-    <div class="header-right"><button class="menu-open-btn" aria-expanded="false" aria-label="Open menu">MENU</button></div>
-  </div>
-  <div class="header-subbar"><a class="header-call" href="tel:+18082985188">808.298.5188</a></div>
-</header>
-
-<nav class="menu" aria-hidden="true">
-  <button class="menu-close" aria-label="Close menu">×</button>
-  <a href="index.html#story-paths">Photography</a>
-  <a href="pricing.html#sessions">Sessions &amp; Pricing</a>
-  <a href="index.html#experience">Our Family</a>
-  <a href="index.html#reviews">Reviews</a>
-  <a href="faq.html">FAQ &amp; Contact</a>
-  <div class="menu-foot">
-    <a href="tides.html">Tides &amp; Sunset Times</a>
-    <a href="what-to-wear-maui-photos.html">What to Wear Guide</a>
-    <a href="the-apo-difference.html">The APO Difference</a>
-    <a href="our-florist.html">Our Florist</a>
-    <a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
-    <a href="corporate-events.html">Corporate Events</a>
-    <a href="atlas.html" aria-current="page">The Atlas</a>
-    <a href="tel:+18082985188">808.298.5188</a>
-  </div>
-</nav>
-
-<main>
-  <!-- HERO SECTION -->
-  <section class="page-hero-responsive">
-    <picture>
-      <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" width="1600" height="900">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1080&q=80" width="1080" height="1350" alt="Pristine Maui ocean and coastline from The Wailea Photo Atlas" loading="eager" fetchpriority="high">
-    </picture>
-    <div class="hero-content-wrapper reveal visible">
-      <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
-      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">Maui Field Guides &amp; Island Insights</h1>
-      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">Your definitive resource for experiencing the Valley Isle—featuring expert advice on local adventures, conservation, and capturing timeless family memories.</p>
-      <p class="hero-byline">CURATED BY WAILEA PHOTO</p>
+  <header class="site-header">
+    <div class="header-top-row">
+      <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
+      <div class="header-right">
+        <button class="menu-open-btn" aria-expanded="false" aria-label="Open menu">MENU</button>
+      </div>
     </div>
-  </section>
+    <div class="header-subbar">
+      <a class="header-call" href="tel:+18082985188" aria-label="Call Wailea Photo at 808-298-5188">808.298.5188</a>
+    </div>
+  </header>
 
-  <!-- ATLAS CARDS GRID SECTION -->
-  <section class="atlas-grid">
-    
-    <!-- Snorkel Spots -->
-    <a href="snorkelspots.html" class="atlas-card reveal visible">
-      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" class="atlas-card-img" alt="Snorkeling in Maui waters" loading="lazy">
-      <div class="atlas-card-body">
-        <div class="atlas-card-category">Things to Do</div>
-        <h2 class="atlas-card-title">Best Snorkel Spots in Maui</h2>
-        <p class="atlas-card-excerpt">Dive into Molokini Crater, Honolua Bay, Ahihi Kinau, and more. Discover vibrant coral gardens, sea turtles, and unforgettable underwater adventures.</p>
-        <span class="atlas-card-link">Read Guide →</span>
+  <nav class="menu" aria-hidden="true">
+    <button class="menu-close" aria-label="Close menu">×</button>
+    <a href="index.html#story-paths">Photography</a>
+    <a href="pricing.html#sessions">Sessions &amp; Pricing</a>
+    <a href="index.html#experience">Our Family</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="faq.html">FAQ &amp; Contact</a>
+    <div class="menu-foot">
+      <a href="tides.html">Tides &amp; Sunset Times</a>
+      <a href="what-to-wear-maui-photos.html">What to Wear Guide</a>
+      <a href="the-apo-difference.html">The APO Difference</a>
+      <a href="our-florist.html">Our Florist</a>
+      <a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
+      <a href="corporate-events.html">Corporate Events</a>
+      <a href="tel:+18082985188">808.298.5188</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="page-hero atlas-hero">
+      <img src="assets/Family%20Archive%20Wailea%20Photo.jpg" alt="A family portrait created in the luminous landscape of Wailea, Maui" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async">
+      <div class="page-hero-copy reveal visible">
+        <div class="eyebrow">THE ART · THE SCIENCE · THE ISLAND</div>
+        <h1>The Wailea Photo Atlas</h1>
+        <p>The Art, Science, and Local Knowledge Behind Portrait Photography in Maui</p>
       </div>
-    </a>
+    </section>
 
-    <!-- Road to Hana -->
-    <a href="roadtohana.html" class="atlas-card reveal visible">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="atlas-card-img" alt="Road to Hana scenic drive" loading="lazy">
-      <div class="atlas-card-body">
-        <div class="atlas-card-category">Things to Do</div>
-        <h2 class="atlas-card-title">Is Driving the Road to Hana Worth It?</h2>
-        <p class="atlas-card-excerpt">Explore the rewards and risks of the legendary Divine Drive, featuring cascading waterfalls, lush rainforests, and essential travel preparation tips.</p>
-        <span class="atlas-card-link">Read Guide →</span>
+    <section class="atlas-intro">
+      <div class="chapter">A GROWING MAUI REFERENCE</div>
+      <div class="atlas-intro-grid">
+        <h2>Twenty-five years of field knowledge, shared.</h2>
+        <div>
+          <p>For more than 25 years, our family has photographed families, couples, children, and weddings across Wailea, Makena, and South Maui.</p>
+          <p>During thousands of portrait sessions, we have learned that creating a meaningful photograph requires much more than choosing a beautiful beach. It requires an understanding of light, weather, wind, tides, color, optics, family dynamics, and the quiet moments that transform a photograph into a memory.</p>
+          <p>The Wailea Photo Atlas is where we share that knowledge.</p>
+          <p>This is not a traditional photography blog. It is a growing reference devoted to the art and engineering of portrait photography in Maui—from choosing the right beach and time of day to understanding professional lighting, Leica optics, Kodak film, natural skin tones, and the craft behind timeless family portraits.</p>
+        </div>
       </div>
-    </a>
+    </section>
 
-    <!-- Sunscreen Guide -->
-    <a href="sunscreen.html" class="atlas-card reveal visible">
-      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80" class="atlas-card-img" alt="Maui beach and ocean conservation" loading="lazy">
-      <div class="atlas-card-body">
-        <div class="atlas-card-category">Island Tips</div>
-        <h2 class="atlas-card-title">How to Avoid Sunburn &amp; Protect Maui's Reefs</h2>
-        <p class="atlas-card-excerpt">Navigate Hawaii's sunscreen regulations, choose approved mineral-based reef-safe formulas, and protect both your skin and delicate marine ecosystems.</p>
-        <span class="atlas-card-link">Read Guide →</span>
+    <section class="atlas-explore" aria-labelledby="atlas-guides-title">
+      <div class="atlas-section-head">
+        <div class="chapter">LATEST GUIDES</div>
+        <h2 id="atlas-guides-title">New field guides, written from experience.</h2>
       </div>
-    </a>
-
-    <!-- Catamaran Tours -->
-    <a href="catamarantours.html" class="atlas-card reveal visible">
-      <img src="https://images.unsplash.com/photo-1516815231785-38106a7ac9ea?auto=format&fit=crop&w=800&q=80" class="atlas-card-img" alt="Catamaran sailing in Maui" loading="lazy">
-      <div class="atlas-card-body">
-        <div class="atlas-card-category">Things to Do</div>
-        <h2 class="atlas-card-title">Maui Catamaran Tours &amp; Sailing Adventures</h2>
-        <p class="atlas-card-excerpt">Set sail across the Pacific for breathtaking sunset cruises, whale watching, and unforgettable coastal sailing experiences off Maui's shores.</p>
-        <span class="atlas-card-link">Read Guide →</span>
+      <div class="atlas-grid">
+        <article class="atlas-card">
+          <span>01</span>
+          <h3>Best Beaches in Maui for Family Pictures</h3>
+          <p>Mokapu, Maluaka, Kanahā and Keawakapu compared for light, wind, crowds, access and the families each beach suits best.</p>
+          <a href="best-beaches-maui-family-pictures.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>02</span>
+          <h3>Best Time of Day for Family Beach Photos</h3>
+          <p>Golden hour, sunrise, and why midday sun in Wailea is the one window we don't recommend.</p>
+          <a href="best-time-of-day-family-beach-photos-wailea.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>03</span>
+          <h3>Parking for a Sunrise Session at Keawakapu Beach</h3>
+          <p>Where to park, how early to arrive, and practical meeting notes for Keawakapu Beach in Wailea.</p>
+          <a href="parking-sunrise-session-keawakapu-beach.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>04</span>
+          <h3>Parking for a Sunset Session at Mokapu Beach</h3>
+          <p>Public parking, the walk past the Andaz, map links and practical preparation notes for a Wailea sunset session.</p>
+          <a href="parking-sunset-session-mokapu-beach.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>05</span>
+          <h3>Parking for Turquoise + Water at Kanahā Beach</h3>
+          <p>The required map, final entrance, Lifeguard Station 10B meeting point and restroom notes for your session.</p>
+          <a href="parking-turquoise-water-session-kanaha-beach.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>06</span>
+          <h3>Wailea vs. Kihei vs. Makena</h3>
+          <p>Water color, crowds, and scenery compared across South Maui's three main photo-session locations.</p>
+          <a href="wailea-vs-kihei-vs-makena-photo-locations.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>07</span>
+          <h3>Why We Don’t Hide for Maui Proposals</h3>
+          <p>A real field lesson in why a carefully staged surprise creates better light, cleaner backgrounds, and a more dependable proposal photograph.</p>
+          <a href="why-we-dont-hide-for-maui-proposals.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>08</span>
+          <h3>What to Wear for Maui Beach Photos</h3>
+          <p>Field-tested guidance on colors, fabrics, coordination, wind, footwear, and comfortable clothing that photographs beautifully beside Maui’s sand and ocean.</p>
+          <a href="what-to-wear-maui-photos.html">Read the guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>09</span>
+          <h3>Where to Eat After Your Photo Session in Wailea &amp; Kihei</h3>
+          <p>Our personal, local guide to post-shoot dining—from fine oceanfront Italian to casual fish tacos, craft breweries, and video reviews.</p>
+          <a href="where-to-eat-after-photo-session-wailea.html">Read the guide</a>
+        </article>
       </div>
-    </a>
+    </section>
 
-    <!-- Helicopter Tours -->
-    <a href="helicoptertours.html" class="atlas-card reveal visible">
-      <img src="https://images.unsplash.com/photo-1519074069444-1ba4ea16d64c?auto=format&fit=crop&w=800&q=80" class="atlas-card-img" alt="Aerial view of Maui valleys" loading="lazy">
-      <div class="atlas-card-body">
-        <div class="atlas-card-category">Things to Do</div>
-        <h2 class="atlas-card-title">Maui Helicopter Tours: Aerial Island Wonders</h2>
-        <p class="atlas-card-excerpt">Experience the sheer scale of the Valley Isle from above. Soar over towering sea cliffs, hidden waterfalls, and the lush depths of West Maui.</p>
-        <span class="atlas-card-link">Read Guide →</span>
+    <section class="atlas-explore" aria-labelledby="atlas-things-to-do-title">
+      <div class="atlas-section-head">
+        <div class="chapter">THINGS TO DO IN MAUI</div>
+        <h2 id="atlas-things-to-do-title">Experience the best of the island's waters and adventures.</h2>
       </div>
-    </a>
-
-    <!-- Maternity Photography -->
-    <a href="maternity.html" class="atlas-card reveal visible">
-      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" class="atlas-card-img" alt="Maternity photography session in Wailea" loading="lazy">
-      <div class="atlas-card-body">
-        <div class="atlas-card-category">Photography</div>
-        <h2 class="atlas-card-title">Maui Maternity Photography Guide</h2>
-        <p class="atlas-card-excerpt">Celebrate your growing family against the golden backdrop of Wailea and Makena beaches with our specialized maternity portrait sessions.</p>
-        <span class="atlas-card-link">Read Guide →</span>
+      <div class="atlas-grid">
+        <article class="atlas-card">
+          <span>01</span>
+          <h3>The Top 3 Catamaran Tours and Activities to Experience in Maui</h3>
+          <p>Discover the best catamaran tours and maritime adventures in Maui, from snorkeling Molokini Crater and sunset sails along West Maui to seasonal whale watching.</p>
+          <a href="maui-catamaran-tours-guide.html">Read the guide</a>
+        </article>
       </div>
-    </a>
+    </section>
 
-  </section>
+    <section class="atlas-explore" aria-labelledby="atlas-explore-title">
+      <div class="atlas-section-head">
+        <div class="chapter">EXPLORE THE ATLAS</div>
+        <h2 id="atlas-explore-title">Begin with what you want to understand.</h2>
+      </div>
+      <div class="atlas-grid">
+        <article class="atlas-card">
+          <span>01</span>
+          <h3>Maui Beaches</h3>
+          <p>Guides to Wailea, Makena, and South Maui portrait locations, including accessibility, light, wind, tides, and the types of families each beach suits best.</p>
+          <a href="tides.html">Explore Maui conditions</a>
+        </article>
+        <article class="atlas-card">
+          <span>02</span>
+          <h3>The Science of Light</h3>
+          <p>Learn how sunrise, sunset, clouds, ocean reflections, sand, humidity, and professional lighting influence color and skin tone.</p>
+          <a href="the-apo-difference.html">Explore light and optics</a>
+        </article>
+        <article class="atlas-card">
+          <span>03</span>
+          <h3>Family Portraits</h3>
+          <p>Practical guidance for photographing babies, toddlers, teenagers, grandparents, couples, and large multigenerational families.</p>
+          <a href="maui-family-photographer.html">Explore family portraits</a>
+        </article>
+        <article class="atlas-card">
+          <span>04</span>
+          <h3>The Art of Portraiture</h3>
+          <p>Explore expression, composition, storytelling, direction, emotion, and what makes certain photographs feel timeless.</p>
+          <a href="pricing.html">Explore the work</a>
+        </article>
+        <article class="atlas-card">
+          <span>05</span>
+          <h3>Leica, Film, and Color</h3>
+          <p>Technical field notes on Leica cameras and lenses, Kodak film, CCD and CMOS sensors, color science, printing, and archival image quality.</p>
+          <a href="the-apo-difference.html">Read the APO story</a>
+        </article>
+        <article class="atlas-card">
+          <span>06</span>
+          <h3>Planning &amp; What to Wear</h3>
+          <p>Practical preparation for a comfortable Maui session, including wardrobe colors, coordinating a family, beach-friendly fabrics, shoes, hair, and what to bring.</p>
+          <a href="what-to-wear-maui-photos.html">Explore the wardrobe guide</a>
+        </article>
+        <article class="atlas-card">
+          <span>07</span>
+          <h3>Field Notes</h3>
+          <p>Observations gathered during real Maui portrait sessions, including changing weather, unusual light, location conditions, and lessons learned in the field.</p>
+          <span class="atlas-coming">FIELD NOTES COMING SOON</span>
+        </article>
+      </div>
+    </section>
 
-  <!-- CALL TO ACTION SECTION -->
-  <section id="reserve" class="reserve short">
-    <div class="chapter">READY FOR YOUR SESSION?</div>
-    <h2>Let's make something beautiful.</h2>
-    <a class="button" href="pricing.html#sessions">View Sessions &amp; Pricing</a>
-  </section>
-</main>
+    <section class="atlas-philosophy">
+      <div class="atlas-philosophy-copy">
+        <div class="chapter">OUR GUIDING IDEA</div>
+        <h2>Photography at the intersection of Art and Engineering.</h2>
+        <p>Art gives a portrait meaning.</p>
+        <p>Engineering gives the photographer the control to preserve that meaning under changing and sometimes difficult conditions.</p>
+        <p>The Atlas brings those two disciplines together. Every article is written from direct experience and designed to help families make informed decisions while also contributing useful knowledge to photographers and anyone interested in the craft of portraiture.</p>
+        <p>The Wailea Photo Atlas will continue to grow as we document what thousands of Maui portrait sessions have taught us.</p>
+      </div>
+      <figure>
+        <img src="assets/laurence-balter-owner-wailea-photo.jpg" width="2048" height="1363" alt="Laurence Balter, owner of Wailea Photo, holding a camera on a Maui beach" loading="lazy" decoding="async">
+      </figure>
+    </section>
 
-<div id="footer-placeholder"></div>
+    <section class="atlas-cta">
+      <div class="chapter">THE ATLAS BEGINS HERE</div>
+      <h2 class="display">Knowledge gathered in Maui.<br>Made to be shared.</h2>
+      <p>Return as the Atlas grows—or explore the portrait experiences that made it possible.</p>
+      <a class="button" href="pricing.html#sessions">View Sessions &amp; Pricing</a>
+    </section>
+  </main>
 
-<script src="assets/site.js"></script>
-<script>
-if (location.protocol.startsWith('http')) {
-  fetch('footer.html').then(res => res.ok ? res.text() : Promise.reject()).then(html => {
-    document.getElementById('footer-placeholder').outerHTML = html;
+  <div id="footer-placeholder"></div>
+
+  <script src="assets/site.js"></script>
+  <script>
     document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
-  }).catch(() => {});
-}
-</script>
+  </script>
 </body>
 </html>
