@@ -1,297 +1,242 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#171716">
-  
-  <!-- Analytics & Tracking -->
-  <script defer src="assets/analytics.js"></script>
-  <script src="assets/fb-pixel.js"></script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=823300302049467&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
-  <script src="assets/pinterest-tag.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the iconic Road to Hana in Maui, Hawaii. Discover waterfalls, bamboo forests, lava tubes, and coastal vistas.">
+  <title>The Ultimate Guide to the Road to Hana | Maui, Hawaii</title>
 
-  <!-- Page Title & Meta -->
-  <title>The Journey of a Lifetime: Driving the Road to Hana, Maui | The Wailea Photo Atlas</title>
-  <meta name="description" content="Explore the rewards and risks of driving the legendary Road to Hana in Maui, featuring cascading waterfalls, lush rainforests, and why to book your family photoshoot first.">
-  <link rel="canonical" href="https://waileaphoto.com/road-to-hana-maui-guide.html">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-
-  <!-- Preload Hero Assets -->
-  <link rel="preload" as="image" href="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" media="(min-width: 768px)" fetchpriority="high">
-  <link rel="preload" as="image" href="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" media="(max-width: 767px)" fetchpriority="high">
-
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="The Journey of a Lifetime: Driving the Road to Hana, Maui">
-  <meta property="og:description" content="Explore the rewards and risks of driving the legendary Road to Hana in Maui, featuring cascading waterfalls, lush rainforests, and why to book your family photoshoot first.">
-  <meta property="og:image" content="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg">
-  <meta property="og:image:alt" content="Lush tropical coastline and scenic drive along the Road to Hana in Maui">
-  <meta property="og:url" content="https://waileaphoto.com/road-to-hana-maui-guide.html">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Journey of a Lifetime: Driving the Road to Hana, Maui">
-  <meta name="twitter:description" content="Explore the rewards and risks of driving the legendary Road to Hana in Maui, featuring cascading waterfalls, lush rainforests, and why to book your family photoshoot first.">
-  <meta name="twitter:image" content="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg">
-
-  <!-- Schema Markup -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"The Journey of a Lifetime: Driving the Road to Hana, Maui",
-    "description":"Explore the rewards and risks of driving the legendary Road to Hana in Maui, featuring cascading waterfalls, lush rainforests, and why to book your family photoshoot first.",
-    "image":[
-      "https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg"
-    ],
-    "author":{"@type":"Person","@id":"https://waileaphoto.com/#laurence-balter","name":"Laurence Balter","jobTitle":"Founder & Lead Photographer","url":"https://waileaphoto.com/laurence-balter.html"},
-    "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo","logo":{"@type":"ImageObject","url":"https://waileaphoto.com/assets/favicon.svg"}},
-    "datePublished":"2026-07-31",
-    "dateModified":"2026-07-31",
-    "mainEntityOfPage":"https://waileaphoto.com/road-to-hana-maui-guide.html",
-    "isPartOf":{"@type":"CollectionPage","name":"The Wailea Photo Atlas","url":"https://waileaphoto.com/atlas.html"}
-  }
-  </script>
-  
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://waileaphoto.com/"},
-      {"@type":"ListItem","position":2,"name":"Atlas","item":"https://waileaphoto.com/atlas.html"},
-      {"@type":"ListItem","position":3,"name":"Road to Hana Guide","item":"https://waileaphoto.com/road-to-hana-maui-guide.html"}
-    ]
-  }
-  </script>
-
-  <!-- Google Fonts & Stylesheets -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=20260731">
+  <!-- Preload critical hero image for LCP optimization -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1542259009477-d625272157b7?q=80&w=1200&auto=format&fit=crop" fetchpriority="high">
 
   <style>
-    /* Hero Container Setup */
-    .page-hero-responsive {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      display: flex;
-      align-items: flex-start;
-      padding: 36px 24px;
+    :root {
+      --primary-color: #0d5c58;
+      --secondary-color: #e67e22;
+      --text-color: #2c3e50;
+      --bg-light: #f8f9fa;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
       overflow: hidden;
-      background-color: #171716;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
     }
 
-    @media (min-width: 768px) {
-      .page-hero-responsive {
-        aspect-ratio: 16 / 9;
-        padding: 56px 48px;
-      }
-    }
-
-    .page-hero-responsive picture,
-    .page-hero-responsive picture img {
+    .hero img {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover !important;
-      z-index: 0;
-    }
-
-    /* Hero Gradient Overlay */
-    .page-hero-responsive::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 80%);
+      object-fit: cover;
       z-index: 1;
     }
 
-    .page-hero-responsive .hero-content-wrapper {
-      position: relative;
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
       z-index: 2;
-      max-width: 780px;
     }
 
-    /* H1 Typography matched explicitly to H2 section standards */
-    .page-hero-responsive h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif !important;
-      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
-      font-weight: 500 !important;
-      line-height: 1.15 !important;
-      color: #ffffff !important;
-      margin: 8px 0 0 !important;
-      letter-spacing: -0.01em !important;
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      padding: 0 1rem;
     }
 
-    /* Hero Subtitle matched to body paragraph standards */
-    .hero-subtitle {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-      font-size: 0.98rem !important;
-      line-height: 1.6 !important;
-      font-weight: 400 !important;
-      color: rgba(255, 255, 255, 0.92) !important;
-      margin-top: 14px !important;
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
     }
 
-    .hero-byline {
-      margin-top: 18px !important;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-      font-size: 11px !important;
-      font-weight: 600 !important;
-      line-height: 1 !important;
-      letter-spacing: 0.12em !important;
-      text-transform: uppercase !important;
-      color: rgba(255, 255, 255, 0.75) !important;
+    .hero p {
+      font-size: 1.25rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--bg-light);
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .img-container {
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .img-container img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    figcaption {
+      font-size: 0.875rem;
+      color: #666;
+      text-align: center;
+      padding: 0.5rem;
+      background: var(--bg-light);
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top-row">
-    <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
-    <div class="header-right"><button class="menu-open-btn" aria-expanded="false" aria-label="Open menu">MENU</button></div>
+  <header>
+    <nav>
+      <strong>Maui Travel Guides</strong>
+    </nav>
+  </header>
+
+  <!-- Hero Section (Image 1) -->
+  <div class="hero">
+    <img 
+      src="https://images.unsplash.com/photo-1542259009477-d625272157b7?q=80&w=1200&auto=format&fit=crop" 
+      alt="Scenic coastal cliff view along the Road to Hana in Maui, Hawaii"
+      width="1200" 
+      height="800"
+      fetchpriority="high"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>The Legend of Hana, Maui</h1>
+      <p>Journey along 52 miles of winding rainforest coast, 600 curves, and 54 historic bridges.</p>
+    </div>
   </div>
-  <div class="header-subbar"><a class="header-call" href="tel:+18082985188">808.298.5188</a></div>
-</header>
 
-<nav class="menu" aria-hidden="true">
-  <button class="menu-close" aria-label="Close menu">×</button>
-  <a href="index.html#story-paths">Photography</a>
-  <a href="pricing.html#sessions">Sessions &amp; Pricing</a>
-  <a href="index.html#experience">Our Family</a>
-  <a href="index.html#reviews">Reviews</a>
-  <a href="faq.html">FAQ &amp; Contact</a>
-  <div class="menu-foot">
-    <a href="tides.html">Tides &amp; Sunset Times</a>
-    <a href="what-to-wear-maui-photos.html">What to Wear Guide</a>
-    <a href="the-apo-difference.html">The APO Difference</a>
-    <a href="our-florist.html">Our Florist</a>
-    <a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
-    <a href="corporate-events.html">Corporate Events</a>
-    <a href="atlas.html" aria-current="page">The Atlas</a>
-    <a href="tel:+18082985188">808.298.5188</a>
-  </div>
-</nav>
-
-<main>
-  <!-- HERO SECTION -->
-  <section class="page-hero-responsive">
-    <picture>
-      <source media="(min-width: 768px)" srcset="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" width="1600" height="900">
-      <img src="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" width="1080" height="1350" alt="Lush tropical coastline and scenic drive along the Road to Hana in Maui" loading="eager" fetchpriority="high">
-    </picture>
-    <div class="hero-content-wrapper reveal visible">
-      <div class="eyebrow" style="color: #e0d0b8;">THE WAILEA PHOTO ATLAS</div>
-      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">The Journey of a Lifetime: Driving the Road to Hana, Maui</h1>
-      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">Embarking on the Road to Hana is not just a drive; it's an odyssey through lush landscapes, cascading waterfalls, and the vibrant heart of Maui.</p>
-      <p class="hero-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
-    </div>
-  </section>
-
-  <!-- CONTENT SECTION: INTRODUCTION -->
-  <section class="content-split">
-    <div class="content-split-image reveal visible">
-      <img src="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" width="1442" height="960" alt="Scenery along the Road to Hana in Maui" loading="lazy">
-    </div>
-    <div class="content-split-copy reveal visible">
-      <div class="chapter">THE DIVINE DRIVE</div>
-      <h2>An Odyssey Through the Heart of Maui</h2>
-      <p>This iconic journey, often dubbed the "Divine Drive," offers a tapestry of beauty intertwined with challenges. Join us as we explore the risks and rewards of this unforgettable road trip.</p>
-      <p>Stretching for approximately 64 miles, the Hana Highway, or simply the Road to Hana, winds its way along Maui's northeastern coastline. The journey takes you through rainforests, past dramatic sea cliffs, and over narrow bridges, showcasing the island's breathtaking natural beauty.</p>
-    </div>
-  </section>
-
-  <!-- CONTENT SECTION 2: REWARDS OF BEAUTY -->
-  <section class="content-split reverse">
-    <div class="content-split-image reveal visible">
-      <img src="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" width="2000" height="1326" alt="Tropical coast view along the Hana Highway" loading="lazy">
-    </div>
-    <div class="content-split-copy reveal visible">
-      <div class="chapter">SCENIC WONDERS</div>
-      <h2>Rewards of Beauty</h2>
-      <h3>1. Waterfalls Galore:</h3>
-      <p>As you navigate the serpentine road, be prepared to witness a myriad of waterfalls cascading down lush hillsides. From the famous Wailua Falls to the hidden gems like the Seven Sacred Pools at Ohe'o Gulch, each waterfall adds a touch of magic to the landscape.</p>
+  <main>
+    <!-- Intro Section (Image 2) -->
+    <section id="introduction">
+      <h2>1. The Journey to East Maui</h2>
+      <p>The Hana Highway is one of the world's most famous scenic drives. Traveling from Kahului to the isolated town of Hana takes you through dense rainforests, past cascading waterfalls, and alongside rugged Pacific ocean bluffs.</p>
       
-      <h3 style="margin-top: 24px;">2. Tropical Flora and Fauna:</h3>
-      <p>The road is adorned with a rich tapestry of tropical plants, vibrant flowers, and towering bamboo forests. Botanical gardens like the Garden of Eden offer a chance to stroll amidst exotic flora and discover the diverse ecosystem that makes Maui so unique.</p>
-    </div>
-  </section>
+      <figure class="img-container">
+        <img 
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop" 
+          alt="Tropical ocean coastline along the highway to Hana"
+          loading="lazy"
+          width="1000"
+          height="667"
+        >
+        <figcaption>Lush tropical rainforest coastline along East Maui.</figcaption>
+      </figure>
+    </section>
 
-  <!-- CONTENT SECTION 3: VIEWS & CULTURAL STOPS -->
-  <section class="content-split">
-    <div class="content-split-image reveal visible">
-      <img src="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" width="1442" height="960" alt="Breathtaking landscapes in Maui" loading="lazy">
-    </div>
-    <div class="content-split-copy reveal visible">
-      <div class="chapter">VIEWS &amp; CULTURE</div>
-      <h2>Breathtaking Views &amp; Cultural Stops</h2>
-      <h3>3. Breathtaking Views:</h3>
-      <p>The Road to Hana treats travelers to panoramic coastal views, volcanic landscapes, and vistas of the Pacific Ocean that will leave you breathless. Each turn reveals a new postcard-worthy scene, making it a photographer's paradise.</p>
+    <!-- Waterfalls Section (Image 3) -->
+    <section id="waterfalls">
+      <h2>2. Cascading Rainforest Waterfalls</h2>
+      <p>Along the route, dozens of freshwater streams cascade down from the slopes of Haleakalā. Highlights include Twin Falls, Waikani Falls (Three Bears), and the iconic Wailua Falls near mile marker 45.</p>
       
-      <h3 style="margin-top: 24px;">4. Cultural Stops:</h3>
-      <p>Along the route, immerse yourself in the rich cultural history of Maui with stops at local landmarks, such as the Hana Lava Tube or the quaint Hasegawa General Store. Engaging with the local culture adds depth to the journey, making it more than just a scenic drive.</p>
-    </div>
-  </section>
+      <figure class="img-container">
+        <img 
+          src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?q=80&w=1000&auto=format&fit=crop" 
+          alt="Cascading tropical waterfall surrounded by lush green foliage"
+          loading="lazy"
+          width="1000"
+          height="667"
+        >
+        <figcaption>Freshwater streams feed dramatic waterfalls tucked inside rainforest valleys.</figcaption>
+      </figure>
+    </section>
 
-  <!-- CONTENT SECTION 4: RISKS -->
-  <section class="content-split reverse">
-    <div class="content-split-image reveal visible">
-      <img src="https://live.staticflickr.com/3698/11106935413_0fef2641ff_o.jpg" width="1400" height="933" alt="Winding road and ocean views along Hana Highway" loading="lazy">
-    </div>
-    <div class="content-split-copy reveal visible">
-      <div class="chapter">IMPORTANT PRECAUTIONS</div>
-      <h2>Understanding the Risks</h2>
-      <h3>1. Narrow and Winding Roads:</h3>
-      <p>While the serpentine road offers stunning views, it comes with narrow stretches, hairpin turns, and single-lane bridges. Drivers should exercise caution and be prepared for slow-paced travel.</p>
+    <!-- Coastal Views / Keanae Peninsula Section (Image 4) -->
+    <section id="coastal-points">
+      <h2>3. Keʻanae Peninsula & Black Sand Coastlines</h2>
+      <p>Stopping at the Keʻanae Peninsula offers panoramic views of dark volcanic basalt rock meeting the crashing surf of the Pacific Ocean, framed by taro fields that have been cultivated for centuries.</p>
       
-      <h3 style="margin-top: 24px;">2. Weather Conditions:</h3>
-      <p>The weather along the Road to Hana can be unpredictable. Rainfall is common, leading to slippery roads and reduced visibility. Flash floods are a potential risk, especially during the wetter months. It's essential to check weather conditions before embarking on the journey.</p>
+      <figure class="img-container">
+        <img 
+          src="https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?q=80&w=1000&auto=format&fit=crop" 
+          alt="Volcanic black sand beach and crashing waves on Maui's East Coast"
+          loading="lazy"
+          width="1000"
+          height="667"
+        >
+        <figcaption>Volcanic black lava rock coastline on the eastern edge of Maui.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Bamboo Forest & Trails Section (Image 5) -->
+    <section id="bamboo-forest">
+      <h2>4. The Pipiwai Trail & Bamboo Forest</h2>
+      <p>Located in the Kipahulu section of Haleakalā National Park beyond Hana town, the Pipiwai Trail leads hikers through a towering bamboo forest to the 400-foot Waimoku Falls.</p>
       
-      <h3 style="margin-top: 24px;">3. Limited Services &amp; Time Constraints:</h3>
-      <p>Once on the road, services become scarce with limited gas stations and minimal cell reception. Furthermore, the journey can take several hours, making planning ahead crucial.</p>
-    </div>
-  </section>
+      <figure class="img-container">
+        <img 
+          src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop" 
+          alt="Dense canopy of tall green bamboo stalks along a hiking trail"
+          loading="lazy"
+          width="1000"
+          height="667"
+        >
+        <figcaption>The surreal atmosphere under the dense bamboo canopy on the Pipiwai Trail.</figcaption>
+      </figure>
+    </section>
+  </main>
 
-  <!-- CONCLUSION & BOOKING PROMPT -->
-  <section class="faq-list" style="max-width: 900px; margin: 0 auto; padding: 60px 24px;">
-    <div class="section-head reveal visible" style="text-align: center; margin-bottom: 30px;">
-      <div class="chapter">CONCLUSION</div>
-      <h2>An Unforgettable Adventure</h2>
-    </div>
-    <p style="font-size: 1.05rem; line-height: 1.7; text-align: center; color: #444; margin-bottom: 24px;">
-      The Road to Hana is more than a drive; it's an immersive experience that encapsulates the natural beauty and cultural richness of Maui. While it presents challenges, the rewards far outweigh the risks for those seeking an adventure that goes beyond the ordinary. So, buckle up, navigate with care, and let the Road to Hana unveil the enchanting wonders of the Valley Isle.
-    </p>
-    <div style="background: #f3ecdf; border-left: 2px solid #b69557; padding: 24px; text-align: center; margin-top: 30px;">
-      <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 500; color: #171716; margin: 0 0 12px;">Make sure to book your family or romantic photoshoot before you embark on this long drive...</p>
-      <p style="font-size: 0.95rem; line-height: 1.6; color: #555; margin: 0 0 20px;">Capture your memories in Maui with Wailea Photo before setting out on your epic island adventure.</p>
-      <a class="button" href="pricing.html#sessions" style="background: #171716; color: #fff; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; display: inline-block;">View Sessions &amp; Pricing</a>
-    </div>
-  </section>
+  <footer>
+    <p>&copy; 2026 Maui Travel Guide. All images licensed for public/free commercial use.</p>
+  </footer>
 
-  <!-- CALL TO ACTION SECTION -->
-  <section id="reserve" class="reserve short">
-    <div class="chapter">READY FOR YOUR SESSION?</div>
-    <h2>Let's make something beautiful.</h2>
-    <a class="button" href="pricing.html#sessions">View Sessions &amp; Pricing</a>
-  </section>
-</main>
-
-<div id="footer-placeholder"></div>
-
-<script src="assets/site.js"></script>
-<script>
-if (location.protocol.startsWith('http')) {
-  fetch('footer.html').then(res => res.ok ? res.text() : Promise.reject()).then(html => {
-    document.getElementById('footer-placeholder').outerHTML = html;
-    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
-  }).catch(() => {});
-}
-</script>
 </body>
 </html>
