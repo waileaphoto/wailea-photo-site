@@ -200,6 +200,20 @@ button{font:inherit}
   content:"";position:absolute;inset:0;background:rgba(24,65,75,.62);
 }
 .quote-band-photo p{position:relative;z-index:1}
+.tide-dress-quote{
+  position:relative;display:flex;align-items:center;min-height:78vh;padding:12vh 8vw;
+  overflow:hidden;background:#c9d5da url("tides3-dress-for-the-tide.jpg") center 48%/cover no-repeat;
+  text-align:left;color:#fffaf2;
+}
+.tide-dress-quote:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(12,35,43,.06) 20%,rgba(12,35,43,.26) 48%,rgba(12,35,43,.86) 100%);
+}
+.tide-dress-quote p{
+  position:relative;z-index:1;max-width:14ch;margin:0 0 0 auto;
+  font-size:clamp(44px,4.6vw,76px);line-height:.98;text-wrap:balance;
+  text-shadow:0 2px 24px rgba(6,24,30,.35);
+}
 
 /* ---------- portfolio slider ---------- */
 .portfolio{padding:14vh 4vw;background:var(--paper)}
@@ -602,6 +616,14 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .mood-copy h2{font-size:56px}
   .quote-band{padding:110px 24px}
   .quote-band p{font-size:52px}
+  .tide-dress-quote{
+    align-items:flex-end;min-height:82svh;padding:70px 24px;
+    background-position:46% center;
+  }
+  .tide-dress-quote:before{
+    background:linear-gradient(180deg,rgba(12,35,43,.02) 22%,rgba(12,35,43,.2) 51%,rgba(12,35,43,.88) 100%);
+  }
+  .tide-dress-quote p{max-width:12ch;margin:0;font-size:40px;line-height:1}
   .video-facade-play{width:60px;height:60px}
   .video-facade-play svg{width:18px;height:18px}
   .video-facade-label{bottom:14px;left:14px;font-size:9px}
