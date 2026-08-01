@@ -18,21 +18,20 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Preload Hero Assets -->
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80" media="(min-width: 768px)" fetchpriority="high">
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1080&q=80" media="(max-width: 767px)" fetchpriority="high">
+  <!-- Preload lightweight poster; video loads responsively below -->
+  <link rel="preload" as="image" href="assets/catamaran-maui-poster.jpg" fetchpriority="high">
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Maui Catamaran Tours: Choosing Your Day on the Water">
   <meta property="og:description" content="Discover the best catamaran tours and maritime adventures in Maui, from snorkeling Molokini Crater and sunset sails along West Maui to seasonal whale watching.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80">
+  <meta property="og:image" content="https://waileaphoto.com/assets/catamaran-maui-poster.jpg">
   <meta property="og:image:alt" content="Sailing a catamaran in the crystal-clear turquoise waters of Maui">
   <meta property="og:url" content="https://waileaphoto.com/catamarantours.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Maui Catamaran Tours: Choosing Your Day on the Water">
   <meta name="twitter:description" content="Discover the best catamaran tours and maritime adventures in Maui, from snorkeling Molokini Crater and sunset sails along West Maui to seasonal whale watching.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80">
+  <meta name="twitter:image" content="https://waileaphoto.com/assets/catamaran-maui-poster.jpg">
 
   <!-- Schema Markup -->
   <script type="application/ld+json">
@@ -42,9 +41,10 @@
     "headline":"Maui Catamaran Tours: Choosing Your Day on the Water",
     "description":"Discover the best catamaran tours and maritime adventures in Maui, from snorkeling Molokini Crater and sunset sails along West Maui to seasonal whale watching.",
     "image":[
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1442&q=80",
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=80"
+      "https://waileaphoto.com/assets/catamaran-maui-poster.jpg",
+      "https://waileaphoto.com/assets/catamaran-maui-aerial-01.jpg",
+      "https://waileaphoto.com/assets/catamaran-maui-aerial-02.jpg",
+      "https://waileaphoto.com/assets/catamaran-maui-aerial-03.jpg"
     ],
     "author":{"@type":"Person","@id":"https://waileaphoto.com/#laurence-balter","name":"Laurence Balter","jobTitle":"Founder & Lead Photographer","url":"https://waileaphoto.com/laurence-balter.html"},
     "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo","logo":{"@type":"ImageObject","url":"https://waileaphoto.com/assets/favicon.svg"}},
@@ -77,8 +77,9 @@
     :root{--atlas-ink:#171716;--atlas-cream:#f4eddf;--atlas-paper:#fbf8f2;--atlas-gold:#b69557;--atlas-rust:#a44736}
     .atlas-editorial{background:var(--atlas-paper);color:var(--atlas-ink)}
     .atlas-editorial-hero{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(360px,.8fr);min-height:min(78vh,820px);background:var(--atlas-cream);overflow:hidden}
-    .atlas-editorial-hero>picture{display:block;min-height:100%;overflow:hidden}
-    .atlas-editorial-hero>picture img{display:block;width:100%;height:100%;min-height:100%;object-fit:cover}
+    .atlas-editorial-hero>picture,.atlas-editorial-hero>.atlas-hero-media{display:block;min-height:100%;overflow:hidden}
+    .atlas-editorial-hero>.atlas-hero-media{position:relative;background:#75969a}
+    .atlas-editorial-hero>picture img,.atlas-editorial-hero>.atlas-hero-media video{display:block;width:100%;height:100%;min-height:100%;object-fit:cover;object-position:58% center}
     .atlas-editorial-hero .page-hero-copy{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;max-width:none!important;height:auto!important;transform:none!important;display:flex;flex-direction:column;justify-content:center;padding:clamp(54px,7vw,112px) clamp(34px,5vw,84px);background:var(--atlas-cream)}
     .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase}
     .atlas-editorial-hero h1{margin:18px 0 0;max-width:12ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
@@ -98,7 +99,8 @@
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     @media(max-width:900px){
       .atlas-editorial-hero{grid-template-columns:1fr;min-height:0}
-      .atlas-editorial-hero>picture{height:min(72vh,680px)}
+      .atlas-editorial-hero>picture,.atlas-editorial-hero>.atlas-hero-media{height:min(72vh,680px)}
+      .atlas-editorial-hero>.atlas-hero-media video{object-position:60% center}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
       .atlas-opening-note{grid-template-columns:1fr;gap:16px;padding:46px 24px 54px}
@@ -137,10 +139,12 @@
 <main class="atlas-editorial">
   <!-- HERO SECTION -->
   <section class="atlas-editorial-hero">
-    <picture>
-      <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80" width="1600" height="900">
-      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1080&q=80" width="1080" height="1350" alt="Catamaran sailing across the Pacific Ocean in Maui" loading="eager" fetchpriority="high">
-    </picture>
+    <div class="atlas-hero-media">
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/catamaran-maui-poster.jpg" aria-label="Aerial drone view of a catamaran floating off the Makena coast in Maui">
+        <source media="(max-width: 900px)" src="assets/catamaran-maui-hero-mobile.mp4" type="video/mp4">
+        <source src="assets/catamaran-maui-hero-1080.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="page-hero-copy reveal visible">
       <div class="eyebrow">THE WAILEA PHOTO ATLAS</div>
       <h1>Maui Catamaran Tours: Choosing Your Day on the Water</h1>
@@ -156,7 +160,7 @@
   <!-- CONTENT SECTION 1 (IMAGE LEFT / TEXT RIGHT) -->
   <section class="content-split">
     <div class="content-split-image reveal visible">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1442&q=80" width="1442" height="960" alt="Snorkeling in the crystal-clear waters of Molokini Crater" loading="lazy">
+      <img src="assets/catamaran-maui-aerial-01.jpg" width="1800" height="1013" alt="Aerial view of a catamaran floating in turquoise water off the Makena coast in Maui" loading="lazy">
     </div>
     <div class="content-split-copy reveal visible">
       <div class="chapter">EXCURSION 01</div>
@@ -169,7 +173,7 @@
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
   <section class="content-split reverse">
     <div class="content-split-image reveal visible">
-      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=80" width="2000" height="1326" alt="Golden sunset sail along the scenic West Maui Coast" loading="lazy">
+      <img src="assets/catamaran-maui-aerial-02.jpg" width="1800" height="1013" alt="Catamaran seen from above with Makena beach and shoreline behind it" loading="lazy">
     </div>
     <div class="content-split-copy reveal visible">
       <div class="chapter">EXCURSION 02</div>
