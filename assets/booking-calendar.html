@@ -164,6 +164,12 @@
           <p class="hint">The ending time is calculated automatically from this session's normal length.</p>
         </div>
         <div><label for="moveReason">Reason shown in confirmation</label><input type="text" id="moveReason" placeholder="Weather, travel change…" required></div>
+        <div>
+          <label style="text-transform:none;letter-spacing:normal;font-weight:400;display:flex;align-items:center;gap:8px;">
+            <input type="checkbox" id="moveOverrideBlock" style="width:auto;">
+            Override block for this date (use with caution)
+          </label>
+        </div>
         <div id="moveError" class="error"></div><div id="moveResult" class="move-result"></div>
         <button type="submit">Move &amp; send confirmations</button>
       </form>
@@ -421,6 +427,7 @@
     document.getElementById('moveDate').value = b.session_date;
     document.getElementById('moveCustomTime').value = b.start_time;
     document.getElementById('moveReason').value = '';
+    document.getElementById('moveOverrideBlock').checked = false;
     document.getElementById('moveError').textContent = '';
     document.getElementById('moveResult').textContent = '';
     document.getElementById('modalOverlay').hidden = false;
@@ -553,12 +560,19 @@
       const customTime = timeSelect.value === '__custom__';
       const startTime = customTime ? document.getElementById('moveCustomTime').value : timeSelect.value;
       if (!startTime) throw new Error('Choose an available time or enter a custom time.');
+      const overrideBlock = document.getElementById('moveOverrideBlock').checked;
+      if (overrideBlock) {
+        const targetDate = document.getElementById('moveDate').value;
+        const confirmed = confirm(`This will move the booking to ${targetDate} even if that date is blocked off. Are you sure you want to override the block?`);
+        if (!confirmed) { button.disabled = false; button.textContent = 'Move & send confirmations'; return; }
+      }
       const moved = await api('POST', `/api/bookings/${selectedBooking.id}/reschedule`, {
         sessionType: document.getElementById('moveSessionType').value,
         date: document.getElementById('moveDate').value,
         startTime,
         customTime,
         reason: document.getElementById('moveReason').value,
+        overrideBlock,
       });
       const updatedBalance = Number(moved.total_price_cents || 0) - Number(moved.deposit_cents || 0);
       result.textContent = `Moved. Updated total: $${(Number(moved.total_price_cents || 0) / 100).toFixed(2)}; balance due: $${(updatedBalance / 100).toFixed(2)}. Confirmations were sent to the client and team.`;
