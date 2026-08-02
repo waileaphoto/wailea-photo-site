@@ -172,6 +172,11 @@
 
       this.policyBox = el('div', { class: 'wbw-policy-box' }, POLICY_LINES.map((t) => el('p', {}, [t])));
       this.policyCheckbox = el('input', { type: 'checkbox' });
+      this.sunrisePunctualityCheckbox = el('input', { type: 'checkbox', required: true });
+      const sunrisePunctualityAgreement = el('label', { class: 'wbw-policy-agree' }, [
+        this.sunrisePunctualityCheckbox,
+        ' I acknowledge that I must arrive on time. Sessions are not extended due to tardiness, late sleeping teenagers or slow valet service.',
+      ]);
 
       this.quoteBox = el('div', { class: 'wbw-quote' });
       this.detailsError = el('div', { class: 'wbw-error' });
@@ -194,6 +199,7 @@
           el('label', {}, ['Session Policies']),
           this.policyBox,
           el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' I have read and agree to the session policies above.']),
+          ...(this.state.slug === 'sunrise-max' ? [sunrisePunctualityAgreement] : []),
         ]),
         this.quoteBox,
         this.detailsError,
@@ -438,6 +444,10 @@
         this.detailsError.textContent = 'Please agree to the session policies to continue.';
         return;
       }
+      if (this.state.slug === 'sunrise-max' && !this.sunrisePunctualityCheckbox.checked) {
+        this.detailsError.textContent = 'Please acknowledge the Sunrise session arrival-time policy to continue.';
+        return;
+      }
       const btn = event?.target;
       const originalLabel = btn ? btn.textContent : null;
       if (btn) { btn.disabled = true; btn.textContent = 'Please wait…'; }
@@ -451,6 +461,7 @@
           client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value, smsOptIn: this.smsOptInCheckbox.checked },
           questionnaire: {
             agreedToPolicies: this.policyCheckbox.checked,
+            acknowledgedSunrisePunctuality: this.state.slug === 'sunrise-max' ? this.sunrisePunctualityCheckbox.checked : undefined,
             hearAboutUs: this.hearAboutInput.value,
             celebrating: this.celebratingInput.value || undefined,
             specialRequests: this.specialRequestsInput.value || undefined,
