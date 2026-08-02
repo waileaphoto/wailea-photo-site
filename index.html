@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<!-- Wailea Photo editorial homepage -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,6 +29,51 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260730-no-holiday-promo">
+  <style>
+    /* Editorial homepage concept — isolated to this draft file. */
+    .concept-note{position:fixed;z-index:90;left:50%;bottom:18px;transform:translateX(-50%);padding:10px 16px;background:rgba(23,23,22,.9);color:#fff;font:500 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.18)}
+    .presence-promise{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(420px,.82fr);min-height:78vh;background:#181816;color:#f4efe6}
+    .promise-image{position:relative;min-height:680px;overflow:hidden}
+    .promise-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 66%,rgba(24,24,22,.62) 100%)}
+    .promise-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+    .presence-promise .promise-kicker{margin-bottom:42px;font:500 11px/1.2 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#c8a260}
+    .promise-copy{display:flex;flex-direction:column;justify-content:center;padding:8vw 7vw}
+    .promise-copy h2{max-width:850px;margin:0 0 28px;font:400 clamp(48px,7vw,112px)/.88 "Cormorant Garamond",serif;letter-spacing:-.04em}
+    .promise-copy p{max-width:650px;margin:0;font:400 clamp(23px,2vw,31px)/1.38 "Cormorant Garamond",serif;letter-spacing:-.012em;color:rgba(244,239,230,.78)}
+    .recognition-ribbon{display:grid;grid-template-columns:1fr 3fr;align-items:center;gap:40px;padding:38px 6vw;background:#f1e8da;border-top:1px solid rgba(23,23,22,.1);border-bottom:1px solid rgba(23,23,22,.1)}
+    .recognition-ribbon>span{font:600 10px/1.4 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+    .recognition-items{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;color:#3a3731}
+    .recognition-items span{font:500 clamp(12px,1.2vw,16px)/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+    .recognition-items i{width:4px;height:4px;border-radius:50%;background:#b33a2f}
+    .signature-story{display:grid;grid-template-columns:1.08fr .92fr;min-height:760px;background:#ded0bc}
+    .signature-story-image{min-height:680px}
+    .signature-story-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+    .signature-story-copy{display:flex;flex-direction:column;justify-content:center;padding:8vw 7vw;color:#211f1b}
+    .signature-story-copy blockquote{margin:25px 0 34px;font:400 clamp(35px,4vw,65px)/1.02 "Cormorant Garamond",serif;letter-spacing:-.025em}
+    .signature-story-copy .story-attribution{font:600 10px/1.6 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+    .google-review-link{display:inline-flex;align-items:center;gap:9px;width:max-content;margin-top:22px;padding-bottom:6px;border-bottom:1px solid rgba(33,31,27,.34);color:#211f1b;font:600 9px/1 Inter,sans-serif;letter-spacing:.16em;text-decoration:none;text-transform:uppercase;transition:border-color .25s ease,color .25s ease}
+    .google-review-link:hover{border-color:#211f1b;color:#000}
+    .google-review-link svg{width:16px;height:16px;flex:0 0 16px}
+    .google-review-link .review-arrow{font-size:12px;letter-spacing:0}
+    .complete-stories{padding:11vw 5vw 9vw;background:#f6f1e8;color:#1c1b18}
+    .complete-stories-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:5vw;align-items:end;margin-bottom:5vw}
+    .complete-stories h2{max-width:980px;margin:0;font:400 clamp(47px,6vw,95px)/.92 "Cormorant Garamond",serif;letter-spacing:-.035em}
+    .complete-stories-intro{max-width:430px;margin:24px 0 0;font:300 16px/1.7 Inter,sans-serif;color:#656057}
+    .complete-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .complete-story-card{position:relative;display:block;min-height:560px;overflow:hidden;background:#222;color:#fff}
+    .complete-story-card:nth-child(2),.complete-story-card:nth-child(3){min-height:560px;margin-top:0}
+    .complete-story-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+    .complete-story-card.story-family img{object-position:63% 50%}
+    .complete-story-card.story-couple img{object-position:50% 50%}
+    .complete-story-card.story-wedding img{object-position:56% 50%}
+    .complete-story-card:hover img{transform:scale(1.035)}
+    .complete-story-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+    .complete-story-card span{position:absolute;z-index:2;left:32px;right:32px;bottom:30px;font:400 clamp(28px,3vw,46px)/.95 "Cormorant Garamond",serif}
+    .complete-story-card small{display:block;margin-bottom:12px;font:600 9px/1 Inter,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:#e7c582}
+    .complete-story-card em{display:block;margin-top:13px;font:500 9px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;font-style:normal}
+    @media(max-width:800px){
+      .concept-note{display:none}.presence-promise,.signature-story{grid-template-columns:1fr}.presence-promise{min-height:0}.promise-image{min-height:58vh}.promise-image img{object-position:50% 50%}.promise-image:after{background:linear-gradient(0deg,rgba(24,24,22,.35),transparent 45%)}.promise-copy{padding:60px 24px 70px}.presence-promise .promise-kicker{margin-bottom:26px}.promise-copy h2{font-size:52px}.recognition-ribbon{grid-template-columns:1fr;padding:30px 24px}.recognition-items{justify-content:flex-start}.signature-story-image{min-height:62vh}.signature-story-image img{object-position:50% 50%}.signature-story-copy{padding:70px 28px}.complete-stories{padding:90px 20px}.complete-stories-head{grid-template-columns:1fr}.complete-story-grid{grid-template-columns:1fr}.complete-story-card,.complete-story-card:nth-child(2),.complete-story-card:nth-child(3){min-height:68vh;margin-top:0}.complete-story-card.story-family img{object-position:43% 50%;transform:translateY(-35%) scale(1.5)}.complete-story-card.story-couple img{object-position:50% 50%}.complete-story-card.story-wedding img{object-position:60% 50%}.complete-story-card span{left:22px;right:22px;bottom:22px}}
+  </style>
 
   <script defer src="assets/analytics.js"></script>
   <script defer src="assets/fb-pixel.js"></script>
@@ -282,6 +328,7 @@
   </script>
 </head>
 <body>
+  <div class="concept-note">Homepage concept · private local draft</div>
   <header class="site-header">
     <div class="header-top-row">
       <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
@@ -321,6 +368,17 @@
         <p class="hero-sub">We&rsquo;re the Balters&mdash;a family of photographers with more than 25 years in Maui and over 1,000 five-star reviews.</p>
       </div>
       <a class="scroll" href="#trust" aria-label="Scroll to continue">↓</a>
+    </section>
+
+    <section class="presence-promise" aria-labelledby="presence-title">
+      <figure class="promise-image">
+        <img src="assets/be-present-family-maui.jpg" alt="A family walking toward the ocean together during their Maui portrait session" width="2200" height="1237" loading="lazy">
+      </figure>
+      <div class="promise-copy">
+        <div class="promise-kicker">The experience</div>
+        <h2 id="presence-title">Be present with the people you love.</h2>
+        <p>We&rsquo;ll guide the light, the movement, and the little moments&mdash;so you can enjoy Maui and remember how it felt.</p>
+      </div>
     </section>
 
     <section id="trust" class="trust-intro">
@@ -388,6 +446,28 @@
       <a class="client-voices-link" href="https://www.tripadvisor.com/Attraction_Review-g60632-d24009609-Reviews-Wailea_Photo-Kihei_Maui_Hawaii.html#REVIEWS" target="_blank" rel="noopener">Read our latest reviews on Tripadvisor <span aria-hidden="true">↗</span></a>
     </section>
 
+    <section class="signature-story" aria-labelledby="signature-story-title">
+      <div class="signature-story-image">
+        <img src="assets/google-review-nicole-family.jpg" alt="Nicole's family portrait in Maui, shared with her five-star Google review of Wailea Photo" width="1600" height="1065" loading="lazy">
+      </div>
+      <div class="signature-story-copy">
+        <div class="chapter">A FAMILY&rsquo;S EXPERIENCE</div>
+        <blockquote id="signature-story-title">&ldquo;They were a pleasure to just speak with and get to know. These pictures will be a special memory and souvenir of our trip.&rdquo;</blockquote>
+        <p>Nicole booked a family session with Laurence and Jude, along with senior portraits for her son. Her photographs and words capture what matters most to us: a relaxed experience, real connection, and memories that belong to the family.</p>
+        <div class="story-attribution">Nicole · Five-star Google review · June 2026 · Client-posted photograph</div>
+        <a class="google-review-link" href="https://maps.app.goo.gl/aHzD8dvyqjCtWLKV8" target="_blank" rel="noopener" aria-label="Read and verify Nicole's review on Google">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.06H12v3.9h5.38a4.6 4.6 0 0 1-2 3.02v2.53h3.24c1.9-1.75 2.98-4.33 2.98-7.39z"/>
+            <path fill="#34A853" d="M12 22c2.7 0 4.98-.9 6.64-2.38l-3.24-2.53c-.9.6-2.05.96-3.4.96-2.61 0-4.82-1.76-5.61-4.13H3.04v2.61A10 10 0 0 0 12 22z"/>
+            <path fill="#FBBC05" d="M6.39 13.92A6.02 6.02 0 0 1 6.08 12c0-.67.12-1.32.31-1.92V7.47H3.04A10 10 0 0 0 2 12c0 1.61.39 3.14 1.04 4.53l3.35-2.61z"/>
+            <path fill="#EA4335" d="M12 5.95c1.47 0 2.78.5 3.82 1.49l2.86-2.86A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.96 5.47l3.35 2.61C7.18 7.71 9.39 5.95 12 5.95z"/>
+          </svg>
+          <span>Verify this review on Google</span>
+          <span class="review-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
 
     <section id="motion" class="feature">
       <img src="assets/wailea-photo-sunrise.jpg" alt="A couple at sunrise on a Maui beach" width="1200" height="800" loading="lazy">
@@ -450,6 +530,30 @@
         <div class="chapter" style="color:var(--gold)">FAMILY ART</div>
         <h2>Timeless, for generations to enjoy.</h2>
         <p>Because life happens fast.</p>
+      </div>
+    </section>
+
+    <section class="complete-stories" aria-labelledby="complete-stories-title">
+      <div class="complete-stories-head">
+        <div>
+          <div class="chapter">COMPLETE STORIES</div>
+          <p class="complete-stories-intro">A portfolio image can be beautiful. A complete session shows how light, personality, and connection become a lasting collection.</p>
+        </div>
+        <h2 id="complete-stories-title">One photograph is a moment.<br>A gallery is the story.</h2>
+      </div>
+      <div class="complete-story-grid">
+        <a class="complete-story-card story-family" href="maui-family-photographer.html">
+          <img src="assets/complete-story-family-sunrise.jpg" alt="A family together on a Wailea beach during a quiet Maui sunrise" width="1600" height="1067" loading="lazy">
+          <span><small>Story No. 01 · Sunrise</small>A family morning in Wailea<em>Enter the story &nbsp;→</em></span>
+        </a>
+        <a class="complete-story-card story-couple" href="maui-couples-photographer.html">
+          <img src="assets/complete-story-couple-sunset.jpg" alt="A romantic sunset couples photography story in Maui" width="1600" height="1067" loading="lazy">
+          <span><small>Story No. 02 · Sunset</small>Just the two of you<em>Enter the story &nbsp;→</em></span>
+        </a>
+        <a class="complete-story-card story-wedding" href="maui-wedding-photographer.html">
+          <img src="assets/complete-story-wedding-tree.jpg" alt="A newly married couple seated on driftwood beside the ocean at sunset in Maui" width="1600" height="1067" loading="lazy">
+          <span><small>Story No. 03 · Maluaka</small>An intimate Maui wedding<em>Enter the story &nbsp;→</em></span>
+        </a>
       </div>
     </section>
 
