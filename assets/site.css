@@ -728,6 +728,8 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 .atlas-card p{font:400 15px/1.65 var(--sans);color:rgba(27,25,23,.72);margin:0;flex:1}
 .atlas-card a{font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ocean);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;align-self:flex-start}
 .atlas-card a:hover{color:var(--red)}
+.atlas-card .atlas-client-lock{color:var(--red);border-bottom-style:dotted}
+.atlas-card .atlas-client-lock::before{content:'PRIVATE · ';color:rgba(27,25,23,.45)}
 .atlas-coming{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.4);align-self:flex-start}
 
 .atlas-philosophy{background:var(--ocean);color:#fff;padding:12vh 7vw;display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;align-items:center}
