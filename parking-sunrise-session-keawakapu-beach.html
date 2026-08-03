@@ -65,6 +65,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260729-parking-restore">
+  <style>
+    .sunrise-parking-hero .page-hero-copy{
+      top:auto;
+      bottom:clamp(28px,6vh,64px);
+      max-width:min(820px,86vw);
+      padding-top:0!important;
+    }
+    .sunrise-parking-hero .page-hero-copy h1{
+      max-width:18ch;
+      font-size:clamp(2.5rem,5vw,4.5rem)!important;
+      line-height:.98!important;
+    }
+    @media (max-width:700px){
+      .sunrise-parking-hero .page-hero-copy{
+        left:22px;
+        right:22px;
+        bottom:28px;
+        max-width:none;
+      }
+      .sunrise-parking-hero .page-hero-copy h1{
+        max-width:15ch;
+        font-size:clamp(2.2rem,11vw,3.15rem)!important;
+      }
+      .sunrise-parking-hero .page-hero-copy p{font-size:17px}
+    }
+  </style>
 </head>
 <body>
 <header class="site-header">
@@ -81,11 +107,11 @@
 </nav>
 
 <main>
-<section class="page-hero">
+<section class="page-hero sunrise-parking-hero">
 <img src="assets/Keawakapu-Beach-II-Wailea.jpg" alt="Keawakapu Beach II in Wailea, the meeting location for Wailea Photo sunrise sessions" loading="eager" fetchpriority="high">
-<div class="page-hero-copy reveal visible" style="padding-top: 32px;">
+<div class="page-hero-copy reveal visible">
 <div class="eyebrow">THE WAILEA PHOTO ATLAS</div>
-<h1 style="color: #171716; margin-top: 12px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15;">Where to park for a sunrise session at Keawakapu Beach II.</h1>
+<h1 style="color: #171716; margin-top: 12px;">Where to park for a sunrise session at Keawakapu Beach II.</h1>
 <p style="margin-top: 12px;">A practical, no-surprises guide to parking, meeting us on the beach, and getting ready for your early session.</p>
 <p style="margin-top:14px;font:600 11px/1 var(--sans);letter-spacing:.1em;opacity:.85;">BY LAURENCE BALTER &middot; FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
 </div>
