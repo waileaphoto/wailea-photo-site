@@ -15,7 +15,7 @@
   const ADDON_DEFS = [
     { slug: 'film', label: 'Real film (Kodak/FujiFilm)', learnMoreUrl: 'https://waileaphoto.com/kodak-film-upgrade' },
     { slug: 'bw', label: 'Classic Black & White add-on', learnMoreUrl: 'https://waileaphoto.com/black-and-white-upgrade' },
-    { slug: 'apo_lens', label: 'Leica APO lens upgrade' },
+    { slug: 'apo_lens', label: 'Leica APO lens upgrade', learnMoreUrl: 'https://waileaphoto.com/the-apo-difference' },
     {
       slug: 'double-sunset',
       label: 'Special-Double your session time to include Last Half Sunset ($499 value)',
