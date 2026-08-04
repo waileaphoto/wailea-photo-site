@@ -13,8 +13,8 @@
   const STRIPE_PK = CONFIG.stripePublishableKey || '';
 
   const ADDON_DEFS = [
-    { slug: 'film', label: 'Real film (Kodak/FujiFilm)' },
-    { slug: 'bw', label: 'Classic Black & White add-on' },
+    { slug: 'film', label: 'Real film (Kodak/FujiFilm)', learnMoreUrl: 'https://waileaphoto.com/kodak-film-upgrade' },
+    { slug: 'bw', label: 'Classic Black & White add-on', learnMoreUrl: 'https://waileaphoto.com/black-and-white-upgrade' },
     { slug: 'apo_lens', label: 'Leica APO lens upgrade' },
     {
       slug: 'double-sunset',
@@ -146,6 +146,18 @@
         this.addonInputs[a.slug] = input;
         const children = [input, a.label];
         if (a.priceLabel) children.push(el('span', { class: 'wbw-addon-price' }, [a.priceLabel]));
+                if (a.learnMoreUrl) {
+                            // stopPropagation so tapping this link doesn't also toggle the parent
+                            // <label>'s checkbox — it opens in a new tab, so the booking modal the
+                            // person is mid-checkout in is never touched or lost.
+                            children.push(el('a', {
+                                          href: a.learnMoreUrl,
+                                          target: '_blank',
+                                          rel: 'noopener',
+                                          class: 'wbw-addon-learn-more',
+                                          onclick: (e) => e.stopPropagation(),
+                            }, ['Learn more']));
+                }
         const addonRow = el('label', { class: 'wbw-addon' }, children);
         this.addonRows[a.slug] = addonRow;
         addonsWrap.appendChild(addonRow);
