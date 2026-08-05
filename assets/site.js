@@ -333,7 +333,7 @@
     if (!exploreColumn || exploreColumn.querySelector('a[href="atlas.html"], a[href="/atlas"], a[href="/atlas.html"]')) return;
     const atlasLink = document.createElement('a');
     atlasLink.href = 'atlas.html';
-    atlasLink.textContent = 'The Atlas';
+    atlasLink.textContent = 'The Maui Atlas';
     exploreColumn.appendChild(atlasLink);
   }
 
