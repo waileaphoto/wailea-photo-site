@@ -449,6 +449,7 @@
       if (!this.nameInput.value || !this.emailInput.value) {
         this.detailsError.textContent = 'Name and email are required.';
         return;
+      
       }
       if (!this.hearAboutInput.value) {
         this.detailsError.textContent = 'Please let us know how you heard about us.';
