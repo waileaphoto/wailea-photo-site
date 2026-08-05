@@ -184,6 +184,11 @@
 
       this.policyBox = el('div', { class: 'wbw-policy-box' }, POLICY_LINES.map((t) => el('p', {}, [t])));
       this.policyCheckbox = el('input', { type: 'checkbox' });
+      this.sunrisePunctualityCheckbox = el('input', { type: 'checkbox' });
+      this.sunrisePunctualityRow = el('label', { class: 'wbw-policy-agree' }, [
+        this.sunrisePunctualityCheckbox,
+        ' I acknowledge that I must arrive on time. Sessions are not extended due to tardiness, late sleeping teenagers or slow valet service.',
+      ]);
 
       this.quoteBox = el('div', { class: 'wbw-quote' });
       this.detailsError = el('div', { class: 'wbw-error' });
@@ -206,6 +211,7 @@
           el('label', {}, ['Session Policies']),
           this.policyBox,
           el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' I have read and agree to the session policies above.']),
+          this.sunrisePunctualityRow,
         ]),
         this.quoteBox,
         this.detailsError,
@@ -253,7 +259,6 @@
     }
 
     open(slug, name, preselect = null) {
-      if (!this.overlay) this.buildDom();
       const requestedDate = preselect?.date || null;
       const requestedMonth = requestedDate ? new Date(`${requestedDate}T12:00:00`) : new Date();
       this.state = {
@@ -262,12 +267,15 @@
         bookingId: null, bookingReference: null, clientSecret: null,
         purchased: false, abandonTracked: false,
       };
+      if (!this.overlay) this.buildDom();
       clearInterval(this.holdTimer);
       ADDON_DEFS.forEach((addon) => {
         const applies = !addon.sessionSlugs || addon.sessionSlugs.includes(slug);
         this.addonRows[addon.slug].hidden = !applies;
         this.addonInputs[addon.slug].checked = false;
       });
+      this.sunrisePunctualityRow.hidden = slug !== 'sunrise-max';
+      this.sunrisePunctualityCheckbox.checked = false;
       this.specialRequestsInput.value = '';
       this.floristContactCheckbox.checked = false;
       this.titleEl.textContent = name;
@@ -450,6 +458,10 @@
         this.detailsError.textContent = 'Please agree to the session policies to continue.';
         return;
       }
+      if (this.state.slug === 'sunrise-max' && !this.sunrisePunctualityCheckbox.checked) {
+        this.detailsError.textContent = 'Please acknowledge the Sunrise session arrival-time policy to continue.';
+        return;
+      }
       const btn = event?.target;
       const originalLabel = btn ? btn.textContent : null;
       if (btn) { btn.disabled = true; btn.textContent = 'Please wait…'; }
@@ -463,6 +475,7 @@
           client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value, smsOptIn: this.smsOptInCheckbox.checked },
           questionnaire: {
             agreedToPolicies: this.policyCheckbox.checked,
+            acknowledgedSunrisePunctuality: this.state.slug === 'sunrise-max' ? this.sunrisePunctualityCheckbox.checked : undefined,
             hearAboutUs: this.hearAboutInput.value,
             celebrating: this.celebratingInput.value || undefined,
             specialRequests: this.specialRequestsInput.value || undefined,

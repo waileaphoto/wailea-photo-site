@@ -74,6 +74,7 @@
   display: flex; align-items: flex-start; gap: 8px; font: 400 13px/1.4 'Inter', sans-serif !important;
   text-transform: none !important; letter-spacing: normal !important; color: #333 !important; cursor: pointer;
 }
+.wbw-policy-agree[hidden] { display: none; }
 .wbw-policy-agree input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
 
 .wbw-addons { display: flex; flex-direction: column; gap: 8px; }
