@@ -64,176 +64,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css?v=20260731">
-
-  <style>
-    .page-hero-responsive {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      display: flex;
-      align-items: flex-start;
-      padding: 36px 24px;
-      box-sizing: border-box;
-      overflow: hidden;
-      background-color: #171716;
-    }
-
-    @media (min-width: 768px) {
-      .page-hero-responsive {
-        aspect-ratio: 16 / 9;
-        padding: 56px 48px;
-      }
-    }
-
-    .page-hero-responsive picture,
-    .page-hero-responsive picture img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover !important;
-      z-index: 0;
-    }
-
-    .page-hero-responsive::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 80%);
-      z-index: 1;
-    }
-
-    .page-hero-responsive .hero-content-wrapper {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-    }
-
-    .page-hero-responsive h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif !important;
-      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
-      font-weight: 500 !important;
-      line-height: 1.15 !important;
-      color: #ffffff !important;
-      margin: 8px 0 0 !important;
-      letter-spacing: -0.01em !important;
-    }
-
-    .hero-subtitle {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-      font-size: 0.98rem !important;
-      line-height: 1.6 !important;
-      font-weight: 400 !important;
-      color: rgba(255, 255, 255, 0.92) !important;
-      margin-top: 14px !important;
-    }
-
-    .hero-byline {
-      margin-top: 18px !important;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-      font-size: 11px !important;
-      font-weight: 600 !important;
-      line-height: 1 !important;
-      letter-spacing: 0.12em !important;
-      text-transform: uppercase !important;
-      color: rgba(255, 255, 255, 0.75) !important;
-    }
-
-    .dining-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 24px;
-    }
-    @media (min-width: 600px) {
-      .dining-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .dining-card {
-      background: #fcfbf9;
-      border: 1px solid rgba(23, 23, 22, 0.1);
-      padding: 24px;
-      border-radius: 4px;
-    }
-
-    .dining-card h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.5rem;
-      margin: 0 0 6px;
-      color: #171716;
-    }
-
-    .dining-card .tag {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #b69557;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .dining-card p {
-      font-size: 0.92rem;
-      line-height: 1.55;
-      margin: 0;
-      color: #4a4a48;
-    }
-
-    .dining-card a {
-      color: #171716;
-      text-decoration: underline;
-    }
-
-    .video-callout {
-      margin: 32px 0 0;
-      padding: 28px;
-      background: #171716;
-      color: #ffffff;
-      border-radius: 4px;
-    }
-
-    .video-callout h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.8rem;
-      margin: 0 0 10px;
-      color: #ffffff;
-    }
-
-    .video-callout p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 20px;
-    }
-
-    .video-callout-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .video-btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 20px;
-      border-radius: 4px;
-      font: 600 12px/1 'Inter', sans-serif;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      background: #b69557;
-      color: #ffffff;
-      transition: background 0.2s ease;
-    }
-
-    .video-btn:hover {
-      background: #9e7f45;
-    }
-  </style>
 </head>
 <body>
 
@@ -266,15 +96,15 @@
 
 <main>
   <!-- HERO SECTION -->
-  <section class="page-hero-responsive">
+  <section class="p-hero">
     <picture>
       <source media="(min-width: 768px)" srcset="assets/humble.jpg" width="1600" height="900">
       <img src="assets/humble.jpg" width="1080" height="1350" alt="Humble Market Kitchin in Wailea Maui" loading="eager" fetchpriority="high">
     </picture>
-    <div class="hero-content-wrapper reveal visible">
+    <div class="p-hero-content reveal visible">
       <div class="eyebrow" style="color: #e0d0b8;">THE MAUI ATLAS</div>
-      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">Where to eat after your sunset session in Wailea.</h1>
-      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">Once the sun dips below the horizon and your photo session wraps up, you will be ready for a great meal. Here is our personal local guide to the best spots in Wailea and Kihei.</p>
+      <h1>Where to eat after your sunset session in Wailea.</h1>
+      <p class="hero-subtitle">Once the sun dips below the horizon and your photo session wraps up, you will be ready for a great meal. Here is our personal local guide to the best spots in Wailea and Kihei.</p>
       <p class="hero-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
     </div>
   </section>
@@ -289,26 +119,26 @@
       <h2>For engagements, anniversaries &amp; special evenings.</h2>
       <p>Whether you're celebrating an engagement, a vow renewal, or an anniversary trip, ending your evening with exceptional food and ocean views makes the night complete.</p>
       
-      <div class="dining-grid">
-        <div class="dining-card">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 24px;">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Italian, Surf &amp; Turf · $$$</span>
-          <h3><a href="https://www.fourseasons.com/maui/dining/" target="_blank" rel="noopener">Four Seasons Wailea (Ferraro's, Spago &amp; DUO)</a></h3>
-          <p>Our top recommendation for engagements, vow renewals, and anniversary evenings. Exceptional oceanfront dining across Ferraro’s, Spago, and DUO.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.fourseasons.com/maui/dining/" target="_blank" rel="noopener">Four Seasons Wailea (Ferraro's, Spago &amp; DUO)</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Our top recommendation for engagements, vow renewals, and anniversary evenings. Exceptional oceanfront dining across Ferraro’s, Spago, and DUO.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Hawaiian Asian · $$$</span>
-          <h3><a href="https://www.hmkwailea.com/" target="_blank" rel="noopener">Humble Market Kitchin By Roy Yamaguchi</a></h3>
-          <p>Hawaiian-inspired fare made with fresh ingredients at the Wailea Beach Resort.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.hmkwailea.com/" target="_blank" rel="noopener">Humble Market Kitchin By Roy Yamaguchi</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Hawaiian-inspired fare made with fresh ingredients at the Wailea Beach Resort.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Steak &amp; Seafood · $$$</span>
-          <h3><a href="https://www.koastwailea.com/" target="_blank" rel="noopener">Koast</a></h3>
-          <p>Australian dry-aged steaks and fresh fish in a refined Wailea setting.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.koastwailea.com/" target="_blank" rel="noopener">Koast</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Australian dry-aged steaks and fresh fish in a refined Wailea setting.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Sushi · $$$</span>
-          <h3><a href="https://www.morimotomaui.com/" target="_blank" rel="noopener">Morimoto Maui</a></h3>
-          <p>Located at the Andaz Maui right where our Mokapu Beach sessions take place. World-class sushi overlooking the ocean.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.morimotomaui.com/" target="_blank" rel="noopener">Morimoto Maui</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Located at the Andaz Maui right where our Mokapu Beach sessions take place. World-class sushi overlooking the ocean.</p>
         </div>
       </div>
     </div>
@@ -324,36 +154,36 @@
       <h2>Casual bites, craft beer &amp; island flavors.</h2>
       <p>If you'd prefer to kick off your shoes, grab a casual burger, or enjoy fresh fish tacos with the family, these spots offer a relaxed vibe with great quality.</p>
 
-      <div class="dining-grid">
-        <div class="dining-card">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 24px;">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Gluten-Free Fine Dining · $$</span>
-          <h3><a href="https://aurummaui.com/" target="_blank" rel="noopener">Aurum in Wailea</a></h3>
-          <p>An exceptional, dedicated gluten-free culinary experience right in Wailea.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://aurummaui.com/" target="_blank" rel="noopener">Aurum in Wailea</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">An exceptional, dedicated gluten-free culinary experience right in Wailea.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Burgers &amp; Beer · $$</span>
-          <h3><a href="https://www.thepintandcork.com/" target="_blank" rel="noopener">The Pint &amp; Cork</a></h3>
-          <p>Located at The Shops at Wailea. Excellent burgers, craft cocktails, and a great beer selection.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.thepintandcork.com/" target="_blank" rel="noopener">The Pint &amp; Cork</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Located at The Shops at Wailea. Excellent burgers, craft cocktails, and a great beer selection.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Fish Tacos · $$</span>
-          <h3><a href="https://coconutsfishcafe.com/" target="_blank" rel="noopener">Coconut's Fish Cafe</a></h3>
-          <p>In Kihei. Famous for their legendary wild-caught fish tacos served on warm corn tortillas.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://coconutsfishcafe.com/" target="_blank" rel="noopener">Coconut's Fish Cafe</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">In Kihei. Famous for their legendary wild-caught fish tacos served on warm corn tortillas.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Eclectic Mix &amp; Mai Tais · $$</span>
-          <h3><a href="https://monkeypodkitchen.com/locations/wailea/" target="_blank" rel="noopener">Monkeypod Kitchen</a></h3>
-          <p>A Wailea favorite for scratch-made dishes, wood-fired pizza, and famous honey-creamed Mai Tais.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://monkeypodkitchen.com/locations/wailea/" target="_blank" rel="noopener">Monkeypod Kitchen</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">A Wailea favorite for scratch-made dishes, wood-fired pizza, and famous honey-creamed Mai Tais.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Craft Brewery · $$</span>
-          <h3><a href="https://mauibrewingco.com/" target="_blank" rel="noopener">Maui Brewing Co.</a></h3>
-          <p>Located in Kihei. Expansive outdoor grid, local brews on tap, and great pizza and burgers for large groups.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://mauibrewingco.com/" target="_blank" rel="noopener">Maui Brewing Co.</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Located in Kihei. Expansive outdoor grid, local brews on tap, and great pizza and burgers for large groups.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Casual Resort · $$</span>
-          <h3><a href="https://www.tommybahama.com/restaurants/wailea" target="_blank" rel="noopener">Tommy Bahama</a></h3>
-          <p>Relaxed, reliable island dining located in Wailea.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.tommybahama.com/restaurants/wailea" target="_blank" rel="noopener">Tommy Bahama</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Relaxed, reliable island dining located in Wailea.</p>
         </div>
       </div>
     </div>
@@ -369,41 +199,41 @@
       <h2>Thai, Italian, Steak &amp; Lunch Options.</h2>
       <p>More favorites worth exploring during your stay in South Maui:</p>
 
-      <div class="dining-grid">
-        <div class="dining-card">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 24px;">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Lunch · $$</span>
-          <h3><a href="https://www.spoonandkey.com/" target="_blank" rel="noopener">Spoon and Key</a></h3>
-          <p>Created by Jeff Bezos' former personal chef, serving incredible fresh lunch dishes.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.spoonandkey.com/" target="_blank" rel="noopener">Spoon and Key</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Created by Jeff Bezos' former personal chef, serving incredible fresh lunch dishes.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Philippine Hawaiian · $$$</span>
-          <h3><a href="https://lineagewailea.com/" target="_blank" rel="noopener">Lineage</a></h3>
-          <p>At The Shops at Wailea. Vibrant family-style dishes rooted in local culinary tradition.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://lineagewailea.com/" target="_blank" rel="noopener">Lineage</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">At The Shops at Wailea. Vibrant family-style dishes rooted in local culinary tradition.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Thai · $$</span>
-          <h3><a href="https://nutchareesauthenticthai.com/" target="_blank" rel="noopener">Nutcharee’s Authentic Thai</a></h3>
-          <p>In Kihei. Widely considered the best Thai food on the island with incredible local fish curry.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://nutchareesauthenticthai.com/" target="_blank" rel="noopener">Nutcharee’s Authentic Thai</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">In Kihei. Widely considered the best Thai food on the island with incredible local fish curry.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Italian &amp; Pizza · $$$</span>
-          <h3><a href="https://matteoswailea.com/" target="_blank" rel="noopener">Matteo’s</a> &amp; <a href="https://manolispizza.com/" target="_blank" rel="noopener">Manoli’s</a></h3>
-          <p>Matteo's in Wailea for traditional Italian dining, or Manoli's for casual handcrafted pizza.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://matteoswailea.com/" target="_blank" rel="noopener">Matteo’s</a> &amp; <a href="https://manolispizza.com/" target="_blank" rel="noopener">Manoli’s</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Matteo's in Wailea for traditional Italian dining, or Manoli's for casual handcrafted pizza.</p>
         </div>
-        <div class="dining-card">
+        <div class="card" style="padding: 20px;">
           <span class="tag">Steakhouse · $$$</span>
-          <h3><a href="https://www.ruthschris.com/restaurant-locations/wailea-hi/" target="_blank" rel="noopener">Ruth’s Chris Steak House</a></h3>
-          <p>Classic steakhouse dining right in Wailea.</p>
+          <h3 style="font-size: 1.35rem; margin: 4px 0 8px;"><a href="https://www.ruthschris.com/restaurant-locations/wailea-hi/" target="_blank" rel="noopener">Ruth’s Chris Steak House</a></h3>
+          <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-muted, #4a4a48); margin: 0;">Classic steakhouse dining right in Wailea.</p>
         </div>
       </div>
 
       <!-- VIDEO PLAYLIST CALLOUT -->
-      <div class="video-callout">
-        <h3>Watch Our Personal Video Reviews</h3>
-        <p>My wife and I love exploring local spots across Maui. You can watch our personal video reviews and discover more fun island activities on our YouTube playlists before your trip!</p>
-        <div class="video-callout-buttons">
-          <a class="video-btn" href="https://youtube.com/playlist?list=PLmlSHatAzo4-Llb2up9UcNOxlt0LwqmM4" target="_blank" rel="noopener">🎬 Restaurant Reviews Playlist</a>
-          <a class="video-btn" href="https://youtube.com/playlist?list=PLmlSHatAzo48WppRI7JtZIwbEZxxisQI7" target="_blank" rel="noopener">🌴 Fun Things to Do in Maui</a>
+      <div style="margin-top: 32px; padding: 28px; background: #171716; color: #ffffff; border-radius: 4px;">
+        <h3 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; margin: 0 0 10px; color: #ffffff;">Watch Our Personal Video Reviews</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.85); margin-bottom: 20px;">My wife and I love exploring local spots across Maui. You can watch our personal video reviews and discover more fun island activities on our YouTube playlists before your trip!</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <a class="btn-primary" href="https://youtube.com/playlist?list=PLmlSHatAzo4-Llb2up9UcNOxlt0LwqmM4" target="_blank" rel="noopener">🎬 Restaurant Reviews Playlist</a>
+          <a class="btn-primary" href="https://youtube.com/playlist?list=PLmlSHatAzo48WppRI7JtZIwbEZxxisQI7" target="_blank" rel="noopener">🌴 Fun Things to Do in Maui</a>
         </div>
       </div>
 
