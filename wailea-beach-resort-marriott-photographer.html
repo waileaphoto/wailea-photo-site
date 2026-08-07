@@ -84,13 +84,13 @@
     .atlas-opening-note{display:grid;grid-template-columns:150px minmax(0,700px);gap:44px;align-items:start;padding:clamp(48px,7vw,92px) max(24px,calc((100vw - 1120px)/2));background:var(--atlas-ink);color:#fff}
     .atlas-opening-note span{padding-top:8px;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#d3b77d}
     .atlas-opening-note p{margin:0;font:400 clamp(1.8rem,3vw,3rem)/1.12 'Cormorant Garamond',Georgia,serif}
-    .atlas-editorial .content-split{border-top:1px solid rgba(23,23,22,.1)}
-    .atlas-editorial .content-split-copy{padding-top:clamp(54px,7vw,110px);padding-bottom:clamp(54px,7vw,110px)}
-    .atlas-editorial .content-split-copy h2{max-width:14ch;line-height:1.02}
+    .atlas-editorial .content-split{border-top:1px solid rgba(23,23,22,.1);grid-template-columns:1.2fr 1fr!important;align-items:center}
+    .atlas-editorial .content-split-copy{padding-top:clamp(40px,5vw,80px);padding-bottom:clamp(40px,5vw,80px)}
+    .atlas-editorial .content-split-copy h2{max-width:16ch;line-height:1.05}
     .atlas-editorial .content-split-copy h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 'Cormorant Garamond',Georgia,serif}
-    .atlas-editorial .content-split-image img{filter:saturate(.92) contrast(.98)}
-    .atlas-editorial .content-split-image{position:relative}
-    .atlas-editorial .content-split-image::after{content:"";position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(transparent,rgba(12,12,11,.62));pointer-events:none}
+    .atlas-editorial .content-split-image{position:relative;width:100%;aspect-ratio:16 / 9;overflow:hidden}
+    .atlas-editorial .content-split-image img{width:100%;height:100%;object-fit:cover;aspect-ratio:16 / 9;filter:saturate(.92) contrast(.98)}
+    .atlas-editorial .content-split-image::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(transparent,rgba(12,12,11,.65));pointer-events:none}
     .atlas-photo-caption{position:absolute;z-index:2;left:22px;right:22px;bottom:18px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-editorial .faq-list{background:#eee4d3}
     .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
@@ -103,6 +103,7 @@
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
       .atlas-opening-note{grid-template-columns:1fr;gap:16px;padding:46px 24px 54px}
+      .atlas-editorial .content-split{grid-template-columns:1fr!important}
     }
   </style>
 </head>
@@ -155,7 +156,7 @@
   <!-- CONTENT SECTION 1 (IMAGE LEFT / TEXT RIGHT) -->
   <section class="content-split">
     <div class="content-split-image reveal visible">
-      <img src="assets/wailea-beach-resort-family-sunset3.jpg" width="1200" height="800" alt="A family photographed on a Wailea beach near the Wailea Beach Resort at sunset" loading="lazy">
+      <img src="assets/wailea-beach-resort-family-sunset3.jpg" width="1600" height="900" alt="A family photographed on a Wailea beach near the Wailea Beach Resort at sunset" loading="lazy">
       <div class="atlas-photo-caption">Sunset beach moments near the Wailea Beach Resort</div>
     </div>
     <div class="content-split-copy reveal visible">
@@ -173,7 +174,7 @@
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
   <section class="content-split reverse">
     <div class="content-split-image reveal visible">
-      <img src="assets/wailea-beach-resort-family-sunset.jpg" width="1600" height="1067" alt="An evening session on a quiet Wailea beach near the Wailea Beach Resort" loading="lazy">
+      <img src="assets/wailea-beach-resort-family-sunset.jpg" width="1600" height="900" alt="An evening session on a quiet Wailea beach near the Wailea Beach Resort" loading="lazy">
       <div class="atlas-photo-caption">Shoreline sunset portraits along the Wailea coast</div>
     </div>
     <div class="content-split-copy reveal visible">
