@@ -13,7 +13,7 @@
 
   <!-- Page Title & Meta -->
   <title>Where to Eat After Your Sunset Photo Session in Wailea &amp; Kihei | The Maui Atlas</title>
-  <meta name="description" content="Our favorite post-shoot dining recommendations in Wailea and Kihei—from Four Seasons fine dining and Nobu at Grand Wailea to casual fish tacos, craft brews, and local favorites.">
+  <meta name="description" content="Our favorite post-shoot dining recommendations in Wailea and Kihei—from Four Seasons fine dining, Nobu, and Aurum to casual fish tacos, craft brews, and local video reviews.">
   <link rel="canonical" href="https://waileaphoto.com/where-to-eat-after-photo-session-wailea">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -102,6 +102,20 @@
     .dining-card h3 a:hover{border-color:var(--atlas-ink)}
     .dining-card .tag{display:block;margin-bottom:10px;font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--atlas-gold)}
     .dining-card p{margin:0;font:400 0.92rem/1.6 'Inter',sans-serif;color:rgba(23,23,22,.8)}
+
+    /* Video Reviews Playlist Section */
+    .atlas-playlist-section{padding:clamp(60px,8vw,110px) max(24px,calc((100vw - 1120px)/2));background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1);border-bottom:1px solid rgba(23,23,22,.1)}
+    .atlas-playlist-header{max-width:680px;margin:0 auto 36px;text-align:center}
+    .atlas-playlist-header .chapter{font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--atlas-rust);margin-bottom:12px}
+    .atlas-playlist-header h2{font:500 clamp(2.2rem,4vw,3.6rem)/1.05 'Cormorant Garamond',Georgia,serif;margin:0 0 16px;color:var(--atlas-ink)}
+    .atlas-playlist-header p{font:400 clamp(0.95rem,1.1vw,1.08rem)/1.65 'Inter',sans-serif;color:rgba(23,23,22,.76);margin:0}
+    
+    .atlas-video-wrapper{position:relative;width:100%;max-width:960px;margin:0 auto;aspect-ratio:16/9;background:#000;box-shadow:0 18px 45px rgba(0,0,0,.12);border-radius:2px;overflow:hidden}
+    .atlas-video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+    
+    .atlas-playlist-action{text-align:center;margin-top:28px}
+    .atlas-playlist-action a{display:inline-flex;align-items:center;gap:8px;font:600 11px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--atlas-ink);text-decoration:none;border-bottom:1px solid var(--atlas-ink);padding-bottom:4px;transition:opacity .2s}
+    .atlas-playlist-action a:hover{opacity:.7}
 
     .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
     
@@ -200,6 +214,11 @@
           <h3><a href="https://www.grandwailea.com/dine/nobu-at-grand-wailea" target="_blank" rel="noopener">Nobu at Grand Wailea</a></h3>
           <p>World-renowned Japanese-Peruvian cuisine in an exquisite indoor-outdoor setting at the Grand Wailea.</p>
         </div>
+        <div class="dining-card">
+          <span class="tag">Gluten-Free Fine Dining · $$$</span>
+          <h3><a href="https://aurummaui.com/" target="_blank" rel="noopener">Aurum in Wailea</a></h3>
+          <p>An exceptional, dedicated gluten-free culinary experience right in the heart of Wailea.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -216,11 +235,6 @@
       <p>If you'd prefer to kick off your shoes, grab a casual burger, or enjoy fresh fish tacos with the family, these spots offer a relaxed vibe with fantastic quality.</p>
 
       <div class="dining-grid">
-        <div class="dining-card">
-          <span class="tag">Gluten-Free Fine Dining · $$</span>
-          <h3><a href="https://aurummaui.com/" target="_blank" rel="noopener">Aurum in Wailea</a></h3>
-          <p>An exceptional, dedicated gluten-free culinary experience right in the heart of Wailea.</p>
-        </div>
         <div class="dining-card">
           <span class="tag">Burgers &amp; Beer · $$</span>
           <h3><a href="https://www.thepintandcork.com/" target="_blank" rel="noopener">The Pint &amp; Cork</a></h3>
@@ -242,6 +256,21 @@
           <p>In Kihei. Expansive outdoor patio, fresh local craft beers, artisanal pizza, and great food for families.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: HOMEMADE YOUTUBE RESTAURANT REVIEWS PLAYLIST -->
+  <section class="atlas-playlist-section reveal visible">
+    <div class="atlas-playlist-header">
+      <div class="chapter">ON-THE-GROUND REVIEWS</div>
+      <h2>Our Personal Maui Restaurant Reviews</h2>
+      <p>Watch our homemade video reviews of local Maui dining spots as we test out dishes, ambience, and post-photo session vibes across South Maui.</p>
+    </div>
+    <div class="atlas-video-wrapper">
+      <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLmlSHatAzo4-Llb2up9UcNOxlt0LwqmM4" title="Homemade Maui Restaurant Reviews by Wailea Photo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="atlas-playlist-action">
+      <a href="https://youtube.com/playlist?list=PLmlSHatAzo4-Llb2up9UcNOxlt0LwqmM4&amp;si=K_fqr3jIzJJ8IMFz" target="_blank" rel="noopener">Watch Full Playlist on YouTube &rarr;</a>
     </div>
   </section>
 
