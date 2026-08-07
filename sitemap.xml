@@ -11,7 +11,7 @@
   <!-- Key Landing & Booking Pages -->
   <url>
     <loc>https://waileaphoto.com/atlas.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -68,6 +68,18 @@
 
   <!-- Atlas Guides & Articles -->
   <url>
+    <loc>https://waileaphoto.com/best-beach-maui-family-pictures.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/best-beaches-maui-family-pictures.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://waileaphoto.com/parking-sunrise-session-keawakapu-beach.html</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -84,12 +96,6 @@
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/best-beaches-maui-family-pictures.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/why-we-dont-hide-for-maui-proposals.html</loc>
@@ -114,58 +120,6 @@
     <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <!-- Resources & Information Pages -->
-  <url>
-    <loc>https://waileaphoto.com/tides.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/the-apo-difference.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/our-florist.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/corporate-events.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- Team Profile Pages -->
-  <url>
-    <loc>https://waileaphoto.com/laurence-balter.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/jude-balter.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/max-balter.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/solomon-balter.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/snorkelspots.html</loc>
@@ -276,5 +230,57 @@
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Resources & Information Pages -->
+  <url>
+    <loc>https://waileaphoto.com/tides.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/the-apo-difference.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/our-florist.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/corporate-events.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Team Profile Pages -->
+  <url>
+    <loc>https://waileaphoto.com/laurence-balter.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/jude-balter.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/max-balter.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/solomon-balter.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
