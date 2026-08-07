@@ -1,280 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Homepage -->
+
+  <!-- Core Site Pages -->
   <url>
     <loc>https://waileaphoto.com/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- Key Landing & Booking Pages -->
-  <url>
-    <loc>https://waileaphoto.com/atlas</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/pricing</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/atlas</loc>
   </url>
   <url>
     <loc>https://waileaphoto.com/faq</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/tides</loc>
   </url>
 
-  <!-- Specialty Photography Pages -->
+  <!-- Primary Photography Service Pages -->
   <url>
     <loc>https://waileaphoto.com/maui-family-photographer</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/maui-couples-photographer</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/maui-proposal-photographer</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/maui-maternity-photographer</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/maui-wedding-photographer</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/maui-vow-renewal-photographer</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/maui-wedding-photographer</loc>
   </url>
 
-  <!-- Atlas Guides & Articles -->
-  <url>
-    <loc>https://waileaphoto.com/parking-sunrise-session-keawakapu-beach</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/parking-sunset-session-mokapu-beach</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/parking-turquoise-water-session-kanaha-beach</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Maui Atlas: Photography Guides -->
   <url>
     <loc>https://waileaphoto.com/best-beaches-maui-family-pictures</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/why-we-dont-hide-for-maui-proposals</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/what-to-wear-maui-photos</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/best-time-of-day-family-beach-photos-wailea</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://waileaphoto.com/wailea-vs-kihei-vs-makena-photo-locations</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Resources & Information Pages -->
-  <url>
-    <loc>https://waileaphoto.com/tides</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://waileaphoto.com/parking-sunrise-session-keawakapu-beach</loc>
   </url>
   <url>
-    <loc>https://waileaphoto.com/the-apo-difference</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/our-florist</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/corporate-events</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- Team Profile Pages -->
-  <url>
-    <loc>https://waileaphoto.com/laurence-balter</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/jude-balter</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/max-balter</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/solomon-balter</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/snorkelspots</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/sunscreen</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/roadtohana</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/luaus</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/helicoptertours</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/catamarantours</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/maternity</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/leica-m9-vs-kodak-portra-160</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/kodak-film-upgrade</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://waileaphoto.com/black-and-white-upgrade</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://waileaphoto.com/parking-sunset-session-mokapu-beach</loc>
   </url>
   <url>
     <loc>https://waileaphoto.com/parking-wedding-maluaka-beach</loc>
-    <lastmod>2026-08-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/parking-turquoise-water-session-kanaha-beach</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/wailea-vs-kihei-vs-makena-photo-locations</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/why-we-dont-hide-for-maui-proposals</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/where-to-eat-after-photo-session-wailea</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/what-to-wear-maui-photos</loc>
   </url>
   <url>
     <loc>https://waileaphoto.com/our-wedding-officiant-pick-for-maui-photography</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 
-  <!-- Resort & Reunion Hubs -->
+  <!-- Maui Atlas: Photography Craft & Upgrades -->
+  <url>
+    <loc>https://waileaphoto.com/leica-m9-vs-kodak-portra-160</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/kodak-film-upgrade</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/black-and-white-upgrade</loc>
+  </url>
+
+  <!-- Resort & High-Intent Landing Pages -->
   <url>
     <loc>https://waileaphoto.com/andaz-maui-wailea-photographer</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/grand-wailea-photographer</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/four-seasons-maui-wailea-photographer</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/fairmont-kea-lani-photographer</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/wailea-beach-resort-marriott-photographer</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://waileaphoto.com/maui-family-reunion-photographer</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
+
+  <!-- Maui Atlas: Things To Do -->
+  <url>
+    <loc>https://waileaphoto.com/catamarantours</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/helicoptertours</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/maternity</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/snorkelspots</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/roadtohana</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/sunscreen</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/luaus</loc>
+  </url>
+
 </urlset>

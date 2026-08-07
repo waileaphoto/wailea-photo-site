@@ -1,51 +1,6 @@
-# --- Marketing / vanity URLs ---
 /maui-family-beach-photography-faq   /faq.html   200
-/photography                         /#story-paths   301!
-/our-family                          /#experience    301!
-
-# --- Canonicalize: .html -> extensionless (301) ---
-# Netlify already serves each .html file at its clean URL; these redirect the .html form.
-/index.html   /   301!
-/atlas.html   /atlas   301!
-/pricing.html   /pricing   301!
-/faq.html   /faq   301!
-/maui-family-photographer.html   /maui-family-photographer   301!
-/maui-couples-photographer.html   /maui-couples-photographer   301!
-/maui-proposal-photographer.html   /maui-proposal-photographer   301!
-/maui-maternity-photographer.html   /maui-maternity-photographer   301!
-/maui-wedding-photographer.html   /maui-wedding-photographer   301!
-/maui-vow-renewal-photographer.html   /maui-vow-renewal-photographer   301!
-/parking-sunrise-session-keawakapu-beach.html   /parking-sunrise-session-keawakapu-beach   301!
-/parking-sunset-session-mokapu-beach.html   /parking-sunset-session-mokapu-beach   301!
-/parking-turquoise-water-session-kanaha-beach.html   /parking-turquoise-water-session-kanaha-beach   301!
-/best-beaches-maui-family-pictures.html   /best-beaches-maui-family-pictures   301!
-/why-we-dont-hide-for-maui-proposals.html   /why-we-dont-hide-for-maui-proposals   301!
-/what-to-wear-maui-photos.html   /what-to-wear-maui-photos   301!
-/best-time-of-day-family-beach-photos-wailea.html   /best-time-of-day-family-beach-photos-wailea   301!
-/wailea-vs-kihei-vs-makena-photo-locations.html   /wailea-vs-kihei-vs-makena-photo-locations   301!
-/tides.html   /tides   301!
-/the-apo-difference.html   /the-apo-difference   301!
-/our-florist.html   /our-florist   301!
-/corporate-events.html   /corporate-events   301!
-/laurence-balter.html   /laurence-balter   301!
-/jude-balter.html   /jude-balter   301!
-/max-balter.html   /max-balter   301!
-/solomon-balter.html   /solomon-balter   301!
-/snorkelspots.html   /snorkelspots   301!
-/sunscreen.html   /sunscreen   301!
-/roadtohana.html   /roadtohana   301!
-/luaus.html   /luaus   301!
-/helicoptertours.html   /helicoptertours   301!
-/catamarantours.html   /catamarantours   301!
-/maternity.html   /maternity   301!
-/leica-m9-vs-kodak-portra-160.html   /leica-m9-vs-kodak-portra-160   301!
-/kodak-film-upgrade.html   /kodak-film-upgrade   301!
-/black-and-white-upgrade.html   /black-and-white-upgrade   301!
-/parking-wedding-maluaka-beach.html   /parking-wedding-maluaka-beach   301!
-/our-wedding-officiant-pick-for-maui-photography.html   /our-wedding-officiant-pick-for-maui-photography   301!
-/andaz-maui-wailea-photographer.html   /andaz-maui-wailea-photographer   301!
-/grand-wailea-photographer.html   /grand-wailea-photographer   301!
-/four-seasons-maui-wailea-photographer.html   /four-seasons-maui-wailea-photographer   301!
-/fairmont-kea-lani-photographer.html   /fairmont-kea-lani-photographer   301!
-/wailea-beach-resort-marriott-photographer.html   /wailea-beach-resort-marriott-photographer   301!
-/maui-family-reunion-photographer.html   /maui-family-reunion-photographer   301!
+/atlas                                  /atlas.html  200
+/atlas/                                 /atlas.html  200
+/our-florist.html  /our-florist  301!
+/photography                         /index.html#story-paths  301!
+/our-family                         /index.html#experience   301!
