@@ -141,6 +141,11 @@
     .atlas-faq .faq-item summary{cursor:pointer;list-style:none;padding:20px 0;font:500 1.15rem/1.3 'Cormorant Garamond',Georgia,serif;color:var(--atlas-ink)}
     .atlas-faq .faq-item summary::-webkit-details-marker{display:none}
     .atlas-faq .faq-item p{margin:0 0 20px;font:400 .95rem/1.65 'Inter',sans-serif;color:rgba(23,23,22,.78);max-width:70ch}
+      .atlas-map-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+    .atlas-map-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:6px;font:600 11px/1 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:opacity .2s}
+    .atlas-map-btn:hover{opacity:.85}
+    .atlas-map-btn.google{background:#4285F4;color:#fff}
+    .atlas-map-btn.apple{background:var(--atlas-ink);color:#fff}
   </style>
 </head>
 <body>
@@ -198,6 +203,10 @@
       <div class="chapter">PARKING &amp; MEETING POINT</div>
       <h2>Meet us on the beach at Keawakapu Beach II.</h2>
       <p>The public lot is small, but it should offer plenty of parking at sunrise. Walk down the steps and meet us on the beach.</p><p>Bring a bag or backpack for your personal items so everything is easy to carry and keep together during the session.</p>
+      <div class="atlas-map-actions">
+        <a class="atlas-map-btn google" href="https://maps.app.goo.gl/BtDd2hT4tMdXNCyF6" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+        <a class="atlas-map-btn apple" href="https://maps.apple/p/7AM7AzUikDjyCH" target="_blank" rel="noopener">🗺️ Open in Apple Maps</a>
+      </div>
     </div>
   </section>
 
