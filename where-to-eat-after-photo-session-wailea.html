@@ -71,20 +71,16 @@
   <link rel="stylesheet" href="assets/site.css?v=20260801-atlas-editorial">
 
   <style>
-    :root{--atlas-ink:#171716;--atlas-cream:#f4eddf;--atlas-paper:#fbf8f2;--atlas-gold:#b69557;--atlas-rust:#d3b77d}
+    :root{--atlas-ink:#171716;--atlas-cream:#f4eddf;--atlas-paper:#fbf8f2;--atlas-gold:#b69557;--atlas-rust:#a44736}
     .atlas-editorial{background:var(--atlas-paper);color:var(--atlas-ink)}
-
-    /* Overlay Hero Styles */
-    .atlas-editorial-hero{position:relative;display:flex!important;align-items:flex-end;min-height:min(82vh,850px);width:100%;overflow:hidden;background:#0d0d0c}
-    .atlas-editorial-hero picture{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-    .atlas-editorial-hero picture img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-    .atlas-editorial-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(13,13,12,0.2) 0%, rgba(13,13,12,0.45) 45%, rgba(13,13,12,0.88) 100%);z-index:2;pointer-events:none}
-    
-    .atlas-editorial-hero .page-hero-copy{position:relative!important;z-index:3;width:100%;max-width:1120px;margin:0 auto;padding:clamp(60px,10vw,120px) max(24px,calc((100vw - 1120px)/2));background:transparent!important;color:#fff}
-    .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.25em;text-transform:uppercase}
-    .atlas-editorial-hero h1{margin:18px 0 0;max-width:16ch;color:#ffffff;font:500 clamp(3.1rem,6vw,6.4rem)/.92 'Cormorant Garamond',Georgia,serif;letter-spacing:-.03em;text-shadow:0 2px 20px rgba(0,0,0,0.4)}
-    .atlas-editorial-hero .atlas-deck{max-width:38rem;margin:24px 0 0;font:400 clamp(1.05rem,1.3vw,1.22rem)/1.7 'Inter',sans-serif;color:rgba(255,255,255,.9);text-shadow:0 1px 10px rgba(0,0,0,0.3)}
-    .atlas-editorial-hero .atlas-byline{margin:28px 0 0;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+    .atlas-editorial-hero{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(360px,.8fr);min-height:min(78vh,820px);background:var(--atlas-cream);overflow:hidden}
+    .atlas-editorial-hero>picture{display:block;min-height:100%;overflow:hidden}
+    .atlas-editorial-hero>picture img{display:block;width:100%;height:100%;min-height:100%;object-fit:cover}
+    .atlas-editorial-hero .page-hero-copy{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;max-width:none!important;height:auto!important;transform:none!important;display:flex;flex-direction:column;justify-content:center;padding:clamp(54px,7vw,112px) clamp(34px,5vw,84px);background:var(--atlas-cream)}
+    .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase}
+    .atlas-editorial-hero h1{margin:18px 0 0;max-width:14ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
+    .atlas-editorial-hero .atlas-deck{max-width:35rem;margin:28px 0 0;font:400 clamp(1rem,1.25vw,1.16rem)/1.75 'Inter',sans-serif;color:rgba(23,23,22,.76)}
+    .atlas-editorial-hero .atlas-byline{margin:30px 0 0;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
     
     .atlas-opening-note{display:grid;grid-template-columns:150px minmax(0,700px);gap:44px;align-items:start;padding:clamp(48px,7vw,92px) max(24px,calc((100vw - 1120px)/2));background:var(--atlas-ink);color:#fff}
     .atlas-opening-note span{padding-top:8px;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#d3b77d}
@@ -104,13 +100,13 @@
     .dining-card h3{font:500 1.45rem/1.15 'Cormorant Garamond',Georgia,serif;margin:0 0 6px;color:var(--atlas-ink)}
     .dining-card h3 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(23,23,22,.2)}
     .dining-card h3 a:hover{border-color:var(--atlas-ink)}
-    .dining-card .tag{display:block;margin-bottom:10px;font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#b69557}
+    .dining-card .tag{display:block;margin-bottom:10px;font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--atlas-gold)}
     .dining-card p{margin:0;font:400 0.92rem/1.6 'Inter',sans-serif;color:rgba(23,23,22,.8)}
 
     /* Video Reviews Playlist Section */
     .atlas-playlist-section{padding:clamp(60px,8vw,110px) max(24px,calc((100vw - 1120px)/2));background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1);border-bottom:1px solid rgba(23,23,22,.1)}
     .atlas-playlist-header{max-width:680px;margin:0 auto 36px;text-align:center}
-    .atlas-playlist-header .chapter{font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#a44736;margin-bottom:12px}
+    .atlas-playlist-header .chapter{font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--atlas-rust);margin-bottom:12px}
     .atlas-playlist-header h2{font:500 clamp(2.2rem,4vw,3.6rem)/1.05 'Cormorant Garamond',Georgia,serif;margin:0 0 16px;color:var(--atlas-ink)}
     .atlas-playlist-header p{font:400 clamp(0.95rem,1.1vw,1.08rem)/1.65 'Inter',sans-serif;color:rgba(23,23,22,.76);margin:0}
     
@@ -124,9 +120,10 @@
     .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
     
     @media(max-width:900px){
-      .atlas-editorial-hero{min-height:75vh}
+      .atlas-editorial-hero{grid-template-columns:1fr;min-height:0}
+      .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
-      .atlas-editorial-hero h1{font-size:clamp(2.65rem,11vw,4.5rem)}
+      .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
       .atlas-opening-note{grid-template-columns:1fr;gap:16px;padding:46px 24px 54px}
     }
   </style>
@@ -161,7 +158,7 @@
 </nav>
 
 <main class="atlas-editorial">
-  <!-- HERO SECTION (OVERLAY STYLE) -->
+  <!-- HERO SECTION -->
   <section class="atlas-editorial-hero">
     <picture>
       <img src="assets/humble.jpg" width="1600" height="900" alt="Behind the Scenes at Humble Market Kitchen at Wailea Beach Resort- image by Wailea Photo®" loading="eager" fetchpriority="high">
