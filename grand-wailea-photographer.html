@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171716">
-
+  
   <!-- Analytics & Tracking -->
   <script defer src="assets/analytics.js"></script>
   <script src="assets/fb-pixel.js"></script>
@@ -14,12 +14,13 @@
   <!-- Page Title & Meta -->
   <title>Photography for Grand Wailea Guests | The Maui Atlas</title>
   <meta name="description" content="Family-run photography for Grand Wailea guests. We photograph near the resort at sunset — usually on a quieter beach a short walk up the coastal path, away from the crowds. All-inclusive from $299, booked direct.">
-  <link rel="canonical" href="https://waileaphoto.com/grand-wailea-photographer.html">
+  <link rel="canonical" href="https://waileaphoto.com/grand-wailea-photographer">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Preload Hero Assets -->
-  <link rel="preload" as="image" href="assets/grand-wailea-family-sunset.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/grand-wailea-family-sunset.jpg" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/grand-wailea-family-sunset.jpg" media="(max-width: 767px)" fetchpriority="high">
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="article">
@@ -27,7 +28,7 @@
   <meta property="og:description" content="Family-run photography for Grand Wailea guests. We photograph near the resort at sunset — usually on a quieter beach a short walk up the coastal path, away from the crowds. All-inclusive from $299, booked direct.">
   <meta property="og:image" content="https://waileaphoto.com/assets/grand-wailea-family-sunset.jpg">
   <meta property="og:image:alt" content="A family together at sunset on the beach near the Grand Wailea">
-  <meta property="og:url" content="https://waileaphoto.com/grand-wailea-photographer.html">
+  <meta property="og:url" content="https://waileaphoto.com/grand-wailea-photographer">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Photography for Grand Wailea Guests">
   <meta name="twitter:description" content="Family-run photography for Grand Wailea guests. We photograph near the resort at sunset — usually on a quieter beach a short walk up the coastal path, away from the crowds. All-inclusive from $299, booked direct.">
@@ -47,11 +48,11 @@
     "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo","logo":{"@type":"ImageObject","url":"https://waileaphoto.com/assets/favicon.svg"}},
     "datePublished":"2026-08-05",
     "dateModified":"2026-08-05",
-    "mainEntityOfPage":"https://waileaphoto.com/grand-wailea-photographer.html",
+    "mainEntityOfPage":"https://waileaphoto.com/grand-wailea-photographer",
     "isPartOf":{"@type":"CollectionPage","name":"The Maui Atlas","url":"https://waileaphoto.com/atlas.html"}
   }
   </script>
-
+  
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -59,7 +60,7 @@
     "itemListElement":[
       {"@type":"ListItem","position":1,"name":"Home","item":"https://waileaphoto.com/"},
       {"@type":"ListItem","position":2,"name":"Maui Atlas","item":"https://waileaphoto.com/atlas.html"},
-      {"@type":"ListItem","position":3,"name":"Grand Wailea","item":"https://waileaphoto.com/grand-wailea-photographer.html"}
+      {"@type":"ListItem","position":3,"name":"Grand Wailea","item":"https://waileaphoto.com/grand-wailea-photographer"}
     ]
   }
   </script>
@@ -68,42 +69,95 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=20260801-atlas-editorial">
+  <link rel="stylesheet" href="assets/site.css?v=20260731">
 
   <style>
-    :root{--atlas-ink:#171716;--atlas-cream:#f4eddf;--atlas-paper:#fbf8f2;--atlas-gold:#b69557;--atlas-rust:#a44736}
-    .atlas-editorial{background:var(--atlas-paper);color:var(--atlas-ink)}
-    .atlas-editorial-hero{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(360px,.8fr);min-height:min(78vh,820px);background:var(--atlas-cream);overflow:hidden}
-    .atlas-editorial-hero>picture{display:block;min-height:100%;overflow:hidden}
-    .atlas-editorial-hero>picture img{display:block;width:100%;height:100%;min-height:100%;object-fit:cover}
-    .atlas-editorial-hero .page-hero-copy{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;max-width:none!important;height:auto!important;transform:none!important;display:flex;flex-direction:column;justify-content:center;padding:clamp(54px,7vw,112px) clamp(34px,5vw,84px);background:var(--atlas-cream)}
-    .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase}
-    .atlas-editorial-hero h1{margin:18px 0 0;max-width:14ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
-    .atlas-editorial-hero .atlas-deck{max-width:35rem;margin:28px 0 0;font:400 clamp(1rem,1.25vw,1.16rem)/1.75 'Inter',sans-serif;color:rgba(23,23,22,.76)}
-    .atlas-editorial-hero .atlas-byline{margin:30px 0 0;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
-    .atlas-opening-note{display:grid;grid-template-columns:150px minmax(0,700px);gap:44px;align-items:start;padding:clamp(48px,7vw,92px) max(24px,calc((100vw - 1120px)/2));background:var(--atlas-ink);color:#fff}
-    .atlas-opening-note span{padding-top:8px;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#d3b77d}
-    .atlas-opening-note p{margin:0;font:400 clamp(1.8rem,3vw,3rem)/1.12 'Cormorant Garamond',Georgia,serif}
-    .atlas-editorial .content-split{border-top:1px solid rgba(23,23,22,.1)}
-    .atlas-editorial .content-split-copy{padding-top:clamp(54px,7vw,110px);padding-bottom:clamp(54px,7vw,110px)}
-    .atlas-editorial .content-split-copy h2{max-width:14ch;line-height:1.02}
-    .atlas-editorial .content-split-copy h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 'Cormorant Garamond',Georgia,serif}
-    .atlas-editorial .content-split-image img{filter:saturate(.92) contrast(.98)}
-    .atlas-editorial .content-split-image{position:relative}
-    .atlas-editorial .content-split-image::after{content:"";position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(transparent,rgba(12,12,11,.62));pointer-events:none}
-    .atlas-photo-caption{position:absolute;z-index:2;left:22px;right:22px;bottom:18px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
-    .atlas-editorial .faq-list{background:#eee4d3}
-    .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
-    .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
-    .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
-    .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
-    @media(max-width:900px){
-      .atlas-editorial-hero{grid-template-columns:1fr;min-height:0}
-      .atlas-editorial-hero>picture{height:min(72vh,680px)}
-      .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
-      .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
-      .atlas-opening-note{grid-template-columns:1fr;gap:16px;padding:46px 24px 54px}
+    /* Hero Container Setup */
+    .page-hero-responsive {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: flex-start;
+      padding: 36px 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #171716;
     }
+
+    @media (min-width: 768px) {
+      .page-hero-responsive {
+        aspect-ratio: 16 / 9;
+        padding: 56px 48px;
+      }
+    }
+
+    .page-hero-responsive picture,
+    .page-hero-responsive picture img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+      z-index: 0;
+    }
+
+    /* Hero Gradient Overlay */
+    .page-hero-responsive::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23, 23, 22, 0.75) 0%, rgba(23, 23, 22, 0.3) 50%, rgba(23, 23, 22, 0) 80%);
+      z-index: 1;
+    }
+
+    .page-hero-responsive .hero-content-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    /* H1 Typography matched explicitly to H2 section standards */
+    .page-hero-responsive h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+      font-weight: 500 !important;
+      line-height: 1.15 !important;
+      color: #ffffff !important;
+      margin: 8px 0 0 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    /* Hero Subtitle matched to body paragraph standards */
+    .hero-subtitle {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 0.98rem !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+      color: rgba(255, 255, 255, 0.92) !important;
+      margin-top: 14px !important;
+    }
+
+    .hero-byline {
+      margin-top: 18px !important;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      line-height: 1 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    /* Custom Component Extensions */
+    .location-note { margin: 28px 0 0; padding: 22px 24px; border-left: 2px solid #b69557; background: #f3ecdf; }
+    .location-note strong { display: block; margin-bottom: 7px; font: 600 11px/1.2 'Inter', sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .map-actions { margin: 26px 0 8px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .map-actions a { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border-radius: 5px; color: #fff; font: 600 12px/1 'Inter', sans-serif; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+    .map-google { background: #3f76d3; } .map-apple { background: #171716; }
+    .arrival-list { margin: 20px 0 0; padding: 0; list-style: none; }
+    .arrival-list li { padding: 14px 0; border-top: 1px solid rgba(23, 23, 22, .15); }
+    .arrival-list strong { font-weight: 600; }
   </style>
 </head>
 <body>
@@ -134,92 +188,87 @@
   </div>
 </nav>
 
-<main class="atlas-editorial">
-  <!-- HERO SECTION -->
-  <section class="atlas-editorial-hero">
+<main>
+  <!-- HERO -->
+  <section class="page-hero-responsive">
     <picture>
-      <img src="assets/grand-wailea-family-sunset.jpg" width="1600" height="900" alt="A family together at sunset on the beach near the Grand Wailea" loading="eager" fetchpriority="high">
+      <source media="(min-width: 768px)" srcset="assets/grand-wailea-family-sunset.jpg" width="1600" height="900">
+      <img src="assets/grand-wailea-family-sunset.jpg" width="1200" height="800" alt="A family together at sunset on the beach near the Grand Wailea" loading="eager" fetchpriority="high">
     </picture>
-    <div class="page-hero-copy reveal visible">
-      <div class="eyebrow">THE MAUI ATLAS</div>
-      <h1>Photography for Grand Wailea Guests</h1>
-      <p class="atlas-deck">We photograph near the Grand Wailea every evening at sunset — usually on a quieter beach a short walk up the coastal path, away from the crowds. One all-inclusive price, booked directly with our family.</p>
-      <p class="atlas-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
+    <div class="hero-content-wrapper reveal visible">
+      <div class="eyebrow" style="color: #e0d0b8;">THE MAUI ATLAS</div>
+      <h1 style="font-family: 'Cormorant Garamond', Georgia, serif !important; font-size: clamp(2.2rem, 5vw, 3.2rem) !important; font-weight: 500 !important; line-height: 1.15 !important;">Your Family Photographer at the Grand Wailea</h1>
+      <p class="hero-subtitle" style="font-family: 'Inter', system-ui, -apple-system, sans-serif !important; font-size: 0.98rem !important; line-height: 1.6 !important;">We photograph near the Grand Wailea every evening at sunset &mdash; usually on a quieter beach a short walk up the coastal path, away from the crowds. One all-inclusive price, booked directly with our family.</p>
+      <p class="hero-byline">BY LAURENCE BALTER &middot; FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
     </div>
-  </section>
-  <section class="atlas-opening-note" aria-label="Maui Atlas field note">
-    <span>AWAY FROM THE CROWDS</span>
-    <p>A short coastal walk leads to golden light, quiet sands, and a backdrop that belongs entirely to you.</p>
   </section>
 
-  <!-- CONTENT SECTION 1 (IMAGE LEFT / TEXT RIGHT) -->
+  <!-- SECTION 1: A QUIETER SETTING -->
   <section class="content-split">
     <div class="content-split-image reveal visible">
-      <img src="assets/Grandwailea2.jpg" width="800" height="1000" alt="Family holding young toddler up in the air on a sunny Wailea beach" loading="lazy">
-      <div class="atlas-photo-caption">Golden sunset moments along the Wailea coastline</div>
+      <img src="assets/best-family-photographer-maui.jpg" width="1200" height="800" alt="A family photographed on a quiet beach near the Grand Wailea at sunset" loading="lazy">
     </div>
     <div class="content-split-copy reveal visible">
-      <div class="chapter">A QUIETER SETTING</div>
+      <div class="chapter">AWAY FROM THE CROWDS</div>
       <h2>A quieter beach, a short walk from your room.</h2>
-      <p>Wailea Beach, directly in front of the Grand Wailea, is one of Maui’s most beautiful — and, at sunset, one of its busiest. Rather than work around the evening crowds, we usually walk a little farther: about ten minutes along the coastal path, to your right as you face the ocean, to a quieter stretch of sand where the light is just as golden and the view behind you is yours alone.</p>
-      <p>For guests staying at the Grand Wailea, it’s an easy stroll. Spend your afternoon at the Wailea Canyon pools or Kilolani Spa, get ready in your own room, and meet us along the path as the light turns gold. Prefer to stay on Wailea Beach right in front of the resort? Just ask — depending on the evening and the crowd, we’re glad to talk it through.</p>
+      <p>Wailea Beach, directly in front of the Grand Wailea, is one of Maui&rsquo;s most beautiful &mdash; and, at sunset, one of its busiest. Rather than work around the evening crowds, we usually walk a little farther: about ten minutes along the coastal path, to your right as you face the ocean, to a quieter stretch of sand where the light is just as golden and the view behind you is yours alone.</p>
+      <p>For guests staying at the Grand Wailea, it&rsquo;s an easy stroll. Spend your afternoon at the Wailea Canyon pools or Kilolani Spa, get ready in your own room, and meet us along the path as the light turns gold. Prefer to stay on Wailea Beach right in front of the resort? Just ask &mdash; depending on the evening and the crowd, we&rsquo;re glad to talk it through.</p>
       <div class="location-note">
         <strong>Where we meet</strong>
-        A quieter beach about a ten-minute walk along the coastal path from the Grand Wailea (to your right as you face the ocean). We’ll send the exact meeting spot — and the evening’s sunset time — when you book. Prefer Wailea Beach right in front of the resort? Let us know and we’ll discuss the options for that evening.
+        A quieter beach about a ten-minute walk along the coastal path from the Grand Wailea (to your right as you face the ocean). We&rsquo;ll send the exact meeting spot &mdash; and the evening&rsquo;s sunset time &mdash; when you book. Prefer Wailea Beach right in front of the resort? Let us know and we&rsquo;ll discuss the options for that evening.
       </div>
     </div>
   </section>
 
-  <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
+  <!-- SECTION 2: VALUE / DIRECT -->
   <section class="content-split reverse">
     <div class="content-split-image reveal visible">
-      <img src="assets/GrandWailea3.jpg" width="800" height="1000" alt="Couple embracing on the shoreline at dramatic golden-hour sunset in Wailea" loading="lazy">
-      <div class="atlas-photo-caption">Shoreline portraits near the Grand Wailea</div>
+      <img src="assets/complete-story-couple-sunset.jpg" width="1600" height="1067" alt="An evening couples session on a quiet Wailea beach near the Grand Wailea" loading="lazy">
     </div>
     <div class="content-split-copy reveal visible">
       <div class="chapter">ONE PRICE, BOOKED DIRECT</div>
-      <h2>All-inclusive — with no middle-man markup.</h2>
-      <p>When a photographer is arranged through a resort or concierge desk, a commission is almost always folded into what you pay. We’re different. Wailea Photo is an independent, family-run studio, so you book directly with us — and the price you see is the entire price, with no concierge fee or third-party markup added on top.</p>
-      <p>Every session is all-inclusive: one flat rate covers the shoot and all of your naturally edited, high-resolution images, delivered in a private online gallery within about 48 hours — no per-image charges and no upsells afterward. And every session is photographed personally by one of the Balters, never an outside contractor. Sessions start at $299.</p>
+      <h2>All-inclusive &mdash; with no middle-man markup.</h2>
+      <p>When a photographer is arranged through a resort or concierge desk, a commission is almost always folded into what you pay. We&rsquo;re different. Wailea Photo is an independent, family-run studio, so you book directly with us &mdash; and the price you see is the entire price, with no concierge fee or third-party markup added on top.</p>
+      <p>Every session is all-inclusive: one flat rate covers the shoot and all of your naturally edited, high-resolution images, delivered in a private online gallery within about 48 hours &mdash; no per-image charges and no upsells afterward. And every session is photographed personally by one of the Balters, never an outside contractor. Sessions start at $299.</p>
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
+  <!-- FAQ -->
   <section class="faq-list">
     <div class="section-head reveal visible">
       <div class="chapter">QUICK ANSWERS</div>
       <h2>What Grand Wailea guests ask us.</h2>
     </div>
     <details class="faq-item" open>
-      <summary>Where do you photograph — right in front of the Grand Wailea?</summary>
-      <p>Usually not. Wailea Beach in front of the resort gets very crowded at sunset, so we normally meet a short walk away — about ten minutes along the coastal path, to your right as you face the ocean — on a quieter beach where the light is just as beautiful and the setting is far more private.</p>
+      <summary>Where do you photograph &mdash; right in front of the Grand Wailea?</summary>
+      <p>Usually not. Wailea Beach in front of the resort gets very crowded at sunset, so we normally meet a short walk away &mdash; about ten minutes along the coastal path, to your right as you face the ocean &mdash; on a quieter beach where the light is just as beautiful and the setting is far more private.</p>
     </details>
     <details class="faq-item">
       <summary>Can we photograph on Wailea Beach right in front of the resort?</summary>
-      <p>You’re welcome to request it, and depending on the evening and how busy the beach is, we’re happy to discuss it. Because that stretch can get very crowded at sunset, we usually recommend the quieter spot nearby — but the choice is yours.</p>
+      <p>You&rsquo;re welcome to request it, and depending on the evening and how busy the beach is, we&rsquo;re happy to discuss it. Because that stretch can get very crowded at sunset, we usually recommend the quieter spot nearby &mdash; but the choice is yours.</p>
     </details>
     <details class="faq-item">
-      <summary>We have young children — can we stay closer to the resort?</summary>
-      <p>Yes. For families with toddlers who’d rather not make the longer walk, we’ll do our best to accommodate a spot closer in. One honest note: photographing right at the resort means parking with the resort’s valet, and because that fee is charged by the Grand Wailea, we pass it through and add it to your session.</p>
+      <summary>We have young children &mdash; can we stay closer to the resort?</summary>
+      <p>Yes. For families with toddlers who&rsquo;d rather not make the longer walk, we&rsquo;ll do our best to accommodate a spot closer in. One honest note: photographing right at the resort means parking with the resort&rsquo;s valet, and because that fee is charged by the Grand Wailea, we pass it through and add it to your session.</p>
     </details>
     <details class="faq-item">
-      <summary>Do I have to book through the resort’s concierge?</summary>
-      <p>No. We’re an independent, family-run studio, so you book directly with us at one all-inclusive price. Nothing is added on top — no concierge fee and no commission.</p>
+      <summary>Do I have to book through the resort&rsquo;s concierge?</summary>
+      <p>No. We&rsquo;re an independent, family-run studio, so you book directly with us at one all-inclusive price. Nothing is added on top &mdash; no concierge fee and no commission.</p>
     </details>
     <details class="faq-item">
-      <summary>How much is a session, and what’s included?</summary>
+      <summary>How much is a session, and what&rsquo;s included?</summary>
       <p>Sessions start at $299, all-inclusive. That one price covers the shoot and every one of your naturally edited, high-resolution images, delivered in a private online gallery within about 48 hours.</p>
     </details>
     <details class="faq-item">
       <summary>What time will we meet?</summary>
-      <p>We photograph around sunset, when the light is at its best, so your exact start time shifts with the season. We’ll confirm the evening’s sunset time and where to meet as soon as you book.</p>
+      <p>We photograph around sunset, when the light is at its best, so your exact start time shifts with the season. We&rsquo;ll confirm the evening&rsquo;s sunset time and where to meet as soon as you book.</p>
     </details>
   </section>
 
-  <!-- CALL TO ACTION SECTION -->
+  <!-- CTA -->
   <section id="reserve" class="reserve short">
     <div class="chapter">READY FOR YOUR SESSION?</div>
-    <h2>Let's make something beautiful.</h2>
+    <h2>Let&rsquo;s make something beautiful.</h2>
     <a class="button" href="pricing.html#sessions">View Sessions &amp; Pricing</a>
   </section>
 </main>
