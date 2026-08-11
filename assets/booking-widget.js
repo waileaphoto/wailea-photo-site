@@ -190,6 +190,11 @@
 
       this.policyBox = el('div', { class: 'wbw-policy-box' }, POLICY_LINES.map((t) => el('p', {}, [t])));
       this.policyCheckbox = el('input', { type: 'checkbox' });
+      this.textConfirmCheckbox = el('input', { type: 'checkbox' });
+      this.textConfirmRow = el('label', { class: 'wbw-policy-agree' }, [
+        this.textConfirmCheckbox,
+        ' One of our team will be assigned to you, and your photographer will text you to confirm in case of any last-minute changes. Please have your phone charged and respond to their text — otherwise the photographer will assume you are a no-show.',
+      ]);
       this.sunrisePunctualityCheckbox = el('input', { type: 'checkbox' });
       this.sunrisePunctualityRow = el('label', { class: 'wbw-policy-agree' }, [
         this.sunrisePunctualityCheckbox,
@@ -217,6 +222,7 @@
           el('label', {}, ['Session Policies']),
           this.policyBox,
           el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' I have read and agree to the session policies above.']),
+          this.textConfirmRow,
           this.sunrisePunctualityRow,
         ]),
         this.quoteBox,
@@ -282,6 +288,7 @@
       });
       this.sunrisePunctualityRow.hidden = slug !== 'sunrise-max';
       this.sunrisePunctualityCheckbox.checked = false;
+      this.textConfirmCheckbox.checked = false;
       this.specialRequestsInput.value = '';
       this.floristContactCheckbox.checked = false;
       this.titleEl.textContent = name;
@@ -466,6 +473,10 @@
         this.detailsError.textContent = 'Please agree to the session policies to continue.';
         return;
       }
+      if (!this.textConfirmCheckbox.checked) {
+        this.detailsError.textContent = "Please confirm you'll respond to your photographer's text to continue.";
+        return;
+      }
       if (this.state.slug === 'sunrise-max' && !this.sunrisePunctualityCheckbox.checked) {
         this.detailsError.textContent = 'Please acknowledge the Sunrise session arrival-time policy to continue.';
         return;
@@ -483,6 +494,7 @@
           client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value, smsOptIn: this.smsOptInCheckbox.checked },
           questionnaire: {
             agreedToPolicies: this.policyCheckbox.checked,
+            acknowledgedTextConfirmation: this.textConfirmCheckbox.checked,
             acknowledgedSunrisePunctuality: this.state.slug === 'sunrise-max' ? this.sunrisePunctualityCheckbox.checked : undefined,
             hearAboutUs: this.hearAboutInput.value,
             celebrating: this.celebratingInput.value || undefined,
