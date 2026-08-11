@@ -661,10 +661,25 @@
     // (maui-family-photographer.html etc.) — e.g. pricing.html?openBooking=babymoon
     // opens straight into that session's live calendar instead of making the visitor
     // scroll and pick a card first.
-    const openSlug = new URLSearchParams(window.location.search).get('openBooking');
+    const deepLink = new URLSearchParams(window.location.search);
+    const openSlug = deepLink.get('openBooking');
     if (openSlug) {
       const target = document.querySelector(`[data-book-session="${CSS.escape(openSlug)}"]`);
-      if (target) target.click();
+      if (target) {
+        // Optional &date=YYYY-MM-DD&startTime=HH:MM (e.g. from the concierge's
+        // booking links) preselects the exact slot instead of just the session.
+        const date = deepLink.get('date');
+        const startTime = deepLink.get('startTime');
+        if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+          widget.open(
+            target.getAttribute('data-book-session'),
+            target.getAttribute('data-session-name') || 'Your Session',
+            { date, startTime: startTime && /^\d{2}:\d{2}$/.test(startTime) ? startTime : null }
+          );
+        } else {
+          target.click();
+        }
+      }
     }
   });
 })();
