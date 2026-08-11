@@ -13,6 +13,10 @@
   const LS_KEY = 'wpc_visitor_key';
   const LS_CONVO = 'wpc_conversation_id';
   const LS_LOG = 'wpc_log_v1';
+  const LS_COPY = 'wpc_copy_version';
+  // Bump when greeting/fallback copy changes: stale cached transcripts are
+  // cleared so returning devices see the current opening rather than a replay.
+  const COPY_VERSION = '2';
   const OWNER_EMAIL = 'photo@waileaphoto.com';
 
   function el(tag, attrs, children) {
@@ -45,6 +49,11 @@
   class Concierge {
     constructor() {
       this.pending = false;
+      if (read(LS_COPY) !== COPY_VERSION) {
+        store(LS_COPY, COPY_VERSION);
+        store(LS_LOG, '[]');
+        try { localStorage.removeItem('wpc_conversation_id'); } catch { /* private mode */ }
+      }
       this.log = loadLog();
       this.buildDom();
       this.renderLog();
