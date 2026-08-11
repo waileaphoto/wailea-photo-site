@@ -49,7 +49,7 @@
       this.buildDom();
       this.renderLog();
       if (!this.log.length) {
-        this.pushMessage('assistant', "Aloha! I'm the Wailea Photo concierge. Ask me anything — open dates, sunrise or sunset, what your session would cost. What are you celebrating?");
+        this.pushMessage('assistant', "Aloha — I'm Claude, the studio's concierge. Ask me anything: open dates, sunrise or sunset, what to wear, what your session would cost, even where to have dinner after. What are you celebrating?");
       }
     }
 
@@ -69,6 +69,7 @@
           el('div', {}, [
             el('p', { class: 'wpc-head-eyebrow' }, ['Wailea Photo']),
             el('h3', {}, ['The Concierge']),
+            el('p', { class: 'wpc-powered' }, ['Powered by Claude']),
           ]),
           el('button', { class: 'wpc-close', type: 'button', 'aria-label': 'Close chat', onclick: () => this.close() }, ['\u00d7']),
         ]),
