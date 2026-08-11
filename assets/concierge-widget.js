@@ -49,7 +49,7 @@
       this.buildDom();
       this.renderLog();
       if (!this.log.length) {
-        this.pushMessage('assistant', "Aloha — I'm Claude, the studio's concierge. Ask me anything: open dates, sunrise or sunset, what to wear, what your session would cost, even where to have dinner after. What are you celebrating?");
+        this.pushMessage('assistant', "Aloha — I'm Claude, the studio's concierge. Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. Ask me anything: open dates, sunrise or sunset light, what to wear, what your session would cost, even where to have dinner after. What are you celebrating?");
       }
     }
 
