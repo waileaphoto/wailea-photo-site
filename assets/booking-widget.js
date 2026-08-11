@@ -423,6 +423,7 @@
         quote = await api('POST', '/api/quote', {
           sessionType: this.state.slug,
           date: this.state.selectedDate,
+          startTime: this.state.selectedSlot ? this.state.selectedSlot.startTime : null,
           partySize,
           addonSlugs: this.selectedAddonSlugs(),
         });
