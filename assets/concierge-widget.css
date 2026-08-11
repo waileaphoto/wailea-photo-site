@@ -1,0 +1,94 @@
+/* Wailea Photo Concierge — chat panel in the site's own language:
+   paper & ink, frosted ocean glass, Cormorant headings, red CTAs.
+   Tokens come from site.css :root (--paper, --ink, --ocean, --ocean-mist,
+   --red, --line, --serif, --sans). */
+
+.wpc-launcher{
+  position:fixed;z-index:9000;right:18px;bottom:18px;
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(49,95,105,.62);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  border:1px solid rgba(255,255,255,.4);border-radius:999px;
+  color:#fff;font:500 17px/1 var(--serif);letter-spacing:.01em;
+  padding:12px 20px;cursor:pointer;text-shadow:0 1px 4px rgba(0,0,0,.35);
+  box-shadow:0 10px 30px rgba(27,25,23,.25);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.wpc-launcher:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(27,25,23,.32)}
+.wpc-launcher:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.wpc-launcher .wpc-dot{width:7px;height:7px;border-radius:50%;background:#f5d58f;box-shadow:0 0 0 3px rgba(245,213,143,.25)}
+
+/* the ask gesture: price pills become tappable */
+.session-card-price{cursor:pointer;transition:box-shadow .25s ease,transform .25s ease}
+.session-card-price:hover{box-shadow:0 0 0 2px rgba(255,255,255,.55);transform:translateY(-1px)}
+
+.wpc-panel{
+  position:fixed;z-index:9001;right:18px;bottom:18px;
+  width:min(390px,calc(100vw - 24px));height:min(600px,calc(100dvh - 40px));
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--paper);color:var(--ink);
+  border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 24px 70px rgba(27,25,23,.35);
+  transform:translateY(14px);opacity:0;pointer-events:none;
+  transition:transform .3s ease,opacity .3s ease;
+}
+.wpc-panel.wpc-open{transform:translateY(0);opacity:1;pointer-events:auto}
+@media (max-width:640px){
+  .wpc-panel{right:0;bottom:0;width:100vw;height:82dvh;border-radius:18px 18px 0 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .wpc-panel,.wpc-launcher{transition:none}
+}
+
+.wpc-head{
+  padding:16px 20px 13px;border-bottom:1px solid var(--line);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  background:var(--paper);
+}
+.wpc-head-eyebrow{font:700 9px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(27,25,23,.55);margin:0 0 4px}
+.wpc-head h3{font:500 26px/1 var(--serif);margin:0}
+.wpc-close{
+  border:none;background:none;color:var(--ink);cursor:pointer;
+  font:300 26px/1 var(--sans);padding:2px 6px;border-radius:8px;
+}
+.wpc-close:focus-visible{outline:2px solid var(--ocean);outline-offset:2px}
+
+.wpc-log{flex:1;overflow-y:auto;padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}
+.wpc-msg{max-width:86%;padding:10px 14px;border-radius:14px;font:300 15px/1.45 var(--sans);white-space:pre-wrap;word-wrap:break-word}
+.wpc-msg-assistant{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px}
+.wpc-msg-user{align-self:flex-end;background:var(--ocean-mist);border-bottom-right-radius:4px}
+
+.wpc-book{
+  align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;
+  min-height:36px;padding:0 18px;margin:2px 0 4px;
+  border:1px solid rgba(245,239,229,.72);border-radius:999px;
+  background:rgba(158,43,35,.92);box-shadow:0 8px 24px rgba(74,17,13,.28);
+  color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.13em;
+  font:700 10.5px/1 var(--sans);
+  transition:transform .25s ease,background .25s ease;
+}
+.wpc-book:hover{transform:translateY(-2px);background:rgba(158,43,35,1)}
+.wpc-book:focus-visible{outline:3px solid var(--ocean);outline-offset:3px}
+
+.wpc-typing{align-self:flex-start;display:inline-flex;gap:5px;padding:12px 16px}
+.wpc-typing span{width:6px;height:6px;border-radius:50%;background:var(--ocean);opacity:.35;animation:wpcPulse 1.1s infinite}
+.wpc-typing span:nth-child(2){animation-delay:.18s}
+.wpc-typing span:nth-child(3){animation-delay:.36s}
+@keyframes wpcPulse{0%,100%{opacity:.25;transform:translateY(0)}45%{opacity:1;transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.wpc-typing span{animation:none;opacity:.7}}
+
+.wpc-input{display:flex;gap:8px;padding:12px 14px 14px;border-top:1px solid var(--line);background:var(--paper)}
+.wpc-input textarea{
+  flex:1;resize:none;border:1px solid var(--line);border-radius:12px;
+  background:#fff;color:var(--ink);font:300 15px/1.4 var(--sans);
+  padding:10px 12px;max-height:110px;
+}
+.wpc-input textarea:focus-visible{outline:2px solid var(--ocean);outline-offset:1px}
+.wpc-send{
+  align-self:flex-end;border:none;border-radius:999px;cursor:pointer;
+  background:var(--ocean);color:#fff;font:700 10.5px/1 var(--sans);
+  letter-spacing:.13em;text-transform:uppercase;padding:0 18px;min-height:40px;
+  transition:background .2s ease;
+}
+.wpc-send:disabled{opacity:.45;cursor:default}
+.wpc-send:not(:disabled):hover{background:#274d55}
+.wpc-send:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
