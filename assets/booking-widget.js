@@ -22,6 +22,12 @@
       priceLabel: '$199',
       sessionSlugs: ['first-half-sunset'],
     },
+    {
+      slug: 'double-sunrise',
+      label: 'Special-Double your Sunrise session time (40 minutes total)',
+      priceLabel: '$199',
+      sessionSlugs: ['sunrise-max'],
+    },
   ];
 
   const HEAR_ABOUT_OPTIONS = [
