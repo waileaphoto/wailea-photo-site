@@ -5,14 +5,16 @@
 
 .wpc-launcher{
   position:fixed;z-index:9000;right:18px;bottom:18px;
-  display:inline-flex;align-items:center;gap:9px;
-  background:rgba(49,95,105,.62);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
-  border:1px solid rgba(255,255,255,.4);border-radius:999px;
-  color:#fff;font:500 17px/1 var(--serif);letter-spacing:.01em;
-  padding:12px 20px;cursor:pointer;text-shadow:0 1px 4px rgba(0,0,0,.35);
-  box-shadow:0 10px 30px rgba(27,25,23,.25);
-  transition:transform .25s ease,box-shadow .25s ease;
+  display:inline-flex;align-items:center;gap:11px;
+  background:var(--ocean,#315f69);
+  border:1.5px solid rgba(255,255,255,.85);border-radius:999px;
+  color:#fff;font:500 21px/1 var(--serif);letter-spacing:.01em;
+  padding:16px 28px;cursor:pointer;
+  box-shadow:0 14px 38px rgba(27,25,23,.4);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
 }
+.wpc-launcher:hover{background:#274d55}
+.wpc-launcher .wpc-dot{width:9px;height:9px}
 .wpc-launcher:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(27,25,23,.32)}
 .wpc-launcher:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .wpc-launcher .wpc-dot{width:7px;height:7px;border-radius:50%;background:#f5d58f;box-shadow:0 0 0 3px rgba(245,213,143,.25)}

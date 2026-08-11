@@ -153,7 +153,7 @@
         const json = await res.json();
         this.setTyping(false);
         if (res.status === 503) {
-          this.pushMessage('assistant', `The concierge is away from the desk right now. You can book directly on this page — your exact price appears when you choose a date and time — or email us at ${OWNER_EMAIL} and we'll reply personally.`);
+          this.pushMessage('assistant', `Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. I'm stepping away for just a moment — meanwhile you can book directly on this page, with your price shown as you choose a date and time, or write the family at ${OWNER_EMAIL} and they'll reply personally.`);
           return;
         }
         if (!res.ok) {
