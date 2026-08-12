@@ -56,10 +56,6 @@
 
   input.min=today;
   input.value=today;
-  study.querySelector('[data-solar-calendar]').addEventListener('click',()=>{
-    if(typeof input.showPicker==='function')input.showPicker();
-    else input.click();
-  });
   input.addEventListener('change',()=>{if(input.value)render(input.value);});
   todayButton.addEventListener('click',()=>render(today));
   render(today);
