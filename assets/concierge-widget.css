@@ -107,3 +107,8 @@
 }
 .session-finder-ask:hover{transform:translateY(-2px);background:#274d55}
 .session-finder-ask:focus-visible{outline:3px solid var(--ink,#1b1917);outline-offset:3px}
+
+/* The dropdown form's exit left ~20vh of empty paper between the Ask band
+   and the session menu; tighten both (this sheet loads on pricing only). */
+.session-finder{padding-bottom:2.5vh}
+.session-menu{padding-top:5vh}
