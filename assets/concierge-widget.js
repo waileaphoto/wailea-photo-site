@@ -16,7 +16,7 @@
   const LS_COPY = 'wpc_copy_version';
   // Bump when greeting/fallback copy changes: stale cached transcripts are
   // cleared so returning devices see the current opening rather than a replay.
-  const COPY_VERSION = '2';
+  const COPY_VERSION = '3';
   const OWNER_EMAIL = 'photo@waileaphoto.com';
 
   function el(tag, attrs, children) {
@@ -58,7 +58,7 @@
       this.buildDom();
       this.renderLog();
       if (!this.log.length) {
-        this.pushMessage('assistant', "Aloha — I'm Claude, your personal concierge for Wailea Photo. Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. Ask me anything: open dates, sunrise or sunset light, what to wear, what your session would cost, even where to have dinner after. What are you celebrating?");
+        this.pushMessage('assistant', "Aloha and welcome to Wailea Photo! I'm Claude, the AI Concierge — the Balter family of photographers are out on the beach or hard at work editing, so I'm here to answer all your questions. What brings you to Maui, and how can I help guide you to the best experience?");
       }
     }
 
