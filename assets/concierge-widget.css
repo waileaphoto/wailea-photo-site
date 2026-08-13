@@ -95,3 +95,15 @@
 .wpc-send:disabled{opacity:.45;cursor:default}
 .wpc-send:not(:disabled):hover{background:#274d55}
 .wpc-send:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* "Ask the Concierge" band button (replaces the session-finder dropdowns) */
+.session-finder-ask{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  margin-top:18px;padding:15px 30px;border:1.5px solid rgba(255,255,255,.85);
+  border-radius:999px;background:var(--ocean,#315f69);color:#fff;cursor:pointer;
+  font:500 19px/1 var(--serif);letter-spacing:.01em;
+  box-shadow:0 12px 32px rgba(27,25,23,.3);
+  transition:transform .25s ease,background .25s ease;
+}
+.session-finder-ask:hover{transform:translateY(-2px);background:#274d55}
+.session-finder-ask:focus-visible{outline:3px solid var(--ink,#1b1917);outline-offset:3px}

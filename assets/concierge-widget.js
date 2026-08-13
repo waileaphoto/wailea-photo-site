@@ -188,6 +188,8 @@
 
     // "You have to ask": every By Request pill opens the concierge pre-asked.
     document.addEventListener('click', (e) => {
+      const ask = e.target.closest('.session-finder-ask');
+      if (ask) { concierge.open(); return; }
       const pill = e.target.closest('.session-card-price');
       if (!pill) return;
       const card = pill.closest('.session-card, .session-card-image') || pill.parentElement;
