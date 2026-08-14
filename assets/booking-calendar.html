@@ -123,6 +123,14 @@
 <div class="sub">Everything on the books at a glance, plus blocking dates off. This talks to the live booking system.</div>
 <div class="notice">Protected by your admin token. Website-booking moves are recorded and send updated confirmations; Acuity appointments remain read-only here.</div>
 
+  <div id="conciergeSection" style="margin-bottom:24px;">
+    <div class="sync-bar" style="margin:0 0 12px;">
+      <span>Concierge chats</span>
+    <button class="sync-btn" id="conciergeToggleBtn" onclick="toggleConcierge()">Show concierge chats</button>
+    </div>
+  <div id="conciergeList" style="display:none;"></div>
+  </div>
+
 <div class="sync-bar">
   <span id="acuitySyncStatus">Acuity mirror status loading…</span>
   <button class="sync-btn" id="syncAcuityBtn">Sync Acuity now</button>
@@ -287,6 +295,50 @@
     return String(value ?? '—').replace(/[&<>"']/g, (char) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     })[char]);
+  }
+
+  let conciergeLoaded = false;
+  async function toggleConcierge() {
+    const list = document.getElementById('conciergeList');
+    const btn = document.getElementById('conciergeToggleBtn');
+    if (list.style.display === 'none') {
+      list.style.display = 'block';
+      btn.textContent = 'Hide concierge chats';
+      if (!conciergeLoaded) await loadConcierge();
+    } else {
+      list.style.display = 'none';
+      btn.textContent = 'Show concierge chats';
+    }
+  }
+
+  async function loadConcierge() {
+    const list = document.getElementById('conciergeList');
+    list.innerHTML = 'Loading…';
+    try {
+      const rows = await api('GET', '/api/admin/concierge?withMessages=1');
+      conciergeLoaded = true;
+      if (!rows.length) { list.innerHTML = '<div class="empty">No conversations yet.</div>'; return; }
+      rows.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      list.innerHTML = '';
+      rows.forEach((c) => {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'padding:12px 0;border-bottom:1px solid #eee;cursor:pointer;';
+        const when = new Date(c.created_at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+        const name = c.visitor_name || 'Anonymous guest';
+        const badge = c.escalated ? ' <span style="font-size:11px;padding:2px 8px;border-radius:999px;background:#fff6e9;color:#9c5e39;font-weight:600;">escalated</span>' : '';
+        const head = document.createElement('div');
+        head.innerHTML = '<div style="font-weight:600;font-size:14px;">' + escapeHtml(name) + badge + '</div><div style="font-size:12px;color:#999;margin-top:2px;">' + when + ' · ' + c.messages.length + ' messages</div>';
+        const body = document.createElement('div');
+        body.style.cssText = 'display:none;margin-top:10px;font-size:13px;line-height:1.5;';
+        body.innerHTML = c.messages.map((m) => '<div style="margin-bottom:8px"><strong>' + (m.role === 'user' ? escapeHtml(name) : 'Concierge') + ':</strong> ' + escapeHtml(m.content) + '</div>').join('');
+        wrap.appendChild(head);
+        wrap.appendChild(body);
+        wrap.onclick = () => { body.style.display = body.style.display === 'none' ? 'block' : 'none'; };
+        list.appendChild(wrap);
+      });
+    } catch (e) {
+      list.innerHTML = '<div class="error">' + escapeHtml(e.message) + '</div>';
+    }
   }
 
   async function loadAcuityStatus() {
