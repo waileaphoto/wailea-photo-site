@@ -76,12 +76,15 @@
   .custom-time-row[hidden] { display: none; }
   .move-result { font-size: 12px; color: #2e7d32; }
   .history-list { margin: 10px 0 0; padding-left: 18px; color: #666; font-size: 12px; line-height: 1.5; }
+  .contact-review { background: #f5f1e9; border: 1px solid #d8cdbd; border-radius: 4px; padding: 12px; font-size: 12px; line-height: 1.5; }
+  .contact-review[hidden], #contactForm[hidden] { display: none; }
+  .contact-review button { width: 100%; margin-top: 10px; }
 
   /* --- Blocked dates (reused tool) --- */
   .block-section { margin-top: 56px; border-top: 1px solid #eee; padding-top: 32px; }
   form { display: flex; flex-direction: column; gap: 12px; border: 1px solid #eee; border-radius: 6px; padding: 20px; margin-bottom: 32px; }
   label { font: 600 11px/1 'Inter', sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #666; display: block; margin-bottom: 4px; }
-  select, input[type="date"], input[type="time"], input[type="text"] { width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 9px 10px; font: 400 14px/1.3 'Inter', sans-serif; box-sizing: border-box; }
+  select, input[type="date"], input[type="time"], input[type="text"], input[type="email"], input[type="tel"] { width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 9px 10px; font: 400 14px/1.3 'Inter', sans-serif; box-sizing: border-box; }
   .hint { color: #999; font-size: 12px; margin: -4px 0 0; }
   .row { display: flex; gap: 12px; }
   .row > div { flex: 1; }
@@ -151,6 +154,24 @@
     <div class="modal-sub" id="modalSub"></div>
     <div id="modalAlert" class="modal-alert" hidden></div>
     <div id="modalBody"></div>
+    <div class="move-panel" id="contactPanel" hidden>
+      <button type="button" id="editContactBtn">Edit contact details</button>
+      <form id="contactForm" hidden>
+        <strong>Edit contact details</strong>
+        <div><label for="contactName">Client name</label><input type="text" id="contactName" maxlength="200" required></div>
+        <div><label for="contactEmail">Email</label><input type="email" id="contactEmail" maxlength="320" required></div>
+        <div><label for="contactPhone">Phone</label><input type="tel" id="contactPhone" maxlength="50"></div>
+        <div id="contactError" class="error"></div>
+        <div id="contactResult" class="move-result"></div>
+        <button type="submit">Review contact changes</button>
+        <div id="contactReview" class="contact-review" hidden>
+          <strong>Confirm contact changes</strong>
+          <div id="contactReviewSummary"></div>
+          <p>No customer email will be sent. The existing Google Calendar event will be updated.</p>
+          <button type="button" id="confirmContactBtn">Save contact details</button>
+        </div>
+      </form>
+    </div>
     <div class="move-panel" id="movePanel" hidden>
       <strong>Move this website booking</strong>
       <form id="moveForm">
@@ -421,6 +442,8 @@
     alert.textContent = alerts.join(' ');
     alert.hidden = alerts.length === 0;
     const canMove = b.source === 'wp' && b.status === 'confirmed';
+    const canEditContact = b.source === 'wp' && b.status !== 'rescheduled';
+    document.getElementById('contactPanel').hidden = !canEditContact;
     document.getElementById('movePanel').hidden = !canMove;
     if (canMove && Object.keys(sessionTypesBySlug).length === 0) await loadSessionTypes();
     populateMoveSessionTypes(b.session_type_slug);
@@ -430,6 +453,14 @@
     document.getElementById('moveOverrideBlock').checked = false;
     document.getElementById('moveError').textContent = '';
     document.getElementById('moveResult').textContent = '';
+    document.getElementById('contactName').value = b.client_name || '';
+    document.getElementById('contactEmail').value = b.client_email || '';
+    document.getElementById('contactPhone').value = b.client_phone || '';
+    document.getElementById('contactError').textContent = '';
+    document.getElementById('contactResult').textContent = '';
+    document.getElementById('contactReview').hidden = true;
+    document.getElementById('contactForm').hidden = true;
+    document.getElementById('editContactBtn').hidden = false;
     document.getElementById('modalOverlay').hidden = false;
     if (canMove) {
       await loadMoveTimes();
@@ -590,6 +621,77 @@
     } finally {
       button.disabled = false;
       button.textContent = 'Move & send confirmations';
+    }
+  });
+
+  function pendingContactChanges() {
+    return {
+      name: document.getElementById('contactName').value.trim(),
+      email: document.getElementById('contactEmail').value.trim(),
+      phone: document.getElementById('contactPhone').value.trim(),
+    };
+  }
+
+  document.getElementById('editContactBtn').addEventListener('click', () => {
+    document.getElementById('editContactBtn').hidden = true;
+    document.getElementById('contactForm').hidden = false;
+    document.getElementById('contactEmail').focus();
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    const next = pendingContactChanges();
+    const error = document.getElementById('contactError');
+    error.textContent = '';
+    if (!next.name || !next.email) {
+      error.textContent = 'Client name and email are required.';
+      return;
+    }
+    const changes = [];
+    if (next.name !== (selectedBooking.client_name || '')) changes.push(`Name: ${selectedBooking.client_name || '—'} → ${next.name}`);
+    if (next.email.toLowerCase() !== String(selectedBooking.client_email || '').toLowerCase()) changes.push(`Email: ${selectedBooking.client_email || '—'} → ${next.email.toLowerCase()}`);
+    if (next.phone !== (selectedBooking.client_phone || '')) changes.push(`Phone: ${selectedBooking.client_phone || '—'} → ${next.phone || '—'}`);
+    if (!changes.length) {
+      error.textContent = 'No contact details changed.';
+      return;
+    }
+    const summary = document.getElementById('contactReviewSummary');
+    summary.innerHTML = '';
+    changes.forEach((change) => {
+      const line = document.createElement('div');
+      line.textContent = change;
+      summary.appendChild(line);
+    });
+    document.getElementById('contactReview').hidden = false;
+  });
+
+  document.getElementById('confirmContactBtn').addEventListener('click', async (event) => {
+    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    const error = document.getElementById('contactError');
+    const result = document.getElementById('contactResult');
+    error.textContent = '';
+    result.textContent = '';
+    event.currentTarget.disabled = true;
+    event.currentTarget.textContent = 'Saving…';
+    try {
+      const updated = await api('PATCH', `/api/admin/bookings/${selectedBooking.id}/contact`, {
+        ...pendingContactChanges(),
+        confirmed: true,
+      });
+      selectedBooking = { ...selectedBooking, ...updated };
+      document.getElementById('contactReview').hidden = true;
+      const resultMessage = updated.calendarSynced
+        ? 'Contact details saved. Google Calendar was updated. No customer email was sent.'
+        : 'Contact details saved. No customer email was sent.';
+      await loadMonth();
+      await openModal(selectedBooking);
+      document.getElementById('contactResult').textContent = resultMessage;
+    } catch (err) {
+      error.textContent = err.message;
+    } finally {
+      event.currentTarget.disabled = false;
+      event.currentTarget.textContent = 'Save contact details';
     }
   });
 
