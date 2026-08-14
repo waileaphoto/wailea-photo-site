@@ -63,7 +63,7 @@
     }
 
     buildDom() {
-      this.launcher = el('button', { class: 'wpc-launcher', type: 'button', 'aria-label': 'Open the concierge chat', onclick: () => this.open() }, [
+      this.launcher = el('button', { class: 'wpc-launcher', type: 'button', 'aria-label': 'Open the concierge chat', onclick: () => this.open(undefined, 'launcher') }, [
         el('span', { class: 'wpc-dot' }), 'Concierge',
       ]);
 
@@ -90,7 +90,7 @@
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') this.close(); });
     }
 
-    open(prefillQuestion) {
+    open(prefillQuestion, source) {
       this.panel.classList.add('wpc-open');
       this.launcher.hidden = true;
       if (prefillQuestion) {
@@ -100,7 +100,7 @@
         this.inputEl.focus();
       }
       this.scrollToEnd();
-      if (typeof window.waileaTrack === 'function') window.waileaTrack('concierge_open', { booking_system: 'wailea' });
+      if (typeof window.waileaTrack === 'function') window.waileaTrack('concierge_open', { booking_system: 'wailea', source: source || 'launcher' });
     }
 
     close() {
@@ -189,14 +189,14 @@
     // "You have to ask": every By Request pill opens the concierge pre-asked.
     document.addEventListener('click', (e) => {
       const ask = e.target.closest('.session-finder-ask');
-      if (ask) { concierge.open(); return; }
+      if (ask) { concierge.open(undefined, 'ask_button'); return; }
       const pill = e.target.closest('.session-card-price');
       if (!pill) return;
       const card = pill.closest('.session-card, .session-card-image') || pill.parentElement;
       const named = card && card.querySelector('[data-session-name]');
       const heading = pill.closest('.session-card') && pill.closest('.session-card').querySelector('h4');
       const sessionName = (named && named.getAttribute('data-session-name')) || (heading && heading.textContent.trim()) || 'this session';
-      concierge.open(`What does the ${sessionName} session cost?`);
+      concierge.open(`What does the ${sessionName} session cost?`, 'price_pill');
     });
   });
 })();
