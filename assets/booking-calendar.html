@@ -182,17 +182,17 @@
     </div>
     <div class="move-panel" id="movePanel" hidden>
       <strong>Move this website booking</strong>
-      <form id="moveForm">
-        <div><label for="moveSessionType">New session type</label><select id="moveSessionType" required></select></div>
-        <div><label for="moveDate">New date</label><input type="date" id="moveDate" required></div>
-        <div><label for="moveTime">Available or custom time</label><select id="moveTime" required><option value="">Choose a date first</option></select></div>
+      <form id="moveForm" novalidate>
+        <div><label for="moveSessionType">New session type</label><select id="moveSessionType"></select></div>
+        <div><label for="moveDate">New date</label><input type="date" id="moveDate"></div>
+        <div><label for="moveTime">Available or custom time</label><select id="moveTime"><option value="">Choose a date first</option></select></div>
         <div id="movePricePreview" class="hint"></div>
         <div id="customTimeRow" class="custom-time-row" hidden>
           <label for="moveCustomTime">Custom start time (Hawaii time)</label>
           <input type="time" id="moveCustomTime" step="300">
           <p class="hint">The ending time is calculated automatically from this session's normal length.</p>
         </div>
-        <div><label for="moveReason">Reason shown in confirmation</label><input type="text" id="moveReason" placeholder="Weather, travel change…" required></div>
+        <div><label for="moveReason">Reason shown in confirmation</label><input type="text" id="moveReason" placeholder="Weather, travel change…"></div>
         <div>
           <label style="text-transform:none;letter-spacing:normal;font-weight:400;display:flex;align-items:center;gap:8px;">
             <input type="checkbox" id="moveOverrideBlock" style="width:auto;">
@@ -258,6 +258,15 @@
 </div>
 
 <script>
+  window.addEventListener('error', (e) => {
+    const box = document.getElementById('moveError');
+    if (box) box.textContent = 'Script error: ' + (e.message || 'unknown');
+  });
+  window.addEventListener('unhandledrejection', (e) => {
+    const box = document.getElementById('moveError');
+    if (box) box.textContent = 'Request error: ' + ((e.reason && e.reason.message) || e.reason || 'unknown');
+  });
+
   const API_BASE = 'https://wailea-booking-engine.onrender.com';
 
   function getAdminToken() {
@@ -603,7 +612,7 @@
     const row = document.getElementById('customTimeRow');
     const input = document.getElementById('moveCustomTime');
     row.hidden = !useCustomTime;
-    input.required = useCustomTime;
+    input.required = false;
   }
 
   async function loadHistory(bookingId) {
@@ -635,7 +644,10 @@
     const result = document.getElementById('moveResult');
     error.textContent = '';
     result.textContent = '';
-    const button = event.submitter;
+    const button = event.submitter || document.querySelector('#moveForm button[type="submit"]');
+    if (!document.getElementById('moveSessionType').value) { error.textContent = 'Choose a session type.'; return; }
+    if (!document.getElementById('moveDate').value) { error.textContent = 'Choose a new date.'; return; }
+    if (!document.getElementById('moveReason').value.trim()) { error.textContent = 'Add a reason — it appears in the client confirmation.'; return; }
     button.disabled = true;
     button.textContent = 'Moving…';
     try {
