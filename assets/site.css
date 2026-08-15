@@ -178,8 +178,7 @@ button{font:inherit}
 .manifesto-grid{display:grid;grid-template-columns:1fr;gap:1.4em;margin-top:9vh}
 .manifesto-grid p{font:400 clamp(21px,2.2vw,31px)/1.55 var(--serif);margin:0}
 .manifesto-split{display:grid;grid-template-columns:.85fr 1.2fr;gap:6vw;align-items:start}
-.manifesto-image{box-shadow:0 3px 10px rgba(40,31,22,.12),0 26px 60px rgba(40,31,22,.22)}
-.manifesto-image img{display:block;width:100%;height:auto}
+.manifesto-image img{display:block;width:100%;height:auto;box-shadow:0 3px 10px rgba(40,31,22,.12),0 26px 60px rgba(40,31,22,.22)}
 
 /* ---------- mood (split image / copy) ---------- */
 .mood{display:grid;grid-template-columns:1fr 1fr;min-height:88svh}
@@ -579,6 +578,7 @@ button{font:inherit}
 .leica-teaser p{font:400 clamp(20px,2vw,26px)/1.5 var(--serif);max-width:52ch;margin:0 auto 18px;color:#fff}
 .leica-teaser a.link{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:3px}
 .leica-teaser a.link:hover{color:#e8c07a;border-color:#e8c07a}
+.leica-teaser h2{font:400 clamp(32px,3.6vw,48px)/1.15 var(--serif);margin:0 auto 18px;max-width:16ch;color:#fff}
 
 /* ---------- video facade (click-to-play) ---------- */
 .video-facade{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--charcoal);cursor:pointer}
