@@ -578,7 +578,7 @@ button{font:inherit}
 .leica-teaser .chapter{margin-bottom:14px;color:var(--gold)}
 .leica-teaser p{font:400 clamp(20px,2vw,26px)/1.5 var(--serif);max-width:52ch;margin:0 auto 18px;color:#fff}
 .leica-teaser a.link{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:3px}
-.leica-teaser a.link:hover{color:var(--gold);border-color:var(--gold)}
+.leica-teaser a.link:hover{color:#e8c07a;border-color:#e8c07a}
 
 /* ---------- video facade (click-to-play) ---------- */
 .video-facade{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--charcoal);cursor:pointer}
