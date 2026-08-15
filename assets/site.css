@@ -178,8 +178,7 @@ button{font:inherit}
 .manifesto-grid{display:grid;grid-template-columns:1fr;gap:1.4em;margin-top:9vh}
 .manifesto-grid p{font:400 clamp(21px,2.2vw,31px)/1.55 var(--serif);margin:0}
 .manifesto-split{display:grid;grid-template-columns:.85fr 1.2fr;gap:6vw;align-items:start}
-.manifesto-image{box-shadow:0 3px 10px rgba(40,31,22,.12),0 26px 60px rgba(40,31,22,.22)}
-.manifesto-image img{display:block;width:100%;height:auto}
+.manifesto-image img{display:block;width:100%;height:auto;box-shadow:0 3px 10px rgba(40,31,22,.12),0 26px 60px rgba(40,31,22,.22)}
 
 /* ---------- mood (split image / copy) ---------- */
 .mood{display:grid;grid-template-columns:1fr 1fr;min-height:88svh}
@@ -574,11 +573,16 @@ button{font:inherit}
 .leica-teaser{position:relative;min-height:62svh;padding:8vh 7vw;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .leica-teaser>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;z-index:0}
 .leica-teaser:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,65,75,.55),rgba(20,30,32,.74));z-index:1}
-.leica-teaser-copy{position:relative;z-index:2;max-width:640px}
+.leica-teaser-copy{position:relative;z-index:2;max-width:900px}
 .leica-teaser .chapter{margin-bottom:14px;color:var(--gold)}
 .leica-teaser p{font:400 clamp(20px,2vw,26px)/1.5 var(--serif);max-width:52ch;margin:0 auto 18px;color:#fff}
 .leica-teaser a.link{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:3px}
 .leica-teaser a.link:hover{color:#e8c07a;border-color:#e8c07a}
+.leica-teaser h2{font:400 clamp(24px,2.6vw,40px)/1.15 var(--serif);margin:0 auto 18px;width:100%;white-space:nowrap;text-align:justify;text-align-last:justify;color:#fff}
+@media(max-width:760px){
+  .leica-teaser-copy{max-width:640px}
+  .leica-teaser h2{font-size:clamp(30px,7vw,40px);white-space:normal;text-align:center;text-align-last:auto;max-width:16ch;margin-left:auto;margin-right:auto}
+}
 
 /* ---------- video facade (click-to-play) ---------- */
 .video-facade{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--charcoal);cursor:pointer}
