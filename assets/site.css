@@ -869,9 +869,15 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 
 
 /* Combined reviews summary card (replaces 5-source grid; totals summed live via JS from hidden #all-reviews-widget) */
-.combined-reviews-card{max-width:260px;margin:26px 0 0;padding:20px 22px;background:var(--paper);border:1px solid var(--line);border-radius:2px;text-align:center;transition:border-color .25s ease}
-.combined-reviews-card:hover{border-color:var(--ink)}
-.combined-reviews-logos{display:flex;align-items:center;justify-content:center;gap:10px;min-height:22px}.combined-reviews-logos>div{width:22px!important;height:22px!important}
+.combined-reviews-card{max-width:260px;margin:26px 0 0;text-align:center}
+.combined-reviews-logos{display:flex;align-items:center;justify-content:center;gap:14px;min-height:26px}
+.combined-reviews-logos a{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;transition:transform .2s ease,opacity .2s ease}
+.combined-reviews-logos a:hover{transform:translateY(-2px);opacity:.82}
+.combined-reviews-logos a svg{display:block}
+.combined-reviews-logos .crl-facebook,.combined-reviews-logos .crl-tripadvisor,.combined-reviews-logos .crl-airbnb{border-radius:50%}
+.combined-reviews-logos .crl-facebook{background:#1877F2}
+.combined-reviews-logos .crl-tripadvisor{background:#00AA6C}
+.combined-reviews-logos .crl-airbnb{background:#FF5A5F}
 .combined-reviews-label{margin-top:12px;font-family:var(--serif);font-weight:600;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:rgba(27,25,23,.65)}
 .combined-reviews-rating{margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px}
 .combined-reviews-rating span:first-child{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--ink)}
