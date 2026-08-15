@@ -571,11 +571,14 @@ button{font:inherit}
 .tide-tool p.tide-empty{font:400 15px/1.6 var(--sans);color:rgba(27,25,23,.6)}
 
 /* ---------- leica teaser band ---------- */
-.leica-teaser{padding:6vh 7vw;background:var(--paper2);text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.leica-teaser .chapter{margin-bottom:14px}
-.leica-teaser p{font:400 clamp(20px,2vw,26px)/1.5 var(--serif);max-width:52ch;margin:0 auto 18px}
-.leica-teaser a.link{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--red);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
-.leica-teaser a.link:hover{color:var(--ink)}
+.leica-teaser{position:relative;min-height:62svh;padding:8vh 7vw;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.leica-teaser>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;z-index:0}
+.leica-teaser:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,65,75,.55),rgba(20,30,32,.74));z-index:1}
+.leica-teaser-copy{position:relative;z-index:2;max-width:640px}
+.leica-teaser .chapter{margin-bottom:14px;color:var(--gold)}
+.leica-teaser p{font:400 clamp(20px,2vw,26px)/1.5 var(--serif);max-width:52ch;margin:0 auto 18px;color:#fff}
+.leica-teaser a.link{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:3px}
+.leica-teaser a.link:hover{color:var(--gold);border-color:var(--gold)}
 
 /* ---------- video facade (click-to-play) ---------- */
 .video-facade{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--charcoal);cursor:pointer}
