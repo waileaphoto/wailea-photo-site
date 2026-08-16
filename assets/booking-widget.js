@@ -13,7 +13,8 @@
   const STRIPE_PK = CONFIG.stripePublishableKey || '';
 
   const ADDON_DEFS = [
-    { slug: 'film', label: 'Real film (Kodak/FujiFilm)', learnMoreUrl: 'https://waileaphoto.com/kodak-film-upgrade' },
+    // Removed Aug 2026 - 'Real film' add-on withdrawn. Backend slug 'film' still
+    // exists, so past bookings render correctly; restore this line to re-offer it.
     { slug: 'bw', label: 'Classic Black & White add-on', learnMoreUrl: 'https://waileaphoto.com/black-and-white-upgrade' },
     { slug: 'apo_lens', label: 'Leica APO lens upgrade', learnMoreUrl: 'https://waileaphoto.com/the-apo-difference' },
     {
