@@ -36,19 +36,41 @@
   <!-- Schema Markup -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"The Sixty-Four: Kodachrome-Inspired Maui Photography on the Leica M9",
-    "description":"The story of Kodachrome, the Leica M9 CCD sensor Kodak built in 2009, and the hand-processed fifteen-frame set we offer with every Wailea Photo session.",
-    "image":[
-      "https://waileaphoto.com/assets/the-sixty-four-hero.jpg"
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Sixty-Four: Kodachrome-Inspired Maui Photography on the Leica M9",
+    "description": "The story of Kodachrome, the Leica M9 CCD sensor Kodak built in 2009, and the hand-processed fifteen-frame set we offer with every Wailea Photo session.",
+    "image": [
+      "https://waileaphoto.com/assets/the-sixty-four-hero.jpg",
+      "https://waileaphoto.com/assets/the-sixty-four-solo-portrait.jpg",
+      "https://waileaphoto.com/assets/the-sixty-four-sunset-couple.jpg",
+      "https://waileaphoto.com/assets/the-sixty-four-portrait.jpg",
+      "https://waileaphoto.com/assets/the-sixty-four-look.jpg"
     ],
-    "author":{"@type":"Person","@id":"https://waileaphoto.com/#laurence-balter","name":"Laurence Balter","jobTitle":"Founder & Lead Photographer","url":"https://waileaphoto.com/laurence-balter.html"},
-    "publisher":{"@type":"Organization","@id":"https://waileaphoto.com/#organization","name":"Wailea Photo","logo":{"@type":"ImageObject","url":"https://waileaphoto.com/assets/favicon.svg"}},
-    "datePublished":"2026-08-15",
-    "dateModified":"2026-08-15",
-    "mainEntityOfPage":"https://waileaphoto.com/the-sixty-four-kodachrome-maui-photography",
-    "isPartOf":{"@type":"CollectionPage","name":"The Maui Atlas","url":"https://waileaphoto.com/atlas.html"}
+    "author": {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#laurence-balter",
+      "name": "Laurence Balter",
+      "jobTitle": "Founder & Lead Photographer",
+      "url": "https://waileaphoto.com/laurence-balter.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://waileaphoto.com/#organization",
+      "name": "Wailea Photo",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://waileaphoto.com/assets/favicon.svg"
+      }
+    },
+    "datePublished": "2026-08-15",
+    "dateModified": "2026-08-15",
+    "mainEntityOfPage": "https://waileaphoto.com/the-sixty-four-kodachrome-maui-photography",
+    "isPartOf": {
+      "@type": "CollectionPage",
+      "name": "The Maui Atlas",
+      "url": "https://waileaphoto.com/atlas.html"
+    }
   }
   </script>
 
@@ -111,6 +133,25 @@
     .sixtyfour-price{margin:30px 0 0;padding:22px 26px;background:var(--atlas-ink);color:#fff;border-radius:2px}
     .sixtyfour-price strong{display:block;font:500 2.1rem/1 'Cormorant Garamond',Georgia,serif;color:var(--atlas-gold);margin-bottom:8px}
     .sixtyfour-price p{margin:0;font:400 .95rem/1.6 'Inter',sans-serif;color:rgba(255,255,255,.82)}
+    .sixtyfour-keystone{position:relative;width:100%;background:var(--atlas-ink);line-height:0}
+    .sixtyfour-keystone img{display:block;width:100%;height:auto;max-height:88vh;object-fit:cover;object-position:center 42%}
+    .sixtyfour-keystone figcaption{line-height:1.6;padding:14px max(24px,calc((100vw - 1180px)/2)) 18px;background:var(--atlas-ink);color:rgba(255,255,255,.55);font:500 9.5px/1.6 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase}
+    .sixtyfour-gallery{padding:clamp(56px,7vw,96px) max(24px,calc((100vw - 1180px)/2));background:var(--atlas-paper)}
+    .sixtyfour-gallery .gal-head{max-width:660px;margin:0 auto 34px;text-align:center}
+    .sixtyfour-gallery .gal-head .chapter{font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--atlas-rust);margin-bottom:12px}
+    .sixtyfour-gallery .gal-head h2{font:500 clamp(2.1rem,3.8vw,3.4rem)/1.06 'Cormorant Garamond',Georgia,serif;margin:0 0 14px;color:var(--atlas-ink)}
+    .sixtyfour-gallery .gal-head p{font:400 clamp(.95rem,1.1vw,1.06rem)/1.65 'Inter',sans-serif;color:rgba(23,23,22,.76);margin:0}
+    .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .gal-grid img{display:block;width:100%;aspect-ratio:5/8;object-fit:cover;border-radius:2px;background:var(--atlas-cream)}
+    @media(max-width:900px){.gal-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+    .atlas-editorial-hero .sixtyfour-spec{margin:16px 0 0;font:600 9.5px/1.6 'Inter',sans-serif;letter-spacing:.17em;text-transform:uppercase;color:rgba(23,23,22,.42)}
+    .sixtyfour-offer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 30px;padding:26px max(24px,calc((100vw - 1120px)/2));background:var(--atlas-cream);border-bottom:1px solid rgba(23,23,22,.1);text-align:center}
+    .sixtyfour-offer p{margin:0;font:400 clamp(.95rem,1.1vw,1.05rem)/1.55 'Inter',sans-serif;color:rgba(23,23,22,.8)}
+    .sixtyfour-offer p b{color:var(--atlas-ink);font-weight:600}
+    .sixtyfour-offer a{white-space:nowrap;font:600 10.5px/1 'Inter',sans-serif;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;padding:12px 20px;border-radius:2px}
+    .sixtyfour-offer a.primary{background:var(--atlas-ink);color:#fff}
+    .sixtyfour-offer a.ghost{color:var(--atlas-ink);border:1px solid rgba(23,23,22,.28)}
+    .sixtyfour-offer a:hover{opacity:.82}
     .sixtyfour-xref{margin:20px 0 0;font:400 .92rem/1.65 'Inter',sans-serif;color:rgba(23,23,22,.68)}
     .sixtyfour-xref a{color:var(--atlas-rust);text-decoration:none;border-bottom:1px solid rgba(164,71,54,.4)}
     .sixtyfour-xref a:hover{border-color:var(--atlas-rust)}
@@ -167,7 +208,8 @@
     <div class="page-hero-copy reveal visible">
       <div class="eyebrow">THE MAUI ATLAS</div>
       <h1>The Sixty-Four</h1>
-      <p class="atlas-deck">Fifteen frames from your session, hand-processed to the colors of the most famous film ever made. Shot the way we always shoot — on a Leica M9, built around the last CCD sensor Kodak ever designed for Leica.</p>
+      <p class="atlas-deck">Fifteen frames from your session, hand-processed to the colors of the most famous film ever made. Shot by Laurence on his Leica M9 — built around the last CCD sensor Kodak ever designed for Leica.</p>
+      <p class="sixtyfour-spec">Digital capture · Individual colour finishing · No film processing</p>
       <p class="atlas-byline">BY LAURENCE BALTER · FOUNDER &amp; LEAD PHOTOGRAPHER, WAILEA PHOTO</p>
     </div>
   </section>
@@ -175,7 +217,14 @@
   <!-- OPENING NOTE -->
   <section class="atlas-opening-note" aria-label="Maui Atlas field note">
     <span>THE SIXTY-FOUR</span>
-    <p>Kodachrome ran for seventy-five years and then stopped. The last roll on earth was developed in a small lab in Kansas in January 2011. These are the colors we have been chasing ever since.</p>
+    <p>Kodachrome ran for seventy-four years and then stopped. Kodak ended production in 2009, and the final roll was processed at <a href="https://en.wikipedia.org/wiki/K-14_process" target="_blank" rel="noopener" style="color:var(--atlas-gold)">Dwayne&rsquo;s Photo</a> in Parsons, Kansas, on 18 January 2011. These are the colors we have been chasing ever since.</p>
+  </section>
+
+  <!-- OFFER BAR -->
+  <section class="sixtyfour-offer" aria-label="The Sixty-Four add-on">
+    <p><b>The Sixty-Four — $20.</b> Fifteen individually finished frames, delivered as their own gallery alongside your complete session.</p>
+    <a class="primary" href="tel:+18082985188">Add to My Session</a>
+    <a class="ghost" href="#the-colour">See the Colour</a>
   </section>
 
   <!-- SECTION 1: THE FILM (IMAGE LEFT / CONTENT RIGHT) -->
@@ -201,31 +250,56 @@
     </div>
     <div class="content-split-copy reveal visible">
       <div class="chapter">2009, IN ROCHESTER</div>
-      <h2>Kodak ended Kodachrome and built our sensor in the same year.</h2>
+      <h2>Kodak ended Kodachrome and built this sensor in the same year.</h2>
       <p>In June of 2009, Kodak discontinued the last Kodachrome emulsion. Three months later they shipped a custom CCD sensor to Leica in Germany, made to order for a rangefinder called the M9. Same company. Same year. One hand closing the book, the other quietly writing an epilogue.</p>
-      <p>That sensor is the one in our camera. It has no anti-aliasing filter and no highlight rescue, which means it clips the way slide film clipped and holds detail the way slide film held it. It has also been out of production for years and cannot be replaced.</p>
-      <p>We did not choose it to be sentimental. We chose it because it renders skin, water, and late light better than anything we have shot since — and it happens to be the closest digital relative Kodachrome ever had.</p>
+      <p>That sensor is the one in Laurence's camera. It has no anti-aliasing filter, which gives the files an unusual directness. Highlights need careful exposure and shadows stay deep &mdash; much the way transparency film behaved. It has also been <a href="https://leica-camera.com/en-US/service-support/repair-maintenance" target="_blank" rel="noopener" style="color:var(--atlas-gold)">out of production for years</a> and cannot be replaced.</p>
+      <p>He did not choose it to be sentimental. He chose it because it renders skin, water, and late light better than anything he has shot since — and it is the closest digital relative to Kodachrome we have found.</p>
     </div>
   </section>
 
   <!-- SECTION 3: THE LOOK (IMAGE LEFT / CONTENT RIGHT) -->
-  <section class="content-split">
+  <section class="content-split" id="the-colour">
     <div class="content-split-image reveal visible">
-      <img src="assets/the-sixty-four-look.jpg" width="2000" height="1250" alt="Couple standing forehead to forehead in shallow water at sunset in South Maui - image by Wailea Photo®" loading="lazy">
+      <img src="assets/the-sixty-four-look.jpg" width="2000" height="1331" alt="Couple standing forehead to forehead in shallow water at sunset in South Maui - image by Wailea Photo®" loading="lazy">
       <div class="atlas-photo-caption">Warm light, deep shadow, quiet greens</div>
     </div>
     <div class="content-split-copy reveal visible">
       <div class="chapter">WHAT IT ACTUALLY LOOKS LIKE</div>
       <h2>Warmer skin. Deeper blacks. Greens that stay quiet.</h2>
       <p>Kodachrome was never the loudest film. It was the most particular one. Reds run deep and hold their density instead of blooming. Skin goes warm and a little sun-touched. Shadows are genuinely dark — the film had no interest in showing you what was hiding in them. And the greens stay restrained and olive, which is why palm and kiawe look like Maui in these frames rather than like a postcard.</p>
-      <p>Every frame in this set is worked individually. There is no filter, no batch preset dropped over your gallery. The color is built by hand the way the film built it — one layer at a time.</p>
+      <p>Every frame in this set is worked individually. There is no one-click filter, no batch preset dropped over your gallery. The color is built by hand the way the film built it — one layer at a time.</p>
 
       <div class="sixtyfour-price">
         <strong>$20</strong>
-        <p>Added to any session. Fifteen frames, hand-processed, delivered as their own gallery alongside your full set — so you keep everything, and get these as well. Just ask when you book, or mention it to us on the beach.</p>
+        <p>Fifteen frames, hand-processed, delivered as their own gallery alongside your full set on the same timeline — so you keep everything, and get these as well. Settled with your final balance at the end of the session.</p>
+        <p style="margin-top:12px;color:rgba(255,255,255,.62)">Limited availability: Laurence is the only one of us who shoots the M9, so it depends on who is covering your date. We confirm before your session, and you are only charged if we make them.</p>
       </div>
 
       <p class="sixtyfour-xref"><strong>To be clear: no film is exposed.</strong> These are digital frames from the M9, processed by hand. If you are curious how that actually stacks up against real film, we ran the side-by-side — see <a href="leica-m9-vs-kodak-portra-160.html">Leica M9 vs. Kodak Portra 160</a>.</p>
+    </div>
+  </section>
+
+  <!-- KEYSTONE -->
+  <figure class="sixtyfour-keystone" aria-label="The Sixty-Four keystone image">
+    <img src="assets/the-sixty-four-solo-portrait.jpg" width="2000" height="1250" loading="lazy" alt="Woman in a cream dress on the sand at sunset, lava rock and surf behind her, South Maui - image by Wailea Photo®">
+    <figcaption>Makena, last light · Leica M9 · The Sixty-Four</figcaption>
+  </figure>
+
+  <!-- GALLERY -->
+  <section class="sixtyfour-gallery reveal visible" aria-label="The Sixty-Four gallery">
+    <div class="gal-head">
+      <div class="chapter">THE COLOUR</div>
+      <h2>More, finished the same way.</h2>
+      <p>Families, couples, seniors and elopements — all shot on the M9 at the water's edge in South Maui, all finished by hand.</p>
+    </div>
+    <div class="gal-grid">
+      <img src="assets/K64-7.jpg" width="1250" height="2000" loading="lazy" alt="Couple in lei standing forehead to forehead beside lava rock at sunset in Maui - image by Wailea Photo®">
+      <img src="assets/K64.jpg" width="1250" height="2000" loading="lazy" alt="Family of five in blue on the sand beneath palms in Wailea, Maui - image by Wailea Photo®">
+      <img src="assets/K64-5.jpg" width="1250" height="2000" loading="lazy" alt="Woman in a white dress beside lava rock in the shallows in South Maui - image by Wailea Photo®">
+      <img src="assets/K64-8.jpg" width="1250" height="2000" loading="lazy" alt="Couple leaning against driftwood in the shallows at sunset in Maui - image by Wailea Photo®">
+      <img src="assets/K64-3.jpg" width="1250" height="2000" loading="lazy" alt="Couple embracing in the surf at sunset on a Wailea beach - image by Wailea Photo®">
+      <img src="assets/K64-6.jpg" width="1250" height="2000" loading="lazy" alt="Two sisters in floral dresses on the sand with turquoise water behind them in Maui - image by Wailea Photo®">
+      <img src="assets/K64-4.jpg" width="1250" height="2000" loading="lazy" alt="Girl in a white dress in the shallows at sunset in South Maui - image by Wailea Photo®">
     </div>
   </section>
 
@@ -240,18 +314,18 @@
     <div class="dining-grid" style="max-width:960px;margin:0 auto">
       <div class="dining-card">
         <span class="tag">ONE</span>
-        <h3>Book any session</h3>
-        <p>Family, couples, elopement, sunrise — it does not matter which. We shoot the M9 on all of them already.</p>
+        <h3>Ask when you book</h3>
+        <p>Family, couples, elopement, sunrise — any session. Tell us when you book, or mention it to us on the beach.</p>
       </div>
       <div class="dining-card">
         <span class="tag">TWO</span>
-        <h3>Ask for The Sixty-Four</h3>
-        <p>Tell us when you book, or just mention it when we meet at the beach. Twenty dollars, added to your session.</p>
+        <h3>We confirm availability</h3>
+        <p>Laurence is the only one of us who shoots the M9, so it depends on who is covering your date. We will let you know before your session.</p>
       </div>
       <div class="dining-card">
         <span class="tag">THREE</span>
         <h3>Two galleries</h3>
-        <p>Your full set delivered as always, plus fifteen hand-processed frames in a gallery of their own.</p>
+        <p>Your full set delivered as always, plus fifteen hand-processed frames in a gallery of their own, on the same timeline.</p>
       </div>
     </div>
 
