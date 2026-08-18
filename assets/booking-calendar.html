@@ -79,6 +79,9 @@
   .contact-review { background: #f5f1e9; border: 1px solid #d8cdbd; border-radius: 4px; padding: 12px; font-size: 12px; line-height: 1.5; }
   .contact-review[hidden], #contactForm[hidden] { display: none; }
   .contact-review button { width: 100%; margin-top: 10px; }
+  .cancel-panel form { border-color: #e6cbc7; background: #fffaf9; }
+  .cancel-panel button[type="submit"] { background: #a4342a; }
+  .cancel-panel button[type="submit"]:disabled { background: #c9938c; cursor: default; }
 
   /* --- Blocked dates (reused tool) --- */
   .block-section { margin-top: 56px; border-top: 1px solid #eee; padding-top: 32px; }
@@ -204,6 +207,21 @@
       </form>
       <strong>Change history</strong>
       <ol id="historyList" class="history-list"><li>Loading…</li></ol>
+    </div>
+    <div class="move-panel cancel-panel" id="cancelPanel" hidden>
+      <strong>Cancel this booking</strong>
+      <form id="cancelForm" novalidate>
+        <p class="hint">This marks the booking cancelled, frees the time slot, and removes its Google Calendar event. Refunds are handled separately in Stripe.</p>
+        <div><label for="cancelReason">Reason recorded in the change history</label><input type="text" id="cancelReason" placeholder="Client cancelled, weather, duplicate…" maxlength="200"></div>
+        <div>
+          <label style="text-transform:none;letter-spacing:normal;font-weight:400;display:flex;align-items:center;gap:8px;">
+            <input type="checkbox" id="cancelNotify" style="width:auto;" checked>
+            Send a cancellation email to the client
+          </label>
+        </div>
+        <div id="cancelError" class="error"></div><div id="cancelResult" class="move-result"></div>
+        <button type="submit">Cancel this booking</button>
+      </form>
     </div>
     <button class="modal-close" id="modalCloseBtn">Close</button>
   </div>
@@ -504,8 +522,15 @@
     alert.hidden = alerts.length === 0;
     const canMove = b.source === 'wp' && b.status === 'confirmed';
     const canEditContact = b.source === 'wp' && b.status !== 'rescheduled';
+    const canCancel = b.source === 'wp' && b.status !== 'cancelled' && b.status !== 'rescheduled';
     document.getElementById('contactPanel').hidden = !canEditContact;
     document.getElementById('movePanel').hidden = !canMove;
+    document.getElementById('cancelPanel').hidden = !canCancel;
+    document.getElementById('cancelReason').value = '';
+    document.getElementById('cancelNotify').checked = true;
+    document.getElementById('cancelError').textContent = '';
+    document.getElementById('cancelResult').textContent = '';
+    document.querySelector('#cancelForm button[type="submit"]').hidden = false;
     if (canMove && Object.keys(sessionTypesBySlug).length === 0) await loadSessionTypes();
     populateMoveSessionTypes(b.session_type_slug);
     document.getElementById('moveDate').value = b.session_date;
@@ -685,6 +710,51 @@
     } finally {
       button.disabled = false;
       button.textContent = 'Move & send confirmations';
+    }
+  });
+
+  async function cancelBooking(id, payload) {
+    // Primary route follows the reschedule convention. Older engine builds exposed it at
+    // /api/admin/bookings/:id/cancel, so fall back once if the first route 404s.
+    try {
+      return await api('POST', `/api/bookings/${id}/cancel`, payload);
+    } catch (err) {
+      if (!/not found|no such|404/i.test(err.message)) throw err;
+      return api('POST', `/api/admin/bookings/${id}/cancel`, payload);
+    }
+  }
+
+  document.getElementById('cancelForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    const error = document.getElementById('cancelError');
+    const result = document.getElementById('cancelResult');
+    error.textContent = '';
+    result.textContent = '';
+    const reason = document.getElementById('cancelReason').value.trim();
+    if (!reason) { error.textContent = 'Add a short reason first.'; return; }
+    const ref = selectedBooking.booking_reference || `#${selectedBooking.id}`;
+    const notify = document.getElementById('cancelNotify').checked;
+    const ok = confirm(`Cancel ${ref} — ${selectedBooking.client_name || 'this client'} on ${selectedBooking.session_date}?\n\nThis cannot be undone from this page, and no refund is issued automatically.`);
+    if (!ok) return;
+    const button = event.submitter || document.querySelector('#cancelForm button[type="submit"]');
+    button.disabled = true;
+    button.textContent = 'Cancelling…';
+    try {
+      const cancelled = await cancelBooking(selectedBooking.id, { reason, notifyClient: notify });
+      selectedBooking = { ...selectedBooking, ...cancelled, status: 'cancelled' };
+      result.textContent = notify
+        ? `${ref} is cancelled and a cancellation email was sent to the client. Refund the deposit in Stripe if one is owed.`
+        : `${ref} is cancelled. No client email was sent. Refund the deposit in Stripe if one is owed.`;
+      button.hidden = true;
+      document.getElementById('movePanel').hidden = true;
+      await loadHistory(selectedBooking.id);
+      await loadMonth();
+    } catch (err) {
+      error.textContent = err.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Cancel this booking';
     }
   });
 
