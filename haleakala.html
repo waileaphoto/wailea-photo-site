@@ -76,10 +76,25 @@
     .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
-    .atlas-text-block{max-width:760px;margin:0 auto;padding:clamp(48px,7vw,92px) 24px;border-top:1px solid rgba(23,23,22,.1);text-align:center}
-    .atlas-text-block .section-head{margin-bottom:28px}
-    .atlas-text-block p{font-size:1.05rem;line-height:1.75;color:#333;text-align:center}
-    .atlas-text-block h3{margin:26px 0 8px;font:500 1.3rem/1.2 'Cormorant Garamond',Georgia,serif;text-align:center}
+    /* Text block. NOTE: site.css sets .section-head h2{white-space:nowrap;
+       font-size up to 92px}, which makes long headings overflow. Override. */
+    .atlas-text-block{padding:clamp(48px,7vw,92px) 24px;border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-text-block>*{max-width:820px;margin-left:auto;margin-right:auto}
+    .atlas-text-block .section-head{padding:0 0 5vh;text-align:center}
+    .atlas-text-block .section-head h2{white-space:normal!important;font:500 clamp(30px,4.4vw,52px)/1.06 var(--serif,'Cormorant Garamond',Georgia,serif)!important;max-width:24ch;margin:.2em auto!important}
+    .atlas-text-block .chapter{display:block;text-align:center}
+    .atlas-text-block p{font-size:1.05rem;line-height:1.75;color:#333;text-align:left}
+    .atlas-text-block h3{margin:30px 0 6px;font:500 1.35rem/1.25 var(--serif,'Cormorant Garamond',Georgia,serif);text-align:left}
+
+    /* Video. These classes are NOT in site.css (they were inline-only on the
+       Leica page), so they must be defined here or the iframe renders
+       unstyled at the browser default ~300x150. */
+    .video-stage{background:var(--atlas-ink);color:#fff;padding:clamp(72px,10vw,140px) 5vw}
+    .video-stage .inner{width:min(1120px,100%);margin:0 auto;text-align:center}
+    .video-stage .chapter{display:block;color:#d3b77d}
+    .video-stage h2{font:500 clamp(30px,4.4vw,52px)/1.06 var(--serif,'Cormorant Garamond',Georgia,serif);white-space:normal;max-width:24ch;margin:16px auto 38px;color:#fff}
+    .video-shell{position:relative;aspect-ratio:16/9;width:100%;background:#000;box-shadow:0 28px 90px #0007}
+    .video-shell iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     @media(max-width:900px){
       .atlas-editorial-hero{grid-template-columns:1fr;min-height:0}
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
