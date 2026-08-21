@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /assets/booking-calendar.html
+Disallow: /tools/
 
 User-agent: GPTBot
 Allow: /
