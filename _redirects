@@ -9,3 +9,14 @@
 /where-to-eat-after-photo-session-wailea       /our-personal-maui-restaurant-reviews   301!
 /where-to-eat-after-photo-session-wailea.html  /our-personal-maui-restaurant-reviews   301!
 /Maternity.html   /maternity   301!
+
+# Legacy Squarespace URLs. These pages no longer exist but are still indexed and
+# still cited - a search for "photographer for Grand Wailea guests" returns
+# /art-gallery, /linkedin and /cinematic, all of which were answering 404. Point
+# each at its closest living equivalent so the accumulated authority is kept and
+# nobody is sent to a dead page.
+/art-gallery            /the-sixty-four-kodachrome-maui-photography   301!
+/restaurants-activities /our-personal-maui-restaurant-reviews          301!
+/linkedin               /corporate-events                              301!
+/m11-profiles           /the-apo-difference                            301!
+/cinematic              /index.html#story-paths                        301!
