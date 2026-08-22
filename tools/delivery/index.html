@@ -75,41 +75,37 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
 
       <div class="field">
         <label for="name">Client first name</label>
-        <input id="name" type="text" placeholder="Tiffany" autocomplete="off">
+        <input id="name" type="text" autocomplete="off">
       </div>
       <div class="field">
         <label for="email">Client email</label>
-        <input id="email" type="email" placeholder="tiffany@example.com" autocomplete="off">
+        <input id="email" type="email" autocomplete="off">
       </div>
       <div class="field">
         <label for="link">Gallery link</label>
-        <input id="link" type="url" placeholder="https://waileaphoto.smugmug.com/TiffanyMason" autocomplete="off">
+        <input id="link" type="url" autocomplete="off">
       </div>
       <div class="row2">
         <div class="field">
           <label for="count">Photo count</label>
-          <input id="count" type="text" placeholder="162" autocomplete="off">
+          <input id="count" type="text" autocomplete="off">
         </div>
         <div class="field">
           <label for="session">Session (optional)</label>
-          <input id="session" type="text" placeholder="beach session" autocomplete="off">
+          <input id="session" type="text" autocomplete="off">
         </div>
-      </div>
-      <div class="field">
-        <label for="closing">Closing line</label>
-        <textarea id="closing">If anything doesn't look right or you have trouble downloading, just reply here.</textarea>
       </div>
       <div class="row2">
         <div class="field">
           <label for="sender">Signed by</label>
-          <input id="sender" type="text" placeholder="Laurence" autocomplete="off">
+          <input id="sender" type="text" autocomplete="off">
         </div>
         <div class="field">
           <label for="replyto">Replies go to</label>
-          <input id="replyto" type="email" placeholder="you@waileaphoto.com" autocomplete="off">
+          <input id="replyto" type="email" autocomplete="off">
         </div>
       </div>
-      <p class="hint">Your name, reply address and closing line are remembered on this device.</p>
+      <p class="hint">Your name and reply address are remembered on this device.</p>
 
       <div class="toggle">
         <input id="review" type="checkbox" checked>
@@ -155,12 +151,11 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
 (function(){
   var $=function(id){return document.getElementById(id);};
   var els={};
-  ['name','email','link','count','session','closing','sender','replyto','review','password',
+  ['name','email','link','count','session','sender','replyto','review','password',
    'pv','subjOut','status','send','test','reset','log'].forEach(function(k){els[k]=$(k);});
 
-  var K={close:'wp-closing',send:'wp-sender',reply:'wp-replyto'};
+  var K={send:'wp-sender',reply:'wp-replyto'};
   try{
-    var a=localStorage.getItem(K.close); if(a) els.closing.value=a;
     var b=localStorage.getItem(K.send); if(b) els.sender.value=b;
     var c=localStorage.getItem(K.reply); if(c) els.replyto.value=c;
   }catch(e){}
@@ -201,8 +196,6 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
     h.push('</td></tr></table><div style="font-family:'+SANS+';font-size:12px;line-height:1.5;color:#8a837a;padding-top:10px;">or paste this link: <a href="'+esc(link)+'" style="color:#315f69;">'+esc(link)+'</a></div></td></tr>');
     h.push('<tr><td style="padding:26px 40px 0 40px;font-family:'+SANS+';font-size:15px;line-height:1.65;color:#3c3936;">To download everything at once, click the download arrow beneath the cover photo and choose <strong style="color:#1b1917;">Download All</strong>. You\'ll get an email with a link to the full set &mdash; <strong style="color:#1b1917;">that link expires after two weeks</strong>, so please grab them soon. You can also download individual favourites by hovering over any image.</td></tr>');
     h.push('<tr><td style="padding:16px 40px 0 40px;font-family:'+SANS+';font-size:15px;line-height:1.65;color:#3c3936;">Prints are available right in the gallery if you&rsquo;d like them &mdash; just click <strong style="color:#1b1917;">Select Photos to Print</strong>.</td></tr>');
-    var closing=els.closing.value.trim();
-    if(closing) h.push('<tr><td style="padding:16px 40px 0 40px;font-family:'+SANS+';font-size:15px;line-height:1.65;color:#3c3936;">'+esc(closing)+'</td></tr>');
     if(els.review.checked){
       h.push('<tr><td style="padding:28px 40px 0 40px;"><div style="height:1px;background-color:#e3ddd2;"></div></td></tr>');
       h.push('<tr><td align="center" style="padding:26px 40px 0 40px;"><div style="font-family:'+SERIF+';font-size:24px;line-height:1.25;color:#1b1917;">It was a real pleasure !</div>');
@@ -227,7 +220,6 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
     var L=[greeting(),'',openingLine(),'',gallery()||'[gallery link]','',
       "To download everything at once, click the download arrow beneath the cover photo and choose Download All. You'll get an email with a link to the full set — that link expires after two weeks, so please grab them soon.",'',
       'Prints are available right in the gallery — just click Select Photos to Print.',''];
-    var c=els.closing.value.trim(); if(c){L.push(c);L.push('');}
     if(els.review.checked){
       L.push('It was a real pleasure !','','A review by you would mean the world to us !','','Just copy and paste. It really helps us out.','');
       REVIEWS.forEach(function(r){L.push(r[0]+'  '+r[1]);});
@@ -244,13 +236,12 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
     var to=els.email.value.trim();
     els.send.disabled=!(to.indexOf('@')>0 && gallery().length>8 && els.password.value.length>0);
     try{
-      localStorage.setItem(K.close,els.closing.value);
       localStorage.setItem(K.send,els.sender.value);
       localStorage.setItem(K.reply,els.replyto.value);
     }catch(e){}
   }
 
-  ['name','email','link','count','session','closing','sender','replyto','password'].forEach(function(k){
+  ['name','email','link','count','session','sender','replyto','password'].forEach(function(k){
     els[k].addEventListener('input',render);
   });
   els.review.addEventListener('change',render);
