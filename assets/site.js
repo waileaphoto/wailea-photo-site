@@ -321,10 +321,10 @@
     initTideTool();
   });
 })();
-/* Keep the shared footer consistent across both newer template pages and
-   older pages that still contain an inline footer. */
+/* Every page now carries an inline <footer> (footer.html is the source of truth;
+   tools/sync-footer.py pushes it out), so there is nothing to fetch here. */
 (function initSharedFooter(){
-  function ensureAtlasLink(){
+function ensureAtlasLink(){
     const footer = document.querySelector('footer');
     if (!footer) return;
     const exploreHeading = [...footer.querySelectorAll('.footer-col h5')]
@@ -337,22 +337,9 @@
     exploreColumn.appendChild(atlasLink);
   }
 
-  const placeholder = document.getElementById('footer-placeholder');
-  if (!placeholder) {
-    ensureAtlasLink();
-    return;
-  }
-
-  fetch('footer.html')
-    .then(response => response.ok ? response.text() : Promise.reject())
-    .then(data => {
-      if (placeholder.tagName === 'FOOTER') placeholder.outerHTML = data;
-      else placeholder.innerHTML = data;
-      const year = document.getElementById('year');
-      if (year) year.textContent = new Date().getFullYear();
-      ensureAtlasLink();
-    })
-    .catch(ensureAtlasLink);
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+  ensureAtlasLink();
 })();
 
 /* ---------- session-finder: "Find Your Session" recommender (pricing.html only) ---------- */

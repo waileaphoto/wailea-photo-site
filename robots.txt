@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /assets/booking-calendar.html
 Disallow: /tools/
 
@@ -26,8 +28,5 @@ Allow: /
 
 User-agent: Google-Extended
 Allow: /
-
-Allow: /llms.txt
-Allow: /llms-full.txt
 
 Sitemap: https://waileaphoto.com/sitemap.xml

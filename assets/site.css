@@ -599,7 +599,7 @@ button{font:inherit}
 
 /* ---------- footer ---------- */
 footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
-.footer-grid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:5vw;padding-bottom:6vh;border-bottom:1px solid rgba(245,239,229,.14)}
+.footer-grid{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:3.4vw;padding-bottom:6vh;border-bottom:1px solid rgba(245,239,229,.14)}
 .footer-mark-col .mark{font:400 44px/1 var(--serif)}
 .footer-mark-col .mark i{font-style:normal;color:var(--red)}
 .footer-mark-col p{font-size:15px;line-height:1.75;color:rgba(245,239,229,.7);max-width:26ch;margin-top:16px}

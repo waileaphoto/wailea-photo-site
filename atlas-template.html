@@ -69,7 +69,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=20260731">
+  <link rel="stylesheet" href="assets/site.css?v=20260821-footer-inline">
 
   <style>
     /* Hero Container Setup */
@@ -252,16 +252,49 @@
   </section>
 </main>
 
-<div id="footer-placeholder"></div>
+<footer>
+<div class="footer-grid">
+<div class="footer-mark-col">
+<div class="mark">W<i>/</i>P</div>
+<p>A family-run photography studio in Wailea, Maui — photographing families, couples and weddings for more than 25 years.</p>
+</div>
+<div class="footer-col">
+<h5>Explore</h5>
+<a href="index.html#story-paths">Photography</a>
+<a href="pricing.html">Sessions &amp; Pricing</a>
+<a href="index.html#experience">Our Family</a>
+<a href="index.html#reviews">Reviews</a>
+<a href="atlas.html">The Maui Atlas</a>
+<a href="what-to-wear-maui-photos.html">Maui Atlas: What to Wear</a>
+</div>
+<div class="footer-col">
+<h5>Services</h5>
+<a href="maui-family-photographer.html">Family Portraits</a>
+<a href="maui-couples-photographer.html">Couples &amp; Proposals</a>
+<a href="maui-maternity-photographer.html">Maternity</a>
+<a href="maui-vow-renewal-photographer.html">Vow Renewals</a>
+<a href="maui-wedding-photographer.html">Weddings</a>
+<a href="the-apo-difference.html">The APO Difference</a>
+<a href="our-florist">Our Florist</a>
+<a href="tides.html">Tides &amp; Sunset Times</a>
+<a href="corporate-events.html">Corporate Events</a>
+<a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
+<a href="faq.html">FAQ &amp; Contact</a>
+</div>
+<div class="footer-col">
+<h5>Connect</h5>
+<a href="https://www.instagram.com/waileaphoto" target="_blank" rel="noopener">See the latest on Instagram</a>
+<a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener">Facebook</a>
+<a href="mailto:photo@waileaphoto.com">photo@waileaphoto.com</a>
+<a href="tel:+18082985188">808.298.5188</a>
+</div>
+</div>
+<div class="footer-bottom">
+<div>WAILEA PHOTO · MAUI, HAWAII</div>
+<div>© <span id="year"></span> WAILEA PHOTO</div>
+</div>
+</footer>
 
-<script src="assets/site.js"></script>
-<script>
-if (location.protocol.startsWith('http')) {
-  fetch('footer.html').then(res => res.ok ? res.text() : Promise.reject()).then(html => {
-    document.getElementById('footer-placeholder').outerHTML = html;
-    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
-  }).catch(() => {});
-}
-</script>
+<script src="assets/site.js?v=20260821-footer-inline"></script>
 </body>
 </html>
