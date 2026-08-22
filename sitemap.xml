@@ -21,6 +21,19 @@
     <loc>https://waileaphoto.com/tides</loc>
   </url>
 
+  <url>
+    <loc>https://waileaphoto.com/corporate-events</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/max-balter</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/jude-balter</loc>
+  </url>
+  <url>
+    <loc>https://waileaphoto.com/solomon-balter</loc>
+  </url>
+
   <!-- Primary Photography Service Pages -->
   <url>
     <loc>https://waileaphoto.com/maui-family-photographer</loc>
@@ -88,6 +101,10 @@
   </url>
   <url>
     <loc>https://waileaphoto.com/black-and-white-upgrade</loc>
+  </url>
+
+  <url>
+    <loc>https://waileaphoto.com/our-florist</loc>
   </url>
 
   <!-- Resort & High-Intent Landing Pages -->

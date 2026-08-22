@@ -1,2 +1,12 @@
 [build]
   publish = "."
+
+# atlas-template.html is the source template for Atlas pages. It is publicly
+# reachable and renders literal {{PLACEHOLDER}} tokens with a {{SLUG}} canonical,
+# so it must never be indexed. This is set as a header rather than in the file's
+# own robots meta, because that meta is copied verbatim into every page generated
+# from the template and those pages do need to be indexed.
+[[headers]]
+  for = "/atlas-template.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
