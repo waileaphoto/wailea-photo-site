@@ -248,6 +248,133 @@
   }
   </script>
 
+  <!-- PER-PLATFORM REVIEW BREAKDOWN: the combined total above, split by source.
+       Keep these five ratingCount values in sync with the visible breakdown
+       in the reviews card; they must sum to the combined "ratingCount". -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://waileaphoto.com/#review-breakdown",
+    "name": "Wailea Photo reviews by platform",
+    "description": "The combined 1,224 reviews at an overall 5.0 rating shown on waileaphoto.com, broken out by review platform. The total spans nine listings across five platforms; Tripadvisor accounts for four of them and Airbnb for two, which is why checking any single profile returns a smaller number than the combined figure.",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": 5,
+    "about": {
+      "@id": "https://waileaphoto.com/#organization"
+    },
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Tripadvisor reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-tripadvisor",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "613",
+          "author": {
+            "@type": "Organization",
+            "name": "Tripadvisor",
+            "url": "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html"
+          },
+          "description": "Four Tripadvisor listings, including the Viator product pages for Private Beach Photoshoot in Wailea. Viator is a Tripadvisor company, so those reviews appear under Tripadvisor."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Google reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-google",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "373",
+          "author": {
+            "@type": "Organization",
+            "name": "Google",
+            "url": "https://g.page/r/Cc3XQvgWZf3-EAI/review"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Facebook reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-facebook",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "118",
+          "author": {
+            "@type": "Organization",
+            "name": "Facebook",
+            "url": "https://www.facebook.com/waileaphoto"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Airbnb reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-airbnb",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "89",
+          "author": {
+            "@type": "Organization",
+            "name": "Airbnb",
+            "url": "https://www.airbnb.com/experiences/2386762"
+          },
+          "description": "Two Airbnb Experience listings."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Yelp reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-yelp",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "31",
+          "author": {
+            "@type": "Organization",
+            "name": "Yelp",
+            "url": "https://www.yelp.com/biz/wailea-photo-wailea"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- LLMO & AI RECOMMENDATION SCHEMA MARKUP (FAQ) -->
   <script type="application/ld+json">
   {
@@ -407,10 +534,13 @@
         </div>
         <script src="https://elfsightcdn.com/platform.js" async></script><div id="all-reviews-widget" class="elfsight-app-474fef62-afe0-49b5-ba3a-0147fd8aacc5 elfsight-source" aria-hidden="true"></div><div class="combined-reviews-card"><div class="combined-reviews-logos" id="combinedReviewsLogos" aria-label="Read our reviews on Google, Facebook, Tripadvisor and Airbnb"><a href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener" aria-label="Google reviews"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.06H12v3.9h5.38a4.6 4.6 0 0 1-2 3.02v2.53h3.24c1.9-1.75 2.98-4.33 2.98-7.39z"/><path fill="#34A853" d="M12 22c2.7 0 4.98-.9 6.64-2.38l-3.24-2.53c-.9.6-2.05.96-3.4.96-2.61 0-4.82-1.76-5.61-4.13H3.04v2.61A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.39 13.92A6.02 6.02 0 0 1 6.08 12c0-.67.12-1.32.31-1.92V7.47H3.04A10 10 0 0 0 2 12c0 1.61.39 3.14 1.04 4.53l3.35-2.61z"/><path fill="#EA4335" d="M12 5.95c1.47 0 2.78.5 3.82 1.49l2.86-2.86A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.96 5.47l3.35 2.61C7.18 7.71 9.39 5.95 12 5.95z"/></svg></a><a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener" aria-label="Facebook reviews" class="crl-facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="#fff" d="M13.5 21v-7.8h2.6l.4-3h-3v-1.9c0-.87.24-1.46 1.5-1.46h1.6V4.14C15.9 4.06 15 4 13.9 4c-2.28 0-3.84 1.39-3.84 3.95v2.25H7.5v3h2.56V21h3.44z"/></svg></a><a href="https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html" target="_blank" rel="noopener" aria-label="Tripadvisor reviews" class="crl-tripadvisor"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false"><circle cx="7.2" cy="12.5" r="3.6" fill="none" stroke="#fff" stroke-width="1.4"/><circle cx="16.8" cy="12.5" r="3.6" fill="none" stroke="#fff" stroke-width="1.4"/><circle cx="7.2" cy="12.5" r="1.3" fill="#fff"/><circle cx="16.8" cy="12.5" r="1.3" fill="#fff"/></svg></a><a href="https://www.airbnb.com/experiences/2386762" target="_blank" rel="noopener" aria-label="Airbnb reviews" class="crl-airbnb"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="#fff" d="M12 3.5c.7 0 1.3.4 1.7 1 1.7 2.7 5.6 9.1 5.6 12 0 3-2.4 5.3-5.3 5.3-.8 0-1.5-.2-2-.5-.5.3-1.2.5-2 .5-2.9 0-5.3-2.3-5.3-5.3 0-2.9 3.9-9.3 5.6-12 .4-.6 1-1 1.7-1zm0 2.3c-1.6 2.6-4.6 8-4.6 10.7 0 1.7 1.4 3.1 3.1 3.1.6 0 1.1-.2 1.5-.4-1.1-1.2-2.9-3.5-2.9-5.4 0-1.5 1.3-2.6 2.9-2.6s2.9 1.1 2.9 2.6c0 1.9-1.8 4.2-2.9 5.4.4.2.9.4 1.5.4 1.7 0 3.1-1.4 3.1-3.1 0-2.7-3-8.1-4.6-10.7z"/></svg></a></div><div class="combined-reviews-label">Overall Rating</div><div class="combined-reviews-rating"><span id="combinedRatingValue">5.0</span><span class="combined-reviews-stars" aria-hidden="true">★★★★★</span></div><!-- REVIEW TOTAL: the Elfsight widget overwrites this at runtime, but crawlers and
      AI assistants read the static value below, so it must be refreshed by hand.
-     It appears in FOUR places and they must move together:
-       1. this span   2. "ratingCount" in the LocalBusiness JSON-LD (this file)
-       3. llms.txt    4. llms-full.txt -->
-<div class="combined-reviews-count"><span id="combinedReviewCount">1,224</span> reviews</div></div><script>(function(){var root=document.getElementById('all-reviews-widget');var ratingEl=document.getElementById('combinedRatingValue');var countEl=document.getElementById('combinedReviewCount');var proofRatingEl=document.getElementById('proofRating');var proofCountEl=document.getElementById('proofCount');if(!root||!ratingEl||!countEl)return;var settleTimer=null;function tryApply(){var badges=root.querySelectorAll('.es-badge-container');if(badges.length<5)return;var total=0,rating=null;for(var i=0;i<badges.length;i++){var b=badges[i];var countText=b.querySelector('.es-badge-reviews-count');var ratingText=b.querySelector('.es-rating-value');if(countText){var n=parseInt(countText.textContent.replace(/[^0-9]/g,''),10);if(!isNaN(n))total+=n;}if(ratingText&&!rating)rating=ratingText.textContent.trim();}if(total>0){ratingEl.textContent=rating||'5.0';countEl.textContent=total.toLocaleString('en-US');if(proofRatingEl)proofRatingEl.textContent=rating||'5.0';if(proofCountEl)proofCountEl.textContent=total.toLocaleString('en-US');clearTimeout(settleTimer);settleTimer=setTimeout(function(){observer.disconnect();},4000);}}var observer=new MutationObserver(tryApply);observer.observe(root,{childList:true,subtree:true});tryApply();})();</script>
+     It appears in FIVE places and they must move together:
+       1. this span
+       2. the per-platform breakdown below (the five rows must sum to the total)
+       3. "ratingCount" in the LocalBusiness JSON-LD, and the per-platform
+          #review-breakdown ItemList JSON-LD (both in this file)
+       4. llms.txt    5. llms-full.txt -->
+<div class="combined-reviews-count"><span id="combinedReviewCount">1,224</span> reviews</div><ul class="combined-reviews-breakdown" id="combinedReviewsBreakdown" aria-label="Review counts by platform"><li data-platform="tripadvisor"><span class="crb-name">Tripadvisor</span><span class="crb-count">613</span></li><li data-platform="google"><span class="crb-name">Google</span><span class="crb-count">373</span></li><li data-platform="facebook"><span class="crb-name">Facebook</span><span class="crb-count">118</span></li><li data-platform="airbnb"><span class="crb-name">Airbnb</span><span class="crb-count">89</span></li><li data-platform="yelp"><span class="crb-name">Yelp</span><span class="crb-count">31</span></li></ul><p class="combined-reviews-note">Every platform averages 5.0. Tripadvisor includes our Viator listings &mdash; no single profile shows the full total.</p></div><script>(function(){var root=document.getElementById('all-reviews-widget');var ratingEl=document.getElementById('combinedRatingValue');var countEl=document.getElementById('combinedReviewCount');var proofRatingEl=document.getElementById('proofRating');var proofCountEl=document.getElementById('proofCount');var breakdownEl=document.getElementById('combinedReviewsBreakdown');if(!root||!ratingEl||!countEl)return;var settleTimer=null;function tryApply(){var badges=root.querySelectorAll('.es-badge-container');if(badges.length<5)return;var total=0,rating=null,byPlatform={};for(var i=0;i<badges.length;i++){var b=badges[i];var countText=b.querySelector('.es-badge-reviews-count');var ratingText=b.querySelector('.es-rating-value');var icon=b.querySelector('svg[data-src]');var slug=null;if(icon){var m=(icon.getAttribute('data-src')||'').match(/icons-([a-z0-9-]+)-multicolor/);if(m)slug=m[1];}if(countText){var n=parseInt(countText.textContent.replace(/[^0-9]/g,''),10);if(!isNaN(n)){total+=n;if(slug)byPlatform[slug]=(byPlatform[slug]||0)+n;}}if(ratingText&&!rating)rating=ratingText.textContent.trim();}if(total>0){ratingEl.textContent=rating||'5.0';countEl.textContent=total.toLocaleString('en-US');if(proofRatingEl)proofRatingEl.textContent=rating||'5.0';if(proofCountEl)proofCountEl.textContent=total.toLocaleString('en-US');if(breakdownEl){for(var slug in byPlatform){var cell=breakdownEl.querySelector('li[data-platform="'+slug+'"] .crb-count');if(cell)cell.textContent=byPlatform[slug].toLocaleString('en-US');}}clearTimeout(settleTimer);settleTimer=setTimeout(function(){observer.disconnect();},4000);}}var observer=new MutationObserver(tryApply);observer.observe(root,{childList:true,subtree:true});tryApply();})();</script>
       </div>
     </section>
 
