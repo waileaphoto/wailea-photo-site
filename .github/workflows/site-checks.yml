@@ -1,0 +1,22 @@
+name: Site checks
+
+# The site is plain static HTML with no build step, so nothing else would catch
+# a page that ships without a canonical, drops out of the sitemap, or quietly
+# becomes unreachable. tools/check-site.py is that safety net.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Standard library only - no dependencies to install.
+      - name: Check site invariants
+        run: python3 tools/check-site.py

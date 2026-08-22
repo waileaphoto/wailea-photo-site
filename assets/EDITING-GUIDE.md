@@ -60,16 +60,53 @@ These two sections use the same pattern — each photo is one `<figure>` inside 
 
 To remove a photo, delete its whole `<figure>...</figure>` line. The arrows and dots below the slider update automatically — you don't need to touch anything else. One tip: large photos slow the page down, so before adding a new one, resize it to roughly 2000px wide if it's a full-size camera file (anything over a few MB is worth shrinking first).
 
+## Add a whole new page
+Don't copy an existing page by hand — it's easy to end up with the wrong canonical URL or a page nothing links to. Use the scaffold:
+
+```bash
+python3 tools/new-page.py your-new-page \
+  --title "Your Page Title" \
+  --description "One sentence for search results and AI assistants." \
+  --heading "The heading shown on the page"
+```
+
+It writes the page from `atlas-template.html`, fills in the canonical URL, social tags and today's date, adds it to `sitemap.xml`, and drops the shared footer in. It then prints the two steps it can't do for you:
+
+1. **Add a line to `llms.txt`.** ChatGPT, Claude and Perplexity read that file as the map of this site. A page that isn't listed there is one they may never mention.
+2. **Link to it from somewhere.** A service page belongs in `footer.html`; a guide is better linked from a related guide, where the link has context. A page with no inbound link can't be crawled to.
+
+## The footer is shared — edit it in one place
+Every page has the footer written into it, which is what lets search engines and AI assistants see those links. `footer.html` is the original. To change the footer:
+
+```bash
+# edit footer.html, then:
+python3 tools/sync-footer.py
+```
+
+Editing the `<footer>` inside a single page won't stick — the next sync overwrites it.
+
+If you change footer styling in `assets/site.css` at the same time, bump the `?v=` version on the `site.css` and `site.js` links so returning visitors don't get new HTML with the old stylesheet. `tools/check-site.py` will tell you if those versions drift apart.
+
+## Before you push
+```bash
+python3 tools/check-site.py
+```
+
+This catches the quiet problems: a page missing from the sitemap, a page with no canonical, broken schema, a page nothing links to, a page absent from `llms.txt`, or the review total disagreeing between the places it's written down. Add `--fix` and it repairs the mechanical ones (footer sync, sitemap) itself.
+
+The same check runs automatically on GitHub for every push and pull request, so if you forget, it'll be flagged there rather than shipping quietly.
+
 ## Add a page to the menu
 The navigation repeats at the top of every page (`<nav class="menu">`). Add a line like:
 ```html
 <a href="your-new-page.html">Your Link Text</a>
 ```
-Repeat the same line in all 5 files so the menu stays consistent everywhere.
+Repeat the same line on every page so the menu stays consistent everywhere.
 
 ## Things to leave alone
 - The `id="..."` attributes (e.g. `id="archiveSlider"`, `id="portfolio"`) — the sliders and menu links depend on these exact names.
 - `assets/site.js` — unless you're comfortable with JavaScript, no need to touch this.
+- The `<footer>` inside any individual page — edit `footer.html` and run `python3 tools/sync-footer.py` instead.
 - Class names like `session-card`, `faq-item`, `mood-copy` — renaming these breaks the styling.
 
 ## Preview your changes
