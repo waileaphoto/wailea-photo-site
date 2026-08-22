@@ -337,9 +337,41 @@ def check_session_facts():
         notes.append('session facts agree across %d offers (%d also described in the llms files)'
                      % (len(schema), covered))
 
+def check_redirects():
+    """Every _redirects target must be a page that exists.
+
+    A redirect pointing at a page that was later renamed sends a visitor - and a
+    crawler following an old inbound link - from one dead URL to another, which is
+    worse than the 404 it replaced because it looks deliberate.
+    """
+    path = os.path.join(ROOT, '_redirects')
+    if not os.path.exists(path):
+        return
+    names = {slug(n) for n in pages()} | {'index'}
+    checked = 0
+    for lineno, line in enumerate(io.open(path, encoding='utf-8'), 1):
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        parts = line.split()
+        if len(parts) < 2:
+            continue
+        target = parts[1].split('#')[0].split('?')[0]
+        if target.startswith('http'):
+            continue
+        checked += 1
+        sl = target.strip('/').replace('.html', '')
+        if not sl:
+            continue  # a redirect to the site root
+        if sl not in names:
+            fail('redirects', '_redirects line %d sends %s to %s, which is not a page'
+                 % (lineno, parts[0], parts[1]))
+    if checked:
+        notes.append('%d redirect target(s) resolve to real pages' % checked)
+
 CHECKS = [check_footer, check_head_tags, check_schema, check_sitemap,
           check_llms, check_orphans, check_asset_versions, check_review_counts,
-          check_session_facts]
+          check_session_facts, check_redirects]
 
 
 def main():
