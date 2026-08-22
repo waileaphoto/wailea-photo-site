@@ -10,3 +10,10 @@
   for = "/atlas-template.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# footer.html is the source fragment that tools/sync-footer.py inlines into every
+# page. It is publicly reachable but is not a page, so keep it out of the index.
+[[headers]]
+  for = "/footer.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
