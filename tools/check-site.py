@@ -261,8 +261,82 @@ def check_review_counts():
                      % (list(seen.values())[0], len(seen)))
 
 
+def check_session_facts():
+    """Session price, length and image count must agree everywhere they appear.
+
+    These live in four places at once - the pricing card a visitor reads, the
+    JSON-LD on the same page, llms.txt and llms-full.txt - with nothing keeping
+    them in step. The 20-minute Sunrise session was published as "25+ images" in
+    its card and "50+ edited images" in its own schema, so the page contradicted
+    itself and an assistant reading it had no way to choose.
+    """
+    pricing = read('pricing.html')
+
+    # what the JSON-LD offers claim
+    schema = {}
+    for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pricing, re.S):
+        try:
+            d = json.loads(b)
+        except ValueError:
+            continue
+        for node in (d.get('@graph') or [d]):
+            if 'OfferCatalog' not in str(node.get('@type')):
+                continue
+            for offer in node.get('itemListElement', []):
+                name = offer.get('name')
+                desc = (offer.get('itemOffered') or {}).get('description', '')
+                mins = re.search(r'(\d+)-minute', desc)
+                imgs = re.search(r'(\d+)\+ edited images', desc)
+                schema[name] = {
+                    'price': str(offer.get('price') or ''),
+                    'minutes': mins.group(1) if mins else None,
+                    'images': imgs.group(1) if imgs else None,
+                }
+
+    # what the visitor actually reads on the card
+    text = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ',
+                  re.sub(r'<(script|style)[^>]*>.*?</\1>', '', pricing, flags=re.S | re.I)))
+    visible = {}
+    for name in schema:
+        i = text.find(name)
+        if i < 0:
+            continue
+        window = text[i + len(name):i + len(name) + 90]
+        mins = re.search(r'(\d+)\s*MIN', window, re.I)
+        imgs = re.search(r'(\d+)\+\s*IMAGES', window, re.I)
+        visible[name] = {'minutes': mins.group(1) if mins else None,
+                         'images': imgs.group(1) if imgs else None}
+
+    # what the llms files tell assistants
+    llms = {}
+    for f in ('llms.txt', 'llms-full.txt'):
+        for line in read(f).split('\n'):
+            m = re.match(r'\s*-\s+(.+?)\s+-\s+(\d+)\s*min(?:,\s*(\d+)\+\s*images)?,\s*from \$(\d+)', line)
+            if m:
+                llms.setdefault(m.group(1).strip(), []).append(
+                    {'file': f, 'minutes': m.group(2), 'images': m.group(3), 'price': m.group(4)})
+
+    for name, s in sorted(schema.items()):
+        for field in ('minutes', 'images'):
+            v = visible.get(name, {}).get(field)
+            if v and s[field] and v != s[field]:
+                fail('sessions', '%s: the pricing card says %s %s but its own JSON-LD says %s'
+                     % (name, v, field, s[field]))
+        for entry in llms.get(name, []):
+            for field in ('minutes', 'images', 'price'):
+                a, b2 = entry.get(field), s.get(field)
+                if a and b2 and a != b2:
+                    fail('sessions', '%s: %s says %s %s but pricing.html says %s'
+                         % (name, entry['file'], a, field, b2))
+
+    covered = sum(1 for n in schema if n in llms)
+    if schema:
+        notes.append('session facts agree across %d offers (%d also described in the llms files)'
+                     % (len(schema), covered))
+
 CHECKS = [check_footer, check_head_tags, check_schema, check_sitemap,
-          check_llms, check_orphans, check_asset_versions, check_review_counts]
+          check_llms, check_orphans, check_asset_versions, check_review_counts,
+          check_session_facts]
 
 
 def main():
