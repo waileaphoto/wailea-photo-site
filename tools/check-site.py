@@ -285,11 +285,12 @@ def check_session_facts():
             for offer in node.get('itemListElement', []):
                 name = offer.get('name')
                 desc = (offer.get('itemOffered') or {}).get('description', '')
-                mins = re.search(r'(\d+)-minute', desc)
+                mins = re.search(r'(\d+)-(minute|hour)', desc)
                 imgs = re.search(r'(\d+)\+ edited images', desc)
                 schema[name] = {
                     'price': str(offer.get('price') or ''),
-                    'minutes': mins.group(1) if mins else None,
+                    'minutes': (str(int(mins.group(1)) * (60 if mins.group(2) == 'hour' else 1))
+                                if mins else None),
                     'images': imgs.group(1) if imgs else None,
                 }
 
@@ -311,10 +312,12 @@ def check_session_facts():
     llms = {}
     for f in ('llms.txt', 'llms-full.txt'):
         for line in read(f).split('\n'):
-            m = re.match(r'\s*-\s+(.+?)\s+-\s+(\d+)\s*min(?:,\s*(\d+)\+\s*images)?,\s*from \$(\d+)', line)
+            # "20 min" and "1 hour" both appear; normalise so both are checked.
+            m = re.match(r'\s*-\s+(.+?)\s+-\s+(\d+)\s*(min|hour)(?:s)?(?:,\s*(\d+)\+\s*images)?,\s*from \$(\d+)', line)
             if m:
+                minutes = str(int(m.group(2)) * (60 if m.group(3) == 'hour' else 1))
                 llms.setdefault(m.group(1).strip(), []).append(
-                    {'file': f, 'minutes': m.group(2), 'images': m.group(3), 'price': m.group(4)})
+                    {'file': f, 'minutes': minutes, 'images': m.group(4), 'price': m.group(5)})
 
     for name, s in sorted(schema.items()):
         for field in ('minutes', 'images'):
