@@ -15,6 +15,7 @@
 # /art-gallery, /linkedin and /cinematic, all of which were answering 404. Point
 # each at its closest living equivalent so the accumulated authority is kept and
 # nobody is sent to a dead page.
+/home                   /                                             301!
 /art-gallery            /the-sixty-four-kodachrome-maui-photography   301!
 /restaurants-activities /our-personal-maui-restaurant-reviews          301!
 /linkedin               /corporate-events                              301!
