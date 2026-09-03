@@ -9,7 +9,6 @@
  *
  * REQUIRED environment variables (Netlify → Site settings → Environment):
  *   RESEND_API_KEY   your Resend key, starts with re_
- *   DELIVERY_PASSWORD  shared team password for the sending page
  *   FROM_ADDRESS     e.g.  Wailea Photo & Portrait <photo@waileaphoto.com>
  *   BCC_ADDRESS      optional, e.g. photo@waileaphoto.com  (keeps a record)
  */
@@ -35,29 +34,18 @@ function looksLikeEmail(v) {
   return typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
 }
 
-// Constant-time-ish comparison so the password check doesn't leak length
-// through timing. Not critical at this scale, but it costs nothing.
-function safeEqual(a, b) {
-  if (typeof a !== 'string' || typeof b !== 'string') return false;
-  if (a.length !== b.length) return false;
-  let diff = 0;
-  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  return diff === 0;
-}
-
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return json(405, { error: 'Use POST.' });
   }
 
   const API_KEY = process.env.RESEND_API_KEY;
-  const PASSWORD = process.env.DELIVERY_PASSWORD;
   const FROM = process.env.FROM_ADDRESS;
   const BCC = process.env.BCC_ADDRESS || '';
 
-  if (!API_KEY || !PASSWORD || !FROM) {
+  if (!API_KEY || !FROM) {
     return json(500, {
-      error: 'Server is not configured. RESEND_API_KEY, DELIVERY_PASSWORD and FROM_ADDRESS must all be set in Netlify.'
+      error: 'Server is not configured. RESEND_API_KEY and FROM_ADDRESS must all be set in Netlify.'
     });
   }
 
@@ -66,11 +54,6 @@ exports.handler = async function (event) {
     data = JSON.parse(event.body || '{}');
   } catch (e) {
     return json(400, { error: 'Could not read the request.' });
-  }
-
-  // --- auth -----------------------------------------------------------
-  if (!safeEqual(String(data.password || ''), String(PASSWORD))) {
-    return json(401, { error: 'Wrong password.' });
   }
 
   // --- rate limit -----------------------------------------------------
