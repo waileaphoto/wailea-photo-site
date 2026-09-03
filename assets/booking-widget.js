@@ -45,7 +45,7 @@
 
   const DEFAULT_DEPOSIT_CENTS = 4900;
   // Keep in sync with DEPOSIT_CENTS_BY_SLUG in booking-engine/src/routes/bookings.js.
-  const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 1000 };
+const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini-sunset': 2000, 'road-to-hana': 2000 };  
   function depositCentsFor(slug) {
     return DEPOSIT_CENTS_BY_SLUG[slug] ?? DEFAULT_DEPOSIT_CENTS;
   }
