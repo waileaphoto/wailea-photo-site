@@ -112,11 +112,6 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
         <label for="review">Include review request &amp; social links</label>
       </div>
 
-      <div class="field">
-        <label for="password">Team password</label>
-        <input id="password" type="password" autocomplete="current-password">
-      </div>
-
       <div class="actions">
         <button id="send" type="button" disabled>Send email</button>
         <button id="test" class="ghost" type="button">Send test to me</button>
@@ -151,7 +146,7 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
 (function(){
   var $=function(id){return document.getElementById(id);};
   var els={};
-  ['name','email','link','count','session','sender','replyto','review','password',
+  ['name','email','link','count','session','sender','replyto','review',
    'pv','subjOut','status','send','test','reset','log'].forEach(function(k){els[k]=$(k);});
 
   var K={send:'wp-sender',reply:'wp-replyto'};
@@ -234,14 +229,14 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
     if(doc){doc.open();doc.write('<!doctype html><meta charset="utf-8"><body style="margin:0">'+emailHtml()+'</body>');doc.close();}
     els.subjOut.value=subject();
     var to=els.email.value.trim();
-    els.send.disabled=!(to.indexOf('@')>0 && gallery().length>8 && els.password.value.length>0);
+    els.send.disabled=!(to.indexOf('@')>0 && gallery().length>8);
     try{
       localStorage.setItem(K.send,els.sender.value);
       localStorage.setItem(K.reply,els.replyto.value);
     }catch(e){}
   }
 
-  ['name','email','link','count','session','sender','replyto','password'].forEach(function(k){
+  ['name','email','link','count','session','sender','replyto'].forEach(function(k){
     els[k].addEventListener('input',render);
   });
   els.review.addEventListener('change',render);
@@ -255,7 +250,6 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        password:els.password.value,
         to:to,
         subject:subject(),
         html:emailHtml(),
@@ -286,7 +280,6 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
   els.test.addEventListener('click',function(){
     var me=els.replyto.value.trim();
     if(me.indexOf('@')<1){ say('Put your own address in "Replies go to" first, then I can send you a test.','warn'); return; }
-    if(!els.password.value){ say('Enter the team password first.','warn'); return; }
     post(me);
   });
 
