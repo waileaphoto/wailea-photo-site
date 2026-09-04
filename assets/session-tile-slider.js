@@ -1,11 +1,12 @@
-// session-tile-slider.js — small manual (arrows-only, no autoplay) image slider for the
-// pricing.html session tiles. Reusable: drop a `.tile-slider` block with multiple
-// `<figure>` slides plus `.tile-prev`/`.tile-next` buttons inside any
-// `.session-card-image[data-tile-slider]` and this wires it up automatically. Tiles with
-// only one slide, or no `.tile-slider` at all, are left untouched.
+// session-tile-slider.js — small manual (arrows-only, no autoplay) image slider.
+// Reusable: drop a `.tile-slider` block with multiple `<figure>` slides plus
+// `.tile-prev`/`.tile-next` buttons inside any element with `[data-tile-slider]`
+// (e.g. the pricing.html session tiles or the homepage family-story image) and
+// this wires it up automatically. Tiles with only one slide, or no `.tile-slider`
+// at all, are left untouched.
 (function () {
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.session-card-image[data-tile-slider]').forEach((tile) => {
+    document.querySelectorAll('[data-tile-slider]').forEach((tile) => {
       const figures = Array.from(tile.querySelectorAll('.tile-slider > figure'));
       const prevBtn = tile.querySelector('.tile-prev');
       const nextBtn = tile.querySelector('.tile-next');
