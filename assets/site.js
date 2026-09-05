@@ -345,6 +345,7 @@
     createCrossfadeSlider({ root:'#artSlider', dots:'.art-dots', prev:'.art-prev', next:'.art-next', slideSelector:'.art-slide', dotClass:'art-dot' });
     createAutoCrossfade('#moodSlider1', '.mood-slide', 3000);
     createAutoCrossfade('#moodSlider2', '.mood-slide', 4200, 2000);
+    createAutoCrossfade('#experienceSlider', '.promise-slide', 4500, 600);
     initVideoFacades();
     initLightbox('.apo-gallery figure');
     initLightbox('.landscape-gallery figure');
