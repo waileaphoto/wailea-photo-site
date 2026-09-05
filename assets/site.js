@@ -47,7 +47,38 @@
     });
   }, { threshold: .15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+  
+// Subtle scroll parallax on [data-parallax] images: the image drifts a few
+  // px slower than the page scroll, giving it a sense of depth. Transform-only
+  // (no layout thrash), skipped on small screens and for reduced-motion users.
+  const parallaxImgs = document.querySelectorAll('[data-parallax]');
+  if (parallaxImgs.length) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 800px)').matches;
+    if (!reduceMotion && !isMobile) {
+      let ticking = false;
+      const updateParallax = () => {
+        const vh = window.innerHeight;
+        parallaxImgs.forEach(img => {
+          const rect = img.parentElement.getBoundingClientRect();
+          const progress = (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+          const offset = Math.max(-1, Math.min(1, progress)) * -24;
+          img.style.transform = `translateY(${offset}px)`;
+        });
+        ticking = false;
+      };
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      updateParallax();
+    }
+  }
+  
   const trustNumber = document.querySelector('[data-count-target]');
   if (trustNumber) {
     const target = Number(trustNumber.dataset.countTarget || 1000);
