@@ -35,7 +35,9 @@
     .presence-promise{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(420px,.82fr);min-height:78vh;background:#315f69;color:#f4efe6}
     .promise-image{position:relative;min-height:680px;margin:0;overflow:hidden}
     .promise-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 66%,rgba(49,95,105,.62) 100%)}
-    .promise-image img{position:absbe-present-family-mauiolute;top:-30px;left:0;display:block;width:100%;height:calc(100% + 60px);object-fit:cover;object-position:center;will-change:transform}
+    .promise-image img{position:absolute;top:-30px;left:0;display:block;width:100%;height:calc(100% + 60px);object-fit:cover;object-position:center;will-change:transform}
+    .promise-image .promise-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.6s ease}
+    .promise-image .promise-slide.active{opacity:1;z-index:2}
     .presence-promise .promise-kicker{margin-bottom:42px;font:500 11px/1.2 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#c8a260}
     .promise-copy{display:flex;flex-direction:column;justify-content:center;padding:8vw 7vw}
     .promise-copy h2{max-width:850px;margin:0 0 28px;font:400 clamp(48px,7vw,112px)/.88 "Cormorant Garamond",serif;letter-spacing:-.04em}
@@ -508,8 +510,10 @@
     </section>
 
     <section class="presence-promise" aria-labelledby="presence-title">
-      <figure class="promise-image">
-        <img src="assets/be-present-family-maui.jpg" alt="A family walking toward the ocean together during their Maui portrait session" width="2200" height="1237" loading="lazy" data-parallax>
+      <figure class="promise-image" id="experienceSlider">
+        <figure class="promise-slide active"><img src="assets/be-present-family-maui.jpg" alt="A family walking toward the ocean together during their Maui portrait session" width="2200" height="1237" loading="lazy" data-parallax></figure>
+        <figure class="promise-slide"><img src="assets/waileaphotokissingcouple-2.jpg" alt="A couple kissing in the shallow surf at sunset in Maui" width="1600" height="1200" loading="lazy" data-parallax></figure>
+        <figure class="promise-slide"><img src="assets/WaileaPhotoMaternityCouple.jpg" alt="An expecting couple embracing beside the rocks at sunset in Maui" width="2000" height="1329" loading="lazy" data-parallax></figure>
       </figure>
       <div class="promise-copy">
         <div class="promise-kicker">The experience</div>
@@ -773,7 +777,7 @@
 <div>© <span id="year"></span> WAILEA PHOTO</div>
 </div>
 </footer>
-  <script src="assets/site.js?v=20260905-parallax"></script>
+  <script src="assets/site.js?v=20260905-crossfade"></script>
   <script src="assets/session-tile-slider.js"></script>
 </body>
 </html>
