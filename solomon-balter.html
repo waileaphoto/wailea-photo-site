@@ -12,7 +12,7 @@
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Solomon Balter | Photographer, Wailea Photo">
 <meta property="og:description" content="Meet Solomon Balter, second-generation Wailea Photo photographer on Maui with a cinematic style.">
-<meta property="og:image" content="https://waileaphoto.com/assets/Solomon-Balter-with-Mya.jpg">
+<meta property="og:image" content="https://waileaphoto.com/assets/solomon-balter-photographer-maui.jpg">
 <meta property="og:url" content="https://waileaphoto.com/solomon-balter">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -36,7 +36,7 @@
     "name": "Solomon Balter",
     "jobTitle": "Photographer",
     "description": "Second-generation Wailea Photo photographer, born and raised on Maui, with five years behind the camera and a cinematic lighting style studied under the international award-winning wedding photographer Zhuoya. At nineteen his portfolio of the McLaren Artura, shot on location in Monaco, was published in BPM Exclusive Owners magazine.",
-    "image": "https://waileaphoto.com/assets/Solomon-Balter-with-Mya.jpg",
+    "image": "https://waileaphoto.com/assets/solomon-balter-photographer-maui.jpg",
     "url": "https://waileaphoto.com/solomon-balter",
     "worksFor": {
       "@type": "Organization",
@@ -84,6 +84,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=20260906">
 <style>
+/* Solomon: published-work feature + field gallery */
+.sol-feature{position:relative;padding:clamp(70px,10vw,130px) 5vw;background:#0e0e0d;color:#f4eddf;overflow:hidden}
+.sol-feature-grid{width:min(1130px,100%);margin:auto;display:grid;grid-template-columns:1fr .74fr;gap:clamp(38px,6vw,84px);align-items:center}
+.sol-feature .chapter{color:var(--gold,#b69557)}
+.sol-feature h2{font-size:clamp(30px,4.4vw,52px);line-height:1.08;margin:.25em 0 .6em}
+.sol-feature p{color:#e6ddcc;opacity:.92;max-width:56ch}
+.sol-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.sol-chip{border:1px solid rgba(244,237,223,.28);border-radius:999px;padding:8px 16px;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.sol-portrait{margin:0}
+.sol-portrait img{width:100%;height:auto;display:block;border-radius:2px;filter:contrast(1.03)}
+.sol-portrait figcaption{margin-top:12px;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#b9b1a3}
+.sol-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#0e0e0d}
+.sol-gallery figure{margin:0;position:relative;overflow:hidden;aspect-ratio:3/2}
+.sol-gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.sol-gallery figure:hover img{transform:scale(1.04)}
+.sol-gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;font-size:13px;color:#f4eddf;background:linear-gradient(0deg,rgba(14,14,13,.82),transparent)}
+@media(max-width:860px){.sol-feature-grid{grid-template-columns:1fr}.sol-gallery{grid-template-columns:1fr}}
+
 /* Page-specific override: show this quote band's photo without the
    shared teal overlay used elsewhere, so it reads as a clean frame
    with white text laid directly over it. */
@@ -128,7 +146,7 @@
 
 <section class="content-split">
 <div class="content-split-image">
-<img src="assets/Solomon-Balter-with-Mya.jpg" alt="Solomon Balter, photographer at Wailea Photo" loading="lazy">
+<img src="assets/solomon-balter-photographer-maui.jpg" alt="Solomon Balter, photographer at Wailea Photo, on a South Maui beach" loading="lazy">
 </div>
 <div class="content-split-copy reveal visible">
 <div class="chapter">SECOND GENERATION</div>
@@ -144,6 +162,38 @@
 <p class="reveal visible">"I look for the frame that feels like a scene from your story, not just a photo of it."</p>
 </section>
 
+<section class="sol-feature">
+<div class="sol-feature-grid">
+<div class="reveal visible">
+<div class="chapter">PUBLISHED AT NINETEEN</div>
+<h2>Monaco, a McLaren, and a first trip to Europe.</h2>
+<p>A meeting with the director of <em>BPM Exclusive</em> turned into a commission. The shoot was planned for Paris and moved to Monaco, and at nineteen Solomon staged his own vision of the McLaren Artura along the principality&rsquo;s harbour &mdash; his first time in Europe.</p>
+<p>The instinct behind those frames is the same one he brings to a beach at golden hour: light shaped deliberately, in the manner of the painters he studies, until a mechanical object &mdash; or a couple standing in the surf &mdash; reads like a scene rather than a snapshot.</p>
+<div class="sol-chips">
+<span class="sol-chip">BPM Exclusive Owners</span>
+<span class="sol-chip">Monaco</span>
+<span class="sol-chip">Shot at 19</span>
+<span class="sol-chip">Cinematic lighting</span>
+</div>
+</div>
+<figure class="sol-portrait">
+<img src="assets/solomon-balter-self-portrait.jpg" alt="Self-portrait of Solomon Balter, lit in the chiaroscuro style, as published in BPM Exclusive Owners magazine" loading="lazy">
+<figcaption>Self-portrait &mdash; as published in BPM Exclusive Owners</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="sol-gallery">
+<figure>
+<img src="assets/solomon-balter-with-mya-ige.jpg" alt="Solomon Balter photographed on location with Mya Ige of &#x2018;&#x100;puakea&rsquo;s Flowers" loading="lazy">
+<figcaption>On location with Mya Ige of &#x2018;&#x100;puakea&rsquo;s Flowers</figcaption>
+</figure>
+<figure>
+<img src="assets/night-wedding.jpeg" alt="A couple photographed beneath the Milky Way on Maui by Solomon Balter" loading="lazy">
+<figcaption>Under the Milky Way, South Maui</figcaption>
+</figure>
+</section>
+
 <section class="experience-intro">
 <div class="experience-intro-copy reveal">
 <div class="chapter">WHY CLIENTS BOOK SOLOMON</div>
@@ -153,7 +203,7 @@
 </div>
 <div class="experience-highlights">
 <div class="experience-highlight"><strong>Born &amp; raised on Maui</strong><span>Grew up on the island he now photographs.</span></div>
-<div class="experience-highlight"><strong>Cinematic style</strong><span>Known for movement, atmosphere and mood in his frames.</span></div>
+<div class="experience-highlight"><strong>Cinematic style</strong><span>Studied cinematic lighting under award-winning photographer Zhuoya.</span></div>
 <div class="experience-highlight"><strong>Published photographer</strong><span>His McLaren Artura shoot in Monaco was featured in BPM Exclusive Owners magazine.</span></div>
 <div class="experience-highlight"><strong>Family, couples &amp; weddings</strong><span>Covers the full range of Wailea Photo sessions.</span></div>
 </div>
