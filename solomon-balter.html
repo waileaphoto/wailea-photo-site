@@ -85,12 +85,27 @@
 <link rel="stylesheet" href="assets/site.css?v=20260906">
 <style>
 /* Solomon: published-work feature + field gallery */
+.zs{width:min(1130px,100%);margin:clamp(34px,5vw,60px) auto 0}
+.zs-stage{position:relative;aspect-ratio:3/2;overflow:hidden;background:#0e0e0d;border-radius:2px}
+.zs-slide{margin:0;position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.zs-slide.is-active{opacity:1}
+.zs-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.zs-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;display:grid;place-items:center;width:46px;height:46px;border:0;border-radius:50%;cursor:pointer;background:rgba(14,14,13,.45);color:#fff;font-size:21px;backdrop-filter:blur(4px);transition:background .25s ease}
+.zs-nav:hover{background:rgba(14,14,13,.8)}
+.zs-prev{left:12px}.zs-next{right:12px}
+.zs-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:14px}
+.zs-dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;cursor:pointer;background:#c4bcae;transition:background .25s ease,transform .25s ease}
+.zs-dot.is-active{background:#171716;transform:scale(1.35)}
+.zs-note{text-align:center;margin:12px 0 0;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#7a7365}
+@media(max-width:700px){.zs-stage{aspect-ratio:4/3}.zs-nav{width:38px;height:38px}}
+
 .sol-mentor{padding:clamp(60px,8vw,110px) 5vw;background:#f7f2e8}
 .sol-mentor-grid{width:min(1130px,100%);margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
 .sol-mentor figure{margin:0}
 .sol-mentor img{width:100%;height:auto;display:block;border-radius:2px}
+.sol-mentor p{font:400 18px/1.7 var(--serif);max-width:52ch}
 .sol-mentor figcaption{margin-top:10px;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#7a7365}
-.sol-mentor h2{font-size:clamp(26px,3.4vw,40px);margin:.2em 0 .5em}
+.sol-mentor h2{font:400 clamp(30px,4vw,52px)/1.06 var(--serif);margin:.2em 0 .5em}
 .sol-work-grid figure.tall{grid-column:1 / -1;aspect-ratio:16/10}
 .sol-work-grid figure.tall img{object-position:center 42%}
 @media(max-width:860px){.sol-mentor-grid{grid-template-columns:1fr}}
@@ -98,8 +113,8 @@
 .sol-work{padding:clamp(64px,9vw,116px) 5vw;background:#141413;color:#f4eddf}
 .sol-work-head{width:min(1130px,100%);margin:0 auto clamp(30px,4vw,52px)}
 .sol-work-head .chapter{color:var(--gold,#b69557)}
-.sol-work-head h2{font-size:clamp(26px,3.4vw,42px);margin:.2em 0 .35em}
-.sol-work-head p{color:#c9c1b3;max-width:56ch;margin:0}
+.sol-work-head h2{font:400 clamp(30px,4vw,52px)/1.06 var(--serif);margin:.2em 0 .35em}
+.sol-work-head p{font:400 18px/1.7 var(--serif);color:#c9c1b3;max-width:56ch;margin:0}
 .sol-work-grid{width:min(1130px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .sol-work-grid figure{margin:0;position:relative;overflow:hidden;background:#0e0e0d;aspect-ratio:3/2}
 .sol-work-grid figure.wide{grid-column:1 / -1;aspect-ratio:16/9}
@@ -111,8 +126,8 @@
 .sol-feature{position:relative;padding:clamp(70px,10vw,130px) 5vw;background:#0e0e0d;color:#f4eddf;overflow:hidden}
 .sol-feature-grid{width:min(1130px,100%);margin:auto;display:grid;grid-template-columns:1fr .74fr;gap:clamp(38px,6vw,84px);align-items:center}
 .sol-feature .chapter{color:var(--gold,#b69557)}
-.sol-feature h2{font-size:clamp(30px,4.4vw,52px);line-height:1.08;margin:.25em 0 .6em}
-.sol-feature p{color:#e6ddcc;opacity:.92;max-width:56ch}
+.sol-feature h2{font:400 clamp(30px,4vw,52px)/1.06 var(--serif);margin:.25em 0 .6em}
+.sol-feature p{font:400 18px/1.7 var(--serif);color:#e6ddcc;opacity:.92;max-width:56ch}
 .sol-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .sol-chip{border:1px solid rgba(244,237,223,.28);border-radius:999px;padding:8px 16px;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
 .sol-portrait{margin:0}
@@ -214,10 +229,18 @@
 </figure>
 <div>
 <div class="chapter">MASTERCLASS</div>
-<h2>Student of Zhuoya Master Class.</h2>
-<p>Solomon&rsquo;s cinematic style is influenced in part by Zhuoya, the internationally acclaimed and award-winning wedding photographer whose Masterclasses are studies in works of art. The family later travelled to meet Zhuoya in Christchurch, New Zealand (shown here). Known for dramatic, editorial wedding imagery, Zhuoya&rsquo;s work helped sharpen Solomon&rsquo;s eye for lighting, atmosphere, pacing, and the quiet in-between moments that make a photograph a masterpiece &mdash; unlike anything in Maui.</p>
+<h2>Student of the Zhuoya Master Class in Photography.</h2>
+<p>Solomon&rsquo;s cinematic style is influenced in part by <a href="https://www.instagram.com/zhuoyanz/" target="_blank" rel="noopener">Zhuoya</a>, the internationally acclaimed and award-winning wedding photographer whose Masterclasses are studies in works of art. The family later travelled to meet Zhuoya in Christchurch, New Zealand (shown here). Known for dramatic, editorial wedding imagery, Zhuoya&rsquo;s work helped sharpen Solomon&rsquo;s eye for lighting, atmosphere, pacing, and the quiet in-between moments that make a photograph a masterpiece &mdash; unlike anything in Maui.</p>
 <p>It reflects the way Wailea Photo hones the craft, from the people who work at the highest level.</p>
 </div>
+</div>
+<div class="zs" role="region" aria-roledescription="carousel" aria-label="Photographs by Solomon Balter">
+<div class="zs-stage"><figure class="zs-slide is-active"><img src="assets/solomon-work-sunset-couple-goldenlight.jpg" alt="A couple hold hands at the waterline as the sun sets behind them on a Maui beach"></figure><figure class="zs-slide"><img src="assets/solomon-work-couple-sunset-embrace.jpg" alt="A couple stand nose to nose at the shoreline as the sun drops into the ocean" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-couple-facing-sunset.jpg" alt="A couple with arms around each other look out at a burning orange Maui sunset" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-couple-storm-clouds.jpg" alt="A couple embrace on the sand beneath towering clouds over the West Maui mountains" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-couple-close-golden.jpg" alt="A couple close together at golden hour, warm light catching her hair and a flower behind her ear" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-wedding-driftwood-sunset.jpg" alt="A bride and groom seated on driftwood as the sun sets over the water in Wailea" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-white-dress-wave-splash.jpg" alt="A woman in a white dress on the shoreline as a wave bursts behind her in golden light" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-bride-bouquet-sunset.jpg" alt="A woman in a white dress carries a bouquet through the surf at sunset on Maui" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-red-dress-dusk-rocks.jpg" alt="A woman in a red dress seated on lava rock at dusk, the West Maui mountains behind" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-maternity-rocks-surf.jpg" alt="An expectant couple stand among lava rocks as the surf washes in under a wide Maui sky" loading="lazy"></figure><figure class="zs-slide"><img src="assets/solomon-work-family-group-turquoise.jpg" alt="A large extended family in white and blue photographed under a tree beside turquoise water" loading="lazy"></figure>
+<button class="zs-nav zs-prev" type="button" aria-label="Previous photograph">&#8249;</button>
+<button class="zs-nav zs-next" type="button" aria-label="Next photograph">&#8250;</button>
+</div>
+<div class="zs-dots"><button class="zs-dot is-active" type="button" aria-label="Go to image 1"></button><button class="zs-dot" type="button" aria-label="Go to image 2"></button><button class="zs-dot" type="button" aria-label="Go to image 3"></button><button class="zs-dot" type="button" aria-label="Go to image 4"></button><button class="zs-dot" type="button" aria-label="Go to image 5"></button><button class="zs-dot" type="button" aria-label="Go to image 6"></button><button class="zs-dot" type="button" aria-label="Go to image 7"></button><button class="zs-dot" type="button" aria-label="Go to image 8"></button><button class="zs-dot" type="button" aria-label="Go to image 9"></button><button class="zs-dot" type="button" aria-label="Go to image 10"></button><button class="zs-dot" type="button" aria-label="Go to image 11"></button></div>
+<p class="zs-note">Photographs by Solomon Balter &mdash; lighting, atmosphere, pacing and the quiet in-between.</p>
 </div>
 </section>
 
@@ -322,4 +345,13 @@
 </footer>
 <script src="assets/site.js?v=20260906"></script>
 <script>document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());</script>
+<script>(function(){var box=document.querySelector('.zs');if(!box)return;
+var s=[].slice.call(box.querySelectorAll('.zs-slide')),d=[].slice.call(box.querySelectorAll('.zs-dot'));
+if(s.length<2)return;var i=0,t=null,reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function show(n){i=(n+s.length)%s.length;s.forEach(function(e,k){e.classList.toggle('is-active',k===i);});d.forEach(function(e,k){e.classList.toggle('is-active',k===i);});}
+function go(){if(reduce)return;clearInterval(t);t=setInterval(function(){show(i+1);},5200);}
+box.querySelector('.zs-prev').addEventListener('click',function(){show(i-1);go();});
+box.querySelector('.zs-next').addEventListener('click',function(){show(i+1);go();});
+d.forEach(function(e,k){e.addEventListener('click',function(){show(k);go();});});
+box.addEventListener('mouseenter',function(){clearInterval(t);});box.addEventListener('mouseleave',go);go();})();</script>
 </body></html>
