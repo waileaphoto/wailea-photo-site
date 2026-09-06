@@ -84,6 +84,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=20260906">
 <style>
+.jude-gallery{padding:clamp(60px,8vw,110px) 5vw;background:#141413;color:#f4eddf}
+.jude-gallery-head{width:min(1130px,100%);margin:0 auto clamp(26px,3.5vw,44px)}
+.jude-gallery-head .chapter{color:var(--gold,#b69557)}
+.jude-gallery-head h2{font-size:clamp(26px,3.4vw,42px);margin:.2em 0 0}
+.jude-gallery-grid{width:min(1130px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.jude-gallery-grid figure{margin:0;position:relative;overflow:hidden;background:#0e0e0d;aspect-ratio:3/4}
+.jude-gallery-grid figure:nth-child(1),.jude-gallery-grid figure:nth-child(5){aspect-ratio:3/4}
+.jude-gallery-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.jude-gallery-grid figure:hover img{transform:scale(1.04)}
+.jude-gallery-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;background:linear-gradient(0deg,rgba(14,14,13,.82),transparent)}
+@media(max-width:900px){.jude-gallery-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.jude-gallery-grid{grid-template-columns:1fr}}
+
 /* Page-specific override: show this quote band's photo without the
    shared teal overlay used elsewhere, so it reads as a clean black-and-white
    frame with white text laid directly over it. */
@@ -118,7 +131,7 @@
 
 <main>
 <section class="page-hero">
-<img src="assets/monochrom-jude-balter-syle.jpg" alt="A black-and-white photograph in Jude Balter's signature style" loading="eager" fetchpriority="high">
+<img src="assets/jude-balter-monochrome-couple-sunset.jpg" alt="A couple embracing in silhouette at the waterline on Maui, photographed in black and white by Jude Balter" loading="eager" fetchpriority="high">
 <div class="page-hero-copy reveal visible">
 <div class="eyebrow">MEET THE PHOTOGRAPHER</div>
 <h1>Jude Balter</h1>
@@ -128,7 +141,7 @@
 
 <section class="content-split">
 <div class="content-split-image">
-<img src="assets/Jude-Balter-Leica-Photographer-WaileaPhoto.jpg" alt="Jude Balter photographing with her Leica camera" loading="lazy">
+<img src="assets/jude-balter-leica-m11.jpg" alt="Jude Balter holding a Leica M11 rangefinder camera" loading="lazy">
 </div>
 <div class="content-split-copy reveal visible">
 <div class="chapter">BLACK &amp; WHITE SPECIALIST</div>
@@ -154,6 +167,20 @@
 <div class="experience-highlight"><strong>Black &amp; white specialist</strong><span>Brings a timeless, editorial style to every session.</span></div>
 <div class="experience-highlight"><strong>Laurence's wife &amp; partner</strong><span>Co-leads the family's creative direction at Wailea Photo.</span></div>
 <div class="experience-highlight"><strong>Family, couples &amp; weddings</strong><span>Covers the full range of Wailea Photo sessions.</span></div>
+</div>
+</section>
+
+<section class="jude-gallery">
+<div class="jude-gallery-head">
+<div class="chapter">BEHIND THE CAMERA</div>
+<h2>Jude at work.</h2>
+</div>
+<div class="jude-gallery-grid">
+<figure><img src="assets/jude-balter-leica-photographer.jpg" alt="Jude Balter photographing beneath cherry blossoms with a Leica SL" loading="lazy"><figcaption>Cherry blossom season</figcaption></figure>
+<figure><img src="assets/jude-balter-monochrome-photographer.jpg" alt="Jude Balter on a Maui beach with two Leica cameras on a dual strap" loading="lazy"><figcaption>Two bodies, one strap</figcaption></figure>
+<figure><img src="assets/jude-balter-leica-camera.jpg" alt="Jude Balter raising a Leica rangefinder to her eye on a city street at night" loading="lazy"><figcaption>Street, after dark</figcaption></figure>
+<figure><img src="assets/jude-balter-photographer-wailea-photo.jpg" alt="Jude Balter with her camera on the rocks above turquoise water in Wailea" loading="lazy"><figcaption>Above the turquoise, Wailea</figcaption></figure>
+<figure><img src="assets/jude-balter-wailea-beach.jpg" alt="Jude Balter laughing with her camera at golden hour on a Wailea beach" loading="lazy"><figcaption>Golden hour, Wailea</figcaption></figure>
 </div>
 </section>
 
