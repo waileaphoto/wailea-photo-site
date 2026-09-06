@@ -12,7 +12,7 @@
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Solomon Balter | Photographer, Wailea Photo">
 <meta property="og:description" content="Meet Solomon Balter, second-generation Wailea Photo photographer on Maui with a cinematic style.">
-<meta property="og:image" content="https://waileaphoto.com/assets/solomon-balter-photographer-maui.jpg">
+<meta property="og:image" content="https://waileaphoto.com/assets/solomon-balter-mclaren-artura-monaco-harbour.jpg">
 <meta property="og:url" content="https://waileaphoto.com/solomon-balter">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -85,6 +85,19 @@
 <link rel="stylesheet" href="assets/site.css?v=20260906">
 <style>
 /* Solomon: published-work feature + field gallery */
+.sol-work{padding:clamp(64px,9vw,116px) 5vw;background:#141413;color:#f4eddf}
+.sol-work-head{width:min(1130px,100%);margin:0 auto clamp(30px,4vw,52px)}
+.sol-work-head .chapter{color:var(--gold,#b69557)}
+.sol-work-head h2{font-size:clamp(26px,3.4vw,42px);margin:.2em 0 .35em}
+.sol-work-head p{color:#c9c1b3;max-width:56ch;margin:0}
+.sol-work-grid{width:min(1130px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sol-work-grid figure{margin:0;position:relative;overflow:hidden;background:#0e0e0d;aspect-ratio:3/2}
+.sol-work-grid figure.wide{grid-column:1 / -1;aspect-ratio:16/9}
+.sol-work-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.sol-work-grid figure:hover img{transform:scale(1.03)}
+.sol-work-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#f4eddf;background:linear-gradient(0deg,rgba(14,14,13,.8),transparent)}
+@media(max-width:760px){.sol-work-grid{grid-template-columns:1fr}.sol-work-grid figure.wide{aspect-ratio:3/2}}
+
 .sol-feature{position:relative;padding:clamp(70px,10vw,130px) 5vw;background:#0e0e0d;color:#f4eddf;overflow:hidden}
 .sol-feature-grid{width:min(1130px,100%);margin:auto;display:grid;grid-template-columns:1fr .74fr;gap:clamp(38px,6vw,84px);align-items:center}
 .sol-feature .chapter{color:var(--gold,#b69557)}
@@ -136,7 +149,7 @@
 
 <main>
 <section class="page-hero">
-<img src="assets/night-wedding.jpeg" alt="A couple beneath the Milky Way in Maui" loading="eager" fetchpriority="high">
+<img src="assets/solomon-balter-mclaren-artura-monaco-harbour.jpg" alt="A McLaren Artura with its doors raised above the harbour in Monaco at blue hour, photographed by Solomon Balter" loading="eager" fetchpriority="high">
 <div class="page-hero-copy reveal visible">
 <div class="eyebrow">MEET THE PHOTOGRAPHER</div>
 <h1>Solomon Balter</h1>
@@ -183,14 +196,27 @@
 </div>
 </section>
 
+<section class="sol-work">
+<div class="sol-work-head">
+<div class="chapter">SELECTED WORK</div>
+<h2>The Monaco portfolio.</h2>
+<p>Three frames from the McLaren Artura series, and a self-portrait from closer to home.</p>
+</div>
+<div class="sol-work-grid">
+<figure class="wide"><img src="assets/solomon-balter-mclaren-artura-motion.jpg" alt="A McLaren Artura rendered as streaks of light and motion in black and white" loading="lazy"><figcaption>Artura, in motion</figcaption></figure>
+<figure><img src="assets/solomon-balter-mclaren-artura-studio.jpg" alt="Overhead studio photograph of a white McLaren Artura against a black background" loading="lazy"><figcaption>Overhead, on black</figcaption></figure>
+<figure><img src="assets/solomon-balter-automotive-portrait-maui.jpg" alt="Black and white self-portrait of photographer Solomon Balter leaning on a car beneath Maui palms" loading="lazy"><figcaption>Self-portrait, Maui</figcaption></figure>
+</div>
+</section>
+
 <section class="sol-gallery">
 <figure>
 <img src="assets/solomon-balter-with-mya-ige.jpg" alt="Solomon Balter photographed on location with Mya Ige of &#x2018;&#x100;puakea&rsquo;s Flowers" loading="lazy">
 <figcaption>On location with Mya Ige of &#x2018;&#x100;puakea&rsquo;s Flowers</figcaption>
 </figure>
 <figure>
-<img src="assets/night-wedding.jpeg" alt="A couple photographed beneath the Milky Way on Maui by Solomon Balter" loading="lazy">
-<figcaption>Under the Milky Way, South Maui</figcaption>
+<img src="assets/solomon-balter-mya-ige-milky-way.jpg" alt="Solomon Balter and Mya Ige photographed together beneath the Milky Way on Maui" loading="lazy">
+<figcaption>Solomon and Mya beneath the Milky Way</figcaption>
 </figure>
 </section>
 
