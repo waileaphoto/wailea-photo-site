@@ -88,173 +88,435 @@
   <!-- LOCAL BUSINESS & ENHANCED PHOTOGRAPHER SCHEMA (LLMO & SEARCH OPTIMIZATION) -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "Photographer"],
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "Photographer"
+  ],
   "dateModified": "2026-09-06",
-    "@id": "https://waileaphoto.com/#organization",
-    "name": "Wailea Photo",
-    "url": "https://waileaphoto.com/",
-    "logo": "https://waileaphoto.com/assets/favicon.svg",
-    "image": "https://waileaphoto.com/assets/hero-v5-web.jpg",
-    "description": "Local, family-run Maui photography studio with over 25 years of experience creating bright, cinematic family portraits, couples sessions, maternity, vow renewals, and weddings across Wailea, Makena, and South Maui.",
-    "disambiguatingDescription": "Not to be confused with the unrelated Kihei business \"Wailea Photography\" -- Wailea Photo is the family-run studio operated by Laurence, Jude, Max and Solomon Balter.",
-    "telephone": "+1-808-298-5188",
-    "email": "photo@waileaphoto.com",
-    "priceRange": "$299-$995",
-    "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "05:30", "closes": "19:30" }],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Wailea",
-      "addressRegion": "HI",
-      "postalCode": "96753",
-      "addressCountry": "US"
+  "@id": "https://waileaphoto.com/#organization",
+  "name": "Wailea Photo",
+  "url": "https://waileaphoto.com/",
+  "logo": "https://waileaphoto.com/assets/favicon.svg",
+  "image": "https://waileaphoto.com/assets/hero-v5-web.jpg",
+  "description": "Local, family-run Maui photography studio with over 25 years of experience creating bright, cinematic family portraits, couples sessions, maternity, vow renewals, and weddings across Wailea, Makena, and South Maui.",
+  "disambiguatingDescription": "Not to be confused with the unrelated Kihei business \"Wailea Photography\" -- Wailea Photo is the family-run studio operated by Laurence, Jude, Max and Solomon Balter.",
+  "telephone": "+1-808-298-5188",
+  "email": "photo@waileaphoto.com",
+  "priceRange": "$299-$995",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "05:30",
+      "closes": "19:30"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Wailea",
+    "addressRegion": "HI",
+    "postalCode": "96753",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 20.6835,
+    "longitude": -156.446
+  },
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Wailea, HI"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 20.6835,
-      "longitude": -156.4460
+    {
+      "@type": "AdministrativeArea",
+      "name": "Makena, HI"
     },
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Wailea, HI" },
-      { "@type": "AdministrativeArea", "name": "Makena, HI" },
-      { "@type": "AdministrativeArea", "name": "Kihei, HI" },
-      { "@type": "AdministrativeArea", "name": "South Maui, HI" }
-    ],
-    "knowsAbout": [
-      "Maui family photography",
-      "Wailea beach portraits",
-      "Maternity photography",
-      "Maui vow renewals",
-      "Leica APO optical lenses",
-      "Sunrise and sunset lighting photography"
-    ],
-    "member": [
-      {
-        "@type": "Person",
-        "@id": "https://waileaphoto.com/#laurence-balter",
-        "name": "Laurence Balter",
-        "jobTitle": "Founder & Lead Photographer",
-        "description": "Founded Wailea Photo more than 25 years ago and has personally photographed thousands of families, couples and weddings across Wailea, Makena and South Maui.",
-        "image": "https://waileaphoto.com/assets/laurence-balter-owner-wailea-photo.jpg",
-        "url": "https://waileaphoto.com/laurence-balter",
-        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" },
-        "spouse": { "@id": "https://waileaphoto.com/#jude-balter" },
-        "children": [
-          { "@id": "https://waileaphoto.com/#max-balter" },
-          { "@id": "https://waileaphoto.com/#solomon-balter" }
-        ]
+    {
+      "@type": "AdministrativeArea",
+      "name": "Kihei, HI"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "South Maui, HI"
+    }
+  ],
+  "knowsAbout": [
+    "Maui family photography",
+    "Wailea beach portraits",
+    "Maternity photography",
+    "Maui vow renewals",
+    "Leica APO optical lenses",
+    "Sunrise and sunset lighting photography"
+  ],
+  "member": [
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#laurence-balter",
+      "name": "Laurence Balter",
+      "jobTitle": "Founder & Lead Photographer",
+      "description": "Founded Wailea Photo more than 25 years ago and has personally photographed thousands of families, couples and weddings across Wailea, Makena and South Maui.",
+      "image": "https://waileaphoto.com/assets/laurence-balter-owner-wailea-photo.jpg",
+      "url": "https://waileaphoto.com/laurence-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
       },
-      {
-        "@type": "Person",
-        "@id": "https://waileaphoto.com/#jude-balter",
-        "name": "Jude Balter",
-        "jobTitle": "Photographer",
-        "description": "Laurence Balter's wife and Wailea Photo's black-and-white specialist, and mother to Max and Solomon. Photographs family, couples and wedding sessions as part of the family-run Wailea Photo team across Wailea, Makena and South Maui.",
-        "image": "https://waileaphoto.com/assets/laurence-jude-balter-hiking-maui.jpg",
-        "url": "https://waileaphoto.com/jude-balter",
-        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" },
-        "spouse": { "@id": "https://waileaphoto.com/#laurence-balter" },
-        "children": [
-          { "@id": "https://waileaphoto.com/#max-balter" },
-          { "@id": "https://waileaphoto.com/#solomon-balter" }
-        ]
+      "spouse": {
+        "@id": "https://waileaphoto.com/#jude-balter"
       },
-      {
-        "@type": "Person",
-        "@id": "https://waileaphoto.com/#max-balter",
-        "name": "Max Balter",
-        "jobTitle": "Photographer",
-        "description": "Second-generation Wailea Photo photographer, born and raised on Maui. His specialty is the Sunrise session and photographs family, couples and wedding sessions alongside his father, Laurence, mom Jude and brother Solomon.",
-        "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
-        "url": "https://waileaphoto.com/max-balter",
-        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" },
-        "parent": [
-          { "@id": "https://waileaphoto.com/#laurence-balter" },
-          { "@id": "https://waileaphoto.com/#jude-balter" }
-        ],
-        "sibling": { "@id": "https://waileaphoto.com/#solomon-balter" }
+      "children": [
+        {
+          "@id": "https://waileaphoto.com/#max-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#solomon-balter"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#jude-balter",
+      "name": "Jude Balter",
+      "jobTitle": "Photographer",
+      "description": "Laurence Balter's wife and Wailea Photo's black-and-white specialist, and mother to Max and Solomon. Photographs family, couples and wedding sessions as part of the family-run Wailea Photo team across Wailea, Makena and South Maui.",
+      "image": "https://waileaphoto.com/assets/laurence-jude-balter-hiking-maui.jpg",
+      "url": "https://waileaphoto.com/jude-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
       },
-      {
-        "@type": "Person",
-        "@id": "https://waileaphoto.com/#solomon-balter",
-        "name": "Solomon Balter",
-        "jobTitle": "Photographer",
-        "description": "Second-generation Wailea Photo photographer with a cinematic style, born and raised on Maui. Photographs family, couples and wedding sessions alongside his father, Laurence, mom Jude and his brother Max.",
-        "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
-        "url": "https://waileaphoto.com/solomon-balter",
-        "worksFor": { "@type": "Organization", "@id": "https://waileaphoto.com/#organization", "name": "Wailea Photo", "url": "https://waileaphoto.com/" },
-        "parent": [
-          { "@id": "https://waileaphoto.com/#laurence-balter" },
-          { "@id": "https://waileaphoto.com/#jude-balter" }
-        ],
-        "sibling": { "@id": "https://waileaphoto.com/#max-balter" }
+      "spouse": {
+        "@id": "https://waileaphoto.com/#laurence-balter"
+      },
+      "children": [
+        {
+          "@id": "https://waileaphoto.com/#max-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#solomon-balter"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#max-balter",
+      "name": "Max Balter",
+      "jobTitle": "Photographer",
+      "description": "Second-generation Wailea Photo photographer, born and raised on Maui. His specialty is the Sunrise session and photographs family, couples and wedding sessions alongside his father, Laurence, mom Jude and brother Solomon.",
+      "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
+      "url": "https://waileaphoto.com/max-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
+      },
+      "parent": [
+        {
+          "@id": "https://waileaphoto.com/#laurence-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#jude-balter"
+        }
+      ],
+      "sibling": {
+        "@id": "https://waileaphoto.com/#solomon-balter"
       }
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "@id": "https://waileaphoto.com/pricing#catalog",
-      "name": "Wailea Photo Sessions & Pricing",
-      "url": "https://waileaphoto.com/pricing"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "1224"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "TGAllen" },
-        "datePublished": "2024-10-01",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Our experience with Wailea Photo was outstanding! The communication process from beginning to end was extraordinary and our photographs are wonderful.",
-        "publisher": { "@type": "Organization", "name": "Tripadvisor" }
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#solomon-balter",
+      "name": "Solomon Balter",
+      "jobTitle": "Photographer",
+      "description": "Second-generation Wailea Photo photographer with a cinematic style, born and raised on Maui. Photographs family, couples and wedding sessions alongside his father, Laurence, mom Jude and his brother Max.",
+      "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
+      "url": "https://waileaphoto.com/solomon-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
       },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "LeeleeDuck" },
-        "datePublished": "2024-04-01",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "We loved working with this lovely couple! They captured some beautiful memories for us! The sunset on the beach was absolutely stunning, and the lighting was great!",
-        "publisher": { "@type": "Organization", "name": "Tripadvisor" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Christina G." },
-        "datePublished": "2022-01-01",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Aloha, our family absolutely loved our experience photographing us on the beach in Wailea.",
-        "publisher": { "@type": "Organization", "name": "Tripadvisor" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Angel P." },
-        "datePublished": "2021-09-01",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "I emailed Laurence several times to set up our photoshoot. He always responded quickly, was friendly and answered all of my questions.",
-        "publisher": { "@type": "Organization", "name": "Tripadvisor" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Nagrup T." },
-        "datePublished": "2023-03-01",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "If you are looking for professional pictures by the beach during the sunset look no further!",
-        "publisher": { "@type": "Organization", "name": "Tripadvisor" }
+      "parent": [
+        {
+          "@id": "https://waileaphoto.com/#laurence-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#jude-balter"
+        }
+      ],
+      "sibling": {
+        "@id": "https://waileaphoto.com/#max-balter"
       }
-    ],
-    "sameAs": [
-      "https://www.instagram.com/waileaphoto",
-      "https://www.facebook.com/waileaphoto",
-      "https://www.yelp.com/biz/wailea-photo-wailea",
-      "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html",
-      "https://g.page/r/Cc3XQvgWZf3-EAI/review",
-"https://www.viator.com/tours/Maui/Private-Beach-Photoshoot-in-Wailea/d671-7061P11",
-"https://www.airbnb.com/experiences/2386762"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "@id": "https://waileaphoto.com/pricing#catalog",
+    "name": "Photography Sessions",
+    "url": "https://waileaphoto.com/pricing",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "price": "299",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sunrise with Max",
+          "description": "20-minute sunrise mini session in Wailea, 25+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "399",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "First Half of Sunset",
+          "description": "30-minute session at the start of golden hour, 50+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "499",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Last Half of Sunset",
+          "description": "30-minute session through the golden tones of sunset, 50+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "499",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Turquoise + Water Experience",
+          "description": "45-minute late-morning session with turquoise water and a coral-reef backdrop, 50+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "995",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "The Large Family Legacy",
+          "description": "1-hour session for gatherings of 10 or more, 100+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "995",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "A Poetic Wedding in Maui",
+          "description": "90 minutes of wedding coverage beginning 90 minutes before sunset.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      }
     ]
-  }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1224"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "TGAllen"
+      },
+      "datePublished": "2024-10-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Our experience with Wailea Photo was outstanding! The communication process from beginning to end was extraordinary and our photographs are wonderful.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "LeeleeDuck"
+      },
+      "datePublished": "2024-04-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "We loved working with this lovely couple! They captured some beautiful memories for us! The sunset on the beach was absolutely stunning, and the lighting was great!",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Christina G."
+      },
+      "datePublished": "2022-01-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Aloha, our family absolutely loved our experience photographing us on the beach in Wailea.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Angel P."
+      },
+      "datePublished": "2021-09-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "I emailed Laurence several times to set up our photoshoot. He always responded quickly, was friendly and answered all of my questions.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Nagrup T."
+      },
+      "datePublished": "2023-03-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "If you are looking for professional pictures by the beach during the sunset look no further!",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/waileaphoto",
+    "https://www.facebook.com/waileaphoto",
+    "https://www.yelp.com/biz/wailea-photo-wailea",
+    "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html",
+    "https://g.page/r/Cc3XQvgWZf3-EAI/review",
+    "https://www.viator.com/tours/Maui/Private-Beach-Photoshoot-in-Wailea/d671-7061P11",
+    "https://www.airbnb.com/experiences/2386762"
+  ],
+  "founder": [
+    {
+      "@id": "https://waileaphoto.com/#laurence-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#jude-balter"
+    }
+  ],
+  "employee": [
+    {
+      "@id": "https://waileaphoto.com/#laurence-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#jude-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#max-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#solomon-balter"
+    }
+  ]
+}
   </script>
 
   <!-- PER-PLATFORM REVIEW BREAKDOWN: the combined total above, split by source.
