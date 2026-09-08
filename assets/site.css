@@ -73,6 +73,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+#trust,#experience,#story-paths,#motion,#reviews,#all-reviews-widget{scroll-margin-top:100px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 body.menu-open{overflow:hidden}
 img{display:block;max-width:100%;height:auto}
@@ -759,10 +760,6 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .footer-col h5{font-size:12px}
   .footer-bottom{font-size:12px}
 
-  /* ---------- immersive snap-scroll: each section reads as its own screen ---------- */
-  html{scroll-snap-type:y proximity}
-  main{display:block}
-  main > section{scroll-snap-align:start;scroll-snap-stop:normal}
 }
 
 /* ---------- Atlas page (atlas.html) ---------- */
