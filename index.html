@@ -1005,3 +1005,1010 @@
   <script src="assets/session-tile-slider.js"></script>
 </body>
 </html>
+<!doctype html>
+<html lang="en">
+<!-- Wailea Photo editorial homepage -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171716">
+  <meta name="facebook-domain-verification" content="vuj5023ys5ztnxhs95ayexcfv6sg86" />
+
+  <title>Wailea Photo | Maui Family &amp; Wedding Photographer in Wailea</title>
+  <meta name="description" content="Local, family-run Maui photography studio creating bright, cinematic family portraits, couples sessions and weddings in Wailea, Makena and South Maui.">
+  <link rel="canonical" href="https://waileaphoto.com/">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- OPEN GRAPH / TWITTER CARDS -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wailea Photo | Maui Family &amp; Wedding Photographer">
+  <meta property="og:description" content="Local, family-run Maui photography studio creating bright, cinematic family portraits, couples sessions and weddings in Wailea.">
+  <meta property="og:image" content="https://waileaphoto.com/assets/hero-v5-web.jpg">
+  <meta property="og:url" content="https://waileaphoto.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wailea Photo | Maui Family &amp; Wedding Photographer">
+  <meta name="twitter:description" content="Local, family-run Maui photography studio creating bright, cinematic family portraits, couples sessions and weddings in Wailea.">
+  <meta name="twitter:image" content="https://waileaphoto.com/assets/hero-v5-web.jpg">
+
+  <!-- ASSET PRECONNECTS & NON-BLOCKING SCRIPTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css?v=20260906d">
+  <style>
+    /* Editorial homepage concept — isolated to this draft file. */
+    .concept-note{position:fixed;z-index:90;left:50%;bottom:18px;transform:translateX(-50%);padding:10px 16px;background:rgba(23,23,22,.9);color:#fff;font:500 10px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.18)}
+    .presence-promise{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(420px,.82fr);min-height:78vh;background:#315f69;color:#f4efe6}
+    .promise-image{position:relative;min-height:680px;margin:0;overflow:hidden}
+    .promise-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 66%,rgba(49,95,105,.62) 100%)}
+    .promise-image img{position:absolute;top:-30px;left:0;display:block;width:100%;height:calc(100% + 60px);object-fit:cover;object-position:center;will-change:transform}
+    .promise-image .promise-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.6s ease}
+    .promise-image .promise-slide.active{opacity:1;z-index:2}
+    .presence-promise .promise-kicker{margin-bottom:42px;font:500 11px/1.2 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#c8a260}
+    .promise-copy{display:flex;flex-direction:column;justify-content:center;padding:8vw 7vw}
+    .promise-copy h2{max-width:850px;margin:0 0 28px;font:400 clamp(48px,7vw,112px)/.88 "Cormorant Garamond",serif;letter-spacing:-.04em}
+    .promise-copy p{max-width:650px;margin:0;font:400 clamp(23px,2vw,31px)/1.38 "Cormorant Garamond",serif;letter-spacing:-.012em;color:rgba(244,239,230,.78)}
+    .recognition-ribbon{display:grid;grid-template-columns:1fr 3fr;align-items:center;gap:40px;padding:38px 6vw;background:#f1e8da;border-top:1px solid rgba(23,23,22,.1);border-bottom:1px solid rgba(23,23,22,.1)}
+    .recognition-ribbon>span{font:600 10px/1.4 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+    .recognition-items{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;color:#3a3731}
+    .recognition-items span{font:500 clamp(12px,1.2vw,16px)/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+    .recognition-items i{width:4px;height:4px;border-radius:50%;background:#b33a2f}
+    .signature-story{display:grid;grid-template-columns:1.08fr .92fr;min-height:760px;background:#ded0bc}
+    .signature-story-image{min-height:680px}
+    .signature-story-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+    .signature-story-copy{display:flex;flex-direction:column;justify-content:center;padding:8vw 7vw;color:#211f1b}
+    .signature-story-copy blockquote{margin:25px 0 34px;font:400 clamp(35px,4vw,65px)/1.02 "Cormorant Garamond",serif;letter-spacing:-.025em}
+    .signature-story-copy .story-attribution{font:600 10px/1.6 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+    .google-review-link{display:inline-flex;align-items:center;gap:9px;width:max-content;margin-top:22px;padding-bottom:6px;border-bottom:1px solid rgba(33,31,27,.34);color:#211f1b;font:600 9px/1 Inter,sans-serif;letter-spacing:.16em;text-decoration:none;text-transform:uppercase;transition:border-color .25s ease,color .25s ease}
+    .google-review-link:hover{border-color:#211f1b;color:#000}
+    .google-review-link svg{width:16px;height:16px;flex:0 0 16px}
+    .google-review-link .review-arrow{font-size:12px;letter-spacing:0}
+    .complete-stories{padding:11vw 5vw 9vw;background:#f6f1e8;color:#1c1b18}
+    .complete-stories-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:5vw;align-items:end;margin-bottom:5vw}
+    .complete-stories h2{max-width:980px;margin:0;font:400 clamp(47px,6vw,95px)/.92 "Cormorant Garamond",serif;letter-spacing:-.035em}
+    .complete-stories-intro{max-width:430px;margin:24px 0 0;font:300 16px/1.7 Inter,sans-serif;color:#656057}
+    .complete-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .complete-story-card{position:relative;display:block;min-height:560px;overflow:hidden;background:#222;color:#fff}
+    .complete-story-card:nth-child(2),.complete-story-card:nth-child(3){min-height:560px;margin-top:0}
+    .complete-story-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+    .complete-story-card.story-family img{object-position:63% 50%}
+    .complete-story-card.story-couple img{object-position:50% 50%}
+    .complete-story-card.story-wedding img{object-position:56% 50%}
+    .complete-story-card:hover img{transform:scale(1.035)}
+    .complete-story-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+    .complete-story-card span{position:absolute;z-index:2;left:32px;right:32px;bottom:30px;font:400 clamp(28px,3vw,46px)/.95 "Cormorant Garamond",serif}
+    .complete-story-card small{display:block;margin-bottom:12px;font:600 9px/1 Inter,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:#e7c582}
+    .complete-story-card em{display:block;margin-top:13px;font:500 9px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;font-style:normal}
+    @media(max-width:800px){
+      .concept-note{display:none}.presence-promise,.signature-story{grid-template-columns:1fr}.presence-promise{min-height:0}.promise-image{min-height:58vh}.promise-image img{object-position:43% 50%}.promise-image:after{background:linear-gradient(0deg,rgba(49,95,105,.35),transparent 45%)}.promise-copy{padding:60px 24px 70px}.presence-promise .promise-kicker{margin-bottom:26px}.promise-copy h2{font-size:52px}.recognition-ribbon{grid-template-columns:1fr;padding:30px 24px}.recognition-items{justify-content:flex-start}.signature-story-image{min-height:62vh}.signature-story-image img{object-position:50% 50%}.signature-story-copy{padding:70px 28px}.complete-stories{padding:90px 20px}.complete-stories-head{grid-template-columns:1fr}.complete-story-grid{grid-template-columns:1fr}.complete-story-card,.complete-story-card:nth-child(2),.complete-story-card:nth-child(3){min-height:68vh;margin-top:0}.complete-story-card.story-family img{object-position:43% 50%;transform:translateY(-35%) scale(1.5)}.complete-story-card.story-couple img{object-position:50% 50%}.complete-story-card.story-wedding img{object-position:60% 50%}.complete-story-card span{left:22px;right:22px;bottom:22px}}
+  </style>
+
+  <script defer src="assets/analytics.js"></script>
+  <script defer src="assets/fb-pixel.js"></script>
+  <script defer src="assets/pinterest-tag.js"></script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=823300302049467&amp;ev=PageView&amp;noscript=1" alt=""/>
+    <img height="1" width="1" style="display:none" src="https://ct.pinterest.com/v3/?event=init&amp;tid=2614053312824&amp;pd[em]=&amp;noscript=1" alt=""/>
+  </noscript>
+
+  <!-- LOCAL BUSINESS & ENHANCED PHOTOGRAPHER SCHEMA (LLMO & SEARCH OPTIMIZATION) -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "Photographer"
+  ],
+  "dateModified": "2026-09-06",
+  "@id": "https://waileaphoto.com/#organization",
+  "name": "Wailea Photo",
+  "url": "https://waileaphoto.com/",
+  "logo": "https://waileaphoto.com/assets/favicon.svg",
+  "image": "https://waileaphoto.com/assets/hero-v5-web.jpg",
+  "description": "Local, family-run Maui photography studio with over 25 years of experience creating bright, cinematic family portraits, couples sessions, maternity, vow renewals, and weddings across Wailea, Makena, and South Maui.",
+  "disambiguatingDescription": "Not to be confused with the unrelated Kihei business \"Wailea Photography\" -- Wailea Photo is the family-run studio operated by Laurence, Jude, Max and Solomon Balter.",
+  "telephone": "+1-808-298-5188",
+  "email": "photo@waileaphoto.com",
+  "priceRange": "$299-$995",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "05:30",
+      "closes": "19:30"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Wailea",
+    "addressRegion": "HI",
+    "postalCode": "96753",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 20.6835,
+    "longitude": -156.446
+  },
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Wailea, HI"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Makena, HI"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Kihei, HI"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "South Maui, HI"
+    }
+  ],
+  "knowsAbout": [
+    "Maui family photography",
+    "Wailea beach portraits",
+    "Maternity photography",
+    "Maui vow renewals",
+    "Leica APO optical lenses",
+    "Sunrise and sunset lighting photography"
+  ],
+  "member": [
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#laurence-balter",
+      "name": "Laurence Balter",
+      "jobTitle": "Founder & Lead Photographer",
+      "description": "Founded Wailea Photo more than 25 years ago and has personally photographed thousands of families, couples and weddings across Wailea, Makena and South Maui.",
+      "image": "https://waileaphoto.com/assets/laurence-balter-owner-wailea-photo.jpg",
+      "url": "https://waileaphoto.com/laurence-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
+      },
+      "spouse": {
+        "@id": "https://waileaphoto.com/#jude-balter"
+      },
+      "children": [
+        {
+          "@id": "https://waileaphoto.com/#max-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#solomon-balter"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#jude-balter",
+      "name": "Jude Balter",
+      "jobTitle": "Photographer",
+      "description": "Laurence Balter's wife and Wailea Photo's black-and-white specialist, and mother to Max and Solomon. Photographs family, couples and wedding sessions as part of the family-run Wailea Photo team across Wailea, Makena and South Maui.",
+      "image": "https://waileaphoto.com/assets/laurence-jude-balter-hiking-maui.jpg",
+      "url": "https://waileaphoto.com/jude-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
+      },
+      "spouse": {
+        "@id": "https://waileaphoto.com/#laurence-balter"
+      },
+      "children": [
+        {
+          "@id": "https://waileaphoto.com/#max-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#solomon-balter"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#max-balter",
+      "name": "Max Balter",
+      "jobTitle": "Photographer",
+      "description": "Second-generation Wailea Photo photographer, born and raised on Maui. His specialty is the Sunrise session and photographs family, couples and wedding sessions alongside his father, Laurence, mom Jude and brother Solomon.",
+      "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
+      "url": "https://waileaphoto.com/max-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
+      },
+      "parent": [
+        {
+          "@id": "https://waileaphoto.com/#laurence-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#jude-balter"
+        }
+      ],
+      "sibling": {
+        "@id": "https://waileaphoto.com/#solomon-balter"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://waileaphoto.com/#solomon-balter",
+      "name": "Solomon Balter",
+      "jobTitle": "Photographer",
+      "description": "Second-generation Wailea Photo photographer with a cinematic style, born and raised on Maui. Photographs family, couples and wedding sessions alongside his father, Laurence, mom Jude and his brother Max.",
+      "image": "https://waileaphoto.com/assets/balter-family-v5.jpeg",
+      "url": "https://waileaphoto.com/solomon-balter",
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://waileaphoto.com/#organization",
+        "name": "Wailea Photo",
+        "url": "https://waileaphoto.com/"
+      },
+      "parent": [
+        {
+          "@id": "https://waileaphoto.com/#laurence-balter"
+        },
+        {
+          "@id": "https://waileaphoto.com/#jude-balter"
+        }
+      ],
+      "sibling": {
+        "@id": "https://waileaphoto.com/#max-balter"
+      }
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "@id": "https://waileaphoto.com/pricing#catalog",
+    "name": "Photography Sessions",
+    "url": "https://waileaphoto.com/pricing",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "price": "299",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sunrise with Max",
+          "description": "20-minute sunrise mini session in Wailea, 25+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "399",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "First Half of Sunset",
+          "description": "30-minute session at the start of golden hour, 50+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "499",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Last Half of Sunset",
+          "description": "30-minute session through the golden tones of sunset, 50+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "499",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Turquoise + Water Experience",
+          "description": "45-minute late-morning session with turquoise water and a coral-reef backdrop, 50+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "995",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "The Large Family Legacy",
+          "description": "1-hour session for gatherings of 10 or more, 100+ edited images.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "995",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://waileaphoto.com/pricing",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "A Poetic Wedding in Maui",
+          "description": "90 minutes of wedding coverage beginning 90 minutes before sunset.",
+          "provider": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "South Maui, Hawaii"
+          }
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1224"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "TGAllen"
+      },
+      "datePublished": "2024-10-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Our experience with Wailea Photo was outstanding! The communication process from beginning to end was extraordinary and our photographs are wonderful.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "LeeleeDuck"
+      },
+      "datePublished": "2024-04-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "We loved working with this lovely couple! They captured some beautiful memories for us! The sunset on the beach was absolutely stunning, and the lighting was great!",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Christina G."
+      },
+      "datePublished": "2022-01-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Aloha, our family absolutely loved our experience photographing us on the beach in Wailea.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Angel P."
+      },
+      "datePublished": "2021-09-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "I emailed Laurence several times to set up our photoshoot. He always responded quickly, was friendly and answered all of my questions.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Nagrup T."
+      },
+      "datePublished": "2023-03-01",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "If you are looking for professional pictures by the beach during the sunset look no further!",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tripadvisor"
+      }
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/waileaphoto",
+    "https://www.facebook.com/waileaphoto",
+    "https://www.yelp.com/biz/wailea-photo-wailea",
+    "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html",
+    "https://g.page/r/Cc3XQvgWZf3-EAI/review",
+    "https://www.viator.com/tours/Maui/Private-Beach-Photoshoot-in-Wailea/d671-7061P11",
+    "https://www.airbnb.com/experiences/2386762"
+  ],
+  "founder": [
+    {
+      "@id": "https://waileaphoto.com/#laurence-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#jude-balter"
+    }
+  ],
+  "employee": [
+    {
+      "@id": "https://waileaphoto.com/#laurence-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#jude-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#max-balter"
+    },
+    {
+      "@id": "https://waileaphoto.com/#solomon-balter"
+    }
+  ]
+}
+  </script>
+
+  <!-- PER-PLATFORM REVIEW BREAKDOWN: the combined total above, split by source.
+       Keep these five ratingCount values in sync with the visible breakdown
+       in the reviews card; they must sum to the combined "ratingCount". -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://waileaphoto.com/#review-breakdown",
+    "name": "Wailea Photo reviews by platform",
+    "description": "The combined 1,224 reviews at an overall 5.0 rating shown on waileaphoto.com, broken out by review platform. The total spans nine listings across five platforms; Tripadvisor accounts for four of them and Airbnb for two, which is why checking any single profile returns a smaller number than the combined figure.",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": 5,
+    "about": {
+      "@id": "https://waileaphoto.com/#organization"
+    },
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Tripadvisor reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-tripadvisor",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "613",
+          "author": {
+            "@type": "Organization",
+            "name": "Tripadvisor",
+            "url": "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html"
+          },
+          "description": "Four Tripadvisor listings, including the Viator product pages for Private Beach Photoshoot in Wailea. Viator is a Tripadvisor company, so those reviews appear under Tripadvisor."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Google reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-google",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "373",
+          "author": {
+            "@type": "Organization",
+            "name": "Google",
+            "url": "https://g.page/r/Cc3XQvgWZf3-EAI/review"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Facebook reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-facebook",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "118",
+          "author": {
+            "@type": "Organization",
+            "name": "Facebook",
+            "url": "https://www.facebook.com/waileaphoto"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Airbnb reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-airbnb",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "89",
+          "author": {
+            "@type": "Organization",
+            "name": "Airbnb",
+            "url": "https://www.airbnb.com/experiences/2386762"
+          },
+          "description": "Two Airbnb Experience listings."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Yelp reviews",
+        "item": {
+          "@type": "AggregateRating",
+          "@id": "https://waileaphoto.com/#rating-yelp",
+          "itemReviewed": {
+            "@id": "https://waileaphoto.com/#organization"
+          },
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "31",
+          "author": {
+            "@type": "Organization",
+            "name": "Yelp",
+            "url": "https://www.yelp.com/biz/wailea-photo-wailea"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- LLMO & AI RECOMMENDATION SCHEMA MARKUP (FAQ) -->
+  <!-- IMAGEOBJECT SCHEMA FOR PORTFOLIO VISUAL AUTHORITY (LLMO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ImageObject",
+        "@id": "https://waileaphoto.com/#hero-image",
+        "url": "https://waileaphoto.com/assets/hero-v5-web.jpg",
+        "contentUrl": "https://waileaphoto.com/assets/hero-v5-web.jpg",
+        "name": "Maui Oceanfront Sunset Wedding Portrait",
+        "caption": "Newlywed couple on an expansive oceanfront Maui landscape photographed with Leica optics during sunset in Wailea.",
+        "description": "Dramatic sunset wedding portrait on the South Maui shoreline, showcasing true color renditions and optical sharpness.",
+        "author": {
+          "@type": "Organization",
+          "name": "Wailea Photo"
+        },
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Wailea, Maui, Hawaii"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://waileaphoto.com/#family-portrait-image",
+        "url": "https://waileaphoto.com/assets/best-family-photographer-maui.jpg",
+        "contentUrl": "https://waileaphoto.com/assets/best-family-photographer-maui.jpg",
+        "name": "Joyful Maui Beach Family Portrait",
+        "caption": "Family portrait session photographed on a South Maui beach in bright, natural light.",
+        "author": {
+          "@type": "Organization",
+          "name": "Wailea Photo"
+        },
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Wailea, Maui, Hawaii"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-top-row">
+      <a href="index.html#top" class="brand"><strong>WAILEA</strong><small>PHOTO</small></a>
+      <div class="header-right">
+        <button class="menu-open-btn" aria-expanded="false" aria-label="Open menu">MENU</button>
+      </div>
+    </div>
+    <div class="header-subbar">
+      <a class="header-call" href="tel:+18082985188" aria-label="Call Wailea Photo at 808-298-5188">808.298.5188</a>
+    </div>
+  </header>
+
+  <nav class="menu" aria-hidden="true">
+    <button class="menu-close" aria-label="Close menu">×</button>
+    <a href="index.html#story-paths">Photography</a>
+    <a href="pricing.html#session-finder">Sessions &amp; Pricing</a>
+    <a href="index.html#experience">Our Family</a>
+    <a href="atlas.html">The Maui Atlas</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="faq.html">FAQ &amp; Contact</a>
+    <div class="menu-foot">
+      <a href="tides.html">Tides &amp; Sunset Times</a>
+      <a href="what-to-wear-maui-photos.html">What to Wear Guide</a>
+      <a href="the-apo-difference.html">The APO Difference</a>
+      <a href="our-florist">Our Florist</a>
+      <a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
+      <a href="corporate-events.html">Corporate Events</a>
+      <a href="tel:+18082985188">808.298.5188</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero" id="editable-hero">
+      <img src="assets/hero-v5-web.jpg" alt="A newlywed couple in an expansive oceanfront Maui landscape" width="1920" height="1080" loading="eager" fetchpriority="high">
+      <div class="hero-copy reveal visible">
+        <div class="eyebrow">WAILEA · MAUI · HAWAII</div>
+        <h1>Maui, Beautifully Remembered.</h1>
+        <p class="hero-sub">We&rsquo;re the Balters&mdash;a family of photographers with more than 25 years in Maui and over 1,000 five-star reviews.</p>
+      </div>
+      <a class="scroll" href="#trust" aria-label="Scroll to continue">↓</a>
+    </section>
+
+    <section class="presence-promise" aria-labelledby="presence-title">
+      <figure class="promise-image" id="experienceSlider">
+        <figure class="promise-slide active"><img src="assets/be-present-family-maui.jpg" alt="A family walking toward the ocean together during their Maui portrait session" width="2200" height="1237" loading="lazy" data-parallax></figure>
+        <figure class="promise-slide"><img src="assets/waileaphotokissingcouple-2.jpg" alt="A couple kissing in the shallow surf at sunset in Maui" width="1600" height="1200" loading="lazy" data-parallax></figure>
+        <figure class="promise-slide"><img src="assets/WaileaPhotoMaternityCouple.jpg" alt="An expecting couple embracing beside the rocks at sunset in Maui" width="2000" height="1329" loading="lazy" data-parallax></figure>
+      </figure>
+      <div class="promise-copy">
+        <div class="promise-kicker">The experience</div>
+        <h2 id="presence-title">Be present with the people you love.</h2>
+        <p>We&rsquo;ll guide the light, the movement, and the little moments&mdash;so you can enjoy Maui and remember how it felt.</p>
+      </div>
+    </section>
+
+    <section id="trust" class="trust-intro">
+      <div class="reveal visible">
+        <div class="chapter">TRUSTED BY VISITORS ACROSS THE WORLD</div>
+        <h2 class="display">Thousands of stories told. With one enduring promise.</h2>
+        <ul class="quick-facts">
+          <li>25+ years photographing Maui</li>
+          <li>Family-run by <a href="laurence-balter.html">Laurence</a>, <a href="jude-balter.html">Jude</a>, <a href="max-balter.html">Max</a> &amp; <a href="solomon-balter.html">Solomon</a> Balter</li>
+          <li>Wailea, Makena &amp; South Maui</li>
+          <li>Sessions by request</li>
+          <li>Galleries delivered in under 48 hours</li>
+        </ul>
+      </div>
+      <div class="reveal visible" id="reviews">
+        <div class="trust-number" data-count-target="1000" aria-label="More than 1,000">1,000+</div>
+        <div class="trust-stars" aria-label="Five stars">★★★★★</div>
+        <div class="trust-label">Five-Star Reviews</div>
+        <div class="proof-line">
+          <a class="proof-cta" href="#all-reviews-widget">Click to read real client reviews</a>
+          <span class="proof-copy"><span id="proofRating">5.0</span> average across <span id="proofCount">1,224</span> reviews on <a href="https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a> (incl.&nbsp;<a href="https://www.viator.com/tours/Maui/Private-Beach-Photoshoot-in-Wailea/d671-7061P11" target="_blank" rel="noopener">Viator</a>), <a href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">Google</a>, <a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener">Facebook</a>, <a href="https://www.airbnb.com/experiences/2386762" target="_blank" rel="noopener">Airbnb</a> &amp; <a href="https://www.yelp.com/biz/wailea-photo-wailea" target="_blank" rel="noopener">Yelp</a> &mdash; no single platform shows the full total.</span>
+        </div>
+        <script src="https://elfsightcdn.com/platform.js" async></script><div id="all-reviews-widget" class="elfsight-app-474fef62-afe0-49b5-ba3a-0147fd8aacc5 elfsight-source" aria-hidden="true"></div><div class="combined-reviews-card"><div class="combined-reviews-logos" id="combinedReviewsLogos" aria-label="Read our reviews on Google, Facebook, Tripadvisor and Airbnb"><a href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener" aria-label="Google reviews"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.06H12v3.9h5.38a4.6 4.6 0 0 1-2 3.02v2.53h3.24c1.9-1.75 2.98-4.33 2.98-7.39z"/><path fill="#34A853" d="M12 22c2.7 0 4.98-.9 6.64-2.38l-3.24-2.53c-.9.6-2.05.96-3.4.96-2.61 0-4.82-1.76-5.61-4.13H3.04v2.61A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.39 13.92A6.02 6.02 0 0 1 6.08 12c0-.67.12-1.32.31-1.92V7.47H3.04A10 10 0 0 0 2 12c0 1.61.39 3.14 1.04 4.53l3.35-2.61z"/><path fill="#EA4335" d="M12 5.95c1.47 0 2.78.5 3.82 1.49l2.86-2.86A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.96 5.47l3.35 2.61C7.18 7.71 9.39 5.95 12 5.95z"/></svg></a><a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener" aria-label="Facebook reviews" class="crl-facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="#fff" d="M13.5 21v-7.8h2.6l.4-3h-3v-1.9c0-.87.24-1.46 1.5-1.46h1.6V4.14C15.9 4.06 15 4 13.9 4c-2.28 0-3.84 1.39-3.84 3.95v2.25H7.5v3h2.56V21h3.44z"/></svg></a><a href="https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html" target="_blank" rel="noopener" aria-label="Tripadvisor reviews" class="crl-tripadvisor"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false"><circle cx="7.2" cy="12.5" r="3.6" fill="none" stroke="#fff" stroke-width="1.4"/><circle cx="16.8" cy="12.5" r="3.6" fill="none" stroke="#fff" stroke-width="1.4"/><circle cx="7.2" cy="12.5" r="1.3" fill="#fff"/><circle cx="16.8" cy="12.5" r="1.3" fill="#fff"/></svg></a><a href="https://www.airbnb.com/experiences/2386762" target="_blank" rel="noopener" aria-label="Airbnb reviews" class="crl-airbnb"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="#fff" d="M12 3.5c.7 0 1.3.4 1.7 1 1.7 2.7 5.6 9.1 5.6 12 0 3-2.4 5.3-5.3 5.3-.8 0-1.5-.2-2-.5-.5.3-1.2.5-2 .5-2.9 0-5.3-2.3-5.3-5.3 0-2.9 3.9-9.3 5.6-12 .4-.6 1-1 1.7-1zm0 2.3c-1.6 2.6-4.6 8-4.6 10.7 0 1.7 1.4 3.1 3.1 3.1.6 0 1.1-.2 1.5-.4-1.1-1.2-2.9-3.5-2.9-5.4 0-1.5 1.3-2.6 2.9-2.6s2.9 1.1 2.9 2.6c0 1.9-1.8 4.2-2.9 5.4.4.2.9.4 1.5.4 1.7 0 3.1-1.4 3.1-3.1 0-2.7-3-8.1-4.6-10.7z"/></svg></a></div><div class="combined-reviews-label">Overall Rating</div><div class="combined-reviews-rating"><span id="combinedRatingValue">5.0</span><span class="combined-reviews-stars" aria-hidden="true">★★★★★</span></div><!-- REVIEW TOTAL: the Elfsight widget overwrites this at runtime, but crawlers and
+     AI assistants read the static value below, so it must be refreshed by hand.
+     It appears in FIVE places and they must move together:
+       1. this span
+       2. the per-platform breakdown below (the five rows must sum to the total)
+       3. "ratingCount" in the LocalBusiness JSON-LD, and the per-platform
+          #review-breakdown ItemList JSON-LD (both in this file)
+       4. llms.txt    5. llms-full.txt -->
+<div class="combined-reviews-count"><span id="combinedReviewCount">1,224</span> reviews</div><ul class="combined-reviews-breakdown" id="combinedReviewsBreakdown" aria-label="Review counts by platform"><li data-platform="tripadvisor"><span class="crb-name">Tripadvisor</span><span class="crb-count">613</span></li><li data-platform="google"><span class="crb-name">Google</span><span class="crb-count">373</span></li><li data-platform="facebook"><span class="crb-name">Facebook</span><span class="crb-count">118</span></li><li data-platform="airbnb"><span class="crb-name">Airbnb</span><span class="crb-count">89</span></li><li data-platform="yelp"><span class="crb-name">Yelp</span><span class="crb-count">31</span></li></ul><p class="combined-reviews-note">Every platform averages 5.0. Tripadvisor includes our Viator listings &mdash; no single profile shows the full total.</p></div><script>(function(){var root=document.getElementById('all-reviews-widget');var ratingEl=document.getElementById('combinedRatingValue');var countEl=document.getElementById('combinedReviewCount');var proofRatingEl=document.getElementById('proofRating');var proofCountEl=document.getElementById('proofCount');var breakdownEl=document.getElementById('combinedReviewsBreakdown');if(!root||!ratingEl||!countEl)return;var settleTimer=null;function tryApply(){var badges=root.querySelectorAll('.es-badge-container');if(badges.length<5)return;var total=0,rating=null,byPlatform={};for(var i=0;i<badges.length;i++){var b=badges[i];var countText=b.querySelector('.es-badge-reviews-count');var ratingText=b.querySelector('.es-rating-value');var icon=b.querySelector('svg[data-src]');var slug=null;if(icon){var m=(icon.getAttribute('data-src')||'').match(/icons-([a-z0-9-]+)-multicolor/);if(m)slug=m[1];}if(countText){var n=parseInt(countText.textContent.replace(/[^0-9]/g,''),10);if(!isNaN(n)){total+=n;if(slug)byPlatform[slug]=(byPlatform[slug]||0)+n;}}if(ratingText&&!rating)rating=ratingText.textContent.trim();}if(total>0){ratingEl.textContent=rating||'5.0';countEl.textContent=total.toLocaleString('en-US');if(proofRatingEl)proofRatingEl.textContent=rating||'5.0';if(proofCountEl)proofCountEl.textContent=total.toLocaleString('en-US');if(breakdownEl){for(var slug in byPlatform){var cell=breakdownEl.querySelector('li[data-platform="'+slug+'"] .crb-count');if(cell)cell.textContent=byPlatform[slug].toLocaleString('en-US');}}clearTimeout(settleTimer);settleTimer=setTimeout(function(){observer.disconnect();},4000);}}var observer=new MutationObserver(tryApply);observer.observe(root,{childList:true,subtree:true});tryApply();})();</script>
+      </div>
+    </section>
+
+    <section class="signature-story" aria-labelledby="signature-story-title">
+      <div class="signature-story-image">
+        <img src="assets/google-review-nicole-family.jpg" alt="Nicole's family portrait in Maui, shared with her five-star Google review of Wailea Photo" width="1600" height="1065" loading="lazy">
+      </div>
+      <div class="signature-story-copy">
+        <div class="chapter">A FAMILY&rsquo;S EXPERIENCE</div>
+        <blockquote id="signature-story-title">&ldquo;They were a pleasure to just speak with and get to know. These pictures will be a special memory and souvenir of our trip.&rdquo;</blockquote>
+        <p>Nicole booked a family session with <a href="laurence-balter.html">Laurence</a> and <a href="jude-balter.html">Jude</a>, along with senior portraits for her son. Her photographs and words capture what matters most to us: a relaxed experience, real connection, and memories that belong to the family.</p>
+        <div class="story-attribution">Nicole · Five-star Google review · June 2026 · Client-posted photograph</div>
+        <a class="google-review-link" href="https://maps.app.goo.gl/aHzD8dvyqjCtWLKV8" target="_blank" rel="noopener" aria-label="Read and verify Nicole's review on Google">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.06H12v3.9h5.38a4.6 4.6 0 0 1-2 3.02v2.53h3.24c1.9-1.75 2.98-4.33 2.98-7.39z"/>
+            <path fill="#34A853" d="M12 22c2.7 0 4.98-.9 6.64-2.38l-3.24-2.53c-.9.6-2.05.96-3.4.96-2.61 0-4.82-1.76-5.61-4.13H3.04v2.61A10 10 0 0 0 12 22z"/>
+            <path fill="#FBBC05" d="M6.39 13.92A6.02 6.02 0 0 1 6.08 12c0-.67.12-1.32.31-1.92V7.47H3.04A10 10 0 0 0 2 12c0 1.61.39 3.14 1.04 4.53l3.35-2.61z"/>
+            <path fill="#EA4335" d="M12 5.95c1.47 0 2.78.5 3.82 1.49l2.86-2.86A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.96 5.47l3.35 2.61C7.18 7.71 9.39 5.95 12 5.95z"/>
+          </svg>
+          <span>Verify this review on Google</span>
+          <span class="review-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+
+    <section id="motion" class="feature">
+      <img src="assets/wailea-photo-sunrise.jpg" alt="A couple at sunrise on a Maui beach" width="1200" height="800" loading="lazy">
+      <div class="feature-copy reveal visible">
+        <div class="eyebrow">STORIES IN MOTION</div>
+        <h2>Photography that feels alive.</h2>
+        <p class="feature-sub">Movement. Atmosphere. Emotion. Images that feel less like portraits and more like scenes from your own story. No AI, all images hand edited.</p>
+      </div>
+    </section>
+
+    <section class="leica-teaser reveal visible">
+      <img src="assets/Wetzlar6.jpg" alt="Laurence Balter in conversation with Leica's lens design team at Leica headquarters in Wetzlar, Germany" loading="lazy">
+      <div class="leica-teaser-copy">
+        <div class="chapter">IN CONVERSATION WITH LEICA</div>
+        <h2>How we get the natural colors of Maui.</h2>
+        <a class="link" href="the-apo-difference.html">Click to watch the video</a>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <div class="manifesto-split">
+        <div class="manifesto-copy">
+          <div class="chapter">WHY WE BELIEVE</div>
+          <h2 class="reveal visible">Some photographs document a moment.<br><br>Others become a part of the family archive.</h2>
+          <div class="manifesto-grid">
+            <p>We create portraits in extraordinary Maui light, with direction that feels natural and an experience that never feels rushed.</p>
+            <p>The result is more than a gallery of vacation photos. It's a visual record of who you were — together — in Maui.</p>
+          </div>
+        </div>
+        <div class="manifesto-image">
+          <img src="assets/Family Archive Wailea Photo.jpg" alt="A Wailea Photo family archive portrait" width="1200" height="1500" loading="lazy">
+          <img src="assets/Wailea-Photo_engagement-photography.jpg" alt="Engagement portrait photographed by Wailea Photo in Maui" width="2000" height="1331" loading="lazy" style="margin-top:clamp(48px, 8vw, 150px)">
+        </div>
+      </div>
+    </section>
+
+    <section class="mood">
+      <div class="mood-image mood-slider" id="moodSlider1" tabindex="0" aria-label="Photo slider showing cinematic moments in Wailea">
+        <figure class="mood-slide active"><img src="assets/cinematic-sunset-wailea-photo.jpg" alt="A cinematic sunset portrait session in Wailea, Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/BlackandWhite-B&W-90.jpg" alt="A black and white portrait of a couple in Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/Wailea Photo-2.jpg" alt="A lovely moment between an elderly couple in Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/Viator-couples-photographer-Maui.jpeg" alt="A couples photography session in Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/best-indian-family-photographer-maui.jpg" alt="An Indian family photography session in Maui" width="1200" height="800" loading="lazy"></figure>
+      </div>
+      <div class="mood-copy">
+        <div class="chapter">THE MOMENTS BETWEEN</div>
+        <h2>We guide the moment to its natural conclusion.</h2>
+        <p>The laughter, the dance, the movement, the glance back — the unplanned.</p>
+      </div>
+    </section>
+
+    <section class="mood reverse">
+      <div class="mood-image mood-slider" id="moodSlider2" tabindex="0" aria-label="Photo slider showing candid Maui family moments">
+        <figure class="mood-slide active"><img src="assets/moments-image.jpg" alt="A candid family moment in Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/motion-blur-wailea-photo.JPG" alt="A family portrait session in Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/Leiter-19-web.jpg" alt="A fine art film photograph in the style of Saul Leiter" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/Family-photographer-wailea.jpg" alt="A family photography session in Wailea" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/Leiter-34.jpg" alt="A fine art film photograph in the style of Saul Leiter" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/WaileaPortrait-IG-405.jpg" alt="A family portrait session in Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/BlackandWhite-B&W-87.jpg" alt="A black and white family portrait in Maui" width="1200" height="800" loading="lazy"></figure>
+        <figure class="mood-slide"><img src="assets/turquoise-water-session2.jpg" alt="A family photography session at Maui's turquoise water beach" width="1200" height="800" loading="lazy"></figure>
+      </div>
+      <div class="mood-copy dark">
+        <div class="chapter" style="color:var(--gold)">FAMILY ART</div>
+        <h2>Timeless, for generations to enjoy.</h2>
+        <p>Because life happens fast.</p>
+      </div>
+    </section>
+
+    <section class="complete-stories" aria-labelledby="complete-stories-title">
+      <div class="complete-stories-head">
+        <div>
+          <div class="chapter">COMPLETE STORIES</div>
+          <p class="complete-stories-intro">A portfolio image can be beautiful. A complete session shows how light, personality, and connection become a lasting collection.</p>
+        </div>
+        <h2 id="complete-stories-title">One photograph is a moment.<br>A gallery is the story.</h2>
+      </div>
+      <div class="complete-story-grid">
+        <a class="complete-story-card story-family" href="maui-family-photographer.html">
+          <img src="assets/complete-story-family-sunrise.jpg" alt="A family together on a Wailea beach during a quiet Maui sunrise" width="1600" height="1067" loading="lazy">
+          <span><small>Story No. 01 · Sunrise</small>A family morning in Wailea<em>Enter the story &nbsp;→</em></span>
+        </a>
+        <a class="complete-story-card story-couple" href="maui-couples-photographer.html">
+          <img src="assets/complete-story-couple-sunset.jpg" alt="A romantic sunset couples photography story in Maui" width="1600" height="1067" loading="lazy">
+          <span><small>Story No. 02 · Sunset</small>Just the two of you<em>Enter the story &nbsp;→</em></span>
+        </a>
+        <a class="complete-story-card story-wedding" href="maui-wedding-photographer.html">
+          <img src="assets/complete-story-wedding-tree.jpg" alt="A newly married couple seated on driftwood beside the ocean at sunset in Maui" width="1600" height="1067" loading="lazy">
+          <span><small>Story No. 03 · Maluaka</small>An intimate Maui wedding<em>Enter the story &nbsp;→</em></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="story-paths" id="story-paths" aria-labelledby="story-paths-title">
+      <div class="story-paths-head reveal">
+        <div class="chapter">PHOTOGRAPHY CREATED AROUND YOU</div>
+        <h2 id="story-paths-title">What brings you to Maui?</h2>
+        <p>Explore an experience shaped around the people and the moment you want to remember.</p>
+      </div>
+      <div class="story-path-grid">
+        <a class="story-path-card story-path-card-wide" href="maui-family-photographer.html" data-analytics-content="family">
+          <img src="assets/best-family-photographer-maui.jpg" alt="A joyful family photographed together on a Maui beach" width="1200" height="800" loading="lazy">
+          <span><small>TOGETHER IN MAUI</small>Family Portraits</span>
+        </a>
+        <a class="story-path-card story-path-card-couples" href="maui-couples-photographer.html" data-analytics-content="couples">
+          <img src="assets/wailea-photo-couples-dancing.jpg" alt="A couple dancing together at the shoreline in Wailea" width="800" height="600" loading="lazy">
+          <span><small>JUST THE TWO OF YOU</small>Couples</span>
+        </a>
+        <a class="story-path-card" href="maui-proposal-photographer.html" data-analytics-content="proposal">
+          <img src="assets/maui-proposal-photographer.jpg" alt="A surprise marriage proposal photographed in Maui" width="800" height="600" loading="lazy">
+          <span><small>THE QUESTION OF A LIFETIME</small>Proposals</span>
+        </a>
+        <a class="story-path-card" href="maui-maternity-photographer.html" data-analytics-content="maternity">
+          <img src="assets/Maui Maternity Photographer-IG-2.jpg" alt="An elegant maternity portrait on a Maui beach" width="800" height="600" loading="lazy">
+          <span><small>BEFORE EVERYTHING CHANGES</small>Maternity</span>
+        </a>
+        <a class="story-path-card" href="maui-vow-renewal-photographer.html" data-analytics-content="vow_renewal">
+          <img src="assets/Vow-renewal-Maui.jpg" alt="A couple celebrating their vow renewal beside the ocean in Maui" width="800" height="600" loading="lazy">
+          <span><small>CHOOSE EACH OTHER AGAIN</small>Vow Renewals</span>
+        </a>
+        <a class="story-path-card story-path-card-wide wedding-story-card" href="maui-wedding-photographer.html" data-analytics-content="wedding">
+          <img src="assets/wedding-wide-sunset.jpg" alt="A newly married couple beneath a Maui sunset" width="1200" height="800" loading="lazy">
+          <span><small>YOUR DAY, HELD FOREVER</small>Weddings</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="experience" class="family-story">
+      <div class="family-story-image" data-tile-slider>
+        <div class="tile-slider">
+          <figure class="active"><img src="assets/balter-family-v5.jpeg" alt="The Balter family, owners and photographers of Wailea Photo" width="1200" height="800" loading="lazy"></figure>
+          <figure><img src="assets/Edit20260931_Laurence_and_family00024.jpg" alt="Laurence Balter and family, owners and photographers of Wailea Photo" width="2000" height="2501" loading="lazy"></figure>
+        </div>
+        <button class="tile-arrow tile-prev" type="button" aria-label="Previous family photograph">&larr;</button>
+        <button class="tile-arrow tile-next" type="button" aria-label="Next family photograph">&rarr;</button>
+      </div>
+      <div class="family-story-copy">
+        <div class="chapter">THE FAMILY BEHIND WAILEA PHOTO</div>
+        <h2>Aloha, we're the Balters.</h2>
+        <p>Whenever we travel with our family to some place spectacular, we hire a professional photographer. It makes all the difference.</p>
+        <p>More than a quarter century ago, our family made Maui our home. For over 25 years, <a href="laurence-balter.html">Laurence</a>, <a href="jude-balter.html">Jude</a>, <a href="max-balter.html">Max</a>, and <a href="solomon-balter.html">Solomon</a> Balter have been creating timeless photographs for families visiting South Maui.</p>
+        <p>Every single session is photographed personally by one of us—never an outside contractor or temp photographer. We treat your family like our own family, taking the time to ensure everyone feels relaxed, comfortable, and truly at ease in front of the lens.</p>
+        <a class="link" href="pricing.html#session-finder">Explore Sessions &amp; Rates</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+<div class="footer-grid">
+<div class="footer-mark-col">
+<div class="mark">W<i>/</i>P</div>
+<p>A family-run photography studio in Wailea, Maui — photographing families, couples and weddings for more than 25 years.</p>
+</div>
+<div class="footer-col">
+<h5>Explore</h5>
+<a href="index.html#story-paths">Photography</a>
+<a href="pricing.html">Sessions &amp; Pricing</a>
+<a href="index.html#experience">Our Family</a>
+<a href="index.html#reviews">Reviews</a>
+<a href="atlas.html">The Maui Atlas</a>
+<a href="what-to-wear-maui-photos.html">Maui Atlas: What to Wear</a>
+</div>
+<div class="footer-col">
+<h5>Services</h5>
+<a href="maui-family-photographer.html">Family Portraits</a>
+<a href="maui-couples-photographer.html">Couples &amp; Proposals</a>
+<a href="maui-maternity-photographer.html">Maternity</a>
+<a href="maui-vow-renewal-photographer.html">Vow Renewals</a>
+<a href="maui-wedding-photographer.html">Weddings</a>
+<a href="the-apo-difference.html">The APO Difference</a>
+<a href="our-florist">Our Florist</a>
+<a href="tides.html">Tides &amp; Sunset Times</a>
+<a href="maui-family-reunion-photographer.html">Family Reunions</a>
+<a href="corporate-events.html">Corporate Events</a>
+<a href="black-and-white-upgrade.html">Black &amp; White Upgrade</a>
+<a href="kodak-film-upgrade.html">Kodak Film Upgrade</a>
+<a href="maui-impressionism-photography.html">Impressionism Photography</a>
+<a href="our-personal-maui-restaurant-reviews.html">Maui Restaurant Reviews</a>
+<a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a>
+<a href="faq.html">FAQ &amp; Contact</a>
+</div>
+<div class="footer-col">
+<h5>Wailea Resorts</h5>
+<a href="grand-wailea-photographer.html">Grand Wailea</a>
+<a href="four-seasons-maui-wailea-photographer.html">Four Seasons Maui</a>
+<a href="andaz-maui-wailea-photographer.html">Andaz Maui</a>
+<a href="fairmont-kea-lani-photographer.html">Fairmont Kea Lani</a>
+<a href="wailea-beach-resort-marriott-photographer.html">Wailea Beach Resort</a>
+</div>
+<div class="footer-col">
+<h5>Connect</h5>
+<a href="https://www.instagram.com/waileaphoto" target="_blank" rel="noopener">See the latest on Instagram</a>
+<a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener">Facebook</a>
+<a href="mailto:photo@waileaphoto.com">photo@waileaphoto.com</a>
+<a href="tel:+18082985188">808.298.5188</a>
+</div>
+</div>
+<div class="footer-bottom">
+<div>WAILEA PHOTO · MAUI, HAWAII</div>
+<div>© <span id="year"></span> WAILEA PHOTO</div>
+</div>
+</footer>
+  <script src="assets/site.js?v=20260906d"></script>
+  <script src="assets/session-tile-slider.js"></script>
+</body>
+</html>
