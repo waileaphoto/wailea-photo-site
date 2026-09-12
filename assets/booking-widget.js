@@ -75,6 +75,83 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     return json;
   }
 
+  // The booking API is hosted on a plan that sleeps when idle, so the first availability
+  // request of a visit can take several seconds or fail outright while the service wakes.
+  // These three constants tune how the calendar behaves around that.
+  const AVAILABILITY_TIMEOUT_MS = 20000;  // abort a hung request rather than spin forever
+  const COLD_START_HINT_MS = 3500;        // after this, tell the client we're still working
+  const MAX_LOOKAHEAD_MONTHS = 6;         // how far ahead to hunt for the next opening
+
+  async function apiWithTimeout(method, path, timeoutMs) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const res = await fetch(API_BASE + path, { method, signal: controller.signal });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || 'Request failed');
+      return json;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  // One automatic retry: a cold start typically fails or times out once and then succeeds
+  // immediately, and asking the client to press a button for that is a lost booking.
+  async function fetchAvailability(slug, year, monthNum) {
+    const path = `/api/availability?sessionType=${slug}&month=${year}-${String(monthNum).padStart(2, '0')}`;
+    try {
+      return await apiWithTimeout('GET', path, AVAILABILITY_TIMEOUT_MS);
+    } catch (err) {
+      return await apiWithTimeout('GET', path, AVAILABILITY_TIMEOUT_MS);
+    }
+  }
+
+  function monthHasOpenings(data) {
+    return !!(data && Array.isArray(data.days) && data.days.some((d) => !d.past && d.slots.length > 0));
+  }
+
+  // First-touch marketing attribution. Reads utm_* + ad click ids from the landing-page
+  // URL and remembers them for this browser tab (sessionStorage), so they survive the
+  // multi-step booking flow and any in-site navigation before checkout. Sent with the
+  // booking so the revenue report can tie it back to the traffic source (Meta ad,
+  // organic, direct, etc.). Best-effort: any failure returns null and never blocks a
+  // booking. Call captureAttribution() once on load to stamp first-touch.
+  const ATTRIBUTION_STORAGE_KEY = 'wbw_attribution';
+  function captureAttribution() {
+    try {
+      const stored = sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY);
+      if (stored) return JSON.parse(stored);
+    } catch (e) { /* sessionStorage unavailable — fall through and read the URL directly */ }
+
+    let params;
+    try { params = new URLSearchParams(window.location.search); }
+    catch (e) { params = new URLSearchParams(); }
+    const pick = (...keys) => {
+      for (const k of keys) { const v = params.get(k); if (v) return v; }
+      return null;
+    };
+    let referrerHost = null;
+    try { if (document.referrer) referrerHost = new URL(document.referrer).hostname || null; }
+    catch (e) { /* opaque or missing referrer */ }
+
+    const attribution = {
+      utm_source: pick('utm_source'),
+      utm_medium: pick('utm_medium'),
+      utm_campaign: pick('utm_campaign'),
+      utm_content: pick('utm_content'),
+      utm_term: pick('utm_term'),
+      click_id: pick('fbclid', 'gclid', 'ttclid', 'msclkid'),
+      landing_referrer: referrerHost,
+    };
+    if (!Object.values(attribution).some(Boolean)) return null;
+    try { sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(attribution)); }
+    catch (e) { /* can't persist — still return it for this booking */ }
+    return attribution;
+  }
+  // Stamp first-touch as soon as the script runs, before any in-site navigation can drop
+  // the query string.
+  captureAttribution();
+
   function el(tag, attrs, children) {
     const node = document.createElement(tag);
     if (attrs) for (const [k, v] of Object.entries(attrs)) {
@@ -127,16 +204,24 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     buildDateStep() {
       const step = el('div', { class: 'wbw-step' });
       this.monthLabel = el('span', { class: 'wbw-month-label' }, ['']);
+      this.prevMonthBtn = el('button', { onclick: () => this.changeMonth(-1) }, ['‹ Prev']);
+      this.nextMonthBtn = el('button', { onclick: () => this.changeMonth(1) }, ['Next ›']);
       const nav = el('div', { class: 'wbw-month-nav' }, [
-        el('button', { onclick: () => this.changeMonth(-1) }, ['‹ Prev']),
+        this.prevMonthBtn,
         this.monthLabel,
-        el('button', { onclick: () => this.changeMonth(1) }, ['Next ›']),
+        this.nextMonthBtn,
       ]);
       this.dayGrid = el('div', { class: 'wbw-day-grid' });
+      // Reassurance line shown while availability loads. The booking API sleeps when
+      // idle, so a first request can take several seconds — a silent blank grid on a
+      // phone reads as "broken" and is where people leave.
+      this.calendarStatus = el('div', { class: 'wbw-calendar-status', hidden: 'hidden' });
+      // Shown instead of a dead grid when a month has no openings at all.
+      this.calendarEmpty = el('div', { class: 'wbw-calendar-empty', hidden: 'hidden' });
       this.slotsWrap = el('div', { class: 'wbw-slots' });
       this.dateError = el('div', { class: 'wbw-error' });
       const nextBtn = el('button', { class: 'wbw-btn', onclick: () => this.goToDetails() }, ['Continue']);
-      step.append(nav, this.dayGrid, this.slotsWrap, this.dateError, nextBtn);
+      step.append(nav, this.dayGrid, this.calendarStatus, this.calendarEmpty, this.slotsWrap, this.dateError, nextBtn);
       return step;
     }
 
@@ -342,22 +427,65 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.loadMonth();
     }
 
+    renderDayHeads() {
+      ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach((d) => this.dayGrid.appendChild(el('div', { class: 'wbw-day-head' }, [d])));
+    }
+
+    // Placeholder cells so the calendar has shape the instant the widget opens, instead
+    // of an empty box while the availability request is in flight.
+    renderCalendarSkeleton() {
+      this.dayGrid.innerHTML = '';
+      this.renderDayHeads();
+      for (let i = 0; i < 35; i++) this.dayGrid.appendChild(el('div', { class: 'wbw-day-skeleton' }));
+    }
+
+    setCalendarBusy(busy) {
+      if (this.prevMonthBtn) this.prevMonthBtn.disabled = busy;
+      if (this.nextMonthBtn) this.nextMonthBtn.disabled = busy;
+    }
+
     async loadMonth() {
       const y = this.state.month.getFullYear();
-      const m = String(this.state.month.getMonth() + 1).padStart(2, '0');
+      const monthNum = this.state.month.getMonth() + 1;
+      const m = String(monthNum).padStart(2, '0');
+      // Guards against out-of-order responses when someone taps Next twice quickly: only
+      // the most recent request is allowed to paint.
+      const token = (this.loadToken = (this.loadToken || 0) + 1);
+
       this.monthLabel.textContent = this.state.month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-      this.dayGrid.innerHTML = '';
       this.slotsWrap.innerHTML = '';
       this.dateError.textContent = '';
-      ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach((d) => this.dayGrid.appendChild(el('div', { class: 'wbw-day-head' }, [d])));
+      this.calendarEmpty.hidden = true;
+      this.calendarEmpty.innerHTML = '';
+      this.renderCalendarSkeleton();
+      this.setCalendarBusy(true);
+      this.calendarStatus.textContent = 'Checking availability…';
+      this.calendarStatus.hidden = false;
+      const hintTimer = setTimeout(() => {
+        if (this.loadToken === token) {
+          this.calendarStatus.textContent = 'Still checking — the calendar is waking up. Just a few more seconds.';
+        }
+      }, COLD_START_HINT_MS);
 
       let data;
       try {
-        data = await api('GET', `/api/availability?sessionType=${this.state.slug}&month=${y}-${m}`);
+        data = await fetchAvailability(this.state.slug, y, monthNum);
       } catch (err) {
-        this.dateError.textContent = `Couldn't load availability: ${err.message}`;
+        clearTimeout(hintTimer);
+        if (this.loadToken !== token) return;
+        this.setCalendarBusy(false);
+        this.calendarStatus.hidden = true;
+        this.showCalendarError();
         return;
       }
+      clearTimeout(hintTimer);
+      if (this.loadToken !== token) return;
+      this.setCalendarBusy(false);
+      this.calendarStatus.hidden = true;
+
+      this.dayGrid.innerHTML = '';
+      this.renderDayHeads();
+
       if (data.bookingMode === 'manual') {
         this.dateError.textContent = data.message;
         return;
@@ -389,6 +517,78 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         if (day && dayButton && slot) this.selectDate(day, { target: dayButton }, slot.startTime);
         else this.dateError.textContent = 'That opening was just filled. Please choose another available date and time.';
       }
+
+      // A month with nothing open used to render as a grid of greyed-out numbers, which
+      // looks broken rather than busy. Say so plainly and offer the next real opening.
+      if (!monthHasOpenings(data)) this.showEmptyMonth(token);
+    }
+
+    showCalendarError() {
+      this.dayGrid.innerHTML = '';
+      this.renderDayHeads();
+      this.calendarEmpty.innerHTML = '';
+      this.calendarEmpty.hidden = false;
+      this.calendarEmpty.append(
+        el('div', { class: 'wbw-calendar-empty-title' }, ["We couldn't load the calendar."]),
+        el('div', { class: 'wbw-calendar-empty-sub' }, ['This is usually a brief hiccup on our end, not your connection.']),
+        el('button', { class: 'wbw-btn wbw-btn-secondary wbw-jump-btn', onclick: () => this.loadMonth() }, ['Try again']),
+        el('div', { class: 'wbw-calendar-empty-sub' }, ['Still stuck? Email photo@waileaphoto.com and we\'ll book you by hand.']),
+      );
+    }
+
+    async showEmptyMonth(token) {
+      const monthName = this.state.month.toLocaleDateString('en-US', { month: 'long' });
+      this.calendarEmpty.innerHTML = '';
+      this.calendarEmpty.hidden = false;
+      this.calendarEmpty.appendChild(
+        el('div', { class: 'wbw-calendar-empty-title' }, [`${monthName} is fully booked.`])
+      );
+      const searching = el('div', { class: 'wbw-calendar-empty-sub' }, ['Finding the next opening…']);
+      this.calendarEmpty.appendChild(searching);
+
+      const next = await this.findNextOpening();
+      if (this.loadToken !== token) return; // they navigated on while we were looking
+
+      if (!next) {
+        searching.textContent = 'Nothing open in the next six months. Email photo@waileaphoto.com and we\'ll find you a time.';
+        return;
+      }
+      searching.remove();
+      const pretty = new Date(`${next.date}T12:00:00`)
+        .toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      this.calendarEmpty.appendChild(el('button', {
+        class: 'wbw-btn wbw-btn-secondary wbw-jump-btn',
+        onclick: () => this.jumpToOpening(next),
+      }, [`Next opening: ${pretty} →`]));
+    }
+
+    // Walks forward a month at a time until it finds a date with slots. Only ever runs
+    // when the current month is empty, so the extra requests cost nothing in the normal case.
+    async findNextOpening() {
+      const y = this.state.month.getFullYear();
+      const monthIndex = this.state.month.getMonth();
+      for (let i = 1; i <= MAX_LOOKAHEAD_MONTHS; i++) {
+        const probe = new Date(y, monthIndex + i, 1);
+        let data;
+        try {
+          data = await fetchAvailability(this.state.slug, probe.getFullYear(), probe.getMonth() + 1);
+        } catch (err) {
+          continue; // one bad month shouldn't end the search
+        }
+        const day = (data.days || []).find((d) => !d.past && d.slots.length > 0);
+        if (day) return { date: day.date, month: probe };
+      }
+      return null;
+    }
+
+    jumpToOpening(next) {
+      this.state.month = next.month;
+      this.state.selectedDate = null;
+      this.state.selectedSlot = null;
+      // Preselect so the client lands on the date with its first time already chosen —
+      // one tap from an empty month to a bookable slot.
+      this.state.preselect = { date: next.date, startTime: null };
+      this.loadMonth();
     }
 
     selectDate(day, e, preferredStartTime = null) {
@@ -502,6 +702,10 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
             specialRequests: this.specialRequestsInput.value || undefined,
             floristContactRequested: this.floristContactCheckbox.checked,
           },
+          // First-touch traffic source for this booking. The API sanitises and stores it
+          // on the booking row, which is what makes revenueBySource in the weekly revenue
+          // report meaningful instead of everything landing in "Direct / untagged".
+          attribution: captureAttribution() || undefined,
         });
         this.state.bookingId = result.booking.id;
         this.state.bookingReference = result.booking.booking_reference;
