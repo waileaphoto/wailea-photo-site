@@ -17,6 +17,7 @@
     // exists, so past bookings render correctly; restore this line to re-offer it.
     { slug: 'bw', label: 'Classic Black & White add-on', learnMoreUrl: 'https://waileaphoto.com/black-and-white-upgrade' },
     { slug: 'apo_lens', label: 'Leica APO lens upgrade', learnMoreUrl: 'https://waileaphoto.com/the-apo-difference' },
+    { slug: 'camera_upgrade_review', label: 'Camera upgrade — Leica SL3 or Q3, free for posting a review', priceLabel: 'Free' },
     {
       slug: 'double-sunset',
       label: 'Special-Double your session time to include Last Half Sunset ($499 value)',
