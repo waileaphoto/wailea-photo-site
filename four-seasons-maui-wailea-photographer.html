@@ -114,7 +114,9 @@
     .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase}
     .atlas-editorial-hero h1{margin:18px 0 0;max-width:14ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
     .atlas-editorial-hero .atlas-deck{max-width:35rem;margin:28px 0 0;font:400 clamp(1rem,1.25vw,1.16rem)/1.75 'Inter',sans-serif;color:rgba(23,23,22,.76)}
-    .atlas-editorial-hero .atlas-byline{margin:30px 0 0;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
+    .atlas-editorial-hero .atlas-byline{max-width:none;margin:30px 0 0;font:600 10px/1.6 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
+    /* the hero column is wide; let the deck breathe rather than wrap at 35rem */
+    .atlas-editorial-hero .atlas-deck{max-width:38rem}
     .atlas-editorial .content-split{border-top:1px solid rgba(23,23,22,.1)}
     .atlas-editorial .content-split-copy{padding-top:clamp(54px,7vw,110px);padding-bottom:clamp(54px,7vw,110px)}
     .atlas-editorial .content-split-copy h2{max-width:14ch;line-height:1.02}
