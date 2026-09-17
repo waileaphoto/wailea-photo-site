@@ -130,6 +130,7 @@
     <div class="sync-bar" style="margin:0 0 12px;">
       <span>Concierge chats</span>
     <button class="sync-btn" id="conciergeToggleBtn" onclick="toggleConcierge()">Show concierge chats</button>
+      <button class="sync-btn" id="conciergePruneBtn" onclick="pruneConcierge()">Delete chats older than 30 days</button>
     </div>
   <div id="conciergeList" style="display:none;"></div>
   </div>
@@ -312,6 +313,32 @@
     const json = await res.json();
     if (!res.ok) throw new Error(json.error || 'Request failed');
     return json;
+  }
+
+  async function pruneConcierge() {
+    const btn = document.getElementById('conciergePruneBtn');
+    const original = btn.textContent;
+    try {
+      btn.disabled = true;
+      btn.textContent = 'Checking...';
+      const preview = await api('POST', '/api/admin/concierge/prune?days=30&dryRun=1');
+      if (!preview.wouldDelete) {
+        alert('Nothing to delete - no chats are older than 30 days.');
+        return;
+      }
+      const ok = confirm('Permanently delete ' + preview.wouldDelete + ' conversation(s) older than 30 days? This cannot be undone.');
+      if (!ok) return;
+      btn.textContent = 'Deleting...';
+      const res = await api('POST', '/api/admin/concierge/prune?days=30');
+      alert('Deleted ' + res.deleted + ' conversation(s).');
+      conciergeLoaded = false;
+      await loadConcierge();
+    } catch (e) {
+      alert('Could not prune: ' + e.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = original;
+    }
   }
 
   function fmtDollars(cents) {
