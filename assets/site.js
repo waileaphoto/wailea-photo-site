@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function(){
       cardId: 'session-card-turquoise-water',
       displayName: 'Turquoise + Water Experience',
       explanation: 'This longer session prioritizes vivid water, open coastal scenery and greater separation from Wailea’s resort beaches.',
-      facts: '45 minutes · 50+ images · From $499'
+            facts: '45 minutes · 50+ images · From $399'
     },
     'last-half-sunset': {
       cardId: 'session-card-last-half-sunset',
