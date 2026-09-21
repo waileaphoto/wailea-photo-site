@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171716">
+<title>Your held session | Wailea Photo</title>
+<!-- Reached only from the follow-up email sent after a 30-minute hold lapses. Not part
+     of the site's navigation, and deliberately kept out of search results: the page is
+     personal to one person's held slot and has no value to anyone else. -->
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;padding:6vh 20px 10vh;background:#faf8f5;color:#1b1917;
+    font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
+  }
+  .wrap{max-width:560px;margin:0 auto}
+  .mark{
+    font:600 11px/1 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase;
+    color:#b1443a;text-align:center;text-decoration:none;display:block;margin-bottom:5vh
+  }
+  h1{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,5vw,40px);
+    line-height:1.15;margin:0 0 14px
+  }
+  .lede{font-size:15px;line-height:1.7;color:rgba(27,25,23,.72);margin:0 0 28px}
+  .slot{
+    padding:16px 18px;border:1px solid #e8e3db;border-radius:5px;background:#fff;
+    margin-bottom:22px
+  }
+  .slot-label{
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(27,25,23,.45);margin-bottom:5px
+  }
+  .slot-value{font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.25}
+  .btn{
+    display:block;width:100%;padding:15px 20px;border:none;border-radius:4px;
+    background:#b1443a;color:#fff;font:600 12px/1 'Inter',sans-serif;letter-spacing:.11em;
+    text-transform:uppercase;text-align:center;text-decoration:none;cursor:pointer
+  }
+  .btn:hover{background:#9c3b32}
+  .btn-secondary{background:#1b1917}
+  .btn-secondary:hover{background:#000}
+  .rule{
+    display:flex;align-items:center;gap:14px;margin:36px 0 26px;
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.4)
+  }
+  .rule:before,.rule:after{content:"";flex:1;height:1px;background:rgba(27,25,23,.12)}
+  fieldset{border:none;margin:0 0 18px;padding:0}
+  legend{font-size:15px;line-height:1.5;margin-bottom:12px;padding:0}
+  .choice{
+    display:flex;align-items:flex-start;gap:10px;padding:11px 13px;margin-bottom:7px;
+    border:1px solid #e8e3db;border-radius:4px;background:#fff;cursor:pointer;
+    font-size:14px;line-height:1.45
+  }
+  .choice:hover{border-color:#c9bfb2}
+  .choice input{margin:2px 0 0;accent-color:#b1443a;flex:0 0 auto}
+  .choice.is-picked{border-color:#b1443a;background:rgba(177,68,58,.04)}
+  textarea{
+    width:100%;min-height:92px;padding:12px 13px;border:1px solid #e8e3db;border-radius:4px;
+    font:400 14px/1.55 'Inter',sans-serif;color:#1b1917;resize:vertical;background:#fff
+  }
+  textarea:focus,.choice input:focus-visible{outline:2px solid #b1443a;outline-offset:2px}
+  .hint{font-size:12px;line-height:1.6;color:rgba(27,25,23,.5);margin:8px 0 18px}
+  .status{margin-top:14px;font-size:13.5px;line-height:1.6;min-height:1.4em}
+  .status.err{color:#b1443a}
+  .status.ok{color:#5a7a52}
+  .done{
+    padding:26px 22px;border:1px solid #d9e2d4;border-radius:5px;background:#f4f7f2;
+    text-align:center
+  }
+  .done h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px;margin:0 0 8px}
+  .done p{font-size:14px;line-height:1.65;color:rgba(27,25,23,.72);margin:0}
+  .foot{
+    margin-top:6vh;text-align:center;font-size:12px;line-height:1.7;color:rgba(27,25,23,.45)
+  }
+  .foot a{color:rgba(27,25,23,.6)}
+  [hidden]{display:none !important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="mark" href="/">Wailea Photo</a>
+
+  <div id="main">
+    <h1>That time is open again.</h1>
+    <p class="lede">
+      Your thirty-minute hold has passed, so the slot has gone back to everyone else.
+      As of right now, though, nobody has taken it.
+    </p>
+
+    <div class="slot" id="slotBox" hidden>
+      <div class="slot-label">You were looking at</div>
+      <div class="slot-value" id="slotValue"></div>
+    </div>
+
+    <a class="btn" id="rebookBtn" href="/pricing.html">Take this time</a>
+
+    <div class="rule">or</div>
+
+    <form id="feedbackForm" novalidate>
+      <fieldset>
+        <legend>If something got in the way, what was it?</legend>
+        <label class="choice"><input type="radio" name="reason" value="date-did-not-work"> The date or time didn&rsquo;t work</label>
+        <label class="choice"><input type="radio" name="reason" value="checking-with-someone"> I&rsquo;m still checking with someone</label>
+        <label class="choice"><input type="radio" name="reason" value="price"> The price</label>
+        <label class="choice"><input type="radio" name="reason" value="changed-plans"> Our plans changed</label>
+        <label class="choice"><input type="radio" name="reason" value="booked-elsewhere"> We booked someone else</label>
+        <label class="choice"><input type="radio" name="reason" value="other"> Something else</label>
+      </fieldset>
+
+      <textarea id="note" maxlength="1000" placeholder="Anything else you&rsquo;d like to tell us (optional)"></textarea>
+      <p class="hint">
+        Honest answers are genuinely useful to us &mdash; especially the unflattering ones.
+        We read every one.
+      </p>
+
+      <button class="btn btn-secondary" type="submit" id="submitBtn">Send</button>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <div class="done" id="done" hidden>
+    <h2>Thank you &mdash; that helps.</h2>
+    <p>
+      We read every one of these. If you change your mind, the calendar is always at
+      <a href="/pricing.html">waileaphoto.com/pricing</a>.
+    </p>
+  </div>
+
+  <p class="foot">
+    Wailea Photo &middot; Maui, Hawaii &middot; <a href="tel:+18082985188">808.298.5188</a><br>
+    Prefer to talk it through? Call or text us any time.
+  </p>
+</div>
+
+<script>
+(function () {
+  var API_BASE = 'https://wailea-booking-engine.onrender.com';
+  var params = new URLSearchParams(window.location.search);
+  var email = params.get('email') || '';
+  var holdId = params.get('hold') || '';
+  var sessionName = params.get('session') || '';
+  var date = params.get('date') || '';
+  var slug = params.get('slug') || '';
+  var startTime = params.get('startTime') || '';
+
+  // Show them the slot they held, in words rather than a raw date string.
+  if (sessionName || date) {
+    var pretty = date;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      var parts = date.split('-');
+      pretty = new Date(Date.UTC(+parts[0], +parts[1] - 1, +parts[2]))
+        .toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' });
+    }
+    document.getElementById('slotValue').textContent =
+      [sessionName, pretty].filter(Boolean).join(' — ');
+    document.getElementById('slotBox').hidden = false;
+  }
+
+  // Deep-link straight back to the slot when we know it; otherwise the pricing page.
+  if (slug && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    var q = new URLSearchParams({ openBooking: slug, date: date });
+    if (/^\d{2}:\d{2}$/.test(startTime)) q.set('startTime', startTime);
+    document.getElementById('rebookBtn').href = '/pricing.html?' + q.toString();
+  }
+
+  // Highlight the picked option — a radio alone is easy to miss on a phone.
+  var choices = [].slice.call(document.querySelectorAll('.choice'));
+  choices.forEach(function (choice) {
+    choice.addEventListener('change', function () {
+      choices.forEach(function (c) { c.classList.remove('is-picked'); });
+      choice.classList.add('is-picked');
+    });
+  });
+
+  var form = document.getElementById('feedbackForm');
+  var status = document.getElementById('status');
+  var submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'status';
+    status.textContent = '';
+
+    var picked = form.querySelector('input[name="reason"]:checked');
+    var note = document.getElementById('note').value.trim();
+    if (!picked && !note) {
+      status.className = 'status err';
+      status.textContent = 'Pick an option or leave a note, and we’ll send it along.';
+      return;
+    }
+    if (!email) {
+      status.className = 'status err';
+      status.textContent = 'This link is missing its email address. Please use the link from your email, or just reply to it instead.';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    fetch(API_BASE + '/api/hold-feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        hold: holdId || undefined,
+        reason: picked ? picked.value : undefined,
+        note: note || undefined,
+        sessionName: sessionName || undefined,
+        date: date || undefined
+      })
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.j && res.j.error ? res.j.error : 'Could not send that.');
+        document.getElementById('main').hidden = true;
+        document.getElementById('done').hidden = false;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch(function (err) {
+        status.className = 'status err';
+        status.textContent = err.message + ' You can always just reply to our email instead.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send';
+      });
+  });
+})();
+</script>
+</body></html>
