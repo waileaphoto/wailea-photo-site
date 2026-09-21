@@ -1007,6 +1007,53 @@
 <div>© <span id="year"></span> WAILEA PHOTO</div>
 </div>
 </footer>
+  <!-- Floating BOOK NOW (Sept 2026). The homepage had no booking CTA above the fold:
+       the only routes to the calendar were "Sessions & Pricing" in the menu and a link
+       at the very bottom of the page, which is a large part of why only ~9% of visitors
+       ever opened the booking widget. Bottom-LEFT deliberately, so it never collides
+       with the Concierge bubble that sits bottom-right on other pages. Appears after one
+       screen of scroll so it doesn't cover the hero. -->
+  <a href="pricing.html" class="floating-book" id="floatingBook" aria-label="Book your Maui photography session">
+    <span class="floating-book-label">Book Now</span>
+    <span class="floating-book-sub">Check open dates</span>
+  </a>
+  <style>
+    .floating-book {
+      position: fixed; left: 24px; bottom: 24px; z-index: 900;
+      display: flex; flex-direction: column; gap: 2px;
+      padding: 13px 22px; border-radius: 4px;
+      background: #b1443a; color: #fff; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(20, 18, 16, .28);
+      opacity: 0; visibility: hidden; transform: translateY(12px);
+      transition: opacity .35s ease, transform .35s ease, visibility .35s;
+    }
+    .floating-book.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .floating-book:hover { background: #9c3b32; }
+    .floating-book-label {
+      font: 600 12px/1 'Inter', sans-serif; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .floating-book-sub { font: 400 11px/1.2 'Inter', sans-serif; opacity: .85; }
+    @media (max-width: 640px) {
+      /* Full width above the fold line on phones, clear of any bottom-right bubble. */
+      .floating-book { left: 16px; right: 16px; bottom: 84px; align-items: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .floating-book { transition: opacity .01s linear; transform: none; }
+    }
+  </style>
+  <script>
+    (function () {
+      var cta = document.getElementById('floatingBook');
+      if (!cta) return;
+      var sync = function () {
+        cta.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.9);
+      };
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync, { passive: true });
+      sync();
+    })();
+  </script>
+
   <script src="assets/site.js?v=20260906d"></script>
   <script src="assets/session-tile-slider.js"></script>
 </body>
