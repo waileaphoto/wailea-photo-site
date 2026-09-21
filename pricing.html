@@ -270,6 +270,12 @@
 <div class="session-card-meta">HALF HOUR &middot; 50+ IMAGES</div>
 <p>Natural light and the true-to-life colors of Maui, all at the start of golden hour. Great for couples or families with children, and good for toddlers — vibrant, bright light before the early bedtime, helping avoid the meltdown risk. Available only in Wailea.</p>
 <p><em>Special Offer—extend your session to include the Last Half of Sunset. Ask about it when you book.</em></p>
+<!-- Promoted out of the booking form (Sept 2026), where it was one checkbox in a
+     list nobody read. It is the most unusual offer on the page. -->
+<div class="leica-offer">
+<span class="leica-offer-tag">No charge</span>
+Shoot on our Leica SL3 or Q3 &mdash; ours to offer, yours to use, in exchange for an honest review afterward.
+</div>
 <div class="session-card-actions">
 <a class="book" href="#" data-book-session="first-half-sunset" data-session-name="First Half of Sunset">Book Now</a>
 </div>
@@ -287,6 +293,10 @@
 <p style="margin: 0; font-size: 13px; line-height: 1.4; color: #222222;">
 For clients who appreciate exceptional detail and beautifully rendered color, <a href="the-apo-difference.html">Leica&reg; APO optics</a> add clarity and refinement to the final light of sunset. Available at checkout.
 </p>
+</div>
+<div class="leica-offer">
+<span class="leica-offer-tag">No charge</span>
+Shoot on our Leica SL3 or Q3 &mdash; ours to offer, yours to use, in exchange for an honest review afterward.
 </div>
 <div class="session-card-actions">
 <a class="book" href="#" data-book-session="last-half-sunset" data-session-name="Last Half of Sunset">Book Now</a>
@@ -355,6 +365,127 @@ For clients who appreciate exceptional detail and beautifully rendered color, <a
 </div>
 
 <p class="pricing-note">Sessions are priced for up to five people, with larger parties warmly welcomed — your exact price appears when you choose your date and time. Availability is shown live in each session's calendar above — please book directly rather than emailing to ask about open dates.</p>
+
+      <section class="market-range" aria-labelledby="marketRangeHeading" data-verified="2026-09-21">
+        <div class="chapter">WHAT A MAUI SESSION COSTS</div>
+        <h3 id="marketRangeHeading">Honestly priced, openly compared.</h3>
+        <p class="market-range-intro">
+          We looked up what fifteen other Maui photographers publish for a short beach
+          portrait session, and wrote down every figure. Move the slider to set a budget
+          and see what it buys across the island.
+        </p>
+
+        <div class="market-tool">
+          <div class="market-slider-row">
+            <label for="budgetSlider" class="market-slider-label">Your budget</label>
+            <output id="budgetOut" class="market-budget" for="budgetSlider">$399</output>
+            <input id="budgetSlider" class="market-slider" type="range"
+                   min="195" max="750" step="5" value="399"
+                   aria-describedby="budgetReadout">
+            <div class="market-slider-ends"><span>$195</span><span>$750</span></div>
+          </div>
+
+          <p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
+
+          <figure class="market-plot-wrap">
+            <div id="marketPlot" class="market-plot"></div>
+            <figcaption class="market-plot-caption">
+              Each dot is one Maui photographer&rsquo;s published session: price across,
+              edited images up. Eleven of the fifteen publish both figures.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="market-points">
+          <div class="market-point">
+            <strong>We sit at the median price.</strong>
+            Our $399 sunset session is within a dollar of the middle of the published
+            Maui market, which runs $195 to $750.
+          </div>
+          <div class="market-point">
+            <strong>No published session lists more images.</strong>
+            Ten of the fifteen say how many edited images you receive, and half of those
+            include 20 or fewer. Ours includes 50+ &mdash; the highest figure published by
+            anyone we found.
+          </div>
+          <div class="market-point">
+            <strong>And no surprises at the end.</strong>
+            Permits, travel within Wailea and all editing are included. Most quoted
+            prices are before a beach permit, travel fee and tax.
+          </div>
+        </div>
+
+        <!-- The table below is the single source of truth: the plot above is generated
+             from it at runtime, so a figure can never disagree between the two, and the
+             underlying data stays readable to crawlers and assistants even with JS off.
+             Businesses are anonymized deliberately. These are neighbours on a small
+             island, and naming them would mean publishing a claim about someone else's
+             pricing that goes stale the moment they change it. -->
+        <details class="market-method">
+          <summary>How we checked this &mdash; all fifteen, with our workings</summary>
+
+          <div class="market-method-body">
+            <p>
+              Between 19 and 21 September 2026 we read the published pricing page of every
+              Maui photographer we could find offering a short beach portrait or family
+              session. A business is included only where it states a flat price on its own
+              website. Wedding, elopement and multi-hour packages are excluded, as is any
+              business that quotes only after an enquiry.
+            </p>
+            <p>
+              Where a business writes &ldquo;35+ images&rdquo; we record 35 &mdash; the only
+              number they publish. We apply that rule to ourselves too: our sessions deliver
+              50+, and we count them as 50.
+            </p>
+
+            <table class="market-table">
+              <caption class="sr-only">
+                Published pricing for fifteen Maui photography sessions, read September 2026
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Photographer</th>
+                  <th scope="col">Published price</th>
+                  <th scope="col">Length</th>
+                  <th scope="col">Edited images</th>
+                </tr>
+              </thead>
+              <tbody id="marketRows">
+                <tr><td>A</td><td data-price="195">$195</td><td>30 min</td><td>RAW files, unedited</td></tr>
+                <tr><td>B</td><td data-price="195">$195</td><td>not stated</td><td>not stated</td></tr>
+                <tr><td>C</td><td data-price="275">$275</td><td>30 min</td><td data-images="15">15</td></tr>
+                <tr><td>D</td><td data-price="325">$325</td><td>30 min</td><td>not stated</td></tr>
+                <tr><td>E</td><td data-price="349">$349</td><td>45 min</td><td data-images="40">40</td></tr>
+                <tr><td>F</td><td data-price="350">$350</td><td>30 min</td><td data-images="10">10</td></tr>
+                <tr><td>G</td><td data-price="395">$395</td><td>30 min</td><td data-images="20">20</td></tr>
+                <tr class="market-row-us">
+                  <td>Wailea Photo</td><td data-price="399">$399</td><td>30 min</td><td data-images="50">50+</td>
+                </tr>
+                <tr><td>H</td><td data-price="400">$400</td><td>30 min</td><td data-images="35">35+</td></tr>
+                <tr><td>I</td><td data-price="425">$425</td><td>60 min</td><td>not stated</td></tr>
+                <tr><td>J</td><td data-price="450">$450</td><td>30 min</td><td data-images="45">45+</td></tr>
+                <tr><td>K</td><td data-price="495">$495</td><td>20 min</td><td data-images="15">15</td></tr>
+                <tr><td>L</td><td data-price="599">$599</td><td>30 min, morning only</td><td data-images="25">25</td></tr>
+                <tr><td>M</td><td data-price="700">$700</td><td>not stated</td><td>not stated</td></tr>
+                <tr><td>N</td><td data-price="700">$700</td><td>30 min</td><td data-images="35">35+</td></tr>
+                <tr><td>O</td><td data-price="750">$750</td><td>20 min</td><td data-images="10">10</td></tr>
+              </tbody>
+            </table>
+
+            <p class="market-caveat">
+              <strong>One caveat we think matters.</strong> Photographers who publish their
+              prices tend to be those competing on value and transparency; those who quote
+              privately skew more expensive. So the true market median is likely higher than
+              the published median of $400, not lower. We say &ldquo;median published
+              price&rdquo; rather than &ldquo;average Maui photographer&rdquo; for that reason.
+              We also make no claim about how many photographers work on Maui in total,
+              because no reliable source for that number exists.
+            </p>
+            <p class="market-verified">Last verified 21 September 2026. We re-check quarterly.</p>
+          </div>
+        </details>
+      </section>
+
 </section>
 
 <section id="reserve" class="reserve short">
@@ -439,4 +570,5 @@ stripePublishableKey: 'pk_live_51N35QgELtvKYuvgHsYqD3hfJAAAE0CB7WgEh8nhYt1AgzceJ
 </script>
 <script src="assets/booking-widget.js?v=20260913-camera-review"></script><script src="assets/concierge-widget.js?v=20260812-greeting-v3"></script><script src="assets/inquiry-widget.js?v=20260720-openinquiry"></script>
 <script src="assets/session-tile-slider.js"></script>
+<script src="assets/market-range.js"></script>
 </body></html>
