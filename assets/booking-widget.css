@@ -141,3 +141,64 @@
 @media (prefers-reduced-motion: reduce) {
   .wbw-day-skeleton { animation: none; }
 }
+
+/* --- conversion changes (Sept 2026) ---------------------------------
+   Scarcity line, per-date conditions, the free 30-minute hold, collapsed
+   add-ons, the policy summary that replaced the scrollable liability box,
+   and the Concierge nudge. Palette follows the existing #b1443a / #171716. */
+
+.wbw-scarcity {
+  font: 500 12px/1.5 'Inter', sans-serif; color: #b1443a;
+  background: #fdf6f5; border: 1px solid #f2dedb; border-radius: 4px;
+  padding: 9px 12px; margin-bottom: 14px;
+}
+.wbw-scarcity:empty { display: none; }
+
+.wbw-conditions { margin-top: 10px; }
+.wbw-conditions:empty { display: none; }
+.wbw-conditions-line { font: 500 12px/1.5 'Inter', sans-serif; color: #555; }
+.wbw-conditions-note { font: 400 12px/1.5 'Inter', sans-serif; color: #7a8b6f; margin-top: 2px; }
+
+.wbw-gallery-promise { color: #555; font-weight: 500; }
+
+.wbw-hold { margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; }
+.wbw-hold-prompt { font: 500 12px/1.4 'Inter', sans-serif; color: #555; margin-bottom: 8px; }
+.wbw-hold-form { display: flex; flex-direction: column; gap: 8px; }
+.wbw-hold-email {
+  width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 11px 12px;
+  font: 400 14px/1.2 'Inter', sans-serif; box-sizing: border-box;
+}
+.wbw-hold-btn { width: 100%; }
+.wbw-hold-status { font: 500 12px/1.5 'Inter', sans-serif; color: #5a7a52; margin-top: 8px; }
+.wbw-hold-status:empty { display: none; }
+.wbw-hold-status.wbw-hold-error { color: #b1443a; }
+
+.wbw-addons-collapsed {
+  border: 1px solid #eee; border-radius: 4px; padding: 10px 12px; margin-bottom: 4px;
+}
+.wbw-addons-collapsed > summary {
+  cursor: pointer; font: 600 11px/1 'Inter', sans-serif; letter-spacing: .08em;
+  text-transform: uppercase; color: #171716; list-style: none;
+}
+.wbw-addons-collapsed > summary::-webkit-details-marker { display: none; }
+.wbw-addons-collapsed > summary::after { content: ' +'; color: #b1443a; }
+.wbw-addons-collapsed[open] > summary::after { content: ' −'; }
+.wbw-addons-collapsed[open] > summary { margin-bottom: 10px; }
+.wbw-addons-hint {
+  text-transform: none; letter-spacing: 0; font-weight: 400; color: #999; margin-left: 6px;
+}
+
+.wbw-policy-summary { font: 400 12px/1.5 'Inter', sans-serif; color: #777; margin-bottom: 8px; }
+.wbw-policy-summary a { color: #171716; text-decoration: underline; }
+
+.wbw-concierge-nudge {
+  margin-top: 16px; padding: 12px 34px 12px 14px; position: relative;
+  background: #f7f6f4; border: 1px solid #e8e5e0; border-radius: 4px;
+  display: flex; flex-direction: column; gap: 10px;
+  font: 400 12px/1.5 'Inter', sans-serif; color: #444;
+}
+.wbw-nudge-dismiss {
+  position: absolute; top: 6px; right: 8px; background: none; border: none;
+  font-size: 18px; line-height: 1; color: #999; cursor: pointer;
+}
+.wbw-nudge-dismiss:hover { color: #171716; }

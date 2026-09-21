@@ -32,17 +32,29 @@
     },
   ];
 
-  const HEAR_ABOUT_OPTIONS = [
-    'AI referral', 'Google Search', 'Google Ad',
-    'Facebook Group', 'Facebook Ad', 'Instagram Post', 'Instagram Ad', 'TikTok', 'Pinterest', 'Other',
-  ];
+  // Full session policies moved to the confirmation email (Sept 2026). They were a
+  // scrollable wall of refund and liability text sitting immediately above the card
+  // field — the worst possible moment to ask someone to read about sand damage. One
+  // plain summary line and a link stays here; the detail follows once they're booked.
+  const POLICY_SUMMARY = 'Reschedule anytime before your session. Full session policies are included in your confirmation email.';
+  const POLICY_URL = 'faq.html#session-policies';
 
-  const POLICY_LINES = [
-    "No refunds for wind/hair, wardrobe issues, squinting, or arriving under the influence — and once your session begins, there are no refunds. You're welcome to reschedule anytime beforehand, or at the initial meeting, if the weather isn't cooperating.",
-    "You're responsible for your own wardrobe, and for any sand or lens damage caused by your party.",
-    "Edit requests beyond color/brightness (skin, blemishes, wardrobe, sky, etc.) are $25/image through a professional editor. We provide only the final edited gallery — RAW images aren't available.",
-    "Staying in Kaanapali, Lahaina, or Kapalua? Plan to leave about 2 hours early.",
-  ];
+  // Shown wherever the balance is mentioned, and on the date step too, so the payment
+  // terms are never a surprise discovered at the card field.
+  const CASH_DISCOUNT_NOTE = 'Enjoy a cash discount and save on credit card fees by paying the remaining balance at the end of the session in Cash or Zelle.';
+
+  const GALLERY_PROMISE = 'Your edited gallery is delivered in under 48 hours — before you fly home.';
+
+  const FREE_HOLD_MINUTES = 30;
+  const EMAIL_RE = /^[^@\s]+@[^@\s.]+\.[^@\s]+$/;
+
+  function fmtTime12Safe(value) {
+    const [hourText, minute = '00'] = String(value || '').split(':');
+    const hour = Number(hourText);
+    if (!Number.isInteger(hour) || hour < 0 || hour > 23) return value || '';
+    const suffix = hour >= 12 ? 'PM' : 'AM';
+    return `${hour % 12 || 12}:${minute} ${suffix}`;
+  }
 
   const DEFAULT_DEPOSIT_CENTS = 4900;
   // Keep in sync with DEPOSIT_CENTS_BY_SLUG in booking-engine/src/routes/bookings.js.
@@ -220,10 +232,37 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       // Shown instead of a dead grid when a month has no openings at all.
       this.calendarEmpty = el('div', { class: 'wbw-calendar-empty', hidden: 'hidden' });
       this.slotsWrap = el('div', { class: 'wbw-slots' });
+      // Sunset time and, where the NWS forecasts that far out, the rain outlook. Past the
+      // horizon it swaps to the free-rescheduling promise rather than inventing a number.
+      this.conditionsNote = el('div', { class: 'wbw-conditions' });
       this.dateError = el('div', { class: 'wbw-error' });
+      this.scarcityNote = el('div', { class: 'wbw-scarcity' });
+      this.holdWrap = this.buildHoldRow();
       const nextBtn = el('button', { class: 'wbw-btn', onclick: () => this.goToDetails() }, ['Continue']);
-      step.append(nav, this.dayGrid, this.calendarStatus, this.calendarEmpty, this.slotsWrap, this.dateError, nextBtn);
+      step.append(
+        this.scarcityNote, nav, this.dayGrid, this.calendarStatus, this.calendarEmpty,
+        this.slotsWrap, this.conditionsNote, this.dateError, nextBtn, this.holdWrap,
+        el('div', { class: 'wbw-quote-note wbw-gallery-promise' }, [GALLERY_PROMISE]),
+        el('div', { class: 'wbw-quote-note' }, [CASH_DISCOUNT_NOTE])
+      );
       return step;
+    }
+
+    // "Hold this time — free, for 30 minutes." No card, no form: just an email. For the
+    // person who wants to check with their spouse and would otherwise close the tab.
+    buildHoldRow() {
+      this.holdEmailInput = el('input', { type: 'email', placeholder: 'you@example.com', class: 'wbw-hold-email' });
+      this.holdBtn = el('button', {
+        class: 'wbw-btn wbw-btn-secondary wbw-hold-btn',
+        onclick: () => this.placeHold(),
+      }, [`Hold this time free for ${FREE_HOLD_MINUTES} minutes`]);
+      this.holdStatus = el('div', { class: 'wbw-hold-status' });
+      this.holdForm = el('div', { class: 'wbw-hold-form' }, [
+        el('div', { class: 'wbw-hold-prompt' }, ['Need to check with someone first?']),
+        this.holdEmailInput,
+        this.holdBtn,
+      ]);
+      return el('div', { class: 'wbw-hold' }, [this.holdForm, this.holdStatus]);
     }
 
     buildDetailsStep() {
@@ -257,25 +296,28 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       });
 
       this.nameInput = el('input', { type: 'text', placeholder: 'Full name' });
-      this.emailInput = el('input', { type: 'email', placeholder: 'you@example.com' });
+      this.emailInput = el('input', {
+        type: 'email',
+        placeholder: 'you@example.com',
+        // Capture the lead the moment we have a usable email, before payment, so someone
+        // who abandons from here is recoverable instead of invisible.
+        onblur: () => this.captureLead(),
+      });
       this.phoneInput = el('input', { type: 'tel', placeholder: '(808) 555-1234' });
       // Defaults checked — this is a day-of logistics reminder (location, map link), not
       // marketing, but it's still opt-in and easy to uncheck for anyone who'd rather not.
       this.smsOptInCheckbox = el('input', { type: 'checkbox', checked: true });
 
-      this.hearAboutInput = el('select', {}, [
-        el('option', { value: '' }, ['Select one']),
-        ...HEAR_ABOUT_OPTIONS.map((o) => el('option', { value: o }, [o])),
-      ]);
       this.celebratingInput = el('input', { type: 'text', placeholder: 'Anniversary, Honeymoon, Maternity, Graduation… (optional)' });
-      this.specialRequestsInput = el('textarea', {
-        rows: '3',
-        maxlength: '2000',
-        placeholder: 'Anything you would like us to know before your session (optional)',
-      });
       this.floristContactCheckbox = el('input', { type: 'checkbox' });
 
-      this.policyBox = el('div', { class: 'wbw-policy-box' }, POLICY_LINES.map((t) => el('p', {}, [t])));
+      // One plain line plus a link, in place of the scrollable liability box that used to
+      // sit directly above the card field.
+      this.policyBox = el('div', { class: 'wbw-policy-summary' }, [
+        POLICY_SUMMARY,
+        ' ',
+        el('a', { href: POLICY_URL, target: '_blank', rel: 'noopener' }, ['Read them now']),
+      ]);
       this.policyCheckbox = el('input', { type: 'checkbox' });
       this.textConfirmCheckbox = el('input', { type: 'checkbox' });
       this.textConfirmRow = el('label', { class: 'wbw-policy-agree' }, [
@@ -291,24 +333,29 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.quoteBox = el('div', { class: 'wbw-quote' });
       this.detailsError = el('div', { class: 'wbw-error' });
 
+      // Add-ons collapse behind a single line. The $199 double-sunset and the free Leica
+      // upgrade are real money and stay available at the buying moment — they just no
+      // longer cost five rows of reading before someone can reach the card field.
+      this.addonsDetails = el('details', { class: 'wbw-addons-collapsed' }, [
+        el('summary', {}, ['Add an upgrade? ', el('span', { class: 'wbw-addons-hint' }, ['optional'])]),
+        addonsWrap,
+      ]);
+
       step.append(
-        partyField,
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['Add-ons']), addonsWrap]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Name']), this.nameInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Email']), this.emailInput]),
         el('div', { class: 'wbw-field' }, [el('label', {}, ['Phone']), this.phoneInput]),
-        el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' Text me a reminder with directions a few hours before my session.']),
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['How did you hear about us?']), this.hearAboutInput]),
+        partyField,
         el('div', { class: 'wbw-field' }, [el('label', {}, ['What are you celebrating?']), this.celebratingInput]),
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['NOTES / SPECIAL REQUESTS']), this.specialRequestsInput]),
         el('label', { class: 'wbw-policy-agree' }, [
           this.floristContactCheckbox,
           ' Have Mya our florist contact you for flowers? (48 hr min lead time required)',
         ]),
+        this.addonsDetails,
+        el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' Text me a reminder with directions a few hours before my session.']),
         el('div', { class: 'wbw-field' }, [
-          el('label', {}, ['Session Policies']),
           this.policyBox,
-          el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' I have read and agree to the session policies above.']),
+          el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' I agree to the session policies.']),
           this.textConfirmRow,
           this.sunrisePunctualityRow,
         ]),
@@ -376,8 +423,16 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.sunrisePunctualityRow.hidden = slug !== 'sunrise-max';
       this.sunrisePunctualityCheckbox.checked = false;
       this.textConfirmCheckbox.checked = false;
-      this.specialRequestsInput.value = '';
       this.floristContactCheckbox.checked = false;
+      this.celebratingInput.value = '';
+      this.policyCheckbox.checked = false;
+      if (this.addonsDetails) this.addonsDetails.open = false;
+      this.holdForm.hidden = false;
+      this.holdStatus.textContent = '';
+      this.holdStatus.classList.remove('wbw-hold-error');
+      this.scarcityNote.innerHTML = '';
+      this.conditionsNote.innerHTML = '';
+      clearInterval(this.freeHoldTimer);
       this.titleEl.textContent = name;
       this.showStep('date');
       this.dateError.textContent = '';
@@ -386,12 +441,191 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         window.waileaTrack('booking_start', { booking_system: 'wailea', session_type: slug });
       }
       this.loadMonth();
+      this.armConciergeNudge();
     }
 
     close() {
       this.trackAbandoned('closed_widget');
       clearInterval(this.holdTimer);
+      clearInterval(this.freeHoldTimer);
+      clearTimeout(this.conciergeTimer);
       if (this.overlay) this.overlay.hidden = true;
+    }
+
+    // --- free 30-minute slot hold -------------------------------------
+    // Distinct from startHoldCountdown() above, which drives the 15-minute PAYMENT hold
+    // once a booking row and Stripe intent already exist. This one sits earlier in the
+    // funnel: no card, no form, just an email holding the slot while someone decides.
+
+    async placeHold() {
+      this.holdStatus.textContent = '';
+      this.holdStatus.classList.remove('wbw-hold-error');
+      if (!this.state.selectedDate || !this.state.selectedSlot) {
+        this.holdStatus.textContent = 'Pick a date and time above first, then we can hold it.';
+        this.holdStatus.classList.add('wbw-hold-error');
+        return;
+      }
+      const email = String(this.holdEmailInput.value || '').trim();
+      if (!EMAIL_RE.test(email)) {
+        this.holdStatus.textContent = 'Enter a valid email and we’ll hold this time for you.';
+        this.holdStatus.classList.add('wbw-hold-error');
+        return;
+      }
+      const original = this.holdBtn.textContent;
+      this.holdBtn.disabled = true;
+      this.holdBtn.textContent = 'Holding…';
+      try {
+        const result = await api('POST', '/api/holds', {
+          sessionType: this.state.slug,
+          date: this.state.selectedDate,
+          startTime: this.state.selectedSlot.startTime,
+          email,
+          attribution: captureAttribution() || undefined,
+        });
+        this.state.freeHold = result.hold;
+        this.state.holdEmail = email;
+        this.holdForm.hidden = true;
+        this.startFreeHoldCountdown();
+      } catch (err) {
+        this.holdStatus.textContent = err.message;
+        this.holdStatus.classList.add('wbw-hold-error');
+      } finally {
+        this.holdBtn.disabled = false;
+        this.holdBtn.textContent = original;
+      }
+    }
+
+    startFreeHoldCountdown() {
+      clearInterval(this.freeHoldTimer);
+      const render = () => {
+        const hold = this.state?.freeHold;
+        if (!hold) return;
+        const msLeft = new Date(hold.expiresAt).getTime() - Date.now();
+        if (msLeft <= 0) {
+          clearInterval(this.freeHoldTimer);
+          this.state.freeHold = null;
+          this.holdForm.hidden = false;
+          this.holdStatus.textContent = 'Your hold has expired — the time is open to everyone again.';
+          this.loadMonth();
+          return;
+        }
+        const mins = Math.floor(msLeft / 60000);
+        const secs = Math.floor((msLeft % 60000) / 1000);
+        this.holdStatus.textContent = `Held for you — ${mins}:${String(secs).padStart(2, '0')} left. No card needed yet.`;
+      };
+      render();
+      this.freeHoldTimer = setInterval(render, 1000);
+    }
+
+    // Fires on email blur. Entirely best-effort: losing a lead record is a far smaller
+    // problem than blocking a booking, so every failure here is swallowed.
+    async captureLead() {
+      const email = String(this.emailInput.value || '').trim();
+      if (!EMAIL_RE.test(email)) return;
+      if (this.state?.leadCapturedFor === email) return;
+      try {
+        await api('POST', '/api/leads', {
+          sessionType: this.state.slug,
+          date: this.state.selectedDate,
+          startTime: this.state.selectedSlot?.startTime,
+          email,
+          name: this.nameInput.value || undefined,
+          phone: this.phoneInput.value || undefined,
+          partySize: Number(this.partySizeInput.value) || undefined,
+          quotedTotalCents: this.state.lastQuote?.totalCents || undefined,
+          attribution: captureAttribution() || undefined,
+        });
+        this.state.leadCapturedFor = email;
+      } catch (err) { /* deliberately silent */ }
+    }
+
+    // Scarcity drawn from real inventory. The "one session per evening" line only appears
+    // when capacity genuinely is one, and the count of open evenings is whatever the
+    // calendar actually shows — if it says three, there are three.
+    renderScarcity(scarcity) {
+      if (!this.scarcityNote) return;
+      this.scarcityNote.innerHTML = '';
+      if (!scarcity) return;
+      const parts = [];
+      if (Number(scarcity.sessionsPerEvening) === 1) parts.push('We photograph one session per evening.');
+      const open = Number(scarcity.openDaysThisMonth);
+      if (Number.isFinite(open) && open > 0) {
+        const monthName = this.state.month.toLocaleDateString('en-US', { month: 'long' });
+        parts.push(`${open} ${open === 1 ? 'evening' : 'evenings'} still open in ${monthName}.`);
+      }
+      if (parts.length) this.scarcityNote.appendChild(el('span', {}, [parts.join(' ')]));
+    }
+
+    async loadConditions(month) {
+      this.state.conditions = null;
+      this.renderConditionsForSelectedDate();
+      try {
+        const data = await api('GET', `/api/date-conditions?month=${month}`);
+        if (!this.state || String(data.month) !== month) return;
+        this.state.conditions = data;
+        this.renderConditionsForSelectedDate();
+      } catch (err) {
+        // A forecast failure must never disturb the booking flow.
+      }
+    }
+
+    renderConditionsForSelectedDate() {
+      if (!this.conditionsNote) return;
+      this.conditionsNote.innerHTML = '';
+      const date = this.state?.selectedDate;
+      const data = this.state?.conditions;
+      if (!date || !data) return;
+      const day = (data.days || []).find((d) => d.date === date);
+      if (!day) return;
+      const pretty = new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const head = `${pretty} — sunset ${fmtTime12Safe(day.sunset)}`;
+      if (day.beyondForecast || !day.forecast) {
+        this.conditionsNote.append(
+          el('div', { class: 'wbw-conditions-line' }, [head]),
+          el('div', { class: 'wbw-conditions-note' }, [data.beyondForecastNote])
+        );
+        return;
+      }
+      const bits = [head];
+      if (Number.isFinite(day.forecast.rainChance)) bits.push(`${day.forecast.rainChance}% chance of rain`);
+      if (day.forecast.shortForecast) bits.push(String(day.forecast.shortForecast).toLowerCase());
+      this.conditionsNote.appendChild(el('div', { class: 'wbw-conditions-line' }, [bits.join(' · ')]));
+    }
+
+    // If someone has the widget open a while without getting anywhere, offer the Concierge
+    // rather than letting them quietly leave.
+    armConciergeNudge() {
+      clearTimeout(this.conciergeTimer);
+      if (this.state) this.state.conciergeNudged = false;
+      this.conciergeTimer = setTimeout(() => {
+        if (!this.state || this.state.conciergeNudged) return;
+        if (this.state.selectedSlot) return; // mid-decision isn't stuck
+        if (this.overlay?.hidden) return;
+        this.state.conciergeNudged = true;
+        this.showConciergeNudge();
+      }, 60000);
+    }
+
+    showConciergeNudge() {
+      if (this.conciergeNudgeEl) return;
+      const openConcierge = () => {
+        this.dismissConciergeNudge();
+        if (typeof window.WaileaConcierge?.open === 'function') return window.WaileaConcierge.open();
+        if (typeof window.openConcierge === 'function') return window.openConcierge();
+        const launcher = document.querySelector('[data-concierge-open], .concierge-launcher, #concierge-launcher, .concierge-fab');
+        if (launcher) launcher.click();
+      };
+      this.conciergeNudgeEl = el('div', { class: 'wbw-concierge-nudge' }, [
+        el('span', {}, ['Questions before you pick a date? We can check the weather and open times.']),
+        el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: openConcierge }, ['Ask the Concierge']),
+        el('button', { class: 'wbw-nudge-dismiss', 'aria-label': 'Dismiss', onclick: () => this.dismissConciergeNudge() }, ['×']),
+      ]);
+      this.stepDate.appendChild(this.conciergeNudgeEl);
+    }
+
+    dismissConciergeNudge() {
+      this.conciergeNudgeEl?.remove();
+      this.conciergeNudgeEl = null;
     }
 
     startHoldCountdown(expiresAt, resumed) {
@@ -491,6 +725,11 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.dateError.textContent = data.message;
         return;
       }
+
+      this.renderScarcity(data.scarcity);
+      // Conditions load alongside the grid rather than blocking it — the calendar should
+      // never wait on a National Weather Service round trip.
+      this.loadConditions(`${y}-${m}`);
 
       const firstDay = new Date(y, this.state.month.getMonth(), 1).getDay();
       for (let i = 0; i < firstDay; i++) this.dayGrid.appendChild(el('div', { class: 'wbw-day-empty' }));
@@ -595,6 +834,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     selectDate(day, e, preferredStartTime = null) {
       this.state.selectedDate = day.date;
       this.state.selectedSlot = null;
+      this.renderConditionsForSelectedDate();
       Array.from(this.dayGrid.children).forEach((c) => c.classList.remove('wbw-selected'));
       e?.target?.classList.add('wbw-selected');
       this.slotsWrap.innerHTML = '';
@@ -616,6 +856,10 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       if (!this.state.selectedDate || !this.state.selectedSlot) {
         this.dateError.textContent = 'Please pick a date and time first.';
         return;
+      }
+      // Carry a hold email forward so nobody types it twice.
+      if (this.holdEmailInput?.value && !this.emailInput.value) {
+        this.emailInput.value = this.holdEmailInput.value;
       }
       this.showStep('details');
       this.refreshQuote();
@@ -650,7 +894,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         el('div', { class: 'wbw-due-today-label' }, ['Due Today:']),
         el('div', { class: 'wbw-due-today-amount' }, [fmtDollars(depositCentsFor(this.state.slug))]),
       ]));
-      this.quoteBox.appendChild(el('div', { class: 'wbw-quote-note' }, ['Balance due at end of session in Cash or Zelle only. If using Credit Card or Venmo a $30 fee will be added.']));
+      this.quoteBox.appendChild(el('div', { class: 'wbw-quote-note' }, [CASH_DISCOUNT_NOTE]));
 
       function row(label, value, isTotal) {
         return el('div', { class: `wbw-quote-row${isTotal ? ' wbw-total' : ''}` }, [
@@ -666,10 +910,6 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.detailsError.textContent = 'Name and email are required.';
         return;
       
-      }
-      if (!this.hearAboutInput.value) {
-        this.detailsError.textContent = 'Please let us know how you heard about us.';
-        return;
       }
       if (!this.policyCheckbox.checked) {
         this.detailsError.textContent = 'Please agree to the session policies to continue.';
@@ -698,9 +938,11 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
             agreedToPolicies: this.policyCheckbox.checked,
             acknowledgedTextConfirmation: this.textConfirmCheckbox.checked,
             acknowledgedSunrisePunctuality: this.state.slug === 'sunrise-max' ? this.sunrisePunctualityCheckbox.checked : undefined,
-            hearAboutUs: this.hearAboutInput.value,
+            // "How did you hear about us?" and the free-text notes box both left this form
+            // (Sept 2026). The first was a required field blocking Continue that UTM
+            // capture already answers more reliably; the second is now asked in the
+            // confirmation email, where people answer it far more willingly.
             celebrating: this.celebratingInput.value || undefined,
-            specialRequests: this.specialRequestsInput.value || undefined,
             floristContactRequested: this.floristContactCheckbox.checked,
           },
           // First-touch traffic source for this booking. The API sanitises and stores it
