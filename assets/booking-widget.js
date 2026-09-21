@@ -56,6 +56,19 @@
     return `${hour % 12 || 12}:${minute} ${suffix}`;
   }
 
+  // Wind, worded the way someone standing on the beach would understand it. The API
+  // flags whether the direction is genuinely in the trade-wind quadrant, so the label
+  // is only used when it's true — a southerly on a still, muggy day is not a trade wind,
+  // and naming it one would mislead somebody deciding what to wear or how to do their
+  // hair. Below 8 mph nothing is said at all: "3 mph trade winds" is noise, not signal.
+  function describeWind(forecast) {
+    const mph = Number(forecast && forecast.windMph);
+    if (!Number.isFinite(mph) || mph < 8) return null;
+    if (forecast.isTradeWind) return `${mph} mph trade winds`;
+    const dir = forecast.windDirection ? ` from the ${forecast.windDirection}` : '';
+    return `${mph} mph wind${dir}`;
+  }
+
   const DEFAULT_DEPOSIT_CENTS = 4900;
   // Keep in sync with DEPOSIT_CENTS_BY_SLUG in booking-engine/src/routes/bookings.js.
 const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini-sunset': 2000, 'road-to-hana': 2000 };  
@@ -578,7 +591,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       const day = (data.days || []).find((d) => d.date === date);
       if (!day) return;
       const pretty = new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      const head = `${pretty} — sunset ${fmtTime12Safe(day.sunset)}`;
+      const head = `${pretty} — official sunset is ${fmtTime12Safe(day.sunset)}`;
       if (day.beyondForecast || !day.forecast) {
         this.conditionsNote.append(
           el('div', { class: 'wbw-conditions-line' }, [head]),
@@ -588,6 +601,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       }
       const bits = [head];
       if (Number.isFinite(day.forecast.rainChance)) bits.push(`${day.forecast.rainChance}% chance of rain`);
+      const wind = describeWind(day.forecast);
+      if (wind) bits.push(wind);
       if (day.forecast.shortForecast) bits.push(String(day.forecast.shortForecast).toLowerCase());
       this.conditionsNote.appendChild(el('div', { class: 'wbw-conditions-line' }, [bits.join(' · ')]));
     }
