@@ -10,9 +10,33 @@
 (function () {
   const CONFIG = window.WBW_CONFIG || {};
   const API_BASE = CONFIG.apiBase || '';
+
+  // Translation — see the note in booking-widget.js. T() returns English on English pages.
+  const I18N = window.WP_I18N || {};
+  const LANG = I18N.lang || 'en';
+  function T(s, vars) {
+    let out = (I18N.s && I18N.s[s]) || s;
+    if (vars) out = out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m));
+    return out;
+  }
+  // Booking links from the concierge point at the English pricing page; keep a visitor
+  // on a translated page in their language.
+  function localizeUrl(url) {
+    if (LANG === 'en' || !url) return url;
+    try {
+      const u = new URL(url, window.location.href);
+      if (u.hostname !== window.location.hostname && u.hostname !== 'waileaphoto.com') return url;
+      if (u.pathname.startsWith('/assets/') || u.pathname.startsWith(`/${LANG}/`)) return url;
+      u.pathname = `/${LANG}${u.pathname === '/' ? '/' : u.pathname}`;
+      return u.hostname === window.location.hostname ? u.pathname + u.search + u.hash : u.toString();
+    } catch (e) { return url; }
+  }
+
   const LS_KEY = 'wpc_visitor_key';
   const LS_CONVO = 'wpc_conversation_id';
-  const LS_LOG = 'wpc_log_v1';
+  // Each language keeps its own transcript, so a French page never opens on an English
+  // greeting cached from an earlier visit (and vice versa).
+  const LS_LOG = LANG === 'en' ? 'wpc_log_v1' : `wpc_log_v1_${LANG}`;
   const LS_COPY = 'wpc_copy_version';
   // Bump when greeting/fallback copy changes: stale cached transcripts are
   // cleared so returning devices see the current opening rather than a replay.
@@ -58,29 +82,29 @@
       this.buildDom();
       this.renderLog();
       if (!this.log.length) {
-        this.pushMessage('assistant', "Aloha and welcome to Wailea Photo! I'm Claude, the AI Concierge — the Balter family of photographers are out on the beach or hard at work editing, so I'm here to answer all your questions. What brings you to Maui, and how can I help guide you to the best experience?");
+        this.pushMessage('assistant', T("Aloha and welcome to Wailea Photo! I'm Claude, the AI Concierge — the Balter family of photographers are out on the beach or hard at work editing, so I'm here to answer all your questions. What brings you to Maui, and how can I help guide you to the best experience?"));
       }
     }
 
     buildDom() {
-      this.launcher = el('button', { class: 'wpc-launcher', type: 'button', 'aria-label': 'Open the concierge chat', onclick: () => this.open(undefined, 'launcher') }, [
-        el('span', { class: 'wpc-dot' }), 'Concierge',
+      this.launcher = el('button', { class: 'wpc-launcher', type: 'button', 'aria-label': T('Open the concierge chat'), onclick: () => this.open(undefined, 'launcher') }, [
+        el('span', { class: 'wpc-dot' }), T('Concierge'),
       ]);
 
       this.logEl = el('div', { class: 'wpc-log', role: 'log', 'aria-live': 'polite' });
-      this.inputEl = el('textarea', { rows: '1', placeholder: 'Ask about dates, sessions, pricing…', 'aria-label': 'Message the concierge', onkeydown: (e) => {
+      this.inputEl = el('textarea', { rows: '1', placeholder: T('Ask about dates, sessions, pricing…'), 'aria-label': T('Message the concierge'), onkeydown: (e) => {
         if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.send(); }
       } });
-      this.sendBtn = el('button', { class: 'wpc-send', type: 'button', onclick: () => this.send() }, ['Send']);
+      this.sendBtn = el('button', { class: 'wpc-send', type: 'button', onclick: () => this.send() }, [T('Send')]);
 
-      this.panel = el('div', { class: 'wpc-panel', role: 'dialog', 'aria-label': 'Wailea Photo concierge chat' }, [
+      this.panel = el('div', { class: 'wpc-panel', role: 'dialog', 'aria-label': T('Wailea Photo concierge chat') }, [
         el('div', { class: 'wpc-head' }, [
           el('div', {}, [
             el('p', { class: 'wpc-head-eyebrow' }, ['Wailea Photo']),
-            el('h3', {}, ['The Concierge']),
-            el('p', { class: 'wpc-powered' }, ['Powered by Claude']),
+            el('h3', {}, [T('The Concierge')]),
+            el('p', { class: 'wpc-powered' }, [T('Powered by Claude')]),
           ]),
-          el('button', { class: 'wpc-close', type: 'button', 'aria-label': 'Close chat', onclick: () => this.close() }, ['\u00d7']),
+          el('button', { class: 'wpc-close', type: 'button', 'aria-label': T('Close chat'), onclick: () => this.close() }, ['\u00d7']),
         ]),
         this.logEl,
         el('div', { class: 'wpc-input' }, [this.inputEl, this.sendBtn]),
@@ -124,7 +148,7 @@
     renderMessage(m) {
       this.logEl.appendChild(el('div', { class: `wpc-msg wpc-msg-${m.role}` }, [m.text]));
       (m.links || []).forEach((url) => {
-        this.logEl.appendChild(el('a', { class: 'wpc-book', href: url }, ['Book this session']));
+        this.logEl.appendChild(el('a', { class: 'wpc-book', href: localizeUrl(url) }, [T('Book this session')]));
       });
     }
 
@@ -132,7 +156,7 @@
 
     setTyping(on) {
       if (on) {
-        this.typingEl = el('div', { class: 'wpc-typing', 'aria-label': 'Concierge is typing' }, [el('span'), el('span'), el('span')]);
+        this.typingEl = el('div', { class: 'wpc-typing', 'aria-label': T('Concierge is typing') }, [el('span'), el('span'), el('span')]);
         this.logEl.appendChild(this.typingEl);
         this.scrollToEnd();
       } else if (this.typingEl) {
@@ -157,16 +181,18 @@
             message: text,
             visitorKey: visitorKey(),
             conversationId: read(LS_CONVO) ? Number(read(LS_CONVO)) : undefined,
+            // The page's language, so replies can match it.
+            language: LANG,
           }),
         });
         const json = await res.json();
         this.setTyping(false);
         if (res.status === 503) {
-          this.pushMessage('assistant', `Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. I'm stepping away for just a moment — meanwhile you can book directly on this page, with your price shown as you choose a date and time, or write the family at ${OWNER_EMAIL} and they'll reply personally.`);
+          this.pushMessage('assistant', T("Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. I'm stepping away for just a moment — meanwhile you can book directly on this page, with your price shown as you choose a date and time, or write the family at {email} and they'll reply personally.", { email: OWNER_EMAIL }));
           return;
         }
         if (!res.ok) {
-          this.pushMessage('assistant', json.error || `That didn't go through. Try once more, or email ${OWNER_EMAIL}.`);
+          this.pushMessage('assistant', json.error || T("That didn't go through. Try once more, or email {email}.", { email: OWNER_EMAIL }));
           return;
         }
         store(LS_CONVO, String(json.conversationId));
@@ -174,7 +200,7 @@
         if (typeof window.waileaTrack === 'function') window.waileaTrack('concierge_reply', { booking_system: 'wailea', links: (json.bookingLinks || []).length });
       } catch {
         this.setTyping(false);
-        this.pushMessage('assistant', `The connection dropped before I could answer. Try again, or email ${OWNER_EMAIL}.`);
+        this.pushMessage('assistant', T('The connection dropped before I could answer. Try again, or email {email}.', { email: OWNER_EMAIL }));
       } finally {
         this.pending = false;
         this.sendBtn.disabled = false;
@@ -195,8 +221,8 @@
       const card = pill.closest('.session-card, .session-card-image') || pill.parentElement;
       const named = card && card.querySelector('[data-session-name]');
       const heading = pill.closest('.session-card') && pill.closest('.session-card').querySelector('h4');
-      const sessionName = (named && named.getAttribute('data-session-name')) || (heading && heading.textContent.trim()) || 'this session';
-      concierge.open(`What does the ${sessionName} session cost?`, 'price_pill');
+      const sessionName = (named && named.getAttribute('data-session-name')) || (heading && heading.textContent.trim()) || T('this session');
+      concierge.open(T('What does the {session} session cost?', { session: sessionName }), 'price_pill');
     });
   });
 })();
