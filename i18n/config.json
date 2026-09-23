@@ -9,6 +9,7 @@
       "native": "Français",
       "switch_label": "Langue",
       "og_locale": "fr_FR",
+      "locale": "fr-FR",
       "register": "International French. Address the reader as \"vous\". French typography: non-breaking space before : ; ? ! and inside « guillemets »."
     },
     "es": {
@@ -16,6 +17,7 @@
       "native": "Español",
       "switch_label": "Idioma",
       "og_locale": "es_MX",
+      "locale": "es-MX",
       "register": "Neutral Latin American Spanish that also reads naturally in Spain. Address the reader as \"usted\", warmly. Avoid regionalisms."
     }
   },
