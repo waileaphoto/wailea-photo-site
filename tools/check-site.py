@@ -25,7 +25,9 @@ SITE = 'https://waileaphoto.com'
 
 # footer.html is a fragment, not a page. atlas-template.html is the source
 # template for generated Atlas pages and is served noindex on purpose.
-NOT_PAGES = {'footer.html', 'atlas-template.html'}
+# hold-followup.html is the feedback form linked only from the hold follow-up email;
+# it is noindex,nofollow by design (and skipped by tools/i18n/build.py for the same reason).
+NOT_PAGES = {'footer.html', 'atlas-template.html', 'hold-followup.html'}
 
 SM_NS = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
 
