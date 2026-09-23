@@ -1,0 +1,53 @@
+name: Translate site
+
+# Rebuilds /fr/ and /es/ from the English pages whenever an English page changes.
+# Only new or edited strings are sent for translation; everything else comes from
+# i18n/cache/. The result is committed back to main, and Netlify deploys it.
+#
+# Needs one repo secret: ANTHROPIC_API_KEY (Settings > Secrets and variables > Actions).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'i18n/config.json'
+      - 'tools/i18n/**'
+      - '.github/workflows/translate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: translate-site
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Translate and render
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 tools/i18n/build.py
+      - name: Commit translations
+        run: |
+          git config user.name "wailea-translate-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A fr es i18n sitemap-i18n.xml robots.txt *.html
+          if git diff --cached --quiet; then
+            echo "No translation changes."
+            exit 0
+          fi
+          git commit -m "i18n: rebuild French and Spanish pages"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1
