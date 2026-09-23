@@ -1,0 +1,46 @@
+{
+  "model": "claude-sonnet-5",
+  "default": "en",
+  "order": ["en", "fr", "es"],
+  "languages": {
+    "en": {"name": "English", "native": "English", "switch_label": "Language", "og_locale": "en_US"},
+    "fr": {
+      "name": "French",
+      "native": "Français",
+      "switch_label": "Langue",
+      "og_locale": "fr_FR",
+      "register": "International French. Address the reader as \"vous\". French typography: non-breaking space before : ; ? ! and inside « guillemets »."
+    },
+    "es": {
+      "name": "Spanish",
+      "native": "Español",
+      "switch_label": "Idioma",
+      "og_locale": "es_MX",
+      "register": "Neutral Latin American Spanish that also reads naturally in Spain. Address the reader as \"usted\", warmly. Avoid regionalisms."
+    }
+  },
+  "glossary": {
+    "keep_in_english": [
+      "Wailea Photo", "Maui Mini Session", "Light & Bright", "The Sixty-Four", "Kodachrome",
+      "Leica", "APO", "APO-Summicron", "Kodak", "Portra", "Monochrom", "Zelle", "Venmo",
+      "Laurence", "Jude", "Max", "Solomon", "Balter", "Mya", "Āpuakea's Flowers",
+      "Four Seasons", "Grand Wailea", "Andaz", "Fairmont Kea Lani", "Marriott",
+      "Wailea", "Kīhei", "Kihei", "Mākena", "Makena", "Keawakapu", "Mokapu", "Maluaka", "Kanahā", "Kanaha",
+      "Haleakalā", "Haleakala", "Molokini", "Hāna", "Hana", "Maui"
+    ],
+    "fixed": {
+      "First Half of Sunset": {"fr": "Première moitié du coucher de soleil", "es": "Primera mitad del atardecer"},
+      "Last Half of Sunset": {"fr": "Seconde moitié du coucher de soleil", "es": "Segunda mitad del atardecer"},
+      "Sunrise with Max": {"fr": "Lever du soleil avec Max", "es": "Amanecer con Max"},
+      "Turquoise + Water Experience": {"fr": "Expérience Turquoise + Eau", "es": "Experiencia Turquesa + Agua"},
+      "A Poetic Wedding in Maui": {"fr": "Un mariage poétique à Maui", "es": "Una boda poética en Maui"},
+      "Family Legacy": {"fr": "Héritage familial", "es": "Legado familiar"},
+      "The Maui Atlas": {"fr": "L'Atlas de Maui", "es": "El Atlas de Maui"},
+      "AI Concierge": {"fr": "Concierge IA", "es": "Conserje con IA"},
+      "Sessions & Pricing": {"fr": "Séances et tarifs", "es": "Sesiones y precios"},
+      "Book Now": {"fr": "Réserver", "es": "Reservar"},
+      "session": {"fr": "séance", "es": "sesión"},
+      "golden hour": {"fr": "heure dorée", "es": "hora dorada"}
+    }
+  }
+}
