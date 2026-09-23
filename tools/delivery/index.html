@@ -87,16 +87,6 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
       </div>
       <div class="row2">
         <div class="field">
-          <label for="count">Photo count</label>
-          <input id="count" type="text" autocomplete="off">
-        </div>
-        <div class="field">
-          <label for="session">Session (optional)</label>
-          <input id="session" type="text" autocomplete="off">
-        </div>
-      </div>
-      <div class="row2">
-        <div class="field">
           <label for="sender">Signed by</label>
           <input id="sender" type="text" autocomplete="off">
         </div>
@@ -146,7 +136,7 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
 (function(){
   var $=function(id){return document.getElementById(id);};
   var els={};
-  ['name','email','link','count','session','sender','replyto','review',
+  ['name','email','link','sender','replyto','review',
    'pv','subjOut','status','send','test','reset','log'].forEach(function(k){els[k]=$(k);});
 
   var K={send:'wp-sender',reply:'wp-replyto'};
@@ -162,10 +152,7 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
   function gallery(){return els.link.value.trim();}
 
   function openingLine(){
-    var c=els.count.value.trim(),s=els.session.value.trim();
-    var noun=s?('Your '+s+' gallery'):'Your gallery';
-    return c?(noun+' is ready. All '+c+' images are here, and every one is yours to download at full resolution, free.')
-            :(noun+' is ready, and every image is yours to download at full resolution, free.');
+    return 'Your gallery is ready, and every image is yours to download at full resolution, free.';
   }
 
   var REVIEWS=[
@@ -236,7 +223,7 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
     }catch(e){}
   }
 
-  ['name','email','link','count','session','sender','replyto'].forEach(function(k){
+  ['name','email','link','sender','replyto'].forEach(function(k){
     els[k].addEventListener('input',render);
   });
   els.review.addEventListener('change',render);
@@ -284,7 +271,7 @@ footer{border-top:1px solid var(--line);padding-top:1.25rem;font-size:.82rem;col
   });
 
   els.reset.addEventListener('click',function(){
-    ['name','email','link','count','session'].forEach(function(k){els[k].value='';});
+    ['name','email','link'].forEach(function(k){els[k].value='';});
     say(''); render(); els.name.focus();
   });
 
