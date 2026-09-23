@@ -9,6 +9,11 @@
 const CONFIG = window.WBW_CONFIG || {};
 const API_BASE = CONFIG.apiBase || 'http://localhost:4242';
 
+// Translation — see the note in booking-widget.js. T() returns English on English pages.
+const I18N = window.WP_I18N || {};
+const LANG = I18N.lang || 'en';
+function T(s) { return (I18N.s && I18N.s[s]) || s; }
+
 function track(eventName, parameters) {
 if (typeof window.waileaTrack === 'function') window.waileaTrack(eventName, parameters);
 }
@@ -44,36 +49,36 @@ this.overlay.hidden = true;
 
 buildDom() {
 this.titleEl = el('h1', { class: 'wbw-title' }, ['']);
-this.nameInput = el('input', { type: 'text', placeholder: 'Full name' });
+this.nameInput = el('input', { type: 'text', placeholder: T('Full name') });
 this.emailInput = el('input', { type: 'email', placeholder: 'you@example.com' });
 this.phoneInput = el('input', { type: 'tel', placeholder: '(808) 555-1234' });
-this.datesInput = el('input', { type: 'text', placeholder: 'e.g. Second week of December' });
-this.notesInput = el('input', { type: 'text', placeholder: 'Party size, occasion, anything else' });
+this.datesInput = el('input', { type: 'text', placeholder: T('e.g. Second week of December') });
+this.notesInput = el('input', { type: 'text', placeholder: T('Party size, occasion, anything else') });
 this.errorEl = el('div', { class: 'wbw-error' });
 
 this.formStep = el('div', { class: 'wbw-step' }, [
-el('div', { class: 'wbw-field' }, [el('label', {}, ['Name']), this.nameInput]),
-el('div', { class: 'wbw-field' }, [el('label', {}, ['Email']), this.emailInput]),
-el('div', { class: 'wbw-field' }, [el('label', {}, ['Phone']), this.phoneInput]),
-el('div', { class: 'wbw-field' }, [el('label', {}, ['Preferred dates']), this.datesInput]),
-el('div', { class: 'wbw-field' }, [el('label', {}, ['Notes']), this.notesInput]),
+el('div', { class: 'wbw-field' }, [el('label', {}, [T('Name')]), this.nameInput]),
+el('div', { class: 'wbw-field' }, [el('label', {}, [T('Email')]), this.emailInput]),
+el('div', { class: 'wbw-field' }, [el('label', {}, [T('Phone')]), this.phoneInput]),
+el('div', { class: 'wbw-field' }, [el('label', {}, [T('Preferred dates')]), this.datesInput]),
+el('div', { class: 'wbw-field' }, [el('label', {}, [T('Notes')]), this.notesInput]),
 this.errorEl,
-el('button', { class: 'wbw-btn', onclick: () => this.submit() }, ['Send Request']),
+el('button', { class: 'wbw-btn', onclick: () => this.submit() }, [T('Send Request')]),
 ]);
 
 this.successStep = el('div', { class: 'wbw-step', hidden: 'hidden' }, [
 el('div', { class: 'wbw-success' }, [
 el('div', { class: 'wbw-success-icon' }, ['✓']),
-el('h3', {}, ['Request sent!']),
-el('p', {}, ["We'll be in touch shortly to work out the details."]),
-el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: () => this.close() }, ['Done']),
+el('h3', {}, [T('Request sent!')]),
+el('p', {}, [T("We'll be in touch shortly to work out the details.")]),
+el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: () => this.close() }, [T('Done')]),
 ]),
 ]);
 
 this.overlay = el('div', { class: 'wbw-overlay', hidden: 'hidden' }, [
 el('div', { class: 'wbw-modal' }, [
-el('button', { class: 'wbw-close', 'aria-label': 'Close', onclick: () => this.close() }, ['×']),
-el('div', { class: 'wbw-eyebrow' }, ['REQUEST THIS SESSION']),
+el('button', { class: 'wbw-close', 'aria-label': T('Close'), onclick: () => this.close() }, ['×']),
+el('div', { class: 'wbw-eyebrow' }, [T('REQUEST THIS SESSION')]),
 this.titleEl,
 this.formStep,
 this.successStep,
@@ -86,7 +91,7 @@ this.overlay.addEventListener('click', (e) => { if (e.target === this.overlay) t
 async submit() {
 this.errorEl.textContent = '';
 if (!this.nameInput.value || !this.emailInput.value) {
-this.errorEl.textContent = 'Name and email are required.';
+this.errorEl.textContent = T('Name and email are required.');
 return;
 }
 try {
@@ -99,7 +104,7 @@ name: this.nameInput.value,
 email: this.emailInput.value,
 phone: this.phoneInput.value,
 preferredDates: this.datesInput.value,
-notes: this.notesInput.value,
+notes: LANG === 'en' ? this.notesInput.value : `[${LANG}] ${this.notesInput.value}`,
 }),
 });
 const json = await res.json();
@@ -120,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('[data-inquire-session]').forEach((btn) => {
 btn.addEventListener('click', (e) => {
 e.preventDefault();
-widget.open(btn.getAttribute('data-inquire-session'), btn.getAttribute('data-session-name') || 'Your Session');
+widget.open(btn.getAttribute('data-inquire-session'), btn.getAttribute('data-session-name') || T('Your Session'));
 });
 });
 
