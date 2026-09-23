@@ -8,7 +8,7 @@ i18n/cache/<lang>.json, keyed by the English text, so an edit to one paragraph
 re-translates that paragraph and nothing else.
 
 It also keeps three things in sync on every page, English included:
-  - the EN / FR / ES switcher in the header
+  - the language menu in the header
   - <link rel="alternate" hreflang> tags, so Google serves each language
   - sitemap-i18n.xml, listed in robots.txt
   - the booking, inquiry and concierge widgets: every T('...') string in
@@ -81,6 +81,12 @@ HAS_LETTERS = re.compile(r'[^\W\d_]{2,}', re.U)
 def load_config():
     with open(CONFIG_PATH, encoding='utf-8') as f:
         return json.load(f)
+
+
+def lang_tag(cfg, code):
+    """The BCP 47 tag for <html lang>, hreflang and JSON-LD. Usually the same as the URL
+    prefix; Simplified Chinese lives at /zh/ but is tagged zh-Hans."""
+    return cfg['languages'][code].get('hreflang', code)
 
 
 class Cache:
@@ -633,33 +639,63 @@ def translate_missing(cfg, lang, cache, wanted, mode, api_key, workers=4, ui=Fal
 # --------------------------------------------------------------------------
 
 def switcher_html(cfg, name, current):
-    links = []
+    # A small menu rather than a row of codes: eight languages do not fit beside the
+    # logo on a phone. Each language is listed in its own script (Deutsch, 日本語, ...)
+    # so a visitor can find theirs without reading the current one.
+    items = []
     for code in cfg['order']:
         L = cfg['languages'][code]
         href = page_url(name, code, cfg['default']).replace(SITE, '') or '/'
-        cur = ' aria-current="true"' if code == current else ''
-        links.append('<a href="%s" hreflang="%s" lang="%s" title="%s"%s>%s</a>'
-                     % (href, code, code, L['native'], cur, code.upper()))
-    return ('<!-- i18n:switcher --><nav class="lang-switch" translate="no" aria-label="%s">%s</nav><!-- /i18n:switcher -->'
-            % (cfg['languages'][current]['switch_label'], ''.join(links)))
+        tag = lang_tag(cfg, code)
+        cur = ' aria-current="page"' if code == current else ''
+        items.append('<li><a href="%s" hreflang="%s" lang="%s"%s>%s</a></li>'
+                     % (href, tag, tag, cur, L['native']))
+    here = cfg['languages'][current]
+    return ('<!-- i18n:switcher --><nav class="lang-switch" translate="no" aria-label="%s">'
+            '<details><summary title="%s: %s">%s</summary><ul>%s</ul></details>'
+            '</nav><!-- /i18n:switcher -->'
+            % (here['switch_label'], here['switch_label'], here['native'], current.upper(), ''.join(items)))
 
 
 SWITCH_CSS = ('<style id="i18n-css">'
-              '.lang-switch{display:flex;gap:12px;align-items:center}'
-              '.lang-switch a{color:inherit;text-decoration:none;font-size:11px;font-weight:700;'
-              'letter-spacing:.18em;opacity:.62;padding:4px 0;text-shadow:0 1px 12px rgba(0,0,0,.35)}'
-              '.lang-switch a:hover,.lang-switch a:focus-visible{opacity:1}'
-              '.lang-switch a[aria-current]{opacity:1;box-shadow:inset 0 -1px 0 currentColor}'
-              '.lang-switch a:focus-visible{outline:1px solid currentColor;outline-offset:3px}'
-              '@media(max-width:420px){.lang-switch{gap:9px}.lang-switch a{letter-spacing:.12em}}'
+              '.lang-switch{position:relative}'
+              '.lang-switch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;'
+              'color:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:4px 0;'
+              'opacity:.8;text-shadow:0 1px 12px rgba(0,0,0,.35)}'
+              '.lang-switch summary::-webkit-details-marker{display:none}'
+              '.lang-switch summary::after{content:"";width:5px;height:5px;margin-top:-3px;'
+              'border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}'
+              '.lang-switch details[open] summary::after{margin-top:3px;transform:rotate(-135deg)}'
+              '.lang-switch summary:hover,.lang-switch details[open] summary{opacity:1}'
+              '.lang-switch summary:focus-visible{outline:1px solid currentColor;outline-offset:3px}'
+              '.lang-switch ul{position:absolute;left:0;top:calc(100% + 10px);z-index:1000;margin:0;'
+              'padding:6px 0;list-style:none;min-width:160px;background:#171716;border-radius:4px;'
+              'box-shadow:0 12px 32px rgba(0,0,0,.28)}'
+              '.lang-switch li a{display:block;padding:9px 18px;color:#fff;text-decoration:none;'
+              'font-size:14px;line-height:1.3;letter-spacing:.02em;opacity:.78;text-shadow:none}'
+              '.lang-switch li a:hover,.lang-switch li a:focus-visible{opacity:1;background:rgba(255,255,255,.08);outline:none}'
+              '.lang-switch li a[aria-current]{opacity:1;font-weight:700}'
               '</style>')
+
+# Closes the menu on a click elsewhere or Escape, as a native menu would, and opens it
+# toward whichever side has room (the switcher sits at the left of the header today).
+SWITCH_JS = ('<script>document.addEventListener("toggle",function(e){var d=e.target;'
+             'if(!d.open||!d.matches||!d.matches(".lang-switch details"))return;'
+             'var u=d.querySelector("ul");u.style.left="0";u.style.right="auto";'
+             'if(u.getBoundingClientRect().right>window.innerWidth-8){u.style.left="auto";u.style.right="0"}},true);'
+             'document.addEventListener("click",function(e){'
+             'document.querySelectorAll(".lang-switch details[open]").forEach(function(d){'
+             'if(!d.contains(e.target))d.removeAttribute("open")})});'
+             'document.addEventListener("keydown",function(e){if(e.key==="Escape")'
+             'document.querySelectorAll(".lang-switch details[open]").forEach(function(d){'
+             'd.removeAttribute("open");d.querySelector("summary").focus()})});</script>')
 
 
 def head_block(cfg, name, extra=''):
-    links = ['<link rel="alternate" hreflang="%s" href="%s">' % (c, page_url(name, c, cfg['default']))
+    links = ['<link rel="alternate" hreflang="%s" href="%s">' % (lang_tag(cfg, c), page_url(name, c, cfg['default']))
              for c in cfg['order']]
     links.append('<link rel="alternate" hreflang="x-default" href="%s">' % page_url(name))
-    return '<!-- i18n:head -->' + ''.join(links) + SWITCH_CSS + extra + '<!-- /i18n:head -->'
+    return '<!-- i18n:head -->' + ''.join(links) + SWITCH_CSS + SWITCH_JS + extra + '<!-- /i18n:head -->'
 
 
 def inject_blocks(doc, cfg, name, lang, extra=''):
@@ -706,7 +742,8 @@ def transform_tag(tok, lang, slugs, tr, cfg, name):
     if tname is None or closing:
         return tok
     if tname == 'html':
-        return set_attr(tok, 'lang', lang) if get_attr(tok, 'lang') is not None else tok.replace('<html', '<html lang="%s"' % lang, 1)
+        tag = lang_tag(cfg, lang)
+        return set_attr(tok, 'lang', tag) if get_attr(tok, 'lang') is not None else tok.replace('<html', '<html lang="%s"' % tag, 1)
     if tname == 'link' and (get_attr(tok, 'rel') or '').lower() == 'canonical':
         return set_attr(tok, 'href', page_url(name, lang, cfg['default']))
     if tname == 'meta':
@@ -828,7 +865,7 @@ def translate_jsonld(tok, tr, lang, cfg, name):
     def fix(node):
         if isinstance(node, dict):
             if 'inLanguage' in node:
-                node['inLanguage'] = lang
+                node['inLanguage'] = lang_tag(cfg, lang)
             if node.get('@type') in ('WebPage', 'FAQPage', 'AboutPage', 'CollectionPage') and 'url' in node:
                 node['url'] = page_url(name, lang, cfg['default'])
             for v in node.values():
@@ -856,7 +893,7 @@ def write_sitemap(cfg, names):
                 rows.append('    <lastmod>%s</lastmod>' % max(dates))
             for c in cfg['order']:
                 rows.append('    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>'
-                            % (c, page_url(name, c, cfg['default'])))
+                            % (lang_tag(cfg, c), page_url(name, c, cfg['default'])))
             rows.append('  </url>')
     rows.append('</urlset>')
     with open(os.path.join(ROOT, 'sitemap-i18n.xml'), 'w', encoding='utf-8') as f:
