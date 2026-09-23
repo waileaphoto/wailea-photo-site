@@ -12,21 +12,51 @@
   const API_BASE = CONFIG.apiBase || 'http://localhost:4242';
   const STRIPE_PK = CONFIG.stripePublishableKey || '';
 
+  // Translation. The /fr/ and /es/ copies of a page inline window.WP_I18N =
+  // { lang, locale, s: { English: translated } }, built by tools/i18n/build.py from
+  // every T('...') literal in this file. English pages have no dictionary, so T()
+  // returns the English text unchanged. {name} placeholders are filled from vars.
+  const I18N = window.WP_I18N || {};
+  const LANG = I18N.lang || 'en';
+  const LOCALE = I18N.locale || 'en-US';
+  function T(s, vars) {
+    let out = (I18N.s && I18N.s[s]) || s;
+    if (vars) out = out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m));
+    return out;
+  }
+  // Send visitors on a translated page to the same-language version of our own pages.
+  function localizeUrl(url) {
+    if (LANG === 'en' || !url) return url;
+    try {
+      const u = new URL(url, window.location.href);
+      if (u.hostname !== window.location.hostname && u.hostname !== 'waileaphoto.com') return url;
+      if (u.pathname.startsWith('/assets/') || u.pathname.startsWith(`/${LANG}/`)) return url;
+      u.pathname = `/${LANG}${u.pathname === '/' ? '/' : u.pathname}`;
+      return u.hostname === window.location.hostname ? u.pathname + u.search + u.hash : u.toString();
+    } catch (e) { return url; }
+  }
+  // English keeps the exact formats it always had; other languages use the browser's
+  // own rules for that locale (24-hour clock in French, and so on).
+  function fmtDateLocal(dateStr, opts) {
+    if (LANG === 'en') return dateStr;
+    return new Date(`${dateStr}T12:00:00`).toLocaleDateString(LOCALE, opts || { weekday: 'long', day: 'numeric', month: 'long' });
+  }
+
   const ADDON_DEFS = [
     // Removed Aug 2026 - 'Real film' add-on withdrawn. Backend slug 'film' still
     // exists, so past bookings render correctly; restore this line to re-offer it.
-    { slug: 'bw', label: 'Classic Black & White add-on', learnMoreUrl: 'https://waileaphoto.com/black-and-white-upgrade' },
-    { slug: 'apo_lens', label: 'Leica APO lens upgrade', learnMoreUrl: 'https://waileaphoto.com/the-apo-difference' },
-    { slug: 'camera_upgrade_review', label: 'Camera upgrade — Leica SL3 or Q3, free for posting a review', priceLabel: 'Free' },
+    { slug: 'bw', label: T('Classic Black & White add-on'), learnMoreUrl: localizeUrl('https://waileaphoto.com/black-and-white-upgrade') },
+    { slug: 'apo_lens', label: T('Leica APO lens upgrade'), learnMoreUrl: localizeUrl('https://waileaphoto.com/the-apo-difference') },
+    { slug: 'camera_upgrade_review', label: T('Camera upgrade — Leica SL3 or Q3, free for posting a review'), priceLabel: T('Free') },
     {
       slug: 'double-sunset',
-      label: 'Special-Double your session time to include Last Half Sunset ($499 value)',
+      label: T('Special-Double your session time to include Last Half Sunset ($499 value)'),
       priceLabel: '$199',
       sessionSlugs: ['first-half-sunset'],
     },
     {
       slug: 'double-sunrise',
-      label: 'Special-Double your Sunrise session time (40 minutes total)',
+      label: T('Special-Double your Sunrise session time (40 minutes total)'),
       priceLabel: '$199',
       sessionSlugs: ['sunrise-max'],
     },
@@ -36,14 +66,14 @@
   // scrollable wall of refund and liability text sitting immediately above the card
   // field — the worst possible moment to ask someone to read about sand damage. One
   // plain summary line and a link stays here; the detail follows once they're booked.
-  const POLICY_SUMMARY = 'Reschedule anytime before your session. Full session policies are included in your confirmation email.';
+  const POLICY_SUMMARY = T('Reschedule anytime before your session. Full session policies are included in your confirmation email.');
   const POLICY_URL = 'faq.html#session-policies';
 
   // Shown wherever the balance is mentioned, and on the date step too, so the payment
   // terms are never a surprise discovered at the card field.
-  const CASH_DISCOUNT_NOTE = 'Enjoy a cash discount and save on credit card fees by paying the remaining balance at the end of the session in Cash or Zelle.';
+  const CASH_DISCOUNT_NOTE = T('Enjoy a cash discount and save on credit card fees by paying the remaining balance at the end of the session in Cash or Zelle.');
 
-  const GALLERY_PROMISE = 'Your edited gallery is delivered in under 48 hours — before you fly home.';
+  const GALLERY_PROMISE = T('Your edited gallery is delivered in under 48 hours — before you fly home.');
 
   const FREE_HOLD_MINUTES = 30;
   const EMAIL_RE = /^[^@\s]+@[^@\s.]+\.[^@\s]+$/;
@@ -52,6 +82,7 @@
     const [hourText, minute = '00'] = String(value || '').split(':');
     const hour = Number(hourText);
     if (!Number.isInteger(hour) || hour < 0 || hour > 23) return value || '';
+    if (LANG !== 'en') return new Date(2000, 0, 1, hour, Number(minute) || 0).toLocaleTimeString(LOCALE, { hour: 'numeric', minute: '2-digit' });
     const suffix = hour >= 12 ? 'PM' : 'AM';
     return `${hour % 12 || 12}:${minute} ${suffix}`;
   }
@@ -64,9 +95,9 @@
   function describeWind(forecast) {
     const mph = Number(forecast && forecast.windMph);
     if (!Number.isFinite(mph) || mph < 8) return null;
-    if (forecast.isTradeWind) return `${mph} mph trade winds`;
-    const dir = forecast.windDirection ? ` from the ${forecast.windDirection}` : '';
-    return `${mph} mph wind${dir}`;
+    if (forecast.isTradeWind) return T('{mph} mph trade winds', { mph });
+    if (forecast.windDirection) return T('{mph} mph wind from the {dir}', { mph, dir: forecast.windDirection });
+    return T('{mph} mph wind', { mph });
   }
 
   const DEFAULT_DEPOSIT_CENTS = 4900;
@@ -198,6 +229,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     const [hourText, minute = '00'] = String(value || '').split(':');
     const hour = Number(hourText);
     if (!Number.isInteger(hour) || hour < 0 || hour > 23) return value || '';
+    if (LANG !== 'en') return new Date(2000, 0, 1, hour, Number(minute) || 0).toLocaleTimeString(LOCALE, { hour: 'numeric', minute: '2-digit' });
     const suffix = hour >= 12 ? 'PM' : 'AM';
     const hour12 = hour % 12 || 12;
     return `${hour12}:${minute} ${suffix}`;
@@ -212,9 +244,9 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     buildDom() {
       this.overlay = el('div', { class: 'wbw-overlay', hidden: 'hidden' }, [
         el('div', { class: 'wbw-modal' }, [
-          el('button', { class: 'wbw-close', 'aria-label': 'Close', onclick: () => this.close() }, ['×']),
+          el('button', { class: 'wbw-close', 'aria-label': T('Close'), onclick: () => this.close() }, ['×']),
           this.header = el('div', {}, [
-            el('div', { class: 'wbw-eyebrow' }, ['BOOK YOUR SESSION']),
+            el('div', { class: 'wbw-eyebrow' }, [T('BOOK YOUR SESSION')]),
             this.titleEl = el('h1', { class: 'wbw-title' }, ['']),
           ]),
           this.stepDate = this.buildDateStep(),
@@ -230,8 +262,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     buildDateStep() {
       const step = el('div', { class: 'wbw-step' });
       this.monthLabel = el('span', { class: 'wbw-month-label' }, ['']);
-      this.prevMonthBtn = el('button', { onclick: () => this.changeMonth(-1) }, ['‹ Prev']);
-      this.nextMonthBtn = el('button', { onclick: () => this.changeMonth(1) }, ['Next ›']);
+      this.prevMonthBtn = el('button', { onclick: () => this.changeMonth(-1) }, [T('‹ Prev')]);
+      this.nextMonthBtn = el('button', { onclick: () => this.changeMonth(1) }, [T('Next ›')]);
       const nav = el('div', { class: 'wbw-month-nav' }, [
         this.prevMonthBtn,
         this.monthLabel,
@@ -251,7 +283,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.dateError = el('div', { class: 'wbw-error' });
       this.scarcityNote = el('div', { class: 'wbw-scarcity' });
       this.holdWrap = this.buildHoldRow();
-      const nextBtn = el('button', { class: 'wbw-btn', onclick: () => this.goToDetails() }, ['Continue']);
+      const nextBtn = el('button', { class: 'wbw-btn', onclick: () => this.goToDetails() }, [T('Continue')]);
       step.append(
         this.scarcityNote, nav, this.dayGrid, this.calendarStatus, this.calendarEmpty,
         this.slotsWrap, this.conditionsNote, this.dateError, nextBtn, this.holdWrap,
@@ -268,10 +300,10 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.holdBtn = el('button', {
         class: 'wbw-btn wbw-btn-secondary wbw-hold-btn',
         onclick: () => this.placeHold(),
-      }, [`Hold this time free for ${FREE_HOLD_MINUTES} minutes`]);
+      }, [T('Hold this time free for {minutes} minutes', { minutes: FREE_HOLD_MINUTES })]);
       this.holdStatus = el('div', { class: 'wbw-hold-status' });
       this.holdForm = el('div', { class: 'wbw-hold-form' }, [
-        el('div', { class: 'wbw-hold-prompt' }, ['Need to check with someone first?']),
+        el('div', { class: 'wbw-hold-prompt' }, [T('Need to check with someone first?')]),
         this.holdEmailInput,
         this.holdBtn,
       ]);
@@ -281,7 +313,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     buildDetailsStep() {
       const step = el('div', { class: 'wbw-step', hidden: 'hidden' });
       this.partySizeInput = el('input', { type: 'number', min: '1', max: '20', value: '2', oninput: () => this.refreshQuote() });
-      const partyField = el('div', { class: 'wbw-field' }, [el('label', {}, ['Party size']), this.partySizeInput]);
+      const partyField = el('div', { class: 'wbw-field' }, [el('label', {}, [T('Party size')]), this.partySizeInput]);
 
       this.addonInputs = {};
       this.addonRows = {};
@@ -301,14 +333,14 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
                                           rel: 'noopener',
                                           class: 'wbw-addon-learn-more',
                                           onclick: (e) => e.stopPropagation(),
-                            }, ['Learn more']));
+                            }, [T('Learn more')]));
                 }
         const addonRow = el('label', { class: 'wbw-addon' }, children);
         this.addonRows[a.slug] = addonRow;
         addonsWrap.appendChild(addonRow);
       });
 
-      this.nameInput = el('input', { type: 'text', placeholder: 'Full name' });
+      this.nameInput = el('input', { type: 'text', placeholder: T('Full name') });
       this.emailInput = el('input', {
         type: 'email',
         placeholder: 'you@example.com',
@@ -321,7 +353,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       // marketing, but it's still opt-in and easy to uncheck for anyone who'd rather not.
       this.smsOptInCheckbox = el('input', { type: 'checkbox', checked: true });
 
-      this.celebratingInput = el('input', { type: 'text', placeholder: 'Anniversary, Honeymoon, Maternity, Graduation… (optional)' });
+      this.celebratingInput = el('input', { type: 'text', placeholder: T('Anniversary, Honeymoon, Maternity, Graduation… (optional)') });
       this.floristContactCheckbox = el('input', { type: 'checkbox' });
 
       // One plain line plus a link, in place of the scrollable liability box that used to
@@ -329,18 +361,18 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.policyBox = el('div', { class: 'wbw-policy-summary' }, [
         POLICY_SUMMARY,
         ' ',
-        el('a', { href: POLICY_URL, target: '_blank', rel: 'noopener' }, ['Read them now']),
+        el('a', { href: POLICY_URL, target: '_blank', rel: 'noopener' }, [T('Read them now')]),
       ]);
       this.policyCheckbox = el('input', { type: 'checkbox' });
       this.textConfirmCheckbox = el('input', { type: 'checkbox' });
       this.textConfirmRow = el('label', { class: 'wbw-policy-agree' }, [
         this.textConfirmCheckbox,
-        ' One of our team will be assigned to you, and your photographer will text you to confirm in case of any last-minute changes. Please have your phone charged and respond to their text — otherwise the photographer will assume you are a no-show.',
+        ' ' + T('One of our team will be assigned to you, and your photographer will text you to confirm in case of any last-minute changes. Please have your phone charged and respond to their text — otherwise the photographer will assume you are a no-show.'),
       ]);
       this.sunrisePunctualityCheckbox = el('input', { type: 'checkbox' });
       this.sunrisePunctualityRow = el('label', { class: 'wbw-policy-agree' }, [
         this.sunrisePunctualityCheckbox,
-        ' I acknowledge that I must arrive on time. Sessions are not extended due to tardiness, late sleeping teenagers or slow valet service.',
+        ' ' + T('I acknowledge that I must arrive on time. Sessions are not extended due to tardiness, late sleeping teenagers or slow valet service.'),
       ]);
 
       this.quoteBox = el('div', { class: 'wbw-quote' });
@@ -350,33 +382,33 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       // upgrade are real money and stay available at the buying moment — they just no
       // longer cost five rows of reading before someone can reach the card field.
       this.addonsDetails = el('details', { class: 'wbw-addons-collapsed' }, [
-        el('summary', {}, ['Add an upgrade? ', el('span', { class: 'wbw-addons-hint' }, ['optional'])]),
+        el('summary', {}, [T('Add an upgrade?') + ' ', el('span', { class: 'wbw-addons-hint' }, [T('optional')])]),
         addonsWrap,
       ]);
 
       step.append(
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['Name']), this.nameInput]),
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['Email']), this.emailInput]),
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['Phone']), this.phoneInput]),
+        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Name')]), this.nameInput]),
+        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Email')]), this.emailInput]),
+        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Phone')]), this.phoneInput]),
         partyField,
-        el('div', { class: 'wbw-field' }, [el('label', {}, ['What are you celebrating?']), this.celebratingInput]),
+        el('div', { class: 'wbw-field' }, [el('label', {}, [T('What are you celebrating?')]), this.celebratingInput]),
         el('label', { class: 'wbw-policy-agree' }, [
           this.floristContactCheckbox,
-          ' Have Mya our florist contact you for flowers? (48 hr min lead time required)',
+          ' ' + T('Have Mya our florist contact you for flowers? (48 hr min lead time required)'),
         ]),
         this.addonsDetails,
-        el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' Text me a reminder with directions a few hours before my session.']),
+        el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' ' + T('Text me a reminder with directions a few hours before my session.')]),
         el('div', { class: 'wbw-field' }, [
           this.policyBox,
-          el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' I agree to the session policies.']),
+          el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' ' + T('I agree to the session policies.')]),
           this.textConfirmRow,
           this.sunrisePunctualityRow,
         ]),
         this.quoteBox,
         this.detailsError,
         el('div', { style: 'display:flex;gap:10px;' }, [
-          el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: () => this.showStep('date') }, ['Back']),
-          el('button', { class: 'wbw-btn', onclick: (e) => this.goToPayment(e) }, ['Continue to Payment']),
+          el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: () => this.showStep('date') }, [T('Back')]),
+          el('button', { class: 'wbw-btn', onclick: (e) => this.goToPayment(e) }, [T('Continue to Payment')]),
         ])
       );
       return step;
@@ -389,7 +421,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.holdCountdown = el('div', { class: 'wbw-due-today', style: 'margin-bottom:14px;' });
       this.cardElementWrap = el('div', { id: 'wbw-card-element' });
       this.payError = el('div', { class: 'wbw-error' });
-      this.payBtn = el('button', { class: 'wbw-btn', onclick: () => this.submitPayment() }, [`Pay ${fmtDollars(DEFAULT_DEPOSIT_CENTS)} Deposit`]);
+      this.payBtn = el('button', { class: 'wbw-btn', onclick: () => this.submitPayment() }, [T('Pay {amount} Deposit', { amount: fmtDollars(DEFAULT_DEPOSIT_CENTS) })]);
       step.append(
         this.paymentSummary,
         this.holdNotice,
@@ -397,7 +429,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.cardElementWrap,
         this.payError,
         el('div', { style: 'display:flex;gap:10px;' }, [
-          el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: () => this.showStep('details') }, ['Back']),
+          el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: () => this.showStep('details') }, [T('Back')]),
           this.payBtn,
         ])
       );
@@ -474,19 +506,19 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.holdStatus.textContent = '';
       this.holdStatus.classList.remove('wbw-hold-error');
       if (!this.state.selectedDate || !this.state.selectedSlot) {
-        this.holdStatus.textContent = 'Pick a date and time above first, then we can hold it.';
+        this.holdStatus.textContent = T('Pick a date and time above first, then we can hold it.');
         this.holdStatus.classList.add('wbw-hold-error');
         return;
       }
       const email = String(this.holdEmailInput.value || '').trim();
       if (!EMAIL_RE.test(email)) {
-        this.holdStatus.textContent = 'Enter a valid email and we’ll hold this time for you.';
+        this.holdStatus.textContent = T('Enter a valid email and we’ll hold this time for you.');
         this.holdStatus.classList.add('wbw-hold-error');
         return;
       }
       const original = this.holdBtn.textContent;
       this.holdBtn.disabled = true;
-      this.holdBtn.textContent = 'Holding…';
+      this.holdBtn.textContent = T('Holding…');
       try {
         const result = await api('POST', '/api/holds', {
           sessionType: this.state.slug,
@@ -518,13 +550,13 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
           clearInterval(this.freeHoldTimer);
           this.state.freeHold = null;
           this.holdForm.hidden = false;
-          this.holdStatus.textContent = 'Your hold has expired — the time is open to everyone again.';
+          this.holdStatus.textContent = T('Your hold has expired — the time is open to everyone again.');
           this.loadMonth();
           return;
         }
         const mins = Math.floor(msLeft / 60000);
         const secs = Math.floor((msLeft % 60000) / 1000);
-        this.holdStatus.textContent = `Held for you — ${mins}:${String(secs).padStart(2, '0')} left. No card needed yet.`;
+        this.holdStatus.textContent = T('Held for you — {time} left. No card needed yet.', { time: `${mins}:${String(secs).padStart(2, '0')}` });
       };
       render();
       this.freeHoldTimer = setInterval(render, 1000);
@@ -560,11 +592,13 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.scarcityNote.innerHTML = '';
       if (!scarcity) return;
       const parts = [];
-      if (Number(scarcity.sessionsPerEvening) === 1) parts.push('We photograph one session per evening.');
+      if (Number(scarcity.sessionsPerEvening) === 1) parts.push(T('We photograph one session per evening.'));
       const open = Number(scarcity.openDaysThisMonth);
       if (Number.isFinite(open) && open > 0) {
-        const monthName = this.state.month.toLocaleDateString('en-US', { month: 'long' });
-        parts.push(`${open} ${open === 1 ? 'evening' : 'evenings'} still open in ${monthName}.`);
+        const monthName = this.state.month.toLocaleDateString(LOCALE, { month: 'long' });
+        parts.push(open === 1
+          ? T('{n} evening still open in {month}.', { n: open, month: monthName })
+          : T('{n} evenings still open in {month}.', { n: open, month: monthName }));
       }
       if (parts.length) this.scarcityNote.appendChild(el('span', {}, [parts.join(' ')]));
     }
@@ -590,20 +624,21 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       if (!date || !data) return;
       const day = (data.days || []).find((d) => d.date === date);
       if (!day) return;
-      const pretty = new Date(`${date}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      const head = `${pretty} — official sunset is ${fmtTime12Safe(day.sunset)}`;
+      const pretty = new Date(`${date}T12:00:00`).toLocaleDateString(LOCALE, { month: 'short', day: 'numeric' });
+      const head = T('{date} — official sunset is {time}', { date: pretty, time: fmtTime12Safe(day.sunset) });
       if (day.beyondForecast || !day.forecast) {
         this.conditionsNote.append(
           el('div', { class: 'wbw-conditions-line' }, [head]),
-          el('div', { class: 'wbw-conditions-note' }, [data.beyondForecastNote])
+          el('div', { class: 'wbw-conditions-note' }, [T(data.beyondForecastNote)])
         );
         return;
       }
       const bits = [head];
-      if (Number.isFinite(day.forecast.rainChance)) bits.push(`${day.forecast.rainChance}% chance of rain`);
+      if (Number.isFinite(day.forecast.rainChance)) bits.push(T('{pct}% chance of rain', { pct: day.forecast.rainChance }));
       const wind = describeWind(day.forecast);
       if (wind) bits.push(wind);
-      if (day.forecast.shortForecast) bits.push(String(day.forecast.shortForecast).toLowerCase());
+      // The short forecast is National Weather Service English; only shown in English.
+      if (day.forecast.shortForecast && LANG === 'en') bits.push(String(day.forecast.shortForecast).toLowerCase());
       this.conditionsNote.appendChild(el('div', { class: 'wbw-conditions-line' }, [bits.join(' · ')]));
     }
 
@@ -631,9 +666,9 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         if (launcher) launcher.click();
       };
       this.conciergeNudgeEl = el('div', { class: 'wbw-concierge-nudge' }, [
-        el('span', {}, ['Questions before you pick a date? We can check the weather and open times.']),
-        el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: openConcierge }, ['Ask the Concierge']),
-        el('button', { class: 'wbw-nudge-dismiss', 'aria-label': 'Dismiss', onclick: () => this.dismissConciergeNudge() }, ['×']),
+        el('span', {}, [T('Questions before you pick a date? We can check the weather and open times.')]),
+        el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: openConcierge }, [T('Ask the Concierge')]),
+        el('button', { class: 'wbw-nudge-dismiss', 'aria-label': T('Dismiss'), onclick: () => this.dismissConciergeNudge() }, ['×']),
       ]);
       this.stepDate.appendChild(this.conciergeNudgeEl);
     }
@@ -650,20 +685,20 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.payBtn.disabled = false;
       this.payError.textContent = '';
       this.holdNotice.textContent = resumed
-        ? 'You already started this booking. Continue payment below—your original reservation is still active.'
-        : 'This session is reserved for you while you complete payment.';
+        ? T('You already started this booking. Continue payment below—your original reservation is still active.')
+        : T('This session is reserved for you while you complete payment.');
       const update = () => {
         const remainingSeconds = Math.max(0, Math.ceil((new Date(expiresAt).getTime() - Date.now()) / 1000));
         const minutes = Math.floor(remainingSeconds / 60);
         const seconds = String(remainingSeconds % 60).padStart(2, '0');
         this.holdCountdown.textContent = remainingSeconds
-          ? `Time remaining to complete payment: ${minutes}:${seconds}`
-          : 'This payment hold has expired.';
+          ? T('Time remaining to complete payment: {time}', { time: `${minutes}:${seconds}` })
+          : T('This payment hold has expired.');
         if (!remainingSeconds) {
           clearInterval(this.holdTimer);
           this.state.holdExpired = true;
           this.payBtn.disabled = true;
-          this.payError.textContent = 'Your 15-minute hold expired. Go back and select the session again to start a new booking.';
+          this.payError.textContent = T('Your 15-minute hold expired. Go back and select the session again to start a new booking.');
         }
       };
       update();
@@ -678,7 +713,9 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     }
 
     renderDayHeads() {
-      ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach((d) => this.dayGrid.appendChild(el('div', { class: 'wbw-day-head' }, [d])));
+      const heads = LANG === 'en' ? ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+        : Array.from({ length: 7 }, (_, i) => new Date(2023, 0, 1 + i).toLocaleDateString(LOCALE, { weekday: 'narrow' }).toUpperCase());
+      heads.forEach((d) => this.dayGrid.appendChild(el('div', { class: 'wbw-day-head' }, [d])));
     }
 
     // Placeholder cells so the calendar has shape the instant the widget opens, instead
@@ -702,18 +739,18 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       // the most recent request is allowed to paint.
       const token = (this.loadToken = (this.loadToken || 0) + 1);
 
-      this.monthLabel.textContent = this.state.month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      this.monthLabel.textContent = this.state.month.toLocaleDateString(LOCALE, { month: 'long', year: 'numeric' });
       this.slotsWrap.innerHTML = '';
       this.dateError.textContent = '';
       this.calendarEmpty.hidden = true;
       this.calendarEmpty.innerHTML = '';
       this.renderCalendarSkeleton();
       this.setCalendarBusy(true);
-      this.calendarStatus.textContent = 'Checking availability…';
+      this.calendarStatus.textContent = T('Checking availability…');
       this.calendarStatus.hidden = false;
       const hintTimer = setTimeout(() => {
         if (this.loadToken === token) {
-          this.calendarStatus.textContent = 'Still checking — the calendar is waking up. Just a few more seconds.';
+          this.calendarStatus.textContent = T('Still checking — the calendar is waking up. Just a few more seconds.');
         }
       }, COLD_START_HINT_MS);
 
@@ -737,7 +774,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.renderDayHeads();
 
       if (data.bookingMode === 'manual') {
-        this.dateError.textContent = data.message;
+        this.dateError.textContent = T(data.message);
         return;
       }
 
@@ -756,7 +793,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         const btn = el('button', {
           class: `wbw-day${hasSlots && !isPast ? ' wbw-available' : ''}${isPast ? ' wbw-day-past' : ''}`,
           disabled: (hasSlots && !isPast) ? undefined : 'disabled',
-          title: isPast ? 'This date has passed' : (hasSlots ? undefined : 'Sold out'),
+          title: isPast ? T('This date has passed') : (hasSlots ? undefined : T('Sold out')),
           onclick: (e) => this.selectDate(day, e),
         }, [String(dayNum)]);
         if (isPast || !hasSlots) btn.disabled = true;
@@ -770,7 +807,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         const dayButton = Array.from(this.dayGrid.querySelectorAll('.wbw-day')).find((button) => Number(button.textContent) === Number(requested.date.slice(-2)));
         const slot = day?.slots?.find((candidate) => !requested.startTime || candidate.startTime === requested.startTime);
         if (day && dayButton && slot) this.selectDate(day, { target: dayButton }, slot.startTime);
-        else this.dateError.textContent = 'That opening was just filled. Please choose another available date and time.';
+        else this.dateError.textContent = T('That opening was just filled. Please choose another available date and time.');
       }
 
       // A month with nothing open used to render as a grid of greyed-out numbers, which
@@ -784,37 +821,37 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.calendarEmpty.innerHTML = '';
       this.calendarEmpty.hidden = false;
       this.calendarEmpty.append(
-        el('div', { class: 'wbw-calendar-empty-title' }, ["We couldn't load the calendar."]),
-        el('div', { class: 'wbw-calendar-empty-sub' }, ['This is usually a brief hiccup on our end, not your connection.']),
-        el('button', { class: 'wbw-btn wbw-btn-secondary wbw-jump-btn', onclick: () => this.loadMonth() }, ['Try again']),
-        el('div', { class: 'wbw-calendar-empty-sub' }, ['Still stuck? Email photo@waileaphoto.com and we\'ll book you by hand.']),
+        el('div', { class: 'wbw-calendar-empty-title' }, [T("We couldn't load the calendar.")]),
+        el('div', { class: 'wbw-calendar-empty-sub' }, [T('This is usually a brief hiccup on our end, not your connection.')]),
+        el('button', { class: 'wbw-btn wbw-btn-secondary wbw-jump-btn', onclick: () => this.loadMonth() }, [T('Try again')]),
+        el('div', { class: 'wbw-calendar-empty-sub' }, [T('Still stuck? Email photo@waileaphoto.com and we\'ll book you by hand.')]),
       );
     }
 
     async showEmptyMonth(token) {
-      const monthName = this.state.month.toLocaleDateString('en-US', { month: 'long' });
+      const monthName = this.state.month.toLocaleDateString(LOCALE, { month: 'long' });
       this.calendarEmpty.innerHTML = '';
       this.calendarEmpty.hidden = false;
       this.calendarEmpty.appendChild(
-        el('div', { class: 'wbw-calendar-empty-title' }, [`${monthName} is fully booked.`])
+        el('div', { class: 'wbw-calendar-empty-title' }, [T('{month} is fully booked.', { month: monthName })])
       );
-      const searching = el('div', { class: 'wbw-calendar-empty-sub' }, ['Finding the next opening…']);
+      const searching = el('div', { class: 'wbw-calendar-empty-sub' }, [T('Finding the next opening…')]);
       this.calendarEmpty.appendChild(searching);
 
       const next = await this.findNextOpening();
       if (this.loadToken !== token) return; // they navigated on while we were looking
 
       if (!next) {
-        searching.textContent = 'Nothing open in the next six months. Email photo@waileaphoto.com and we\'ll find you a time.';
+        searching.textContent = T('Nothing open in the next six months. Email photo@waileaphoto.com and we\'ll find you a time.');
         return;
       }
       searching.remove();
       const pretty = new Date(`${next.date}T12:00:00`)
-        .toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+        .toLocaleDateString(LOCALE, { weekday: 'long', month: 'long', day: 'numeric' });
       this.calendarEmpty.appendChild(el('button', {
         class: 'wbw-btn wbw-btn-secondary wbw-jump-btn',
         onclick: () => this.jumpToOpening(next),
-      }, [`Next opening: ${pretty} →`]));
+      }, [T('Next opening: {date} →', { date: pretty })]));
     }
 
     // Walks forward a month at a time until it finds a date with slots. Only ever runs
@@ -869,7 +906,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
 
     goToDetails() {
       if (!this.state.selectedDate || !this.state.selectedSlot) {
-        this.dateError.textContent = 'Please pick a date and time first.';
+        this.dateError.textContent = T('Please pick a date and time first.');
         return;
       }
       // Carry a hold email forward so nobody types it twice.
@@ -901,12 +938,12 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       }
       this.state.lastQuote = quote;
       this.quoteBox.innerHTML = '';
-      this.quoteBox.appendChild(row('Base price', fmtDollars(quote.basePriceCents)));
-      quote.adjustments.forEach((a) => this.quoteBox.appendChild(row(a.label, fmtDollars(a.amountCents))));
-      quote.addons.forEach((a) => this.quoteBox.appendChild(row(a.label, fmtDollars(a.amountCents))));
-      this.quoteBox.appendChild(row('Total', quote.totalFormatted));
+      this.quoteBox.appendChild(row(T('Base price'), fmtDollars(quote.basePriceCents)));
+      quote.adjustments.forEach((a) => this.quoteBox.appendChild(row(T(a.label), fmtDollars(a.amountCents))));
+      quote.addons.forEach((a) => this.quoteBox.appendChild(row(T(a.label), fmtDollars(a.amountCents))));
+      this.quoteBox.appendChild(row(T('Total'), quote.totalFormatted));
       this.quoteBox.appendChild(el('div', { class: 'wbw-due-today' }, [
-        el('div', { class: 'wbw-due-today-label' }, ['Due Today:']),
+        el('div', { class: 'wbw-due-today-label' }, [T('Due Today:')]),
         el('div', { class: 'wbw-due-today-amount' }, [fmtDollars(depositCentsFor(this.state.slug))]),
       ]));
       this.quoteBox.appendChild(el('div', { class: 'wbw-quote-note' }, [CASH_DISCOUNT_NOTE]));
@@ -922,25 +959,25 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     async goToPayment(event) {
       this.detailsError.textContent = '';
       if (!this.nameInput.value || !this.emailInput.value) {
-        this.detailsError.textContent = 'Name and email are required.';
+        this.detailsError.textContent = T('Name and email are required.');
         return;
       
       }
       if (!this.policyCheckbox.checked) {
-        this.detailsError.textContent = 'Please agree to the session policies to continue.';
+        this.detailsError.textContent = T('Please agree to the session policies to continue.');
         return;
       }
       if (!this.textConfirmCheckbox.checked) {
-        this.detailsError.textContent = "Please confirm you'll respond to your photographer's text to continue.";
+        this.detailsError.textContent = T("Please confirm you'll respond to your photographer's text to continue.");
         return;
       }
       if (this.state.slug === 'sunrise-max' && !this.sunrisePunctualityCheckbox.checked) {
-        this.detailsError.textContent = 'Please acknowledge the Sunrise session arrival-time policy to continue.';
+        this.detailsError.textContent = T('Please acknowledge the Sunrise session arrival-time policy to continue.');
         return;
       }
       const btn = event?.target;
       const originalLabel = btn ? btn.textContent : null;
-      if (btn) { btn.disabled = true; btn.textContent = 'Please wait…'; }
+      if (btn) { btn.disabled = true; btn.textContent = T('Please wait…'); }
       try {
         const result = await api('POST', '/api/bookings', {
           sessionType: this.state.slug,
@@ -959,6 +996,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
             // confirmation email, where people answer it far more willingly.
             celebrating: this.celebratingInput.value || undefined,
             floristContactRequested: this.floristContactCheckbox.checked,
+            // Which language the client booked in, so confirmations can be sent in it.
+            language: LANG,
           },
           // First-touch traffic source for this booking. The API sanitises and stores it
           // on the booking row, which is what makes revenueBySource in the weekly revenue
@@ -985,10 +1024,10 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
 
         this.paymentSummary.innerHTML = '';
         this.paymentSummary.appendChild(el('div', { class: 'wbw-quote-row wbw-total' }, [
-          el('span', {}, [`${this.state.name} — ${this.state.selectedDate} ${fmtTime12(this.state.selectedSlot.startTime)}`]),
+          el('span', {}, [`${this.state.name} — ${fmtDateLocal(this.state.selectedDate)} ${fmtTime12(this.state.selectedSlot.startTime)}`]),
           el('span', {}, [fmtDollars(result.booking.total_price_cents)]),
         ]));
-        this.payBtn.textContent = `Pay ${fmtDollars(result.booking.deposit_cents)} Deposit`;
+        this.payBtn.textContent = T('Pay {amount} Deposit', { amount: fmtDollars(result.booking.deposit_cents) });
 
         this.showStep('payment');
         await this.mountStripeElement();
@@ -1005,8 +1044,10 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         return;
       }
       const Stripe = await loadStripeJs();
-      this.stripe = Stripe(STRIPE_PK);
-      this.elements = this.stripe.elements({ clientSecret: this.state.clientSecret });
+      this.stripe = LANG === 'en' ? Stripe(STRIPE_PK) : Stripe(STRIPE_PK, { locale: LANG });
+      this.elements = LANG === 'en'
+        ? this.stripe.elements({ clientSecret: this.state.clientSecret })
+        : this.stripe.elements({ clientSecret: this.state.clientSecret, locale: LANG });
       this.paymentElement = this.elements.create('payment');
       this.cardElementWrap.innerHTML = '';
       this.paymentElement.mount(this.cardElementWrap);
@@ -1015,11 +1056,12 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     async submitPayment() {
       this.payError.textContent = '';
       if (this.state.holdExpired) {
-        this.payError.textContent = 'Your 15-minute hold expired. Go back and select the session again.';
+        this.payError.textContent = T('Your 15-minute hold expired. Go back and select the session again.');
         return;
       }
       this.payBtn.disabled = true;
-      this.payBtn.innerHTML = '<span class="wbw-spinner"></span> Processing…';
+      this.payBtn.innerHTML = '<span class="wbw-spinner"></span> ';
+      this.payBtn.appendChild(document.createTextNode(T('Processing…')));
       try {
         const { error, paymentIntent } = await this.stripe.confirmPayment({
           elements: this.elements,
@@ -1037,7 +1079,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.trackAbandoned('payment_error');
       } finally {
         this.payBtn.disabled = false;
-        this.payBtn.textContent = `Pay ${fmtDollars(depositCentsFor(this.state.slug))} Deposit`;
+        this.payBtn.textContent = T('Pay {amount} Deposit', { amount: fmtDollars(depositCentsFor(this.state.slug)) });
       }
     }
 
@@ -1047,12 +1089,12 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.successBody.innerHTML = '';
       this.successBody.append(
         el('div', { class: 'wbw-success-icon' }, ['✓']),
-        el('h3', {}, ['You’re booked!']),
-        el('p', {}, [`Booking reference: ${this.state.bookingReference}`]),
-        el('p', {}, [`${this.state.name} — ${this.state.selectedDate} at ${fmtTime12(this.state.selectedSlot.startTime)} (Hawaii time).`]),
-        el('p', { class: 'wbw-quote-note' }, [`Payment status: ${paymentIntent.status}. A confirmation email is on its way once it's fully processed.`]),
-        el('a', { class: 'wbw-btn', href: `${API_BASE}/api/bookings/${this.state.bookingId}/ics`, target: '_blank', style: 'display:block;margin-top:16px;text-decoration:none;' }, ['Add to Calendar']),
-        el('button', { class: 'wbw-btn wbw-btn-secondary', style: 'margin-top:10px;', onclick: () => this.close() }, ['Done'])
+        el('h3', {}, [T('You’re booked!')]),
+        el('p', {}, [T('Booking reference: {ref}', { ref: this.state.bookingReference })]),
+        el('p', {}, [T('{session} — {date} at {time} (Hawaii time).', { session: this.state.name, date: fmtDateLocal(this.state.selectedDate), time: fmtTime12(this.state.selectedSlot.startTime) })]),
+        el('p', { class: 'wbw-quote-note' }, [T("Payment status: {status}. A confirmation email is on its way once it's fully processed.", { status: paymentIntent.status })]),
+        el('a', { class: 'wbw-btn', href: `${API_BASE}/api/bookings/${this.state.bookingId}/ics`, target: '_blank', style: 'display:block;margin-top:16px;text-decoration:none;' }, [T('Add to Calendar')]),
+        el('button', { class: 'wbw-btn wbw-btn-secondary', style: 'margin-top:10px;', onclick: () => this.close() }, [T('Done')])
       );
       this.showStep('success');
     }
@@ -1129,7 +1171,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     document.querySelectorAll('[data-book-session]').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        widget.open(btn.getAttribute('data-book-session'), btn.getAttribute('data-session-name') || 'Your Session');
+        widget.open(btn.getAttribute('data-book-session'), btn.getAttribute('data-session-name') || T('Your Session'));
       });
     });
 
@@ -1149,7 +1191,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
           widget.open(
             target.getAttribute('data-book-session'),
-            target.getAttribute('data-session-name') || 'Your Session',
+            target.getAttribute('data-session-name') || T('Your Session'),
             { date, startTime: startTime && /^\d{2}:\d{2}$/.test(startTime) ? startTime : null }
           );
         } else {
