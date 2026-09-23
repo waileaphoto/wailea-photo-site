@@ -11,6 +11,10 @@ It also keeps three things in sync on every page, English included:
   - the EN / FR / ES switcher in the header
   - <link rel="alternate" hreflang> tags, so Google serves each language
   - sitemap-i18n.xml, listed in robots.txt
+  - the booking, inquiry and concierge widgets: every T('...') string in
+    assets/*-widget.js is translated too and inlined as window.WP_I18N on the
+    translated pages that load that widget; each widget's ?v= is set to a hash of
+    its contents so a widget edit always reaches returning visitors
 
 Usage:
     python3 tools/i18n/build.py              # translate + render (needs ANTHROPIC_API_KEY)
@@ -20,6 +24,7 @@ Usage:
 Standard library only, like the rest of tools/.
 """
 import argparse
+import ast
 import concurrent.futures as cf
 import glob
 import hashlib
@@ -48,7 +53,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
         'source', 'track', 'wbr'}
 # Contents never translated.
 OPAQUE = {'svg', 'code', 'pre', 'kbd', 'samp', 'math', 'template'}
-TEXT_ATTRS = ('alt', 'title', 'aria-label', 'placeholder')
+TEXT_ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-session-name')
 META_KEYS = {'description', 'og:title', 'og:description', 'og:image:alt',
              'twitter:title', 'twitter:description', 'twitter:image:alt'}
 URL_ATTRS = ('href', 'src', 'poster', 'data-src', 'action', 'data-href', 'data-bg')
@@ -62,6 +67,10 @@ TOKEN_RE = re.compile(
 TAG_NAME_RE = re.compile(r'<\s*(/?)\s*([a-zA-Z][a-zA-Z0-9-]*)')
 ATTR_RE = re.compile(r'''([^\s"'<>/=]+)(\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?''')
 PH_RE = re.compile(r'</?x(\d+)/?>')
+BRACE_RE = re.compile(r'\{\w+\}')
+WIDGET_GLOB = 'assets/*-widget.js'
+WIDGET_SRC_RE = re.compile(r'''(src=["'](?:/)?assets/([\w-]+-widget\.js))(?:\?v=[^"']*)?(["'])''')
+T_CALL_RE = re.compile(r'''\bT\(\s*('(?:\\.|[^'\\\n])*'|"(?:\\.|[^"\\\n])*")''')
 HAS_LETTERS = re.compile(r'[^\W\d_]{2,}', re.U)
 
 
@@ -435,14 +444,74 @@ def jsonld_walk_copy(node, tr, parent_type=None):
 
 
 # --------------------------------------------------------------------------
+# widgets
+# --------------------------------------------------------------------------
+
+def widget_strings():
+    """{'booking-widget.js': {English strings passed to T('...')}, ...}"""
+    out = {}
+    for path in sorted(glob.glob(os.path.join(ROOT, WIDGET_GLOB))):
+        src = open(path, encoding='utf-8').read()
+        found = set()
+        for lit in T_CALL_RE.findall(src):
+            try:
+                val = ast.literal_eval(lit)
+            except (ValueError, SyntaxError):
+                continue
+            if isinstance(val, str) and worth_translating(val):
+                found.add(val)
+        out[os.path.basename(path)] = found
+    return out
+
+
+def widgets_on(page_src):
+    return {m.group(2) for m in WIDGET_SRC_RE.finditer(page_src)}
+
+
+def sync_widget_versions(names):
+    """Point every page at ?v=<content hash> of each widget it loads."""
+    versions = {}
+    for path in glob.glob(os.path.join(ROOT, WIDGET_GLOB)):
+        with open(path, 'rb') as f:
+            versions[os.path.basename(path)] = hashlib.sha1(f.read()).hexdigest()[:10]
+    for n in names:
+        path = os.path.join(ROOT, n)
+        src = open(path, encoding='utf-8').read()
+        out = WIDGET_SRC_RE.sub(lambda m: '%s?v=%s%s' % (m.group(1), versions.get(m.group(2), 'x'), m.group(3))
+                                if m.group(2) in versions else m.group(0), src)
+        if out != src:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(out)
+
+
+def i18n_script(cfg, lang, page_src, wstrings, cache):
+    used = set()
+    for w in widgets_on(page_src):
+        used |= wstrings.get(w, set())
+    if not used or lang == cfg['default']:
+        return ''
+    table = {s: cache.data[s] for s in sorted(used) if s in cache.data}
+    payload = {'lang': lang, 'locale': cfg['languages'][lang].get('locale', lang), 's': table}
+    body = json.dumps(payload, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    return '<script>window.WP_I18N=%s;</script>' % body
+
+
+# --------------------------------------------------------------------------
 # translation
 # --------------------------------------------------------------------------
 
-def build_system_prompt(cfg, lang):
+UI_NOTE = ('These strings are labels, buttons and messages from the booking form, the '
+           'session request form and the chat concierge. Words in {curly_braces} are '
+           'placeholders filled in by the code: keep each one exactly as written. If the '
+           'English is in capitals, keep the translation in capitals. ')
+
+
+def build_system_prompt(cfg, lang, ui=False):
     L = cfg['languages'][lang]
     g = cfg['glossary']
     keep = ', '.join(g['keep_in_english'])
     fixed = '\n'.join('- "%s" -> "%s"' % (en, tr[lang]) for en, tr in g['fixed'].items() if lang in tr)
+    ui_note = (UI_NOTE + '\n\n') if ui else ''
     return f"""You translate the website of Wailea Photo, a small family-run beach photography business in Wailea, Maui, Hawaii, from English into {L['name']}.
 
 Voice: {L['register']} Warm, personal, plain and confident, like the family wrote it themselves. Never stiff, never salesy, never literal where a native writer would phrase it differently. Keep sentences roughly as long as the original.
@@ -457,7 +526,7 @@ Rules:
 6. If a string is only a proper name, a brand, a number or code, return it unchanged.
 7. Translate everything else fully, including short button and menu labels.
 
-Input: a JSON array of English strings. Output: only a JSON object {{"t": [...]}} whose array holds the translations in the same order and has exactly the same length. No commentary."""
+{ui_note}Input: a JSON array of English strings. Output: only a JSON object {{"t": [...]}} whose array holds the translations in the same order and has exactly the same length. No commentary."""
 
 
 def call_claude(cfg, system, items, api_key):
@@ -515,7 +584,7 @@ def batches(items, max_chars=6000, max_items=80):
         yield cur
 
 
-def translate_missing(cfg, lang, cache, wanted, mode, api_key, workers=4):
+def translate_missing(cfg, lang, cache, wanted, mode, api_key, workers=4, ui=False):
     missing = sorted(s for s in wanted if cache.get(s) is None)
     if not missing:
         print('%s: nothing new to translate' % lang)
@@ -524,14 +593,15 @@ def translate_missing(cfg, lang, cache, wanted, mode, api_key, workers=4):
         print('%s: %d strings not yet translated (left in English)' % (lang, len(missing)))
         return missing
     print('%s: translating %d new strings' % (lang, len(missing)), flush=True)
-    system = build_system_prompt(cfg, lang)
+    system = build_system_prompt(cfg, lang, ui)
     failed = []
 
     def work(batch):
         out = fake_translate(lang, batch) if mode == 'fake' else call_claude(cfg, system, batch, api_key)
         good, bad = {}, []
         for s, t in zip(batch, out):
-            if isinstance(t, str) and t.strip() and placeholders_ok(s, t):
+            if isinstance(t, str) and t.strip() and placeholders_ok(s, t) \
+                    and sorted(BRACE_RE.findall(s)) == sorted(BRACE_RE.findall(t)):
                 good[s] = t.strip()
             else:
                 bad.append(s)
@@ -585,17 +655,17 @@ SWITCH_CSS = ('<style id="i18n-css">'
               '</style>')
 
 
-def head_block(cfg, name):
+def head_block(cfg, name, extra=''):
     links = ['<link rel="alternate" hreflang="%s" href="%s">' % (c, page_url(name, c, cfg['default']))
              for c in cfg['order']]
     links.append('<link rel="alternate" hreflang="x-default" href="%s">' % page_url(name))
-    return '<!-- i18n:head -->' + ''.join(links) + SWITCH_CSS + '<!-- /i18n:head -->'
+    return '<!-- i18n:head -->' + ''.join(links) + SWITCH_CSS + extra + '<!-- /i18n:head -->'
 
 
-def inject_blocks(doc, cfg, name, lang):
+def inject_blocks(doc, cfg, name, lang, extra=''):
     doc = re.sub(r'<!-- i18n:head -->.*?<!-- /i18n:head -->', '', doc, flags=re.S)
     doc = re.sub(r'<!-- i18n:switcher -->.*?<!-- /i18n:switcher -->', '', doc, flags=re.S)
-    doc = re.sub(r'(?i)</head>', head_block(cfg, name) + '\n</head>', doc, count=1)
+    doc = re.sub(r'(?i)</head>', lambda m: head_block(cfg, name, extra) + '\n</head>', doc, count=1)
     sw = switcher_html(cfg, name, lang)
     if '<div class="header-right">' in doc:
         doc = doc.replace('<div class="header-right">', '<div class="header-right">' + sw, 1)
@@ -699,7 +769,7 @@ def _asset_only(u):
     return '/' + s.lstrip('./')
 
 
-def render(page, lang, cfg, cache, slugs):
+def render(page, lang, cfg, cache, slugs, wstrings=None):
     def tr(s):
         return cache.data.get(s)
 
@@ -740,7 +810,7 @@ def render(page, lang, cfg, cache, slugs):
             out.append(t)
         i += 1
     doc = ''.join(out)
-    doc = inject_blocks(doc, cfg, page.name, lang)
+    doc = inject_blocks(doc, cfg, page.name, lang, i18n_script(cfg, lang, page.src, wstrings or {}, cache))
     note = ('<!-- Generated by tools/i18n/build.py from %s. Do not edit: edit the English page '
             'and this copy is rebuilt on push. -->\n' % page.name)
     doc = re.sub(r'(?i)^(\s*<!doctype[^>]*>\s*)', lambda m: m.group(1) + note, doc, count=1)
@@ -819,24 +889,29 @@ def main():
         CACHE_DIR = os.path.join(ROOT, '.i18n-fake-cache')
 
     names = pages()
+    sync_widget_versions(names)
     parsed = [Page(n) for n in names]
+    wstrings = widget_strings()
+    ui_wanted = set().union(*wstrings.values()) if wstrings else set()
     slugs = {page_slug(n) for n in names}
     wanted = set()
     for p in parsed:
         wanted |= p.strings()
-    print('%d pages, %d unique strings' % (len(parsed), len(wanted)))
+    print('%d pages, %d unique strings, %d widget strings' % (len(parsed), len(wanted), len(ui_wanted)))
 
     untranslated = {}
     for lang in langs:
         cache = Cache(lang)
         untranslated[lang] = translate_missing(cfg, lang, cache, wanted, run_mode, api_key, args.workers)
-        for s in wanted:
+        untranslated[lang] += translate_missing(cfg, lang, cache, ui_wanted - wanted, run_mode, api_key,
+                                                args.workers, ui=True)
+        for s in wanted | ui_wanted:
             cache.get(s)  # mark used
         cache.save(prune=(run_mode == 'api'))
         os.makedirs(os.path.join(ROOT, lang), exist_ok=True)
         keep = set()
         for p in parsed:
-            out = render(p, lang, cfg, cache, slugs)
+            out = render(p, lang, cfg, cache, slugs, wstrings)
             path = os.path.join(ROOT, lang, p.name)
             keep.add(p.name)
             old = open(path, encoding='utf-8').read() if os.path.exists(path) else None
