@@ -30,3 +30,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://waileaphoto.com/sitemap.xml
+Sitemap: https://waileaphoto.com/sitemap-i18n.xml
