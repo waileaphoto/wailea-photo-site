@@ -1,7 +1,7 @@
 {
   "model": "claude-sonnet-5",
   "default": "en",
-  "order": ["en", "fr", "es", "de", "it", "ja", "ko", "zh"],
+  "order": ["en", "fr", "es", "de", "it", "ja", "ko", "zh", "hi"],
   "languages": {
     "en": {"name": "English", "native": "English", "switch_label": "Language", "og_locale": "en_US"},
     "fr": {
@@ -60,6 +60,14 @@
       "locale": "zh-CN",
       "hreflang": "zh-Hans",
       "register": "Simplified Chinese for readers from mainland China: warm, polished and natural, never a word-for-word rendering. Full-width Chinese punctuation (，。：“”). Names on the keep-in-English list stay in Latin letters."
+    },
+    "hi": {
+      "name": "Hindi",
+      "native": "हिन्दी",
+      "switch_label": "भाषा",
+      "og_locale": "hi_IN",
+      "locale": "hi-IN",
+      "register": "Natural, warm standard Hindi in Devanagari, addressing the reader with the respectful आप. Everyday English loanwords that Hindi speakers actually use (session, photo, booking) may stay as they are, written in Devanagari. Use Western digits (0-9), never Devanagari numerals. Names on the keep-in-English list stay in Latin letters."
     }
   },
   "glossary": {
@@ -72,18 +80,18 @@
       "Haleakalā", "Haleakala", "Molokini", "Hāna", "Hana", "Maui"
     ],
     "fixed": {
-      "First Half of Sunset": {"fr": "Première moitié du coucher de soleil", "es": "Primera mitad del atardecer", "de": "Erste Hälfte des Sonnenuntergangs", "it": "Prima metà del tramonto", "ja": "サンセット前半", "ko": "선셋 전반부", "zh": "日落前半场"},
-      "Last Half of Sunset": {"fr": "Seconde moitié du coucher de soleil", "es": "Segunda mitad del atardecer", "de": "Zweite Hälfte des Sonnenuntergangs", "it": "Seconda metà del tramonto", "ja": "サンセット後半", "ko": "선셋 후반부", "zh": "日落后半场"},
-      "Sunrise with Max": {"fr": "Lever du soleil avec Max", "es": "Amanecer con Max", "de": "Sonnenaufgang mit Max", "it": "Alba con Max", "ja": "Maxと迎えるサンライズ", "ko": "Max와 함께하는 일출", "zh": "与 Max 共赏日出"},
-      "Turquoise + Water Experience": {"fr": "Expérience Turquoise + Eau", "es": "Experiencia Turquesa + Agua", "de": "Erlebnis Türkis + Wasser", "it": "Esperienza Turchese + Acqua", "ja": "ターコイズ + ウォーター体験", "ko": "터쿼이즈 + 워터 체험", "zh": "碧蓝 + 海水体验"},
-      "A Poetic Wedding in Maui": {"fr": "Un mariage poétique à Maui", "es": "Una boda poética en Maui", "de": "Eine poetische Hochzeit auf Maui", "it": "Un matrimonio poetico a Maui", "ja": "Mauiでの詩的なウェディング", "ko": "Maui에서의 시적인 웨딩", "zh": "Maui 诗意婚礼"},
-      "Family Legacy": {"fr": "Héritage familial", "es": "Legado familiar", "de": "Familienerbe", "it": "Eredità di famiglia", "ja": "ファミリー・レガシー", "ko": "패밀리 레거시", "zh": "家族传承"},
-      "The Maui Atlas": {"fr": "L'Atlas de Maui", "es": "El Atlas de Maui", "de": "Der Maui-Atlas", "it": "L'Atlante di Maui", "ja": "Mauiアトラス", "ko": "Maui 아틀라스", "zh": "Maui 地图集"},
-      "AI Concierge": {"fr": "Concierge IA", "es": "Conserje con IA", "de": "KI-Concierge", "it": "Concierge IA", "ja": "AIコンシェルジュ", "ko": "AI 컨시어지", "zh": "AI 礼宾助手"},
-      "Sessions & Pricing": {"fr": "Séances et tarifs", "es": "Sesiones y precios", "de": "Shootings & Preise", "it": "Sessioni e prezzi", "ja": "撮影プランと料金", "ko": "촬영 및 요금", "zh": "拍摄项目与价格"},
-      "Book Now": {"fr": "Réserver", "es": "Reservar", "de": "Jetzt buchen", "it": "Prenota ora", "ja": "今すぐ予約", "ko": "지금 예약", "zh": "立即预订"},
-      "session": {"fr": "séance", "es": "sesión", "de": "Shooting", "it": "sessione", "ja": "撮影", "ko": "촬영", "zh": "拍摄"},
-      "golden hour": {"fr": "heure dorée", "es": "hora dorada", "de": "goldene Stunde", "it": "ora d'oro", "ja": "ゴールデンアワー", "ko": "골든 아워", "zh": "黄金时刻"}
+      "First Half of Sunset": {"fr": "Première moitié du coucher de soleil", "es": "Primera mitad del atardecer", "de": "Erste Hälfte des Sonnenuntergangs", "it": "Prima metà del tramonto", "ja": "サンセット前半", "ko": "선셋 전반부", "zh": "日落前半场", "hi": "सूर्यास्त का पहला भाग"},
+      "Last Half of Sunset": {"fr": "Seconde moitié du coucher de soleil", "es": "Segunda mitad del atardecer", "de": "Zweite Hälfte des Sonnenuntergangs", "it": "Seconda metà del tramonto", "ja": "サンセット後半", "ko": "선셋 후반부", "zh": "日落后半场", "hi": "सूर्यास्त का दूसरा भाग"},
+      "Sunrise with Max": {"fr": "Lever du soleil avec Max", "es": "Amanecer con Max", "de": "Sonnenaufgang mit Max", "it": "Alba con Max", "ja": "Maxと迎えるサンライズ", "ko": "Max와 함께하는 일출", "zh": "与 Max 共赏日出", "hi": "Max के साथ सूर्योदय"},
+      "Turquoise + Water Experience": {"fr": "Expérience Turquoise + Eau", "es": "Experiencia Turquesa + Agua", "de": "Erlebnis Türkis + Wasser", "it": "Esperienza Turchese + Acqua", "ja": "ターコイズ + ウォーター体験", "ko": "터쿼이즈 + 워터 체험", "zh": "碧蓝 + 海水体验", "hi": "फ़िरोज़ी + पानी अनुभव"},
+      "A Poetic Wedding in Maui": {"fr": "Un mariage poétique à Maui", "es": "Una boda poética en Maui", "de": "Eine poetische Hochzeit auf Maui", "it": "Un matrimonio poetico a Maui", "ja": "Mauiでの詩的なウェディング", "ko": "Maui에서의 시적인 웨딩", "zh": "Maui 诗意婚礼", "hi": "Maui में एक काव्यात्मक विवाह"},
+      "Family Legacy": {"fr": "Héritage familial", "es": "Legado familiar", "de": "Familienerbe", "it": "Eredità di famiglia", "ja": "ファミリー・レガシー", "ko": "패밀리 레거시", "zh": "家族传承", "hi": "पारिवारिक विरासत"},
+      "The Maui Atlas": {"fr": "L'Atlas de Maui", "es": "El Atlas de Maui", "de": "Der Maui-Atlas", "it": "L'Atlante di Maui", "ja": "Mauiアトラス", "ko": "Maui 아틀라스", "zh": "Maui 地图集", "hi": "Maui एटलस"},
+      "AI Concierge": {"fr": "Concierge IA", "es": "Conserje con IA", "de": "KI-Concierge", "it": "Concierge IA", "ja": "AIコンシェルジュ", "ko": "AI 컨시어지", "zh": "AI 礼宾助手", "hi": "AI कंसीयर्ज"},
+      "Sessions & Pricing": {"fr": "Séances et tarifs", "es": "Sesiones y precios", "de": "Shootings & Preise", "it": "Sessioni e prezzi", "ja": "撮影プランと料金", "ko": "촬영 및 요금", "zh": "拍摄项目与价格", "hi": "सेशन और कीमतें"},
+      "Book Now": {"fr": "Réserver", "es": "Reservar", "de": "Jetzt buchen", "it": "Prenota ora", "ja": "今すぐ予約", "ko": "지금 예약", "zh": "立即预订", "hi": "अभी बुक करें"},
+      "session": {"fr": "séance", "es": "sesión", "de": "Shooting", "it": "sessione", "ja": "撮影", "ko": "촬영", "zh": "拍摄", "hi": "सेशन"},
+      "golden hour": {"fr": "heure dorée", "es": "hora dorada", "de": "goldene Stunde", "it": "ora d'oro", "ja": "ゴールデンアワー", "ko": "골든 아워", "zh": "黄金时刻", "hi": "गोल्डन आवर"}
     }
   }
 }
