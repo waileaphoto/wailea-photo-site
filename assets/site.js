@@ -595,3 +595,35 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 });
+
+/* Big review number follows the live widget total, in every locale. */
+(function(){
+  var el = document.querySelector("#reviews .trust-number");
+  var root = document.getElementById("all-reviews-widget");
+  if (!el || !root) return;
+  var lang = (document.documentElement.lang || "en").slice(0, 2);
+  var locale = lang === "en" ? "en-US" : lang;
+  function readTotal(){
+    var text = root.innerText || "";
+    var best = 0;
+    var re = /([0-9][0-9.,]{2,})/g, m;
+    while ((m = re.exec(text)) !== null) {
+      var n = parseInt(m[1].replace(/[^0-9]/g, ""), 10);
+      if (n > best && n < 100000) best = n;
+    }
+    return best;
+  }
+  function apply(){
+    var total = readTotal();
+    if (!total || total < 500) return false;
+    var shown = total.toLocaleString(locale);
+    el.textContent = shown;
+    el.setAttribute("data-count-target", total);
+    el.setAttribute("aria-label", shown);
+    return true;
+  }
+  if (apply()) return;
+  var mo = new MutationObserver(function(){ if (apply()) mo.disconnect(); });
+  mo.observe(root, { childList: true, subtree: true, characterData: true });
+  setTimeout(function(){ mo.disconnect(); }, 20000);
+})();
