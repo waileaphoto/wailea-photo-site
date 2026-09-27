@@ -1,3 +1,34 @@
+
+/* A Family's Experience - crossfade between client stories. */
+(function(){
+  var rot = document.getElementById('familyExperience');
+  if (!rot) return;
+  var slides = [].slice.call(rot.querySelectorAll('.story-slide'));
+  var dots   = [].slice.call(rot.querySelectorAll('.story-dot'));
+  if (slides.length < 2) return;
+
+  var i = 0, timer = null;
+  var DWELL = 15000;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(n){
+    slides[i].classList.remove('is-active');
+    if (dots[i]) { dots[i].classList.remove('is-on'); dots[i].setAttribute('aria-selected','false'); }
+    i = (n + slides.length) % slides.length;
+    slides[i].classList.add('is-active');
+    if (dots[i]) { dots[i].classList.add('is-on'); dots[i].setAttribute('aria-selected','true'); }
+  }
+  function start(){ if (reduce) return; stop(); timer = setInterval(function(){ show(i + 1); }, DWELL); }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+
+  dots.forEach(function(d, n){ d.addEventListener("click", function(){ show(n); start(); }); });
+  rot.addEventListener("mouseenter", stop);
+  rot.addEventListener("mouseleave", start);
+  rot.addEventListener("focusin", stop);
+  rot.addEventListener("focusout", start);
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) { stop(); } else { start(); } });
+  start();
+})();
 /* Wailea Photo — shared site behavior (menu, reveal animation, counters, sliders) */
 (function(){
   // Fix: landing on a page with a URL hash (a fresh load, or a same-page menu
@@ -626,4 +657,32 @@ document.addEventListener('DOMContentLoaded', function(){
   var mo = new MutationObserver(function(){ if (apply()) mo.disconnect(); });
   mo.observe(root, { childList: true, subtree: true, characterData: true });
   setTimeout(function(){ mo.disconnect(); }, 20000);
+})();
+
+/* A Family's Experience - crossfade between client stories. */
+(function(){
+  var rot = document.getElementById('familyExperience');
+  if (!rot) return;
+  var slides = [].slice.call(rot.querySelectorAll('.story-slide'));
+  var dots   = [].slice.call(rot.querySelectorAll('.story-dot'));
+  if (slides.length < 2) return;
+  var i = 0, timer = null;
+  var DWELL = 15000;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n){
+    slides[i].classList.remove('is-active');
+    if (dots[i]) { dots[i].classList.remove('is-on'); dots[i].setAttribute('aria-selected','false'); }
+    i = (n + slides.length) % slides.length;
+    slides[i].classList.add('is-active');
+    if (dots[i]) { dots[i].classList.add('is-on'); dots[i].setAttribute('aria-selected','true'); }
+  }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+  function start(){ if (reduce) return; stop(); timer = setInterval(function(){ show(i + 1); }, DWELL); }
+  dots.forEach(function(d, n){ d.addEventListener('click', function(){ show(n); start(); }); });
+  rot.addEventListener('mouseenter', stop);
+  rot.addEventListener('mouseleave', start);
+  rot.addEventListener('focusin', stop);
+  rot.addEventListener('focusout', start);
+  document.addEventListener('visibilitychange', function(){ if (document.hidden) { stop(); } else { start(); } });
+  start();
 })();
