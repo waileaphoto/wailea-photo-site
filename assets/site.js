@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function(){
 /* Big review number follows the live widget total, in every locale. */
 (function(){
   var el = document.querySelector("#reviews .trust-number");
-  var root = document.getElementById("all-reviews-widget");
+    var root = document.getElementById("proofCount") || document.getElementById("combinedReviewCount");
   if (!el || !root) return;
   var lang = (document.documentElement.lang || "en").slice(0, 2);
   var locale = lang === "en" ? "en-US" : lang;
