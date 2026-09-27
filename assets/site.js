@@ -1,4 +1,39 @@
 
+/* Keep the big review number on the live total, even after the count-up runs. */
+(function(){
+  var el = document.querySelector('#reviews .trust-number');
+  var src = document.getElementById('proofCount') || document.getElementById('combinedReviewCount');
+  if (!el || !src) return;
+  var lang = (document.documentElement.lang || 'en').slice(0, 2);
+  var locale = lang === 'en' ? 'en-US' : lang;
+  var want = null, mo = null;
+  function read(){
+    var n = parseInt((src.textContent || '').replace(/[^0-9]/g, ''), 10);
+    return (n && n >= 500) ? n : 0;
+  }
+  function enforce(){
+    if (!want) return;
+    if (el.textContent !== want) { el.textContent = want; }
+  }
+  function apply(){
+    var total = read();
+    if (!total) return false;
+    want = total.toLocaleString(locale);
+    el.setAttribute('data-count-target', total);
+    el.setAttribute('aria-label', want);
+    el.textContent = want;
+    if (!mo) {
+      mo = new MutationObserver(enforce);
+      mo.observe(el, { childList: true, characterData: true, subtree: true });
+    }
+    return true;
+  }
+  apply();
+  var watch = new MutationObserver(function(){ apply(); });
+  watch.observe(src, { childList: true, characterData: true, subtree: true });
+  var ticks = 0;
+  var poll = setInterval(function(){ apply(); if (++ticks > 40) { clearInterval(poll); } }, 500);
+})();
 /* A Family's Experience - crossfade between client stories. */
 (function(){
   var rot = document.getElementById('familyExperience');
