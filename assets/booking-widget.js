@@ -531,6 +531,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.state.holdEmail = email;
         this.holdForm.hidden = true;
         this.startFreeHoldCountdown();
+        this.trackStep('booking_hold_placed');
       } catch (err) {
         this.holdStatus.textContent = err.message;
         this.holdStatus.classList.add('wbw-hold-error');
@@ -763,6 +764,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.setCalendarBusy(false);
         this.calendarStatus.hidden = true;
         this.showCalendarError();
+        this.trackStep('booking_calendar_error');
         return;
       }
       clearTimeout(hintTimer);
@@ -775,6 +777,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
 
       if (data.bookingMode === 'manual') {
         this.dateError.textContent = T(data.message);
+        this.trackStep('booking_manual_only');
         return;
       }
 
@@ -807,12 +810,18 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         const dayButton = Array.from(this.dayGrid.querySelectorAll('.wbw-day')).find((button) => Number(button.textContent) === Number(requested.date.slice(-2)));
         const slot = day?.slots?.find((candidate) => !requested.startTime || candidate.startTime === requested.startTime);
         if (day && dayButton && slot) this.selectDate(day, { target: dayButton }, slot.startTime);
-        else this.dateError.textContent = T('That opening was just filled. Please choose another available date and time.');
+        else {
+          this.dateError.textContent = T('That opening was just filled. Please choose another available date and time.');
+          this.trackStep('booking_preselect_unavailable');
+        }
       }
 
       // A month with nothing open used to render as a grid of greyed-out numbers, which
       // looks broken rather than busy. Say so plainly and offer the next real opening.
-      if (!monthHasOpenings(data)) this.showEmptyMonth(token);
+      if (!monthHasOpenings(data)) {
+        this.trackStep('booking_no_availability');
+        this.showEmptyMonth(token);
+      }
     }
 
     showCalendarError() {
@@ -886,6 +895,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     selectDate(day, e, preferredStartTime = null) {
       this.state.selectedDate = day.date;
       this.state.selectedSlot = null;
+      this.trackStep('booking_date_selected');
       this.renderConditionsForSelectedDate();
       Array.from(this.dayGrid.children).forEach((c) => c.classList.remove('wbw-selected'));
       e?.target?.classList.add('wbw-selected');
@@ -895,6 +905,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
           class: 'wbw-slot-btn',
           onclick: (e) => {
             this.state.selectedSlot = slot;
+            this.trackStep('booking_time_selected');
             Array.from(this.slotsWrap.children).forEach((c) => c.classList.remove('wbw-selected'));
             e.target.classList.add('wbw-selected');
           },
@@ -907,6 +918,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     goToDetails() {
       if (!this.state.selectedDate || !this.state.selectedSlot) {
         this.dateError.textContent = T('Please pick a date and time first.');
+        this.trackStep('booking_form_blocked', { reason: 'no_date_time' }, 'blocked:no_date_time');
         return;
       }
       // Carry a hold email forward so nobody types it twice.
@@ -914,6 +926,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.emailInput.value = this.holdEmailInput.value;
       }
       this.showStep('details');
+      this.trackStep('booking_details_view');
       this.refreshQuote();
     }
 
@@ -960,19 +973,22 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.detailsError.textContent = '';
       if (!this.nameInput.value || !this.emailInput.value) {
         this.detailsError.textContent = T('Name and email are required.');
+        this.trackStep('booking_form_blocked', { reason: 'name_email' }, 'blocked:name_email');
         return;
-      
       }
       if (!this.policyCheckbox.checked) {
         this.detailsError.textContent = T('Please agree to the session policies to continue.');
+        this.trackStep('booking_form_blocked', { reason: 'policies' }, 'blocked:policies');
         return;
       }
       if (!this.textConfirmCheckbox.checked) {
         this.detailsError.textContent = T("Please confirm you'll respond to your photographer's text to continue.");
+        this.trackStep('booking_form_blocked', { reason: 'text_confirm' }, 'blocked:text_confirm');
         return;
       }
       if (this.state.slug === 'sunrise-max' && !this.sunrisePunctualityCheckbox.checked) {
         this.detailsError.textContent = T('Please acknowledge the Sunrise session arrival-time policy to continue.');
+        this.trackStep('booking_form_blocked', { reason: 'sunrise_policy' }, 'blocked:sunrise_policy');
         return;
       }
       const btn = event?.target;
@@ -1033,6 +1049,11 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         await this.mountStripeElement();
       } catch (err) {
         this.detailsError.textContent = err.message;
+        // Server/Stripe error text only (e.g. "That time was just booked"), with anything
+        // that looks like an email or phone number scrubbed in case a message echoes input.
+        this.trackStep('booking_form_error', {
+          reason: String((err && err.message) || 'unknown').replace(/\S+@\S+/g, '[email]').replace(/\+?\d[\d\s().-]{6,}\d/g, '[number]').slice(0, 100),
+        }, null, true);
       } finally {
         if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
       }
@@ -1049,6 +1070,12 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         ? this.stripe.elements({ clientSecret: this.state.clientSecret })
         : this.stripe.elements({ clientSecret: this.state.clientSecret, locale: LANG });
       this.paymentElement = this.elements.create('payment');
+      // begin_checkout fires as soon as the booking row exists; these two say whether the
+      // card form then actually appeared, which is the one failure nobody would report.
+      if (typeof this.paymentElement.on === 'function') {
+        this.paymentElement.on('ready', () => this.trackStep('booking_payment_ready'));
+        this.paymentElement.on('loaderror', () => this.trackStep('booking_payment_load_error'));
+      }
       this.cardElementWrap.innerHTML = '';
       this.paymentElement.mount(this.cardElementWrap);
     }
@@ -1059,6 +1086,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.payError.textContent = T('Your 15-minute hold expired. Go back and select the session again.');
         return;
       }
+      this.trackStep('add_payment_info', { currency: 'USD', value: (this.state.totalPriceCents || 0) / 100 });
       this.payBtn.disabled = true;
       this.payBtn.innerHTML = '<span class="wbw-spinner"></span> ';
       this.payBtn.appendChild(document.createTextNode(T('Processing…')));
@@ -1097,6 +1125,31 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         el('button', { class: 'wbw-btn wbw-btn-secondary', style: 'margin-top:10px;', onclick: () => this.close() }, [T('Done')])
       );
       this.showStep('success');
+    }
+
+    // Funnel-step events for everything between booking_start (widget opened) and
+    // purchase, so GA4 can show WHERE people leave instead of only that they did. In order:
+    //   booking_start > booking_date_selected > booking_time_selected > booking_details_view
+    //   > begin_checkout > booking_payment_ready > add_payment_info > purchase
+    // plus diagnostics off to the side: booking_calendar_error, booking_no_availability,
+    // booking_manual_only, booking_preselect_unavailable, booking_hold_placed,
+    // booking_form_blocked, booking_form_error, booking_payment_load_error.
+    // Each is its own event name on purpose: GA4 counts event names out of the box,
+    // whereas a single "booking_step" event with a step parameter would need a custom
+    // dimension registered before it could be reported on.
+    // Fires at most once per widget open (per dedupeKey), so going Back and forward
+    // doesn't inflate a step. Never sends anything the client typed.
+    trackStep(eventName, extra, dedupeKey, repeatable) {
+      try {
+        if (typeof window.waileaTrack !== 'function' || !this.state) return;
+        if (!repeatable) {
+          const key = dedupeKey || eventName;
+          this.state.stepsTracked = this.state.stepsTracked || {};
+          if (this.state.stepsTracked[key]) return;
+          this.state.stepsTracked[key] = true;
+        }
+        window.waileaTrack(eventName, Object.assign({ booking_system: 'wailea', session_type: this.state.slug }, extra || {}));
+      } catch (_) { /* analytics must never get in the way of a booking */ }
     }
 
     // Fires the GA4 purchase event with the booking's real total value, so
