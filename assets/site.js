@@ -1,4 +1,34 @@
 
+/* Impressionism page: crossfade the frames in "A second painter’s eye". */
+(function(){
+  var s = document.getElementById("impSlider");
+  if (!s) return;
+  var sl = [].slice.call(s.querySelectorAll(".imp-slide"));
+  var dt = [].slice.call(s.querySelectorAll(".imp-dot"));
+  if (sl.length < 2) return;
+  var i = 0, t = null, DWELL = 6000;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function go(n){
+    sl[i].classList.remove("is-on");
+    if (dt[i]) { dt[i].classList.remove("is-on"); dt[i].setAttribute("aria-selected","false"); }
+    i = (n + sl.length) % sl.length;
+    sl[i].classList.add("is-on");
+    if (dt[i]) { dt[i].classList.add("is-on"); dt[i].setAttribute("aria-selected","true"); }
+  }
+  function stop(){ if (t) { clearInterval(t); t = null; } }
+  function start(){ if (reduce) return; stop(); t = setInterval(function(){ go(i + 1); }, DWELL); }
+  var prev = s.querySelector(".imp-prev"), next = s.querySelector(".imp-next");
+  if (prev) prev.addEventListener("click", function(){ go(i - 1); start(); });
+  if (next) next.addEventListener("click", function(){ go(i + 1); start(); });
+  dt.forEach(function(d, n){ d.addEventListener("click", function(){ go(n); start(); }); });
+  s.addEventListener("mouseenter", stop);
+  s.addEventListener("mouseleave", start);
+  s.addEventListener("focusin", stop);
+  s.addEventListener("focusout", start);
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) { stop(); } else { start(); } });
+  start();
+})();
+
 /* Keep the big review number on the live total, even after the count-up runs. */
 (function(){
   var el = document.querySelector('#reviews .trust-number');
