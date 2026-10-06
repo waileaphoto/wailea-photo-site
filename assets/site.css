@@ -1024,3 +1024,18 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
   .market-table{font-size:11px}
   .market-table th,.market-table td{padding:6px 5px}
 }
+
+/* Impressionism page: crossfading frame slider in "A second painter’s eye". */
+.imp-slider{position:relative;display:grid}
+.imp-slide{grid-area:1/1;margin:0;opacity:0;visibility:hidden;transition:opacity 1.1s ease,visibility 0s linear 1.1s}
+.imp-slide.is-on{opacity:1;visibility:visible;transition:opacity 1.1s ease,visibility 0s}
+.imp-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.imp-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.42);background:rgba(23,23,22,.36);color:#fff;font:300 26px/1 Georgia,serif;cursor:pointer;transition:background .2s,border-color .2s}
+.imp-arrow:hover{background:rgba(23,23,22,.72);border-color:#fff}
+.imp-prev{left:14px}
+.imp-next{right:14px}
+.imp-dots{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;display:flex;gap:9px}
+.imp-dot{width:8px;height:8px;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.65);background:transparent;cursor:pointer}
+.imp-dot.is-on{background:#fff}
+.imp-arrow:focus-visible,.imp-dot:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.imp-slide{transition:none}}
