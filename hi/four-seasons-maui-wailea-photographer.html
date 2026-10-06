@@ -146,6 +146,11 @@
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px);padding:clamp(10px,1.4vw,20px);background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-duo figure{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden}
+    .atlas-duo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.98)}
+    .atlas-duo figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,rgba(12,12,11,.6));pointer-events:none}
+    .atlas-duo figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:16px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-recommendation{margin:34px 0 0;padding:clamp(26px,3vw,38px);background:var(--atlas-ink);color:#fff}
     .atlas-recommendation h3{margin:0 0 16px!important;color:#fff;font:500 clamp(1.7rem,2.6vw,2.35rem)/1.08 'Cormorant Garamond',Georgia,serif!important}
     .atlas-recommendation p{color:rgba(255,255,255,.78)}
@@ -158,8 +163,10 @@
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
+      .atlas-duo{grid-template-columns:1fr}
     }
   </style>
+
 
 
 
@@ -240,20 +247,22 @@
       <p>Four Seasons Resort Maui, Wailea Beach की सुनहरी अर्धचंद्राकार पट्टी के किनारे पंद्रह एकड़ ओशनफ़्रंट ज़मीन पर बसा है — यह Maui के सबसे ख़ूबसूरत, और सूर्यास्त के समय, सबसे व्यस्त तटों में से एक है। शाम की भीड़ के बीच काम करने के बजाय, हम आमतौर पर वहाँ से थोड़ी दूर, रेत की एक शांत पट्टी पर मिलते हैं जहाँ रोशनी उतनी ही सुनहरी होती है और आपके पीछे का नज़ारा सिर्फ़ आपका होता है।</p>
       <p>Four Seasons में ठहरने वाले मेहमानों के लिए, यह बस एक छोटी सी ड्राइव है। अपनी दोपहर एडल्ट्स-ओनली सेरेनिटी पूल या स्पा में बिताएँ, अपने ही कमरे में तैयार हों, और जैसे ही रोशनी सुनहरी होने लगे, हमसे मिलें। रिज़ॉर्ट के ठीक सामने Wailea Beach पर ठहरना पसंद करेंगे? बस पूछें — शाम और भीड़ के हिसाब से, हमें इस पर बात करने में खुशी होगी।</p>
       <div class="location-note">
-        <strong>हम कहाँ मिलते हैं</strong>
-        Four Seasons Resort Maui (3900 Wailea Alanui Drive) से कुछ मिनट की ड्राइव पर एक शांत समुद्र तट। बुकिंग के समय हम मिलने की सटीक जगह — और उस शाम के सूर्यास्त का समय — भेज देंगे। रिज़ॉर्ट के ठीक सामने Wailea Beach पसंद है? हमें बताएं, हम उस शाम के विकल्पों पर बात कर लेंगे।
-      </div>
-      <div class="atlas-recommendation">
-        <h3>हम आपकी पसंद वाला सेशन ही बुक करने की सलाह क्यों देते हैं</h3>
-        <p>हम समझते हैं कि सुविधा मायने रखती है। लेकिन आपकी तैयार तस्वीरों की गुणवत्ता—और उन्हें बनाते समय आपके परिवार का साझा अनुभव—इससे भी ज़्यादा मायने रखता है। कभी-कभी इसका मतलब है थोड़ी दूर गाड़ी चलाकर उन जगहों तक जाना जहाँ हम नियमित रूप से अपने सेशन करते हैं।</p>
-        <p>Four Seasons के सामने वाला समुद्र तट सूर्यास्त फ़ोटोग्राफ़ी के लिए दो बुनियादी वजहों से आदर्श नहीं है:</p>
-        <ol>
-          <li><strong>बड़ी चट्टान की दीवार सूर्यास्त को रोकती है।</strong> डूबता सूरज दीवार के पीछे छिप जाता है और उसे आपकी तस्वीरों में स्वाभाविक रूप से शामिल नहीं किया जा सकता।</li>
-          <li><strong>सूर्यास्त के समय समुद्र तट भीड़भाड़ वाला हो जाता है।</strong> लोगों की संख्या के कारण अधिकतर क्लाइंट्स जिस शांत, आत्मीय पारिवारिक अनुभव की कल्पना करते हैं, उसे बनाना मुश्किल हो जाता है।</li>
-        </ol>
-        <p class="booking-note">यही वजह है कि हम सुझाव देते हैं कि आप वही सेशन और जगह चुनें जो आप सच में चाहते हैं, बजाय इसके कि किसी और समय के खाली होने का इंतज़ार करें। हमारे सूर्यास्त सेशन अक्सर काफी पहले ही बुक हो जाते हैं।</p>
+        <strong>स्थान और पार्किंग</strong>
+        हमारे पसंदीदा बीच स्थान हैं, और अगर आप Four Seasons में ही रुकना चाहते हैं तो आपको यह अनुरोध करना होगा। इसके अलावा हम वैलेट पार्किंग की लागत पूरी करने के लिए एक अतिरिक्त शुल्क भी लेते हैं।
       </div>
     </div>
+  </section>
+
+  <!-- TWO-UP IMAGE BAND -->
+  <section class="atlas-duo" aria-label="Four Seasons Resort Maui के पास फैमिली सेशन">
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-shoreline-walk.jpg" width="2000" height="1333" alt="Four Seasons Resort Maui के पास पहाड़ी पर बने घरों और ताड़ के पेड़ों के नीचे शाम के धुंधलके में समुद्र तट पर टहलता एक परिवार" loading="lazy">
+      <figcaption>रिज़ॉर्ट से कुछ ही देर की ड्राइव पर शांत समुद्र तट</figcaption>
+    </figure>
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-toddler-sunset.jpg" width="2000" height="1333" alt="Wailea के एक समुद्र तट पर सूर्यास्त के समय अपने नन्हे बच्चे का हाथ थामे टहलते माता-पिता" loading="lazy">
+      <figcaption>पानी पर आखिरी रोशनी, Wailea</figcaption>
+    </figure>
   </section>
 
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
@@ -282,7 +291,7 @@
     </details>
     <details class="faq-item">
       <summary>क्या हम रिज़ॉर्ट के ठीक सामने Wailea Beach पर फ़ोटो खिंचवा सकते हैं?</summary>
-      <p>आप इसका अनुरोध कर सकते हैं, और शाम और बीच पर भीड़ के आधार पर, हमें इस पर बात करने में खुशी होगी। क्योंकि वह हिस्सा सूर्यास्त के समय काफ़ी भीड़भाड़ वाला हो सकता है, हम आमतौर पर पास की शांत जगह की सलाह देते हैं — लेकिन चुनाव आपका है।</p>
+      <p>जी हाँ, लेकिन आपको बुकिंग के समय इसका अनुरोध करना होगा — हमारे पसंदीदा बीच स्थान हैं और हम सामान्यतः वहीं जाते हैं। रिज़ॉर्ट में रुकने पर वैलेट पार्किंग की लागत पूरी करने के लिए एक छोटा सा अतिरिक्त शुल्क भी लगता है। चूँकि सूर्यास्त के समय वह हिस्सा काफी भीड़भाड़ वाला हो सकता है, इसलिए हम आमतौर पर पास की शांत जगह की सलाह देते हैं — लेकिन चुनाव आपका है।</p>
     </details>
     <details class="faq-item">
       <summary>क्या मुझे रिज़ॉर्ट के कंसीयर्ज के ज़रिए ही बुक करना होगा?</summary>
@@ -294,7 +303,7 @@
     </details>
     <details class="faq-item">
       <summary>हमारे छोटे बच्चे हैं — क्या हम रिज़ॉर्ट के करीब ही रह सकते हैं?</summary>
-      <p>हां। छोटे बच्चों वाले परिवार जो रिज़ॉर्ट के करीब रहना पसंद करते हैं, उनके लिए हम पास की जगह की व्यवस्था करने की पूरी कोशिश करेंगे। बुकिंग के समय हम विकल्पों पर — और उससे जुड़ी किसी भी रिज़ॉर्ट पार्किंग पर — बात करेंगे।</p>
+      <p>जी हाँ। जिन परिवारों के साथ नन्हे बच्चे हैं और जो रिज़ॉर्ट के पास ही रहना पसंद करेंगे, उनके लिए हम पास की किसी जगह की व्यवस्था करने की पूरी कोशिश करेंगे — बस बुकिंग के समय इसका अनुरोध कर दें। अगर हम खुद Four Seasons में फ़ोटो लेते हैं, तो हम वैलेट पार्किंग की लागत पूरी करने के लिए एक छोटा सा अतिरिक्त शुल्क लेते हैं।</p>
     </details>
     <details class="faq-item">
       <summary>हम कब मिलेंगे?</summary>

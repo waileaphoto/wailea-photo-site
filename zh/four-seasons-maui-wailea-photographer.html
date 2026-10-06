@@ -146,6 +146,11 @@
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px);padding:clamp(10px,1.4vw,20px);background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-duo figure{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden}
+    .atlas-duo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.98)}
+    .atlas-duo figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,rgba(12,12,11,.6));pointer-events:none}
+    .atlas-duo figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:16px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-recommendation{margin:34px 0 0;padding:clamp(26px,3vw,38px);background:var(--atlas-ink);color:#fff}
     .atlas-recommendation h3{margin:0 0 16px!important;color:#fff;font:500 clamp(1.7rem,2.6vw,2.35rem)/1.08 'Cormorant Garamond',Georgia,serif!important}
     .atlas-recommendation p{color:rgba(255,255,255,.78)}
@@ -158,8 +163,10 @@
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
+      .atlas-duo{grid-template-columns:1fr}
     }
   </style>
+
 
 
 
@@ -240,20 +247,22 @@
       <p>Four Seasons Resort Maui 坐拥沿 Wailea Beach 金色海湾绵延的十五英亩海滨地——这是 Maui 最美的海滩之一，日落时分也是人最多的地方之一。我们通常不会在傍晚的人群中将就取景，而是驱车片刻，前往一段更安静的沙滩，那里的光线同样金黄，身后的景色也完全属于你自己。</p>
       <p>对于入住 Four Seasons 的客人来说，只需短短车程即可抵达。下午可以在成人专属的静谧泳池或水疗中心度过，回房间从容打理，待光线转为金色时与我们相见。如果更想留在酒店正前方的 Wailea 海滩拍摄，尽管开口——视当晚情况与人流，我们很乐意一起商量。</p>
       <div class="location-note">
-        <strong>见面地点</strong>
-        从 Four Seasons Resort Maui（3900 Wailea Alanui Drive）驱车几分钟即到的一处更为幽静的海滩。具体的见面地点，以及当晚的日落时间，我们会在您预订后发送给您。如果您更希望在酒店正前方的 Wailea Beach 拍摄，请告诉我们，我们会一起商量当晚的安排。
-      </div>
-      <div class="atlas-recommendation">
-        <h3>为什么我们建议您预订真正想要的拍摄项目</h3>
-        <p>我们理解便利很重要。但成片的质量——以及你们全家在拍摄过程中共同经历的体验——同样重要，甚至更为重要。有时候，这意味着需要驱车片刻，前往我们经常进行拍摄的某个地点。</p>
-        <p>Four Seasons 前面的海滩其实并不适合拍摄日落照片，原因有两个根本性的因素：</p>
-        <ol>
-          <li><strong>那面巨大的石墙挡住了日落。</strong> 夕阳会落在墙后消失，无法自然地纳入您的照片中。</li>
-          <li><strong>日落时分沙滩会变得拥挤。</strong> 人流较多，很难营造出大多数客户所期待的那种安静、私密的家庭氛围。</li>
-        </ol>
-        <p class="booking-note">这就是为什么我们建议您直接选择真正心仪的拍摄项目和地点，而不是等待、期盼日后还有空档。我们的日落拍摄常常早早就被订满。</p>
+        <strong>地点与停车</strong>
+        我们有自己偏好的海滩拍摄地点，如果您希望留在 Four Seasons 拍摄，需要提前告知我们。若在度假村内拍摄，我们还会收取一笔额外费用，用于支付代客泊车。
       </div>
     </div>
+  </section>
+
+  <!-- TWO-UP IMAGE BAND -->
+  <section class="atlas-duo" aria-label="Four Seasons Resort Maui 附近的家庭拍摄">
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-shoreline-walk.jpg" width="2000" height="1333" alt="一家人在傍晚时分沿着海岸线漫步，身后是 Four Seasons Resort Maui 附近山坡上的民居与棕榈树" loading="lazy">
+      <figcaption>距离度假村不远的一处静谧海岸</figcaption>
+    </figure>
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-toddler-sunset.jpg" width="2000" height="1333" alt="父母在 Wailea 的海滩上牵着幼儿的双手，一起在日落时分散步" loading="lazy">
+      <figcaption>Wailea 的最后一缕天光洒在海面上</figcaption>
+    </figure>
   </section>
 
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
@@ -282,7 +291,7 @@
     </details>
     <details class="faq-item">
       <summary>我们可以直接在度假村前面的 Wailea 海滩拍照吗？</summary>
-      <p>欢迎提出这个想法，具体能否安排要看当晚情况和海滩人流量，我们很乐意与您沟通。由于那一带日落时段常常十分拥挤，我们通常会建议选择附近更安静的地点——不过最终决定权在您。</p>
+      <p>可以，但需要在预订时提前告知我们——我们默认会前往自己偏好的海滩拍摄地点。如果留在度假村拍摄，还需要加收一小笔费用，用于代客泊车。由于那一带日落时分常常很拥挤，我们通常会建议选择附近更安静的地点，不过最终还是由您决定。</p>
     </details>
     <details class="faq-item">
       <summary>我必须通过度假村的礼宾部预订吗？</summary>
@@ -294,7 +303,7 @@
     </details>
     <details class="faq-item">
       <summary>我们带着年幼的孩子——可以离酒店近一些吗？</summary>
-      <p>是的。对于带着幼儿、希望离度假村更近一些的家庭，我们会尽力安排附近的拍摄地点。预订时我们会为您介绍具体选择，以及可能涉及的度假村停车事宜。</p>
+      <p>可以。对于带着幼儿、希望离度假村近一些的家庭，我们会尽量安排附近的拍摄地点——只需在预订时告诉我们即可。如果是在 Four Seasons 内拍摄，我们会加收一小笔费用，用于代客泊车。</p>
     </details>
     <details class="faq-item">
       <summary>我们几点见面？</summary>

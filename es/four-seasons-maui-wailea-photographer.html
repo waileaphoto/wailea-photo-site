@@ -146,6 +146,11 @@
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px);padding:clamp(10px,1.4vw,20px);background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-duo figure{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden}
+    .atlas-duo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.98)}
+    .atlas-duo figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,rgba(12,12,11,.6));pointer-events:none}
+    .atlas-duo figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:16px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-recommendation{margin:34px 0 0;padding:clamp(26px,3vw,38px);background:var(--atlas-ink);color:#fff}
     .atlas-recommendation h3{margin:0 0 16px!important;color:#fff;font:500 clamp(1.7rem,2.6vw,2.35rem)/1.08 'Cormorant Garamond',Georgia,serif!important}
     .atlas-recommendation p{color:rgba(255,255,255,.78)}
@@ -158,8 +163,10 @@
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
+      .atlas-duo{grid-template-columns:1fr}
     }
   </style>
+
 
 
 
@@ -240,20 +247,22 @@
       <p>El Four Seasons Resort Maui se extiende sobre quince acres frente al mar a lo largo del creciente dorado de la playa de Wailea, una de las más hermosas de Maui y, al atardecer, una de las más concurridas. En lugar de trabajar en medio de la multitud nocturna, solemos reunirnos a poca distancia en auto, en un tramo de arena más tranquilo donde la luz es igual de dorada y la vista detrás de usted es solo suya.</p>
       <p>Para los huéspedes del Four Seasons, es un corto trayecto en auto. Pase la tarde en la piscina de serenidad solo para adultos o en el spa, arréglese en su propia habitación, y encuéntrenos cuando la luz se vuelva dorada. ¿Prefiere quedarse en la playa de Wailea justo frente al resort? Solo pregúntenos; según la tarde y la afluencia de gente, con gusto lo conversamos.</p>
       <div class="location-note">
-        <strong>Dónde nos encontramos</strong>
-        Una playa más tranquila a poca distancia en auto del Four Seasons Resort Maui (3900 Wailea Alanui Drive). Le enviaremos el punto exacto de encuentro — y la hora del atardecer esa tarde — al momento de reservar. ¿Prefiere Wailea Beach justo frente al resort? Avísenos y conversaremos las opciones para esa tarde.
-      </div>
-      <div class="atlas-recommendation">
-        <h3>Por qué recomendamos reservar la sesión que realmente desea</h3>
-        <p>Entendemos que la comodidad es importante. Pero la calidad de sus fotografías finales, y la experiencia que su familia comparte al crearlas, importa aún más. A veces eso significa hacer un breve trayecto en auto hasta uno de los lugares donde realizamos nuestras sesiones habitualmente.</p>
-        <p>La playa frente al Four Seasons no es ideal para fotografías al atardecer por dos razones fundamentales:</p>
-        <ol>
-          <li><strong>El gran muro de roca bloquea el atardecer.</strong> El sol se oculta detrás del muro y no puede incluirse de forma natural en sus fotografías.</li>
-          <li><strong>La playa se llena de gente al atardecer.</strong> La cantidad de personas dificulta crear la experiencia familiar tranquila e íntima que la mayoría de los clientes imagina.</li>
-        </ol>
-        <p class="booking-note">Por eso recomendamos elegir la sesión y el lugar que realmente desea, en lugar de esperar y confiar en que otro horario quede disponible. Nuestras sesiones al atardecer suelen agotarse con bastante anticipación.</p>
+        <strong>Ubicaciones y estacionamiento</strong>
+        Tenemos nuestras ubicaciones de playa preferidas, y si desea quedarse en el Four Seasons debe solicitarlo. También pedimos una tarifa adicional para cubrir el estacionamiento con valet.
       </div>
     </div>
+  </section>
+
+  <!-- TWO-UP IMAGE BAND -->
+  <section class="atlas-duo" aria-label="Sesiones familiares cerca del Four Seasons Resort Maui">
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-shoreline-walk.jpg" width="2000" height="1333" alt="Una familia caminando por la orilla al atardecer bajo las casas de la colina y las palmeras cerca del Four Seasons Resort Maui" loading="lazy">
+      <figcaption>Una orilla tranquila a poca distancia en auto del resort</figcaption>
+    </figure>
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-toddler-sunset.jpg" width="2000" height="1333" alt="Padres caminando al atardecer, tomando de las manos a su pequeño entre ambos, en una playa de Wailea" loading="lazy">
+      <figcaption>Última luz sobre el agua, Wailea</figcaption>
+    </figure>
   </section>
 
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
@@ -282,7 +291,7 @@
     </details>
     <details class="faq-item">
       <summary>¿Podemos fotografiar en Wailea Beach justo frente al resort?</summary>
-      <p>Puede pedirlo, y según la tarde y qué tan concurrida esté la playa, con gusto lo conversamos. Como esa zona puede llenarse mucho al atardecer, normalmente recomendamos el lugar más tranquilo cercano, pero la decisión es suya.</p>
+      <p>Sí, pero deberá solicitarlo al hacer la reserva: tenemos nuestras ubicaciones de playa preferidas y vamos allí de forma predeterminada. Quedarse en el resort también añade una pequeña tarifa para cubrir el estacionamiento con valet. Como ese tramo puede llenarse mucho al atardecer, solemos recomendar el lugar más tranquilo cercano, pero la elección es suya.</p>
     </details>
     <details class="faq-item">
       <summary>¿Tengo que reservar a través del conserje del resort?</summary>
@@ -294,7 +303,7 @@
     </details>
     <details class="faq-item">
       <summary>Tenemos hijos pequeños. ¿Podemos quedarnos más cerca del resort?</summary>
-      <p>Sí. Para familias con niños pequeños que prefieran quedarse más cerca del resort, haremos todo lo posible por acomodar una ubicación cercana. Repasaremos las opciones —y cualquier estacionamiento del resort involucrado— al momento de reservar.</p>
+      <p>Sí. Para familias con niños pequeños que prefieran quedarse cerca del resort, haremos todo lo posible por ofrecer una ubicación cercana; solo tiene que solicitarlo al reservar. Si fotografiamos en el propio Four Seasons, añadimos una pequeña tarifa para cubrir el estacionamiento con valet.</p>
     </details>
     <details class="faq-item">
       <summary>¿A qué hora nos encontraremos?</summary>

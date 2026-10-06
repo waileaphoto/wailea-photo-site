@@ -146,6 +146,11 @@
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px);padding:clamp(10px,1.4vw,20px);background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-duo figure{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden}
+    .atlas-duo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.98)}
+    .atlas-duo figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,rgba(12,12,11,.6));pointer-events:none}
+    .atlas-duo figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:16px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-recommendation{margin:34px 0 0;padding:clamp(26px,3vw,38px);background:var(--atlas-ink);color:#fff}
     .atlas-recommendation h3{margin:0 0 16px!important;color:#fff;font:500 clamp(1.7rem,2.6vw,2.35rem)/1.08 'Cormorant Garamond',Georgia,serif!important}
     .atlas-recommendation p{color:rgba(255,255,255,.78)}
@@ -158,8 +163,10 @@
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
+      .atlas-duo{grid-template-columns:1fr}
     }
   </style>
+
 
 
 
@@ -240,20 +247,22 @@
       <p>Four Seasons Resort Maui는 Wailea Beach의 황금빛 해안선을 따라 15에이커의 오션프론트 부지에 자리하고 있습니다 — Maui에서 가장 아름다운 곳 중 하나이자, 해질녘에는 가장 붐비는 곳이기도 합니다. 저녁 인파를 피하기 위해 저희는 보통 차로 잠시 이동해, 빛은 똑같이 황금빛이면서도 뒤편의 풍경은 오직 여러분만의 것이 되는 더 한적한 모래사장에서 만납니다.</p>
       <p>Four Seasons에 머무시는 분들께는 짧은 이동이면 충분합니다. 오후에는 성인 전용 세레니티 풀이나 스파에서 시간을 보내시고, 객실에서 준비를 마친 뒤, 빛이 golden하게 물들 때 저희를 만나시면 됩니다. 리조트 바로 앞 Wailea Beach에서 촬영하고 싶으시다면 말씀만 해주세요 — 그날 저녁과 인파 상황에 따라 기꺼이 상의해 드리겠습니다.</p>
       <div class="location-note">
-        <strong>만나는 장소</strong>
-        Four Seasons Resort Maui (3900 Wailea Alanui Drive)에서 차로 잠깐 거리에 있는 조용한 해변입니다. 정확한 만남 장소와 그날 저녁의 선셋 시간은 예약 시 보내드립니다. 리조트 바로 앞의 Wailea Beach를 원하시면 알려주세요. 그날 저녁의 옵션에 대해 함께 상의해 드리겠습니다.
-      </div>
-      <div class="atlas-recommendation">
-        <h3>저희가 정말로 원하는 촬영을 예약하시길 권하는 이유</h3>
-        <p>편리함이 중요하다는 것을 저희도 잘 알고 있습니다. 하지만 완성된 사진의 퀄리티, 그리고 그 사진을 만들어가는 과정에서 가족이 함께 나누는 경험은 그보다 더 중요합니다. 때로는 저희가 자주 촬영을 진행하는 장소까지 잠깐 차를 타고 이동해야 할 수도 있습니다.</p>
-        <p>Four Seasons 앞 해변은 두 가지 근본적인 이유로 선셋 사진 촬영에 적합하지 않습니다:</p>
-        <ol>
-          <li><strong>커다란 돌담이 일몰을 가립니다.</strong> 지는 해가 담 뒤로 사라져 사진에 자연스럽게 담기지 않습니다.</li>
-          <li><strong>해변은 일몰 무렵 사람들로 붐빕니다.</strong> 인파가 많아 대부분의 고객이 원하는 조용하고 오붓한 가족 촬영 분위기를 만들기 어렵습니다.</li>
-        </ol>
-        <p class="booking-note">다른 시간대가 열리기를 기다리기보다 정말 원하는 촬영과 장소를 지금 선택하시길 권해드리는 이유입니다. 저희 선셋 촬영은 미리 마감되는 경우가 많습니다.</p>
+        <strong>장소 및 주차</strong>
+        저희가 선호하는 해변 장소가 따로 있으며, Four Seasons에 머무르고 싶으시면 미리 요청해 주셔야 합니다. 또한 발렛 주차 비용을 위해 추가 요금을 받고 있습니다.
       </div>
     </div>
+  </section>
+
+  <!-- TWO-UP IMAGE BAND -->
+  <section class="atlas-duo" aria-label="Four Seasons Resort Maui 근처에서의 가족 촬영">
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-shoreline-walk.jpg" width="2000" height="1333" alt="Four Seasons Resort Maui 근처 언덕 위 집들과 야자수 아래, 해질녘 해안을 걷는 가족" loading="lazy">
+      <figcaption>리조트에서 차로 조금만 가면 있는 조용한 해안</figcaption>
+    </figure>
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-toddler-sunset.jpg" width="2000" height="1333" alt="Wailea 해변에서 일몰 무렵 아장아장 걷는 아이의 양손을 잡고 걷는 부모" loading="lazy">
+      <figcaption>물 위에 남은 마지막 빛, Wailea</figcaption>
+    </figure>
   </section>
 
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
@@ -282,7 +291,7 @@
     </details>
     <details class="faq-item">
       <summary>리조트 바로 앞 Wailea Beach에서 촬영할 수 있나요?</summary>
-      <p>요청은 언제든 환영이며, 저녁 상황과 해변의 혼잡도에 따라 기꺼이 상의해 드립니다. 그 구간은 선셋 시간대에 매우 붐빌 수 있어 근처의 좀 더 조용한 장소를 보통 추천드리지만, 최종 선택은 고객님의 몫입니다.</p>
+      <p>네, 하지만 예약 시 미리 요청해 주셔야 합니다 — 저희가 기본적으로 이용하는 선호 해변 장소가 따로 있거든요. 리조트에 머무르시는 경우 발렛 주차 비용을 위한 소정의 추가 요금도 붙습니다. 그 구간은 일몰 무렵 매우 붐빌 수 있어서 보통 근처의 더 조용한 장소를 추천드리지만, 선택은 고객님께 달려 있습니다.</p>
     </details>
     <details class="faq-item">
       <summary>리조트 컨시어지를 통해 예약해야 하나요?</summary>
@@ -294,7 +303,7 @@
     </details>
     <details class="faq-item">
       <summary>어린 자녀가 있는데, 리조트 가까운 곳에서 촬영할 수 있나요?</summary>
-      <p>네. 리조트에서 가까운 곳을 선호하는 유아 동반 가족을 위해, 최대한 가까운 장소로 조율해 드립니다. 예약 시 가능한 옵션과 리조트 주차와 관련된 사항도 함께 안내해 드립니다.</p>
+      <p>네. 리조트 가까이에 머무르고 싶어 하시는 유아 동반 가족이라면, 가능한 한 근처 장소로 맞춰드리려고 노력합니다 — 예약 시 요청만 해 주시면 됩니다. Four Seasons 내에서 촬영할 경우에는 발렛 주차 비용을 위해 소정의 추가 요금이 붙습니다.</p>
     </details>
     <details class="faq-item">
       <summary>몇 시에 만나나요?</summary>

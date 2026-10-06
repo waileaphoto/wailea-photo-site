@@ -146,6 +146,11 @@
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px);padding:clamp(10px,1.4vw,20px);background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-duo figure{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden}
+    .atlas-duo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.98)}
+    .atlas-duo figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,rgba(12,12,11,.6));pointer-events:none}
+    .atlas-duo figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:16px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-recommendation{margin:34px 0 0;padding:clamp(26px,3vw,38px);background:var(--atlas-ink);color:#fff}
     .atlas-recommendation h3{margin:0 0 16px!important;color:#fff;font:500 clamp(1.7rem,2.6vw,2.35rem)/1.08 'Cormorant Garamond',Georgia,serif!important}
     .atlas-recommendation p{color:rgba(255,255,255,.78)}
@@ -158,8 +163,10 @@
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
+      .atlas-duo{grid-template-columns:1fr}
     }
   </style>
+
 
 
 
@@ -240,20 +247,22 @@
       <p>Das Four Seasons Resort Maui liegt auf sechs Hektar direkt am Meer, entlang des goldenen Bogens von Wailea Beach – einem der schönsten Strände Mauis und bei Sonnenuntergang zugleich einem der belebtesten. Statt uns zwischen den abendlichen Menschenmengen zu bewegen, treffen wir uns meist ein kurzes Stück entfernt, an einem ruhigeren Sandabschnitt, wo das Licht genauso golden ist und die Aussicht hinter Ihnen ganz allein Ihnen gehört.</p>
       <p>Für Gäste im Four Seasons ist es nur eine kurze Fahrt. Verbringen Sie Ihren Nachmittag am adults-only Serenity Pool oder im Spa, machen Sie sich in Ihrem eigenen Zimmer fertig und treffen Sie uns, wenn das Licht golden wird. Möchten Sie lieber direkt am Wailea Beach vor dem Resort bleiben? Fragen Sie einfach – je nach Abend und Andrang sprechen wir das gern mit Ihnen durch.</p>
       <div class="location-note">
-        <strong>Wo wir uns treffen</strong>
-        Ein ruhigerer Strand, eine kurze Fahrt vom Four Seasons Resort Maui entfernt (3900 Wailea Alanui Drive). Den genauen Treffpunkt – und die Sonnenuntergangszeit des Abends – schicken wir bei der Buchung. Sie bevorzugen den Wailea Beach direkt vor dem Resort? Lassen Sie es uns wissen, dann besprechen wir die Möglichkeiten für diesen Abend.
-      </div>
-      <div class="atlas-recommendation">
-        <h3>Warum wir empfehlen, genau das Shooting zu buchen, das Sie wirklich möchten</h3>
-        <p>Wir wissen, dass Bequemlichkeit wichtig ist. Aber die Qualität Ihrer fertigen Fotos — und das Erlebnis, das Ihre Familie beim Entstehen teilt — zählt noch mehr. Manchmal bedeutet das eine kurze Fahrt zu einem der Orte, an denen wir regelmäßig unsere Shootings durchführen.</p>
-        <p>Der Strand vor dem Four Seasons eignet sich aus zwei grundlegenden Gründen nicht ideal für Sonnenuntergangsfotos:</p>
-        <ol>
-          <li><strong>Die große Felswand blockiert den Sonnenuntergang.</strong> Die Sonne verschwindet hinter der Wand und lässt sich nicht auf natürliche Weise mit ins Bild nehmen.</li>
-          <li><strong>Am Strand wird es bei Sonnenuntergang voll.</strong> Durch die vielen Menschen ist es schwierig, das ruhige, private Familienerlebnis zu schaffen, das sich die meisten Kund:innen wünschen.</li>
-        </ol>
-        <p class="booking-note">Deshalb empfehlen wir, das Shooting und den Ort zu wählen, den Sie sich wirklich wünschen, anstatt zu warten und zu hoffen, dass ein anderer Termin frei wird. Unsere Sonnenuntergangs-Shootings sind oft schon weit im Voraus ausgebucht.</p>
+        <strong>Standorte &amp; Parken</strong>
+        Wir haben unsere bevorzugten Strandorte, und wenn Sie beim Four Seasons bleiben möchten, müssen Sie das ausdrücklich angeben. Dafür berechnen wir zusätzlich eine Gebühr für das Valet-Parking.
       </div>
     </div>
+  </section>
+
+  <!-- TWO-UP IMAGE BAND -->
+  <section class="atlas-duo" aria-label="Familien-Shootings nahe dem Four Seasons Resort Maui">
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-shoreline-walk.jpg" width="2000" height="1333" alt="Eine Familie geht bei Dämmerung am Ufer entlang, unterhalb der Hanghäuser und Palmen nahe dem Four Seasons Resort Maui" loading="lazy">
+      <figcaption>Ein ruhiger Küstenabschnitt, nur eine kurze Fahrt vom Resort entfernt</figcaption>
+    </figure>
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-toddler-sunset.jpg" width="2000" height="1333" alt="Eltern gehen bei Sonnenuntergang an einem Strand in Wailea und halten ihr Kleinkind an beiden Händen" loading="lazy">
+      <figcaption>Letztes Licht auf dem Wasser, Wailea</figcaption>
+    </figure>
   </section>
 
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
@@ -282,7 +291,7 @@
     </details>
     <details class="faq-item">
       <summary>Können wir direkt am Wailea Beach vor dem Resort fotografieren?</summary>
-      <p>Sie können das gerne wünschen, und je nach Abend und Andrang am Strand besprechen wir das gerne mit Ihnen. Da es dort bei Sonnenuntergang sehr voll werden kann, empfehlen wir meist den ruhigeren Ort in der Nähe — die Wahl liegt aber ganz bei Ihnen.</p>
+      <p>Ja, aber Sie müssen es bei der Buchung angeben — wir gehen standardmäßig zu unseren bevorzugten Strandorten. Wenn Sie im Resort bleiben möchten, kommt zudem eine kleine Gebühr für das Valet-Parking hinzu. Da es dort bei Sonnenuntergang oft sehr voll wird, empfehlen wir meist den ruhigeren Ort in der Nähe — die Entscheidung liegt aber ganz bei Ihnen.</p>
     </details>
     <details class="faq-item">
       <summary>Muss ich über die Concierge des Resorts buchen?</summary>
@@ -294,7 +303,7 @@
     </details>
     <details class="faq-item">
       <summary>Wir haben kleine Kinder — können wir in der Nähe des Resorts bleiben?</summary>
-      <p>Ja. Für Familien mit Kleinkindern, die lieber in der Nähe des Resorts bleiben möchten, richten wir uns nach Möglichkeit mit einem Ort in der Nähe danach. Die Optionen — und einen eventuellen Parkservice des Resorts — besprechen wir bei der Buchung.</p>
+      <p>Ja. Für Familien mit Kleinkindern, die lieber in der Nähe des Resorts bleiben möchten, richten wir uns so gut es geht nach einem nahegelegenen Standort — sagen Sie uns das einfach bei der Buchung. Wenn wir direkt beim Four Seasons fotografieren, berechnen wir eine kleine Gebühr für das Valet-Parking.</p>
     </details>
     <details class="faq-item">
       <summary>Um welche Uhrzeit treffen wir uns?</summary>

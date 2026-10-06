@@ -146,6 +146,11 @@
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px);padding:clamp(10px,1.4vw,20px);background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-duo figure{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden}
+    .atlas-duo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.98)}
+    .atlas-duo figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,rgba(12,12,11,.6));pointer-events:none}
+    .atlas-duo figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:16px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-recommendation{margin:34px 0 0;padding:clamp(26px,3vw,38px);background:var(--atlas-ink);color:#fff}
     .atlas-recommendation h3{margin:0 0 16px!important;color:#fff;font:500 clamp(1.7rem,2.6vw,2.35rem)/1.08 'Cormorant Garamond',Georgia,serif!important}
     .atlas-recommendation p{color:rgba(255,255,255,.78)}
@@ -158,8 +163,10 @@
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
+      .atlas-duo{grid-template-columns:1fr}
     }
   </style>
+
 
 
 
@@ -240,20 +247,22 @@
       <p>Four Seasons Resort Mauiは、黄金色に輝くWailea Beachの弧を描く海岸線に沿って、15エーカーの海辺の敷地を有しています — Mauiでも屈指の美しさを誇る場所であり、サンセットの時間帯には最も賑わう場所でもあります。私たちは夕方の人混みを避け、少し車で移動した先にある、同じように黄金色の光に包まれた、より静かな砂浜で撮影することがほとんどです。そこでは、あなたの背後に広がる景色を独り占めできます。</p>
       <p>Four Seasonsにご滞在のお客様にとって、少し車を走らせるだけです。午後は大人専用のセレニティプールやスパでお過ごしいただき、お部屋で身支度を整えたら、光が黄金色に変わる頃、私たちのもとへお越しください。リゾートのすぐ前にあるWailea Beachでの撮影をご希望の場合は、お気軽にお声がけください — その日の夕方の様子や混雑具合に応じて、喜んでご相談に応じます。</p>
       <div class="location-note">
-        <strong>集合場所</strong>
-        Four Seasons Resort Maui（3900 Wailea Alanui Drive）から車で少し行った、より静かなビーチです。正確な集合場所と当日のサンセット時刻は、ご予約時にお送りします。リゾート目の前のWailea Beachをご希望の場合はお知らせください。当日の選択肢についてご相談します。
-      </div>
-      <div class="atlas-recommendation">
-        <h3>本当に希望する撮影プランをご予約いただくことをおすすめする理由</h3>
-        <p>利便性が大切なのは私たちも理解しています。しかし、仕上がる写真の質と、それを撮る過程でご家族が過ごされる体験は、それ以上に大切なものです。そのために、私たちが普段撮影を行っている場所まで、少し車を走らせていただくことをおすすめする場合もあります。</p>
-        <p>Four Seasonsの前のビーチは、次の2つの根本的な理由から、サンセット撮影には向いていません。</p>
-        <ol>
-          <li><strong>大きな岩壁がサンセットを遮ります。</strong>沈む太陽がこの壁の後ろに隠れてしまうため、自然な形で写真に収めることができません。</li>
-          <li><strong>ビーチはサンセット時に混み合います。</strong>人が多いと、多くのお客様が思い描くような静かで親密なファミリーの時間を作るのが難しくなります。</li>
-        </ol>
-        <p class="booking-note">だからこそ、「いつか空きが出るかもしれない」と待つのではなく、本当に希望する撮影と場所を早めに選んでいただくことをおすすめしています。サンセット撮影は、かなり前から満席になることが多いためです。</p>
+        <strong>ロケーションと駐車場</strong>
+        私たちにはお気に入りのビーチロケーションがございますので、Four Seasons Resort Mauiに留まりたい場合はご予約時にその旨をお伝えください。また、その場合はバレーパーキング代として追加料金をいただいております。
       </div>
     </div>
+  </section>
+
+  <!-- TWO-UP IMAGE BAND -->
+  <section class="atlas-duo" aria-label="Four Seasons Resort Maui近くでのファミリー撮影">
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-shoreline-walk.jpg" width="2000" height="1333" alt="Four Seasons Resort Maui近くの丘の上の家々とヤシの木の下、夕暮れの渚を歩く家族" loading="lazy">
+      <figcaption>リゾートから車で少し行った静かな渚</figcaption>
+    </figure>
+    <figure class="reveal visible">
+      <img src="/assets/four-seasons-maui-family-toddler-sunset.jpg" width="2000" height="1333" alt="Waileaのビーチで、夕暮れに小さな子供の両手をつないで歩く両親" loading="lazy">
+      <figcaption>Wailea、水面に残る最後の光</figcaption>
+    </figure>
   </section>
 
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
@@ -282,7 +291,7 @@
     </details>
     <details class="faq-item">
       <summary>リゾートのすぐ前にあるWailea Beachで撮影できますか？</summary>
-      <p>ご希望であればお申し付けください。当日の状況やビーチの混み具合によって、ご相談させていただくことは可能です。その一帯はサンセット時にとても混雑しやすいため、通常は近くの静かな場所をおすすめしていますが、最終的にはお客様にお選びいただけます。</p>
+      <p>はい、可能ですが、ご予約の際にリクエストが必要です。通常は私たちのお気に入りのビーチロケーションへ伺います。また、リゾート内での撮影にはバレーパーキング代として少額の追加料金が発生します。その一帯は日没時にとても混み合うため、近くの静かな場所をおすすめすることが多いのですが、最終的にはお客様にお選びいただけます。</p>
     </details>
     <details class="faq-item">
       <summary>リゾートのコンシェルジュを通して予約しなければなりませんか?</summary>
@@ -294,7 +303,7 @@
     </details>
     <details class="faq-item">
       <summary>小さな子どもがいますが、リゾートの近くで撮影できますか？</summary>
-      <p>はい。小さなお子様連れで、リゾートの近くにいたいというご家族には、できる限り近くの場所をご提案いたします。ご予約の際に、リゾート内の駐車についても含めて選択肢をご案内いたします。</p>
+      <p>はい。小さなお子様連れのご家族で、できるだけリゾートの近くにいたいという場合は、近くのロケーションにて対応できるよう努めますので、ご予約の際にリクエストください。Four Seasons内で撮影する場合は、バレーパーキング代として少額の追加料金をいただいております。</p>
     </details>
     <details class="faq-item">
       <summary>集合時間はいつになりますか？</summary>
