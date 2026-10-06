@@ -130,6 +130,11 @@
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,20px);padding:clamp(10px,1.4vw,20px);background:var(--atlas-cream);border-top:1px solid rgba(23,23,22,.1)}
+    .atlas-duo figure{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden}
+    .atlas-duo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(.98)}
+    .atlas-duo figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(transparent,rgba(12,12,11,.6));pointer-events:none}
+    .atlas-duo figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:16px;color:#fff;font:500 9px/1.4 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.45)}
     .atlas-recommendation{margin:34px 0 0;padding:clamp(26px,3vw,38px);background:var(--atlas-ink);color:#fff}
     .atlas-recommendation h3{margin:0 0 16px!important;color:#fff;font:500 clamp(1.7rem,2.6vw,2.35rem)/1.08 'Cormorant Garamond',Georgia,serif!important}
     .atlas-recommendation p{color:rgba(255,255,255,.78)}
@@ -142,6 +147,7 @@
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
       .atlas-editorial-hero .page-hero-copy{padding:46px 24px 58px}
       .atlas-editorial-hero h1{max-width:14ch;font-size:clamp(2.65rem,13vw,4.7rem)}
+      .atlas-duo{grid-template-columns:1fr}
     }
   </style>
 
@@ -224,20 +230,22 @@
       <p>The Four Seasons Resort Maui sits on fifteen oceanfront acres along the golden crescent of Wailea Beach — one of Maui’s most beautiful, and, at sunset, one of its busiest. Rather than work around the evening crowds, we usually meet a short drive away, on a quieter stretch of sand where the light is just as golden and the view behind you is yours alone.</p>
       <p>For guests staying at the Four Seasons, it’s a short drive. Spend your afternoon by the adults-only serenity pool or the spa, get ready in your own room, and meet us as the light turns gold. Prefer to stay on Wailea Beach right in front of the resort? Just ask — depending on the evening and the crowd, we’re glad to talk it through.</p>
       <div class="location-note">
-        <strong>Where we meet</strong>
-        A quieter beach a short drive from the Four Seasons Resort Maui (3900 Wailea Alanui Drive). We’ll send the exact meeting spot — and the evening’s sunset time — when you book. Prefer Wailea Beach right in front of the resort? Let us know and we’ll discuss the options for that evening.
-      </div>
-      <div class="atlas-recommendation">
-        <h3>Why we recommend booking the session you truly want</h3>
-        <p>We understand that convenience is important. But the quality of your finished photographs—and the experience your family shares while creating them—matters even more. Sometimes that means taking a short drive to one of the locations where we regularly conduct our sessions.</p>
-        <p>The beach in front of the Four Seasons is not ideal for sunset photography for two fundamental reasons:</p>
-        <ol>
-          <li><strong>The large rock wall blocks the sunset.</strong> The setting sun disappears behind the wall and cannot be included naturally in your photographs.</li>
-          <li><strong>The beach becomes crowded at sunset.</strong> The number of people makes it difficult to create the quiet, intimate family experience most clients envision.</li>
-        </ol>
-        <p class="booking-note">This is why we recommend choosing the session and location you genuinely want rather than waiting and hoping another time becomes available. Our sunset sessions frequently sell out well in advance.</p>
+        <strong>Locations &amp; parking</strong>
+        We have our preferred beach locations, and if you wish to remain at the Four Seasons you must request it. We also ask an additional fee to cover the valet parking.
       </div>
     </div>
+  </section>
+
+  <!-- TWO-UP IMAGE BAND -->
+  <section class="atlas-duo" aria-label="Family sessions near the Four Seasons Resort Maui">
+    <figure class="reveal visible">
+      <img src="assets/four-seasons-maui-family-shoreline-walk.jpg" width="2000" height="1333" alt="A family walking the shoreline at dusk below the hillside homes and palms near the Four Seasons Resort Maui" loading="lazy">
+      <figcaption>Quiet shoreline a short drive from the resort</figcaption>
+    </figure>
+    <figure class="reveal visible">
+      <img src="assets/four-seasons-maui-family-toddler-sunset.jpg" width="2000" height="1333" alt="Parents walking at sunset holding their toddler's hands between them on a Wailea beach" loading="lazy">
+      <figcaption>Last light on the water, Wailea</figcaption>
+    </figure>
   </section>
 
   <!-- CONTENT SECTION 2 (TEXT LEFT / IMAGE RIGHT - REVERSE) -->
@@ -266,7 +274,7 @@
     </details>
     <details class="faq-item">
       <summary>Can we photograph on Wailea Beach right in front of the resort?</summary>
-      <p>You’re welcome to request it, and depending on the evening and how busy the beach is, we’re happy to discuss it. Because that stretch can get very crowded at sunset, we usually recommend the quieter spot nearby — but the choice is yours.</p>
+      <p>Yes, but you’ll need to request it when you book — we have our preferred beach locations and go there by default. Staying at the resort also adds a small fee to cover the valet parking. Because that stretch can get very crowded at sunset, we usually recommend the quieter spot nearby — but the choice is yours.</p>
     </details>
     <details class="faq-item">
       <summary>Do I have to book through the resort’s concierge?</summary>
@@ -278,7 +286,7 @@
     </details>
     <details class="faq-item">
       <summary>We have young children — can we stay closer to the resort?</summary>
-      <p>Yes. For families with toddlers who would prefer to stay closer to the resort, we’ll do our best to accommodate a nearby location. We’ll go over the options — and any resort parking involved — when you book.</p>
+      <p>Yes. For families with toddlers who would prefer to stay closer to the resort, we’ll do our best to accommodate a nearby location — just request it when you book. If we photograph at the Four Seasons itself, we add a small fee to cover the valet parking.</p>
     </details>
     <details class="faq-item">
       <summary>What time will we meet?</summary>
