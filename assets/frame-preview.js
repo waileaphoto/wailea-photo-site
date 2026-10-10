@@ -85,22 +85,49 @@
   frame.addEventListener('pointerup',function(){drag=null;});
   frame.addEventListener('pointercancel',function(){drag=null;});
 
-  // ?img=<url> support (same-origin or any CORS-free image URL) and "back to my gallery" link from the referrer
+  // ---------- gallery picker: type your name, pick your gallery, tap a photo ----------
+  var SITE='https://waileaphoto.smugmug.com', FN='/.netlify/functions/gallery-photos';
+  var gBtn=$('#fpGalleryBtn'), gBox=$('#fpGalleryBox'), gQ=$('#fpGalleryQ'), gList=$('#fpGalleryList'), gGrid=$('#fpGalleryGrid'), gMsg=$('#fpGalleryMsg'), order=$('#fpOrder');
+  var galleries=null, curGallery='';
+  function clearSamples(){[].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false')});}
+  function thumb(id,sz){return 'https://photos.smugmug.com/photos/'+id+'/0/'+sz+'/'+id+'-'+sz+'.jpg';}
+  function usePhoto(id,gal){
+    clearSamples(); setPhoto(thumb(id,'X2'),false);
+    if(gal){ order.href=SITE+gal+'/'+id+'/buy'; order.textContent='Order this photo on SmugMug'; }
+  }
+  function renderList(){
+    var v=(gQ.value||'').trim().toLowerCase(); gList.innerHTML=''; gGrid.innerHTML='';
+    if(!galleries){gMsg.textContent='Loading galleries...';return;}
+    if(v.length<2){gMsg.textContent='Type at least two letters of your name.';return;}
+    var hits=galleries.filter(function(g){return g.n.toLowerCase().indexOf(v)>-1}).slice(0,8);
+    gMsg.textContent=hits.length?'':'No gallery found. Try your first or last name, or use "Choose a photo from your device" below.';
+    hits.forEach(function(g){var li=document.createElement('li'),b=document.createElement('button');b.type='button';b.textContent=g.n;b.addEventListener('click',function(){openGallery(g.p,g.n)});li.appendChild(b);gList.appendChild(li);});
+  }
+  function openGallery(path,name){
+    curGallery=path; gList.innerHTML=''; gGrid.innerHTML=''; gMsg.textContent='Loading your photos...';
+    order.href=SITE+path; order.textContent='Open my gallery on SmugMug';
+    fetch(FN+'?g='+encodeURIComponent(path)).then(function(r){return r.json()}).then(function(d){
+      var ph=(d&&d.photos)||[]; if(!ph.length){gMsg.textContent='We could not load that gallery. Please use a photo from your device instead.';return;}
+      gMsg.innerHTML='<strong>'+(name||'Your gallery')+'</strong>: tap a photo to see it framed. <a href="#" id="fpGalleryBack">Pick a different gallery</a>';
+      $('#fpGalleryBack').addEventListener('click',function(e){e.preventDefault();gQ.value='';renderList();gQ.focus();});
+      ph.forEach(function(p){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Use '+p.f);b.style.backgroundImage='url("'+thumb(p.id,'S')+'")';b.addEventListener('click',function(){
+        [].forEach.call(gGrid.children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');usePhoto(p.id,path);});gGrid.appendChild(b);});
+    }).catch(function(){gMsg.textContent='We could not load that gallery right now. Please use a photo from your device instead.';});
+  }
+  gBtn.addEventListener('click',function(){
+    gBox.hidden=!gBox.hidden; gBtn.setAttribute('aria-expanded',gBox.hidden?'false':'true');
+    if(!gBox.hidden){ gQ.focus(); if(!galleries){ renderList();
+      fetch(FN+'?list=1').then(function(r){return r.json()}).then(function(d){galleries=Array.isArray(d)?d:[];renderList();}).catch(function(){galleries=[];gMsg.textContent='We could not load the gallery list right now. Please use a photo from your device instead.';}); } else renderList(); }
+  });
+  gQ.addEventListener('input',renderList);
+
+  // ?img=<url>, ?photo=i-xxxx&gallery=/Name, ?size=11x14 are optional direct links
   try{
     var q=new URLSearchParams(location.search), img=q.get('img');
-    var ref=document.referrer||'';
-    var pid=(q.get('photo')||'').match(/^i-[A-Za-z0-9]+$/); pid=pid?pid[0]:'';
-    if(!pid&&/^https:\/\/waileaphoto\.smugmug\.com\//.test(ref)){var pm=ref.match(/\/(i-[A-Za-z0-9]+)(\/|$)/); if(pm){pid=pm[1];try{localStorage.setItem('fpPhoto',pid)}catch(e){}}}
-    var fromGallery=!!pid;
-    if(!pid&&!img){try{var sp=localStorage.getItem('fpPhoto');if(sp&&/^i-[A-Za-z0-9]+$/.test(sp))pid=sp;}catch(e){}}
-    function clearSamples(){[].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false')});}
+    var pid=(q.get('photo')||'').match(/^i-[A-Za-z0-9]+$/), gal=(q.get('gallery')||'').match(/^\/[A-Za-z0-9_-]{1,80}$/);
     if(img&&/^https?:\/\//i.test(img)){setPhoto(img,false);clearSamples();}
-    else if(pid){setPhoto('https://photos.smugmug.com/photos/'+pid+'/0/X2/'+pid+'-X2.jpg',false);clearSamples();var gl=$('#fpGalleryNote');if(gl)gl.hidden=false;}
+    else if(pid){usePhoto(pid[0],gal?gal[0]:'');}
     else setPhoto('/assets/'+SAMPLES[0],false);
-    var g='';
-    if(/^https:\/\/waileaphoto\.smugmug\.com\//.test(ref)){ g=ref.split('#')[0].split('?')[0].replace(/\/i-[^\/]*.*$/,''); try{localStorage.setItem('fpGallery',g)}catch(e){} }
-    else { try{g=localStorage.getItem('fpGallery')||''}catch(e){} }
-    if(/^https:\/\/waileaphoto\.smugmug\.com\//.test(g)){ $('#fpOrder').href=g; $('#fpOrder').textContent='Back to my gallery to order'; $('#fpGallery').href=g; $('#fpGallery').textContent='Choose a photo from your gallery'; }
     var sz=q.get('size'); if(sz&&/^(8x10|11x14|20x24|24x36)$/.test(sz)){S.size=sz;[].forEach.call($('#fpSize').children,function(x){x.setAttribute('aria-pressed',x.getAttribute('data-v')===sz?'true':'false')});}
   }catch(e){setPhoto('/assets/'+SAMPLES[0],false);}
   layout();

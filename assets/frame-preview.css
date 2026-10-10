@@ -46,3 +46,12 @@
 .fp-btn{display:block;margin:0 0 8px;padding:14px 16px;text-align:center;border:1px solid var(--ink);background:var(--ink);color:#fff;font:500 14px/1.2 var(--sans);text-decoration:none}
 .fp-btn:hover{background:#000}
 .fp-file{margin-top:14px}
+button.fp-btn{width:100%;cursor:pointer}
+.fp-gbox{margin:0 0 8px}
+.fp-search{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid rgba(27,25,23,.35);background:#fffaf2;font:400 15px/1.2 var(--sans);color:var(--ink)}
+.fp-gl{list-style:none;margin:6px 0 0;padding:0}
+.fp-gl button{width:100%;text-align:left;padding:10px 12px;border:0;border-bottom:1px solid rgba(27,25,23,.12);background:none;font:500 14px/1.2 var(--sans);color:var(--ink);cursor:pointer}
+.fp-gl button:hover{background:rgba(27,25,23,.06)}
+.fp-gg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:300px;overflow:auto;margin-top:8px}
+.fp-gg button{aspect-ratio:1/1;padding:0;border:2px solid transparent;background:#ddd center/cover no-repeat;cursor:pointer}
+.fp-gg button[aria-pressed=true]{border-color:var(--ink)}
