@@ -110,3 +110,16 @@
     $('#psGrid').innerHTML = '<p class="ps-small">The Print Shop could not load. Please refresh the page.</p>';
   });
 })();
+
+/* "See it on your wall" band: sample photos open the frame preview */
+(function(){
+  var body = document.getElementById('psBody');
+  if (!body || document.getElementById('psWallBand')) return;
+  var base = 'https://waileaphoto.com/';
+  var S = [['Maluaka-beach-family-photos.jpg','Family on Maluaka Beach'],['Family-photographer-wailea.jpg','Family in Wailea'],['Engagement-morning-Maluaka.jpg','Engagement at Maluaka']];
+  var b = document.createElement('section'); b.className = 'ps-wall'; b.id = 'psWallBand';
+  var h = '<div class="ps-wrap ps-wall-in"><div class="ps-wall-copy"><span class="ps-wall-eye">New</span><h2>See it on your wall.</h2><p>Pick a photo, choose a size, frame and mat, and preview it in a room. Or upload a photo of your own wall and place it there. Then order from your gallery.</p><a class="ps-wall-btn" href="/frame-preview">Try it on your wall</a></div><div class="ps-wall-pics">';
+  S.forEach(function(s){ h += '<a href="/frame-preview?img=' + encodeURIComponent(base + 'assets/' + s[0]) + '" aria-label="Preview ' + s[1] + ' framed"><img src="/assets/' + s[0] + '" alt="' + s[1] + '" loading="lazy"><span>Preview framed</span></a>'; });
+  b.innerHTML = h + '</div></div>';
+  body.parentNode.insertBefore(b, body);
+})();
