@@ -174,12 +174,19 @@
     .atlas-editorial .content-split-image img{filter:saturate(.92) contrast(.98)}
     .atlas-editorial .faq-list{background:#eee4d3}
     .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
-    .atlas-editorial .reserve.short p{max-width:680px;margin:22px auto 30px;font:400 clamp(1.05rem,1.4vw,1.25rem)/1.7 'Inter',sans-serif;color:rgba(255,255,255,.85)}
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
     .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
     .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
-    .atlas-editorial .atlas-credits{max-width:900px;margin:34px auto 0;padding:0 24px;font:400 12px/1.7 'Inter',sans-serif;color:rgba(23,23,22,.62)}
-    .atlas-editorial .atlas-credits a{color:inherit}
+    /* Unified type system: Cormorant for reading text and headings, Inter for small uppercase labels only */
+    .atlas-editorial{--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+    .atlas-editorial .section-head h2,.atlas-editorial .content-split-copy h2{font:400 clamp(2.6rem,5vw,4.1rem)/1.02 var(--serif);letter-spacing:-.02em}
+    .atlas-editorial .content-split-copy h3,.atlas-editorial .atlas-text-block h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 var(--serif);color:var(--atlas-ink)}
+    .atlas-editorial .content-split-copy p,.atlas-editorial .atlas-text-block p,.atlas-editorial .location-note,.atlas-editorial .faq-item p,.atlas-editorial .reserve.short p{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.7}
+    .atlas-editorial .location-note a,.atlas-editorial .content-split-copy p a,.atlas-editorial .atlas-text-block p a,.atlas-editorial .atlas-credits a{font-family:inherit;color:inherit}
+    .atlas-editorial .atlas-text-block h3{margin:28px auto 8px}
+    .atlas-editorial .faq-item summary{font:400 clamp(1.35rem,2vw,1.7rem)/1.3 var(--serif)}
+    .atlas-editorial .atlas-credits{font-family:var(--serif);font-size:16px;font-weight:400;line-height:1.65;color:rgba(23,23,22,.7)}
+    .atlas-editorial .reserve.short p{color:rgba(255,255,255,.88)}
     @media(max-width:900px){
       .atlas-editorial-hero{grid-template-columns:1fr;min-height:0}
       .atlas-editorial-hero>.atlas-hero-media{height:min(62vh,560px)}
@@ -188,6 +195,7 @@
       .atlas-opening-note{grid-template-columns:1fr;gap:16px;padding:46px 24px 54px}
     }
   </style>
+
 
 <!-- i18n:head --><link rel="alternate" hreflang="en" href="https://waileaphoto.com/whalewatching"><link rel="alternate" hreflang="fr" href="https://waileaphoto.com/fr/whalewatching"><link rel="alternate" hreflang="es" href="https://waileaphoto.com/es/whalewatching"><link rel="alternate" hreflang="de" href="https://waileaphoto.com/de/whalewatching"><link rel="alternate" hreflang="it" href="https://waileaphoto.com/it/whalewatching"><link rel="alternate" hreflang="ja" href="https://waileaphoto.com/ja/whalewatching"><link rel="alternate" hreflang="ko" href="https://waileaphoto.com/ko/whalewatching"><link rel="alternate" hreflang="zh-Hans" href="https://waileaphoto.com/zh/whalewatching"><link rel="alternate" hreflang="hi" href="https://waileaphoto.com/hi/whalewatching"><link rel="alternate" hreflang="x-default" href="https://waileaphoto.com/whalewatching"><style id="i18n-css">.lang-switch{position:relative}.lang-switch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;color:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:4px 0;opacity:.8;text-shadow:0 1px 12px rgba(0,0,0,.35)}.lang-switch summary::-webkit-details-marker{display:none}.lang-switch summary::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}.lang-switch details[open] summary::after{margin-top:3px;transform:rotate(-135deg)}.lang-switch summary:hover,.lang-switch details[open] summary{opacity:1}.lang-switch summary:focus-visible{outline:1px solid currentColor;outline-offset:3px}.lang-switch ul{position:absolute;left:0;top:calc(100% + 10px);z-index:1000;margin:0;padding:6px 0;list-style:none;min-width:160px;background:#171716;border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-switch li a{display:block;padding:9px 18px;color:#fff;text-decoration:none;font-size:14px;line-height:1.3;letter-spacing:.02em;opacity:.78;text-shadow:none}.lang-switch li a:hover,.lang-switch li a:focus-visible{opacity:1;background:rgba(255,255,255,.08);outline:none}.lang-switch li a[aria-current]{opacity:1;font-weight:700}</style><script>document.addEventListener("toggle",function(e){var d=e.target;if(!d.open||!d.matches||!d.matches(".lang-switch details"))return;var u=d.querySelector("ul");u.style.left="0";u.style.right="auto";if(u.getBoundingClientRect().right>window.innerWidth-8){u.style.left="auto";u.style.right="0"}},true);document.addEventListener("click",function(e){document.querySelectorAll(".lang-switch details[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".lang-switch details[open]").forEach(function(d){d.removeAttribute("open");d.querySelector("summary").focus()})});</script><!-- /i18n:head -->
 </head>
