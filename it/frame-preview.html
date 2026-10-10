@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>Scelga una foto dal Suo dispositivo</span></label>
 <p class="fp-small">Resta sul Suo dispositivo. Non viene caricato nulla. Oppure provi un esempio:</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. Formato</h2>
+<h2>2. La Sua parete <span class="fp-opt">facoltativo</span></h2>
+<ol class="fp-how">
+<li>Si posizioni a circa 2,5 metri di distanza, di fronte alla parete dove appenderebbe la stampa. Tenga il telefono dritto, a livello, all'altezza del petto.</li>
+<li>Includa un po' del pavimento o dei mobili, mantenendo l'intera parete nell'inquadratura.</li>
+<li>La carichi qui sotto, poi <strong>trascini la cornice</strong> nel punto in cui la appenderebbe.</li>
+<li>Imposti il cursore in base alla larghezza approssimativa della parete nella Sua foto, così la cornice avrà la misura giusta.</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>Scelga una foto della Sua parete</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">Larghezza della parete nella Sua foto: <b id="fpWallFt">10</b> piedi<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">Torna al soggiorno di esempio</button>
+</div>
+<h2>3. Dimensione</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="Formato">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. Cornice</h2>
+<h2>4. Cornice</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="Cornice">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>Nero curvo</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>Metallizzata</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>Naturale</button>
 </div>
-<h2>4. Passe-partout</h2>
+<h2>5. Passe-partout</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="Passe-partout">
 <button type="button" data-v="mat" aria-pressed="true">Passe-partout bianco</button>
 <button type="button" data-v="none" aria-pressed="false">Senza passe-partout</button>

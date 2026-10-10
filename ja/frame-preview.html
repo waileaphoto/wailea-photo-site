@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>デバイスから写真を選ぶ</span></label>
 <p class="fp-small">お写真はお使いの端末内にのみ保存され、アップロードされることはありません。サンプルを試すこともできます:</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. サイズ</h2>
+<h2>2. 壁（<span class="fp-opt">任意</span>）</h2>
+<ol class="fp-how">
+<li>プリントを飾りたい壁から約8フィート離れ、正面を向いてください。スマートフォンは胸の高さで水平に構えてください。</li>
+<li>床や家具も少し写るように、壁全体が見えるようにしてください。</li>
+<li>下から写真をアップロードし、<strong>フレームをドラッグ</strong>して飾りたい場所に合わせてください。</li>
+<li>写真に写っている壁のだいたいの幅に合わせてスライダーを調整すると、フレームが正しいサイズになります。</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>壁の写真を選んでください</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">写真内の壁の幅：<b id="fpWallFt">10</b>フィート<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">サンプルのリビングに戻る</button>
+</div>
+<h2>3. サイズ</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="サイズ">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. フレーム</h2>
+<h2>4. フレーム</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="フレーム">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>カーブドブラック</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>メタリック</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>ナチュラル</button>
 </div>
-<h2>4. マット</h2>
+<h2>5. マット</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="マット">
 <button type="button" data-v="mat" aria-pressed="true">ホワイトマット</button>
 <button type="button" data-v="none" aria-pressed="false">マットなし</button>

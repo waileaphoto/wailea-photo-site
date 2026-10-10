@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>기기에서 사진 선택</span></label>
 <p class="fp-small">기기에만 저장되며 업로드되지 않습니다. 또는 샘플로 확인해 보세요:</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. 사이즈</h2>
+<h2>2. 벽면 <span class="fp-opt">선택사항</span></h2>
+<ol class="fp-how">
+<li>벽에서 약 8피트 떨어져 정면으로 서주세요. 휴대폰을 가슴 높이에서 수평으로 들고 촬영하세요.</li>
+<li>바닥이나 가구가 조금 보이도록, 벽 전체가 화면에 들어오게 찍어주세요.</li>
+<li>아래에 업로드한 다음, <strong>액자를 드래그</strong>해서 걸고 싶은 위치에 놓으세요.</li>
+<li>사진 속 벽의 너비와 비슷하게 슬라이더를 맞추면 액자 크기가 정확해집니다.</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>벽면 사진을 선택하세요</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">사진 속 벽의 너비: <b id="fpWallFt">10</b> ft<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">샘플 거실로 돌아가기</button>
+</div>
+<h2>3. 크기</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="사이즈">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. 액자</h2>
+<h2>4. 액자</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="액자">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>커브드 블랙</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>메탈릭</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>내추럴</button>
 </div>
-<h2>4. 매트</h2>
+<h2>5. 매트</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="매트">
 <button type="button" data-v="mat" aria-pressed="true">화이트 매트</button>
 <button type="button" data-v="none" aria-pressed="false">매트 없음</button>

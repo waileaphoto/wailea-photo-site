@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>अपने डिवाइस से एक फ़ोटो चुनें</span></label>
 <p class="fp-small">यह आपके डिवाइस पर ही रहता है। कुछ भी अपलोड नहीं होता। या एक नमूना आज़माएं:</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. आकार</h2>
+<h2>2. आपकी दीवार <span class="fp-opt">वैकल्पिक</span></h2>
+<ol class="fp-how">
+<li>लगभग 8 फीट पीछे खड़े होकर उस दीवार के सामने आएं जहाँ प्रिंट टांगना है। अपने फ़ोन को सीधा, सीने की ऊंचाई पर समतल पकड़ें।</li>
+<li>फ़र्श या फर्नीचर का कुछ हिस्सा भी शामिल करें, और पूरी दीवार का क्षेत्र फ्रेम में रखें।</li>
+<li>नीचे इसे अपलोड करें, फिर <strong>फ़्रेम को खींचकर</strong> वहाँ ले जाएं जहाँ आप इसे टांगना चाहते हैं।</li>
+<li>स्लाइडर को लगभग उतना सेट करें जितनी आपकी फ़ोटो में दीवार चौड़ी है, ताकि फ़्रेम सही आकार का हो।</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>अपनी दीवार की एक फ़ोटो चुनें</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">आपकी फ़ोटो में दीवार की चौड़ाई: <b id="fpWallFt">10</b> फीट<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">नमूना लिविंग रूम पर वापस जाएं</button>
+</div>
+<h2>3. आकार</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="आकार">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. फ्रेम</h2>
+<h2>4. फ़्रेम</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="फ्रेम">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>घुमावदार काला</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>मेटैलिक</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>प्राकृतिक</button>
 </div>
-<h2>4. मैट</h2>
+<h2>5. मैट</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="मैट">
 <button type="button" data-v="mat" aria-pressed="true">सफ़ेद मैट</button>
 <button type="button" data-v="none" aria-pressed="false">कोई मैट नहीं</button>

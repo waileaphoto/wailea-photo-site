@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>Elija una foto de su dispositivo</span></label>
 <p class="fp-small">Se mantiene en su dispositivo. No se sube nada. O pruebe con un ejemplo:</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. Tamaño</h2>
+<h2>2. Su pared <span class="fp-opt">opcional</span></h2>
+<ol class="fp-how">
+<li>Párese a unos 8 pies de distancia y mire hacia la pared donde colgaría la foto. Sostenga el teléfono nivelado, de frente, a la altura del pecho.</li>
+<li>Incluya parte del suelo o de los muebles, y mantenga toda la pared a la vista.</li>
+<li>Súbala a continuación y luego <strong>arrastre el marco</strong> hasta donde la colgaría.</li>
+<li>Ajuste el control deslizante al ancho aproximado de la pared en su foto, para que el marco tenga el tamaño correcto.</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>Elija una foto de su pared</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">Ancho de la pared en su foto: <b id="fpWallFt">10</b> pies<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">Volver a la sala de muestra</button>
+</div>
+<h2>3. Tamaño</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="Tamaño">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. Marco</h2>
+<h2>4. Marco</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="Marco">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>Negro curvo</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>Metálico</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>Natural</button>
 </div>
-<h2>4. Paspartú</h2>
+<h2>5. Paspartú</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="Paspartú">
 <button type="button" data-v="mat" aria-pressed="true">Paspartú blanco</button>
 <button type="button" data-v="none" aria-pressed="false">Sin paspartú</button>

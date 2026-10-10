@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>Foto von Ihrem Gerät auswählen</span></label>
 <p class="fp-small">Bleibt auf Ihrem Gerät. Es wird nichts hochgeladen. Oder probieren Sie ein Beispiel:</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. Größe</h2>
+<h2>2. Ihre Wand <span class="fp-opt">optional</span></h2>
+<ol class="fp-how">
+<li>Gehen Sie etwa 8 Fuß zurück und stellen Sie sich der Wand gegenüber, an der das Bild hängen soll. Halten Sie Ihr Handy gerade, frontal, auf Brusthöhe.</li>
+<li>Zeigen Sie etwas vom Boden oder den Möbeln mit, und behalten Sie die ganze Wandfläche im Blick.</li>
+<li>Laden Sie es unten hoch und <strong>ziehen Sie dann den Rahmen</strong> an die Stelle, wo Sie ihn aufhängen würden.</li>
+<li>Stellen Sie den Schieberegler ungefähr auf die Breite der Wand in Ihrem Foto ein, damit der Rahmen die richtige Größe hat.</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>Wählen Sie ein Foto Ihrer Wand</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">Wandbreite in Ihrem Foto: <b id="fpWallFt">10</b> Fuß<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">Zurück zum Beispiel-Wohnzimmer</button>
+</div>
+<h2>3. Größe</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="Größe">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. Rahmen</h2>
+<h2>4. Rahmen</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="Rahmen">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>Geschwungen Schwarz</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>Metallic</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>Natur</button>
 </div>
-<h2>4. Passepartout</h2>
+<h2>5. Passepartout</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="Passepartout">
 <button type="button" data-v="mat" aria-pressed="true">Weißes Passepartout</button>
 <button type="button" data-v="none" aria-pressed="false">Kein Passepartout</button>

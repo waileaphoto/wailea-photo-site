@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>从您的设备选择照片</span></label>
 <p class="fp-small">照片仅保存在您的设备上，不会被上传。您也可以试试示例图片：</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. 尺寸</h2>
+<h2>2. 您的墙面 <span class="fp-opt">可选</span></h2>
+<ol class="fp-how">
+<li>退后约 8 英尺，正对您打算挂照片的墙面。手机保持水平，正面拍摄，举到胸口高度。</li>
+<li>照片中请包含部分地板或家具，并保证整面墙都在画面内。</li>
+<li>在下方上传照片，然后<strong>拖动相框</strong>到您想挂的位置。</li>
+<li>将滑块调整到与您照片中墙面宽度大致相符的位置，这样相框尺寸才会准确。</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>选择一张您墙面的照片</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">照片中的墙面宽度：<b id="fpWallFt">10</b> 英尺<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">返回样板客厅</button>
+</div>
+<h2>3. 尺寸</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="尺寸">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. 相框</h2>
+<h2>4. 相框</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="相框">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>弧形黑色</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>金属色</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>原木色</button>
 </div>
-<h2>4. 内衬</h2>
+<h2>5. 卡纸衬边</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="内衬">
 <button type="button" data-v="mat" aria-pressed="true">白色内衬</button>
 <button type="button" data-v="none" aria-pressed="false">无内衬</button>

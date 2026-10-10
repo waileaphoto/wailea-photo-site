@@ -67,20 +67,32 @@
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>Choisissez une photo depuis votre appareil</span></label>
 <p class="fp-small">Reste sur votre appareil. Rien n'est téléchargé. Ou essayez un exemple :</p>
 <div class="fp-samples" id="fpSamples"></div>
-<h2>2. Taille</h2>
+<h2>2. Votre mur <span class="fp-opt">facultatif</span></h2>
+<ol class="fp-how">
+<li>Reculez d'environ 2,5 mètres et faites face au mur où le tirage serait accroché. Tenez votre téléphone à l'horizontale, bien droit, à hauteur de poitrine.</li>
+<li>Incluez une partie du sol ou du mobilier, et gardez tout le mur dans le cadre.</li>
+<li>Importez-la ci-dessous, puis <strong>faites glisser le cadre</strong> à l'endroit où vous l'accrocheriez.</li>
+<li>Réglez le curseur sur la largeur approximative du mur sur votre photo, pour que le cadre soit à la bonne taille.</li>
+</ol>
+<label class="fp-file"><input type="file" accept="image/*" id="fpWall"><span>Choisissez une photo de votre mur</span></label>
+<div id="fpWallCtl" hidden>
+<label class="fp-range">Largeur du mur sur votre photo : <b id="fpWallFt">10</b> pieds<input type="range" id="fpWallRange" min="4" max="24" step="0.5" value="10"></label>
+<button type="button" class="fp-link" id="fpWallReset">Retour au salon d'exemple</button>
+</div>
+<h2>3. Taille</h2>
 <div class="fp-opts" id="fpSize" role="group" aria-label="Taille">
 <button type="button" data-v="8x10" aria-pressed="false">8 &times; 10</button>
 <button type="button" data-v="11x14" aria-pressed="true">11 &times; 14</button>
 <button type="button" data-v="20x24" aria-pressed="false">20 &times; 24</button>
 <button type="button" data-v="24x36" aria-pressed="false">24 &times; 36</button>
 </div>
-<h2>3. Cadre</h2>
+<h2>4. Cadre</h2>
 <div class="fp-opts" id="fpFinish" role="group" aria-label="Cadre">
 <button type="button" data-v="black" aria-pressed="true"><i class="sw sw-black"></i>Noir incurvé</button>
 <button type="button" data-v="metal" aria-pressed="false"><i class="sw sw-metal"></i>Métallique</button>
 <button type="button" data-v="natural" aria-pressed="false"><i class="sw sw-natural"></i>Naturel</button>
 </div>
-<h2>4. Passe-partout</h2>
+<h2>5. Marie-louise</h2>
 <div class="fp-opts" id="fpMatOpt" role="group" aria-label="Passe-partout">
 <button type="button" data-v="mat" aria-pressed="true">Passe-partout blanc</button>
 <button type="button" data-v="none" aria-pressed="false">Sans passe-partout</button>
