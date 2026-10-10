@@ -33,3 +33,13 @@
 .fp-order{display:block;margin:26px 0 0;padding:15px 18px;text-align:center;background:var(--ink);color:#fff;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
 .fp-order:hover{background:#000}
 @media(max-width:900px){.fp-body{grid-template-columns:1fr}.fp-wrap{width:calc(100% - 32px)}}
+.fp-opt{font-weight:400;letter-spacing:.04em;text-transform:none;color:rgba(27,25,23,.45)}
+.fp-how{margin:0 0 12px;padding-left:18px;font:400 13px/1.55 var(--sans);color:rgba(27,25,23,.72)}
+.fp-how li{margin:0 0 5px}
+.fp-range{display:block;margin:12px 0 8px;font:500 13px/1.3 var(--sans)}
+.fp-range input{display:block;width:100%;margin-top:8px}
+.fp-link{background:none;border:0;padding:0;font:500 13px/1 var(--sans);text-decoration:underline;cursor:pointer;color:var(--ink)}
+.fp-scene.is-wall .fp-frame{cursor:grab;touch-action:none}
+.fp-scene.is-wall .fp-frame:active{cursor:grabbing}
+.fp-scene.is-wall{background-color:#cfc8bc}
+.fp-scene.is-wall .fp-frame{transition:none}
