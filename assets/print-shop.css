@@ -72,3 +72,4 @@
 .ps-room{position:absolute;inset:0;z-index:0}
 .ps-room svg{display:block;width:100%;height:100%}
 .page-hero.has-room:after{background:linear-gradient(90deg,rgba(14,22,26,.55),rgba(14,22,26,0) 55%)}
+.page-hero.has-room{height:clamp(480px,45vw,960px)}
