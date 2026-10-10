@@ -88,9 +88,15 @@
   // ?img=<url> support (same-origin or any CORS-free image URL) and "back to my gallery" link from the referrer
   try{
     var q=new URLSearchParams(location.search), img=q.get('img');
-    if(img&&/^https?:\/\//i.test(img)){setPhoto(img,false);[].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false')});}
-    else setPhoto('/assets/'+SAMPLES[0],false);
     var ref=document.referrer||'';
+    var pid=(q.get('photo')||'').match(/^i-[A-Za-z0-9]+$/); pid=pid?pid[0]:'';
+    if(!pid&&/^https:\/\/waileaphoto\.smugmug\.com\//.test(ref)){var pm=ref.match(/\/(i-[A-Za-z0-9]+)(\/|$)/); if(pm){pid=pm[1];try{localStorage.setItem('fpPhoto',pid)}catch(e){}}}
+    var fromGallery=!!pid;
+    if(!pid&&!img){try{var sp=localStorage.getItem('fpPhoto');if(sp&&/^i-[A-Za-z0-9]+$/.test(sp))pid=sp;}catch(e){}}
+    function clearSamples(){[].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false')});}
+    if(img&&/^https?:\/\//i.test(img)){setPhoto(img,false);clearSamples();}
+    else if(pid){setPhoto('https://photos.smugmug.com/photos/'+pid+'/0/X2/'+pid+'-X2.jpg',false);clearSamples();var gl=$('#fpGalleryNote');if(gl)gl.hidden=false;}
+    else setPhoto('/assets/'+SAMPLES[0],false);
     var g='';
     if(/^https:\/\/waileaphoto\.smugmug\.com\//.test(ref)){ g=ref.split('#')[0].split('?')[0].replace(/\/i-[^\/]*.*$/,''); try{localStorage.setItem('fpGallery',g)}catch(e){} }
     else { try{g=localStorage.getItem('fpGallery')||''}catch(e){} }
