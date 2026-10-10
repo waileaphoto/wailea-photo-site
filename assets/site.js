@@ -758,14 +758,13 @@ document.addEventListener('DOMContentLoaded', function(){
   function add(){
     var m = location.pathname.match(/^\/(fr|es|de|it|ja|ko|zh|hi)(\/|$)/);
     var href = (m ? '/' + m[1] : '') + '/print-shop';
-    if (document.querySelector('a[href="' + href + '"], a[href="print-shop.html"]')) return;
     var art = document.querySelector('nav.menu a[href$="art.html"], nav.menu a[href$="/art"]');
-    if (art) {
+    if (art && !document.querySelector('nav.menu a[href="' + href + '"]')) {
       var a = document.createElement('a'); a.href = href; a.textContent = 'PRINT SHOP';
       art.parentNode.insertBefore(a, art.nextSibling);
     }
     var pr = document.querySelector('footer a[href$="pricing.html"], footer a[href$="/pricing"]');
-    if (pr) {
+    if (pr && !document.querySelector('footer a[href="' + href + '"]')) {
       var f = document.createElement('a'); f.href = href; f.textContent = 'Print Shop';
       pr.parentNode.insertBefore(f, pr.nextSibling);
     }
