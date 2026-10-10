@@ -771,3 +771,19 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add();
 })();
+
+/* CLIENT GALLERIES link: "View recent client galleries" goes right after Photography in the main menu and the footer, on every page. */
+(function(){
+  var URL_ = 'https://waileaphoto.smugmug.com/';
+  function mk(){ var a = document.createElement('a'); a.href = URL_; a.textContent = 'View recent client galleries'; a.setAttribute('data-client-galleries', '1'); return a; }
+  function add(){
+    var sel = 'a[href="/#story-paths"], a[href$="/#story-paths"], a[href="index.html#story-paths"]';
+    var menu = document.querySelector('nav.menu') || document.querySelector('.menu');
+    var mp = menu && menu.querySelector(sel);
+    if (mp && !menu.querySelector('a[data-client-galleries]')) mp.parentNode.insertBefore(mk(), mp.nextSibling);
+    var footer = document.querySelector('footer');
+    var fp = footer && footer.querySelector(sel);
+    if (fp && !footer.querySelector('a[data-client-galleries]')) fp.parentNode.insertBefore(mk(), fp.nextSibling);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add();
+})();
