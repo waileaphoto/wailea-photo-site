@@ -760,12 +760,12 @@ document.addEventListener('DOMContentLoaded', function(){
     var href = (m ? '/' + m[1] : '') + '/print-shop';
     var art = document.querySelector('nav.menu a[href$="art.html"], nav.menu a[href$="/art"]');
     if (art && !document.querySelector('nav.menu a[href="' + href + '"]')) {
-      var a = document.createElement('a'); a.href = href; a.textContent = 'PRINT SHOP';
+      var a = document.createElement('a'); a.href = href; a.textContent = 'The Print Shop';
       art.parentNode.insertBefore(a, art.nextSibling);
     }
     var pr = document.querySelector('footer a[href$="pricing.html"], footer a[href$="/pricing"]');
     if (pr && !document.querySelector('footer a[href="' + href + '"]')) {
-      var f = document.createElement('a'); f.href = href; f.textContent = 'Print Shop';
+      var f = document.createElement('a'); f.href = href; f.textContent = 'The Print Shop';
       pr.parentNode.insertBefore(f, pr.nextSibling);
     }
   }
