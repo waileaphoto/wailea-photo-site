@@ -64,9 +64,13 @@
 </div><p class="fp-small" id="fpCaption"></p></div>
 <aside class="fp-panel">
 <h2>1. आपकी फ़ोटो</h2>
-<a class="fp-btn" id="fpGallery" href="https://waileaphoto.smugmug.com/">अपनी गैलरी से एक फ़ोटो चुनें</a>
-<p class="fp-small">अपनी गैलरी खोलें, जो फ़ोटो आपको पसंद है उसे खोलें, फिर नीचे दाईं ओर <strong>See it framed on your wall</strong> पर टैप करें। इससे वह फ़ोटो वापस यहाँ आ जाती है।</p>
-<p class="fp-small" id="fpGalleryNote" hidden><strong>आपकी गैलरी की फ़ोटो का उपयोग किया जा रहा है।</strong> इसे बदलने के लिए, वापस अपनी गैलरी में जाएँ और कोई दूसरी फ़ोटो चुनें।</p>
+<button type="button" class="fp-btn" id="fpGalleryBtn" aria-expanded="false">अपनी गैलरी से एक फ़ोटो चुनें</button>
+<div class="fp-gbox" id="fpGalleryBox" hidden>
+<input type="search" id="fpGalleryQ" class="fp-search" placeholder="अपनी गैलरी खोजने के लिए अपना नाम टाइप करें" autocomplete="off" aria-label="आपका नाम">
+<ul class="fp-gl" id="fpGalleryList"></ul>
+<p class="fp-small" id="fpGalleryMsg"></p>
+<div class="fp-gg" id="fpGalleryGrid"></div>
+</div>
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>अपने डिवाइस से एक फ़ोटो चुनें</span></label>
 <p class="fp-small">यह आपके डिवाइस पर ही रहता है। कुछ भी अपलोड नहीं होता। या एक नमूना आज़माएं:</p>
 <div class="fp-samples" id="fpSamples"></div>

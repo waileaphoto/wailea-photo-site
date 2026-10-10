@@ -64,9 +64,13 @@
 </div><p class="fp-small" id="fpCaption"></p></div>
 <aside class="fp-panel">
 <h2>1. Su foto</h2>
-<a class="fp-btn" id="fpGallery" href="https://waileaphoto.smugmug.com/">Elija una foto de su galería</a>
-<p class="fp-small">Abra su galería, abra la foto que le guste y luego toque <strong>Verla enmarcada en su pared</strong> en la parte inferior derecha. Esto traerá esa foto de vuelta aquí.</p>
-<p class="fp-small" id="fpGalleryNote" hidden><strong>Usando la foto de su galería.</strong> Para cambiarla, vuelva a su galería y elija otra.</p>
+<button type="button" class="fp-btn" id="fpGalleryBtn" aria-expanded="false">Elija una foto de su galería</button>
+<div class="fp-gbox" id="fpGalleryBox" hidden>
+<input type="search" id="fpGalleryQ" class="fp-search" placeholder="Escriba su nombre para encontrar su galería" autocomplete="off" aria-label="Su nombre">
+<ul class="fp-gl" id="fpGalleryList"></ul>
+<p class="fp-small" id="fpGalleryMsg"></p>
+<div class="fp-gg" id="fpGalleryGrid"></div>
+</div>
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>Elija una foto de su dispositivo</span></label>
 <p class="fp-small">Se mantiene en su dispositivo. No se sube nada. O pruebe con un ejemplo:</p>
 <div class="fp-samples" id="fpSamples"></div>

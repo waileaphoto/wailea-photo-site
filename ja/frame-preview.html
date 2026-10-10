@@ -64,9 +64,13 @@
 </div><p class="fp-small" id="fpCaption"></p></div>
 <aside class="fp-panel">
 <h2>1. お写真</h2>
-<a class="fp-btn" id="fpGallery" href="https://waileaphoto.smugmug.com/">ギャラリーから写真を選ぶ</a>
-<p class="fp-small">ギャラリーを開き、お好きな写真を選んでから、右下にある<strong>壁に飾った様子を見る</strong>をタップしてください。その写真がこちらに戻ってきます。</p>
-<p class="fp-small" id="fpGalleryNote" hidden><strong>ギャラリーの写真を使用しています。</strong>変更するには、ギャラリーに戻って別の写真をお選びください。</p>
+<button type="button" class="fp-btn" id="fpGalleryBtn" aria-expanded="false">ギャラリーから写真を選択してください</button>
+<div class="fp-gbox" id="fpGalleryBox" hidden>
+<input type="search" id="fpGalleryQ" class="fp-search" placeholder="お名前を入力してギャラリーを検索してください" autocomplete="off" aria-label="お名前">
+<ul class="fp-gl" id="fpGalleryList"></ul>
+<p class="fp-small" id="fpGalleryMsg"></p>
+<div class="fp-gg" id="fpGalleryGrid"></div>
+</div>
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>デバイスから写真を選ぶ</span></label>
 <p class="fp-small">お写真はお使いの端末内にのみ保存され、アップロードされることはありません。サンプルを試すこともできます:</p>
 <div class="fp-samples" id="fpSamples"></div>

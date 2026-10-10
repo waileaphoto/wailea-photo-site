@@ -64,9 +64,13 @@
 </div><p class="fp-small" id="fpCaption"></p></div>
 <aside class="fp-panel">
 <h2>1. Ihr Foto</h2>
-<a class="fp-btn" id="fpGallery" href="https://waileaphoto.smugmug.com/">Wählen Sie ein Foto aus Ihrer Galerie</a>
-<p class="fp-small">Öffnen Sie Ihre Galerie, öffnen Sie das Foto, das Ihnen gefällt, und tippen Sie unten rechts auf <strong>Gerahmt an Ihrer Wand ansehen</strong>. So gelangt dieses Foto wieder hierher.</p>
-<p class="fp-small" id="fpGalleryNote" hidden><strong>Es wird das Foto aus Ihrer Galerie verwendet.</strong> Um es zu ändern, gehen Sie zurück zu Ihrer Galerie und wählen Sie ein anderes aus.</p>
+<button type="button" class="fp-btn" id="fpGalleryBtn" aria-expanded="false">Wählen Sie ein Foto aus Ihrer Galerie aus</button>
+<div class="fp-gbox" id="fpGalleryBox" hidden>
+<input type="search" id="fpGalleryQ" class="fp-search" placeholder="Geben Sie Ihren Namen ein, um Ihre Galerie zu finden" autocomplete="off" aria-label="Ihr Name">
+<ul class="fp-gl" id="fpGalleryList"></ul>
+<p class="fp-small" id="fpGalleryMsg"></p>
+<div class="fp-gg" id="fpGalleryGrid"></div>
+</div>
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>Foto von Ihrem Gerät auswählen</span></label>
 <p class="fp-small">Bleibt auf Ihrem Gerät. Es wird nichts hochgeladen. Oder probieren Sie ein Beispiel:</p>
 <div class="fp-samples" id="fpSamples"></div>

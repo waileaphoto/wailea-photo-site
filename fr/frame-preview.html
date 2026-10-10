@@ -64,9 +64,13 @@
 </div><p class="fp-small" id="fpCaption"></p></div>
 <aside class="fp-panel">
 <h2>1. Votre photo</h2>
-<a class="fp-btn" id="fpGallery" href="https://waileaphoto.smugmug.com/">Choisissez une photo dans votre galerie</a>
-<p class="fp-small">Ouvrez votre galerie, ouvrez la photo qui vous plaît, puis appuyez sur <strong>Voir encadrée sur votre mur</strong> en bas à droite. Elle revient alors ici.</p>
-<p class="fp-small" id="fpGalleryNote" hidden><strong>À partir de la photo de votre galerie.</strong> Pour la changer, retournez dans votre galerie et choisissez-en une autre.</p>
+<button type="button" class="fp-btn" id="fpGalleryBtn" aria-expanded="false">Choisissez une photo dans votre galerie</button>
+<div class="fp-gbox" id="fpGalleryBox" hidden>
+<input type="search" id="fpGalleryQ" class="fp-search" placeholder="Saisissez votre nom pour retrouver votre galerie" autocomplete="off" aria-label="Votre nom">
+<ul class="fp-gl" id="fpGalleryList"></ul>
+<p class="fp-small" id="fpGalleryMsg"></p>
+<div class="fp-gg" id="fpGalleryGrid"></div>
+</div>
 <label class="fp-file"><input type="file" accept="image/*" id="fpFile"><span>Choisissez une photo depuis votre appareil</span></label>
 <p class="fp-small">Reste sur votre appareil. Rien n'est téléchargé. Ou essayez un exemple :</p>
 <div class="fp-samples" id="fpSamples"></div>
