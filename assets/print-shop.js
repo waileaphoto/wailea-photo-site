@@ -88,8 +88,23 @@
     $('.ps-finish button[data-finish="black"]').click();
   }
 
+  function hero(){
+    var sec = $('.page-hero'); if (!sec || !all.length) return;
+    var pick = [], seen = {}, center = all.filter(function(p){ return /Four_Seasons/.test(p.src); })[0] || all[0];
+    all.forEach(function(p){ if (pick.length < 2 && p !== center && !seen[p.group]) { seen[p.group] = 1; pick.push(p); } });
+    var order = [pick[0], center, pick[1]];
+    var s = document.createElement('script'); s.src = '/assets/room.js';
+    s.onload = function(){
+      var d = document.createElement('div'); d.className = 'ps-room';
+      sec.insertBefore(d, sec.firstChild); sec.classList.add('has-room');
+      var m = window.PSRoom.mount(d, {frames:'hero'});
+      order.forEach(function(p, i){ if (p) m.setImage(i, encodeURI(p.src)); });
+    };
+    document.head.appendChild(s);
+  }
+
   load().then(function(){
-    sidebar(); finish(); paint();
+    hero(); sidebar(); finish(); paint();
     $('#psMore').addEventListener('click', function(){ shown += PAGE; paint(); });
   }).catch(function(){
     $('#psGrid').innerHTML = '<p class="ps-small">The Print Shop could not load. Please refresh the page.</p>';
