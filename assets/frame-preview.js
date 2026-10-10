@@ -91,7 +91,10 @@
     if(img&&/^https?:\/\//i.test(img)){setPhoto(img,false);[].forEach.call(box.children,function(x){x.setAttribute('aria-pressed','false')});}
     else setPhoto('/assets/'+SAMPLES[0],false);
     var ref=document.referrer||'';
-    if(/^https:\/\/waileaphoto\.smugmug\.com\//.test(ref)){ $('#fpOrder').href=ref.split('#')[0]; $('#fpOrder').textContent='Back to my gallery to order'; }
+    var g='';
+    if(/^https:\/\/waileaphoto\.smugmug\.com\//.test(ref)){ g=ref.split('#')[0].split('?')[0].replace(/\/i-[^\/]*.*$/,''); try{localStorage.setItem('fpGallery',g)}catch(e){} }
+    else { try{g=localStorage.getItem('fpGallery')||''}catch(e){} }
+    if(/^https:\/\/waileaphoto\.smugmug\.com\//.test(g)){ $('#fpOrder').href=g; $('#fpOrder').textContent='Back to my gallery to order'; $('#fpGallery').href=g; $('#fpGallery').textContent='Choose a photo from your gallery'; }
     var sz=q.get('size'); if(sz&&/^(8x10|11x14|20x24|24x36)$/.test(sz)){S.size=sz;[].forEach.call($('#fpSize').children,function(x){x.setAttribute('aria-pressed',x.getAttribute('data-v')===sz?'true':'false')});}
   }catch(e){setPhoto('/assets/'+SAMPLES[0],false);}
   layout();

@@ -43,3 +43,6 @@
 .fp-scene.is-wall .fp-frame:active{cursor:grabbing}
 .fp-scene.is-wall{background-color:#cfc8bc}
 .fp-scene.is-wall .fp-frame{transition:none}
+.fp-btn{display:block;margin:0 0 8px;padding:14px 16px;text-align:center;border:1px solid var(--ink);background:var(--ink);color:#fff;font:500 14px/1.2 var(--sans);text-decoration:none}
+.fp-btn:hover{background:#000}
+.fp-file{margin-top:14px}
