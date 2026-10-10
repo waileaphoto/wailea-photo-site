@@ -73,3 +73,7 @@
 .ps-room svg{display:block;width:100%;height:100%}
 .page-hero.has-room:after{background:linear-gradient(90deg,rgba(10,16,20,.62),rgba(10,16,20,.28) 40%,rgba(10,16,20,0) 62%),linear-gradient(0deg,rgba(10,16,20,.45),rgba(10,16,20,0) 45%)}
 .page-hero.has-room{height:clamp(480px,45vw,960px)}
+/* no flash of the old hero: hide the stock photo until the living-room scene mounts; fall back to it only if the scene never loads */
+.ps .page-hero{background:#1b1917}
+.ps .page-hero:not(.has-room)>img{opacity:0;animation:psImgFallback .01s 4s forwards}
+@keyframes psImgFallback{to{opacity:1}}
