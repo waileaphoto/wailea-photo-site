@@ -885,6 +885,10 @@ def write_sitemap(cfg, names):
             'xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for name in names:
         src = open(os.path.join(ROOT, name), encoding='utf-8').read()
+        # Pages marked noindex (print-shop, frame-preview, ...) must not be
+        # listed in the sitemap, or Search Console flags them.
+        if re.search(r'<meta[^>]+name="robots"[^>]+noindex', src, re.I):
+            continue
         dates = re.findall(r'"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})', src)
         for lang in langs:
             rows.append('  <url>')
