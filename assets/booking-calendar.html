@@ -48,6 +48,8 @@
   .booking-pill.status-cancelled { background: #f2f2f2; border-left: 3px solid #999; color: #999; text-decoration: line-through; }
   .booking-pill.source-acuity { background: #eaf0f8; border-left: 3px solid #4b6f9f; }
   .booking-pill.source-acuity.status-cancelled { background: #f2f2f2; border-left-color: #999; }
+  .booking-pill.source-airbnb { background: #fdecef; border-left: 3px solid #e0565b; }
+  .booking-pill.source-airbnb.status-cancelled { background: #f2f2f2; border-left-color: #999; text-decoration: line-through; }
   .booking-pill.capacity-warning { box-shadow: inset 0 0 0 2px #d7a74a; }
   .booking-pill.capacity-full { box-shadow: inset 0 0 0 2px #b1443a; }
   .booking-pill.duplicate-warning::after { content: '  ⚠ duplicate?'; color: #9b3b33; font-weight: 600; }
@@ -139,6 +141,10 @@
   <span id="acuitySyncStatus">Acuity mirror status loading…</span>
   <button class="sync-btn" id="syncAcuityBtn">Sync Acuity now</button>
 </div>
+<div class="sync-bar">
+  <span id="airbnbSyncStatus">Airbnb mirror status loading…</span>
+  <button class="sync-btn" id="syncAirbnbBtn">Sync Airbnb now</button>
+</div>
 
 <div id="calError" class="error"></div>
 
@@ -153,6 +159,7 @@
   <div class="legend-item"><span class="legend-dot" style="background:#c07d1f"></span> Pending payment</div>
   <div class="legend-item"><span class="legend-dot" style="background:#999"></span> Cancelled</div>
   <div class="legend-item"><span class="legend-dot" style="background:#4b6f9f"></span> Acuity (read-only)</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#e0565b"></span> Airbnb (prepaid, read-only)</div>
 </div>
 
 <div class="calendar-scroll" aria-label="Booking calendar; swipe sideways on a phone">
@@ -425,6 +432,38 @@
     }
   });
 
+  async function loadAirbnbStatus() {
+    const el = document.getElementById('airbnbSyncStatus');
+    try {
+      const status = await api('GET', '/api/admin/airbnb/status');
+      if (!status.configured) {
+        el.textContent = 'Airbnb mirror is not configured yet (set AIRBNB_ICAL_URL on Render).';
+        return;
+      }
+      const when = status.lastSyncedAt ? new Date(`${status.lastSyncedAt}Z`).toLocaleString() : 'not yet';
+      el.textContent = `Airbnb mirror: ${status.active} active bookings · last synced ${when}`;
+    } catch (err) {
+      el.textContent = `Airbnb status unavailable: ${err.message}`;
+    }
+  }
+
+  document.getElementById('syncAirbnbBtn').addEventListener('click', async (event) => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    button.textContent = 'Syncing…';
+    try {
+      await api('POST', '/api/admin/airbnb/sync', {});
+      await Promise.all([loadAirbnbStatus(), loadMonth()]);
+    } catch (err) {
+      document.getElementById('airbnbSyncStatus').textContent = `Airbnb sync failed: ${err.message}`;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Sync Airbnb now';
+    }
+  });
+
+  const SOURCE_PREFIX = { acuity: '[ACUITY] ', airbnb: '[AIRBNB] ' };
+
   // ---------- Calendar ----------
   let currentMonth = new Date();
   let sessionTypesBySlug = {};
@@ -502,7 +541,7 @@
           const pill = document.createElement('button');
           pill.className = `booking-pill status-${b.status} source-${b.source || 'wp'}${b.capacity_status === 'warning' ? ' capacity-warning' : ''}${b.capacity_status === 'full' ? ' capacity-full' : ''}${b.duplicate_warning ? ' duplicate-warning' : ''}`;
           const firstName = (b.client_name || '?').split(' ')[0];
-          const prefix = b.source === 'acuity' ? '[ACUITY] ' : '';
+          const prefix = SOURCE_PREFIX[b.source] || '';
           pill.textContent = `${prefix}${fmtTime12(b.start_time)} ${b.session_type_name || '?'} — ${firstName} (${b.party_size || 1}) · team ${b.overlapping_count}/3`;
           pill.addEventListener('click', () => openModal(b));
           cell.appendChild(pill);
@@ -514,10 +553,12 @@
 
   async function openModal(b) {
     selectedBooking = b;
-    document.getElementById('modalTitle').textContent = `${b.source === 'acuity' ? '[ACUITY] ' : ''}${b.session_type_name || 'Session'}`;
+    document.getElementById('modalTitle').textContent = `${SOURCE_PREFIX[b.source] || ''}${b.session_type_name || 'Session'}`;
     document.getElementById('modalSub').textContent = `${b.session_date} · ${fmtTime12(b.start_time)}–${fmtTime12(b.end_time)} (Hawaii time)`;
     const rows = [
-      ['Source', b.source === 'acuity' ? 'Acuity — change this appointment in Acuity' : 'New website booking system'],
+      ['Source', b.source === 'acuity' ? 'Acuity — change this appointment in Acuity'
+        : b.source === 'airbnb' ? 'Airbnb — message the guest and make changes in the Airbnb app'
+        : 'New website booking system'],
       ['Status', b.status.replace('_', ' ')],
       ['Client', b.client_name || '—'],
       ['Email', b.client_email || '—'],
@@ -525,7 +566,9 @@
       ['Party size', b.party_size || 1],
       ...(b.location ? [['Location', b.location]] : []),
     ];
-    if (b.source !== 'acuity') {
+    if (b.source === 'airbnb') {
+      rows.push(['Payment', 'Prepaid through Airbnb'], ['Balance due', '$0.00']);
+    } else if (b.source !== 'acuity') {
       const balanceCents = (b.total_price_cents ?? 0) - (b.deposit_cents ?? 0);
       rows.push(
         ['Total', fmtDollars(b.total_price_cents ?? 0)],
@@ -535,7 +578,8 @@
     }
     rows.push(
       ['Booking reference', b.booking_reference || `#${b.id}`],
-      ...(b.source === 'acuity' && b.notes ? [['Acuity notes', b.notes]] : [])
+      ...(b.source === 'acuity' && b.notes ? [['Acuity notes', b.notes]] : []),
+      ...(b.source === 'airbnb' && b.notes ? [['Airbnb notes', b.notes]] : [])
     );
     document.getElementById('modalBody').innerHTML = rows.map(([label, value]) => `
       <div class="modal-row"><span>${escapeHtml(label)}</span><span>${escapeHtml(value)}</span></div>
@@ -935,6 +979,7 @@
 
   loadMonth();
   loadAcuityStatus();
+  loadAirbnbStatus();
   loadSessionTypes();
   loadBlockedDates();
 
