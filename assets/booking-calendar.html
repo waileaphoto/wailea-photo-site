@@ -145,6 +145,10 @@
   <span id="airbnbSyncStatus">Airbnb mirror status loading…</span>
   <button class="sync-btn" id="syncAirbnbBtn">Sync Airbnb now</button>
 </div>
+<div class="sync-bar">
+  <span id="teamFeedStatus">Team phone calendar: tap to get the subscribe link.</span>
+  <button class="sync-btn" id="teamFeedBtn">Team calendar link</button>
+</div>
 <details class="sync-bar" id="restorePanel">
   <summary>Restore database from backup</summary>
   <p>Pick a <code>booking-db-YYYY-MM-DD.db.gz</code> attachment from a nightly backup email. This replaces all booking data with that backup and restarts the server. Admin token only.</p>
@@ -489,6 +493,21 @@
     } catch (err) {
       status.textContent = `Restore failed: ${err.message}`;
       button.disabled = false;
+    }
+  });
+
+  document.getElementById('teamFeedBtn').addEventListener('click', async () => {
+    const el = document.getElementById('teamFeedStatus');
+    try {
+      const feed = await api('GET', '/api/admin/team-calendar-feed');
+      el.innerHTML = `<a href="${feed.webcal}">Subscribe on this iPhone</a> · <a href="#" id="copyTeamFeed">Copy link to share with the team</a>`;
+      document.getElementById('copyTeamFeed').addEventListener('click', async (e) => {
+        e.preventDefault();
+        try { await navigator.clipboard.writeText(feed.url); e.target.textContent = 'Copied'; }
+        catch { prompt('Copy this link', feed.url); }
+      });
+    } catch (err) {
+      el.textContent = `Team calendar link unavailable: ${err.message}`;
     }
   });
 
