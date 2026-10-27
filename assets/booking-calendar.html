@@ -145,6 +145,13 @@
   <span id="airbnbSyncStatus">Airbnb mirror status loading…</span>
   <button class="sync-btn" id="syncAirbnbBtn">Sync Airbnb now</button>
 </div>
+<details class="sync-bar" id="restorePanel">
+  <summary>Restore database from backup</summary>
+  <p>Pick a <code>booking-db-YYYY-MM-DD.db.gz</code> attachment from a nightly backup email. This replaces all booking data with that backup and restarts the server. Admin token only.</p>
+  <input type="file" id="restoreFile" accept=".gz,application/gzip">
+  <button class="sync-btn" id="restoreBtn">Restore</button>
+  <div id="restoreStatus"></div>
+</details>
 
 <div id="calError" class="error"></div>
 
@@ -459,6 +466,29 @@
     } finally {
       button.disabled = false;
       button.textContent = 'Sync Airbnb now';
+    }
+  });
+
+  document.getElementById('restoreBtn').addEventListener('click', async () => {
+    const status = document.getElementById('restoreStatus');
+    const file = document.getElementById('restoreFile').files[0];
+    if (!file) { status.textContent = 'Choose the .db.gz backup file first.'; return; }
+    const button = document.getElementById('restoreBtn');
+    button.disabled = true;
+    status.textContent = 'Uploading and checking backup…';
+    try {
+      const gzBase64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(',')[1] || '');
+        reader.onerror = () => reject(new Error('Could not read the file'));
+        reader.readAsDataURL(file);
+      });
+      const result = await api('POST', '/api/admin/restore-db', { gzBase64 });
+      status.textContent = `Restored ${result.bookings} bookings and ${result.clients} clients (latest booking ${result.latestBookingCreated || 'n/a'}). Server is restarting — reloading in 30 seconds…`;
+      setTimeout(() => location.reload(), 30000);
+    } catch (err) {
+      status.textContent = `Restore failed: ${err.message}`;
+      button.disabled = false;
     }
   });
 
