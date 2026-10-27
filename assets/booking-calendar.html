@@ -149,6 +149,16 @@
   <span id="teamFeedStatus">Team phone calendar: tap to get the subscribe link.</span>
   <button class="sync-btn" id="teamFeedBtn">Team calendar link</button>
 </div>
+<details class="sync-bar" id="teamLoginsPanel">
+  <summary>Team logins</summary>
+  <div id="teamUsersList">Open to load…</div>
+  <p><b>Add a login</b></p>
+  <input id="tuName" placeholder="Username (e.g. max)" autocapitalize="off" autocorrect="off">
+  <input id="tuPass" type="password" placeholder="Password (10+ characters)" autocomplete="new-password">
+  <select id="tuRole"><option value="staff">Staff</option><option value="owner">Owner</option></select>
+  <button class="sync-btn" id="tuAddBtn">Add</button>
+  <div id="tuStatus"></div>
+</details>
 <details class="sync-bar" id="smugmugPanel">
   <summary>Connect SmugMug (team Covers tab)</summary>
   <p id="smugmugStatus">Checking SmugMug connection…</p>
@@ -546,6 +556,50 @@
       const r = await api('POST', '/api/admin/smugmug/connect/finish', { verifier: document.getElementById('smCode').value.trim() });
       el.textContent = `SmugMug connected${r.accountName ? ` as ${r.accountName}` : ''}. The team Covers tab works now.`;
     } catch (err) { el.textContent = `Couldn't finish: ${err.message}`; }
+  });
+
+  async function loadTeamUsers() {
+    const list = document.getElementById('teamUsersList');
+    try {
+      const users = await api('GET', '/api/admin/team-users');
+      list.innerHTML = '';
+      users.filter((u) => u.active).forEach((u) => {
+        const row = document.createElement('div');
+        row.style.margin = '6px 0';
+        row.innerHTML = `<b>${escapeHtml(u.username)}</b> (${escapeHtml(u.role)}) `;
+        const input = document.createElement('input');
+        input.type = 'password';
+        input.placeholder = 'New password (10+)';
+        input.autocomplete = 'new-password';
+        const btn = document.createElement('button');
+        btn.className = 'sync-btn';
+        btn.textContent = 'Set password';
+        btn.addEventListener('click', async () => {
+          try {
+            await api('POST', `/api/admin/team-users/${u.id}/password`, { password: input.value });
+            input.value = '';
+            document.getElementById('tuStatus').textContent = `Password updated for ${u.username}.`;
+          } catch (err) { document.getElementById('tuStatus').textContent = `Couldn't update: ${err.message}`; }
+        });
+        row.append(input, btn);
+        list.appendChild(row);
+      });
+    } catch (err) { list.textContent = `Couldn't load logins: ${err.message}`; }
+  }
+  document.getElementById('teamLoginsPanel').addEventListener('toggle', (e) => { if (e.target.open) loadTeamUsers(); });
+  document.getElementById('tuAddBtn').addEventListener('click', async () => {
+    const status = document.getElementById('tuStatus');
+    try {
+      const r = await api('POST', '/api/admin/team-users', {
+        username: document.getElementById('tuName').value.trim(),
+        password: document.getElementById('tuPass').value,
+        role: document.getElementById('tuRole').value,
+      });
+      document.getElementById('tuName').value = '';
+      document.getElementById('tuPass').value = '';
+      status.textContent = `Added ${r.username} (${r.role}).`;
+      loadTeamUsers();
+    } catch (err) { status.textContent = `Couldn't add: ${err.message}`; }
   });
 
   const SOURCE_PREFIX = { acuity: '[ACUITY] ', airbnb: '[AIRBNB] ' };
