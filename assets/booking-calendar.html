@@ -149,6 +149,17 @@
   <span id="teamFeedStatus">Team phone calendar: tap to get the subscribe link.</span>
   <button class="sync-btn" id="teamFeedBtn">Team calendar link</button>
 </div>
+<details class="sync-bar" id="smugmugPanel">
+  <summary>Connect SmugMug (team Covers tab)</summary>
+  <p id="smugmugStatus">Checking SmugMug connection…</p>
+  <p>1. On smugmug.com/app/developer (signed in as waileaphoto), copy the app's <b>API Key</b> and <b>API Secret</b>.</p>
+  <input id="smKey" placeholder="API Key" autocapitalize="off" autocorrect="off">
+  <input id="smSecret" placeholder="API Secret" autocapitalize="off" autocorrect="off">
+  <button class="sync-btn" id="smStartBtn">2. Get approval link</button>
+  <div id="smLink"></div>
+  <input id="smCode" placeholder="6-digit code from SmugMug" inputmode="numeric">
+  <button class="sync-btn" id="smFinishBtn">3. Finish</button>
+</details>
 <details class="sync-bar" id="restorePanel">
   <summary>Restore database from backup</summary>
   <p>Pick a <code>booking-db-YYYY-MM-DD.db.gz</code> attachment from a nightly backup email. This replaces all booking data with that backup and restarts the server. Admin token only.</p>
@@ -509,6 +520,32 @@
     } catch (err) {
       el.textContent = `Team calendar link unavailable: ${err.message}`;
     }
+  });
+
+  async function loadSmugmugStatus() {
+    const el = document.getElementById('smugmugStatus');
+    try {
+      const st = await api('GET', '/api/admin/smugmug/connection');
+      el.textContent = st.connected ? 'SmugMug is connected.' : 'SmugMug is not connected yet.';
+    } catch (err) { el.textContent = `SmugMug status unavailable: ${err.message}`; }
+  }
+  document.getElementById('smStartBtn').addEventListener('click', async () => {
+    const link = document.getElementById('smLink');
+    link.textContent = 'Contacting SmugMug…';
+    try {
+      const r = await api('POST', '/api/admin/smugmug/connect/start', {
+        apiKey: document.getElementById('smKey').value.trim(),
+        apiSecret: document.getElementById('smSecret').value.trim(),
+      });
+      link.innerHTML = `<a href="${r.authorizeUrl}" target="_blank" rel="noopener">Open SmugMug to approve</a> — choose Full Access, approve, then type the 6-digit code below.`;
+    } catch (err) { link.textContent = `Couldn't start: ${err.message}`; }
+  });
+  document.getElementById('smFinishBtn').addEventListener('click', async () => {
+    const el = document.getElementById('smugmugStatus');
+    try {
+      const r = await api('POST', '/api/admin/smugmug/connect/finish', { verifier: document.getElementById('smCode').value.trim() });
+      el.textContent = `SmugMug connected${r.accountName ? ` as ${r.accountName}` : ''}. The team Covers tab works now.`;
+    } catch (err) { el.textContent = `Couldn't finish: ${err.message}`; }
   });
 
   const SOURCE_PREFIX = { acuity: '[ACUITY] ', airbnb: '[AIRBNB] ' };
@@ -1029,6 +1066,7 @@
   loadMonth();
   loadAcuityStatus();
   loadAirbnbStatus();
+  loadSmugmugStatus();
   loadSessionTypes();
   loadBlockedDates();
 
