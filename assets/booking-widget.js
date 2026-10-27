@@ -1069,12 +1069,19 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.elements = LANG === 'en'
         ? this.stripe.elements({ clientSecret: this.state.clientSecret })
         : this.stripe.elements({ clientSecret: this.state.clientSecret, locale: LANG });
+      this.paymentReady = false;
       this.paymentElement = this.elements.create('payment');
       // begin_checkout fires as soon as the booking row exists; these two say whether the
       // card form then actually appeared, which is the one failure nobody would report.
       if (typeof this.paymentElement.on === 'function') {
-        this.paymentElement.on('ready', () => this.trackStep('booking_payment_ready'));
-        this.paymentElement.on('loaderror', () => this.trackStep('booking_payment_load_error'));
+        this.paymentElement.on('ready', () => { this.paymentReady = true; this.trackStep('booking_payment_ready'); });
+        this.paymentElement.on('loaderror', (ev) => {
+          this.paymentReady = false;
+          const reason = (ev && ev.error && ev.error.message) || 'unknown';
+          console.error('[booking-widget] Stripe Payment Element failed to load:', reason);
+          this.payError.textContent = T('The card form could not load. Please text or call 808-298-5188 and we will hold your session.');
+          this.trackStep('booking_payment_load_error', { reason: String(reason).slice(0, 100) });
+        });
       }
       this.cardElementWrap.innerHTML = '';
       this.paymentElement.mount(this.cardElementWrap);
@@ -1084,6 +1091,10 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.payError.textContent = '';
       if (this.state.holdExpired) {
         this.payError.textContent = T('Your 15-minute hold expired. Go back and select the session again.');
+        return;
+      }
+      if (!this.paymentReady) {
+        this.payError.textContent = T('The card form could not load. Please text or call 808-298-5188 and we will hold your session.');
         return;
       }
       this.trackStep('add_payment_info', { currency: 'USD', value: (this.state.totalPriceCents || 0) / 100 });
