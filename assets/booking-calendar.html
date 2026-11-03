@@ -89,7 +89,7 @@
   .block-section { margin-top: 56px; border-top: 1px solid #eee; padding-top: 32px; }
   form { display: flex; flex-direction: column; gap: 12px; border: 1px solid #eee; border-radius: 6px; padding: 20px; margin-bottom: 32px; }
   label { font: 600 11px/1 'Inter', sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #666; display: block; margin-bottom: 4px; }
-  select, input[type="date"], input[type="time"], input[type="text"], input[type="email"], input[type="tel"] { width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 9px 10px; font: 400 14px/1.3 'Inter', sans-serif; box-sizing: border-box; }
+  select, input[type="date"], input[type="time"], input[type="text"], input[type="email"], input[type="tel"], input[type="number"] { width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 9px 10px; font: 400 14px/1.3 'Inter', sans-serif; box-sizing: border-box; }
   .hint { color: #999; font-size: 12px; margin: -4px 0 0; }
   .row { display: flex; gap: 12px; }
   .row > div { flex: 1; }
@@ -265,6 +265,56 @@
     </div>
     <button class="modal-close" id="modalCloseBtn">Close</button>
   </div>
+</div>
+
+<div class="block-section">
+  <h2>Add a booking</h2>
+  <div class="sub" style="margin-bottom:20px;">For sessions sold outside the website — Viator, Airbnb, a phone call. Creates a confirmed booking that uses a photographer slot and shows on every calendar. Nothing is emailed or texted to the client.</div>
+
+  <form id="manualForm">
+    <div class="row">
+      <div>
+        <label for="mSource">Source</label>
+        <select id="mSource">
+          <option value="viator">Viator</option>
+          <option value="airbnb">Airbnb</option>
+          <option value="phone">Phone</option>
+          <option value="email">Email</option>
+          <option value="walk_in">Walk-in</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="mSession">Session</label>
+        <select id="mSession" required></select>
+      </div>
+    </div>
+    <div class="row">
+      <div><label for="mDate">Date</label><input type="date" id="mDate" required></div>
+      <div><label for="mParty">Party size</label><input type="number" id="mParty" min="1" value="2" required></div>
+    </div>
+    <div class="row">
+      <div><label for="mStart">Start time</label><input type="time" id="mStart" required></div>
+      <div><label for="mEnd">End time</label><input type="time" id="mEnd" required></div>
+    </div>
+    <div class="row">
+      <div><label for="mName">Client name</label><input type="text" id="mName" required></div>
+      <div><label for="mEmail">Client email</label><input type="email" id="mEmail" required></div>
+    </div>
+    <div class="row">
+      <div><label for="mPhone">Client phone</label><input type="tel" id="mPhone"></div>
+      <div><label for="mRef">External reference</label><input type="text" id="mRef" placeholder="e.g. Viator BR-1461899603"></div>
+    </div>
+    <div class="row">
+      <div><label for="mTotal">Total price ($)</label><input type="number" id="mTotal" min="0" step="0.01" required></div>
+      <div><label for="mPrepaid">Already paid ($)</label><input type="number" id="mPrepaid" min="0" step="0.01" value="0"></div>
+    </div>
+    <p class="hint">Balance due at the session = total minus already paid. For Viator: total = Viator price + $395 gallery; already paid = the Viator price.</p>
+    <div><label for="mNotes">Notes (optional)</label><input type="text" id="mNotes"></div>
+    <div id="manualError" class="error"></div>
+    <div id="manualOk" class="sub"></div>
+    <button type="submit">Add booking</button>
+  </form>
 </div>
 
 <div class="block-section">
@@ -1066,6 +1116,9 @@
       opt.value = t.slug;
       opt.textContent = t.name;
       select.appendChild(opt);
+      const mOpt = opt.cloneNode(true);
+      if (t.slug === 'viator-sunset') mOpt.selected = true;
+      document.getElementById('mSession').appendChild(mOpt);
     });
   }
 
@@ -1095,6 +1148,43 @@
       });
     });
   }
+
+  document.getElementById('manualForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('manualError');
+    const okEl = document.getElementById('manualOk');
+    errorEl.textContent = '';
+    okEl.textContent = '';
+    const val = (id) => document.getElementById(id).value.trim();
+    const cents = (id) => Math.round(Number(val(id) || 0) * 100);
+    const body = {
+      source: val('mSource'),
+      sessionType: val('mSession'),
+      date: val('mDate'),
+      startTime: val('mStart'),
+      endTime: val('mEnd'),
+      partySize: Number(val('mParty')),
+      client: { name: val('mName'), email: val('mEmail'), phone: val('mPhone') },
+      externalReference: val('mRef'),
+      totalCents: cents('mTotal'),
+      prepaidCents: cents('mPrepaid'),
+      notes: val('mNotes'),
+    };
+    try {
+      let result;
+      try {
+        result = await api('POST', '/api/admin/bookings', body);
+      } catch (err) {
+        if (!/every photographer booked/.test(err.message) || !confirm(`${err.message}\n\nBook it anyway?`)) throw err;
+        result = await api('POST', '/api/admin/bookings', { ...body, overrideCapacity: true });
+      }
+      okEl.textContent = `Added ${result.booking.booking_reference} — ${result.client.name}, ${result.booking.session_date} ${fmtTime12(result.booking.start_time)}.`;
+      e.target.reset();
+      loadMonth();
+    } catch (err) {
+      errorEl.textContent = err.message;
+    }
+  });
 
   document.getElementById('blockForm').addEventListener('submit', async (e) => {
     e.preventDefault();
