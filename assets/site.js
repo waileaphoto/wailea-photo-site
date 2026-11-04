@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function(){
       cardId: 'session-card-poetic-wedding',
       displayName: 'A Poetic Wedding in Maui',
       explanation: 'This experience allows the ceremony, family groupings and couple’s portraits to unfold together in beautiful Maui light.',
-      facts: 'From $995'
+      facts: '$2,599 all-inclusive'
     },
     'turquoise-water': {
       cardId: 'session-card-turquoise-water',
