@@ -313,7 +313,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
     buildDetailsStep() {
       const step = el('div', { class: 'wbw-step', hidden: 'hidden' });
       this.partySizeInput = el('input', { type: 'number', min: '1', max: '20', value: '2', oninput: () => this.refreshQuote() });
-      const partyField = el('div', { class: 'wbw-field' }, [el('label', {}, [T('Party size')]), this.partySizeInput]);
+      this.partySizeHint = el('div', { class: 'wbw-hint', hidden: 'hidden' }, [T('15 guests included, $20 each after. Beach weddings: up to 30 guests. Private property: up to 100.')]);
+      const partyField = el('div', { class: 'wbw-field' }, [el('label', {}, [T('Party size')]), this.partySizeInput, this.partySizeHint]);
 
       this.addonInputs = {};
       this.addonRows = {};
@@ -469,6 +470,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.sunrisePunctualityCheckbox.checked = false;
       // Weddings include 15 guests and take up to 100; other sessions stay at 20.
       this.partySizeInput.max = slug === 'wedding-elopement' ? '100' : '20';
+      this.partySizeHint.hidden = slug !== 'wedding-elopement';
       this.textConfirmCheckbox.checked = false;
       this.floristContactCheckbox.checked = false;
       this.celebratingInput.value = '';

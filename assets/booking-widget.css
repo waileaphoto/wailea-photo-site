@@ -202,3 +202,5 @@
   font-size: 18px; line-height: 1; color: #999; cursor: pointer;
 }
 .wbw-nudge-dismiss:hover { color: #171716; }
+
+.wbw-hint{margin-top:6px;font-size:12px;line-height:1.45;opacity:.72}
