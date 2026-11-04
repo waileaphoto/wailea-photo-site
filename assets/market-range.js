@@ -40,12 +40,19 @@
 
   const fmt = (n) => `$${Number(n).toLocaleString('en-US')}`;
 
+  // Wording can be overridden per page (the wedding cost guide compares packages, not
+  // sessions) via data attributes on the section; defaults match the pricing page.
+  const noun = section.dataset.noun || 'sessions';
+  const entity = section.dataset.entity || 'Photographer';
+  const subject = section.dataset.subject || 'Maui session prices';
+
   // --- geometry ---------------------------------------------------------
-  const PAD = { top: 18, right: 18, bottom: 34, left: 44 };
+  const PAD = { top: 26, right: 18, bottom: 34, left: 44 };
   const minPrice = Math.min(...plotted.map((r) => r.price));
   const maxPrice = Math.max(...plotted.map((r) => r.price));
   const maxImages = Math.max(...plotted.map((r) => r.images));
-  const yTop = Math.ceil((maxImages + 6) / 10) * 10;
+  const yStep = maxImages > 80 ? 25 : 10;
+  const yTop = Math.ceil((maxImages + 6) / yStep) * yStep;
 
   function render(budget) {
     const w = Math.max(320, plotHost.clientWidth || 560);
@@ -59,12 +66,12 @@
     const parts = [];
     parts.push(
       `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" role="img" ` +
-      `aria-label="Published Maui session prices plotted against the number of edited images included. ` +
+      `aria-label="Published ${subject} plotted against the number of edited images included. ` +
       `Wailea Photo is at ${fmt(us.price)} for ${us.images} images.">`
     );
 
     // horizontal gridlines + y labels
-    for (let i = 0; i <= yTop; i += 10) {
+    for (let i = 0; i <= yTop; i += yStep) {
       parts.push(
         `<line x1="${PAD.left}" y1="${y(i)}" x2="${w - PAD.right}" y2="${y(i)}" class="mp-grid"/>`,
         `<text x="${PAD.left - 8}" y="${y(i) + 4}" class="mp-axis mp-axis-y">${i}</text>`
@@ -75,7 +82,7 @@
     parts.push(
       `<text x="${PAD.left}" y="${h - 12}" class="mp-axis">${fmt(minPrice)}</text>`,
       `<text x="${w - PAD.right}" y="${h - 12}" class="mp-axis mp-axis-end">${fmt(maxPrice)}</text>`,
-      `<text x="${PAD.left - 34}" y="${PAD.top - 6}" class="mp-axis">images</text>`
+      `<text x="${PAD.left - 34}" y="${PAD.top - 15}" class="mp-axis">images</text>`
     );
 
     // budget line
@@ -96,7 +103,7 @@
       ].filter(Boolean).join(' ');
       parts.push(
         `<circle cx="${x(r.price)}" cy="${y(r.images)}" r="${r.isUs ? 8 : 5.5}" class="${cls}">` +
-        `<title>${r.isUs ? 'Wailea Photo' : 'Photographer ' + r.label} — ${fmt(r.price)}, ${r.images} edited images</title>` +
+        `<title>${r.isUs ? 'Wailea Photo' : entity + ' ' + r.label} — ${fmt(r.price)}, ${r.images} edited images</title>` +
         `</circle>`
       );
     });
@@ -127,7 +134,7 @@
         (r) => Number.isFinite(r.price) && !Number.isFinite(r.images) && r.price <= budget
       ).length;
       if (cheaperUnpriced) {
-        return `At ${fmt(budget)}, the only Maui sessions we found in reach don't publish how many ` +
+        return `At ${fmt(budget)}, the only Maui ${noun} we found in reach don't publish how many ` +
           `edited images you receive, so they can't be compared here. The cheapest that does is ` +
           `${fmt(minPrice)}. Ours is ${fmt(us.price)} for ${us.images}+.`;
       }
@@ -136,13 +143,13 @@
     }
     if (!weFit) {
       const best = others.reduce((a, b) => (b.images > a.images ? b : a));
-      return `At ${fmt(budget)}, ${others.length} of the ${plotted.length} published sessions are in reach. ` +
+      return `At ${fmt(budget)}, ${others.length} of the ${plotted.length} published ${noun} are in reach. ` +
         `The most edited images any of them includes is ${best.images}. ` +
         `Ours is ${fmt(us.price)} for ${us.images}+.`;
     }
     const bestOther = others.length ? others.reduce((a, b) => (b.images > a.images ? b : a)) : null;
     const lead = bestOther ? us.images - bestOther.images : null;
-    let text = `At ${fmt(budget)}, ${inReach.length} of the ${plotted.length} published sessions are in reach, ours among them.`;
+    let text = `At ${fmt(budget)}, ${inReach.length} of the ${plotted.length} published ${noun} are in reach, ours among them.`;
     if (bestOther && lead > 0) {
       text += ` The next most generous includes ${bestOther.images} edited images; ours includes ${us.images}+ — ${lead} more.`;
     } else if (bestOther) {
