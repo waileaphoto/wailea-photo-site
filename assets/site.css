@@ -1039,3 +1039,15 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 .imp-dot.is-on{background:#fff}
 .imp-arrow:focus-visible,.imp-dot:focus-visible{outline:2px solid #fff;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.imp-slide{transition:none}}
+
+/* page-guide: planning sections on the session pages */
+.page-hero-copy h1 .eyebrow{display:block;font-family:var(--sans);margin:0 0 1.1em;line-height:1.4;max-width:none}
+.page-guide{padding:clamp(56px,8vw,110px) clamp(20px,6vw,90px);background:var(--cream,#f5efe5)}
+.page-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3vw,44px);max-width:1180px;margin:clamp(28px,4vw,48px) auto 0}
+.page-guide-item h3{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.2vw,28px);line-height:1.15;margin:0 0 .5em}
+.page-guide-item p{margin:0;line-height:1.65}
+.page-guide-links{max-width:1180px;margin:clamp(28px,4vw,44px) auto 0;font:600 11px/1.8 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.page-guide-links a{color:var(--red)}
+.hero-copy h1 .eyebrow{display:block;font-family:var(--sans);margin:0 0 1.1em;line-height:1.4}
+.page-guide .section-head{max-width:1180px;margin:0 auto;padding:0}
+.page-guide .section-head h2{white-space:normal;max-width:20ch;font-size:clamp(34px,4.6vw,64px);line-height:1.02}

@@ -1,3 +1,8 @@
+# One canonical host. Google was indexing www.waileaphoto.com and waileaphoto.com as
+# two separate sites (Search Console, Nov 2026), splitting ranking signals between them.
+https://www.waileaphoto.com/*  https://waileaphoto.com/:splat  301!
+http://www.waileaphoto.com/*   https://waileaphoto.com/:splat  301!
+
 /maui-family-beach-photography-faq   /faq.html   200
 /atlas                                  /atlas.html  200
 /atlas/                                 /atlas.html  200
@@ -24,3 +29,11 @@
 /cinematic              /index.html#story-paths                        301!
 /couples                /maui-couples-photographer                     301!
 /senior-portraits         /maui-senior-portrait-photographer              301!
+
+# Truncated or legacy URLs Search Console reported as 404 (Nov 2026).
+/fairmont-kea-lani-      /fairmont-kea-lani-photographer               301!
+/leica-m9-vs-kodak-      /leica-m9-vs-kodak-portra-160                 301!
+/m11                     /the-apo-difference                           301!
+/our-wedding-            /our-wedding-officiant-pick-for-maui-photography  301!
+/where-to-eat-after-     /our-personal-maui-restaurant-reviews         301!
+/our-personal-maui-      /our-personal-maui-restaurant-reviews         301!
