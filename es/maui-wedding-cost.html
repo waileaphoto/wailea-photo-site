@@ -131,7 +131,11 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
+.page-hero.fit-hero>img{object-position:center center}
+@media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -195,7 +199,7 @@
 </div>
 <div class="header-subbar"><a class="header-call" href="tel:+18082985188">808.298.5188</a></div>
 </header><nav class="menu" aria-hidden="true"><button class="menu-close" aria-label="Cerrar menú">×</button><a href="/es/#story-paths">Fotografía</a><a href="/es/pricing#sessions">Sesiones y precios</a><a href="/es/#experience">Nuestra familia</a><a href="/es/atlas">El Atlas de Maui</a><a href="/es/art">Arte</a><a href="/es/#reviews">Reseñas</a><a href="/es/faq">Preguntas frecuentes y contacto</a><div class="menu-foot"><a href="/es/tides">Mareas y horarios del atardecer</a><a href="/es/what-to-wear-maui-photos">Guía de qué ponerse</a><a href="/es/the-apo-difference">La diferencia APO</a><a href="/es/our-florist">Nuestra florería</a><a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Salón de la fama de clientes</a><a href="/es/corporate-events">Eventos corporativos</a><a href="tel:+18082985188">808.298.5188</a></div></nav>
-<main><section class="page-hero wedding-hero"><img src="/assets/wedding-ceremony-hires.jpg" alt="Una pareja intercambiando votos bajo un arco floral en una boda en la playa de Maluaka, en Makena, Maui" loading="eager" fetchpriority="high"><div class="page-hero-copy reveal visible"><div class="eyebrow">BODAS EN MAUI · COSTOS 2026</div><h1>Cuánto cuesta una boda en la playa en Maui en 2026.</h1><p>Los precios de los paquetes, la licencia de matrimonio, los impuestos y los límites de invitados, todo en un solo lugar.</p></div></section>
+<main><section class="page-hero wedding-hero fit-hero"><img src="/assets/wedding-ceremony-hires.jpg" alt="Una pareja intercambiando votos bajo un arco floral en una boda en la playa de Maluaka, en Makena, Maui" loading="eager" fetchpriority="high"><div class="page-hero-copy reveal visible"><div class="eyebrow">BODAS EN MAUI · COSTOS 2026</div><h1>Cuánto cuesta una boda en la playa en Maui en 2026.</h1><p>Los precios de los paquetes, la licencia de matrimonio, los impuestos y los límites de invitados, todo en un solo lugar.</p></div></section>
 <article class="cost-wrap">
 <p class="lede">Una boda en la playa en Maui, todo incluido, con oficiante, flores, el permiso de playa y 1.5 horas de fotografía, cuesta <strong>$2,599 con Wailea Photo, impuestos incluidos</strong>. Los paquetes publicados en Maui van desde unos $600 por una ceremonia solo con oficiante hasta $2,000–$5,500 más impuestos por paquetes con planificador, y muchos de ellos no incluyen fotografía ni flores.</p>
 <h2>Qué incluyen los paquetes de boda en la playa en Maui</h2>
@@ -209,6 +213,47 @@
 </tbody></table></div>
 <p class="cost-note">Los rangos provienen de paquetes de boda en Maui publicados en línea, verificados en noviembre de 2026. Los precios cambian; confirme siempre cualquier cotización directamente.</p>
 <div class="cost-cta"><a class="button" href="/es/maui-wedding-photographer#wedding-package">Vea qué incluye nuestro paquete</a><a class="button-dark" style="display:inline-block;text-decoration:none;color:var(--ink);padding:17px 24px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--ink)" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">Vea una boda de muestra</a></div>
+
+<section class="market-range" aria-labelledby="marketRangeHeading" data-verified="2026-11-04" data-noun="packages" data-entity="Package" data-subject="Maui wedding package prices">
+<div class="chapter">CUÁNTO CUESTA UNA BODA EN MAUI</div>
+<h3 id="marketRangeHeading">Precios honestos, comparados abiertamente.</h3>
+<p class="market-range-intro">Revisamos los paquetes de boda publicados de cinco empresas de bodas en Maui y pusimos todos los precios en un solo gráfico. Mueva el control deslizante hasta su presupuesto y vea qué incluye cada paquete en fotografías, y dónde se ubica el nuestro.</p>
+<div class="market-tool">
+<div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">Su presupuesto</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
+<p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
+<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">Cada punto representa un paquete de boda publicado en Maui: el precio en el eje horizontal y las imágenes editadas en el vertical. Los puntos en la línea inferior no incluyen fotografías. Trece de los quince publican ambas cifras.</figcaption></figure>
+</div>
+<div class="market-points">
+<div class="market-point"><strong>Más de 100 fotografías por menos.</strong>El siguiente paquete publicado más económico con 100 imágenes editadas cuesta $3,475 antes de impuestos. El nuestro cuesta $2,599 con impuestos incluidos.</div>
+<div class="market-point"><strong>Las fotografías son lo primero.</strong>Tres de los paquetes que encontramos no incluyen ninguna fotografía, y otros cuatro incluyen entre 35 y 40 imágenes. El nuestro incluye más de 100, entregadas en 24 a 48 horas.</div>
+<div class="market-point"><strong>Nada se añade al final.</strong>El oficiante, las flores y el arco, el permiso de playa, el seguro y los impuestos ya están incluidos en el precio. La mayoría de los precios publicados son antes de impuestos.</div>
+</div>
+<!-- The table is the single source of truth: assets/market-range.js draws the plot from it.
+     Businesses are anonymized deliberately, as on the pricing page. -->
+<details class="market-method"><summary>Cómo lo verificamos: los quince paquetes</summary>
+<div class="market-method-body">
+<p>En noviembre de 2026 revisamos las páginas publicadas de paquetes de boda de cinco empresas de bodas en Maui (A-E) y registramos cada paquete con un precio fijo. Cuando una empresa escribe “más de 100 imágenes”, lo registramos como 100, y contamos el nuestro de la misma manera. Los paquetes que no indican el número de imágenes permanecen en la tabla, pero no se representan en el gráfico. La mayoría de estos precios son antes del impuesto general sobre ventas de Hawái; el nuestro ya lo incluye.</p>
+<table class="market-table"><caption class="sr-only">Precios publicados de paquetes de boda en Maui, consultados en noviembre de 2026</caption>
+<thead><tr><th scope="col">Paquete</th><th scope="col">Precio publicado</th><th scope="col">Fotografía</th><th scope="col">Imágenes editadas</th></tr></thead>
+<tbody id="marketRows">
+<tr><td>A1</td><td data-price="612">$612</td><td>no especificado</td><td data-images="0">Ninguno</td></tr>
+<tr><td>B1</td><td data-price="695">$695</td><td>no especificado</td><td data-images="0">Ninguno</td></tr>
+<tr><td>A2</td><td data-price="1455">$1,455</td><td>no especificado</td><td data-images="35">35</td></tr>
+<tr><td>B2</td><td data-price="1650">$1,650</td><td>1 hora</td><td data-images="40">40</td></tr>
+<tr><td>C1</td><td data-price="1850">$1,850</td><td>1 hora</td><td data-images="75">75</td></tr>
+<tr><td>D1</td><td data-price="2000">$2,000</td><td>no especificado</td><td data-images="0">Ninguno</td></tr>
+<tr><td>A3</td><td data-price="2367">$2,367</td><td>no especificado</td><td data-images="35">35</td></tr>
+<tr><td>B3</td><td data-price="2400">$2,400</td><td>1 hora</td><td data-images="40">40, más video</td></tr>
+<tr class="market-row-us"><td>Wailea Photo</td><td data-price="2599">$2,599, impuestos incluidos</td><td>1.5 horas</td><td data-images="100">100+</td></tr>
+<tr><td>E1</td><td data-price="3000">$3,000</td><td>1–2 horas</td><td>no especificado</td></tr>
+<tr><td>C2</td><td data-price="3100">$3,100</td><td>no especificado</td><td>no especificado</td></tr>
+<tr><td>C3</td><td data-price="3475">$3,475</td><td>1.5 horas</td><td data-images="100">100</td></tr>
+<tr><td>C4</td><td data-price="3850">$3,850</td><td>2 horas</td><td data-images="125">125</td></tr>
+<tr><td>C5</td><td data-price="4225">$4,225</td><td>2.5 horas</td><td data-images="150">150</td></tr>
+<tr><td>C6</td><td data-price="5500">$5,500</td><td>1.5 horas</td><td data-images="100">100</td></tr>
+</tbody></table>
+</div></details>
+</section>
 
 <h2>Otros costos a considerar</h2>
 <h3>Licencia de matrimonio: $65</h3>
@@ -295,4 +340,5 @@
 <script src="/assets/site.js?v=20260906d"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
+<script src="/assets/market-range.js"></script>
 </body></html>

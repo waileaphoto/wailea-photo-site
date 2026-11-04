@@ -131,7 +131,11 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
+.page-hero.fit-hero>img{object-position:center center}
+@media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -195,7 +199,7 @@
 </div>
 <div class="header-subbar"><a class="header-call" href="tel:+18082985188">808.298.5188</a></div>
 </header><nav class="menu" aria-hidden="true"><button class="menu-close" aria-label="メニューを閉じる">×</button><a href="/ja/#story-paths">撮影について</a><a href="/ja/pricing#sessions">撮影プランと料金</a><a href="/ja/#experience">私たち家族について</a><a href="/ja/atlas">Mauiアトラス</a><a href="/ja/art">アート</a><a href="/ja/#reviews">レビュー</a><a href="/ja/faq">よくある質問・お問い合わせ</a><div class="menu-foot"><a href="/ja/tides">潮汐とサンセットの時間</a><a href="/ja/what-to-wear-maui-photos">服装ガイド</a><a href="/ja/the-apo-difference">APOの違い</a><a href="/ja/our-florist">提携フローリスト</a><a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">クライアント・ホール・オブ・フェイム</a><a href="/ja/corporate-events">企業イベント</a><a href="tel:+18082985188">808.298.5188</a></div></nav>
-<main><section class="page-hero wedding-hero"><img src="/assets/wedding-ceremony-hires.jpg" alt="Mauiの Makena にある Maluaka Beach でのウェディングで、花のアーチの下で誓いの言葉を交わすカップル" loading="eager" fetchpriority="high"><div class="page-hero-copy reveal visible"><div class="eyebrow">Mauiウェディング・2026年の費用</div><h1>2026年、Mauiのビーチウェディングの費用。</h1><p>パッケージ料金、結婚許可証、税金、ゲスト人数の上限を一つにまとめました。</p></div></section>
+<main><section class="page-hero wedding-hero fit-hero"><img src="/assets/wedding-ceremony-hires.jpg" alt="Mauiの Makena にある Maluaka Beach でのウェディングで、花のアーチの下で誓いの言葉を交わすカップル" loading="eager" fetchpriority="high"><div class="page-hero-copy reveal visible"><div class="eyebrow">Mauiウェディング・2026年の費用</div><h1>2026年、Mauiのビーチウェディングの費用。</h1><p>パッケージ料金、結婚許可証、税金、ゲスト人数の上限を一つにまとめました。</p></div></section>
 <article class="cost-wrap">
 <p class="lede">式官、お花、ビーチ許可証、1.5時間の撮影がすべて含まれたMauiのオールインクルーシブ・ビーチウェディングは、<strong>Wailea Photoなら税込$2,599</strong>です。公開されているMauiのパッケージ料金は、式官のみのセレモニーで約$600から、プランナーパッケージで$2,000〜$5,500（税別）まで幅があり、その多くは撮影やお花が含まれていません。</p>
 <h2>Mauiのビーチウェディングパッケージに含まれるもの</h2>
@@ -209,6 +213,47 @@
 </tbody></table></div>
 <p class="cost-note">料金の幅は、オンラインで公開されているMauiのウェディングパッケージ（2026年11月時点で確認）をもとにしています。価格は変動するため、見積もりは直接ご確認ください。</p>
 <div class="cost-cta"><a class="button" href="/ja/maui-wedding-photographer#wedding-package">パッケージの内容を見る</a><a class="button-dark" style="display:inline-block;text-decoration:none;color:var(--ink);padding:17px 24px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--ink)" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">ウェディングの実例を見る</a></div>
+
+<section class="market-range" aria-labelledby="marketRangeHeading" data-verified="2026-11-04" data-noun="packages" data-entity="Package" data-subject="Maui wedding package prices">
+<div class="chapter">Mauiでのウェディングにかかる費用</div>
+<h3 id="marketRangeHeading">正直な価格設定、堂々と比較していただけます。</h3>
+<p class="market-range-intro">Mauiのウェディング会社5社が公開しているプランを調べ、すべての価格を一つのグラフにまとめました。スライダーをご予算に合わせて動かすと、各プランに含まれる写真の点数と、私たちのプランの位置がご覧いただけます。</p>
+<div class="market-tool">
+<div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">ご予算</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
+<p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
+<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">点はそれぞれ、公開されているMauiのウェディングプラン一つを表しています。横軸が価格、縦軸が編集済み写真の点数です。一番下の線上にある点は写真が含まれていないプランです。15社中13社が両方の数値を公開しています。</figcaption></figure>
+</div>
+<div class="market-points">
+<div class="market-point"><strong>100点以上の写真を、よりお手頃に。</strong>編集済み写真100点を含む次に安いプランは税抜$3,475。私たちのプランは税込$2,599です。</div>
+<div class="market-point"><strong>写真を何より大切に。</strong>調べたプランのうち3社は写真が一切含まれておらず、さらに4社は35〜40点のみです。私たちのプランは100点以上を24〜48時間でお届けします。</div>
+<div class="market-point"><strong>後から追加料金はありません。</strong>司会者、お花とアーチ、ビーチ許可証、保険、税金まですべて込みの価格です。公開されている価格の多くは税抜です。</div>
+</div>
+<!-- The table is the single source of truth: assets/market-range.js draws the plot from it.
+     Businesses are anonymized deliberately, as on the pricing page. -->
+<details class="market-method"><summary>この調査方法について — 15プランすべて</summary>
+<div class="market-method-body">
+<p>2026年11月、Mauiのウェディング会社5社（A〜E）が公開しているプランページを調査し、定額料金のプランをすべて記録しました。「100点以上」と記載されている場合は100点として記録し、私たちのプランも同じ基準で数えています。写真の点数が明記されていないプランは表には残していますが、グラフには反映していません。これらの価格の多くはハワイ州の一般消費税抜きの表示で、私たちの価格は税込です。</p>
+<table class="market-table"><caption class="sr-only">公開されているMauiウェディングプラン料金（2026年11月調査）</caption>
+<thead><tr><th scope="col">プラン</th><th scope="col">公表料金</th><th scope="col">撮影</th><th scope="col">編集済み写真</th></tr></thead>
+<tbody id="marketRows">
+<tr><td>A1</td><td data-price="612">$612</td><td>記載なし</td><td data-images="0">なし</td></tr>
+<tr><td>B1</td><td data-price="695">$695</td><td>記載なし</td><td data-images="0">なし</td></tr>
+<tr><td>A2</td><td data-price="1455">$1,455</td><td>記載なし</td><td data-images="35">35</td></tr>
+<tr><td>B2</td><td data-price="1650">$1,650</td><td>1時間</td><td data-images="40">40</td></tr>
+<tr><td>C1</td><td data-price="1850">$1,850</td><td>1時間</td><td data-images="75">75</td></tr>
+<tr><td>D1</td><td data-price="2000">$2,000</td><td>記載なし</td><td data-images="0">なし</td></tr>
+<tr><td>A3</td><td data-price="2367">$2,367</td><td>記載なし</td><td data-images="35">35</td></tr>
+<tr><td>B3</td><td data-price="2400">$2,400</td><td>1時間</td><td data-images="40">40点、動画付き</td></tr>
+<tr class="market-row-us"><td>Wailea Photo</td><td data-price="2599">$2,599（税込）</td><td>1.5時間</td><td data-images="100">100+</td></tr>
+<tr><td>E1</td><td data-price="3000">$3,000</td><td>1〜2時間</td><td>記載なし</td></tr>
+<tr><td>C2</td><td data-price="3100">$3,100</td><td>記載なし</td><td>記載なし</td></tr>
+<tr><td>C3</td><td data-price="3475">$3,475</td><td>1.5時間</td><td data-images="100">100</td></tr>
+<tr><td>C4</td><td data-price="3850">$3,850</td><td>2時間</td><td data-images="125">125</td></tr>
+<tr><td>C5</td><td data-price="4225">$4,225</td><td>2.5時間</td><td data-images="150">150</td></tr>
+<tr><td>C6</td><td data-price="5500">$5,500</td><td>1.5時間</td><td data-images="100">100</td></tr>
+</tbody></table>
+</div></details>
+</section>
 
 <h2>その他、予算に入れておきたい費用</h2>
 <h3>結婚許可証：$65</h3>
@@ -295,4 +340,5 @@
 <script src="/assets/site.js?v=20260906d"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
+<script src="/assets/market-range.js"></script>
 </body></html>
