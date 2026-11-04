@@ -191,7 +191,7 @@
   <div class="legend-item"><span class="legend-dot" style="background:#c07d1f"></span> Pending payment</div>
   <label class="legend-item" style="cursor:pointer;"><input type="checkbox" id="showCancelled" style="margin:0;"> <span class="legend-dot" style="background:#999"></span> Show cancelled</label>
   <div class="legend-item"><span class="legend-dot" style="background:#4b6f9f"></span> Acuity (read-only)</div>
-  <div class="legend-item"><span class="legend-dot" style="background:#e0565b"></span> Airbnb (prepaid, read-only)</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#e0565b"></span> Airbnb (prepaid; guest name &amp; phone editable)</div>
 </div>
 
 <div class="calendar-scroll" aria-label="Booking calendar; swipe sideways on a phone">
@@ -210,7 +210,7 @@
       <form id="contactForm" hidden>
         <strong>Edit contact details</strong>
         <div><label for="contactName">Client name</label><input type="text" id="contactName" maxlength="200" required></div>
-        <div><label for="contactEmail">Email</label><input type="email" id="contactEmail" maxlength="320" required></div>
+        <div><label for="contactEmail" id="contactEmailLabel">Email</label><input type="email" id="contactEmail" maxlength="320" required></div>
         <div><label for="contactPhone">Phone</label><input type="tel" id="contactPhone" maxlength="50"></div>
         <div id="contactError" class="error"></div>
         <div id="contactResult" class="move-result"></div>
@@ -218,7 +218,7 @@
         <div id="contactReview" class="contact-review" hidden>
           <strong>Confirm contact changes</strong>
           <div id="contactReviewSummary"></div>
-          <p>No customer email will be sent. The existing Google Calendar event will be updated.</p>
+          <p id="contactNote">No customer email will be sent. The existing Google Calendar event will be updated.</p>
           <button type="button" id="confirmContactBtn">Save contact details</button>
         </div>
       </form>
@@ -794,7 +794,16 @@
     alert.textContent = alerts.join(' ');
     alert.hidden = alerts.length === 0;
     const canMove = b.source === 'wp' && b.status === 'confirmed';
-    const canEditContact = b.source === 'wp' && b.status !== 'rescheduled';
+    const canEditContact = (b.source === 'wp' && b.status !== 'rescheduled')
+      || (b.source === 'airbnb' && b.status !== 'cancelled');
+    const airbnbContact = b.source === 'airbnb';
+    document.getElementById('contactEmail').required = !airbnbContact;
+    document.getElementById('contactEmailLabel').textContent = airbnbContact ? 'Email (optional)' : 'Email';
+    document.getElementById('contactNote').textContent = airbnbContact
+      ? 'Saved on our calendar only. Nothing is sent to the guest, and Airbnb is not changed.'
+      : 'No customer email will be sent. The existing Google Calendar event will be updated.';
+    document.getElementById('editContactBtn').textContent = airbnbContact && !b.client_phone
+      ? 'Add guest name & phone' : 'Edit contact details';
     const canCancel = b.source === 'wp' && b.status !== 'cancelled' && b.status !== 'rescheduled';
     document.getElementById('contactPanel').hidden = !canEditContact;
     document.getElementById('movePanel').hidden = !canMove;
@@ -1042,17 +1051,20 @@
   document.getElementById('editContactBtn').addEventListener('click', () => {
     document.getElementById('editContactBtn').hidden = true;
     document.getElementById('contactForm').hidden = false;
-    document.getElementById('contactEmail').focus();
+    const target = selectedBooking?.source === 'airbnb'
+      ? (document.getElementById('contactName').value ? 'contactPhone' : 'contactName')
+      : 'contactEmail';
+    document.getElementById(target).focus();
   });
 
   document.getElementById('contactForm').addEventListener('submit', (event) => {
     event.preventDefault();
-    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    if (!selectedBooking || !['wp', 'airbnb'].includes(selectedBooking.source)) return;
     const next = pendingContactChanges();
     const error = document.getElementById('contactError');
     error.textContent = '';
-    if (!next.name || !next.email) {
-      error.textContent = 'Client name and email are required.';
+    if (selectedBooking.source === 'airbnb' ? !next.name : (!next.name || !next.email)) {
+      error.textContent = selectedBooking.source === 'airbnb' ? 'Guest name is required.' : 'Client name and email are required.';
       return;
     }
     const changes = [];
@@ -1074,7 +1086,7 @@
   });
 
   document.getElementById('confirmContactBtn').addEventListener('click', async (event) => {
-    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    if (!selectedBooking || !['wp', 'airbnb'].includes(selectedBooking.source)) return;
     const error = document.getElementById('contactError');
     const result = document.getElementById('contactResult');
     error.textContent = '';
