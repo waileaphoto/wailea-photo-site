@@ -6,6 +6,11 @@
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
   window.gtag('js', new Date());
   window.gtag('config', MEASUREMENT_ID);
+  // Google Ads (account 588-134-7291): wedding bookings are reported as the
+  // "Wedding booking (deposit paid)" conversion for the Maui Wedding Package campaign.
+  const ADS_ID = 'AW-17065141251';
+  const ADS_WEDDING_BOOKING = 'AW-17065141251/U1TKCPWrlbIdEIPIpck_';
+  window.gtag('config', ADS_ID);
 
   const tag = document.createElement('script');
   tag.async = true;
@@ -15,6 +20,15 @@
   window.waileaTrack = function (eventName, parameters) {
     const params = parameters || {};
     window.gtag('event', eventName, params);
+
+    if (eventName === 'purchase' && params.session_type === 'wedding-elopement') {
+      window.gtag('event', 'conversion', {
+        send_to: ADS_WEDDING_BOOKING,
+        value: params.value,
+        currency: params.currency || 'USD',
+        transaction_id: params.transaction_id || '',
+      });
+    }
 
     // Mirror key funnel events to the Meta/Facebook Pixel (fb-pixel.js) using
     // Meta's standard event names, so Ads Manager can build conversion
