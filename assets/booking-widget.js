@@ -467,6 +467,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       });
       this.sunrisePunctualityRow.hidden = slug !== 'sunrise-max';
       this.sunrisePunctualityCheckbox.checked = false;
+      // Weddings include 15 guests and take up to 100; other sessions stay at 20.
+      this.partySizeInput.max = slug === 'wedding-elopement' ? '100' : '20';
       this.textConfirmCheckbox.checked = false;
       this.floristContactCheckbox.checked = false;
       this.celebratingInput.value = '';
