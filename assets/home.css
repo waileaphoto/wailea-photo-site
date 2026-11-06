@@ -225,3 +225,4 @@ body.home main .proof ul.h-facts{margin:26px auto 0}
 body.home main .proof .note{margin:22px auto 0;max-width:980px}
 /* portrait screens: frame the couple + son in "First Half of Sunset" instead of cutting them off */
 @media (max-aspect-ratio:1/1){#slides .slide:first-child img{object-position:76% 50%}}
+@media (max-aspect-ratio:1/1){#slides .slide:nth-child(2) img{object-position:30% 50%}#slides .slide:nth-child(3) img{object-position:32% 50%}}
