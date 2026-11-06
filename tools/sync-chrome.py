@@ -23,7 +23,7 @@ import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP = {'footer.html', 'hold-followup.html', 'frame-preview.html'}
-EDITORIAL_V = '20261105e'
+EDITORIAL_V = '20261105g'
 
 HEADER = ('<header class="site-header ed"><a href="index.html#top" class="brand">Wailea Photo</a>'
           '<div class="header-right">{switcher}'

@@ -162,3 +162,31 @@ button.btn{border:0;cursor:pointer}
 body.pricing-ed .solar-study{--ink:#1b1917;width:min(1180px,calc(100% - 12vw));margin:0 auto 4vh;background:#f5efe5;color:#1b1917;border:0;border-radius:2px;
   box-shadow:0 2px 4px rgba(8,26,30,.18),0 18px 34px -8px rgba(8,26,30,.45),0 54px 80px -22px rgba(8,26,30,.6)}
 @media (max-width:780px){body.pricing-ed .solar-study{width:calc(100% - 28px)}}
+/* phones: brighter, larger body text */
+@media (max-width:900px){
+  body.pricing-ed{--ink-dim:rgba(250,246,239,.96);--ink-faint:rgba(244,239,230,.42)}
+  .txt p,.honest .lead,.letter p,.stats p{color:#fbf8f2;font-size:19.5px;line-height:1.65}
+  .txt p.note,.toc .fine,.fine2{color:#f6f1e8;font-size:18px}
+  .txt .meta,.txt .no,.grp .k,.honest .k,.letter .k,.toc .n{font-size:14px;letter-spacing:.2em;color:#fbf8f2}
+  .txt h3,.honest h2,.letter h2,.stats .v{font-weight:400}
+  .txt .price{font-weight:400;color:#fbe9c6}
+  .toc .p{color:#fbf8f2}
+  .honest .ver{font-size:15px}
+  .txt h3{font-size:40px}.txt .price{font-size:34px}.txt h3 em{font-size:.6em}
+  .stats h4{font-size:24px}
+  .ask,.honest .src{font-size:20px}
+  .mkt .leg{font-size:16px;color:#fbf8f2}.mkt summary{font-size:19px}.mkt table{font-size:16px}.mkt th{font-size:12.5px;color:#fbf8f2}
+  .mkt .tk{fill:#f4efe6}.mkt .at{fill:#f4efe6}.mkt .wps{fill:#f4efe6}
+}
+@media (max-width:640px){.mkt details{overflow-x:auto;-webkit-overflow-scrolling:touch}.mkt .sm .tk{font-size:17px}.mkt .sm .at{font-size:14px}.mkt .sm .wpl{font-size:24px}.mkt .sm .wps{font-size:16px}.mkt .sm .medl{font-size:18px}}
+.letter .btn.session-finder-ask{padding:18px 34px;font-size:15px;font-weight:700;letter-spacing:.16em;color:#163238}
+.btn[data-book-session]{padding:22px 38px;font-size:20px;font-weight:700;letter-spacing:.1em;color:#163238}
+@media (max-width:900px){.btn[data-book-session]{padding:20px 26px;font-size:18px;letter-spacing:.06em;width:100%;text-align:center}}
+.explore .p-book{font-size:15px;font-weight:700;letter-spacing:.18em}
+/* phones: session list keeps the price on the right, larger */
+@media (max-width:900px){
+  .toc li a{grid-template-columns:26px 1fr auto;align-items:center;gap:12px;padding:20px 2px}
+  .toc .p{grid-column:auto;justify-self:end;font-size:25px;white-space:nowrap}
+  .toc .t{font-size:23px;line-height:1.15}
+}
+.toc .p{color:#fff;font-weight:500;text-shadow:0 1px 10px rgba(8,26,30,.35)}
