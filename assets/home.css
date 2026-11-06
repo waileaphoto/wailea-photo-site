@@ -219,3 +219,7 @@ body.home .guides-more .gm-head{border-color:var(--ink-faint)}
 .proof ul.h-facts{border:0;max-width:900px}
 .proof .h-facts li{flex:none}
 .proof .h-facts li a{display:inline;padding:0;border-left:0;background:none}
+/* proof band: beat the main-element reset so lists/notes centre on wide screens */
+body.home main .proof ul{margin:44px auto 0}
+body.home main .proof ul.h-facts{margin:26px auto 0}
+body.home main .proof .note{margin:22px auto 0;max-width:980px}
