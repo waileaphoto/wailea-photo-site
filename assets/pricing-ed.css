@@ -183,3 +183,9 @@ body.pricing-ed .solar-study{--ink:#1b1917;width:min(1180px,calc(100% - 12vw));m
 .btn[data-book-session]{padding:22px 38px;font-size:20px;font-weight:700;letter-spacing:.1em;color:#163238}
 @media (max-width:900px){.btn[data-book-session]{padding:20px 26px;font-size:18px;letter-spacing:.06em;width:100%;text-align:center}}
 .explore .p-book{font-size:15px;font-weight:700;letter-spacing:.18em}
+/* phones: session list keeps the price on the right, larger */
+@media (max-width:900px){
+  .toc li a{grid-template-columns:26px 1fr auto;align-items:center;gap:12px;padding:20px 2px}
+  .toc .p{grid-column:auto;justify-self:end;font-size:24px;font-weight:400;color:#fbe9c6;white-space:nowrap}
+  .toc .t{font-size:23px;line-height:1.15}
+}
