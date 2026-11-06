@@ -1,0 +1,68 @@
+/* Wailea Photo — editorial chrome behaviour (Nov 2026).
+   Concierge pill, background-music toggle. Loaded on every page after site.js. */
+(function () {
+  /* ---- Concierge pill: opens the same AI concierge as the pricing page ---- */
+  function openConcierge() {
+    var c = window.WaileaConcierge;
+    if (c && c.open) { c.open(undefined, 'header_pill'); document.body.classList.add('ed-chat'); }
+    else { location.href = 'pricing.html#session-finder'; }
+  }
+  document.querySelectorAll('[data-ed-concierge]').forEach(function (b) {
+    b.addEventListener('click', function (e) { e.preventDefault(); openConcierge(); });
+  });
+  // Hide the pills while the chat panel is open.
+  new MutationObserver(function () {
+    var p = document.querySelector('.wpc-panel');
+    document.body.classList.toggle('ed-chat', !!(p && p.classList.contains('wpc-open')));
+  }).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] });
+
+  /* ---- Background music ("Cresting Waves", low volume) ----
+     Never starts on its own here: someone arriving on a guide from search should get
+     silence. It plays when the visitor turns it on, and if it was playing on the page
+     they came from, it picks up where it left off on their first tap or click.
+     Browsers only allow sound after a user gesture, so that tap is required. */
+  var btn = document.querySelector('.ed-snd');
+  if (!btn) return;
+  var VOL = 0.16, KEY_ON = 'wp-music-on', KEY_T = 'wp-music-t', fadeT;
+  var amb = new Audio();
+  amb.loop = true; amb.preload = 'none';
+  var src = btn.getAttribute('data-src');
+  function ss(k, v) { try { if (v === undefined) return sessionStorage.getItem(k); sessionStorage.setItem(k, v); } catch (e) {} }
+  function ui() {
+    var on = !amb.paused;
+    btn.classList.toggle('on', on);
+    btn.setAttribute('aria-pressed', String(on));
+    btn.setAttribute('aria-label', on ? 'Turn music off' : 'Turn music on');
+  }
+  function fade(to, ms, done) {
+    clearInterval(fadeT); var from = amb.volume, t0 = performance.now();
+    fadeT = setInterval(function () {
+      var k = Math.min(1, (performance.now() - t0) / ms); amb.volume = from + (to - from) * k;
+      if (k >= 1) { clearInterval(fadeT); if (done) done(); }
+    }, 40);
+  }
+  function play() {
+    if (!amb.src) amb.src = src;
+    var t = parseFloat(ss(KEY_T) || '0');
+    if (t && !amb.currentTime) { try { amb.currentTime = t; } catch (e) {} }
+    amb.volume = 0;
+    amb.play().then(function () { fade(VOL, 2000); ss(KEY_ON, '1'); ui(); }).catch(ui);
+  }
+  function stop() { ss(KEY_ON, '0'); fade(0, 400, function () { amb.pause(); ui(); }); }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); if (amb.paused) play(); else stop(); });
+  if (ss(KEY_ON) === '1') {
+    var first = function (e) {
+      if (e.target.closest && e.target.closest('.ed-snd')) return;
+      ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { removeEventListener(t, first, true); });
+      play();
+    };
+    ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { addEventListener(t, first, true); });
+  }
+  setInterval(function () { if (!amb.paused) ss(KEY_T, String(amb.currentTime)); }, 1000);
+  addEventListener('pagehide', function () { if (!amb.paused) ss(KEY_T, String(amb.currentTime)); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden && !amb.paused) { amb.pause(); amb.dataset.r = '1'; ui(); }
+    else if (!document.hidden && amb.dataset.r) { delete amb.dataset.r; play(); }
+  });
+  ui();
+})();
