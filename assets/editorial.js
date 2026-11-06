@@ -66,7 +66,14 @@
   };
   // The home page invites music on the first tap (data-autostart), unless the visitor
   // turned it off before; every other page only resumes music that was already playing.
-  var auto = btn.hasAttribute('data-autostart') && ls('wp-music') !== 'off';
+  // Phones and tablets never start music on their own (a swipe counts as a tap, and surprise
+  // sound in public makes people leave); they get a one-time glow on the music button instead.
+  var touch = matchMedia('(hover: none) and (pointer: coarse)').matches;
+  var auto = btn.hasAttribute('data-autostart') && ls('wp-music') !== 'off' && !touch;
+  if (touch && btn.hasAttribute('data-autostart') && ss(KEY_ON) !== '1' && ss('wp-music-hint') !== '1') {
+    ss('wp-music-hint', '1');
+    setTimeout(function () { btn.classList.add('hint'); setTimeout(function () { btn.classList.remove('hint'); }, 5200); }, 2500);
+  }
   if (auto || ss(KEY_ON) === '1') {
     var first = function (e) {
       if (e.target.closest && e.target.closest('.ed-snd, [data-own-audio]')) return;
