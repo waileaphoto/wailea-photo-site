@@ -191,6 +191,12 @@ body.home .wpc-panel :where(p,span,h3,div,li,strong,em){color:#1b1917}
   .reviews .head{position:relative;top:auto;left:auto}
   .card{position:relative!important;left:auto!important;top:auto!important;width:auto!important;transform:none!important}
   .card figure{height:auto!important}.card img{aspect-ratio:4/3}
+  .card .q{font-size:25px!important;line-height:1.3;max-width:none}
+  .card.solo .q{font-size:22px!important}
+  .card .q button{font-size:15px;color:var(--ink)}
+  .card .meta{font-size:12px;letter-spacing:.2em;color:var(--ink)}
+  .card .meta a{font-size:17px}
+  .reviews .head .k{font-size:12px}
 }
 @media (prefers-reduced-motion:reduce){
   .h-grain{animation:none}
