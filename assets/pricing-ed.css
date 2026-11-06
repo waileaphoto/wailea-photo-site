@@ -157,3 +157,8 @@ button.btn{border:0;cursor:pointer}
 @media (max-width:640px){.mkt svg.lg{display:none}.mkt svg.sm{display:block}.mkt .sm .tk{font-size:15px}.mkt .sm .at{font-size:12px}.mkt .sm .wpl{font-size:22px}.mkt .sm .wps{font-size:14px}.mkt .sm .medl{font-size:16px}}
 
 
+
+/* Today-in-Wailea light study: a light inset card on the teal page, original colours */
+body.pricing-ed .solar-study{--ink:#1b1917;width:min(1180px,calc(100% - 12vw));margin:0 auto 4vh;background:#f5efe5;color:#1b1917;border:0;border-radius:2px;
+  box-shadow:0 2px 4px rgba(8,26,30,.18),0 18px 34px -8px rgba(8,26,30,.45),0 54px 80px -22px rgba(8,26,30,.6)}
+@media (max-width:780px){body.pricing-ed .solar-study{width:calc(100% - 28px)}}

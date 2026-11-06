@@ -145,3 +145,66 @@ footer .ed-foot-book{margin-top:26px}
   .gnav::-webkit-scrollbar{display:none}
   .gnav a{flex:none}
 }
+
+/* ==========================================================================
+   Editorial page layer — every content page (not the home or pricing pages,
+   which have their own stylesheets). Restyles the shared site.css building
+   blocks so service, resort, guide and utility pages match the editorial look,
+   without touching their copy.
+   ========================================================================== */
+body:not(.home):not(.pricing-ed){--ed-ink-soft:rgba(27,25,23,.74)}
+
+/* labels */
+body:not(.home):not(.pricing-ed) main .chapter,
+body:not(.home):not(.pricing-ed) main .eyebrow{font-family:var(--ed-sc);font-weight:500;font-size:12px;letter-spacing:.3em;text-transform:uppercase}
+body:not(.home):not(.pricing-ed) main .chapter{color:var(--ed-teal)}
+
+/* hero */
+body:not(.home):not(.pricing-ed) .page-hero{height:76svh;min-height:520px}
+body:not(.home):not(.pricing-ed) .page-hero:after{background:linear-gradient(90deg,rgba(20,40,45,.5),rgba(20,40,45,.12) 50%,transparent 75%),linear-gradient(180deg,rgba(20,40,45,.3),rgba(20,40,45,0) 30%,rgba(20,40,45,.45))}
+body:not(.home):not(.pricing-ed) .page-hero .page-hero-copy .eyebrow{display:block;color:var(--ed-cream-hi);text-shadow:0 1px 12px rgba(0,0,0,.45)}
+body:not(.home):not(.pricing-ed) .page-hero .page-hero-copy h1{font-weight:300;line-height:1.02;letter-spacing:-.02em;text-shadow:0 2px 34px rgba(0,0,0,.35)}
+body:not(.home):not(.pricing-ed) .page-hero .page-hero-copy p{text-shadow:0 1px 14px rgba(0,0,0,.45)}
+
+/* headings a touch lighter, like the editorial pages */
+body:not(.home):not(.pricing-ed) main h2{font-weight:300!important;letter-spacing:-.015em}
+
+/* buttons become pills (several guides carry inline button styles, hence !important) */
+body:not(.home):not(.pricing-ed) main .button{
+  display:inline-flex!important;align-items:center;gap:10px;border-radius:999px!important;padding:15px 28px!important;
+  background:var(--ed-teal)!important;border:1px solid var(--ed-teal)!important;color:var(--ed-cream-hi)!important;
+  font-family:var(--ed-sc)!important;font-weight:500!important;font-size:12px!important;letter-spacing:.24em!important;text-transform:uppercase;text-decoration:none!important;
+  box-shadow:0 10px 24px -10px rgba(20,40,45,.55);transition:background .35s,color .35s,transform .35s var(--ed-ease)}
+body:not(.home):not(.pricing-ed) main .button:hover{background:var(--ed-teal-deep)!important;transform:translateY(-2px)}
+body:not(.home):not(.pricing-ed) main .page-hero .button{background:var(--ed-cream)!important;border-color:var(--ed-cream)!important;color:var(--ed-teal-deep)!important}
+body:not(.home):not(.pricing-ed) main .button-outline{border-radius:999px;font-family:var(--ed-sc);font-weight:500;font-size:12px;letter-spacing:.24em;padding:15px 28px}
+body:not(.home):not(.pricing-ed) main .button.ghost{background:transparent!important;color:var(--ed-teal-deep)!important;border-color:rgba(49,95,105,.45)!important;box-shadow:none}
+
+/* photos float */
+body:not(.home):not(.pricing-ed) .content-split-image,
+body:not(.home):not(.pricing-ed) .experience-gallery figure{border-radius:2px;
+  box-shadow:0 2px 4px rgba(27,25,23,.08),0 18px 34px -12px rgba(27,25,23,.32),0 44px 64px -28px rgba(27,25,23,.36)}
+body:not(.home):not(.pricing-ed) .atlas-photo-caption{font-family:var(--ed-sc);font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:11px}
+
+/* highlights, FAQ */
+body:not(.home):not(.pricing-ed) .experience-highlight strong{font-weight:400}
+body:not(.home):not(.pricing-ed) .experience-highlights{border-left-color:rgba(49,95,105,.3)}
+body:not(.home):not(.pricing-ed) .faq-item summary{font-weight:400}
+body:not(.home):not(.pricing-ed) .faq-item summary:after{color:var(--ed-teal)}
+
+/* teal bands: the closing "Ready for your session?" call, quote bands and CTA blocks */
+body:not(.home):not(.pricing-ed) main .reserve,
+body:not(.home):not(.pricing-ed) main .reserve.short{min-height:0;padding:14vh 7vw;background:var(--ed-teal)!important;color:var(--ed-cream)!important}
+body:not(.home):not(.pricing-ed) main .reserve .chapter,
+body:not(.home):not(.pricing-ed) main .experience-cta .chapter,
+body:not(.home):not(.pricing-ed) main .quote-band .chapter{color:var(--ed-gold)}
+body:not(.home):not(.pricing-ed) main .reserve h2{color:var(--ed-cream-hi)}
+body:not(.home):not(.pricing-ed) main .reserve .button,
+body:not(.home):not(.pricing-ed) main .experience-cta .button{background:var(--ed-cream)!important;border-color:var(--ed-cream)!important;color:var(--ed-teal-deep)!important}
+body:not(.home):not(.pricing-ed) main .experience-cta{background:var(--ed-teal-deep)}
+body:not(.home):not(.pricing-ed) main .quote-band{background-color:var(--ed-teal)}
+body:not(.home):not(.pricing-ed) main .quote-band p{font-weight:300}
+@media (max-width:780px){
+  body:not(.home):not(.pricing-ed) .page-hero{height:70svh;min-height:460px}
+  body:not(.home):not(.pricing-ed) main .button{padding:14px 22px!important;font-size:11px!important;letter-spacing:.2em!important}
+}

@@ -23,7 +23,7 @@ import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP = {'footer.html', 'hold-followup.html', 'frame-preview.html'}
-EDITORIAL_V = '20261105b'
+EDITORIAL_V = '20261105e'
 
 HEADER = ('<header class="site-header ed"><a href="index.html#top" class="brand">Wailea Photo</a>'
           '<div class="header-right">{switcher}'
@@ -74,9 +74,14 @@ def render(s, name):
     sw = SWITCH_RE.search(hm.group(0))
     s = s[:hm.start()] + HEADER.format(switcher=sw.group(0) if sw else '') + s[hm.end():]
     mm = re.search(r'<nav class="menu[^"]*"[^>]*>.*?</div></nav>', s, re.S) or re.search(r'<nav class="menu[^"]*"[^>]*>.*?</nav>', s, re.S)
-    if not mm:
-        return None, 'no menu'
-    s = s[:mm.start()] + MENU + s[mm.end():]
+    if mm:
+        s = s[:mm.start()] + MENU + s[mm.end():]
+    elif 'site.css' in s:
+        # page has the shared header but never had the menu (e.g. art.html): add it after the header
+        he = s.index('</header>', s.index('<header class="site-header ed"')) + len('</header>')
+        s = s[:he] + '\n  ' + MENU + s[he:]
+    else:
+        return None, 'own layout, no shared stylesheet'
     # idempotent includes: strip ours, then add back in canonical places
     autostart = re.search(r'<button class="ed-snd"[^>]*data-autostart', s) is not None
     s = ED_TAG_RE.sub('', s)
