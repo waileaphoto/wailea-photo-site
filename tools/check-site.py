@@ -27,7 +27,9 @@ SITE = 'https://waileaphoto.com'
 # template for generated Atlas pages and is served noindex on purpose.
 # hold-followup.html is the feedback form linked only from the hold follow-up email;
 # it is noindex,nofollow by design (and skipped by tools/i18n/build.py for the same reason).
-NOT_PAGES = {'footer.html', 'atlas-template.html', 'hold-followup.html'}
+# print-shop.html and frame-preview.html are sample/preview tools served noindex,follow on purpose;
+# they stay out of the sitemap (Google flags noindex URLs submitted in a sitemap) and need no schema.
+NOT_PAGES = {'footer.html', 'atlas-template.html', 'hold-followup.html', 'print-shop.html', 'frame-preview.html'}
 
 SM_NS = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
 
