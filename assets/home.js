@@ -79,7 +79,8 @@
   var rev = $('#reviews'), track = $('#track'), cards = [].slice.call(track.querySelectorAll('.card'));
   var exploreBg = $('#exploreBg');
   var mobile = matchMedia('(max-width:820px)').matches;
-  addEventListener('resize', function () { mobile = matchMedia('(max-width:820px)').matches; });
+  addEventListener('resize', function () { mobile = matchMedia('(max-width:820px)').matches;  archDist = -1; });
+  var arch = $('#story-paths'), grid = $('#grid'), archOn = false, archDist = -1, gridNat = 0, reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   function frame() {
     var vh = innerHeight;
@@ -112,6 +113,16 @@
       var tw = track.scrollWidth - innerWidth * 0.98;
       track.style.transform = 'translateX(' + (-rp * tw) + 'px)';
       cards.forEach(function (c) { var d = +c.getAttribute('data-depth'); c.style.transform = 'translate(' + ((1 - d) * rp * innerWidth * 0.6) + 'px,' + ((d - 1) * rp * -120) + 'px)'; });
+    }
+    if (arch) {
+      var on = mobile && !reduce;
+      if (on !== archOn) { archOn = on; arch.classList.toggle('hx', on); grid.style.transform = ''; arch.style.height = ''; archDist = -1; }
+      if (on) {
+        if (archDist < 0) { arch.style.height = ''; archDist = Math.max(0, grid.scrollWidth - innerWidth); arch.style.height = (arch.offsetHeight + Math.round(archDist * 0.75)) + 'px'; var pv = grid.previousElementSibling; gridNat = pv.offsetTop + pv.offsetHeight + (parseFloat(getComputedStyle(pv).marginBottom) || 0); }
+        var stickTop = parseFloat(getComputedStyle(grid).top) || 0;
+        var ap = clamp((stickTop - (arch.getBoundingClientRect().top + gridNat)) / (archDist * 0.75 || 1));
+        grid.style.transform = 'translateX(' + (-ap * archDist) + 'px)';
+      }
     }
     var er = exploreBg.parentElement.getBoundingClientRect();
     exploreBg.style.transform = 'translateY(' + ((er.top / vh) * -6) + '%)';
