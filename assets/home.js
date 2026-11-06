@@ -138,3 +138,18 @@
     if (es[0].isIntersecting) { exploreBg.style.backgroundImage = 'url(assets/home/golf-wedding.webp)'; o.disconnect(); }
   }, { rootMargin: '150% 0px' }).observe(exploreBg);
 })();
+
+/* mirror the live review counts into the "In their words" header */
+(function () {
+  var src = document.getElementById('combinedReviewsBreakdown'), tot = document.getElementById('combinedReviewCount');
+  if (!src || !tot) return;
+  function sync() {
+    var t = document.querySelector('[data-mirror="total"]'); if (t) t.textContent = tot.textContent;
+    [].forEach.call(src.querySelectorAll('li[data-platform]'), function (li) {
+      var m = document.querySelector('[data-mirror="' + li.getAttribute('data-platform') + '"]'), c = li.querySelector('.crb-count');
+      if (m && c) m.textContent = c.textContent;
+    });
+  }
+  new MutationObserver(sync).observe(document.getElementById('trust'), { subtree: true, childList: true, characterData: true });
+  sync();
+})();

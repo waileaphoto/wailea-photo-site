@@ -249,3 +249,12 @@ body.home main .proof .note{margin:22px auto 0;max-width:980px}
   .archive.hx .h-rv{transform:none}
 }
 .explore .h-book{font-size:15px;font-weight:700;letter-spacing:.18em}
+/* In their words: review total + platform links */
+.reviews .rv-sum{margin-top:18px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink)}
+.reviews .rv-sum a{border-bottom:1px solid var(--ink-faint)}
+.reviews .rv-sum b{font-style:normal;font-weight:500}
+.reviews .rv-plat{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 18px;max-width:24vw;font-family:var(--sans);font-size:14px;color:var(--ink)}
+.reviews .rv-plat a{border-bottom:1px solid var(--ink-faint);padding-bottom:1px}
+.reviews .rv-plat a:hover{border-color:var(--ink)}
+.reviews .rv-plat b{font-weight:600}
+@media (max-width:820px){.reviews .rv-sum{font-size:21px}.reviews .rv-plat{max-width:none;font-size:16px;gap:10px 20px}}
