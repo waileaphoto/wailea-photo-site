@@ -180,5 +180,6 @@ body.pricing-ed .solar-study{--ink:#1b1917;width:min(1180px,calc(100% - 12vw));m
 }
 @media (max-width:640px){.mkt details{overflow-x:auto;-webkit-overflow-scrolling:touch}.mkt .sm .tk{font-size:17px}.mkt .sm .at{font-size:14px}.mkt .sm .wpl{font-size:24px}.mkt .sm .wps{font-size:16px}.mkt .sm .medl{font-size:18px}}
 .letter .btn.session-finder-ask{padding:18px 34px;font-size:15px;font-weight:700;letter-spacing:.16em;color:#163238}
-.btn[data-book-session]{padding:18px 30px;font-size:15px;font-weight:700;letter-spacing:.14em;color:#163238}
+.btn[data-book-session]{padding:22px 38px;font-size:20px;font-weight:700;letter-spacing:.1em;color:#163238}
+@media (max-width:900px){.btn[data-book-session]{padding:20px 26px;font-size:18px;letter-spacing:.06em;width:100%;text-align:center}}
 .explore .p-book{font-size:15px;font-weight:700;letter-spacing:.18em}
