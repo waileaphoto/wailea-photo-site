@@ -208,3 +208,7 @@ body:not(.home):not(.pricing-ed) main .quote-band p{font-weight:300}
   body:not(.home):not(.pricing-ed) .page-hero{height:70svh;min-height:460px}
   body:not(.home):not(.pricing-ed) main .button{padding:14px 22px!important;font-size:11px!important;letter-spacing:.2em!important}
 }
+/* no sideways pan/bounce on phones: clip anything wider than the screen at the page edge */
+html{overflow-x:clip;overscroll-behavior-x:none}
+body{overflow:visible}
+.site-header.ed .lang-switch ul{left:auto;right:0}

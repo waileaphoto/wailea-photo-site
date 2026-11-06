@@ -178,4 +178,4 @@ body.pricing-ed .solar-study{--ink:#1b1917;width:min(1180px,calc(100% - 12vw));m
   .mkt .leg{font-size:16px;color:#fbf8f2}.mkt summary{font-size:19px}.mkt table{font-size:16px}.mkt th{font-size:12.5px;color:#fbf8f2}
   .mkt .tk{fill:#f4efe6}.mkt .at{fill:#f4efe6}.mkt .wps{fill:#f4efe6}
 }
-@media (max-width:640px){.mkt .sm .tk{font-size:17px}.mkt .sm .at{font-size:14px}.mkt .sm .wpl{font-size:24px}.mkt .sm .wps{font-size:16px}.mkt .sm .medl{font-size:18px}}
+@media (max-width:640px){.mkt details{overflow-x:auto;-webkit-overflow-scrolling:touch}.mkt .sm .tk{font-size:17px}.mkt .sm .at{font-size:14px}.mkt .sm .wpl{font-size:24px}.mkt .sm .wps{font-size:16px}.mkt .sm .medl{font-size:18px}}
