@@ -42,6 +42,7 @@
     }, 40);
   }
   function play() {
+    if (ducked) return;
     if (!amb.src) amb.src = src;
     var t = parseFloat(ss(KEY_T) || '0');
     if (t && !amb.currentTime) { try { amb.currentTime = t; } catch (e) {} }
@@ -49,10 +50,26 @@
     amb.play().then(function () { fade(VOL, 2000); ss(KEY_ON, '1'); ui(); }).catch(ui);
   }
   function stop() { ss(KEY_ON, '0'); fade(0, 400, function () { amb.pause(); ui(); }); }
-  btn.addEventListener('click', function (e) { e.stopPropagation(); if (amb.paused) play(); else stop(); });
-  if (ss(KEY_ON) === '1') {
+  function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} }
+  var ducked = false;
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (amb.paused) { ls('wp-music', 'on'); play(); } else { ls('wp-music', 'off'); stop(); }
+  });
+  // Pages with their own soundtrack (the proposal film) duck the music while it plays.
+  window.edMusic = {
+    duck: function (d) {
+      ducked = d;
+      if (d) { if (!amb.paused) { amb.dataset.duck = '1'; fade(0, 400, function () { amb.pause(); ui(); }); } }
+      else if (amb.dataset.duck) { delete amb.dataset.duck; play(); }
+    }
+  };
+  // The home page invites music on the first tap (data-autostart), unless the visitor
+  // turned it off before; every other page only resumes music that was already playing.
+  var auto = btn.hasAttribute('data-autostart') && ls('wp-music') !== 'off';
+  if (auto || ss(KEY_ON) === '1') {
     var first = function (e) {
-      if (e.target.closest && e.target.closest('.ed-snd')) return;
+      if (e.target.closest && e.target.closest('.ed-snd, [data-own-audio]')) return;
       ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { removeEventListener(t, first, true); });
       play();
     };
@@ -62,7 +79,7 @@
   addEventListener('pagehide', function () { if (!amb.paused) ss(KEY_T, String(amb.currentTime)); });
   document.addEventListener('visibilitychange', function () {
     if (document.hidden && !amb.paused) { amb.pause(); amb.dataset.r = '1'; ui(); }
-    else if (!document.hidden && amb.dataset.r) { delete amb.dataset.r; play(); }
+    else if (!document.hidden && amb.dataset.r && !ducked) { delete amb.dataset.r; play(); }
   });
   ui();
 })();

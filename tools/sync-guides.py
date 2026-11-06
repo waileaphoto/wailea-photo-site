@@ -136,7 +136,9 @@ def place(p, kind, blk):
     s = read(p)
     pat = r'\s*<!-- guides:%s -->[\s\S]*?<!-- /guides:%s -->' % (kind, kind)
     s = re.sub(pat, '', s)
-    i = s.rfind('</main>')
+    i = s.find('<section class="explore"')  # home page: before the closing image section
+    if i < 0:
+        i = s.rfind('</main>')
     if i < 0:
         i = s.find('<footer')
     s = s[:i].rstrip() + '\n' + blk + '\n' + s[i:]

@@ -78,6 +78,7 @@ def render(s, name):
         return None, 'no menu'
     s = s[:mm.start()] + MENU + s[mm.end():]
     # idempotent includes: strip ours, then add back in canonical places
+    autostart = re.search(r'<button class="ed-snd"[^>]*data-autostart', s) is not None
     s = ED_TAG_RE.sub('', s)
     s = SND_RE.sub('', s)
     has_concierge = re.search(r'src="assets/concierge-widget\.js', s) is not None
@@ -88,7 +89,8 @@ def render(s, name):
         s = s[:site_css.end()] + head_add + s[site_css.end():]
     else:
         s = s.replace('</head>', head_add + '\n</head>', 1)
-    body_add = SND + (BODY_END if not has_concierge else BODY_END.split('<script src="assets/concierge-widget.js" defer data-ed></script>')[0]
+    snd = SND.replace('data-src=', 'data-autostart data-src=') if autostart else SND
+    body_add = snd + (BODY_END if not has_concierge else BODY_END.split('<script src="assets/concierge-widget.js" defer data-ed></script>')[0]
                       + '<script src="assets/editorial.js?v=%s" defer data-ed></script>' % EDITORIAL_V)
     idx = s.rfind('</body>')
     s = s[:idx].rstrip() + '\n' + body_add + '\n' + s[idx:]
