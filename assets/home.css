@@ -258,3 +258,15 @@ body.home main .proof .note{margin:22px auto 0;max-width:980px}
 .reviews .rv-plat a:hover{border-color:var(--ink)}
 .reviews .rv-plat b{font-weight:600}
 @media (max-width:820px){.reviews .rv-sum{font-size:21px}.reviews .rv-plat{max-width:none;font-size:16px;gap:10px 20px}}
+/* trust band: brighter, higher-contrast (was hard to read on the green mist) */
+.proof{color:#0e2226;background:radial-gradient(55% 35% at 50% 45%,rgba(255,255,255,.7),transparent 70%),linear-gradient(180deg,#b7cfd2 0%,#dfeaea 18%,#f1f6f5 50%,#dfeaea 82%,#bcd3d6 100%)}
+.proof .k{color:#163238;font-weight:600;font-size:13px}
+.proof .total{color:#0e2226}
+.proof .pc{color:#0e2226}
+.proof .pn{color:#163238;font-weight:600;font-size:12px}
+.proof .note,.h-facts{color:#163238;font-size:15px}
+.proof .note a,.h-facts a{border-bottom-color:rgba(14,34,38,.45)}
+.proof ul{border-color:rgba(14,34,38,.22)}
+.proof li + li a{border-left-color:rgba(14,34,38,.16)}
+@media (max-width:820px){.proof .total{font-size:21px}.proof .note,.h-facts{font-size:16px}.proof .pn{font-size:12.5px}}
+@media (max-width:820px){body.home main .proof ul.h-facts{flex-direction:column;align-items:center;gap:6px}.proof .h-facts li{flex:none;max-width:100%;white-space:normal}}
