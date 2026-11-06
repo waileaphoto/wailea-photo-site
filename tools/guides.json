@@ -1,0 +1,151 @@
+{
+  "_about": "Topic map for the Guides section (atlas.html). tools/sync-guides.py builds the topic index on atlas.html, a 'Keep reading' block on every guide, and a 'From the Guides' block on the session pages listed under 'sessions'. Add a new guide here (and run the script) and it appears everywhere.",
+  "topics": [
+    {
+      "id": "plan",
+      "title": "Plan your session",
+      "lead": "Beaches, timing, what to wear, the tides, and where to eat afterwards.",
+      "pages": [
+        "best-beaches-maui-family-pictures.html",
+        "best-time-of-day-family-beach-photos-wailea.html",
+        "what-to-wear-maui-photos.html",
+        "wailea-vs-kihei-vs-makena-photo-locations.html",
+        "tides.html",
+        "our-personal-maui-restaurant-reviews.html"
+      ]
+    },
+    {
+      "id": "park",
+      "title": "Where to park",
+      "lead": "Exact lots, walking paths and meeting points for every beach we photograph.",
+      "pages": [
+        "parking-sunset-session-mokapu-beach.html",
+        "parking-sunrise-session-keawakapu-beach.html",
+        "parking-morning-session-wailea-beach.html",
+        "parking-turquoise-water-session-kanaha-beach.html",
+        "parking-wedding-maluaka-beach.html"
+      ]
+    },
+    {
+      "id": "occasions",
+      "title": "Proposals, weddings & big gatherings",
+      "lead": "How we plan the moments that only happen once.",
+      "pages": [
+        "why-we-dont-hide-for-maui-proposals.html",
+        "maui-wedding-cost.html",
+        "our-wedding-officiant-pick-for-maui-photography.html",
+        "maui-family-reunion-photographer.html",
+        "maternity.html"
+      ]
+    },
+    {
+      "id": "resorts",
+      "title": "Staying at a Wailea resort",
+      "lead": "Where we meet guests of each resort, and the beaches a short walk away.",
+      "pages": [
+        "andaz-maui-wailea-photographer.html",
+        "grand-wailea-photographer.html",
+        "four-seasons-maui-wailea-photographer.html",
+        "fairmont-kea-lani-photographer.html",
+        "wailea-beach-resort-marriott-photographer.html"
+      ]
+    },
+    {
+      "id": "craft",
+      "title": "The craft: light, Leica & film",
+      "lead": "The art and engineering behind the photographs.",
+      "pages": [
+        "the-apo-difference.html",
+        "leica-m9-vs-kodak-portra-160.html",
+        "maui-impressionism-photography.html",
+        "black-and-white-upgrade.html",
+        "kodak-film-upgrade.html",
+        "the-sixty-four-kodachrome-maui-photography.html"
+      ]
+    },
+    {
+      "id": "explore",
+      "title": "Exploring Maui",
+      "lead": "Our honest notes on the island beyond the beach session.",
+      "pages": [
+        "haleakala.html",
+        "haleakalahalfday.html",
+        "roadtohana.html",
+        "snorkelspots.html",
+        "whalewatching.html",
+        "catamarantours.html",
+        "helicoptertours.html",
+        "luaus.html",
+        "sunscreen.html"
+      ]
+    }
+  ],
+  "sessions": {
+    "maui-family-photographer.html": [
+      "best-beaches-maui-family-pictures.html",
+      "best-time-of-day-family-beach-photos-wailea.html",
+      "what-to-wear-maui-photos.html"
+    ],
+    "maui-couples-photographer.html": [
+      "best-time-of-day-family-beach-photos-wailea.html",
+      "why-we-dont-hide-for-maui-proposals.html",
+      "our-personal-maui-restaurant-reviews.html"
+    ],
+    "maui-proposal-photographer.html": [
+      "why-we-dont-hide-for-maui-proposals.html",
+      "parking-sunset-session-mokapu-beach.html",
+      "our-personal-maui-restaurant-reviews.html"
+    ],
+    "maui-maternity-photographer.html": [
+      "maternity.html",
+      "what-to-wear-maui-photos.html",
+      "best-time-of-day-family-beach-photos-wailea.html"
+    ],
+    "maui-wedding-photographer.html": [
+      "maui-wedding-cost.html",
+      "our-wedding-officiant-pick-for-maui-photography.html",
+      "parking-wedding-maluaka-beach.html"
+    ],
+    "maui-senior-portrait-photographer.html": [
+      "what-to-wear-maui-photos.html",
+      "best-beaches-maui-family-pictures.html",
+      "best-time-of-day-family-beach-photos-wailea.html"
+    ],
+    "maui-vow-renewal-photographer.html": [
+      "our-wedding-officiant-pick-for-maui-photography.html",
+      "best-time-of-day-family-beach-photos-wailea.html",
+      "what-to-wear-maui-photos.html"
+    ],
+    "pricing.html": [
+      "best-beaches-maui-family-pictures.html",
+      "what-to-wear-maui-photos.html",
+      "tides.html"
+    ],
+    "faq.html": [
+      "what-to-wear-maui-photos.html",
+      "best-time-of-day-family-beach-photos-wailea.html",
+      "wailea-vs-kihei-vs-makena-photo-locations.html"
+    ]
+  },
+  "blurbs": {
+    "tides.html": "Tide highs and lows, plus sunrise and sunset times, for any date during your Maui trip.",
+    "maui-wedding-cost.html": "What a Maui beach wedding costs in 2027: package prices compared, the marriage license, Hawaii tax, guest limits and what is included.",
+    "kodak-film-upgrade.html": "Why real film remains a beautiful way to preserve a Maui family, couple, proposal or wedding session."
+  },
+  "titles": {
+    "the-apo-difference.html": "The APO Difference: the science of light",
+    "leica-m9-vs-kodak-portra-160.html": "Leica M9 vs. Kodak Portra 160",
+    "maui-impressionism-photography.html": "Impressionism Photography",
+    "black-and-white-upgrade.html": "The Black & White Upgrade",
+    "kodak-film-upgrade.html": "The Kodak Film Upgrade",
+    "the-sixty-four-kodachrome-maui-photography.html": "The Sixty-Four: Kodachrome editions",
+    "our-personal-maui-restaurant-reviews.html": "Where to eat after your session",
+    "parking-turquoise-water-session-kanaha-beach.html": "Where to park at Kanahā Beach",
+    "parking-sunrise-session-keawakapu-beach.html": "Where to park at Keawakapu Beach"
+  },
+  "images": {
+    "whalewatching.html": "assets/Whale2_13-2.jpg",
+    "sunscreen.html": "assets/reef-safe-sunscreen-maui-sunset-portrait.jpg",
+    "leica-m9-vs-kodak-portra-160.html": "assets/leica-m9-mokapu.jpg"
+  }
+}
