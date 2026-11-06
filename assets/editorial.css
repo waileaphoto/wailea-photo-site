@@ -225,3 +225,9 @@ body:not(.home):not(.pricing-ed) main .button,body:not(.home):not(.pricing-ed) m
 .ed-snd.hint{animation:edHint 1.7s ease-out 3}
 @keyframes edHint{0%{box-shadow:0 0 0 0 rgba(232,192,122,.75)}100%{box-shadow:0 0 0 16px rgba(232,192,122,0)}}
 @media (prefers-reduced-motion:reduce){.ed-snd.hint{animation:none;border-color:var(--ed-gold)}}
+/* smooth scrolling (Lenis, computers only) */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:clip}
+.lenis [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-smooth iframe{pointer-events:none}

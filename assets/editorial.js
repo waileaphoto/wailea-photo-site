@@ -90,3 +90,51 @@
   });
   ui();
 })();
+
+/* ---- Smooth scrolling with a touch of momentum (computers only) ----
+   Mouse wheels move the page in hard steps; Lenis eases each step out so the page glides.
+   Phones keep their native scrolling, and Reduce Motion turns it off. Scroll panels
+   (concierge, booking calendar, menu) scroll natively. */
+(function () {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var s = document.createElement('script');
+  s.src = '/assets/vendor/lenis-1.3.27.min.js'; s.async = true;
+  s.onload = function () {
+    if (!window.Lenis) return;
+    var lenis = new window.Lenis({
+      lerp: 0.09, wheelMultiplier: 0.9, smoothWheel: true, autoRaf: true,
+      prevent: function (node) {
+        return !!(node.closest && node.closest('.wpc-panel, .wbw-overlay, nav.menu, .lang-switch, [data-lenis-prevent], textarea, select'));
+      }
+    });
+    window.edLenis = lenis;
+    // Same-page links (e.g. the pricing list) glide instead of jumping.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a || e.defaultPrevented || document.body.classList.contains('menu-open')) return;
+      var u = new URL(a.href, location.href);
+      if (u.pathname !== location.pathname || !u.hash || u.hash.length < 2) return;
+      var t; try { t = document.querySelector(decodeURIComponent(u.hash)); } catch (err) { return; }
+      if (!t) return;
+      e.preventDefault();
+      var h = document.querySelector('.site-header'), sm = parseFloat(getComputedStyle(t).scrollMarginTop) || 0, off = sm ? 0 : -((h ? h.offsetHeight : 0) + 16), want = sm || -off, tries = 0;
+      // Photos above can finish loading mid-glide and push the target down; re-aim until it lands.
+      var go = function (dur) {
+        lenis.scrollTo(t, { offset: off, duration: dur, onComplete: function () {
+          if (Math.abs(t.getBoundingClientRect().top - want) > 6 && ++tries < 8) go(0.5);
+        } });
+      };
+      go(1.2);
+      history.pushState(null, '', u.hash);
+    });
+    // Pause while the menu, concierge or booking calendar is open.
+    var sync = function () {
+      var b = document.body, ov = document.querySelector('.wbw-overlay');
+      var hold = b.classList.contains('menu-open') || b.classList.contains('ed-chat') || (ov && !ov.hidden);
+      if (hold) lenis.stop(); else lenis.start();
+    };
+    new MutationObserver(sync).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class', 'hidden'] });
+  };
+  document.head.appendChild(s);
+})();
