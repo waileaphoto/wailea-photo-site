@@ -29,6 +29,7 @@
       price: priceCell ? Number(priceCell.dataset.price) : null,
       images: imagesCell ? Number(imagesCell.dataset.images) : null,
       isUs: tr.classList.contains('market-row-us'),
+      usLabel: tr.dataset.usLabel || 'Wailea Photo',
       row: tr,
     };
   });
@@ -103,15 +104,17 @@
       ].filter(Boolean).join(' ');
       parts.push(
         `<circle cx="${x(r.price)}" cy="${y(r.images)}" r="${r.isUs ? 8 : 5.5}" class="${cls}">` +
-        `<title>${r.isUs ? 'Wailea Photo' : entity + ' ' + r.label} — ${fmt(r.price)}, ${r.images} edited images</title>` +
+        `<title>${r.isUs ? r.usLabel : entity + ' ' + r.label} — ${fmt(r.price)}, ${r.images} edited images</title>` +
         `</circle>`
       );
     });
 
-    // label our dot
-    parts.push(
-      `<text x="${x(us.price)}" y="${y(us.images) - 15}" class="mp-us-label" text-anchor="middle">Wailea Photo</text>`
-    );
+    // label our dot(s) — a page may plot more than one of our offers
+    plotted.filter((r) => r.isUs).forEach((r) => {
+      parts.push(
+        `<text x="${x(r.price)}" y="${y(r.images) - 15}" class="mp-us-label" text-anchor="middle">${r.usLabel}</text>`
+      );
+    });
 
     parts.push('</svg>');
     plotHost.innerHTML = parts.join('');
@@ -141,15 +144,19 @@
       return `Nothing we found is published below ${fmt(budget)} — the lowest price on Maui we ` +
         `could find is ${fmt(cheapestOverall.price)}.`;
     }
+    const theirs = plotted.filter((r) => !r.isUs).length;
     if (!weFit) {
+      if (!others.length) {
+        return `At ${fmt(budget)}, nothing published that includes photographs is in reach. Ours is ${fmt(us.price)} for ${us.images}+.`;
+      }
       const best = others.reduce((a, b) => (b.images > a.images ? b : a));
-      return `At ${fmt(budget)}, ${others.length} of the ${plotted.length} published ${noun} are in reach. ` +
+      return `At ${fmt(budget)}, ${others.length} of the ${theirs} other published ${noun} are in reach. ` +
         `The most edited images any of them includes is ${best.images}. ` +
         `Ours is ${fmt(us.price)} for ${us.images}+.`;
     }
     const bestOther = others.length ? others.reduce((a, b) => (b.images > a.images ? b : a)) : null;
     const lead = bestOther ? us.images - bestOther.images : null;
-    let text = `At ${fmt(budget)}, ${inReach.length} of the ${plotted.length} published ${noun} are in reach, ours among them.`;
+    let text = `At ${fmt(budget)}, ${others.length} of the ${theirs} other published ${noun} are in reach, and so is ours.`;
     if (bestOther && lead > 0) {
       text += ` The next most generous includes ${bestOther.images} edited images; ours includes ${us.images}+ — ${lead} more.`;
     } else if (bestOther) {
