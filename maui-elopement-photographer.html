@@ -199,6 +199,121 @@
 @media (max-width:620px){.elope-price{grid-template-columns:1fr}}
 .wedding-reviews{padding:12vh 8vw;max-width:1240px;margin:0 auto}.wedding-reviews h2{font:400 clamp(34px,4vw,52px)/1.08 var(--serif);margin:10px 0 36px;max-width:18ch}.wr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.wr-card{margin:0;background:var(--paper);border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}.wr-card blockquote{margin:0;font:400 19px/1.55 var(--serif)}.wr-card figcaption{display:grid;gap:2px;font-size:13px}.wr-card figcaption span{color:rgba(27,25,23,.62)}.wr-source{margin-top:22px;font-size:13px;color:rgba(27,25,23,.62)}@media (max-width:860px){.wr-grid{grid-template-columns:1fr}.wedding-reviews{padding:80px 22px}}
 .elope-alt{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:center;border:1px dashed var(--line);padding:22px 28px;margin:0 0 28px}.elope-alt .amount{font:500 40px/1 var(--serif)}.elope-alt .terms{font-size:13px;line-height:1.6;color:rgba(27,25,23,.72)}@media (max-width:620px){.elope-alt{grid-template-columns:1fr}}
+/* editorial wedding layout (Nov 2026) */
+.wd{--paper:#faf7f2;--paper2:#f1ebe2;--ink:#2b2825;--dim:#5a534c;--line:rgba(43,40,37,.14);--red:#9e2b23;--gold:#b99254;--wserif:"Cormorant",Georgia,serif;--wsans:"Alegreya Sans",Arial,sans-serif;--wsc:"Alegreya Sans SC","Alegreya Sans",Arial,sans-serif;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--wsans)}
+.wd a{color:inherit}.wd img{display:block;max-width:100%}
+.wd *,.wd *:before,.wd *:after{box-sizing:border-box}.wd section,.wd nav{max-width:none;margin:0;padding:0;border:0;text-align:left;background:transparent}.wd figure,.wd h1,.wd h2,.wd h3,.wd p,.wd ul,.wd ol,.wd blockquote{margin:0;padding:0}.wd .wd-band .wd-band-copy h2,.wd .wd-band .wd-k{color:#fffaf2}.wd .wd-statement{text-align:center}.wd .wd-reviews h2,.wd .wd-stars,.wd .wd-rsrc{text-align:center}
+.wd .wd-wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wd .sc{font-family:var(--wsc);letter-spacing:.22em;text-transform:lowercase;font-size:13px}
+.wd h1,.wd h2,.wd h3{color:var(--ink)}
+.wd .wd-diptych{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px;height:min(88svh,980px);min-height:460px}
+.wd .wd-diptych figure{overflow:hidden;position:relative}
+.wd .wd-diptych img{width:100%;height:100%;object-fit:cover}
+.wd .wd-diptych .wd-bw img{object-position:44% 50%}
+.wd .wd-diptych .wd-col img{object-position:52% 50%}
+.wd .wd-crest{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:#fffaf2;text-align:center;text-shadow:0 2px 24px rgba(0,0,0,.55);background:radial-gradient(ellipse 36% 30% at 50% 50%,rgba(20,18,16,.38),rgba(20,18,16,0) 70%)}
+.wd .wd-crest .wd-mono{font:italic 300 96px/1 var(--wserif);letter-spacing:-.04em}
+.wd .wd-crest .wd-line{font:500 clamp(18px,1.8vw,26px)/1.25 var(--wserif);letter-spacing:.24em;text-transform:uppercase;margin-top:10px;display:grid;gap:4px}
+.wd .wd-crest .wd-line span{white-space:nowrap}
+@media (max-width:820px){.wd .wd-crest .wd-line{font-size:15px;letter-spacing:.18em}}
+.wd .wd-crest .wd-est{font:500 11px/1 var(--wsans);letter-spacing:.32em;text-transform:uppercase;margin-top:12px;opacity:.85}
+@media (max-width:820px){.wd .wd-diptych{grid-template-columns:1fr;height:auto}.wd .wd-diptych figure{height:58svh}.wd .wd-crest{place-items:end center;padding-bottom:7svh}}
+.wd .wd-statement{position:relative;max-width:1240px;margin:0 auto;padding-block:16vh 12vh;text-align:center}
+.wd .wd-statement h1{font:400 clamp(40px,6vw,86px)/1.02 var(--wserif);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance;max-width:14ch;margin:0 auto}
+.wd .wd-statement h1 em{font-style:italic;text-transform:none;font-weight:300}
+.wd .wd-statement .wd-lead{max-width:52ch;margin:34px auto 0;color:var(--dim)}
+.wd .wd-statement .wd-where{font:italic 400 22px/1.4 var(--wserif);margin-top:26px}
+.wd .wd-collage{position:relative;height:clamp(560px,62vw,820px);max-width:1240px;margin:0 auto}
+.wd .wd-collage figure{position:absolute;overflow:hidden;box-shadow:0 18px 40px rgba(43,40,37,.14)}
+.wd .wd-collage img{width:100%;height:100%;object-fit:cover}
+.wd .wd-c1{left:4%;top:12%;width:22%;aspect-ratio:3/4}
+.wd .wd-c2{left:32%;top:0;width:36%;aspect-ratio:4/5;z-index:2}
+.wd .wd-c3{right:4%;top:6%;width:24%;aspect-ratio:3/4}
+.wd .wd-c4{right:18%;bottom:0;width:20%;aspect-ratio:1/1;z-index:3}
+@media (max-width:820px){.wd .wd-collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-inline:max(20px,env(safe-area-inset-left,0px))}.wd .wd-collage figure{position:static;width:auto;aspect-ratio:4/5;box-shadow:none}.wd .wd-c2{grid-column:1/-1;aspect-ratio:4/3}}
+.wd .wd-paths{max-width:960px;margin:12vh auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.wd .wd-paths a{display:block;text-decoration:none;padding:6px 34px;border-left:1px solid var(--line)}
+.wd .wd-paths a:first-child{border-left:0}
+.wd .wd-paths .sc{display:block;color:var(--ink);margin-bottom:10px}
+.wd .wd-paths p{font-size:16px;color:var(--dim)}
+.wd .wd-paths a:hover .sc{color:var(--red)}
+@media (max-width:820px){.wd .wd-paths{grid-template-columns:1fr;gap:26px}.wd .wd-paths a{border-left:0;padding:0}}
+.wd .wd-band{position:relative;height:min(92svh,900px);min-height:520px;overflow:hidden;color:#fffaf2}
+.wd .wd-band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.wd .wd-band:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,16,.5),rgba(20,18,16,.05) 60%)}
+.wd .wd-band-copy{position:absolute;left:8vw;bottom:14vh;z-index:2}
+.wd .wd-band-copy .wd-k{font:italic 400 24px/1 var(--wserif)}
+.wd .wd-band-copy h2{font:300 clamp(64px,10vw,150px)/.95 var(--wserif);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid rgba(255,250,242,.7);padding-bottom:14px;margin-top:8px}
+.wd .wd-polaroid{position:absolute;z-index:3;right:12vw;top:16vh;width:clamp(170px,18vw,270px);background:#fdfbf7;padding:12px 12px 46px;transform:rotate(4deg);box-shadow:0 22px 50px rgba(0,0,0,.35)}
+.wd .wd-polaroid img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.wd .wd-polaroid span{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:italic 400 18px/1 var(--wserif);color:var(--ink)}
+@media (max-width:820px){.wd .wd-polaroid{right:6vw;top:7vh;width:150px}.wd .wd-band-copy{left:22px;bottom:9vh}}
+.wd .wd-package{max-width:1180px;margin:0 auto;padding-block:16vh 10vh;display:grid;grid-template-columns:.9fr 1.1fr;gap:7vw;align-items:start}
+.wd .wd-package>div{min-width:0}
+.wd .wd-eyebrow{display:block;color:var(--red);margin-bottom:16px}
+.wd .wd-package h2{font:400 clamp(38px,4.4vw,60px)/1.05 var(--wserif);text-wrap:balance}
+.wd .wd-package h2 em{font-weight:300}
+.wd .wd-package .wd-intro{margin-top:20px;color:var(--dim);max-width:44ch}
+.wd .wd-price{margin-top:34px;border:1px solid var(--line);background:#fff;padding:28px}
+.wd .wd-price .wd-amt{font:400 64px/1 var(--wserif)}
+.wd .wd-price .wd-amt small{font:500 11px/1 var(--wsans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-left:8px;vertical-align:middle}
+.wd .wd-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.wd .wd-split strong{display:block;font:400 28px/1.1 var(--wserif)}
+.wd .wd-split span,.wd .wd-price .wd-note{font-size:13px;color:var(--dim)}
+.wd .wd-price .wd-note{margin-top:14px}
+.wd .wd-compare{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:8px;font-size:14px}
+.wd .wd-compare b{display:block;font-weight:500}
+.wd .wd-compare .wd-ours{color:var(--red)}
+.wd .wd-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.wd .wd-btn{display:inline-block;text-decoration:none;font:500 13px/1 var(--wsans);letter-spacing:.18em;text-transform:uppercase;padding:16px 24px;border:1px solid var(--ink)}
+.wd .wd-btn.wd-solid{background:var(--ink);color:var(--paper)}
+.wd .wd-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.wd .wd-includes{list-style:none;counter-reset:i;display:grid}
+.wd .wd-includes li{counter-increment:i;display:grid;grid-template-columns:54px 1fr;gap:10px;padding:24px 0;border-top:1px solid var(--line)}
+.wd .wd-includes li:before{content:counter(i,decimal-leading-zero);font:italic 400 24px/1.2 var(--wserif);color:var(--gold)}
+.wd .wd-includes h3{font:400 27px/1.2 var(--wserif)}
+.wd .wd-includes p{color:var(--dim);margin-top:4px}
+.wd .wd-upg{margin-top:20px;font-size:14px;color:var(--dim)}
+@media (max-width:900px){.wd .wd-package{grid-template-columns:1fr}}
+.wd .wd-reviews{background:var(--paper2);padding-block:14vh}
+.wd .wd-reviews-in{max-width:1180px;margin:0 auto}
+.wd .wd-reviews h2{font:400 clamp(36px,4.2vw,56px)/1.08 var(--wserif);text-align:center}
+.wd .wd-reviews h2 em{font-weight:300}
+.wd .wd-stars{text-align:center;color:var(--gold);letter-spacing:.3em;margin:14px 0 46px}
+.wd .wd-rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.wd .wd-rgrid figure{background:var(--paper);padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.wd .wd-rgrid blockquote{font:400 20px/1.55 var(--wserif)}
+.wd .wd-rgrid figcaption{font-size:14px}
+.wd .wd-rgrid figcaption span{display:block;color:var(--dim)}
+.wd .wd-rsrc{text-align:center;margin-top:24px;font-size:14px;color:var(--dim)}
+@media (max-width:900px){.wd .wd-rgrid{grid-template-columns:1fr}}
+.wd a:focus-visible,.wd summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wd .wd-options{max-width:1180px;margin:0 auto;padding-block:16vh 6vh}
+.wd .wd-options>h2,.wd .wd-how>h2{font:400 clamp(38px,4.4vw,60px)/1.05 var(--wserif);text-align:center;text-wrap:balance}
+.wd .wd-options>h2 em,.wd .wd-how>h2 em{font-weight:300}
+.wd .wd-options>.wd-sub{text-align:center;color:var(--dim);max-width:52ch;margin:16px auto 0}
+.wd .wd-opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:46px}
+.wd .wd-opt{background:#fff;border:1px solid var(--line);padding:34px;display:flex;flex-direction:column;gap:14px}
+.wd .wd-opt.wd-feature{border-color:var(--ink)}
+.wd .wd-opt .wd-amt{font:400 60px/1 var(--wserif)}
+.wd .wd-opt .wd-amt small{font:500 11px/1 var(--wsans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-left:8px;vertical-align:middle}
+.wd .wd-opt h3{font:400 30px/1.15 var(--wserif)}
+.wd .wd-opt ul{list-style:none;display:grid;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+.wd .wd-opt li{padding-left:22px;position:relative;color:var(--dim)}
+.wd .wd-opt li:before{content:"·";position:absolute;left:6px;color:var(--gold);font-weight:700}
+.wd .wd-opt .wd-addons{font-size:14px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px}
+.wd .wd-opt .wd-ctas{margin-top:auto;padding-top:10px}
+.wd .wd-cmp{margin-top:34px;text-align:center;font-size:15px;color:var(--dim)}
+.wd .wd-how{max-width:1180px;margin:0 auto;padding-block:10vh 14vh}
+.wd .wd-steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:46px}
+.wd .wd-steps li{counter-increment:s;border-top:1px solid var(--line);padding-top:18px}
+.wd .wd-steps li:before{content:counter(s,decimal-leading-zero);display:block;font:italic 400 26px/1 var(--wserif);color:var(--gold);margin-bottom:10px}
+.wd .wd-steps h3{font:400 24px/1.2 var(--wserif)}
+.wd .wd-steps p{color:var(--dim);margin-top:6px;font-size:16px}
+@media (max-width:900px){.wd .wd-opt-grid{grid-template-columns:1fr}.wd .wd-steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.wd .wd-steps{grid-template-columns:1fr}.wd .wd-opt{padding:24px}}
+@media (max-width:520px){.wd .wd-band .wd-band-copy h2{font-size:clamp(40px,12.5vw,64px);letter-spacing:.02em}}
+.faq-list{background:#faf7f2}
 </style>
 
 
@@ -278,45 +393,88 @@
 <!-- i18n:head --><link rel="alternate" hreflang="en" href="https://waileaphoto.com/maui-elopement-photographer"><link rel="alternate" hreflang="fr" href="https://waileaphoto.com/fr/maui-elopement-photographer"><link rel="alternate" hreflang="es" href="https://waileaphoto.com/es/maui-elopement-photographer"><link rel="alternate" hreflang="de" href="https://waileaphoto.com/de/maui-elopement-photographer"><link rel="alternate" hreflang="it" href="https://waileaphoto.com/it/maui-elopement-photographer"><link rel="alternate" hreflang="ja" href="https://waileaphoto.com/ja/maui-elopement-photographer"><link rel="alternate" hreflang="ko" href="https://waileaphoto.com/ko/maui-elopement-photographer"><link rel="alternate" hreflang="zh-Hans" href="https://waileaphoto.com/zh/maui-elopement-photographer"><link rel="alternate" hreflang="hi" href="https://waileaphoto.com/hi/maui-elopement-photographer"><link rel="alternate" hreflang="x-default" href="https://waileaphoto.com/maui-elopement-photographer"><style id="i18n-css">.lang-switch{position:relative}.lang-switch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;color:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:4px 0;opacity:.8;text-shadow:0 1px 12px rgba(0,0,0,.35)}.lang-switch summary::-webkit-details-marker{display:none}.lang-switch summary::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}.lang-switch details[open] summary::after{margin-top:3px;transform:rotate(-135deg)}.lang-switch summary:hover,.lang-switch details[open] summary{opacity:1}.lang-switch summary:focus-visible{outline:1px solid currentColor;outline-offset:3px}.lang-switch ul{position:absolute;left:0;top:calc(100% + 10px);z-index:1000;margin:0;padding:6px 0;list-style:none;min-width:160px;background:#171716;border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-switch li a{display:block;padding:9px 18px;color:#fff;text-decoration:none;font-size:14px;line-height:1.3;letter-spacing:.02em;opacity:.78;text-shadow:none}.lang-switch li a:hover,.lang-switch li a:focus-visible{opacity:1;background:rgba(255,255,255,.08);outline:none}.lang-switch li a[aria-current]{opacity:1;font-weight:700}</style><script>document.addEventListener("toggle",function(e){var d=e.target;if(!d.open||!d.matches||!d.matches(".lang-switch details"))return;var u=d.querySelector("ul");u.style.left="0";u.style.right="auto";if(u.getBoundingClientRect().right>window.innerWidth-8){u.style.left="auto";u.style.right="0"}},true);document.addEventListener("click",function(e){document.querySelectorAll(".lang-switch details[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".lang-switch details[open]").forEach(function(d){d.removeAttribute("open");d.querySelector("summary").focus()})});</script><!-- /i18n:head -->
 </head><body>
 <header class="site-header ed"><a href="index.html#top" class="brand">Wailea Photo</a><div class="header-right"><!-- i18n:switcher --><nav class="lang-switch" translate="no" aria-label="Language"><details><summary title="Language: English">EN</summary><ul><li><a href="/maui-elopement-photographer" hreflang="en" lang="en" aria-current="page">English</a></li><li><a href="/fr/maui-elopement-photographer" hreflang="fr" lang="fr">Français</a></li><li><a href="/es/maui-elopement-photographer" hreflang="es" lang="es">Español</a></li><li><a href="/de/maui-elopement-photographer" hreflang="de" lang="de">Deutsch</a></li><li><a href="/it/maui-elopement-photographer" hreflang="it" lang="it">Italiano</a></li><li><a href="/ja/maui-elopement-photographer" hreflang="ja" lang="ja">日本語</a></li><li><a href="/ko/maui-elopement-photographer" hreflang="ko" lang="ko">한국어</a></li><li><a href="/zh/maui-elopement-photographer" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="/hi/maui-elopement-photographer" hreflang="hi" lang="hi">हिन्दी</a></li></ul></details></nav><!-- /i18n:switcher --><div class="ed-pills"><button class="ed-pill ed-ask" type="button" data-ed-concierge aria-label="Ask the Wailea Photo Concierge">Concierge</button><a class="ed-pill ed-book" href="pricing.html#sessions">Book Now</a></div><button class="menu-open-btn" aria-expanded="false">MENU</button></div></header><nav class="menu ed" aria-hidden="true"><button class="menu-close" aria-label="Close menu">×</button><a href="index.html#story-paths">Photography</a><a href="pricing.html">Sessions &amp; Pricing</a><a href="index.html#experience">Our Family</a><a href="atlas.html">Guides</a><a href="art.html">Art</a><a href="index.html#reviews">Reviews</a><a href="faq.html">FAQ &amp; Contact</a><div class="menu-foot"><a href="tides.html">Tides &amp; Sunset Times</a><a href="what-to-wear-maui-photos.html">What to Wear</a><a href="the-apo-difference.html">The APO Difference</a><a href="our-florist">Our Florist</a><a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a><a href="corporate-events.html">Corporate Events</a><a href="tel:+18082985188">808.298.5188</a></div></nav>
-<main><section class="page-hero wedding-hero fit-hero"><img src="assets/maui-elopement-sunset-hero.jpg" alt="A bride and groom face each other on a South Maui beach at sunset, the West Maui Mountains across the water" loading="eager" fetchpriority="high"><div class="page-hero-copy reveal visible"><div class="eyebrow">MAUI ELOPEMENTS · ALL-INCLUSIVE</div><h1>Elope to Maui. Everything included.</h1><p>Officiant, flowers, permit and photographs for $2,599, tax included.</p></div></section>
-<article class="cost-wrap">
-<p class="lede">An elopement should be simple. Choose a date, fly in, and say your vows on a South Maui beach. Our elopement package brings the officiant, the flowers, the permit and the photographer together, for <strong>$2,599 with tax included</strong>.</p>
-<div class="elope-price"><div class="amount">$2,599</div><div class="terms"><strong>All-inclusive, tax included.</strong><br>$100 deposit secures your date · $2,499 remaining balance.<br>Up to 15 guests included.</div></div>
-<div class="cost-cta"><a class="button" href="pricing.html#sessions">Secure Your Date</a><a class="button button-outline" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">View a Sample Wedding</a></div>
-<h2>What your elopement includes</h2>
-<ul>
-<li><strong>A Native Hawaiian officiant.</strong> <a href="our-wedding-officiant-pick-for-maui-photography.html">Derick Sebastian</a> performs your ceremony and takes care of the Hawaii marriage license.</li>
-<li><strong>Florals by our in-house florist.</strong> <a href="our-florist">Mya</a> makes your bouquet, leis and wedding arch.</li>
-<li><strong>1.5 hours of photography.</strong> 200+ edited, high-resolution images, delivered within 24–48 hours.</li>
-<li><strong>Beach permit and General Liability Insurance.</strong> Handled for you.</li>
-<li><strong>Live streaming.</strong> Your phone on our tripod, with our microphones, so family at home can watch.</li>
-</ul>
-<p>Additional photography coverage is $450 per hour, up to 3 hours (one extra hour can be added when you book online). Video reels are included when you purchase upgraded floral arrangements from Mya.</p>
-<h2>How it works</h2>
-<ol class="elope-steps">
-<li><div><h3>Reserve your date</h3><p>Book online with a $100 deposit.</p></div></li>
-<li><div><h3>Meet your officiant</h3><p>A consultation with Derick is arranged once your deposit is paid. He takes care of the marriage license.</p></div></li>
-<li><div><h3>Say your vows</h3><p>Your officiant, florals and photographer meet you on the beach. Family at home watches live.</p></div></li>
-<li><div><h3>Receive your gallery</h3><p>200+ edited images arrive within 24–48 hours.</p></div></li>
-</ol>
-<h2>Photography only</h2>
-<p>Already have an officiant? Book us for the photographs alone.</p>
-<div class="elope-alt"><div class="amount">$995</div><div class="terms"><strong>1.5 hours of coverage · 200+ edited images</strong>, delivered within 24–48 hours.<br>Add a second photographer shooting <a href="kodak-film-upgrade.html">Kodak film</a> and <a href="black-and-white-upgrade.html">black &amp; white</a>: <strong>+$250</strong>.<br>Both upgrades are checkboxes when you book.</div></div>
-<div class="cost-cta"><a class="button" href="pricing.html?openBooking=elopement-photography">Book Photography Only</a></div>
-<h2>How it compares</h2>
-<p>Prices from Maui wedding packages published online, checked November 2026.</p>
-<div class="cost-table-wrap"><table class="cost-table"><thead><tr><th>Option</th><th>Published price</th><th>Edited images</th><th>Also included</th></tr></thead><tbody>
-<tr><td>Officiant + 1 hour of photos</td><td>$1,455–$1,650 + tax</td><td>35–40</td><td>Officiant</td></tr>
-<tr><td>Planner packages with 100+ images</td><td>$3,475–$5,500 + tax</td><td>100–150</td><td>Varies by planner</td></tr>
-<tr><td>Wailea Photo, photography only</td><td>$995</td><td>200+</td><td>Second photographer on Kodak film and black &amp; white, +$250</td></tr>
-<tr class="ours"><td>Wailea Photo elopement</td><td>$2,599, tax included</td><td>200+</td><td>Officiant, license help, bouquet, leis, arch, permit, insurance, live streaming</td></tr>
-</tbody></table></div>
-<p class="cost-note"><a href="maui-wedding-cost.html">See every package we compared</a> in our Maui wedding cost guide.</p>
-<h2>Questions couples ask about eloping</h2>
-</article>
-<section class="wedding-reviews" aria-labelledby="wr-title"><div class="chapter">FROM OUR COUPLES</div><h2 id="wr-title">What couples say about eloping with us.</h2><div class="wr-grid"><figure class="wr-card"><blockquote>“He offered a wedding package that included everything we needed for our wedding. The photos he took were amazing and his entire team made our day stress free and it was perfection. We had hundreds of edited photos before the night was even finished.”</blockquote><figcaption><strong>Blair H.</strong><span>Wedding, December 2025</span></figcaption></figure><figure class="wr-card"><blockquote>“They captured our love perfectly! There were unforeseen circumstances the day of, but they made sure the experience was seamless. We would recommend them over and over again.”</blockquote><figcaption><strong>Dominique B.</strong><span>Wedding, July 2025</span></figcaption></figure><figure class="wr-card"><blockquote>“We did a vow renewal when we were on Maui, and [Wailea Photo] were so flexible after we had to change the date day of… the photos were so artistic and beautiful. I couldn’t have asked for a better experience!”</blockquote><figcaption><strong>Nanette R.</strong><span>Vow renewal, February 2025</span></figcaption></figure></div><p class="wr-source">Reviews of our wedding package on <a href="https://www.tripadvisor.com/AttractionProductReview-g29220-d33241933-Get_Married_on_Maui-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a>.</p></section>
-<section class="faq-list" style="padding-top:0"><details class="faq-item" open><summary>How much does a Maui elopement cost with Wailea Photo?</summary><p>Our all-inclusive elopement package is $2,599, tax included. A $100 deposit secures your date and the remaining balance is $2,499. It includes a Native Hawaiian officiant, a bouquet, leis and wedding arch, 1.5 hours of photography with 200+ edited images delivered within 24–48 hours, the beach permit, General Liability Insurance and live streaming for family at home.</p></details><details class="faq-item"><summary>Can we elope with just the two of us?</summary><p>Yes. The package is the same whether it is just the two of you or a small group: up to 15 guests are included at no extra cost.</p></details><details class="faq-item"><summary>Can we book photography only?</summary><p>Yes. Photography only is $995 for 1.5 hours of coverage with 200+ edited images delivered within 24–48 hours, for couples who already have an officiant. A second photographer shooting Kodak film and black &amp; white can be added for $250. Book online with a $100 deposit.</p></details><details class="faq-item"><summary>Who marries us, and who handles the marriage license?</summary><p>Derick Sebastian, our Native Hawaiian officiant, performs the ceremony and takes care of the Hawaii marriage license. A consultation with him is arranged once your deposit is paid.</p></details><details class="faq-item"><summary>Can family watch from home?</summary><p>Yes. Live streaming is included: we set up your phone on our tripod with our microphones so family and friends can watch your vows live.</p></details><details class="faq-item"><summary>Where on Maui can we elope?</summary><p>We photograph elopements on the beaches of Wailea, Makena and South Maui, including Maluaka Beach in Makena. Your beach permit is included.</p></details><details class="faq-item"><summary>What if it rains or it is cloudy?</summary><p>If it rains, we will attempt to reschedule. Clouds are welcome: they soften the light and skin tones, and some of our most beautiful images are made when it is partly cloudy.</p></details><details class="faq-item"><summary>Can we bring guests or chairs?</summary><p>Up to 15 guests are included and additional guests are $20 each, up to 30 on the beach or 100 on private property. Chairs are not allowed on the beach, only on private property.</p></details><details class="faq-item"><summary>How do we book?</summary><p>Book online with a $100 deposit to secure your date. The remaining $2,499 balance completes the package.</p></details></section>
-<section class="experience-cta"><div class="chapter" style="color:var(--gold)">ALL-INCLUSIVE · $2,599 · TAX INCLUDED</div><h2>Your Maui elopement, simply handled.</h2><p>A $100 deposit secures your date.</p><a class="button" href="pricing.html#sessions">Secure Your Date</a></section>
+<main><div class="wd">
+<section class="wd-diptych" aria-label="Elopement photographs">
+  <figure class="wd-bw"><img src="assets/maui-wedding-couple-embrace-beach-bw.jpg" alt="A couple wrapped in her veil on a Maui beach, in black and white" fetchpriority="high"></figure>
+  <figure class="wd-col"><img src="assets/maui-elopement-sunset-hero.jpg" alt="A bride and groom face each other on a South Maui beach at sunset, the West Maui Mountains across the water" fetchpriority="high"></figure>
+  <div class="wd-crest" aria-hidden="true"><div><div class="wd-mono">Wp</div><div class="wd-line"><span>Just the two of you</span><span>&amp; the island</span></div><div class="wd-est">Est. 2000 · Wailea, Maui</div></div></div>
+</section>
+<section class="wd-statement wd-wrap">
+  <h1>Elope <em>to</em> Maui. <em>Everything</em> included.</h1>
+  <p class="wd-lead">An elopement should be simple. Choose a date, fly in, and say your vows on a South Maui beach. We bring the officiant, the flowers, the permit and the photographer together, or just the photographs if you already have an officiant.</p>
+  <p class="wd-where">Serving couples in Wailea, Makena &amp; South Maui for 25+ years.</p>
+</section>
+<section class="wd-collage" aria-label="From our elopements">
+  <figure class="wd-c1"><img src="assets/mokapu-beach-sunset-wedding.jpg" alt="A couple in leis embracing on the rocks at a Maui sunset" loading="lazy"></figure>
+  <figure class="wd-c2"><img src="assets/poetic-wedding-maui-wailea.jpg" alt="A bride in a flower crown embracing her groom by the ocean" loading="lazy"></figure>
+  <figure class="wd-c3"><img src="assets/wailea-photo-wedding-ceremony.jpg" alt="A couple kissing beneath a round floral arch on an ocean lawn" loading="lazy"></figure>
+  <figure class="wd-c4"><img src="assets/elopement-maui.jpg" alt="A newly eloped couple on a South Maui beach at sunset" loading="lazy"></figure>
+</section>
+<nav class="wd-paths wd-wrap" aria-label="Explore">
+  <a href="#options"><span class="sc">two ways to elope →</span><p>All-inclusive for $2,599, or photography only from $995.</p></a>
+  <a href="#how"><span class="sc">how it works →</span><p>Four steps, from your deposit to your gallery in 24–48 hours.</p></a>
+  <a href="maui-wedding-photographer.html"><span class="sc">full weddings →</span><p>Family and guests? See the wedding package.</p></a>
+</nav>
+<section class="wd-options wd-wrap" id="options" aria-labelledby="op-h">
+  <h2 id="op-h">Two ways <em>to</em> elope</h2>
+  <p class="wd-sub">Both include 1.5 hours of sunset photography and 200+ edited images, delivered within 24–48 hours. Up to 15 guests are included.</p>
+  <div class="wd-opt-grid">
+    <div class="wd-opt wd-feature">
+      <span class="sc" style="color:var(--red)">all-inclusive</span>
+      <h3>The elopement package</h3>
+      <div class="wd-amt">$2,599<small>Tax included</small></div>
+      <ul>
+        <li><a href="our-wedding-officiant-pick-for-maui-photography.html">Derick Sebastian</a>, Native Hawaiian officiant, who handles your marriage license</li>
+        <li>Bouquet, leis and wedding arch by <a href="our-florist">Mya</a>, our in-house florist</li>
+        <li>1.5 hours of photography, 200+ edited images</li>
+        <li>Beach permit and General Liability Insurance</li>
+        <li>Live streaming for family at home</li>
+      </ul>
+      <p class="wd-addons">Optional: an extra hour of coverage, +$450. Video reels are included with upgraded florals from Mya.</p>
+      <div class="wd-ctas"><a class="wd-btn wd-solid" href="pricing.html?openBooking=wedding-elopement">Book the package · $100 deposit</a></div>
+    </div>
+    <div class="wd-opt">
+      <span class="sc">photography only</span>
+      <h3>Bring your own officiant</h3>
+      <div class="wd-amt">$995</div>
+      <ul>
+        <li>1.5 hours of sunset coverage</li>
+        <li>200+ edited images, delivered within 24–48 hours</li>
+        <li>Wailea, Makena &amp; South Maui beaches</li>
+      </ul>
+      <p class="wd-addons">Checkboxes when you book: a second photographer shooting <a href="kodak-film-upgrade.html">Kodak film</a> and <a href="black-and-white-upgrade.html">black &amp; white</a>, +$250 · an extra hour of coverage, +$450.</p>
+      <div class="wd-ctas"><a class="wd-btn" href="pricing.html?openBooking=elopement-photography">Book photography only · $100 deposit</a></div>
+    </div>
+  </div>
+  <p class="wd-cmp">Elsewhere on Maui, an officiant with 1 hour of photos runs $1,455–$1,650 plus tax for 35–40 images. <a href="maui-wedding-cost.html">See every package we compared →</a></p>
+</section>
+<section class="wd-how wd-wrap" id="how" aria-labelledby="how-h">
+  <h2 id="how-h">How <em>it</em> works</h2>
+  <ol class="wd-steps">
+    <li><h3>Reserve your date</h3><p>Book online with a $100 deposit.</p></li>
+    <li><h3>Meet your officiant</h3><p>With the package, a consultation with Derick is arranged once your deposit is in. He takes care of the marriage license.</p></li>
+    <li><h3>Say your vows</h3><p>Your photographer (and officiant and florals, with the package) meet you on the beach. Family at home watches live.</p></li>
+    <li><h3>Receive your gallery</h3><p>200+ edited images arrive within 24–48 hours.</p></li>
+  </ol>
+</section>
+<section class="wd-band" aria-label="Elopements">
+  <img src="assets/wailea-photo-wedding-sunset.jpg" alt="A newly married couple walking together along a Maui beach at sunset" loading="lazy">
+  <div class="wd-band-copy"><div class="wd-k">Just the two of you</div><h2>Elopements</h2></div>
+  <figure class="wd-polaroid"><img src="assets/maui-wedding-bride-veil-beach-bw.jpg" alt="A bride with her veil lifting in the wind, in black and white" loading="lazy"><span>Kodak film &amp; black &amp; white</span></figure>
+</section>
+<section class="wd-reviews wd-wrap" aria-labelledby="rv-h"><div class="wd-reviews-in">
+  <h2 id="rv-h">What couples <em>say</em></h2>
+  <div class="wd-stars" aria-label="Five stars">★★★★★</div>
+  <div class="wd-rgrid">
+    <figure><blockquote>“He offered a wedding package that included everything we needed for our wedding. The photos he took were amazing and his entire team made our day stress free and it was perfection. We had hundreds of edited photos before the night was even finished.”</blockquote><figcaption><b>Blair H.</b><span>Wedding, December 2025</span></figcaption></figure>
+    <figure><blockquote>“They captured our love perfectly! There were unforeseen circumstances the day of, but they made sure the experience was seamless. We would recommend them over and over again.”</blockquote><figcaption><b>Dominique B.</b><span>Wedding, July 2025</span></figcaption></figure>
+    <figure><blockquote>“We did a vow renewal when we were on Maui, and [Wailea Photo] were so flexible after we had to change the date day of… the photos were so artistic and beautiful. I couldn’t have asked for a better experience!”</blockquote><figcaption><b>Nanette R.</b><span>Vow renewal, February 2025</span></figcaption></figure>
+  </div>
+  <p class="wd-rsrc">Reviews of our wedding package on <a href="https://www.tripadvisor.com/AttractionProductReview-g29220-d33241933-Get_Married_on_Maui-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a> · 1,000+ five-star reviews across Tripadvisor, Google, Facebook, Airbnb &amp; Yelp.</p>
+</div></section>
+</div>
+<section class="faq-list"><div class="section-head reveal visible"><div class="chapter">ELOPING ON MAUI, ANSWERED</div><h2>Questions couples ask about eloping.</h2></div><details class="faq-item" open><summary>How much does a Maui elopement cost with Wailea Photo?</summary><p>Our all-inclusive elopement package is $2,599, tax included. A $100 deposit secures your date and the remaining balance is $2,499. It includes a Native Hawaiian officiant, a bouquet, leis and wedding arch, 1.5 hours of photography with 200+ edited images delivered within 24–48 hours, the beach permit, General Liability Insurance and live streaming for family at home.</p></details><details class="faq-item"><summary>Can we elope with just the two of us?</summary><p>Yes. The package is the same whether it is just the two of you or a small group: up to 15 guests are included at no extra cost.</p></details><details class="faq-item"><summary>Can we book photography only?</summary><p>Yes. Photography only is $995 for 1.5 hours of coverage with 200+ edited images delivered within 24–48 hours, for couples who already have an officiant. A second photographer shooting Kodak film and black &amp; white can be added for $250. Book online with a $100 deposit.</p></details><details class="faq-item"><summary>Who marries us, and who handles the marriage license?</summary><p>Derick Sebastian, our Native Hawaiian officiant, performs the ceremony and takes care of the Hawaii marriage license. A consultation with him is arranged once your deposit is paid.</p></details><details class="faq-item"><summary>Can family watch from home?</summary><p>Yes. Live streaming is included: we set up your phone on our tripod with our microphones so family and friends can watch your vows live.</p></details><details class="faq-item"><summary>Where on Maui can we elope?</summary><p>We photograph elopements on the beaches of Wailea, Makena and South Maui, including Maluaka Beach in Makena. Your beach permit is included.</p></details><details class="faq-item"><summary>What if it rains or it is cloudy?</summary><p>If it rains, we will attempt to reschedule. Clouds are welcome: they soften the light and skin tones, and some of our most beautiful images are made when it is partly cloudy.</p></details><details class="faq-item"><summary>Can we bring guests or chairs?</summary><p>Up to 15 guests are included and additional guests are $20 each, up to 30 on the beach or 100 on private property. Chairs are not allowed on the beach, only on private property.</p></details><details class="faq-item"><summary>How do we book?</summary><p>Book online with a $100 deposit to secure your date. The remaining $2,499 balance completes the package.</p></details></section>
+<section class="experience-cta"><div class="chapter" style="color:var(--gold)">ALL-INCLUSIVE · $2,599 · TAX INCLUDED</div><h2>Your Maui elopement, simply handled.</h2><p>A $100 deposit secures your date.</p><a class="button" href="pricing.html?openBooking=wedding-elopement">Secure Your Date</a></section>
 <!-- guides:from --><section class="guides-more" aria-labelledby="gm-h"><div class="gm-head"><span class="gm-k">Guides</span><h2 id="gm-h">From the Guides</h2><a class="gm-all" href="atlas.html#guides">All guides</a></div><div class="ggrid"><a class="gcard" href="maui-wedding-cost.html"><figure><img src="assets/guides/maui-wedding-cost.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">Proposals, weddings &amp; big gatherings</span><h3>What a Maui beach wedding costs in 2027</h3><p>What a Maui beach wedding costs in 2027: package prices compared, the marriage license, Hawaii tax, guest limits and what is included.</p><span class="go">Read the guide</span></a><a class="gcard" href="our-wedding-officiant-pick-for-maui-photography.html"><figure><img src="assets/guides/our-wedding-officiant-pick-for-maui-photography.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">Proposals, weddings &amp; big gatherings</span><h3>Our Choice for a Maui Wedding Officiant</h3><p>Why we recommend Derick Sebastian, a licensed Maui officiant and ukulele artist, based on our own experience photographing his ceremonies.</p><span class="go">Read the guide</span></a><a class="gcard" href="parking-wedding-maluaka-beach.html"><figure><img src="assets/guides/parking-wedding-maluaka-beach.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">Where to park</span><h3>Where to park at Maluaka Beach</h3><p>The correct upper parking lot, walking path, map link, and meeting areas for portrait sessions and wedding ceremonies in Makena.</p><span class="go">Read the guide</span></a></div></section><!-- /guides:from -->
 </main>
 
