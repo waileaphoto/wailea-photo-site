@@ -131,6 +131,16 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.market-hint{margin:10px 0 0;text-align:center;font-size:13px;color:#9e2b23;letter-spacing:.02em;transition:opacity .5s}
+.market-hint span{display:inline-block;animation:mhint 1.6s ease-in-out infinite}.market-hint span:last-child{animation-direction:reverse}
+@keyframes mhint{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
+.market-touched .market-hint{opacity:0}
+.market-plot{touch-action:pan-y;cursor:ew-resize}
+.mp-handle rect{fill:#b1443a}.mp-handle path{fill:#fffaf2}.mp-handle line{stroke:rgba(255,250,242,.6);stroke-width:1}
+.mp-nudge{animation:mnudge 1.8s ease-in-out infinite}
+@keyframes mnudge{0%,100%{translate:0 0}25%{translate:-6px 0}75%{translate:6px 0}}
+@media (prefers-reduced-motion:reduce){.market-hint span,.mp-nudge{animation:none}}
+
 .cost-badge{display:block;width:max-content;margin-top:8px;background:#9e2b23;color:#fffaf2;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:7px 10px 6px;border-radius:2px}
 @media (max-width:700px){.cost-table{min-width:0}.cost-table thead{display:none}.cost-table,.cost-table tbody,.cost-table tr,.cost-table td{display:block;width:100%}.cost-table tr{border:1px solid var(--line);margin-bottom:12px;padding:6px 14px;background:#fff}.cost-table tr.ours{background:var(--paper2)}.cost-table td{border:0;padding:6px 0}.cost-table td:first-child{font-weight:600;font-size:16px;padding-top:10px}.cost-table td[data-l]:before{content:attr(data-l);display:block;font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.55)}.cost-table-wrap{overflow:visible}}
 
@@ -138,6 +148,7 @@
 .page-hero.fit-hero>img{object-position:center center}
 @media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -243,7 +254,7 @@
 <h3 id="marketRangeHeading">ईमानदारी से तय की गई कीमत, खुलकर तुलना।</h3>
 <p class="market-range-intro">अपने ग्राहकों के प्रति हमारी प्रतिबद्धता है Maui में सबसे अच्छी कीमत देना। गारंटीशुदा...</p>
 <div class="market-tool">
-<div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">आपका बजट</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
+<div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">आपका बजट</label><output id="budgetOut" class="market-budget" for="budgetSlider">$995</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="995" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div><p class="market-hint" aria-hidden="true"><span>←</span> स्लाइडर या लाल रेखा को खींचकर अपना बजट तय करें <span>→</span></p></div>
 <p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
 <figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">हर डॉट एक प्रकाशित Maui विवाह पैकेज दर्शाता है: आगे कीमत, ऊपर एडिटेड फ़ोटो की संख्या। सबसे नीचे वाली लाइन के डॉट्स में कोई फ़ोटो शामिल नहीं है। हमारे दो डॉट्स हैं—सिर्फ़ फ़ोटोग्राफ़ी ($995) और ऑल-इनक्लूसिव पैकेज ($2,599)।</figcaption></figure>
 </div>
@@ -368,6 +379,6 @@
 <script src="/assets/site.js?v=20261105a"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
-<script src="/assets/market-range.js?v=20261107"></script>
+<script src="/assets/market-range.js?v=20261107b"></script>
 <button class="ed-snd" type="button" aria-label="संगीत चालू करें" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
 </body></html>
