@@ -115,7 +115,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
 <style>
-.cost-wrap{max-width:920px;margin:0 auto;padding:12vh 6vw 4vh}
+.cost-wrap{max-width:1120px;margin:0 auto;padding:12vh clamp(20px,3vw,48px) 4vh}
 .cost-wrap .lede{font:400 clamp(21px,2vw,27px)/1.55 var(--serif);margin:0 0 28px}
 .cost-wrap h2{font:400 clamp(34px,4vw,52px)/1.05 var(--serif);margin:56px 0 16px}
 .cost-wrap h3{font:500 22px/1.2 var(--serif);margin:28px 0 8px}
@@ -131,10 +131,14 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.cost-badge{display:block;width:max-content;margin-top:8px;background:#9e2b23;color:#fffaf2;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:7px 10px 6px;border-radius:2px}
+@media (max-width:700px){.cost-table{min-width:0}.cost-table thead{display:none}.cost-table,.cost-table tbody,.cost-table tr,.cost-table td{display:block;width:100%}.cost-table tr{border:1px solid var(--line);margin-bottom:12px;padding:6px 14px;background:#fff}.cost-table tr.ours{background:var(--paper2)}.cost-table td{border:0;padding:6px 0}.cost-table td:first-child{font-weight:600;font-size:16px;padding-top:10px}.cost-table td[data-l]:before{content:attr(data-l);display:block;font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.55)}.cost-table-wrap{overflow:visible}}
+
 .page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
 .page-hero.fit-hero>img{object-position:center center}
 @media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -226,10 +230,10 @@
 <div class="cost-table-wrap"><table class="cost-table">
 <thead><tr><th>패키지 종류</th><th>일반적인 가격</th><th>사진 촬영</th><th>주례자</th><th>꽃</th><th>허가증</th><th>세금</th></tr></thead>
 <tbody>
-<tr><td>주례자만 포함된 예식</td><td>약 $600~$700</td><td>없음</td><td>포함</td><td>레이 두 개</td><td>포함 또는 약 $50 추가</td><td>상이함</td></tr>
-<tr><td>주례자와 1시간 촬영</td><td>약 $1,450~$1,650</td><td>1시간, 35~40장</td><td>포함</td><td>레이 두 개</td><td>포함 또는 약 $50 추가</td><td>상이함</td></tr>
-<tr><td>플래너 비치 패키지</td><td>약 $2,000~$5,500 (세금 별도)</td><td>없음~1.5시간; 대부분 추가 옵션</td><td>포함</td><td>부케와 레이; 아치 또는 플라워 서클은 별도</td><td>포함</td><td>보통 추가</td></tr>
-<tr class="ours"><td>Wailea Photo 올인클루시브</td><td>$2,599</td><td>1.5시간, 24~48시간 내 사진 200장 이상</td><td>Derick Sebastian, 하와이 원주민 주례자</td><td>부케, 레이, 웨딩 아치</td><td>배상책임보험 포함</td><td>포함</td></tr>
+<tr><td>주례자만 포함된 예식</td><td data-l="Typical price">약 $600~$700</td><td data-l="Photography">없음</td><td data-l="Officiant">포함</td><td data-l="Flowers">레이 두 개</td><td data-l="Permit">포함 또는 약 $50 추가</td><td data-l="Tax">상이함</td></tr>
+<tr><td>주례자와 1시간 촬영</td><td data-l="Typical price">약 $1,450~$1,650</td><td data-l="Photography">1시간, 35~40장</td><td data-l="Officiant">포함</td><td data-l="Flowers">레이 두 개</td><td data-l="Permit">포함 또는 약 $50 추가</td><td data-l="Tax">상이함</td></tr>
+<tr><td>플래너 비치 패키지</td><td data-l="Typical price">약 $2,000~$5,500 (세금 별도)</td><td data-l="Photography">없음~1.5시간; 대부분 추가 옵션</td><td data-l="Officiant">포함</td><td data-l="Flowers">부케와 레이; 아치 또는 플라워 서클은 별도</td><td data-l="Permit">포함</td><td data-l="Tax">보통 추가</td></tr>
+<tr class="ours"><td>Wailea Photo 올인클루시브<span class="cost-badge">최고의 가치</span></td><td data-l="Typical price">$2,599</td><td data-l="Photography">1.5시간, 24~48시간 내 사진 200장 이상</td><td data-l="Officiant">Derick Sebastian, 하와이 원주민 주례자</td><td data-l="Flowers">부케, 레이, 웨딩 아치</td><td data-l="Permit">배상책임보험 포함</td><td data-l="Tax">포함</td></tr>
 </tbody></table></div>
 <p class="cost-note">가격 범위는 온라인에 공개된 Maui 웨딩 패키지들을 바탕으로 하며, 2026년 11월 기준으로 확인한 정보입니다. 가격은 변동될 수 있으니 견적은 직접 확인하시기 바랍니다.</p>
 <div class="cost-cta"><a class="button" href="/ko/maui-wedding-photographer#wedding-package">패키지에 포함된 내용 보기</a><a class="button-dark" style="display:inline-block;text-decoration:none;color:var(--ink);padding:17px 24px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--ink)" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">웨딩 샘플 보기</a></div>
@@ -241,10 +245,10 @@
 <div class="market-tool">
 <div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">예산</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
 <p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
-<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">점 하나하나가 공개된 Maui 웨딩 패키지 하나를 나타냅니다: 가로축은 가격, 세로축은 편집된 이미지 수입니다. 맨 아래 줄의 점들은 사진이 포함되지 않은 패키지입니다. 열다섯 개 중 열세 개가 두 수치를 모두 공개하고 있습니다.</figcaption></figure>
+<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">각 점은 공개된 Maui 웨딩 패키지 하나를 나타내며, 가로축은 가격, 세로축은 보정 사진 수입니다. 맨 아래 줄의 점들은 사진이 전혀 포함되지 않은 패키지입니다. 저희의 두 점은 촬영만 포함된 상품($995)과 올인클루시브 패키지($2,599)입니다.</figcaption></figure>
 </div>
 <div class="market-points">
-<div class="market-point"><strong>어떤 패키지보다 더 많은 사진을, 더 저렴하게.</strong>저희가 조사한 패키지 중 가장 많은 사진을 포함한 곳도 보정 사진 150장이 전부였고, 가격은 세전 $4,225였습니다. 저희 패키지는 세금 포함 $2,599에 200장 이상을 제공합니다.</div>
+<div class="market-point"><strong>어떤 패키지보다 더 많은 사진을, 더 저렴하게.</strong>공개된 패키지 중 가장 많이 포함된 것도 보정 사진 150장에 세전 $4,225입니다. 저희는 촬영만 $995에 200장 이상을 포함하며, 세금 포함 올인클루시브는 $2,599입니다.</div>
 <div class="market-point"><strong>사진이 가장 중요합니다.</strong>저희가 찾아본 패키지 중 세 곳은 사진이 아예 포함되어 있지 않았고, 네 곳은 35장에서 40장 정도만 포함되어 있었습니다. 저희 패키지는 200장 이상을 24~48시간 내에 전달해 드립니다.</div>
 <div class="market-point"><strong>나중에 추가되는 비용은 없습니다.</strong>주례자, 꽃 장식과 아치, 비치 허가증, 보험료와 세금이 모두 가격에 포함되어 있습니다. 공개된 가격 대부분은 세전 금액입니다.</div>
 </div>
@@ -264,7 +268,8 @@
 <tr><td>D1</td><td data-price="2000">$2,000</td><td>명시되지 않음</td><td data-images="0">없음</td></tr>
 <tr><td>A3</td><td data-price="2367">$2,367</td><td>명시되지 않음</td><td data-images="35">35</td></tr>
 <tr><td>B3</td><td data-price="2400">$2,400</td><td>1시간</td><td data-images="40">40장, 영상 추가</td></tr>
-<tr class="market-row-us"><td>Wailea Photo</td><td data-price="2599">$2,599, 세금 포함</td><td>1시간 30분</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="Photography only"><td>Wailea Photo, 촬영만</td><td data-price="995">$995</td><td>1시간 30분</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="All-inclusive"><td>Wailea Photo, 올인클루시브</td><td data-price="2599">$2,599, 세금 포함</td><td>1시간 30분</td><td data-images="200">200+</td></tr>
 <tr><td>E1</td><td data-price="3000">$3,000</td><td>1–2시간</td><td>명시되지 않음</td></tr>
 <tr><td>C2</td><td data-price="3100">$3,100</td><td>명시되지 않음</td><td>명시되지 않음</td></tr>
 <tr><td>C3</td><td data-price="3475">$3,475</td><td>1시간 30분</td><td data-images="100">100</td></tr>
@@ -363,6 +368,6 @@
 <script src="/assets/site.js?v=20261105a"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
-<script src="/assets/market-range.js"></script>
+<script src="/assets/market-range.js?v=20261107"></script>
 <button class="ed-snd" type="button" aria-label="음악 켜기" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
 </body></html>

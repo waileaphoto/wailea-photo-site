@@ -115,7 +115,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
 <style>
-.cost-wrap{max-width:920px;margin:0 auto;padding:12vh 6vw 4vh}
+.cost-wrap{max-width:1120px;margin:0 auto;padding:12vh clamp(20px,3vw,48px) 4vh}
 .cost-wrap .lede{font:400 clamp(21px,2vw,27px)/1.55 var(--serif);margin:0 0 28px}
 .cost-wrap h2{font:400 clamp(34px,4vw,52px)/1.05 var(--serif);margin:56px 0 16px}
 .cost-wrap h3{font:500 22px/1.2 var(--serif);margin:28px 0 8px}
@@ -131,10 +131,14 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.cost-badge{display:block;width:max-content;margin-top:8px;background:#9e2b23;color:#fffaf2;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:7px 10px 6px;border-radius:2px}
+@media (max-width:700px){.cost-table{min-width:0}.cost-table thead{display:none}.cost-table,.cost-table tbody,.cost-table tr,.cost-table td{display:block;width:100%}.cost-table tr{border:1px solid var(--line);margin-bottom:12px;padding:6px 14px;background:#fff}.cost-table tr.ours{background:var(--paper2)}.cost-table td{border:0;padding:6px 0}.cost-table td:first-child{font-weight:600;font-size:16px;padding-top:10px}.cost-table td[data-l]:before{content:attr(data-l);display:block;font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.55)}.cost-table-wrap{overflow:visible}}
+
 .page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
 .page-hero.fit-hero>img{object-position:center center}
 @media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -226,10 +230,10 @@
 <div class="cost-table-wrap"><table class="cost-table">
 <thead><tr><th>पैकेज का प्रकार</th><th>सामान्य कीमत</th><th>फ़ोटोग्राफ़ी</th><th>विवाह अधिकारी</th><th>फूल</th><th>परमिट</th><th>कर</th></tr></thead>
 <tbody>
-<tr><td>केवल विवाह अधिकारी वाला समारोह</td><td>लगभग $600–$700</td><td>कोई नहीं</td><td>शामिल</td><td>दो लेई</td><td>शामिल या लगभग $50 अतिरिक्त</td><td>अलग-अलग होता है</td></tr>
-<tr><td>विवाह अधिकारी के साथ 1 घंटे की तस्वीरें</td><td>लगभग $1,450–$1,650</td><td>1 घंटा, 35–40 तस्वीरें</td><td>शामिल</td><td>दो लेई</td><td>शामिल या लगभग $50 अतिरिक्त</td><td>अलग-अलग होता है</td></tr>
-<tr><td>प्लानर बीच पैकेज</td><td>लगभग $2,000–$5,500 प्लस कर</td><td>कोई नहीं से 1.5 घंटे तक; अक्सर एक ऐड-ऑन के रूप में</td><td>शामिल</td><td>गुलदस्ता और लेई; मेहराब या फूलों का घेरा अतिरिक्त</td><td>शामिल</td><td>आमतौर पर जोड़ा जाता है</td></tr>
-<tr class="ours"><td>Wailea Photo सब कुछ शामिल</td><td>$2,599</td><td>1.5 घंटे, 24–48 घंटों में 200+ तस्वीरें</td><td>Derick Sebastian, मूल हवाईयाई विवाह अधिकारी</td><td>गुलदस्ता, लेई और विवाह मेहराब</td><td>शामिल, देयता बीमा सहित</td><td>शामिल</td></tr>
+<tr><td>केवल विवाह अधिकारी वाला समारोह</td><td data-l="Typical price">लगभग $600–$700</td><td data-l="Photography">कोई नहीं</td><td data-l="Officiant">शामिल</td><td data-l="Flowers">दो लेई</td><td data-l="Permit">शामिल या लगभग $50 अतिरिक्त</td><td data-l="Tax">अलग-अलग होता है</td></tr>
+<tr><td>विवाह अधिकारी के साथ 1 घंटे की तस्वीरें</td><td data-l="Typical price">लगभग $1,450–$1,650</td><td data-l="Photography">1 घंटा, 35–40 तस्वीरें</td><td data-l="Officiant">शामिल</td><td data-l="Flowers">दो लेई</td><td data-l="Permit">शामिल या लगभग $50 अतिरिक्त</td><td data-l="Tax">अलग-अलग होता है</td></tr>
+<tr><td>प्लानर बीच पैकेज</td><td data-l="Typical price">लगभग $2,000–$5,500 प्लस कर</td><td data-l="Photography">कोई नहीं से 1.5 घंटे तक; अक्सर एक ऐड-ऑन के रूप में</td><td data-l="Officiant">शामिल</td><td data-l="Flowers">गुलदस्ता और लेई; मेहराब या फूलों का घेरा अतिरिक्त</td><td data-l="Permit">शामिल</td><td data-l="Tax">आमतौर पर जोड़ा जाता है</td></tr>
+<tr class="ours"><td>Wailea Photo ऑल-इनक्लूसिव<span class="cost-badge">सबसे बेहतर विकल्प</span></td><td data-l="Typical price">$2,599</td><td data-l="Photography">1.5 घंटे, 24–48 घंटों में 200+ तस्वीरें</td><td data-l="Officiant">Derick Sebastian, मूल हवाईयाई विवाह अधिकारी</td><td data-l="Flowers">गुलदस्ता, लेई और विवाह मेहराब</td><td data-l="Permit">शामिल, देयता बीमा सहित</td><td data-l="Tax">शामिल</td></tr>
 </tbody></table></div>
 <p class="cost-note">ये सीमाएँ ऑनलाइन प्रकाशित Maui वेडिंग पैकेजों से ली गई हैं, नवंबर 2026 में जांची गईं। कीमतें बदलती रहती हैं; किसी भी कोटेशन की पुष्टि सीधे करें।</p>
 <div class="cost-cta"><a class="button" href="/hi/maui-wedding-photographer#wedding-package">देखें हमारे पैकेज में क्या शामिल है</a><a class="button-dark" style="display:inline-block;text-decoration:none;color:var(--ink);padding:17px 24px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--ink)" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">एक सैंपल वेडिंग देखें</a></div>
@@ -241,10 +245,10 @@
 <div class="market-tool">
 <div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">आपका बजट</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
 <p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
-<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">हर बिंदु एक प्रकाशित Maui शादी पैकेज है: कीमत आड़ी धुरी पर, संपादित तस्वीरें खड़ी धुरी पर। सबसे नीचे की रेखा पर मौजूद बिंदुओं में कोई तस्वीर शामिल नहीं है। पंद्रह में से तेरह दोनों आंकड़े प्रकाशित करते हैं।</figcaption></figure>
+<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">हर डॉट एक प्रकाशित Maui विवाह पैकेज दर्शाता है: आगे कीमत, ऊपर एडिटेड फ़ोटो की संख्या। सबसे नीचे वाली लाइन के डॉट्स में कोई फ़ोटो शामिल नहीं है। हमारे दो डॉट्स हैं—सिर्फ़ फ़ोटोग्राफ़ी ($995) और ऑल-इनक्लूसिव पैकेज ($2,599)।</figcaption></figure>
 </div>
 <div class="market-points">
-<div class="market-point"><strong>किसी भी पैकेज से ज़्यादा तस्वीरें, कम कीमत में।</strong>हमें मिले सबसे बड़े प्रकाशित पैकेज में भी सिर्फ़ 150 संपादित तस्वीरें शामिल हैं, वो भी $4,225 में, टैक्स से पहले। हमारे पैकेज में टैक्स सहित $2,599 में 200+ तस्वीरें शामिल हैं।</div>
+<div class="market-point"><strong>किसी भी पैकेज से ज़्यादा फ़ोटो, कम कीमत में।</strong>किसी भी प्रकाशित पैकेज में अधिकतम 150 एडिटेड फ़ोटो शामिल हैं, वह भी $4,225 में, टैक्स से पहले। हमारे पैकेज में 200+ फ़ोटो शामिल हैं, सिर्फ़ फ़ोटोग्राफ़ी के लिए $995 में, या टैक्स सहित ऑल-इनक्लूसिव $2,599 में।</div>
 <div class="market-point"><strong>तस्वीरें सबसे पहले आती हैं।</strong>हमें मिले पैकेजों में से तीन में कोई तस्वीर शामिल ही नहीं है, और चार अन्य में सिर्फ़ 35 से 40 तस्वीरें शामिल हैं। हमारे पैकेज में 200+ तस्वीरें शामिल हैं, जो 24–48 घंटों में डिलीवर होती हैं।</div>
 <div class="market-point"><strong>आख़िर में कुछ भी नहीं जोड़ा जाता।</strong>ऑफ़िशिएंट, फूल और आर्च, बीच परमिट, बीमा और कर - सब कीमत में शामिल हैं। अधिकतर प्रकाशित कीमतें कर से पहले की होती हैं।</div>
 </div>
@@ -264,7 +268,8 @@
 <tr><td>D1</td><td data-price="2000">$2,000</td><td>बताया नहीं गया</td><td data-images="0">कोई नहीं</td></tr>
 <tr><td>A3</td><td data-price="2367">$2,367</td><td>बताया नहीं गया</td><td data-images="35">35</td></tr>
 <tr><td>B3</td><td data-price="2400">$2,400</td><td>1 घंटा</td><td data-images="40">40, साथ में वीडियो</td></tr>
-<tr class="market-row-us"><td>Wailea Photo</td><td data-price="2599">$2,599, कर सहित</td><td>1.5 घंटे</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="Photography only"><td>Wailea Photo, सिर्फ़ फ़ोटोग्राफ़ी</td><td data-price="995">$995</td><td>1.5 घंटे</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="All-inclusive"><td>Wailea Photo, ऑल-इनक्लूसिव</td><td data-price="2599">$2,599, कर सहित</td><td>1.5 घंटे</td><td data-images="200">200+</td></tr>
 <tr><td>E1</td><td data-price="3000">$3,000</td><td>1–2 घंटे</td><td>बताया नहीं गया</td></tr>
 <tr><td>C2</td><td data-price="3100">$3,100</td><td>बताया नहीं गया</td><td>बताया नहीं गया</td></tr>
 <tr><td>C3</td><td data-price="3475">$3,475</td><td>1.5 घंटे</td><td data-images="100">100</td></tr>
@@ -363,6 +368,6 @@
 <script src="/assets/site.js?v=20261105a"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
-<script src="/assets/market-range.js"></script>
+<script src="/assets/market-range.js?v=20261107"></script>
 <button class="ed-snd" type="button" aria-label="संगीत चालू करें" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
 </body></html>

@@ -115,7 +115,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
 <style>
-.cost-wrap{max-width:920px;margin:0 auto;padding:12vh 6vw 4vh}
+.cost-wrap{max-width:1120px;margin:0 auto;padding:12vh clamp(20px,3vw,48px) 4vh}
 .cost-wrap .lede{font:400 clamp(21px,2vw,27px)/1.55 var(--serif);margin:0 0 28px}
 .cost-wrap h2{font:400 clamp(34px,4vw,52px)/1.05 var(--serif);margin:56px 0 16px}
 .cost-wrap h3{font:500 22px/1.2 var(--serif);margin:28px 0 8px}
@@ -131,10 +131,14 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.cost-badge{display:block;width:max-content;margin-top:8px;background:#9e2b23;color:#fffaf2;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:7px 10px 6px;border-radius:2px}
+@media (max-width:700px){.cost-table{min-width:0}.cost-table thead{display:none}.cost-table,.cost-table tbody,.cost-table tr,.cost-table td{display:block;width:100%}.cost-table tr{border:1px solid var(--line);margin-bottom:12px;padding:6px 14px;background:#fff}.cost-table tr.ours{background:var(--paper2)}.cost-table td{border:0;padding:6px 0}.cost-table td:first-child{font-weight:600;font-size:16px;padding-top:10px}.cost-table td[data-l]:before{content:attr(data-l);display:block;font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.55)}.cost-table-wrap{overflow:visible}}
+
 .page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
 .page-hero.fit-hero>img{object-position:center center}
 @media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -226,10 +230,10 @@
 <div class="cost-table-wrap"><table class="cost-table">
 <thead><tr><th>パッケージの種類</th><th>一般的な料金</th><th>撮影</th><th>式官</th><th>お花</th><th>許可証</th><th>税金</th></tr></thead>
 <tbody>
-<tr><td>式官のみのセレモニー</td><td>約$600〜$700</td><td>なし</td><td>含まれます</td><td>レイ2つ</td><td>含まれる、または約$50の追加</td><td>ケースによる</td></tr>
-<tr><td>式官と1時間の撮影</td><td>約$1,450〜$1,650</td><td>1時間、35〜40枚</td><td>含まれます</td><td>レイ2つ</td><td>含まれる、または約$50の追加</td><td>ケースによる</td></tr>
-<tr><td>プランナーによるビーチパッケージ</td><td>約$2,000〜$5,500（税別）</td><td>なし〜1.5時間、追加オプションの場合が多い</td><td>含まれます</td><td>ブーケとレイ付き、アーチやフラワーサークルは別料金</td><td>含まれます</td><td>通常は追加料金</td></tr>
-<tr class="ours"><td>Wailea Photoのオールインクルーシブ</td><td>$2,599</td><td>1.5時間の撮影、200枚以上の写真を24〜48時間以内に</td><td>Derick Sebastian（ネイティブ・ハワイアンの式官）</td><td>ブーケ、レイ、ウェディングアーチ</td><td>含まれます（賠償責任保険付き）</td><td>含まれます</td></tr>
+<tr><td>式官のみのセレモニー</td><td data-l="Typical price">約$600〜$700</td><td data-l="Photography">なし</td><td data-l="Officiant">含まれます</td><td data-l="Flowers">レイ2つ</td><td data-l="Permit">含まれる、または約$50の追加</td><td data-l="Tax">ケースによる</td></tr>
+<tr><td>式官と1時間の撮影</td><td data-l="Typical price">約$1,450〜$1,650</td><td data-l="Photography">1時間、35〜40枚</td><td data-l="Officiant">含まれます</td><td data-l="Flowers">レイ2つ</td><td data-l="Permit">含まれる、または約$50の追加</td><td data-l="Tax">ケースによる</td></tr>
+<tr><td>プランナーによるビーチパッケージ</td><td data-l="Typical price">約$2,000〜$5,500（税別）</td><td data-l="Photography">なし〜1.5時間、追加オプションの場合が多い</td><td data-l="Officiant">含まれます</td><td data-l="Flowers">ブーケとレイ付き、アーチやフラワーサークルは別料金</td><td data-l="Permit">含まれます</td><td data-l="Tax">通常は追加料金</td></tr>
+<tr class="ours"><td>Wailea Photo オールインクルーシブ<span class="cost-badge">最もお得</span></td><td data-l="Typical price">$2,599</td><td data-l="Photography">1.5時間の撮影、200枚以上の写真を24〜48時間以内に</td><td data-l="Officiant">Derick Sebastian（ネイティブ・ハワイアンの式官）</td><td data-l="Flowers">ブーケ、レイ、ウェディングアーチ</td><td data-l="Permit">含まれます（賠償責任保険付き）</td><td data-l="Tax">含まれます</td></tr>
 </tbody></table></div>
 <p class="cost-note">料金の幅は、オンラインで公開されているMauiのウェディングパッケージ（2026年11月時点で確認）をもとにしています。価格は変動するため、見積もりは直接ご確認ください。</p>
 <div class="cost-cta"><a class="button" href="/ja/maui-wedding-photographer#wedding-package">パッケージの内容を見る</a><a class="button-dark" style="display:inline-block;text-decoration:none;color:var(--ink);padding:17px 24px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--ink)" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">ウェディングの実例を見る</a></div>
@@ -241,10 +245,10 @@
 <div class="market-tool">
 <div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">ご予算</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
 <p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
-<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">点はそれぞれ、公開されているMauiのウェディングプラン一つを表しています。横軸が価格、縦軸が編集済み写真の点数です。一番下の線上にある点は写真が含まれていないプランです。15社中13社が両方の数値を公開しています。</figcaption></figure>
+<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">それぞれの点は、公開されているMauiのウェディングパッケージを表しています（横軸が価格、縦軸が編集済み写真の枚数）。一番下の線上にある点は、写真が含まれていないプランです。私たちの2つの点は、撮影のみ（$995）とオールインクルーシブパッケージ（$2,599）です。</figcaption></figure>
 </div>
 <div class="market-points">
-<div class="market-point"><strong>どのパッケージよりも多くの写真を、より手頃な価格で。</strong>公開されているパッケージの中で最も多いものでも、編集済み写真150枚、税抜$4,225です。私たちのパッケージは200枚以上で、税込$2,599です。</div>
+<div class="market-point"><strong>どのパッケージよりも多くの写真を、よりお得な価格で。</strong>公開されているパッケージの中で最も多いものでも、税抜$4,225で編集済み写真150枚までです。私たちのプランなら、撮影のみ$995で200枚以上、または税込$2,599のオールインクルーシブでご利用いただけます。</div>
 <div class="market-point"><strong>写真を何より大切に。</strong>私たちが調べたパッケージのうち3社は写真がまったく含まれておらず、さらに4社は35〜40枚のみでした。私たちのパッケージには200枚以上が含まれ、24〜48時間以内にお届けします。</div>
 <div class="market-point"><strong>後から追加料金はありません。</strong>司会者、お花とアーチ、ビーチ許可証、保険、税金まですべて込みの価格です。公開されている価格の多くは税抜です。</div>
 </div>
@@ -264,7 +268,8 @@
 <tr><td>D1</td><td data-price="2000">$2,000</td><td>記載なし</td><td data-images="0">なし</td></tr>
 <tr><td>A3</td><td data-price="2367">$2,367</td><td>記載なし</td><td data-images="35">35</td></tr>
 <tr><td>B3</td><td data-price="2400">$2,400</td><td>1時間</td><td data-images="40">40点、動画付き</td></tr>
-<tr class="market-row-us"><td>Wailea Photo</td><td data-price="2599">$2,599（税込）</td><td>1.5時間</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="Photography only"><td>Wailea Photo、撮影のみ</td><td data-price="995">$995</td><td>1.5時間</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="All-inclusive"><td>Wailea Photo、オールインクルーシブ</td><td data-price="2599">$2,599（税込）</td><td>1.5時間</td><td data-images="200">200+</td></tr>
 <tr><td>E1</td><td data-price="3000">$3,000</td><td>1〜2時間</td><td>記載なし</td></tr>
 <tr><td>C2</td><td data-price="3100">$3,100</td><td>記載なし</td><td>記載なし</td></tr>
 <tr><td>C3</td><td data-price="3475">$3,475</td><td>1.5時間</td><td data-images="100">100</td></tr>
@@ -363,6 +368,6 @@
 <script src="/assets/site.js?v=20261105a"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
-<script src="/assets/market-range.js"></script>
+<script src="/assets/market-range.js?v=20261107"></script>
 <button class="ed-snd" type="button" aria-label="音楽をオンにする" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
 </body></html>

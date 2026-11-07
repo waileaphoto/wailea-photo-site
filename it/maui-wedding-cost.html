@@ -115,7 +115,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
 <style>
-.cost-wrap{max-width:920px;margin:0 auto;padding:12vh 6vw 4vh}
+.cost-wrap{max-width:1120px;margin:0 auto;padding:12vh clamp(20px,3vw,48px) 4vh}
 .cost-wrap .lede{font:400 clamp(21px,2vw,27px)/1.55 var(--serif);margin:0 0 28px}
 .cost-wrap h2{font:400 clamp(34px,4vw,52px)/1.05 var(--serif);margin:56px 0 16px}
 .cost-wrap h3{font:500 22px/1.2 var(--serif);margin:28px 0 8px}
@@ -131,10 +131,14 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.cost-badge{display:block;width:max-content;margin-top:8px;background:#9e2b23;color:#fffaf2;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:7px 10px 6px;border-radius:2px}
+@media (max-width:700px){.cost-table{min-width:0}.cost-table thead{display:none}.cost-table,.cost-table tbody,.cost-table tr,.cost-table td{display:block;width:100%}.cost-table tr{border:1px solid var(--line);margin-bottom:12px;padding:6px 14px;background:#fff}.cost-table tr.ours{background:var(--paper2)}.cost-table td{border:0;padding:6px 0}.cost-table td:first-child{font-weight:600;font-size:16px;padding-top:10px}.cost-table td[data-l]:before{content:attr(data-l);display:block;font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.55)}.cost-table-wrap{overflow:visible}}
+
 .page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
 .page-hero.fit-hero>img{object-position:center center}
 @media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -226,10 +230,10 @@
 <div class="cost-table-wrap"><table class="cost-table">
 <thead><tr><th>Tipo di pacchetto</th><th>Prezzo tipico</th><th>Fotografia</th><th>Celebrante</th><th>Fiori</th><th>Permesso</th><th>Tasse</th></tr></thead>
 <tbody>
-<tr><td>Cerimonia con il solo celebrante</td><td>Circa $600–$700</td><td>Nessuno</td><td>Incluso</td><td>Due lei</td><td>Incluso oppure circa $50 in più</td><td>Variabile</td></tr>
-<tr><td>Celebrante più 1 ora di foto</td><td>Circa $1,450–$1,650</td><td>1 ora, 35–40 immagini</td><td>Incluso</td><td>Due lei</td><td>Incluso oppure circa $50 in più</td><td>Variabile</td></tr>
-<tr><td>Pacchetto spiaggia con wedding planner</td><td>Circa $2,000–$5,500 più tasse</td><td>Da nessuna a 1,5 ore; spesso a parte</td><td>Incluso</td><td>Bouquet e lei; arco o cerchio floreale a parte</td><td>Incluso</td><td>Di solito aggiunto a parte</td></tr>
-<tr class="ours"><td>Wailea Photo tutto incluso</td><td>$2,599</td><td>1,5 ore, oltre 200 immagini in 24–48 ore</td><td>Derick Sebastian, celebrante hawaiano nativo</td><td>Bouquet, lei e arco nuziale</td><td>Incluso, con assicurazione di responsabilità civile</td><td>Incluso</td></tr>
+<tr><td>Cerimonia con il solo celebrante</td><td data-l="Typical price">Circa $600–$700</td><td data-l="Photography">Nessuno</td><td data-l="Officiant">Incluso</td><td data-l="Flowers">Due lei</td><td data-l="Permit">Incluso oppure circa $50 in più</td><td data-l="Tax">Variabile</td></tr>
+<tr><td>Celebrante più 1 ora di foto</td><td data-l="Typical price">Circa $1,450–$1,650</td><td data-l="Photography">1 ora, 35–40 immagini</td><td data-l="Officiant">Incluso</td><td data-l="Flowers">Due lei</td><td data-l="Permit">Incluso oppure circa $50 in più</td><td data-l="Tax">Variabile</td></tr>
+<tr><td>Pacchetto spiaggia con wedding planner</td><td data-l="Typical price">Circa $2,000–$5,500 più tasse</td><td data-l="Photography">Da nessuna a 1,5 ore; spesso a parte</td><td data-l="Officiant">Incluso</td><td data-l="Flowers">Bouquet e lei; arco o cerchio floreale a parte</td><td data-l="Permit">Incluso</td><td data-l="Tax">Di solito aggiunto a parte</td></tr>
+<tr class="ours"><td>Wailea Photo tutto incluso<span class="cost-badge">Il miglior valore</span></td><td data-l="Typical price">$2,599</td><td data-l="Photography">1,5 ore, oltre 200 immagini in 24–48 ore</td><td data-l="Officiant">Derick Sebastian, celebrante hawaiano nativo</td><td data-l="Flowers">Bouquet, lei e arco nuziale</td><td data-l="Permit">Incluso, con assicurazione di responsabilità civile</td><td data-l="Tax">Incluso</td></tr>
 </tbody></table></div>
 <p class="cost-note">Le fasce di prezzo sono tratte dai pacchetti matrimonio pubblicati online per Maui, verificati a novembre 2026. I prezzi cambiano; confermi sempre direttamente ogni preventivo.</p>
 <div class="cost-cta"><a class="button" href="/it/maui-wedding-photographer#wedding-package">Scopra cosa include il nostro pacchetto</a><a class="button-dark" style="display:inline-block;text-decoration:none;color:var(--ink);padding:17px 24px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--ink)" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">Guardi un esempio di matrimonio</a></div>
@@ -241,10 +245,10 @@
 <div class="market-tool">
 <div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">Il Suo budget</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
 <p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
-<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">Ogni punto rappresenta un pacchetto matrimoniale pubblicato a Maui: il prezzo in orizzontale, le immagini modificate in verticale. I punti sulla linea inferiore non includono fotografie. Tredici dei quindici pacchetti pubblicano entrambi i dati.</figcaption></figure>
+<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">Ogni punto rappresenta un pacchetto matrimoniale pubblicato per Maui: il prezzo in orizzontale, le immagini elaborate in verticale. I punti sulla linea in basso non includono fotografie. I nostri due punti sono solo fotografia ($995) e il pacchetto tutto incluso ($2,599).</figcaption></figure>
 </div>
 <div class="market-points">
-<div class="market-point"><strong>Più immagini di qualsiasi altro pacchetto, a un prezzo inferiore.</strong>Il massimo che qualsiasi pacchetto pubblicato include sono 150 immagini modificate, per $4,225 prima delle tasse. Il nostro ne include oltre 200 per $2,599, tasse incluse.</div>
+<div class="market-point"><strong>Più immagini di qualsiasi altro pacchetto, a meno.</strong>Il massimo incluso in un pacchetto pubblicato è 150 immagini elaborate, per $4,225 prima delle tasse. Il nostro ne include oltre 200 per $995 solo fotografia, oppure $2,599 tutto incluso con le tasse.</div>
 <div class="market-point"><strong>Le fotografie vengono prima di tutto.</strong>Tre dei pacchetti che abbiamo trovato non includono alcuna fotografia, e altri quattro includono da 35 a 40 immagini. Il nostro ne include oltre 200, consegnate in 24–48 ore.</div>
 <div class="market-point"><strong>Niente sorprese alla fine.</strong>Officiante, fiori e arco, il permesso per la spiaggia, l'assicurazione e le tasse sono tutti inclusi nel prezzo. La maggior parte dei prezzi pubblicati sono al netto delle tasse.</div>
 </div>
@@ -264,7 +268,8 @@
 <tr><td>D1</td><td data-price="2000">$2,000</td><td>non indicato</td><td data-images="0">Nessuno</td></tr>
 <tr><td>A3</td><td data-price="2367">$2,367</td><td>non indicato</td><td data-images="35">35</td></tr>
 <tr><td>B3</td><td data-price="2400">$2,400</td><td>1 ora</td><td data-images="40">40, più video</td></tr>
-<tr class="market-row-us"><td>Wailea Photo</td><td data-price="2599">$2,599, tasse incluse</td><td>1,5 ore</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="Photography only"><td>Wailea Photo, solo fotografia</td><td data-price="995">$995</td><td>1,5 ore</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="All-inclusive"><td>Wailea Photo, tutto incluso</td><td data-price="2599">$2,599, tasse incluse</td><td>1,5 ore</td><td data-images="200">200+</td></tr>
 <tr><td>E1</td><td data-price="3000">$3,000</td><td>1–2 ore</td><td>non indicato</td></tr>
 <tr><td>C2</td><td data-price="3100">$3,100</td><td>non indicato</td><td>non indicato</td></tr>
 <tr><td>C3</td><td data-price="3475">$3,475</td><td>1,5 ore</td><td data-images="100">100</td></tr>
@@ -363,6 +368,6 @@
 <script src="/assets/site.js?v=20261105a"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
-<script src="/assets/market-range.js"></script>
+<script src="/assets/market-range.js?v=20261107"></script>
 <button class="ed-snd" type="button" aria-label="Attiva la musica" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
 </body></html>

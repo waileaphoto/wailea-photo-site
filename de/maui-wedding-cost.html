@@ -115,7 +115,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
 <style>
-.cost-wrap{max-width:920px;margin:0 auto;padding:12vh 6vw 4vh}
+.cost-wrap{max-width:1120px;margin:0 auto;padding:12vh clamp(20px,3vw,48px) 4vh}
 .cost-wrap .lede{font:400 clamp(21px,2vw,27px)/1.55 var(--serif);margin:0 0 28px}
 .cost-wrap h2{font:400 clamp(34px,4vw,52px)/1.05 var(--serif);margin:56px 0 16px}
 .cost-wrap h3{font:500 22px/1.2 var(--serif);margin:28px 0 8px}
@@ -131,10 +131,14 @@
 .cost-cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
 .cost-cta .button{margin-top:0}
 @media (max-width:860px){.cost-wrap{padding:80px 20px 24px}}
+.cost-badge{display:block;width:max-content;margin-top:8px;background:#9e2b23;color:#fffaf2;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:7px 10px 6px;border-radius:2px}
+@media (max-width:700px){.cost-table{min-width:0}.cost-table thead{display:none}.cost-table,.cost-table tbody,.cost-table tr,.cost-table td{display:block;width:100%}.cost-table tr{border:1px solid var(--line);margin-bottom:12px;padding:6px 14px;background:#fff}.cost-table tr.ours{background:var(--paper2)}.cost-table td{border:0;padding:6px 0}.cost-table td:first-child{font-weight:600;font-size:16px;padding-top:10px}.cost-table td[data-l]:before{content:attr(data-l);display:block;font:600 10px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(27,25,23,.55)}.cost-table-wrap{overflow:visible}}
+
 .page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
 .page-hero.fit-hero>img{object-position:center center}
 @media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
 </style>
+
 
 
 
@@ -226,10 +230,10 @@
 <div class="cost-table-wrap"><table class="cost-table">
 <thead><tr><th>Pakettyp</th><th>Üblicher Preis</th><th>Fotografie</th><th>Trauredner</th><th>Blumen</th><th>Genehmigung</th><th>Steuer</th></tr></thead>
 <tbody>
-<tr><td>Reine Trauzeremonie</td><td>Etwa $600–$700</td><td>Keine</td><td>Inklusive</td><td>Zwei Leis</td><td>Inklusive oder etwa $50 Aufpreis</td><td>Variiert</td></tr>
-<tr><td>Trauredner plus 1 Stunde Fotografie</td><td>Etwa $1.450–$1.650</td><td>1 Stunde, 35–40 Bilder</td><td>Inklusive</td><td>Zwei Leis</td><td>Inklusive oder etwa $50 Aufpreis</td><td>Variiert</td></tr>
-<tr><td>Planer-Strandpaket</td><td>Etwa $2.000–$5.500 zuzüglich Steuer</td><td>Keine bis 1,5 Stunden; oft als Zusatzleistung</td><td>Inklusive</td><td>Brautstrauß und Leis; Bogen oder Blumenkreis gegen Aufpreis</td><td>Inklusive</td><td>Meist als Zusatz gebucht</td></tr>
-<tr class="ours"><td>Wailea Photo Rundum-sorglos-Paket</td><td>$2,599</td><td>1,5 Stunden, 200+ Bilder in 24–48 Stunden</td><td>Derick Sebastian, gebürtig hawaiianischer Trauredner</td><td>Brautstrauß, Leis und Hochzeitsbogen</td><td>Inklusive, mit Haftpflichtversicherung</td><td>Inklusive</td></tr>
+<tr><td>Reine Trauzeremonie</td><td data-l="Typical price">Etwa $600–$700</td><td data-l="Photography">Keine</td><td data-l="Officiant">Inklusive</td><td data-l="Flowers">Zwei Leis</td><td data-l="Permit">Inklusive oder etwa $50 Aufpreis</td><td data-l="Tax">Variiert</td></tr>
+<tr><td>Trauredner plus 1 Stunde Fotografie</td><td data-l="Typical price">Etwa $1.450–$1.650</td><td data-l="Photography">1 Stunde, 35–40 Bilder</td><td data-l="Officiant">Inklusive</td><td data-l="Flowers">Zwei Leis</td><td data-l="Permit">Inklusive oder etwa $50 Aufpreis</td><td data-l="Tax">Variiert</td></tr>
+<tr><td>Planer-Strandpaket</td><td data-l="Typical price">Etwa $2.000–$5.500 zuzüglich Steuer</td><td data-l="Photography">Keine bis 1,5 Stunden; oft als Zusatzleistung</td><td data-l="Officiant">Inklusive</td><td data-l="Flowers">Brautstrauß und Leis; Bogen oder Blumenkreis gegen Aufpreis</td><td data-l="Permit">Inklusive</td><td data-l="Tax">Meist als Zusatz gebucht</td></tr>
+<tr class="ours"><td>Wailea Photo All-inclusive<span class="cost-badge">Bestes Preis-Leistungs-Verhältnis</span></td><td data-l="Typical price">$2,599</td><td data-l="Photography">1,5 Stunden, 200+ Bilder in 24–48 Stunden</td><td data-l="Officiant">Derick Sebastian, gebürtig hawaiianischer Trauredner</td><td data-l="Flowers">Brautstrauß, Leis und Hochzeitsbogen</td><td data-l="Permit">Inklusive, mit Haftpflichtversicherung</td><td data-l="Tax">Inklusive</td></tr>
 </tbody></table></div>
 <p class="cost-note">Die Preisspannen stammen aus online veröffentlichten Maui-Hochzeitspaketen, Stand November 2026. Preise können sich ändern; bestätigen Sie jedes Angebot direkt.</p>
 <div class="cost-cta"><a class="button" href="/de/maui-wedding-photographer#wedding-package">Entdecken Sie, was in unserem Paket enthalten ist</a><a class="button-dark" style="display:inline-block;text-decoration:none;color:var(--ink);padding:17px 24px;font-size:10px;font-weight:600;letter-spacing:.23em;text-transform:uppercase;border:1px solid var(--ink)" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">Beispielhochzeit ansehen</a></div>
@@ -241,10 +245,10 @@
 <div class="market-tool">
 <div class="market-slider-row"><label for="budgetSlider" class="market-slider-label">Ihr Budget</label><output id="budgetOut" class="market-budget" for="budgetSlider">$2,599</output><input id="budgetSlider" class="market-slider" type="range" min="600" max="5500" step="1" value="2599" aria-describedby="budgetReadout"><div class="market-slider-ends"><span>$600</span><span>$5,500</span></div></div>
 <p id="budgetReadout" class="market-readout" role="status" aria-live="polite"></p>
-<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">Jeder Punkt steht für ein veröffentlichtes Hochzeitspaket auf Maui: Preis waagerecht, bearbeitete Bilder senkrecht. Punkte auf der unteren Linie enthalten keine Fotos. Dreizehn der fünfzehn Anbieter veröffentlichen beide Angaben.</figcaption></figure>
+<figure class="market-plot-wrap"><div id="marketPlot" class="market-plot"></div><figcaption class="market-plot-caption">Jeder Punkt steht für ein veröffentlichtes Hochzeitspaket auf Maui: Preis auf der x-Achse, bearbeitete Bilder auf der y-Achse. Punkte auf der unteren Linie enthalten keine Fotos. Unsere beiden Punkte sind „nur Fotografie“ ($995) und das All-inclusive-Paket ($2,599).</figcaption></figure>
 </div>
 <div class="market-points">
-<div class="market-point"><strong>Mehr Bilder als jedes andere Paket, für weniger.</strong>Das umfangreichste veröffentlichte Paket, das wir gefunden haben, enthält 150 bearbeitete Bilder für $4,225 vor Steuern. Unseres enthält 200+ für $2,599 inklusive Steuer.</div>
+<div class="market-point"><strong>Mehr Bilder als jedes andere Paket, für weniger.</strong>Das umfangreichste veröffentlichte Paket enthält 150 bearbeitete Bilder, für $4,225 vor Steuern. Unseres enthält 200+ für $995 nur Fotografie, oder $2,599 all-inclusive mit Steuer.</div>
 <div class="market-point"><strong>Fotos stehen bei uns an erster Stelle.</strong>Drei der Pakete, die wir gefunden haben, enthalten überhaupt keine Fotos, und vier weitere enthalten 35 bis 40 Bilder. Unseres enthält 200+, geliefert in 24–48 Stunden.</div>
 <div class="market-point"><strong>Am Ende kommt nichts mehr dazu.</strong>Trauredner, Blumenschmuck und Bogen, die Strandgenehmigung, Versicherung und Steuer sind alle im Preis enthalten. Die meisten veröffentlichten Preise verstehen sich vor Steuern.</div>
 </div>
@@ -264,7 +268,8 @@
 <tr><td>D1</td><td data-price="2000">$2,000</td><td>nicht angegeben</td><td data-images="0">Keine</td></tr>
 <tr><td>A3</td><td data-price="2367">$2,367</td><td>nicht angegeben</td><td data-images="35">35</td></tr>
 <tr><td>B3</td><td data-price="2400">$2,400</td><td>1 Stunde</td><td data-images="40">40, plus Video</td></tr>
-<tr class="market-row-us"><td>Wailea Photo</td><td data-price="2599">$2,599, inklusive Steuer</td><td>1.5 Stunden</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="Photography only"><td>Wailea Photo, nur Fotografie</td><td data-price="995">$995</td><td>1.5 Stunden</td><td data-images="200">200+</td></tr>
+<tr class="market-row-us" data-us-label="All-inclusive"><td>Wailea Photo, All-inclusive</td><td data-price="2599">$2,599, inklusive Steuer</td><td>1.5 Stunden</td><td data-images="200">200+</td></tr>
 <tr><td>E1</td><td data-price="3000">$3,000</td><td>1–2 Stunden</td><td>nicht angegeben</td></tr>
 <tr><td>C2</td><td data-price="3100">$3,100</td><td>nicht angegeben</td><td>nicht angegeben</td></tr>
 <tr><td>C3</td><td data-price="3475">$3,475</td><td>1.5 Stunden</td><td data-images="100">100</td></tr>
@@ -363,6 +368,6 @@
 <script src="/assets/site.js?v=20261105a"></script>
 <script src="/assets/session-tile-slider.js"></script>
 
-<script src="/assets/market-range.js"></script>
+<script src="/assets/market-range.js?v=20261107"></script>
 <button class="ed-snd" type="button" aria-label="Musik einschalten" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
 </body></html>
