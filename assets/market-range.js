@@ -55,6 +55,7 @@
   const yStep = maxImages > 80 ? 25 : 10;
   const yTop = Math.ceil((maxImages + 6) / yStep) * yStep;
 
+  let geom = null, touched = false;
   function render(budget) {
     const w = Math.max(320, plotHost.clientWidth || 560);
     const h = Math.round(Math.min(340, Math.max(230, w * 0.52)));
@@ -90,8 +91,14 @@
     const bx = x(Math.min(Math.max(budget, minPrice), maxPrice));
     parts.push(
       `<line x1="${bx}" y1="${PAD.top - 6}" x2="${bx}" y2="${PAD.top + innerH}" class="mp-budget"/>`,
-      `<text x="${bx}" y="${PAD.top - 9}" class="mp-budget-label" text-anchor="middle">${fmt(budget)}</text>`
+      `<text x="${bx}" y="${PAD.top - 9}" class="mp-budget-label" text-anchor="middle">${fmt(budget)}</text>`,
+      // drag handle on the line: a nudge that the line moves
+      `<g class="mp-handle${touched ? '' : ' mp-nudge'}" transform="translate(${bx} ${PAD.top + innerH - 16})" aria-hidden="true">` +
+        `<rect x="-26" y="-11" width="52" height="22" rx="11"/>` +
+        `<path d="M-9 -5 L-16 0 L-9 5 Z M9 -5 L16 0 L9 5 Z"/>` +
+        `<line x1="0" y1="-5" x2="0" y2="5"/></g>`
     );
+    geom = { innerW, minPrice, maxPrice, left: PAD.left, w };
 
     // dots — anything over budget dims rather than disappearing, so the shape of the
     // whole market stays visible while the affordable part is picked out.
@@ -157,7 +164,9 @@
     const bestOther = others.length ? others.reduce((a, b) => (b.images > a.images ? b : a)) : null;
     const lead = bestOther ? us.images - bestOther.images : null;
     let text = `At ${fmt(budget)}, ${others.length} of the ${theirs} other published ${noun} are in reach, and so is ours.`;
-    if (bestOther && lead > 0) {
+    if (bestOther && bestOther.images === 0) {
+      text += ` None of them includes any photographs; ours includes ${us.images}+.`;
+    } else if (bestOther && lead > 0) {
       text += ` The next most generous includes ${bestOther.images} edited images; ours includes ${us.images}+ — ${lead} more.`;
     } else if (bestOther) {
       text += ` The most edited images any of them includes is ${bestOther.images}.`;
@@ -180,7 +189,20 @@
     });
   }
 
-  slider.addEventListener('input', update);
+  slider.addEventListener('input', () => { touched = true; section.classList.add('market-touched'); update(); });
+  // drag (or tap) anywhere on the plot to move the budget line
+  let dragging = false;
+  const fromPointer = (e) => {
+    if (!geom) return;
+    const r = plotHost.getBoundingClientRect();
+    const px = (e.clientX - r.left) * (geom.w / r.width);
+    const price = geom.minPrice + ((px - geom.left) / geom.innerW) * (geom.maxPrice - geom.minPrice);
+    const v = Math.round(Math.min(Number(slider.max), Math.max(Number(slider.min), price)));
+    if (String(v) !== slider.value) { slider.value = v; touched = true; section.classList.add('market-touched'); update(); }
+  };
+  plotHost.addEventListener('pointerdown', (e) => { dragging = true; plotHost.setPointerCapture(e.pointerId); fromPointer(e); });
+  plotHost.addEventListener('pointermove', (e) => { if (dragging) fromPointer(e); });
+  ['pointerup', 'pointercancel'].forEach((ev) => plotHost.addEventListener(ev, () => { dragging = false; }));
   window.addEventListener('resize', () => render(Number(slider.value)), { passive: true });
   update();
 })();
