@@ -8,8 +8,10 @@ document.querySelectorAll('.stage').forEach(st=>{
   const load=k=>{const im=imgs[k];if(im&&im.dataset.src){im.srcset=im.dataset.srcset;im.src=im.dataset.src;delete im.dataset.src}};
   const show=k=>{i=(k+imgs.length)%imgs.length;load(i);load((i+1)%imgs.length);imgs.forEach((im,j)=>im.classList.toggle('is-on',j===i));cnt.textContent=pad(i+1)};
   const tick=()=>{clearInterval(timer);timer=setInterval(()=>{if(inView&&!hover&&!document.hidden)show(i+1)},5200)};
-  st.querySelector('.next').onclick=()=>{show(i+1);tick()};
-  st.querySelector('.prev').onclick=()=>{show(i-1);tick()};
+  if(!imgs.length||!cnt)return; // a stage without controls must never stop the rest of the page
+  const nx=st.querySelector('.next'),pv=st.querySelector('.prev');
+  if(nx)nx.onclick=()=>{show(i+1);tick()};
+  if(pv)pv.onclick=()=>{show(i-1);tick()};
   st.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){show(i+1);tick()}if(e.key==='ArrowLeft'){show(i-1);tick()}});
   st.addEventListener('mouseenter',()=>hover=true);st.addEventListener('mouseleave',()=>hover=false);
   let x0=null;st.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
