@@ -186,6 +186,7 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Alegreya+Sans:wght@300;400;500;700&family=Alegreya+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
 <style>
 .cost-wrap{max-width:920px;margin:0 auto;padding:12vh 6vw 4vh}
 .cost-wrap .lede{font:400 clamp(21px,2vw,27px)/1.55 var(--serif);margin:0 0 28px}
@@ -215,7 +216,133 @@
 @media (max-width:620px){.elope-price{grid-template-columns:1fr}}
 .wedding-reviews{padding:12vh 8vw;max-width:1240px;margin:0 auto}.wedding-reviews h2{font:400 clamp(34px,4vw,52px)/1.08 var(--serif);margin:10px 0 36px;max-width:18ch}.wr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.wr-card{margin:0;background:var(--paper);border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}.wr-card blockquote{margin:0;font:400 19px/1.55 var(--serif)}.wr-card figcaption{display:grid;gap:2px;font-size:13px}.wr-card figcaption span{color:rgba(27,25,23,.62)}.wr-source{margin-top:22px;font-size:13px;color:rgba(27,25,23,.62)}@media (max-width:860px){.wr-grid{grid-template-columns:1fr}.wedding-reviews{padding:80px 22px}}
 .elope-alt{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:center;border:1px dashed var(--line);padding:22px 28px;margin:0 0 28px}.elope-alt .amount{font:500 40px/1 var(--serif)}.elope-alt .terms{font-size:13px;line-height:1.6;color:rgba(27,25,23,.72)}@media (max-width:620px){.elope-alt{grid-template-columns:1fr}}
+/* editorial wedding layout (Nov 2026) */
+.wd{--paper:#faf7f2;--paper2:#f1ebe2;--ink:#2b2825;--dim:#5a534c;--line:rgba(43,40,37,.14);--red:#9e2b23;--gold:#b99254;--wserif:"Cormorant",Georgia,serif;--wsans:"Alegreya Sans",Arial,sans-serif;--wsc:"Alegreya Sans SC","Alegreya Sans",Arial,sans-serif;background:var(--paper);color:var(--ink);font:300 17px/1.65 var(--wsans)}
+.wd a{color:inherit}.wd b,.wd strong{font-weight:500}.wd img{display:block;max-width:100%}
+.wd *,.wd *:before,.wd *:after{box-sizing:border-box}.wd section,.wd nav{max-width:none;margin:0;padding:0;border:0;text-align:left;background:transparent}.wd figure,.wd h1,.wd h2,.wd h3,.wd p,.wd ul,.wd ol,.wd blockquote{margin:0;padding:0}.wd .wd-band .wd-band-copy h2,.wd .wd-band .wd-k{color:#fffaf2}.wd .wd-statement{text-align:center}.wd .wd-reviews h2,.wd .wd-stars,.wd .wd-rsrc{text-align:center}
+.wd .wd-wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wd .sc{font-family:var(--wsc);letter-spacing:.22em;text-transform:lowercase;font-size:13px}
+.wd h1,.wd h2,.wd h3{color:var(--ink)}
+.wd .wd-diptych{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px;height:min(88svh,980px);min-height:460px}
+.wd .wd-diptych figure{overflow:hidden;position:relative}
+.wd .wd-diptych img{width:100%;height:100%;object-fit:cover}
+.wd .wd-diptych .wd-bw img{object-position:44% 50%}
+.wd .wd-diptych .wd-col img{object-position:52% 50%}
+.wd .wd-crest{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:#fffaf2;text-align:center;text-shadow:0 2px 24px rgba(0,0,0,.55);background:radial-gradient(ellipse 36% 30% at 50% 50%,rgba(20,18,16,.38),rgba(20,18,16,0) 70%)}
+.wd .wd-crest .wd-mono{font:italic 300 96px/1 var(--wserif);letter-spacing:-.04em}
+.wd .wd-crest .wd-line{font:500 clamp(18px,1.8vw,26px)/1.25 var(--wserif);letter-spacing:.24em;text-transform:uppercase;margin-top:10px;display:grid;gap:4px}
+.wd .wd-crest .wd-line span{white-space:nowrap}
+@media (max-width:820px){.wd .wd-crest .wd-line{font-size:15px;letter-spacing:.18em}}
+.wd .wd-crest .wd-est{font:500 11px/1 var(--wsans);letter-spacing:.32em;text-transform:uppercase;margin-top:12px;opacity:.85}
+@media (max-width:820px){.wd .wd-diptych{grid-template-columns:1fr;height:auto}.wd .wd-diptych figure{height:58svh}.wd .wd-crest{place-items:end center;padding-bottom:7svh}}
+.wd .wd-statement{position:relative;max-width:1240px;margin:0 auto;padding-block:16vh 12vh;text-align:center}
+.wd .wd-statement h1{font:300 clamp(40px,6vw,86px)/1.02 var(--wserif);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance;max-width:14ch;margin:0 auto}
+.wd .wd-statement h1 em{font-style:italic;text-transform:none;font-weight:300}
+.wd .wd-statement .wd-lead{max-width:52ch;margin:34px auto 0;color:var(--dim)}
+.wd .wd-statement .wd-where{font:italic 400 22px/1.4 var(--wserif);margin-top:26px}
+.wd .wd-collage{position:relative;height:clamp(560px,62vw,820px);max-width:1240px;margin:0 auto}
+.wd .wd-collage figure{position:absolute;overflow:hidden;box-shadow:0 18px 40px rgba(43,40,37,.14)}
+.wd .wd-collage img{width:100%;height:100%;object-fit:cover}
+.wd .wd-c1{left:4%;top:12%;width:22%;aspect-ratio:3/4}
+.wd .wd-c2{left:32%;top:0;width:36%;aspect-ratio:4/5;z-index:2}
+.wd .wd-c3{right:4%;top:6%;width:24%;aspect-ratio:3/4}
+.wd .wd-c4{right:18%;bottom:0;width:20%;aspect-ratio:1/1;z-index:3}
+@media (max-width:820px){.wd .wd-collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-inline:max(20px,env(safe-area-inset-left,0px))}.wd .wd-collage figure{position:static;width:auto;aspect-ratio:4/5;box-shadow:none}.wd .wd-c2{grid-column:1/-1;aspect-ratio:4/3}}
+.wd .wd-paths{max-width:960px;margin:12vh auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.wd .wd-paths a{display:block;text-decoration:none;padding:6px 34px;border-left:1px solid var(--line)}
+.wd .wd-paths a:first-child{border-left:0}
+.wd .wd-paths .sc{display:block;color:var(--ink);margin-bottom:10px}
+.wd .wd-paths p{font-size:16px;color:var(--dim)}
+.wd .wd-paths a:hover .sc{color:var(--red)}
+@media (max-width:820px){.wd .wd-paths{grid-template-columns:1fr;gap:26px}.wd .wd-paths a{border-left:0;padding:0}}
+.wd .wd-band{position:relative;height:min(92svh,900px);min-height:520px;overflow:hidden;color:#fffaf2}
+.wd .wd-band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.wd .wd-band:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,16,.5),rgba(20,18,16,.05) 60%)}
+.wd .wd-band-copy{position:absolute;left:8vw;bottom:14vh;z-index:2}
+.wd .wd-band-copy .wd-k{font:italic 400 24px/1 var(--wserif)}
+.wd .wd-band-copy h2{font:300 clamp(64px,10vw,150px)/.95 var(--wserif);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid rgba(255,250,242,.7);padding-bottom:14px;margin-top:8px}
+.wd .wd-polaroid{position:absolute;z-index:3;right:12vw;top:16vh;width:clamp(170px,18vw,270px);background:#fdfbf7;padding:12px 12px 46px;transform:rotate(4deg);box-shadow:0 22px 50px rgba(0,0,0,.35)}
+.wd .wd-polaroid img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.wd .wd-polaroid span{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:italic 400 18px/1 var(--wserif);color:var(--ink)}
+@media (max-width:820px){.wd .wd-polaroid{right:6vw;top:7vh;width:150px}.wd .wd-band-copy{left:22px;bottom:9vh}}
+.wd .wd-package{max-width:1180px;margin:0 auto;padding-block:16vh 10vh;display:grid;grid-template-columns:.9fr 1.1fr;gap:7vw;align-items:start}
+.wd .wd-package>div{min-width:0}
+.wd .wd-eyebrow{display:block;color:var(--red);margin-bottom:16px}
+.wd .wd-package h2{font:300 clamp(38px,4.4vw,60px)/1.05 var(--wserif);text-wrap:balance}
+.wd .wd-package h2 em{font-weight:300}
+.wd .wd-package .wd-intro{margin-top:20px;color:var(--dim);max-width:44ch}
+.wd .wd-price{margin-top:34px;border:1px solid var(--line);background:#fff;padding:28px}
+.wd .wd-price .wd-amt{font:400 64px/1 var(--wserif)}
+.wd .wd-price .wd-amt small{font:500 11px/1 var(--wsans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-left:8px;vertical-align:middle}
+.wd .wd-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.wd .wd-split strong{display:block;font:400 28px/1.1 var(--wserif)}
+.wd .wd-split span,.wd .wd-price .wd-note{font-size:13px;color:var(--dim)}
+.wd .wd-price .wd-note{margin-top:14px}
+.wd .wd-compare{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:8px;font-size:14px}
+.wd .wd-compare b{display:block;font-weight:500}
+.wd .wd-compare .wd-ours{color:var(--red)}
+.wd .wd-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.wd .wd-btn{display:inline-block;text-decoration:none;font:500 13px/1 var(--wsans);letter-spacing:.18em;text-transform:uppercase;padding:16px 24px;border:1px solid var(--ink)}
+.wd .wd-btn.wd-solid{background:var(--ink);color:var(--paper)}
+.wd .wd-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.wd .wd-includes{list-style:none;counter-reset:i;display:grid}
+.wd .wd-includes li{counter-increment:i;display:grid;grid-template-columns:54px 1fr;gap:10px;padding:24px 0;border-top:1px solid var(--line)}
+.wd .wd-includes li:before{content:counter(i,decimal-leading-zero);font:italic 400 24px/1.2 var(--wserif);color:var(--gold)}
+.wd .wd-includes h3{font:400 27px/1.2 var(--wserif)}
+.wd .wd-includes p{color:var(--dim);margin-top:4px}
+.wd .wd-upg{margin-top:20px;font-size:14px;color:var(--dim)}
+@media (max-width:900px){.wd .wd-package{grid-template-columns:1fr}}
+.wd .wd-reviews{background:var(--paper2);padding-block:14vh}
+.wd .wd-reviews-in{max-width:1180px;margin:0 auto}
+.wd .wd-reviews h2{font:300 clamp(36px,4.2vw,56px)/1.08 var(--wserif);text-align:center}
+.wd .wd-reviews h2 em{font-weight:300}
+.wd .wd-stars{text-align:center;color:var(--gold);letter-spacing:.3em;margin:14px 0 46px}
+.wd .wd-rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.wd .wd-rgrid figure{background:var(--paper);padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.wd .wd-rgrid blockquote{font:400 20px/1.55 var(--wserif)}
+.wd .wd-rgrid figcaption{font-size:14px}
+.wd .wd-rgrid figcaption span{display:block;color:var(--dim)}
+.wd .wd-rsrc{text-align:center;margin-top:24px;font-size:14px;color:var(--dim)}
+@media (max-width:900px){.wd .wd-rgrid{grid-template-columns:1fr}}
+.wd a:focus-visible,.wd summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wd .wd-options{max-width:1180px;margin:0 auto;padding-block:16vh 6vh}
+.wd .wd-options>h2,.wd .wd-how>h2{font:300 clamp(38px,4.4vw,60px)/1.05 var(--wserif);text-align:center;text-wrap:balance}
+.wd .wd-options>h2 em,.wd .wd-how>h2 em{font-weight:300}
+.wd .wd-options>.wd-sub{text-align:center;color:var(--dim);max-width:52ch;margin:16px auto 0}
+.wd .wd-opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:46px}
+.wd .wd-opt{background:#fff;border:1px solid var(--line);padding:34px;display:flex;flex-direction:column;gap:14px}
+.wd .wd-opt.wd-feature{border-color:var(--ink)}
+.wd .wd-opt .wd-amt{font:400 60px/1 var(--wserif)}
+.wd .wd-opt .wd-amt small{font:500 11px/1 var(--wsans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-left:8px;vertical-align:middle}
+.wd .wd-opt h3{font:400 30px/1.15 var(--wserif)}
+.wd .wd-opt ul{list-style:none;display:grid;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+.wd .wd-opt li{padding-left:22px;position:relative;color:var(--dim)}
+.wd .wd-opt li:before{content:"·";position:absolute;left:6px;color:var(--gold);font-weight:700}
+.wd .wd-opt .wd-addons{font-size:14px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px}
+.wd .wd-opt .wd-ctas{margin-top:auto;padding-top:10px}
+.wd .wd-cmp{margin-top:34px;text-align:center;font-size:15px;color:var(--dim)}
+.wd .wd-how{max-width:1180px;margin:0 auto;padding-block:10vh 14vh}
+.wd .wd-steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:46px}
+.wd .wd-steps li{counter-increment:s;border-top:1px solid var(--line);padding-top:18px}
+.wd .wd-steps li:before{content:counter(s,decimal-leading-zero);display:block;font:italic 400 26px/1 var(--wserif);color:var(--gold);margin-bottom:10px}
+.wd .wd-steps h3{font:400 24px/1.2 var(--wserif)}
+.wd .wd-steps p{color:var(--dim);margin-top:6px;font-size:16px}
+@media (max-width:900px){.wd .wd-opt-grid{grid-template-columns:1fr}.wd .wd-steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.wd .wd-steps{grid-template-columns:1fr}.wd .wd-opt{padding:24px}}
+@media (max-width:520px){.wd .wd-band .wd-band-copy h2{font-size:clamp(40px,12.5vw,64px);letter-spacing:.02em}}
+
+/* film-gate frame around the inset photo (replaces the polaroid) */
+.wd .wd-polaroid{position:absolute;z-index:3;right:10vw;top:14vh;width:clamp(200px,22vw,330px);background:#141210;padding:30px 12px 34px;transform:rotate(3deg);box-shadow:0 2px 4px rgba(0,0,0,.25),0 18px 36px rgba(0,0,0,.35),0 40px 80px rgba(0,0,0,.3)}
+.wd .wd-polaroid:before,.wd .wd-polaroid:after{content:"";position:absolute;left:10px;right:10px;height:12px;background:repeating-linear-gradient(90deg,transparent 0 7px,#f1ebe2 7px 17px,transparent 17px 24px);border-radius:2px;opacity:.92}
+.wd .wd-polaroid:before{top:9px}.wd .wd-polaroid:after{bottom:13px}
+.wd .wd-polaroid img{aspect-ratio:3/2;object-fit:cover;width:100%;border-radius:3px}
+.wd .wd-polaroid .wd-edge{position:absolute;left:14px;right:14px;display:flex;justify-content:space-between;font:500 9px/1 var(--wsans);letter-spacing:.18em;color:#e0a83a;text-transform:uppercase}
+.wd .wd-polaroid .wd-edge.wd-top{top:-1px}.wd .wd-polaroid .wd-edge.wd-bot{bottom:1px}
+.wd .wd-polaroid figcaption{position:absolute;left:0;right:0;top:calc(100% + 12px);text-align:center;font:italic 400 19px/1.2 var(--wserif);color:#fffaf2;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+@media (max-width:820px){.wd .wd-polaroid{right:6vw;top:6vh;width:190px;padding:24px 9px 28px}.wd .wd-polaroid:before{top:7px}.wd .wd-polaroid:after{bottom:10px}}
+.faq-list{background:#faf7f2}
 </style>
+
 
 
 
@@ -295,45 +422,88 @@
 <!-- i18n:head --><link rel="alternate" hreflang="en" href="https://waileaphoto.com/maui-elopement-photographer"><link rel="alternate" hreflang="fr" href="https://waileaphoto.com/fr/maui-elopement-photographer"><link rel="alternate" hreflang="es" href="https://waileaphoto.com/es/maui-elopement-photographer"><link rel="alternate" hreflang="de" href="https://waileaphoto.com/de/maui-elopement-photographer"><link rel="alternate" hreflang="it" href="https://waileaphoto.com/it/maui-elopement-photographer"><link rel="alternate" hreflang="ja" href="https://waileaphoto.com/ja/maui-elopement-photographer"><link rel="alternate" hreflang="ko" href="https://waileaphoto.com/ko/maui-elopement-photographer"><link rel="alternate" hreflang="zh-Hans" href="https://waileaphoto.com/zh/maui-elopement-photographer"><link rel="alternate" hreflang="hi" href="https://waileaphoto.com/hi/maui-elopement-photographer"><link rel="alternate" hreflang="x-default" href="https://waileaphoto.com/maui-elopement-photographer"><style id="i18n-css">.lang-switch{position:relative}.lang-switch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;color:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:4px 0;opacity:.8;text-shadow:0 1px 12px rgba(0,0,0,.35)}.lang-switch summary::-webkit-details-marker{display:none}.lang-switch summary::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}.lang-switch details[open] summary::after{margin-top:3px;transform:rotate(-135deg)}.lang-switch summary:hover,.lang-switch details[open] summary{opacity:1}.lang-switch summary:focus-visible{outline:1px solid currentColor;outline-offset:3px}.lang-switch ul{position:absolute;left:0;top:calc(100% + 10px);z-index:1000;margin:0;padding:6px 0;list-style:none;min-width:160px;background:#171716;border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-switch li a{display:block;padding:9px 18px;color:#fff;text-decoration:none;font-size:14px;line-height:1.3;letter-spacing:.02em;opacity:.78;text-shadow:none}.lang-switch li a:hover,.lang-switch li a:focus-visible{opacity:1;background:rgba(255,255,255,.08);outline:none}.lang-switch li a[aria-current]{opacity:1;font-weight:700}</style><script>document.addEventListener("toggle",function(e){var d=e.target;if(!d.open||!d.matches||!d.matches(".lang-switch details"))return;var u=d.querySelector("ul");u.style.left="0";u.style.right="auto";if(u.getBoundingClientRect().right>window.innerWidth-8){u.style.left="auto";u.style.right="0"}},true);document.addEventListener("click",function(e){document.querySelectorAll(".lang-switch details[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".lang-switch details[open]").forEach(function(d){d.removeAttribute("open");d.querySelector("summary").focus()})});</script><script>window.WP_I18N={"lang":"ko","locale":"ko-KR","s":{"Aloha and welcome to Wailea Photo! I'm Claude, the AI Concierge — the Balter family of photographers are out on the beach or hard at work editing, so I'm here to answer all your questions. What brings you to Maui, and how can I help guide you to the best experience?":"Aloha, Wailea Photo에 오신 것을 환영합니다! 저는 AI 컨시어지 Claude예요 — Balter 가족 사진작가들은 해변에서 촬영 중이거나 열심히 편집 작업을 하고 있어서, 제가 여러분의 모든 질문에 답해드리려고 여기 있어요. Maui에는 어떤 일로 오셨나요? 최고의 경험을 하실 수 있도록 어떻게 도와드리면 될까요?","Ask about dates, sessions, pricing…":"날짜, 촬영, 요금에 대해 물어보세요…","Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. I'm stepping away for just a moment — meanwhile you can book directly on this page, with your price shown as you choose a date and time, or write the family at {email} and they'll reply personally.":"Balter 가족 팀은 촬영과 편집, 그리고 멋진 고객 경험을 만드느라 바쁘기 때문에, 제가 여러분의 경험을 편하게 도와드리고 있어요. 잠시 자리를 비우는 동안, 이 페이지에서 날짜와 시간을 선택하시면 요금이 바로 표시되니 직접 예약하실 수 있고, 또는 {email}로 가족에게 메일을 보내시면 직접 답장을 받으실 수 있어요.","Book this session":"이 촬영 예약하기","Close chat":"채팅 닫기","Concierge":"컨시어지","Concierge is typing":"컨시어지가 입력 중입니다","Message the concierge":"컨시어지에게 메시지 보내기","Open the concierge chat":"컨시어지 채팅 열기","Powered by Claude":"Claude 제공","Send":"보내기","That didn't go through. Try once more, or email {email}.":"전송되지 않았어요. 다시 시도해 보시거나 {email}로 메일을 보내주세요.","The Concierge":"컨시어지","The connection dropped before I could answer. Try again, or email {email}.":"답변드리기 전에 연결이 끊겼어요. 다시 시도하시거나 {email}로 메일을 보내주세요.","Wailea Photo concierge chat":"Wailea Photo 컨시어지 채팅","What does the {session} session cost?":"{session} 촬영 비용은 얼마인가요?","this session":"이 촬영"}};</script><!-- /i18n:head -->
 </head><body>
 <header class="site-header ed"><a href="/ko/#top" class="brand">Wailea Photo</a><div class="header-right"><!-- i18n:switcher --><nav class="lang-switch" translate="no" aria-label="언어"><details><summary title="언어: 한국어">KO</summary><ul><li><a href="/maui-elopement-photographer" hreflang="en" lang="en">English</a></li><li><a href="/fr/maui-elopement-photographer" hreflang="fr" lang="fr">Français</a></li><li><a href="/es/maui-elopement-photographer" hreflang="es" lang="es">Español</a></li><li><a href="/de/maui-elopement-photographer" hreflang="de" lang="de">Deutsch</a></li><li><a href="/it/maui-elopement-photographer" hreflang="it" lang="it">Italiano</a></li><li><a href="/ja/maui-elopement-photographer" hreflang="ja" lang="ja">日本語</a></li><li><a href="/ko/maui-elopement-photographer" hreflang="ko" lang="ko" aria-current="page">한국어</a></li><li><a href="/zh/maui-elopement-photographer" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="/hi/maui-elopement-photographer" hreflang="hi" lang="hi">हिन्दी</a></li></ul></details></nav><!-- /i18n:switcher --><div class="ed-pills"><button class="ed-pill ed-ask" type="button" data-ed-concierge aria-label="Wailea Photo 컨시어지에게 물어보세요">컨시어지</button><a class="ed-pill ed-book" href="/ko/pricing#sessions">지금 예약</a></div><button class="menu-open-btn" aria-expanded="false">메뉴</button></div></header><nav class="menu ed" aria-hidden="true"><button class="menu-close" aria-label="메뉴 닫기">×</button><a href="/ko/#story-paths">사진</a><a href="/ko/pricing">촬영 및 요금</a><a href="/ko/#experience">우리 가족</a><a href="/ko/atlas">가이드</a><a href="/ko/art">아트</a><a href="/ko/#reviews">리뷰</a><a href="/ko/faq">자주 묻는 질문 &amp; 문의</a><div class="menu-foot"><a href="/ko/tides">조수 및 일몰 시간</a><a href="/ko/what-to-wear-maui-photos">무엇을 입을까요</a><a href="/ko/the-apo-difference">APO의 차이</a><a href="/ko/our-florist">저희와 함께하는 플로리스트</a><a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a><a href="/ko/corporate-events">기업 행사</a><a href="tel:+18082985188">808.298.5188</a></div></nav>
-<main><section class="page-hero wedding-hero fit-hero"><img src="/assets/maui-elopement-sunset-hero.jpg" alt="해 질 녘 남쪽 Maui 해변에서 서로 마주보고 있는 신랑과 신부, 그 너머 바다 건너로 West Maui 산맥이 보입니다" loading="eager" fetchpriority="high"><div class="page-hero-copy reveal visible"><div class="eyebrow">MAUI 엘로프먼트 · 올인클루시브</div><h1>Maui로 엘로프먼트를 떠나세요. 모든 것이 포함되어 있습니다.</h1><p>주례자, 꽃, 허가증, 사진까지 세금 포함 $2,599입니다.</p></div></section>
-<article class="cost-wrap">
-<p class="lede">엘로프먼트는 단순해야 합니다. 날짜를 정하고, 비행기를 타고 와서, South Maui 해변에서 서약을 나누시면 됩니다. 저희 엘로프먼트 패키지는 주례자, 꽃, 허가증, 포토그래퍼를 모두 하나로 묶어 <strong>세금 포함 $2,599</strong>에 제공합니다.</p>
-<div class="elope-price"><div class="amount">$2,599</div><div class="terms"><strong>세금 포함, 올인클루시브.</strong><br>$100 예약금으로 날짜를 확정하고, 잔금 $2,499를 지불하시면 됩니다.<br>하객 15명까지 포함됩니다.</div></div>
-<div class="cost-cta"><a class="button" href="/ko/pricing#sessions">날짜 확정하기</a><a class="button button-outline" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">웨딩 샘플 보기</a></div>
-<h2>엘로프먼트에 포함된 내용</h2>
-<ul>
-<li><strong>하와이 원주민 주례자.</strong> <a href="/ko/our-wedding-officiant-pick-for-maui-photography">Derick Sebastian</a>님이 예식을 진행하고 하와이 혼인 허가증 절차까지 챙겨 드립니다.</li>
-<li><strong>저희 전속 플로리스트가 만드는 플로럴.</strong> <a href="/ko/our-florist">Mya</a>님이 부케, 레이, 웨딩 아치를 준비해 드립니다.</li>
-<li><strong>1.5시간 동안 촬영합니다.</strong> 보정된 고해상도 사진 200장 이상을 24–48시간 이내에 전달해 드립니다.</li>
-<li><strong>해변 허가증과 종합배상책임보험.</strong> 저희가 모두 처리해 드립니다.</li>
-<li><strong>라이브 스트리밍.</strong> 저희 삼각대에 고객님의 휴대폰을 설치하고 마이크를 연결해, 본국의 가족들도 함께 지켜볼 수 있습니다.</li>
-</ul>
-<p>추가 촬영 시간은 시간당 $450이며, 최대 3시간까지 가능합니다 (온라인 예약 시 한 시간 추가 가능). Mya의 업그레이드된 플로럴 어레인지먼트를 구매하시면 비디오 릴도 함께 제공됩니다.</p>
-<h2>진행 방식</h2>
-<ol class="elope-steps">
-<li><div><h3>날짜 예약하기</h3><p>온라인으로 $100 예약금을 내고 예약하세요.</p></div></li>
-<li><div><h3>주례자를 만나보세요</h3><p>예약금을 지불하시면 Derick님과의 상담이 예약됩니다. 혼인 허가증 절차도 그가 직접 챙겨 드립니다.</p></div></li>
-<li><div><h3>서약하기</h3><p>주례자, 플로리스트, 포토그래퍼가 해변에서 만나드립니다. 본국의 가족은 실시간으로 함께 지켜볼 수 있습니다.</p></div></li>
-<li><div><h3>갤러리 받기</h3><p>보정된 사진 200장 이상을 24–48시간 이내에 받아보실 수 있습니다.</p></div></li>
-</ol>
-<h2>사진 촬영만</h2>
-<p>이미 주례자가 있으신가요? 사진 촬영만 예약하실 수 있습니다.</p>
-<div class="elope-alt"><div class="amount">$995</div><div class="terms"><strong>1.5시간 촬영 · 200장 이상의 보정된 사진</strong>을 24~48시간 이내에 전달해 드립니다.<br><a href="/ko/kodak-film-upgrade">Kodak film</a>과 <a href="/ko/black-and-white-upgrade">흑백</a>으로 촬영하는 두 번째 작가를 추가하실 수 있습니다: <strong>+$250</strong>.<br>두 가지 업그레이드 모두 예약 시 체크박스로 선택하실 수 있습니다.</div></div>
-<div class="cost-cta"><a class="button" href="/ko/pricing?openBooking=elopement-photography">포토그래피만 예약</a></div>
-<h2>비교해 보면</h2>
-<p>온라인에 공개된 Maui 웨딩 패키지 가격, 2026년 11월 기준 확인.</p>
-<div class="cost-table-wrap"><table class="cost-table"><thead><tr><th>옵션</th><th>공개된 가격</th><th>보정된 사진</th><th>추가로 포함되는 것</th></tr></thead><tbody>
-<tr><td>주례자 + 1시간 촬영</td><td>$1,455–$1,650 + 세금</td><td>35–40</td><td>주례자</td></tr>
-<tr><td>사진 100장 이상 포함된 플래너 패키지</td><td>$3,475–$5,500 + 세금</td><td>100–150</td><td>플래너마다 다름</td></tr>
-<tr><td>Wailea Photo, 사진 촬영만</td><td>$995</td><td>200+</td><td>Kodak film과 흑백 촬영을 하는 두 번째 작가, +$250</td></tr>
-<tr class="ours"><td>Wailea Photo 엘로프먼트</td><td>$2,599, 세금 포함</td><td>200+</td><td>주례자, 혼인 허가증 절차, 부케, 레이, 아치, 허가증, 보험, 라이브 스트리밍</td></tr>
-</tbody></table></div>
-<p class="cost-note"><a href="/ko/maui-wedding-cost">저희가 비교한 모든 패키지를 확인해 보세요</a>, Maui 웨딩 비용 가이드에서요.</p>
-<h2>커플들이 궁금해하는 엘로프먼트 관련 질문</h2>
-</article>
-<section class="wedding-reviews" aria-labelledby="wr-title"><div class="chapter">커플들의 후기</div><h2 id="wr-title">저희와 함께 엘로프먼트를 한 커플들의 이야기입니다.</h2><div class="wr-grid"><figure class="wr-card"><blockquote>“그는 저희 결혼식에 필요한 모든 것을 포함한 웨딩 패키지를 제공해 주었어요. 그가 찍은 사진들은 정말 멋졌고, 그의 팀 전체가 저희의 특별한 날을 스트레스 없이 완벽하게 만들어 주었습니다. 그날 밤이 끝나기도 전에 수백 장의 보정된 사진을 받았어요.”</blockquote><figcaption><strong>Blair H.</strong><span>웨딩, 2025년 12월</span></figcaption></figure><figure class="wr-card"><blockquote>“저희의 사랑을 완벽하게 담아주셨어요! 당일 예상치 못한 일들이 있었지만, 모든 것이 매끄럽게 진행되도록 신경 써 주셨습니다. 몇 번이고 추천하고 싶어요.”</blockquote><figcaption><strong>Dominique B.</strong><span>웨딩, 2025년 7월</span></figcaption></figure><figure class="wr-card"><blockquote>“Maui에 있을 때 혼인서약 갱신식을 했는데, [Wailea Photo]는 당일 날짜를 바꿔야 했을 때도 정말 유연하게 대응해 주셨어요… 사진들은 정말 예술적이고 아름다웠습니다. 더할 나위 없이 좋은 경험이었어요!”</blockquote><figcaption><strong>Nanette R.</strong><span>혼인서약 갱신식, 2025년 2월</span></figcaption></figure></div><p class="wr-source">저희 웨딩 패키지에 대한 <a href="https://www.tripadvisor.com/AttractionProductReview-g29220-d33241933-Get_Married_on_Maui-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a> 리뷰입니다.</p></section>
-<section class="faq-list" style="padding-top:0"><details class="faq-item" open><summary>Wailea Photo의 Maui 엘로프먼트 비용은 얼마인가요?</summary><p>저희 올인클루시브 엘로프먼트 패키지는 세금 포함 $2,599입니다. $100 예약금으로 날짜를 확정하고 나머지 잔금 $2,499를 지불하시면 됩니다. 하와이 원주민 주례자, 부케, 레이, 웨딩 아치, 24–48시간 내 전달되는 보정 사진 200장 이상이 포함된 1.5시간 촬영, 해변 허가증, 종합배상책임보험, 그리고 본국 가족을 위한 라이브 스트리밍까지 포함되어 있습니다.</p></details><details class="faq-item"><summary>저희 둘만 엘로프먼트를 해도 되나요?</summary><p>네. 두 분만 오시든 소규모 그룹으로 오시든 패키지는 동일합니다. 하객 15명까지 추가 비용 없이 포함됩니다.</p></details><details class="faq-item"><summary>사진 촬영만 예약할 수 있나요?</summary><p>네. 이미 주례자가 있는 커플을 위한 포토그래피 전용 촬영은 $995이며, 1.5시간 촬영에 200장 이상의 보정된 사진을 24~48시간 이내에 전달해 드립니다. Kodak film과 흑백으로 촬영하는 두 번째 작가는 $250에 추가하실 수 있습니다. $100 보증금으로 온라인 예약이 가능합니다.</p></details><details class="faq-item"><summary>누가 주례를 보고, 혼인 허가증은 누가 처리하나요?</summary><p>저희 하와이 원주민 주례자인 Derick Sebastian님이 예식을 진행하고 하와이 혼인 허가증 절차까지 챙겨 드립니다. 예약금을 지불하시면 그와의 상담이 예약됩니다.</p></details><details class="faq-item"><summary>본국의 가족이 함께 볼 수 있나요?</summary><p>네, 라이브 스트리밍이 포함되어 있습니다. 저희 삼각대에 고객님의 휴대폰을 설치하고 마이크를 연결해, 가족과 친구들이 서약 순간을 실시간으로 함께 볼 수 있습니다.</p></details><details class="faq-item"><summary>Maui의 어디에서 엘로프먼트를 할 수 있나요?</summary><p>저희는 Wailea, Makena, South Maui 해변, 그리고 Makena의 Maluaka Beach를 포함한 여러 해변에서 엘로프먼트 촬영을 진행합니다. 해변 허가증도 포함되어 있습니다.</p></details><details class="faq-item"><summary>비가 오거나 흐리면 어떻게 되나요?</summary><p>비가 오면 일정을 다시 잡아보도록 하겠습니다. 구름은 오히려 환영입니다. 빛과 피부톤을 부드럽게 만들어 주어서, 저희가 찍은 가장 아름다운 사진들 중 일부는 구름이 약간 낀 날씨에서 탄생했습니다.</p></details><details class="faq-item"><summary>하객이나 의자를 가져올 수 있나요?</summary><p>하객 15명까지 포함되며, 추가 하객은 1인당 $20이며 해변에서는 최대 30명, 개인 소유지에서는 최대 100명까지 가능합니다. 의자는 해변에서는 사용할 수 없고 개인 소유지에서만 가능합니다.</p></details><details class="faq-item"><summary>예약은 어떻게 하나요?</summary><p>온라인으로 $100 예약금을 내시면 날짜가 확정됩니다. 나머지 $2,499 잔금을 내시면 패키지가 완성됩니다.</p></details></section>
-<section class="experience-cta"><div class="chapter" style="color:var(--gold)">올인클루시브 · $2,599 · 세금 포함</div><h2>간편하게 준비하는 당신만의 Maui 엘로프먼트.</h2><p>$100 예약금으로 날짜를 확정합니다.</p><a class="button" href="/ko/pricing#sessions">날짜 확정하기</a></section>
+<main><div class="wd">
+<section class="wd-diptych" aria-label="엘로프먼트 사진">
+  <figure class="wd-bw"><img src="/assets/maui-wedding-couple-embrace-beach-bw.jpg" alt="Maui 해변에서 신부의 베일에 함께 감싸인 커플, 흑백 사진" fetchpriority="high"></figure>
+  <figure class="wd-col"><img src="/assets/maui-elopement-sunset-hero.jpg" alt="해 질 녘 남쪽 Maui 해변에서 서로 마주보고 있는 신랑과 신부, 그 너머 바다 건너로 West Maui 산맥이 보입니다" fetchpriority="high"></figure>
+  <div class="wd-crest" aria-hidden="true"><div><div class="wd-mono">Wp</div><div class="wd-line"><span>단둘이서</span><span>그리고 섬</span></div><div class="wd-est">2000년 설립 · Wailea, Maui</div></div></div>
+</section>
+<section class="wd-statement wd-wrap">
+  <h1>Maui<em>로</em> 엘로프먼트. <em>모든 것</em>이 포함됩니다.</h1>
+  <p class="wd-lead">엘로프먼트는 단순해야 합니다. 날짜를 정하고, 비행기를 타고 와서, South Maui 해변에서 서약을 나누시면 됩니다. 주례자, 꽃, 허가증, 포토그래퍼까지 모두 저희가 준비해 드리며, 이미 주례자가 있으시다면 사진만 촬영해 드립니다.</p>
+  <p class="wd-where">Wailea, Makena &amp; South Maui의 커플들과 함께한 25년 이상의 시간.</p>
+</section>
+<section class="wd-collage" aria-label="저희가 촬영한 엘로프먼트">
+  <figure class="wd-c1"><img src="/assets/mokapu-beach-sunset-wedding.jpg" alt="Maui의 노을 속 바위 위에서 레이를 두르고 포옹하는 커플" loading="lazy"></figure>
+  <figure class="wd-c2"><img src="/assets/poetic-wedding-maui-wailea.jpg" alt="꽃관을 쓴 신부가 바다 옆에서 신랑을 안고 있는 모습" loading="lazy"></figure>
+  <figure class="wd-c3"><img src="/assets/wailea-photo-wedding-ceremony.jpg" alt="바다가 보이는 잔디밭의 둥근 플로럴 아치 아래에서 키스하는 커플" loading="lazy"></figure>
+  <figure class="wd-c4"><img src="/assets/elopement-maui.jpg" alt="노을 지는 South Maui 해변에서 막 엘로프먼트를 마친 커플" loading="lazy"></figure>
+</section>
+<nav class="wd-paths wd-wrap" aria-label="둘러보기">
+  <a href="#options"><span class="sc">엘로프먼트하는 두 가지 방법 →</span><p>올인클루시브는 $2,599, 촬영만 하실 경우 $995부터 시작합니다.</p></a>
+  <a href="#how"><span class="sc">진행 방식 →</span><p>예약금부터 24–48시간 내 갤러리 전달까지, 네 단계입니다.</p></a>
+  <a href="/ko/maui-wedding-photographer"><span class="sc">풀 웨딩 →</span><p>가족과 하객이 함께하신다면? 웨딩 패키지를 확인해 보세요.</p></a>
+</nav>
+<section class="wd-options wd-wrap" id="options" aria-labelledby="op-h">
+  <h2 id="op-h">엘로프먼트<em>하는</em> 두 가지 방법</h2>
+  <p class="wd-sub">두 패키지 모두 1.5시간의 선셋 촬영과 24–48시간 내 전달되는 보정된 사진 200장 이상을 포함합니다. 하객은 최대 15명까지 포함됩니다.</p>
+  <div class="wd-opt-grid">
+    <div class="wd-opt wd-feature">
+      <span class="sc" style="color:var(--red)">올인클루시브</span>
+      <h3>엘로프먼트 패키지</h3>
+      <div class="wd-amt">$2,599<small>세금 포함</small></div>
+      <ul>
+        <li>결혼 허가증까지 처리해 주는 하와이 원주민 주례자, <a href="/ko/our-wedding-officiant-pick-for-maui-photography">Derick Sebastian</a></li>
+        <li>부케, 레이, 웨딩 아치는 저희 전속 플로리스트 <a href="/ko/our-florist">Mya</a>가 준비합니다</li>
+        <li>1.5시간 촬영, 보정된 사진 200장 이상</li>
+        <li>비치 허가증 및 종합배상책임보험</li>
+        <li>집에 계신 가족을 위한 실시간 스트리밍</li>
+      </ul>
+      <p class="wd-addons">선택 사항: 촬영 시간 한 시간 추가, +$450. Mya의 업그레이드 플로럴을 선택하시면 영상 릴도 포함됩니다.</p>
+      <div class="wd-ctas"><a class="wd-btn wd-solid" href="/ko/pricing?openBooking=wedding-elopement">패키지 예약 · $100 예약금</a></div>
+    </div>
+    <div class="wd-opt">
+      <span class="sc">촬영만</span>
+      <h3>주례자는 직접 준비하세요</h3>
+      <div class="wd-amt">$995</div>
+      <ul>
+        <li>1.5시간 선셋 촬영</li>
+        <li>보정된 사진 200장 이상, 24–48시간 내 전달</li>
+        <li>Wailea, Makena 및 South Maui 해변</li>
+      </ul>
+      <p class="wd-addons">예약 시 선택 항목: <a href="/ko/kodak-film-upgrade">Kodak 필름</a>과 <a href="/ko/black-and-white-upgrade">흑백</a>으로 촬영하는 두 번째 포토그래퍼, +$250 · 촬영 시간 한 시간 추가, +$450.</p>
+      <div class="wd-ctas"><a class="wd-btn" href="/ko/pricing?openBooking=elopement-photography">촬영만 예약 · $100 예약금</a></div>
+    </div>
+  </div>
+  <p class="wd-cmp">Maui의 다른 업체에서는 1시간 촬영에 사진 35–40장을 포함한 주례자 서비스가 세금 별도로 $1,455–$1,650입니다. <a href="/ko/maui-wedding-cost">비교한 모든 패키지 보기 →</a></p>
+</section>
+<section class="wd-how wd-wrap" id="how" aria-labelledby="how-h">
+  <h2 id="how-h">진행 <em>방식</em></h2>
+  <ol class="wd-steps">
+    <li><h3>날짜 예약하기</h3><p>온라인으로 $100 예약금을 내고 예약하세요.</p></li>
+    <li><h3>주례자를 만나보세요</h3><p>패키지를 선택하시면 예약금 입금 후 Derick과의 상담 일정을 잡아드립니다. 결혼 허가증 절차도 Derick이 처리해 드립니다.</p></li>
+    <li><h3>서약하기</h3><p>포토그래퍼(패키지의 경우 주례자와 꽃 담당자까지)가 해변에서 두 분을 맞이합니다. 본가에 계신 가족들은 실시간으로 지켜보실 수 있습니다.</p></li>
+    <li><h3>갤러리 받기</h3><p>보정된 사진 200장 이상을 24–48시간 이내에 받아보실 수 있습니다.</p></li>
+  </ol>
+</section>
+<section class="wd-band" aria-label="엘로프먼트">
+  <img src="/assets/wailea-photo-wedding-sunset.jpg" alt="노을 지는 Maui 해변을 함께 걷는 갓 결혼한 커플" loading="lazy">
+  <div class="wd-band-copy"><div class="wd-k">단둘이서</div><h2>엘로프먼트</h2></div>
+  <figure class="wd-polaroid"><span class="wd-edge wd-top" aria-hidden="true"><b>KODAK 400TX</b><b>14</b></span><img src="/assets/maui-wedding-bride-veil-beach-bw.jpg" alt="바람에 베일이 날리는 신부, 흑백 사진" loading="lazy"><span class="wd-edge wd-bot" aria-hidden="true"><b>▸ 14A</b><b>KODAK 400TX</b></span><figcaption>Kodak 필름 &amp; 흑백</figcaption></figure>
+</section>
+<section class="wd-reviews wd-wrap" aria-labelledby="rv-h"><div class="wd-reviews-in">
+  <h2 id="rv-h">커플들이 저희에 대해 <em>남긴 후기</em></h2>
+  <div class="wd-stars" aria-label="별 다섯 개">★★★★★</div>
+  <div class="wd-rgrid">
+    <figure><blockquote>“그는 저희 결혼식에 필요한 모든 것을 포함한 웨딩 패키지를 제공해 주었어요. 그가 찍은 사진들은 정말 멋졌고, 그의 팀 전체가 저희의 특별한 날을 스트레스 없이 완벽하게 만들어 주었습니다. 그날 밤이 끝나기도 전에 수백 장의 보정된 사진을 받았어요.”</blockquote><figcaption><b>Blair H.</b><span>웨딩, 2025년 12월</span></figcaption></figure>
+    <figure><blockquote>“저희의 사랑을 완벽하게 담아주셨어요! 당일 예상치 못한 일들이 있었지만, 모든 것이 매끄럽게 진행되도록 신경 써 주셨습니다. 몇 번이고 추천하고 싶어요.”</blockquote><figcaption><b>Dominique B.</b><span>웨딩, 2025년 7월</span></figcaption></figure>
+    <figure><blockquote>“Maui에 있을 때 혼인서약 갱신식을 했는데, [Wailea Photo]는 당일 날짜를 바꿔야 했을 때도 정말 유연하게 대응해 주셨어요… 사진들은 정말 예술적이고 아름다웠습니다. 더할 나위 없이 좋은 경험이었어요!”</blockquote><figcaption><b>Nanette R.</b><span>혼인서약 갱신식, 2025년 2월</span></figcaption></figure>
+  </div>
+  <p class="wd-rsrc"><a href="https://www.tripadvisor.com/AttractionProductReview-g29220-d33241933-Get_Married_on_Maui-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a>에 남겨진 웨딩 패키지 후기 · Tripadvisor, Google, Facebook, Airbnb &amp; Yelp를 합쳐 1,000개 이상의 별 다섯 개 리뷰.</p>
+</div></section>
+</div>
+<section class="faq-list"><div class="section-head reveal visible"><div class="chapter">Maui 엘로프먼트, 궁금증 해결</div><h2>커플들이 엘로프먼트에 대해 자주 묻는 질문입니다.</h2></div><details class="faq-item" open><summary>Wailea Photo의 Maui 엘로프먼트 비용은 얼마인가요?</summary><p>저희 올인클루시브 엘로프먼트 패키지는 세금 포함 $2,599입니다. $100 예약금으로 날짜를 확정하고 나머지 잔금 $2,499를 지불하시면 됩니다. 하와이 원주민 주례자, 부케, 레이, 웨딩 아치, 24–48시간 내 전달되는 보정 사진 200장 이상이 포함된 1.5시간 촬영, 해변 허가증, 종합배상책임보험, 그리고 본국 가족을 위한 라이브 스트리밍까지 포함되어 있습니다.</p></details><details class="faq-item"><summary>저희 둘만 엘로프먼트를 해도 되나요?</summary><p>네. 두 분만 오시든 소규모 그룹으로 오시든 패키지는 동일합니다. 하객 15명까지 추가 비용 없이 포함됩니다.</p></details><details class="faq-item"><summary>사진 촬영만 예약할 수 있나요?</summary><p>네. 이미 주례자가 있는 커플을 위한 포토그래피 전용 촬영은 $995이며, 1.5시간 촬영에 200장 이상의 보정된 사진을 24~48시간 이내에 전달해 드립니다. Kodak film과 흑백으로 촬영하는 두 번째 작가는 $250에 추가하실 수 있습니다. $100 보증금으로 온라인 예약이 가능합니다.</p></details><details class="faq-item"><summary>누가 주례를 보고, 혼인 허가증은 누가 처리하나요?</summary><p>저희 하와이 원주민 주례자인 Derick Sebastian님이 예식을 진행하고 하와이 혼인 허가증 절차까지 챙겨 드립니다. 예약금을 지불하시면 그와의 상담이 예약됩니다.</p></details><details class="faq-item"><summary>본국의 가족이 함께 볼 수 있나요?</summary><p>네, 라이브 스트리밍이 포함되어 있습니다. 저희 삼각대에 고객님의 휴대폰을 설치하고 마이크를 연결해, 가족과 친구들이 서약 순간을 실시간으로 함께 볼 수 있습니다.</p></details><details class="faq-item"><summary>Maui의 어디에서 엘로프먼트를 할 수 있나요?</summary><p>저희는 Wailea, Makena, South Maui 해변, 그리고 Makena의 Maluaka Beach를 포함한 여러 해변에서 엘로프먼트 촬영을 진행합니다. 해변 허가증도 포함되어 있습니다.</p></details><details class="faq-item"><summary>비가 오거나 흐리면 어떻게 되나요?</summary><p>비가 오면 일정을 다시 잡아보도록 하겠습니다. 구름은 오히려 환영입니다. 빛과 피부톤을 부드럽게 만들어 주어서, 저희가 찍은 가장 아름다운 사진들 중 일부는 구름이 약간 낀 날씨에서 탄생했습니다.</p></details><details class="faq-item"><summary>하객이나 의자를 가져올 수 있나요?</summary><p>하객 15명까지 포함되며, 추가 하객은 1인당 $20이며 해변에서는 최대 30명, 개인 소유지에서는 최대 100명까지 가능합니다. 의자는 해변에서는 사용할 수 없고 개인 소유지에서만 가능합니다.</p></details><details class="faq-item"><summary>예약은 어떻게 하나요?</summary><p>온라인으로 $100 예약금을 내시면 날짜가 확정됩니다. 나머지 $2,499 잔금을 내시면 패키지가 완성됩니다.</p></details></section>
+<section class="experience-cta"><div class="chapter" style="color:var(--gold)">올인클루시브 · $2,599 · 세금 포함</div><h2>간편하게 준비하는 당신만의 Maui 엘로프먼트.</h2><p>$100 예약금으로 날짜를 확정합니다.</p><a class="button" href="/ko/pricing?openBooking=wedding-elopement">날짜 확정하기</a></section>
 <!-- guides:from --><section class="guides-more" aria-labelledby="gm-h"><div class="gm-head"><span class="gm-k">가이드</span><h2 id="gm-h">가이드에서 더 보기</h2><a class="gm-all" href="/ko/atlas#guides">모든 가이드</a></div><div class="ggrid"><a class="gcard" href="/ko/maui-wedding-cost"><figure><img src="/assets/guides/maui-wedding-cost.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">프로포즈, 웨딩 &amp; 대가족 모임</span><h3>2027년 Maui 해변 웨딩 비용</h3><p>2027년 Maui 해변 웨딩 비용: 패키지 가격 비교, 혼인 신고, Hawaii 세금, 하객 인원 제한 및 포함 사항.</p><span class="go">가이드 읽기</span></a><a class="gcard" href="/ko/our-wedding-officiant-pick-for-maui-photography"><figure><img src="/assets/guides/our-wedding-officiant-pick-for-maui-photography.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">프로포즈, 웨딩 &amp; 대가족 모임</span><h3>저희가 추천하는 Maui 웨딩 주례자</h3><p>저희가 직접 그의 예식을 촬영한 경험을 바탕으로, 정식 면허를 가진 Maui 주례자이자 우쿨렐레 아티스트인 Derick Sebastian을 추천하는 이유입니다.</p><span class="go">가이드 읽기</span></a><a class="gcard" href="/ko/parking-wedding-maluaka-beach"><figure><img src="/assets/guides/parking-wedding-maluaka-beach.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">주차 안내</span><h3>Maluaka Beach 주차 안내</h3><p>Makena에서 인물 촬영과 웨딩 예식에 알맞은 정확한 상단 주차장, 도보 경로, 지도 링크, 그리고 만남 장소를 안내합니다.</p><span class="go">가이드 읽기</span></a></div></section><!-- /guides:from -->
 </main>
 
