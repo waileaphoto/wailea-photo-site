@@ -21,7 +21,7 @@
     const params = parameters || {};
     window.gtag('event', eventName, params);
 
-    if (eventName === 'purchase' && params.session_type === 'wedding-elopement') {
+    if (eventName === 'purchase' && (params.session_type === 'wedding-elopement' || params.session_type === 'elopement-photography')) {
       window.gtag('event', 'conversion', {
         send_to: ADS_WEDDING_BOOKING,
         value: params.value,

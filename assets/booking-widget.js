@@ -60,6 +60,19 @@
       priceLabel: '$199',
       sessionSlugs: ['sunrise-max'],
     },
+    {
+      slug: 'second-photographer',
+      label: T('Second photographer shooting Kodak film and black & white'),
+      priceLabel: '$250',
+      learnMoreUrl: localizeUrl('https://waileaphoto.com/kodak-film-upgrade'),
+      sessionSlugs: ['elopement-photography'],
+    },
+    {
+      slug: 'extra-hour',
+      label: T('Extra hour of photography coverage (starts an hour earlier)'),
+      priceLabel: '$450',
+      sessionSlugs: ['elopement-photography', 'wedding-elopement'],
+    },
   ];
 
   // Full session policies moved to the confirmation email (Sept 2026). They were a
@@ -469,8 +482,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.sunrisePunctualityRow.hidden = slug !== 'sunrise-max';
       this.sunrisePunctualityCheckbox.checked = false;
       // Weddings include 15 guests and take up to 100; other sessions stay at 20.
-      this.partySizeInput.max = slug === 'wedding-elopement' ? '100' : '20';
-      this.partySizeHint.hidden = slug !== 'wedding-elopement';
+      this.partySizeInput.max = (slug === 'wedding-elopement' || slug === 'elopement-photography') ? '100' : '20';
+      this.partySizeHint.hidden = !(slug === 'wedding-elopement' || slug === 'elopement-photography');
       this.textConfirmCheckbox.checked = false;
       this.floristContactCheckbox.checked = false;
       this.celebratingInput.value = '';
