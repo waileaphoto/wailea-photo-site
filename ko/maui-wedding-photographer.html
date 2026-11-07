@@ -315,7 +315,99 @@
 .page-hero.fit-hero{height:min(100svh,66.45vw);min-height:0}
 .page-hero.fit-hero>img{object-position:center center}
 @media(max-width:760px){.page-hero.fit-hero{height:auto;min-height:0;overflow:visible;background:var(--ocean)}.page-hero.fit-hero>img{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1350/897;animation:none}.page-hero.fit-hero:after{height:66.45vw;bottom:auto}.page-hero.fit-hero .page-hero-copy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;padding:30px 22px 38px;background:var(--ocean)}.page-hero.fit-hero .page-hero-copy h1{font-size:44px;max-width:12ch}}
+
+/* editorial wedding layout (Nov 2026) */
+.wd{--paper:#faf7f2;--paper2:#f1ebe2;--ink:#2b2825;--dim:#5a534c;--line:rgba(43,40,37,.14);--red:#9e2b23;--gold:#b99254;--wserif:"Cormorant",Georgia,serif;--wsans:"Alegreya Sans",Arial,sans-serif;--wsc:"Alegreya Sans SC","Alegreya Sans",Arial,sans-serif;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--wsans)}
+.wd a{color:inherit}.wd img{display:block;max-width:100%}
+.wd *,.wd *:before,.wd *:after{box-sizing:border-box}.wd section,.wd nav{max-width:none;margin:0;padding:0;border:0;text-align:left;background:transparent}.wd figure,.wd h1,.wd h2,.wd h3,.wd p,.wd ul,.wd ol,.wd blockquote{margin:0;padding:0}.wd .wd-band .wd-band-copy h2,.wd .wd-band .wd-k{color:#fffaf2}.wd .wd-statement{text-align:center}.wd .wd-reviews h2,.wd .wd-stars,.wd .wd-rsrc{text-align:center}
+.wd .wd-wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wd .sc{font-family:var(--wsc);letter-spacing:.22em;text-transform:lowercase;font-size:13px}
+.wd h1,.wd h2,.wd h3{color:var(--ink)}
+.wd .wd-diptych{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px;height:min(88svh,980px);min-height:460px}
+.wd .wd-diptych figure{overflow:hidden;position:relative}
+.wd .wd-diptych img{width:100%;height:100%;object-fit:cover}
+.wd .wd-diptych .wd-bw img{object-position:44% 50%}
+.wd .wd-diptych .wd-col img{object-position:52% 50%}
+.wd .wd-crest{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:#fffaf2;text-align:center;text-shadow:0 2px 24px rgba(0,0,0,.55);background:radial-gradient(ellipse 36% 30% at 50% 50%,rgba(20,18,16,.38),rgba(20,18,16,0) 70%)}
+.wd .wd-crest .wd-mono{font:italic 300 96px/1 var(--wserif);letter-spacing:-.04em}
+.wd .wd-crest .wd-line{font:500 clamp(18px,1.8vw,26px)/1.25 var(--wserif);letter-spacing:.24em;text-transform:uppercase;margin-top:10px;display:grid;gap:4px}
+.wd .wd-crest .wd-line span{white-space:nowrap}
+@media (max-width:820px){.wd .wd-crest .wd-line{font-size:15px;letter-spacing:.18em}}
+.wd .wd-crest .wd-est{font:500 11px/1 var(--wsans);letter-spacing:.32em;text-transform:uppercase;margin-top:12px;opacity:.85}
+@media (max-width:820px){.wd .wd-diptych{grid-template-columns:1fr;height:auto}.wd .wd-diptych figure{height:58svh}.wd .wd-crest{place-items:end center;padding-bottom:7svh}}
+.wd .wd-statement{position:relative;max-width:1240px;margin:0 auto;padding-block:16vh 12vh;text-align:center}
+.wd .wd-statement h1{font:400 clamp(40px,6vw,86px)/1.02 var(--wserif);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance;max-width:14ch;margin:0 auto}
+.wd .wd-statement h1 em{font-style:italic;text-transform:none;font-weight:300}
+.wd .wd-statement .wd-lead{max-width:52ch;margin:34px auto 0;color:var(--dim)}
+.wd .wd-statement .wd-where{font:italic 400 22px/1.4 var(--wserif);margin-top:26px}
+.wd .wd-collage{position:relative;height:clamp(560px,62vw,820px);max-width:1240px;margin:0 auto}
+.wd .wd-collage figure{position:absolute;overflow:hidden;box-shadow:0 18px 40px rgba(43,40,37,.14)}
+.wd .wd-collage img{width:100%;height:100%;object-fit:cover}
+.wd .wd-c1{left:4%;top:12%;width:22%;aspect-ratio:3/4}
+.wd .wd-c2{left:32%;top:0;width:36%;aspect-ratio:4/5;z-index:2}
+.wd .wd-c3{right:4%;top:6%;width:24%;aspect-ratio:3/4}
+.wd .wd-c4{right:18%;bottom:0;width:20%;aspect-ratio:1/1;z-index:3}
+@media (max-width:820px){.wd .wd-collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-inline:max(20px,env(safe-area-inset-left,0px))}.wd .wd-collage figure{position:static;width:auto;aspect-ratio:4/5;box-shadow:none}.wd .wd-c2{grid-column:1/-1;aspect-ratio:4/3}}
+.wd .wd-paths{max-width:960px;margin:12vh auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.wd .wd-paths a{display:block;text-decoration:none;padding:6px 34px;border-left:1px solid var(--line)}
+.wd .wd-paths a:first-child{border-left:0}
+.wd .wd-paths .sc{display:block;color:var(--ink);margin-bottom:10px}
+.wd .wd-paths p{font-size:16px;color:var(--dim)}
+.wd .wd-paths a:hover .sc{color:var(--red)}
+@media (max-width:820px){.wd .wd-paths{grid-template-columns:1fr;gap:26px}.wd .wd-paths a{border-left:0;padding:0}}
+.wd .wd-band{position:relative;height:min(92svh,900px);min-height:520px;overflow:hidden;color:#fffaf2}
+.wd .wd-band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.wd .wd-band:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,16,.5),rgba(20,18,16,.05) 60%)}
+.wd .wd-band-copy{position:absolute;left:8vw;bottom:14vh;z-index:2}
+.wd .wd-band-copy .wd-k{font:italic 400 24px/1 var(--wserif)}
+.wd .wd-band-copy h2{font:300 clamp(64px,10vw,150px)/.95 var(--wserif);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid rgba(255,250,242,.7);padding-bottom:14px;margin-top:8px}
+.wd .wd-polaroid{position:absolute;z-index:3;right:12vw;top:16vh;width:clamp(170px,18vw,270px);background:#fdfbf7;padding:12px 12px 46px;transform:rotate(4deg);box-shadow:0 22px 50px rgba(0,0,0,.35)}
+.wd .wd-polaroid img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.wd .wd-polaroid span{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:italic 400 18px/1 var(--wserif);color:var(--ink)}
+@media (max-width:820px){.wd .wd-polaroid{right:6vw;top:7vh;width:150px}.wd .wd-band-copy{left:22px;bottom:9vh}}
+.wd .wd-package{max-width:1180px;margin:0 auto;padding-block:16vh 10vh;display:grid;grid-template-columns:.9fr 1.1fr;gap:7vw;align-items:start}
+.wd .wd-package>div{min-width:0}
+.wd .wd-eyebrow{display:block;color:var(--red);margin-bottom:16px}
+.wd .wd-package h2{font:400 clamp(38px,4.4vw,60px)/1.05 var(--wserif);text-wrap:balance}
+.wd .wd-package h2 em{font-weight:300}
+.wd .wd-package .wd-intro{margin-top:20px;color:var(--dim);max-width:44ch}
+.wd .wd-price{margin-top:34px;border:1px solid var(--line);background:#fff;padding:28px}
+.wd .wd-price .wd-amt{font:400 64px/1 var(--wserif)}
+.wd .wd-price .wd-amt small{font:500 11px/1 var(--wsans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-left:8px;vertical-align:middle}
+.wd .wd-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.wd .wd-split strong{display:block;font:400 28px/1.1 var(--wserif)}
+.wd .wd-split span,.wd .wd-price .wd-note{font-size:13px;color:var(--dim)}
+.wd .wd-price .wd-note{margin-top:14px}
+.wd .wd-compare{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:8px;font-size:14px}
+.wd .wd-compare b{display:block;font-weight:500}
+.wd .wd-compare .wd-ours{color:var(--red)}
+.wd .wd-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.wd .wd-btn{display:inline-block;text-decoration:none;font:500 13px/1 var(--wsans);letter-spacing:.18em;text-transform:uppercase;padding:16px 24px;border:1px solid var(--ink)}
+.wd .wd-btn.wd-solid{background:var(--ink);color:var(--paper)}
+.wd .wd-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.wd .wd-includes{list-style:none;counter-reset:i;display:grid}
+.wd .wd-includes li{counter-increment:i;display:grid;grid-template-columns:54px 1fr;gap:10px;padding:24px 0;border-top:1px solid var(--line)}
+.wd .wd-includes li:before{content:counter(i,decimal-leading-zero);font:italic 400 24px/1.2 var(--wserif);color:var(--gold)}
+.wd .wd-includes h3{font:400 27px/1.2 var(--wserif)}
+.wd .wd-includes p{color:var(--dim);margin-top:4px}
+.wd .wd-upg{margin-top:20px;font-size:14px;color:var(--dim)}
+@media (max-width:900px){.wd .wd-package{grid-template-columns:1fr}}
+.wd .wd-reviews{background:var(--paper2);padding-block:14vh}
+.wd .wd-reviews-in{max-width:1180px;margin:0 auto}
+.wd .wd-reviews h2{font:400 clamp(36px,4.2vw,56px)/1.08 var(--wserif);text-align:center}
+.wd .wd-reviews h2 em{font-weight:300}
+.wd .wd-stars{text-align:center;color:var(--gold);letter-spacing:.3em;margin:14px 0 46px}
+.wd .wd-rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.wd .wd-rgrid figure{background:var(--paper);padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.wd .wd-rgrid blockquote{font:400 20px/1.55 var(--wserif)}
+.wd .wd-rgrid figcaption{font-size:14px}
+.wd .wd-rgrid figcaption span{display:block;color:var(--dim)}
+.wd .wd-rsrc{text-align:center;margin-top:24px;font-size:14px;color:var(--dim)}
+@media (max-width:900px){.wd .wd-rgrid{grid-template-columns:1fr}}
+.wd a:focus-visible,.wd summary:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.faq-list{background:#faf7f2}
 </style>
+
 
 
 
@@ -394,35 +486,82 @@
 <!-- i18n:head --><link rel="alternate" hreflang="en" href="https://waileaphoto.com/maui-wedding-photographer"><link rel="alternate" hreflang="fr" href="https://waileaphoto.com/fr/maui-wedding-photographer"><link rel="alternate" hreflang="es" href="https://waileaphoto.com/es/maui-wedding-photographer"><link rel="alternate" hreflang="de" href="https://waileaphoto.com/de/maui-wedding-photographer"><link rel="alternate" hreflang="it" href="https://waileaphoto.com/it/maui-wedding-photographer"><link rel="alternate" hreflang="ja" href="https://waileaphoto.com/ja/maui-wedding-photographer"><link rel="alternate" hreflang="ko" href="https://waileaphoto.com/ko/maui-wedding-photographer"><link rel="alternate" hreflang="zh-Hans" href="https://waileaphoto.com/zh/maui-wedding-photographer"><link rel="alternate" hreflang="hi" href="https://waileaphoto.com/hi/maui-wedding-photographer"><link rel="alternate" hreflang="x-default" href="https://waileaphoto.com/maui-wedding-photographer"><style id="i18n-css">.lang-switch{position:relative}.lang-switch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;color:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:4px 0;opacity:.8;text-shadow:0 1px 12px rgba(0,0,0,.35)}.lang-switch summary::-webkit-details-marker{display:none}.lang-switch summary::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}.lang-switch details[open] summary::after{margin-top:3px;transform:rotate(-135deg)}.lang-switch summary:hover,.lang-switch details[open] summary{opacity:1}.lang-switch summary:focus-visible{outline:1px solid currentColor;outline-offset:3px}.lang-switch ul{position:absolute;left:0;top:calc(100% + 10px);z-index:1000;margin:0;padding:6px 0;list-style:none;min-width:160px;background:#171716;border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-switch li a{display:block;padding:9px 18px;color:#fff;text-decoration:none;font-size:14px;line-height:1.3;letter-spacing:.02em;opacity:.78;text-shadow:none}.lang-switch li a:hover,.lang-switch li a:focus-visible{opacity:1;background:rgba(255,255,255,.08);outline:none}.lang-switch li a[aria-current]{opacity:1;font-weight:700}</style><script>document.addEventListener("toggle",function(e){var d=e.target;if(!d.open||!d.matches||!d.matches(".lang-switch details"))return;var u=d.querySelector("ul");u.style.left="0";u.style.right="auto";if(u.getBoundingClientRect().right>window.innerWidth-8){u.style.left="auto";u.style.right="0"}},true);document.addEventListener("click",function(e){document.querySelectorAll(".lang-switch details[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".lang-switch details[open]").forEach(function(d){d.removeAttribute("open");d.querySelector("summary").focus()})});</script><script>window.WP_I18N={"lang":"ko","locale":"ko-KR","s":{"Aloha and welcome to Wailea Photo! I'm Claude, the AI Concierge — the Balter family of photographers are out on the beach or hard at work editing, so I'm here to answer all your questions. What brings you to Maui, and how can I help guide you to the best experience?":"Aloha, Wailea Photo에 오신 것을 환영합니다! 저는 AI 컨시어지 Claude예요 — Balter 가족 사진작가들은 해변에서 촬영 중이거나 열심히 편집 작업을 하고 있어서, 제가 여러분의 모든 질문에 답해드리려고 여기 있어요. Maui에는 어떤 일로 오셨나요? 최고의 경험을 하실 수 있도록 어떻게 도와드리면 될까요?","Ask about dates, sessions, pricing…":"날짜, 촬영, 요금에 대해 물어보세요…","Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. I'm stepping away for just a moment — meanwhile you can book directly on this page, with your price shown as you choose a date and time, or write the family at {email} and they'll reply personally.":"Balter 가족 팀은 촬영과 편집, 그리고 멋진 고객 경험을 만드느라 바쁘기 때문에, 제가 여러분의 경험을 편하게 도와드리고 있어요. 잠시 자리를 비우는 동안, 이 페이지에서 날짜와 시간을 선택하시면 요금이 바로 표시되니 직접 예약하실 수 있고, 또는 {email}로 가족에게 메일을 보내시면 직접 답장을 받으실 수 있어요.","Book this session":"이 촬영 예약하기","Close chat":"채팅 닫기","Concierge":"컨시어지","Concierge is typing":"컨시어지가 입력 중입니다","Message the concierge":"컨시어지에게 메시지 보내기","Open the concierge chat":"컨시어지 채팅 열기","Powered by Claude":"Claude 제공","Send":"보내기","That didn't go through. Try once more, or email {email}.":"전송되지 않았어요. 다시 시도해 보시거나 {email}로 메일을 보내주세요.","The Concierge":"컨시어지","The connection dropped before I could answer. Try again, or email {email}.":"답변드리기 전에 연결이 끊겼어요. 다시 시도하시거나 {email}로 메일을 보내주세요.","Wailea Photo concierge chat":"Wailea Photo 컨시어지 채팅","What does the {session} session cost?":"{session} 촬영 비용은 얼마인가요?","this session":"이 촬영"}};</script><!-- /i18n:head -->
 </head><body>
 <header class="site-header ed"><a href="/ko/#top" class="brand">Wailea Photo</a><div class="header-right"><!-- i18n:switcher --><nav class="lang-switch" translate="no" aria-label="언어"><details><summary title="언어: 한국어">KO</summary><ul><li><a href="/maui-wedding-photographer" hreflang="en" lang="en">English</a></li><li><a href="/fr/maui-wedding-photographer" hreflang="fr" lang="fr">Français</a></li><li><a href="/es/maui-wedding-photographer" hreflang="es" lang="es">Español</a></li><li><a href="/de/maui-wedding-photographer" hreflang="de" lang="de">Deutsch</a></li><li><a href="/it/maui-wedding-photographer" hreflang="it" lang="it">Italiano</a></li><li><a href="/ja/maui-wedding-photographer" hreflang="ja" lang="ja">日本語</a></li><li><a href="/ko/maui-wedding-photographer" hreflang="ko" lang="ko" aria-current="page">한국어</a></li><li><a href="/zh/maui-wedding-photographer" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="/hi/maui-wedding-photographer" hreflang="hi" lang="hi">हिन्दी</a></li></ul></details></nav><!-- /i18n:switcher --><div class="ed-pills"><button class="ed-pill ed-ask" type="button" data-ed-concierge aria-label="Wailea Photo 컨시어지에게 물어보세요">컨시어지</button><a class="ed-pill ed-book" href="/ko/pricing#sessions">지금 예약</a></div><button class="menu-open-btn" aria-expanded="false">메뉴</button></div></header><nav class="menu ed" aria-hidden="true"><button class="menu-close" aria-label="메뉴 닫기">×</button><a href="/ko/#story-paths">사진</a><a href="/ko/pricing">촬영 및 요금</a><a href="/ko/#experience">우리 가족</a><a href="/ko/atlas">가이드</a><a href="/ko/art">아트</a><a href="/ko/#reviews">리뷰</a><a href="/ko/faq">자주 묻는 질문 &amp; 문의</a><div class="menu-foot"><a href="/ko/tides">조수 및 일몰 시간</a><a href="/ko/what-to-wear-maui-photos">무엇을 입을까요</a><a href="/ko/the-apo-difference">APO의 차이</a><a href="/ko/our-florist">저희와 함께하는 플로리스트</a><a href="https://waileaphoto.pic-time.com/client" target="_blank" rel="noopener">Client Hall of Fame</a><a href="/ko/corporate-events">기업 행사</a><a href="tel:+18082985188">808.298.5188</a></div></nav>
-<main><section class="page-hero wedding-hero fit-hero"><img src="/assets/wedding-wide-sunset.jpg" alt="Maui의 광활한 선셋 아래 갓 결혼한 커플" loading="eager" fetchpriority="high"><div class="page-hero-copy reveal visible"><h1><span class="eyebrow">MAUI 웨딩 사진작가 &amp; 엘로프먼트</span>Maui에서의 시적인 웨딩.</h1><p>솔직한 감정, 솔직한 색감, 솔직한 사진.</p><div class="hero-cta-row"><a class="button" href="#wedding-package">웨딩 패키지 보기</a><a class="button-outline" href="/ko/pricing#sessions">날짜 확정하기</a></div></div></section>
-<section class="trust-intro wedding-trust" aria-label="리뷰와 경험"><div class="reveal visible"><div class="chapter">전 세계 커플들이 신뢰하는</div><h2 class="display">Maui 웨딩과 함께한 25년 이상. 변치 않는 하나의 약속.</h2><ul class="quick-facts"><li>Maui를 담아온 25년 이상의 시간</li><li><a href="/ko/laurence-balter">Laurence</a>, <a href="/ko/jude-balter">Jude</a>, <a href="/ko/max-balter">Max</a> &amp; <a href="/ko/solomon-balter">Solomon</a> Balter가 직접 운영하는 가족 사업</li><li>Wailea, Makena &amp; South Maui</li><li>하와이 원주민 주례자 &amp; 자체 플로리스트</li><li>48시간 이내 전달되는 갤러리</li></ul></div><div class="reveal visible"><div class="trust-number" data-count-target="1000" aria-label="1,000명 이상">1,000+</div><div class="trust-stars" aria-label="별 다섯 개">★★★★★</div><div class="trust-label">별 다섯 개 리뷰</div><span class="proof-copy"><a href="https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a>(<a href="https://www.viator.com/tours/Maui/Private-Beach-Photoshoot-in-Wailea/d671-7061P11" target="_blank" rel="noopener">Viator</a> 포함), <a href="https://g.page/r/Cc3XQvgWZf3-EAI/review" target="_blank" rel="noopener">Google</a>, <a href="https://www.facebook.com/waileaphoto" target="_blank" rel="noopener">Facebook</a>, <a href="https://www.airbnb.com/experiences/2386762" target="_blank" rel="noopener">Airbnb</a> &amp; <a href="https://www.yelp.com/biz/wailea-photo-wailea" target="_blank" rel="noopener">Yelp</a>에서 평균 5.0점. <a href="/ko/#reviews">리뷰 보기</a></span></div></section>
-<section class="experience-intro"><div class="experience-intro-copy reveal"><div class="chapter">다시 찍을 수 없습니다</div><h2>모든 일이 동시에 벌어질 때는 경험이 중요합니다.</h2><p>25년이 넘는 시간 동안, 저희 가족은 Maui의 시시각각 변하는 빛과 날씨, 그리고 그 안의 축하의 순간들을 담아왔습니다. 저희는 언제 이끌어야 할지, 언제 미리 준비해야 할지, 그리고 언제 조용히 순간이 흘러가도록 두어야 할지 압니다.</p><p>완성된 컬렉션은 예식과 사랑하는 사람들, 그리고 오직 Maui에서만 느낄 수 있는 그 분위기를 균형 있게 담아냅니다.</p><p>Maui 웨딩 사진작가로서, 저희는 두 분만의 소규모 프라이빗 엘로프먼트부터 가족과 하객이 함께하는 온전한 웨딩 당일 축하까지 모두 다루며, 원하시는 장소와 빛, 프라이버시에 따라 Wailea, Makena, Kapalua, South Maui 전역에서 진행합니다.</p><a class="button" href="#wedding-package">포함 사항</a><br><a class="wedding-officiant-pill" href="/ko/our-wedding-officiant-pick-for-maui-photography">Maui 웨딩 주례자 소개 →</a></div><div class="experience-highlights"><div class="experience-highlight"><strong>선셋까지 이어지는 컬러감</strong><span>선택 가능한 Leica APO-Summicron 렌즈로 까다로운 역광에서도 선명함과 정확한 색감을 지킵니다.</span></div><div class="experience-highlight"><strong>가족이 직접 운영하는 현지 촬영</strong><span>여러분의 웨딩은 절대 낯선 외부 사진작가에게 넘겨지지 않습니다.</span></div><div class="experience-highlight"><strong>당신의 하루에 맞춰</strong><span>소규모 엘로프먼트부터 예식, 대규모 가족 축하 행사까지 촬영합니다.</span></div></div></section>
-<section class="wedding-package" id="wedding-package" aria-labelledby="wedding-package-title"><div class="wedding-package-inner">
-<div class="wedding-package-summary reveal"><div class="chapter" style="text-align:left">올인클루시브 웨딩 패키지</div><h2 id="wedding-package-title">Maui에서 “I do”를 말하기 위해 필요한 모든 것.</h2><p class="wedding-package-lede">한 가족, 한 번의 예약. 주례, 꽃, 사진, 비치 퍼밋, 보험까지 모두 저희가 준비해 드리니, 신랑 신부님은 그 순간만 생각하시면 됩니다.</p>
-<div class="wedding-price-card"><div class="amount">$2,599<small>전액 포함 · 세금 포함</small></div><div class="wedding-price-split"><div><strong>$100</strong><span>날짜 확정을 위한 예약금</span></div><div><strong>$2,499</strong><span>잔금</span></div></div><p class="wedding-price-note">하객 15명까지 포함됩니다. 추가 하객은 1인당 $20이며, 해변은 최대 30명, 개인 소유지는 최대 100명까지 가능합니다.</p><div class="wedding-compare"><div class="wedding-compare-head">출간된 Maui 패키지와 비교해 보면</div><dl><div><dt>주례자 + 1시간 촬영</dt><dd>$1,455–$1,650 + 세금 · 사진 35–40장</dd></div><div><dt>사진 100장 이상 포함된 플래너 패키지</dt><dd>$3,475–$5,500 + 세금</dd></div><div class="ours"><dt>Wailea Photo, 올인클루시브</dt><dd>$2,599, 세금 포함 · 사진 200장 이상, 플로럴, 허가증 및 보험 포함</dd></div></dl></div></div>
-<div class="wedding-package-ctas"><a class="button" href="/ko/pricing#sessions">날짜 확정하기</a><a class="button-dark" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">웨딩 샘플 보기</a></div><a class="wedding-officiant-pill wedding-cost-pill" href="/ko/maui-wedding-cost">Maui 웨딩 비용 비교하기 →</a></div>
-<div class="wedding-package-details reveal"><ul class="wedding-includes">
-<li><div><h3>하와이 원주민 웨딩 주례</h3><p>예식은 하와이 원주민 주례자인 Derick Sebastian이 진행합니다. 혼인 허가증 업무도 함께 처리해 드리며, 예약금을 넣으시면 상담 일정을 잡아드립니다. <a href="/ko/our-wedding-officiant-pick-for-maui-photography">Derick 소개 →</a></p></div></li>
-<li><div><h3>저희 전속 플로리스트가 준비하는 플로럴</h3><p>Āpuakea's Flowers의 Mya가 예식을 위한 기본 부케, 레이, 웨딩 아치를 만들어 드립니다. <a href="/ko/our-florist">Mya 소개 →</a></p></div></li>
-<li><div><h3>1.5시간 사진 촬영</h3><p>24~48시간 내로 전달되는 고해상도 보정 사진 200장 이상.</p></div></li>
-<li><div><h3>비치 퍼밋 및 배상책임보험</h3><p>비치 퍼밋과 배상책임보험은 모두 포함되어 있으며 저희가 책임지고 처리해 드립니다.</p></div></li>
-<li><div><h3>최대 15명의 하객</h3><p>하객 15명까지 포함됩니다. 추가 하객은 1인당 $20이며, 해변은 최대 30명, 개인 소유지는 최대 100명까지 가능합니다.</p></div></li>
-<li><div><h3>가족과 친구들을 위한 라이브 스트리밍</h3><p>저희 삼각대와 마이크에 고객님의 휴대폰을 설치해 드려서, 고향에 계신 분들도 예식을 실시간으로 보실 수 있습니다.</p></div></li>
-</ul><p class="wedding-upgrades"><strong>업그레이드:</strong> 추가 촬영은 시간당 $450이며, 최대 3시간까지 가능합니다. Mya의 업그레이드 꽃 장식을 구매하시면 영상 릴이 포함됩니다. 날짜를 예약하실 때 문의해 주세요.</p><p class="wedding-upgrades"><strong>이미 주례자가 있으신가요?</strong> <a href="/ko/pricing?openBooking=elopement-photography">사진 촬영만</a> 진행하는 경우 1.5시간 촬영과 200장 이상의 사진이 포함되어 $995이며, Kodak film과 흑백 촬영을 하는 두 번째 작가를 $250에 추가하실 수 있습니다.</p></div>
-</div></section>
-<section class="wedding-gallery-wrap" aria-label="Maui 웨딩 사진 갤러리">
-  <div class="wedding-gallery-tile" data-tile-slider>
-    <div class="tile-slider">
-      <figure class="active"><img src="/assets/wedding-ceremony-hires.jpg" alt="Makena의 Maluaka Beach에서 골든 아워에 결혼식을 올리는 정장 차림의 커플, 신랑은 Apuakea's Flowers의 맞춤 그린 레이와 아치 플로럴을 착용, 임신 중인 신부는 머리에 꽃 장식, Leica APO 50mm Summicron 렌즈로 촬영" loading="eager"></figure><figure><img src="/assets/WaileaPortrait-IG-243.jpg" alt="석양 무렵 Makena의 Maluaka Beach에서 흰 장미 꽃잎 길을 따라 신랑을 향해 걸어가는 신부를 신랑과 주례자가 지켜보는 모습, Wailea Photo 사진" loading="lazy"></figure><figure><img src="/assets/apuakes-flowers-wedding.jpeg" alt="Maui Makena의 Maluaka Beach 잔디밭에서 이른 골든 아워 선셋에 진행된 아시아인 커플의 결혼식, Āpuakea's Flowers의 맞춤 꽃들이 주변을 둘러싸고 있습니다." loading="lazy"></figure><figure><img src="/assets/maui-wedding-bride-veil-beach-bw.jpg" alt="Maui 해변에서 베일이 바람에 날리는 햇빛 모자를 쓴 신부의 흑백 인물 사진" loading="lazy"></figure><figure><img src="/assets/maui-wedding-couple-embrace-beach-bw.jpg" alt="Maui 해변에서 서로를 가까이 안고 있는 신혼부부의 흑백 사진" loading="lazy"></figure><figure><img src="/assets/maui-wedding-couple-walking-sunset-lawn.jpg" alt="석양이 지는 Maui의 오션프론트 잔디밭을 손을 잡고 걷는 신랑 신부" loading="lazy"></figure><figure><img src="/assets/maui-wedding-couple-embrace-tree-dusk.jpg" alt="Maui에서 석양을 배경으로 나무 아래에서 서로를 안고 있는 신랑 신부" loading="lazy"></figure><figure><img src="/assets/maui-wedding-bride-garden-path-bouquet.jpg" alt="저 멀리 산이 보이는 Maui의 돌길 정원을 부케를 든 채 걷는 신부" loading="lazy"></figure><figure><img src="/assets/maui-wedding-couple-beach-portrait-a.jpg" alt="골든 아워의 Maui 해변에서 부케를 든 신부와 함께 서 있는 신랑 신부" loading="lazy"></figure><figure><img src="/assets/maui-wedding-party-group-oceanview-a.jpg" alt="Maui의 오션프론트 잔디밭에 웨딩 파티와 함께 모인 신랑 신부" loading="lazy"></figure><figure><img src="/assets/maui-wedding-ceremony-floral-arch-a.jpg" alt="오션프론트에서 열린 Maui 웨딩 예식에서 태양을 등지고 꽃 아치 아래 서약을 나누는 커플" loading="lazy"></figure><figure><img src="/assets/maui-wedding-couple-beach-portrait-b.jpg" alt="석양이 지는 Maui 해변에서 부케를 든 신부와 함께 미소 짓는 신랑 신부" loading="lazy"></figure><figure><img src="/assets/maui-wedding-party-group-oceanview-b.jpg" alt="Maui의 만이 내려다보이는 잔디밭 위에서 함께 포즈를 취한 신랑, 신부와 웨딩 파티" loading="lazy"></figure><figure><img src="/assets/maui-wedding-ceremony-floral-arch-b.jpg" alt="Maui에서 꽃으로 장식된 아치 아래에서 서약을 나누며 서로를 마주보는 신랑 신부" loading="lazy"></figure>
+<main><div class="wd">
+<section class="wd-diptych" aria-label="웨딩 사진">
+  <figure class="wd-bw"><img data-slot="hero-bw" src="/assets/maui-wedding-bride-veil-beach-bw.jpg" alt="Maui 해변에서 베일이 바람에 날리는 신부, 흑백 사진" fetchpriority="high"></figure>
+  <figure class="wd-col"><img data-slot="hero-colour" src="/assets/maui-elopement-sunset-hero.jpg" alt="South Maui 해변에서 노을을 배경으로 서로 마주 보는 신랑 신부" fetchpriority="high"></figure>
+  <div class="wd-crest" aria-hidden="true"><div><div class="wd-mono">Wp</div><div class="wd-line"><span>혼인 서약</span><span>그 사이의 모든 순간들</span></div><div class="wd-est">2000년 설립 · Wailea, Maui</div></div></div>
+</section>
+
+<section class="wd-statement wd-wrap">
+  <h1><em>당신이</em> I do라고 말하는 순간<em>을 위한</em> 자연스럽고 빛으로 가득한 사진</h1>
+  <p class="wd-lead">한 가족, 한 번의 예약. 하와이 원주민 주례자, 꽃, 사진, 해변 허가증과 보험까지 모두 저희가 준비해드리니, 남은 건 그 순간을 맞이하는 일뿐입니다.</p>
+  <p class="wd-where">Wailea, Makena &amp; South Maui의 커플들과 함께한 25년 이상의 시간.</p>
+</section>
+
+<section class="wd-collage" aria-label="저희가 촬영한 웨딩에서">
+  <figure class="wd-c1"><img data-slot="collage-1" src="/assets/maui-wedding-ceremony-floral-arch-a.jpg" alt="바다 위 하얀 플로럴 아치 아래에서 진행되는 예식" loading="lazy"></figure>
+  <figure class="wd-c2"><img data-slot="collage-2" src="/assets/maui-wedding-couple-embrace-tree-dusk.jpg" alt="노을 속 잔디밭을 함께 걷는 커플, 바람에 날리는 드레스 자락" loading="lazy"></figure>
+  <figure class="wd-c3"><img data-slot="collage-3" src="/assets/derick-sebastian-wedding-ceremony-maui.jpg" alt="플로럴 아치 아래에서 가족 웨딩을 주례하는 Derick Sebastian" loading="lazy"></figure>
+  <figure class="wd-c4"><img data-slot="collage-4" src="/assets/maui-wedding-couple-walking-sunset-lawn.jpg" alt="바다가 내려다보이는 절벽 위 잔디밭에서 키스하는 커플" loading="lazy"></figure>
+</section>
+
+<nav class="wd-paths wd-wrap" aria-label="둘러보기">
+  <a href="#wedding-package"><span class="sc">패키지 보기 →</span><p>주례, 플로럴, 1.5시간 사진 촬영과 허가증까지, tax 포함 $2,599입니다.</p></a>
+  <a href="/ko/laurence-balter"><span class="sc">가족 소개 →</span><p>Laurence, Jude, Max and Solomon Balter: 25년 이상 이어온 Maui 웨딩.</p></a>
+  <a href="/ko/maui-elopement-photographer"><span class="sc">엘로프먼트 →</span><p>단둘만의 웨딩, 또는 $995부터 사진 촬영만도 가능합니다.</p></a>
+</nav>
+
+<section class="wd-band" aria-label="저희가 하는 일">
+  <img data-slot="band" src="/assets/solomon-work-wedding-driftwood-sunset.jpg" alt="드라마틱한 Maui 노을 아래 유목 위에 선 신혼부부" loading="lazy">
+  <div class="wd-band-copy"><div class="wd-k">저희가 하는 일</div><h2>웨딩</h2></div>
+  <figure class="wd-polaroid"><img data-slot="polaroid" src="/assets/maui-wedding-couple-embrace-beach-bw.jpg" alt="신부의 베일에 함께 감싸인 커플, 흑백 사진" loading="lazy"><span>Kodak 필름 &amp; 흑백</span></figure>
+</section>
+
+<section class="wd-package wd-wrap" id="wedding-package" aria-labelledby="pk-h">
+  <div>
+    <span class="sc wd-eyebrow">올인클루시브 웨딩 패키지</span>
+    <h2 id="pk-h">Maui<em>에서</em> “I do”라고 말하는 데 필요한 모든 것.</h2>
+    <p class="wd-intro">몇 분이면 온라인 예약이 끝납니다. $100 예약금으로 선셋 시간을 확보해드리고, 나머지는 저희가 모두 챙깁니다.</p>
+    <div class="wd-price">
+      <div class="wd-amt">$2,599<small>전액 포함 · 세금 포함</small></div>
+      <div class="wd-split"><div><strong>$100</strong><span>날짜 확정을 위한 예약금</span></div><div><strong>$2,499</strong><span>잔금</span></div></div>
+      <p class="wd-note">하객 15명까지 포함됩니다. 추가 하객은 1인당 $20이며, 해변은 최대 30명, 개인 소유지는 최대 100명까지 가능합니다.</p>
+      <div class="wd-compare">
+        <span class="sc">공개된 maui 패키지와 비교</span>
+        <div><b>주례 + 1시간 촬영</b>$1,455–$1,650 + tax · 사진 35–40장</div>
+        <div><b>플래너 패키지, 사진 100장 이상</b>$3,475–$5,500 + tax</div>
+        <div class="wd-ours"><b>Wailea Photo 올인클루시브</b>$2,599, tax 포함 · 사진 200장 이상, 플로럴, 허가증 &amp; 보험</div>
+        <a class="sc" href="/ko/maui-wedding-cost">maui 웨딩 비용 비교하기 →</a>
+      </div>
     </div>
-    <button class="tile-arrow tile-prev" type="button" aria-label="이전 사진">&lsaquo;</button>
-    <button class="tile-arrow tile-next" type="button" aria-label="다음 사진">&rsaquo;</button>
+    <div class="wd-ctas"><a class="wd-btn wd-solid" href="/ko/pricing?openBooking=wedding-elopement">날짜 예약하기</a><a class="wd-btn" href="https://waileaphoto.smugmug.com/A-Poetic-Wedding-with-Wailea-Photo" target="_blank" rel="noopener">웨딩 사진 보기</a></div>
+  </div>
+  <div>
+    <ol class="wd-includes">
+      <li><div><h3>하와이 원주민 주례자</h3><p><a href="/ko/our-wedding-officiant-pick-for-maui-photography">Derick Sebastian</a>님이 예식을 진행하시고 혼인 신고까지 챙겨드리며, 예약금 입금 후 상담을 진행합니다.</p></div></li>
+      <li><div><h3>저희 전속 플로리스트가 준비하는 플로럴</h3><p>Āpuakea’s Flowers의 <a href="/ko/our-florist">Mya</a>가 부케, 레이, 웨딩 아치를 만들어드립니다.</p></div></li>
+      <li><div><h3>1.5시간 사진 촬영</h3><p>24~48시간 내로 전달되는 고해상도 보정 사진 200장 이상.</p></div></li>
+      <li><div><h3>비치 퍼밋 및 배상책임보험</h3><p>모두 포함되어 있고, 저희가 알아서 챙겨드립니다.</p></div></li>
+      <li><div><h3>최대 15명의 하객</h3><p>추가 하객은 1인당 $20이며, 해변에서는 최대 30명, 개인 소유지에서는 최대 100명까지 가능합니다.</p></div></li>
+      <li><div><h3>집에 계신 가족을 위한 실시간 스트리밍</h3><p>저희 삼각대에 고객님의 휴대폰을 올리고 마이크까지 연결해, 집에 계신 모든 분들이 함께 보실 수 있도록 합니다.</p></div></li>
+    </ol>
+    <p class="wd-upg"><b>업그레이드:</b> 추가 촬영은 시간당 $450이며 최대 3시간까지 가능합니다. Mya의 업그레이드 플로럴 패키지에는 비디오 릴이 포함됩니다. 이미 주례자가 있으신가요? <a href="/ko/pricing?openBooking=elopement-photography">사진 촬영만</a>은 $995이며, Kodak 필름과 흑백으로 촬영하는 두 번째 작가 추가는 $250입니다.</p>
   </div>
 </section>
 
-<section class="wedding-reviews" aria-labelledby="wr-title"><div class="chapter">커플들의 후기</div><h2 id="wr-title">Maui에서 웨딩을 올린 커플들의 이야기입니다.</h2><div class="wr-grid"><figure class="wr-card"><blockquote>“그는 저희 결혼식에 필요한 모든 것을 포함한 웨딩 패키지를 제공해 주었어요. 그가 찍은 사진들은 정말 멋졌고, 그의 팀 전체가 저희의 특별한 날을 스트레스 없이 완벽하게 만들어 주었습니다. 그날 밤이 끝나기도 전에 수백 장의 보정된 사진을 받았어요.”</blockquote><figcaption><strong>Blair H.</strong><span>웨딩, 2025년 12월</span></figcaption></figure><figure class="wr-card"><blockquote>“저희의 사랑을 완벽하게 담아주셨어요! 당일 예상치 못한 일들이 있었지만, 모든 것이 매끄럽게 진행되도록 신경 써 주셨습니다. 몇 번이고 추천하고 싶어요.”</blockquote><figcaption><strong>Dominique B.</strong><span>웨딩, 2025년 7월</span></figcaption></figure><figure class="wr-card"><blockquote>“Maui에 있을 때 혼인서약 갱신식을 했는데, [Wailea Photo]는 당일 날짜를 바꿔야 했을 때도 정말 유연하게 대응해 주셨어요… 사진들은 정말 예술적이고 아름다웠습니다. 더할 나위 없이 좋은 경험이었어요!”</blockquote><figcaption><strong>Nanette R.</strong><span>혼인서약 갱신식, 2025년 2월</span></figcaption></figure></div><p class="wr-source">저희 웨딩 패키지에 대한 <a href="https://www.tripadvisor.com/AttractionProductReview-g29220-d33241933-Get_Married_on_Maui-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a> 리뷰입니다.</p></section>
-<section class="experience-review"><strong>25+</strong><h2>Maui의 웨딩과 날씨, 빛, 다시 오지 않을 순간들을 담아온 세월.</h2><p>Wailea · Makena · South Maui</p></section>
-<section class="page-guide"><div class="section-head reveal visible"><div class="chapter">MAUI 엘로프먼트</div><h2>간단하고 합법적으로 Maui에서 엘로프먼트 하기.</h2></div><div class="page-guide-grid"><div class="page-guide-item"><h3>두 분만을 위한 시간</h3><p>저희의 올인클루시브 패키지는 엘로프먼트에도 완벽하게 어울립니다: 네이티브 하와이안 주례자, 꽃 장식, 해변 허가, 그리고 사진 촬영까지 포함되어 있어 날짜만 정하시면 별도 준비가 필요 없습니다.</p></div><div class="page-guide-item"><h3>혼인 신고서</h3><p>저희 주례자가 하와이 혼인 허가증 절차를 처리해 드리며, 예약금 입금 후 상담을 위해 직접 만나시게 됩니다.</p></div><div class="page-guide-item"><h3>집에서의 가족</h3><p>원거리에 계셔서 함께하지 못한 분들도 혼인 서약 순간을 볼 수 있도록 실시간 스트리밍도 포함되어 있습니다.</p></div></div><p class="page-guide-links"><a href="#wedding-package">전체 패키지 보기</a> · <a href="/ko/maui-elopement-photographer">Maui 엘로프먼트 패키지</a> · <a href="/ko/maui-wedding-cost">Maui 웨딩 비용</a> · <a href="/ko/our-wedding-officiant-pick-for-maui-photography">저희 주례자</a> · <a href="/ko/our-florist">저희 플로리스트</a></p></section>
+<section class="wd-reviews wd-wrap" aria-labelledby="rv-h"><div class="wd-reviews-in">
+  <h2 id="rv-h">커플들의 <em>후기</em></h2>
+  <div class="wd-stars" aria-label="별 다섯 개">★★★★★</div>
+  <div class="wd-rgrid">
+    <figure><blockquote>“그는 저희 결혼식에 필요한 모든 것을 포함한 웨딩 패키지를 제공해 주었어요. 그가 찍은 사진들은 정말 멋졌고, 그의 팀 전체가 저희의 특별한 날을 스트레스 없이 완벽하게 만들어 주었습니다. 그날 밤이 끝나기도 전에 수백 장의 보정된 사진을 받았어요.”</blockquote><figcaption><b>Blair H.</b><span>웨딩, 2025년 12월</span></figcaption></figure>
+    <figure><blockquote>“저희의 사랑을 완벽하게 담아주셨어요! 당일 예상치 못한 일들이 있었지만, 모든 것이 매끄럽게 진행되도록 신경 써 주셨습니다. 몇 번이고 추천하고 싶어요.”</blockquote><figcaption><b>Dominique B.</b><span>웨딩, 2025년 7월</span></figcaption></figure>
+    <figure><blockquote>“Maui에 있을 때 혼인서약 갱신식을 했는데, [Wailea Photo]는 당일 날짜를 바꿔야 했을 때도 정말 유연하게 대응해 주셨어요… 사진들은 정말 예술적이고 아름다웠습니다. 더할 나위 없이 좋은 경험이었어요!”</blockquote><figcaption><b>Nanette R.</b><span>혼인서약 갱신식, 2025년 2월</span></figcaption></figure>
+  </div>
+  <p class="wd-rsrc"><a href="https://www.tripadvisor.com/AttractionProductReview-g29220-d33241933-Get_Married_on_Maui-Maui_Hawaii.html" target="_blank" rel="noopener">Tripadvisor</a>에 남겨진 웨딩 패키지 후기 · Tripadvisor, Google, Facebook, Airbnb &amp; Yelp를 합쳐 1,000개 이상의 별 다섯 개 리뷰.</p>
+</div></section>
+
+</div>
     <section class="faq-list" style="padding-top:0"><div class="section-head reveal visible"><div class="chapter">웨딩 촬영, 궁금증 해결</div><h2>커플들이 가장 먼저 묻는 질문.</h2></div>
 <details class="faq-item" open><summary>Wailea Photo에서 Maui 웨딩 비용은 얼마인가요?</summary><p>저희 올인클루시브 웨딩 패키지는 세금 포함 $2,599이며, $100 보증금으로 날짜를 예약하실 수 있고 잔금은 $2,499입니다. 하와이 원주민 주례자, 저희 전속 플로리스트가 준비하는 기본 부케·레이·웨딩 아치, 24~48시간 내 보정된 사진 200장 이상을 제공하는 1.5시간 촬영, 해변 허가증, 종합 배상책임보험, 가족과 친구들을 위한 라이브 스트리밍 설정이 포함됩니다. <a href="/ko/maui-wedding-cost">다른 Maui 패키지와 비교해 보기 →</a></p></details>
 <details class="faq-item"><summary>웨딩 패키지에는 무엇이 포함되나요?</summary><p>주례자, 플로럴(부케, 레이, 아치), 200장 이상의 보정된 사진을 담은 1.5시간 촬영, 해변 허가, 종합배상책임보험, 그리고 고객님의 휴대폰과 저희 삼각대 및 마이크를 이용한 라이브 스트리밍 세팅까지 포함되어 있습니다. 플로럴 업그레이드도 가능하며, Mya의 업그레이드 플로럴 어레인지먼트를 구매하시면 비디오 릴도 함께 제공됩니다.</p></details><details class="faq-item"><summary>촬영 시간이나 영상을 추가할 수 있나요?</summary><p>네, 가능합니다. 추가 촬영은 시간당 $450이며, 최대 3시간까지 가능합니다. 저희 전속 플로리스트 Mya의 업그레이드 꽃 장식을 구매하시면 영상 릴이 포함됩니다.</p></details>
