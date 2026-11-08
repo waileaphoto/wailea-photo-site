@@ -143,3 +143,10 @@ body.pricing-ed .phero img{object-position:50% 58%}
 
 /* session slideshows: never stretch — a photo fits the frame at its own proportions */
 body.pricing-ed .frame .g.land,body.pricing-ed .frame .g.port{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}
+
+/* Engagement Guide pill on Sessions & Pricing */
+body.pricing-ed .eng-wrap{display:flex;justify-content:center;margin-top:34px}
+body.pricing-ed .eng-pill{display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 12px;border:1px solid var(--lx-ink);border-radius:999px;padding:14px 26px;background:#fff;color:var(--lx-ink);font:italic 400 19px/1.3 var(--serif);box-shadow:0 10px 26px rgba(43,40,37,.08);transition:background .3s,color .3s}
+body.pricing-ed .eng-pill span{font:400 11px/1 var(--sans);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+body.pricing-ed .eng-pill:hover{background:var(--lx-ink);color:var(--bone)}
+body.pricing-ed .eng-pill:hover span{color:#fff}
