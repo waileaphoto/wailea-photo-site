@@ -45,6 +45,7 @@
       if (cur && cur !== next) { var prev = cur; setTimeout(function () { prev.classList.remove('on'); }, next ? 2000 : 0); }
       cur = next;
       dip.classList.toggle('full', !!next);
+      dip.classList.toggle('cr', !!(next && next.classList.contains('cr')));
     };
     setInterval(function () { if (document.hidden) return; step = (step + 1) % states(); show(step); }, HOLD + 2000);
   }
