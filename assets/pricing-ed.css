@@ -75,7 +75,7 @@ button.btn{border:0;cursor:pointer}
 .honest .k{font-family:var(--sc);font-weight:500;font-size:12px;letter-spacing:.34em;color:var(--ink-dim);text-transform:uppercase}
 .honest h2{margin-top:14px;font-family:var(--serif);font-weight:300;font-size:clamp(34px,3.8vw,62px);letter-spacing:-.02em}
 .honest .lead{margin-top:16px;font-size:18px;line-height:1.7;color:rgba(36,32,28,.88);max-width:60ch}
-.stats{margin-top:7vh;display:grid;grid-template-columns:repeat(3,1fr);gap:4vw}
+.stats{margin-top:7vh;display:grid;grid-template-columns:repeat(2,1fr);gap:4vw}
 .stats .v{font-family:var(--serif);font-weight:300;font-size:clamp(46px,4.4vw,72px);line-height:1}
 .stats h4{margin-top:14px;font-family:var(--serif);font-weight:400;font-size:22px}
 .stats p{margin-top:10px;font-size:15.5px;line-height:1.7;color:var(--ink-dim)}

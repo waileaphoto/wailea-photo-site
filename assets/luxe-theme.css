@@ -132,7 +132,7 @@ body.pricing-ed .rib{color:var(--brass);border-color:var(--brass)}
 
 /* long capitalised words must never push the page sideways on phones */
 @media (max-width:600px){
-  main h1,main h2{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto;letter-spacing:0}
+  main h1,main h2{overflow-wrap:break-word;-webkit-hyphens:manual;hyphens:manual;letter-spacing:0;max-width:100%!important}
 }
 .page-hero{overflow-x:clip!important}
 body.pricing-ed .phero img{object-position:50% 58%}
@@ -161,4 +161,12 @@ body.pricing-ed .honest .market-range{margin-top:5vh}
 @media (max-width:760px){
 main p,main li,main dd,footer .footer-mark-col p{font-weight:400}
 .lx-home .lx-body,.lx-home .lx-about p,.gcard p,.page-guide-item p,.footer-mark-col p,.wd-upg,.wd-rsrc,.lx-close p,.lx-state p{font-size:17px!important;line-height:1.7}
+}
+
+/* mobile legibility for buttons and the thumb-reach pills */
+@media (max-width:780px){
+  .ed-pill{padding:15px 20px;font-size:13px;font-weight:500;letter-spacing:.14em}
+  .ed-pill.ed-ask{padding-inline:18px}
+  main .btn,body.pricing-ed .btn,body.pricing-ed .letter .btn.session-finder-ask{font-size:13px!important;font-weight:500!important;letter-spacing:.16em!important;padding-top:18px;padding-bottom:18px}
+  body.pricing-ed .acts .ask{font-size:21px}
 }

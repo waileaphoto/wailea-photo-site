@@ -753,16 +753,11 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 
 
-/* PRINT SHOP link: added to the main menu and the footer on every page, in every language. */
+/* PRINT SHOP link: added to the footer on every page, in every language. */
 (function(){
   function add(){
     var m = location.pathname.match(/^\/(fr|es|de|it|ja|ko|zh|hi)(\/|$)/);
     var href = (m ? '/' + m[1] : '') + '/print-shop';
-    var art = document.querySelector('nav.menu a[href$="art.html"], nav.menu a[href$="/art"]');
-    if (art && !document.querySelector('nav.menu a[href="' + href + '"]')) {
-      var a = document.createElement('a'); a.href = href; a.textContent = 'The Print Shop';
-      art.parentNode.insertBefore(a, art.nextSibling);
-    }
     var pr = document.querySelector('footer a[href$="pricing.html"], footer a[href$="/pricing"]');
     if (pr && !document.querySelector('footer a[href="' + href + '"]')) {
       var f = document.createElement('a'); f.href = href; f.textContent = 'The Print Shop';
@@ -772,3 +767,33 @@ document.addEventListener('DOMContentLoaded', function(){
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add();
 })();
 
+
+/* Phones: shrink any big heading whose longest word would otherwise break mid-word. */
+(function () {
+  if (!window.matchMedia) return;
+  var mq = matchMedia('(max-width:760px)');
+  function fit() {
+    if (!mq.matches) return;
+    document.querySelectorAll('main h1, main h2').forEach(function (h) {
+      if (!h.offsetWidth) return;
+      h.style.fontSize = '';
+      var size = parseFloat(getComputedStyle(h).fontSize), guard = 0;
+      while (size > 20 && guard++ < 40 && broken(h)) { size -= 2; h.style.fontSize = size + 'px'; }
+    });
+  }
+  function broken(h) {
+    var tw = document.createTreeWalker(h, NodeFilter.SHOW_TEXT), n, m, re;
+    while ((n = tw.nextNode())) {
+      re = /\S+/g;
+      while ((m = re.exec(n.data))) {
+        var r = document.createRange(); r.setStart(n, m.index); r.setEnd(n, m.index + m[0].length);
+        var rs = r.getClientRects(), top = null;
+        for (var i = 0; i < rs.length; i++) { if (rs[i].width < 1) continue; if (top === null) top = rs[i].top; else if (Math.abs(rs[i].top - top) > 4) return true; }
+      }
+    }
+    return false;
+  }
+  var go = function () { fit(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+  var t; addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 150); });
+})();
