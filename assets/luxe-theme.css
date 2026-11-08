@@ -150,3 +150,8 @@ body.pricing-ed .eng-pill{display:inline-flex;flex-wrap:wrap;justify-content:cen
 body.pricing-ed .eng-pill span{font:400 11px/1 var(--sans);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
 body.pricing-ed .eng-pill:hover{background:var(--lx-ink);color:var(--bone)}
 body.pricing-ed .eng-pill:hover span{color:#fff}
+body.pricing-ed .eng-wrap{align-items:center;gap:22px}
+body.pricing-ed .eng-print{flex:none;display:block;width:92px;background:#fff;padding:6px 6px 18px;transform:rotate(-6deg);box-shadow:0 1px 2px rgba(43,40,37,.12),0 10px 22px rgba(43,40,37,.18),0 26px 44px rgba(43,40,37,.12);transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+body.pricing-ed .eng-print img{display:block;width:100%;height:auto;aspect-ratio:1331/2010;object-fit:cover}
+body.pricing-ed .eng-wrap:hover .eng-print{transform:rotate(-2deg) translateY(-3px) scale(1.04)}
+@media (max-width:600px){body.pricing-ed .eng-wrap{gap:14px}body.pricing-ed .eng-print{width:72px;padding:5px 5px 14px}body.pricing-ed .eng-pill{padding:12px 18px}}
