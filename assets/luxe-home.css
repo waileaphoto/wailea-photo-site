@@ -208,7 +208,7 @@
 @media (max-width:700px){
   .lx-home .lx-dip:after{z-index:3}
   .lx-slides .sl.fit img:not(.bk){object-fit:contain}
-  .lx-slides .sl.cr img{object-position:24% 50%!important}
+  .lx-slides .sl.mr img{object-position:68% 50%!important}
   .lx-slides .sl.fit .bk{display:block;filter:blur(22px) brightness(.8);transform:scale(1.15)}
 }
 @media (min-width:701px){
