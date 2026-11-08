@@ -129,3 +129,9 @@ body.pricing-ed .rib{border-radius:0}
 body.pricing-ed .letter .btn.session-finder-ask{color:var(--bone);font-size:11px;font-weight:400;letter-spacing:.24em}
 .session-finder-ask:hover{background:var(--red)!important}
 body.pricing-ed .rib{color:var(--brass);border-color:var(--brass)}
+
+/* long capitalised words must never push the page sideways on phones */
+@media (max-width:600px){
+  main h1,main h2{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto;letter-spacing:0}
+}
+.page-hero{overflow-x:clip!important}
