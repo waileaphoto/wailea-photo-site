@@ -31,6 +31,24 @@
     run();
   }
 
+  /* hero slideshow: diptych first, then each full-frame photograph; 2s cross-fades */
+  var dip = $('.lx-dip'), sl = [].slice.call(document.querySelectorAll('.lx-slides .sl'));
+  if (dip && sl.length && !reduce) {
+    var HOLD = 5000, step = 0, cur = null;
+    var mobile = function () { return matchMedia('(max-width:700px)').matches; };
+    var states = function () { return (mobile() ? 2 : 1) + sl.length; };
+    var show = function (i) {
+      var lead = mobile() ? 2 : 1, next = i >= lead ? sl[i - lead] : null;
+      if (i === 0) dip.classList.remove('m2');
+      if (i === 1 && lead === 2) dip.classList.add('m2');
+      if (next) next.classList.add('on');
+      if (cur && cur !== next) { var prev = cur; setTimeout(function () { prev.classList.remove('on'); }, next ? 2000 : 0); }
+      cur = next;
+      dip.classList.toggle('full', !!next);
+    };
+    setInterval(function () { if (document.hidden) return; step = (step + 1) % states(); show(step); }, HOLD + 2000);
+  }
+
   /* review counts: mirror the live totals (filled by the reviews widget) into the review section */
   var mirror = function () {
     var total = $('#combinedReviewCount');
