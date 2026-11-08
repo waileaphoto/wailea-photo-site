@@ -5,6 +5,14 @@
    ========================================================================== */
 
 /* ---------- self-hosted type ---------- */
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-ext-400-italic.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/newsreader-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/newsreader-latin-ext-500-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:500;font-display:swap;src:url(fonts/newsreader-latin-500-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:500;font-display:swap;src:url(fonts/newsreader-latin-ext-500-italic.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Cormorant";font-style:normal;font-weight:300;font-display:swap;src:url(fonts/cormorant-latin-300-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Cormorant";font-style:italic;font-weight:300;font-display:swap;src:url(fonts/cormorant-latin-300-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Cormorant";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/cormorant-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -32,7 +40,7 @@
   --hair:rgba(36,32,28,.14); --brass:#a8865a;
   --paper:#fbf8f3; --paper2:#f3ede3; --ink:#24201c; --charcoal:#24201c; --ocean:#24201c; --ocean-mid:#857a6d; --ocean-mist:#f3ede3;
   --line:rgba(36,32,28,.14); --gold:#a8865a;
-  --serif:"Cormorant",Georgia,"Times New Roman",serif; --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+  --serif:"Cormorant",Georgia,"Times New Roman",serif; --sans:"Jost","Helvetica Neue",Arial,sans-serif; --read:"Newsreader",Georgia,"Times New Roman",serif;
   --ed-sc:"Jost","Helvetica Neue",Arial,sans-serif; --ed-teal:#24201c; --ed-teal-deep:#1a1714; --ed-cream:#f3ede3; --ed-cream-hi:#fbf8f3; --ed-gold:#c9a877;
   --lx-bar:62px; --lx-gut:clamp(16px,2.4vw,36px);
 }
@@ -169,4 +177,12 @@ main p,main li,main dd,footer .footer-mark-col p{font-weight:400}
   .ed-pill.ed-ask{padding-inline:18px}
   main .btn,body.pricing-ed .btn,body.pricing-ed .letter .btn.session-finder-ask{font-size:13px!important;font-weight:500!important;letter-spacing:.16em!important;padding-top:18px;padding-bottom:18px}
   body.pricing-ed .acts .ask{font-size:21px}
+}
+
+/* reading copy: Newsreader serif for paragraphs; Jost stays for labels, meta lines and buttons */
+main p,main li,main dd,main blockquote,footer .footer-mark-col p{font-family:var(--read);font-weight:400;font-optical-sizing:auto}
+main p strong,main li strong,main p b{font-weight:500}
+main .eyebrow,main .stars,main .facts li,main .experience-review p,main .table-note,main .slider-note,main .cost-note{font-family:var(--sans)}
+@media (max-width:760px){
+  .lx-home .lx-body,.lx-home .lx-about p,.gcard p,.page-guide-item p,.footer-mark-col p,.wd-upg,.wd-rsrc,.lx-close p,.lx-state p{font-size:18px!important;line-height:1.65}
 }
