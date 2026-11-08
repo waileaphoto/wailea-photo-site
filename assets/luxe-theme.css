@@ -154,5 +154,11 @@ body.pricing-ed .eng-wrap{align-items:center;gap:22px}
 body.pricing-ed .eng-print{flex:none;display:block;width:92px;background:#fff;padding:6px 6px 18px;transform:rotate(-6deg);box-shadow:0 1px 2px rgba(43,40,37,.12),0 10px 22px rgba(43,40,37,.18),0 26px 44px rgba(43,40,37,.12);transition:transform .4s cubic-bezier(.22,.61,.36,1)}
 body.pricing-ed .eng-print img{display:block;width:100%;height:auto;aspect-ratio:1331/2010;object-fit:cover}
 body.pricing-ed .eng-wrap:hover .eng-print{transform:rotate(-2deg) translateY(-3px) scale(1.04)}
-@media (max-width:600px){body.pricing-ed .eng-wrap{gap:14px}body.pricing-ed .eng-print{width:72px;padding:5px 5px 14px}body.pricing-ed .eng-pill{padding:12px 18px}}
+@media (max-width:600px){body.pricing-ed .eng-wrap{flex-direction:column;gap:30px}body.pricing-ed .eng-print{width:min(58vw,220px);padding:8px 8px 26px;transform:rotate(-4deg)}body.pricing-ed .eng-pill{padding:12px 18px}}
 body.pricing-ed .honest .market-range{margin-top:5vh}
+
+/* mobile reading size: body copy at 17px, regular weight */
+@media (max-width:760px){
+main p,main li,main dd,footer .footer-mark-col p{font-weight:400}
+.lx-home .lx-body,.lx-home .lx-about p,.gcard p,.page-guide-item p,.footer-mark-col p,.wd-upg,.wd-rsrc,.lx-close p,.lx-state p{font-size:17px!important;line-height:1.7}
+}
