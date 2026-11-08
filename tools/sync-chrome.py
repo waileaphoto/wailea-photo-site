@@ -25,7 +25,7 @@ import glob, io, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP = {'footer.html', 'hold-followup.html', 'frame-preview.html'}
 EDITORIAL_V = '20261107a'
-LUXE_V = '20261107c'
+LUXE_V = '20261107d'
 
 HEADER = ('<header class="site-header ed"><a href="index.html#top" class="brand">Wailea Photo</a>'
           '<div class="header-right">{switcher}'
@@ -38,7 +38,6 @@ MENU = ('<nav class="menu ed" aria-hidden="true"><button class="menu-close" aria
         '<a href="pricing.html">Sessions &amp; Pricing</a>'
         '<a href="index.html#experience">Our Family</a>'
         '<a href="atlas.html">Guides</a>'
-        '<a href="art.html">Art</a>'
         '<a href="index.html#reviews">Reviews</a>'
         '<a href="faq.html">FAQ &amp; Contact</a>'
         '<div class="menu-foot">'
