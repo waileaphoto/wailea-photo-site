@@ -135,3 +135,8 @@ body.pricing-ed .rib{color:var(--brass);border-color:var(--brass)}
   main h1,main h2{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto;letter-spacing:0}
 }
 .page-hero{overflow-x:clip!important}
+body.pricing-ed .phero img{object-position:50% 58%}
+
+/* Maui Atlas split heroes: capitals need a calmer size to fit the text column */
+.atlas-editorial-hero h1{font-size:clamp(2.1rem,3.3vw,3.7rem)!important;line-height:1!important;letter-spacing:.01em!important;max-width:none!important;overflow-wrap:break-word}
+@media (max-width:760px){.atlas-editorial-hero h1{font-size:clamp(2rem,9.5vw,3rem)!important}}

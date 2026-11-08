@@ -152,34 +152,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
+  <link rel="stylesheet" href="/assets/site.css?v=20261105a"><link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cormorant-latin-300-normal.woff2" crossorigin data-ed><link rel="preload" as="font" type="font/woff2" href="/assets/fonts/jost-latin-300-normal.woff2" crossorigin data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261107a" data-ed>
 
   <style>
     :root{--atlas-ink:#171716;--atlas-cream:#f4eddf;--atlas-paper:#fbf8f2;--atlas-gold:#b69557;--atlas-rust:#a44736}
     .atlas-editorial{background:var(--atlas-paper);color:var(--atlas-ink)}
     .atlas-editorial-hero{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(360px,.8fr);min-height:min(78vh,820px);background:var(--atlas-cream);overflow:hidden}
-    .atlas-editorial-hero>.atlas-hero-media{display:block;min-height:100%;overflow:hidden;position:relative;background:#75969a}
+    .atlas-editorial-hero>.atlas-hero-media{display:block;min-height:100%;overflow:hidden;position:relative;background:#a98866}
     .atlas-editorial-hero>.atlas-hero-media img{display:block;width:100%;height:100%;min-height:100%;object-fit:cover;object-position:50% center}
     .atlas-editorial-hero .page-hero-copy{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;max-width:none!important;height:auto!important;transform:none!important;display:flex;flex-direction:column;justify-content:center;padding:clamp(54px,7vw,112px) clamp(34px,5vw,84px);background:var(--atlas-cream)}
-    .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase}
-    .atlas-editorial-hero h1{margin:18px 0 0;max-width:12ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
-    .atlas-editorial-hero .atlas-deck{max-width:35rem;margin:28px 0 0;font:400 clamp(1rem,1.25vw,1.16rem)/1.75 'Inter',sans-serif;color:rgba(23,23,22,.76)}
-    .atlas-editorial-hero .atlas-byline{margin:30px 0 0;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
+    .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 "Jost",sans-serif;letter-spacing:.22em;text-transform:uppercase}
+    .atlas-editorial-hero h1{margin:18px 0 0;max-width:12ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 "Cormorant",Georgia,serif;letter-spacing:-.035em}
+    .atlas-editorial-hero .atlas-deck{max-width:35rem;margin:28px 0 0;font:400 clamp(1rem,1.25vw,1.16rem)/1.75 "Jost",sans-serif;color:rgba(23,23,22,.76)}
+    .atlas-editorial-hero .atlas-byline{margin:30px 0 0;font:600 10px/1.4 "Jost",sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
     .atlas-opening-note{display:grid;grid-template-columns:150px minmax(0,700px);gap:44px;align-items:start;padding:clamp(48px,7vw,92px) max(24px,calc((100vw - 1120px)/2));background:var(--atlas-ink);color:#fff}
-    .atlas-opening-note span{padding-top:8px;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#d3b77d}
-    .atlas-opening-note p{margin:0;font:400 clamp(1.8rem,3vw,3rem)/1.12 'Cormorant Garamond',Georgia,serif}
+    .atlas-opening-note span{padding-top:8px;font:600 10px/1.4 "Jost",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#d3b77d}
+    .atlas-opening-note p{margin:0;font:400 clamp(1.8rem,3vw,3rem)/1.12 "Cormorant",Georgia,serif}
     .atlas-editorial .content-split{border-top:1px solid rgba(23,23,22,.1)}
     .atlas-editorial .content-split-copy{padding-top:clamp(54px,7vw,110px);padding-bottom:clamp(54px,7vw,110px)}
     .atlas-editorial .content-split-copy h2{max-width:13ch;line-height:1.02}
-    .atlas-editorial .content-split-copy h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 'Cormorant Garamond',Georgia,serif}
+    .atlas-editorial .content-split-copy h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 "Cormorant",Georgia,serif}
     .atlas-editorial .content-split-image img{filter:saturate(.92) contrast(.98)}
     .atlas-editorial .faq-list{background:#eee4d3}
     .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
-    .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
-    .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+    .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 "Jost",sans-serif;letter-spacing:.13em;text-transform:uppercase}
+    .atlas-editorial .atlas-source-link{display:inline-block;margin-top:12px;color:var(--atlas-rust);font:600 10px/1.4 "Jost",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
     /* Unified type system: Cormorant for reading text and headings, Inter for small uppercase labels only */
-    .atlas-editorial{--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+    .atlas-editorial{--serif:"Cormorant",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
     .atlas-editorial .section-head h2,.atlas-editorial .content-split-copy h2{font:400 clamp(2.6rem,5vw,4.1rem)/1.02 var(--serif);letter-spacing:-.02em}
     .atlas-editorial .content-split-copy h3,.atlas-editorial .atlas-text-block h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 var(--serif);color:var(--atlas-ink)}
     .atlas-editorial .content-split-copy p,.atlas-editorial .atlas-text-block p,.atlas-editorial .location-note,.atlas-editorial .faq-item p,.atlas-editorial .reserve.short p{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.7}
@@ -255,6 +255,8 @@
 
 
 
+
+<link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107a" data-ed>
 <!-- i18n:head --><link rel="alternate" hreflang="en" href="https://waileaphoto.com/haleakalahalfday"><link rel="alternate" hreflang="fr" href="https://waileaphoto.com/fr/haleakalahalfday"><link rel="alternate" hreflang="es" href="https://waileaphoto.com/es/haleakalahalfday"><link rel="alternate" hreflang="de" href="https://waileaphoto.com/de/haleakalahalfday"><link rel="alternate" hreflang="it" href="https://waileaphoto.com/it/haleakalahalfday"><link rel="alternate" hreflang="ja" href="https://waileaphoto.com/ja/haleakalahalfday"><link rel="alternate" hreflang="ko" href="https://waileaphoto.com/ko/haleakalahalfday"><link rel="alternate" hreflang="zh-Hans" href="https://waileaphoto.com/zh/haleakalahalfday"><link rel="alternate" hreflang="hi" href="https://waileaphoto.com/hi/haleakalahalfday"><link rel="alternate" hreflang="x-default" href="https://waileaphoto.com/haleakalahalfday"><style id="i18n-css">.lang-switch{position:relative}.lang-switch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;color:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:4px 0;opacity:.8;text-shadow:0 1px 12px rgba(0,0,0,.35)}.lang-switch summary::-webkit-details-marker{display:none}.lang-switch summary::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}.lang-switch details[open] summary::after{margin-top:3px;transform:rotate(-135deg)}.lang-switch summary:hover,.lang-switch details[open] summary{opacity:1}.lang-switch summary:focus-visible{outline:1px solid currentColor;outline-offset:3px}.lang-switch ul{position:absolute;left:0;top:calc(100% + 10px);z-index:1000;margin:0;padding:6px 0;list-style:none;min-width:160px;background:#171716;border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-switch li a{display:block;padding:9px 18px;color:#fff;text-decoration:none;font-size:14px;line-height:1.3;letter-spacing:.02em;opacity:.78;text-shadow:none}.lang-switch li a:hover,.lang-switch li a:focus-visible{opacity:1;background:rgba(255,255,255,.08);outline:none}.lang-switch li a[aria-current]{opacity:1;font-weight:700}</style><script>document.addEventListener("toggle",function(e){var d=e.target;if(!d.open||!d.matches||!d.matches(".lang-switch details"))return;var u=d.querySelector("ul");u.style.left="0";u.style.right="auto";if(u.getBoundingClientRect().right>window.innerWidth-8){u.style.left="auto";u.style.right="0"}},true);document.addEventListener("click",function(e){document.querySelectorAll(".lang-switch details[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".lang-switch details[open]").forEach(function(d){d.removeAttribute("open");d.querySelector("summary").focus()})});</script><script>window.WP_I18N={"lang":"zh","locale":"zh-CN","s":{"Aloha and welcome to Wailea Photo! I'm Claude, the AI Concierge — the Balter family of photographers are out on the beach or hard at work editing, so I'm here to answer all your questions. What brings you to Maui, and how can I help guide you to the best experience?":"Aloha，欢迎来到 Wailea Photo！我是 Claude，您的 AI 礼宾助手——Balter 一家摄影师此刻可能正在海滩上拍摄，或是专心修片，所以由我来为您解答所有问题。是什么把您带到 Maui 的呢？我能为您提供什么帮助，为您安排最完美的体验？","Ask about dates, sessions, pricing…":"咨询日期、拍摄项目、价格……","Because the Balter family team are busy photographing, editing and delivering awesome client experiences, I am here to make your experience with us easy. I'm stepping away for just a moment — meanwhile you can book directly on this page, with your price shown as you choose a date and time, or write the family at {email} and they'll reply personally.":"由于 Balter 一家正忙着拍摄、修片，为客户带来出色的体验，我在这里让您的预订过程更加轻松。我暂时离开一下——与此同时，您可以直接在本页面预订，选择日期和时间后即可看到价格，或者写信到 {email}，家人会亲自回复您。","Book this session":"预订此拍摄","Close chat":"关闭聊天","Concierge":"礼宾助手","Concierge is typing":"礼宾助手正在输入","Message the concierge":"给礼宾助手发消息","Open the concierge chat":"打开礼宾助手聊天窗口","Powered by Claude":"由 Claude 提供支持","Send":"发送","That didn't go through. Try once more, or email {email}.":"未能成功提交，请再试一次，或发送邮件至 {email}。","The Concierge":"礼宾助手","The connection dropped before I could answer. Try again, or email {email}.":"连接中断，未能及时回复。请重试，或发送邮件至 {email}。","Wailea Photo concierge chat":"Wailea Photo 礼宾助手聊天","What does the {session} session cost?":"{session} 拍摄的价格是多少？","this session":"本次拍摄"}};</script><!-- /i18n:head -->
 </head>
 <body>
@@ -461,6 +463,6 @@
 </footer>
 
 <script src="/assets/site.js?v=20261105a"></script>
-<button class="ed-snd" type="button" aria-label="开启音乐" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
+<button class="ed-snd" type="button" aria-label="开启音乐" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261107a" defer data-ed></script>
 </body>
 </html>

@@ -22,10 +22,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink:#1b1917; --paper:#f5efe5; --paper-2:#ede4d7; --salt:#fbf8f2;
-      --line:rgba(27,25,23,.18); --muted:#6c645b; --ocean:#376d70;
-      --serif:"Cormorant Garamond",Georgia,serif;
-      --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --ink:#1b1917; --paper:#fbf8f3; --paper-2:#ede4d7; --salt:#fbf8f2;
+      --line:rgba(27,25,23,.18); --muted:#6c645b; --ocean:#5c544b;
+      --serif:"Cormorant",Georgia,serif;
+      --sans:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       --gutter:clamp(1.25rem,4vw,4.5rem); --max:1320px;
     }
     * { box-sizing:border-box; }
@@ -41,9 +41,9 @@
     .nav-links { display:flex; align-items:center; gap:clamp(1.2rem,2.5vw,2.7rem); }
     .nav-links a { font-size:.65rem; font-weight:500; letter-spacing:.15em; text-decoration:none; text-transform:uppercase; }
     .nav-links a:last-child { border:1px solid rgba(255,255,255,.7); padding:.72rem 1rem; }
-    .hero { min-height:min(920px,100svh); position:relative; display:grid; align-items:end; overflow:hidden; background:#294044; color:white; }
+    .hero { min-height:min(920px,100svh); position:relative; display:grid; align-items:end; overflow:hidden; background:#3c3731; color:white; }
     .hero::after { content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(8,11,10,.48),rgba(8,11,10,.06) 38%,rgba(8,11,10,.82)); pointer-events:none; }
-    .hero-media { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#294044 url("/assets/engagement-surprise-maui.jpg") center/cover no-repeat; }
+    .hero-media { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#3c3731 url("/assets/engagement-surprise-maui.jpg") center/cover no-repeat; }
     .hero-inner { position:relative; z-index:2; padding-block:clamp(9rem,18vh,13rem) clamp(3.5rem,8vh,6.5rem); }
     .hero h1 { max-width:1110px; margin:0; font:400 clamp(3.4rem,7.9vw,8.2rem)/.86 var(--serif); letter-spacing:-.045em; }
     .hero h1 em { font-weight:400; }
@@ -174,10 +174,10 @@
       .footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}
     }
     @media(max-width:600px),(prefers-reduced-data:reduce){
-      .hero-media{display:none}.hero{background:#294044 url("/assets/engagement-surprise-maui.jpg") center/cover no-repeat}
+      .hero-media{display:none}.hero{background:#3c3731 url("/assets/engagement-surprise-maui.jpg") center/cover no-repeat}
     }
     @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}.hero-media{display:none}.hero{background:#294044 url("/assets/engagement-surprise-maui.jpg") center/cover no-repeat}
+      html{scroll-behavior:auto}.hero-media{display:none}.hero{background:#3c3731 url("/assets/engagement-surprise-maui.jpg") center/cover no-repeat}
     }
     @media(prefers-reduced-data:reduce){
       .bts-media video{display:none}.bts-media{aspect-ratio:9/16;background:url("/assets/proposal-behind-the-scenes-poster.jpg") center/cover no-repeat}
@@ -422,6 +422,8 @@
 
 
 
+
+<link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107a">
 <!-- i18n:head --><link rel="alternate" hreflang="en" href="https://waileaphoto.com/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="fr" href="https://waileaphoto.com/fr/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="es" href="https://waileaphoto.com/es/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="de" href="https://waileaphoto.com/de/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="it" href="https://waileaphoto.com/it/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="ja" href="https://waileaphoto.com/ja/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="ko" href="https://waileaphoto.com/ko/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="zh-Hans" href="https://waileaphoto.com/zh/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="hi" href="https://waileaphoto.com/hi/why-we-dont-hide-for-maui-proposals"><link rel="alternate" hreflang="x-default" href="https://waileaphoto.com/why-we-dont-hide-for-maui-proposals"><style id="i18n-css">.lang-switch{position:relative}.lang-switch summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;color:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:4px 0;opacity:.8;text-shadow:0 1px 12px rgba(0,0,0,.35)}.lang-switch summary::-webkit-details-marker{display:none}.lang-switch summary::after{content:"";width:5px;height:5px;margin-top:-3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}.lang-switch details[open] summary::after{margin-top:3px;transform:rotate(-135deg)}.lang-switch summary:hover,.lang-switch details[open] summary{opacity:1}.lang-switch summary:focus-visible{outline:1px solid currentColor;outline-offset:3px}.lang-switch ul{position:absolute;left:0;top:calc(100% + 10px);z-index:1000;margin:0;padding:6px 0;list-style:none;min-width:160px;background:#171716;border-radius:4px;box-shadow:0 12px 32px rgba(0,0,0,.28)}.lang-switch li a{display:block;padding:9px 18px;color:#fff;text-decoration:none;font-size:14px;line-height:1.3;letter-spacing:.02em;opacity:.78;text-shadow:none}.lang-switch li a:hover,.lang-switch li a:focus-visible{opacity:1;background:rgba(255,255,255,.08);outline:none}.lang-switch li a[aria-current]{opacity:1;font-weight:700}</style><script>document.addEventListener("toggle",function(e){var d=e.target;if(!d.open||!d.matches||!d.matches(".lang-switch details"))return;var u=d.querySelector("ul");u.style.left="0";u.style.right="auto";if(u.getBoundingClientRect().right>window.innerWidth-8){u.style.left="auto";u.style.right="0"}},true);document.addEventListener("click",function(e){document.querySelectorAll(".lang-switch details[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".lang-switch details[open]").forEach(function(d){d.removeAttribute("open");d.querySelector("summary").focus()})});</script><!-- /i18n:head -->
 </head>
 <body>
