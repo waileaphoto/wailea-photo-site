@@ -113,19 +113,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="assets/concierge-widget.css" data-ed><link rel="stylesheet" href="assets/editorial.css?v=20261106a" data-ed>
+  <link rel="stylesheet" href="assets/site.css?v=20261105a"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-latin-300-normal.woff2" crossorigin data-ed><link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-latin-300-normal.woff2" crossorigin data-ed><link rel="stylesheet" href="assets/concierge-widget.css" data-ed><link rel="stylesheet" href="assets/editorial.css?v=20261107a" data-ed>
   <style>
-    :root{--ink:#171716;--teal:#17343a;--cream:#f2eadc;--sand:#d4bc94;--paper:#faf7f1;--red:#a93328}
+    :root{--ink:#171716;--teal:#2d2824;--cream:#f2eadc;--sand:#d4bc94;--paper:#faf7f1;--red:#a93328}
     *{box-sizing:border-box}
     body{margin:0;background:var(--paper);color:var(--ink)}
     .profile-hero{position:relative;min-height:min(92vh,940px);display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
     .profile-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-    .profile-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,22,25,.12) 20%,rgba(9,22,25,.84) 100%)}
+    .profile-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,15,.12) 20%,rgba(19,17,15,.84) 100%)}
     .profile-hero-copy{position:relative;z-index:1;width:min(1180px,100%);margin:0 auto;padding:clamp(130px,19vw,220px) clamp(24px,6vw,76px) clamp(58px,8vw,100px);color:#fff}
-    .atlas-label,.chapter{font:600 11px/1.2 Inter,sans-serif;letter-spacing:.19em;text-transform:uppercase}
+    .atlas-label,.chapter{font:600 11px/1.2 "Jost",sans-serif;letter-spacing:.19em;text-transform:uppercase}
     .atlas-label{color:#e3c99b}
-    .profile-hero h1{max-width:850px;margin:12px 0 16px;font:500 clamp(4rem,10vw,8.6rem)/.82 'Cormorant Garamond',Georgia,serif;letter-spacing:-.045em}
-    .profile-hero p{max-width:710px;margin:0;font:300 clamp(1.05rem,2vw,1.35rem)/1.65 Inter,sans-serif;color:rgba(255,255,255,.88)}
+    .profile-hero h1{max-width:850px;margin:12px 0 16px;font:500 clamp(4rem,10vw,8.6rem)/.82 "Cormorant",Georgia,serif;letter-spacing:-.045em}
+    .profile-hero p{max-width:710px;margin:0;font:300 clamp(1.05rem,2vw,1.35rem)/1.65 "Jost",sans-serif;color:rgba(255,255,255,.88)}
     .profile-intro{background:var(--cream)}
     .profile-intro figure,.story-panel figure{margin:0;min-height:520px;overflow:hidden}
     .profile-intro img,.story-panel img{width:100%;height:100%;display:block;object-fit:cover}
@@ -133,14 +133,14 @@
     .profile-intro .intro-copy{max-width:980px;margin:0 auto;text-align:center}
     .profile-intro .intro-copy p{max-width:760px;margin-left:auto;margin-right:auto}
     .chapter{color:#9b6f42;margin-bottom:22px}
-    h2{margin:0 0 24px;font:500 clamp(2.7rem,5vw,5rem)/.98 'Cormorant Garamond',Georgia,serif;letter-spacing:-.025em}
-    p{font:300 1rem/1.82 Inter,sans-serif;color:#4d4b47}
-    .lead{font:400 clamp(1.25rem,2vw,1.6rem)/1.55 'Cormorant Garamond',Georgia,serif;color:#282724}
+    h2{margin:0 0 24px;font:500 clamp(2.7rem,5vw,5rem)/.98 "Cormorant",Georgia,serif;letter-spacing:-.025em}
+    p{font:300 1rem/1.82 "Jost",sans-serif;color:#4d4b47}
+    .lead{font:400 clamp(1.25rem,2vw,1.6rem)/1.55 "Cormorant",Georgia,serif;color:#282724}
     .facts{display:grid;grid-template-columns:repeat(3,1fr);background:var(--teal);color:#fff}
     .fact{padding:42px clamp(24px,4vw,54px);border-right:1px solid rgba(255,255,255,.16)}
     .fact:last-child{border-right:0}
-    .fact strong{display:block;margin-bottom:8px;font:500 clamp(1.55rem,2.5vw,2.2rem)/1.05 'Cormorant Garamond',Georgia,serif;color:#fff}
-    .fact span{font:400 10px/1.5 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d9c7a8}
+    .fact strong{display:block;margin-bottom:8px;font:500 clamp(1.55rem,2.5vw,2.2rem)/1.05 "Cormorant",Georgia,serif;color:#fff}
+    .fact span{font:400 10px/1.5 "Jost",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d9c7a8}
     .story-panel{display:grid;grid-template-columns:1fr 1fr;min-height:700px;background:#fff}
     .story-panel.reverse figure{order:2}
     .story-panel.dark{background:var(--ink);color:#fff}
@@ -151,15 +151,15 @@
     .story-panel.teaching img{object-position:70% center}
     .story-panel.family img{object-position:center 42%}
     .pull-quote{padding:clamp(72px,11vw,150px) 24px;text-align:center;background:var(--cream)}
-    .pull-quote blockquote{max-width:1000px;margin:0 auto;font:400 clamp(2.3rem,5vw,4.8rem)/1.05 'Cormorant Garamond',Georgia,serif;color:#1f3438}
-    .pull-quote small{display:block;margin-top:28px;font:600 10px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9b6f42}
+    .pull-quote blockquote{max-width:1000px;margin:0 auto;font:400 clamp(2.3rem,5vw,4.8rem)/1.05 "Cormorant",Georgia,serif;color:#302c27}
+    .pull-quote small{display:block;margin-top:28px;font:600 10px/1 "Jost",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9b6f42}
     .related{padding:clamp(64px,9vw,120px) clamp(24px,6vw,80px);background:#fff;text-align:center}
     .related-grid{max-width:1000px;margin:42px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#d7cec0}
-    .related a{padding:34px 24px;background:var(--paper);color:var(--ink);text-decoration:none;font:500 1.55rem/1.15 'Cormorant Garamond',Georgia,serif}
-    .related a span{display:block;margin-top:10px;font:600 9px/1 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}
+    .related a{padding:34px 24px;background:var(--paper);color:var(--ink);text-decoration:none;font:500 1.55rem/1.15 "Cormorant",Georgia,serif}
+    .related a span{display:block;margin-top:10px;font:600 9px/1 "Jost",sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}
     .reserve-profile{padding:clamp(75px,10vw,140px) 24px;text-align:center;background:var(--teal);color:#fff}
     .reserve-profile h2{max-width:780px;margin:12px auto 30px;color:#fff}
-    .profile-button{display:inline-block;padding:17px 28px;border:1px solid rgba(255,255,255,.7);color:#fff;text-decoration:none;font:600 10px/1 Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase}
+    .profile-button{display:inline-block;padding:17px 28px;border:1px solid rgba(255,255,255,.7);color:#fff;text-decoration:none;font:600 10px/1 "Jost",sans-serif;letter-spacing:.15em;text-transform:uppercase}
     @media(max-width:767px){
       .profile-hero{min-height:78vh}
       .profile-hero img{object-position:56% center}
@@ -175,88 +175,7 @@
     }
   </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<link rel="stylesheet" href="assets/luxe-theme.css?v=20261107a" data-ed>
 
 
 
@@ -417,6 +336,6 @@
 </div>
 </footer>
   <script src="assets/site.js?v=20261105a"></script>
-<button class="ed-snd" type="button" aria-label="Turn music on" aria-pressed="false" data-src="assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="assets/editorial.js?v=20261106a" defer data-ed></script>
+<button class="ed-snd" type="button" aria-label="Turn music on" aria-pressed="false" data-src="assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="assets/editorial.js?v=20261107a" defer data-ed></script>
 </body>
 </html>

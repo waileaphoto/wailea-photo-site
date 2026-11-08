@@ -10,7 +10,8 @@ What it does on every English page:
   - replaces <header class="site-header"> with the editorial top bar
     (brand, language switcher, Concierge + Book Now pills, MENU)
   - replaces <nav class="menu"> with the editorial menu ("Guides" for the Atlas)
-  - adds the Alegreya Sans SC font, assets/editorial.css after site.css,
+  - preloads the self-hosted fonts, adds assets/editorial.css after site.css and
+    assets/luxe-theme.css last in <head>,
     the concierge widget (+ its config) and assets/editorial.js before </body>
   - adds the music toggle button
 
@@ -23,7 +24,8 @@ import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP = {'footer.html', 'hold-followup.html', 'frame-preview.html'}
-EDITORIAL_V = '20261106a'
+EDITORIAL_V = '20261107a'
+LUXE_V = '20261107a'
 
 HEADER = ('<header class="site-header ed"><a href="index.html#top" class="brand">Wailea Photo</a>'
           '<div class="header-right">{switcher}'
@@ -52,8 +54,10 @@ MENU = ('<nav class="menu ed" aria-hidden="true"><button class="menu-close" aria
 SND = ('<button class="ed-snd" type="button" aria-label="Turn music on" aria-pressed="false" '
        'data-src="assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button>')
 
-FONT_SC = ('<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" '
-           'rel="stylesheet" data-ed>')
+FONT_SC = ('<link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-latin-300-normal.woff2" crossorigin data-ed>'
+           '<link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-latin-300-normal.woff2" crossorigin data-ed>')
+# quiet-luxury theme: loaded last in <head> so it sits above page-specific CSS
+LUXE = '<link rel="stylesheet" href="assets/luxe-theme.css?v=%s" data-ed>' % LUXE_V
 CSS = '<link rel="stylesheet" href="assets/editorial.css?v=%s" data-ed>' % EDITORIAL_V
 CONCIERGE_CSS = '<link rel="stylesheet" href="assets/concierge-widget.css" data-ed>'
 BODY_END = ('<script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script>'
@@ -94,6 +98,12 @@ def render(s, name):
         s = s[:site_css.end()] + head_add + s[site_css.end():]
     else:
         s = s.replace('</head>', head_add + '\n</head>', 1)
+    # sits just before the i18n head block (which tools/i18n/build.py re-adds before </head>), so the two never trade places
+    anchor = '<!-- i18n:head -->' if '<!-- i18n:head -->' in s else '</head>'
+    s = s.replace(anchor, LUXE + '\n' + anchor, 1)
+    # tools/i18n/build.py and this script both write just before </head>; keep the gap from growing
+    he = s.find('</head>')
+    s = re.sub(r'\n[ \t]*(?:\n[ \t]*){2,}', '\n\n', s[:he]) + s[he:]
     snd = SND.replace('data-src=', 'data-autostart data-src=') if autostart else SND
     body_add = snd + (BODY_END if not has_concierge else BODY_END.split('<script src="assets/concierge-widget.js" defer data-ed></script>')[0]
                       + '<script src="assets/editorial.js?v=%s" defer data-ed></script>' % EDITORIAL_V)

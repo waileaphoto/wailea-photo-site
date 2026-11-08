@@ -102,7 +102,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=20261105a"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&amp;display=swap" rel="stylesheet" data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261106a" data-ed>
+  <link rel="stylesheet" href="/assets/site.css?v=20261105a"><link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cormorant-latin-300-normal.woff2" crossorigin data-ed><link rel="preload" as="font" type="font/woff2" href="/assets/fonts/jost-latin-300-normal.woff2" crossorigin data-ed><link rel="stylesheet" href="/assets/concierge-widget.css" data-ed><link rel="stylesheet" href="/assets/editorial.css?v=20261107a" data-ed>
 
   <style>
     :root{--atlas-ink:#171716;--atlas-cream:#f4eddf;--atlas-paper:#fbf8f2;--atlas-gold:#b69557;--atlas-rust:#a44736}
@@ -111,22 +111,22 @@
     .atlas-editorial-hero>picture{display:block;min-height:100%;overflow:hidden}
     .atlas-editorial-hero>picture img{display:block;width:100%;height:100%;min-height:100%;object-fit:cover}
     .atlas-editorial-hero .page-hero-copy{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;max-width:none!important;height:auto!important;transform:none!important;display:flex;flex-direction:column;justify-content:center;padding:clamp(54px,7vw,112px) clamp(34px,5vw,84px);background:var(--atlas-cream)}
-    .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase}
-    .atlas-editorial-hero h1{margin:18px 0 0;max-width:12ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em}
-    .atlas-editorial-hero .atlas-deck{max-width:35rem;margin:28px 0 0;font:400 clamp(1rem,1.25vw,1.16rem)/1.75 'Inter',sans-serif;color:rgba(23,23,22,.76)}
-    .atlas-editorial-hero .atlas-byline{margin:30px 0 0;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
+    .atlas-editorial-hero .eyebrow{color:var(--atlas-rust);font:600 10px/1.2 "Jost",sans-serif;letter-spacing:.22em;text-transform:uppercase}
+    .atlas-editorial-hero h1{margin:18px 0 0;max-width:12ch;color:var(--atlas-ink);font:500 clamp(2.9rem,5.4vw,5.9rem)/.93 "Cormorant",Georgia,serif;letter-spacing:-.035em}
+    .atlas-editorial-hero .atlas-deck{max-width:35rem;margin:28px 0 0;font:400 clamp(1rem,1.25vw,1.16rem)/1.75 "Jost",sans-serif;color:rgba(23,23,22,.76)}
+    .atlas-editorial-hero .atlas-byline{margin:30px 0 0;font:600 10px/1.4 "Jost",sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(23,23,22,.62)}
     .atlas-opening-note{display:grid;grid-template-columns:150px minmax(0,700px);gap:44px;align-items:start;padding:clamp(48px,7vw,92px) max(24px,calc((100vw - 1120px)/2));background:var(--atlas-ink);color:#fff}
-    .atlas-opening-note span{padding-top:8px;font:600 10px/1.4 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#d3b77d}
-    .atlas-opening-note p{margin:0;font:400 clamp(1.8rem,3vw,3rem)/1.12 'Cormorant Garamond',Georgia,serif}
+    .atlas-opening-note span{padding-top:8px;font:600 10px/1.4 "Jost",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#d3b77d}
+    .atlas-opening-note p{margin:0;font:400 clamp(1.8rem,3vw,3rem)/1.12 "Cormorant",Georgia,serif}
     .atlas-editorial .content-split{border-top:1px solid rgba(23,23,22,.1)}
     .atlas-editorial .content-split-copy{padding-top:clamp(54px,7vw,110px);padding-bottom:clamp(54px,7vw,110px)}
     .atlas-editorial .content-split-copy h2{max-width:13ch;line-height:1.02}
-    .atlas-editorial .content-split-copy h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 'Cormorant Garamond',Georgia,serif}
+    .atlas-editorial .content-split-copy h3{margin:28px 0 8px;font:500 clamp(1.35rem,2vw,1.75rem)/1.2 "Cormorant",Georgia,serif}
     .atlas-editorial .content-split-image img{filter:saturate(.92) contrast(.98)}
     .atlas-editorial .faq-list{background:#eee4d3}
     .atlas-editorial .reserve.short{background:var(--atlas-ink);color:#fff}
     .atlas-editorial .location-note{margin:28px 0 0;padding:22px 24px;border-left:2px solid var(--atlas-gold);background:#f3ecdf}
-    .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 'Inter',sans-serif;letter-spacing:.13em;text-transform:uppercase}
+    .atlas-editorial .location-note strong{display:block;margin-bottom:7px;font:600 11px/1.2 "Jost",sans-serif;letter-spacing:.13em;text-transform:uppercase}
     @media(max-width:900px){
       .atlas-editorial-hero{grid-template-columns:1fr;min-height:0}
       .atlas-editorial-hero>picture{height:min(72vh,680px)}
@@ -136,88 +136,7 @@
     }
   </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107a" data-ed>
 
 
 
@@ -323,7 +242,7 @@
       Road to Hana는 단순한 드라이브 코스가 아니라, Maui의 자연미와 풍부한 문화를 고스란히 담아낸 몰입형 경험입니다. 어려움도 있지만, 평범함을 넘어선 모험을 찾는 이들에게는 그 보상이 위험을 훨씬 능가합니다. 안전벨트를 매고, 조심스럽게 길을 따라가며, Road to Hana가 밸리 아일의 매혹적인 경이로움을 펼쳐 보이도록 맡겨보세요.
     </p>
     <div style="background: #f3ecdf; border-left: 2px solid #b69557; padding: 24px; text-align: center; margin-top: 30px;">
-      <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 500; color: #171716; margin: 0 0 12px;">이 긴 드라이브를 떠나기 전, 가족 또는 커플 포토슛을 꼭 미리 예약해두세요...</p>
+      <p style="font-family: "Cormorant", Georgia, serif; font-size: 1.35rem; font-weight: 500; color: #171716; margin: 0 0 12px;">이 긴 드라이브를 떠나기 전, 가족 또는 커플 포토슛을 꼭 미리 예약해두세요...</p>
       <p style="font-size: 0.95rem; line-height: 1.6; color: #555; margin: 0 0 20px;">섬에서의 멋진 모험을 떠나기 전, Wailea Photo와 함께 Maui에서의 추억을 남겨보세요.</p>
       <a class="button" href="/ko/pricing#sessions" style="background: #171716; color: #fff; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; display: inline-block;">촬영 및 요금 보기</a>
     </div>
@@ -398,6 +317,6 @@
 </footer>
 
 <script src="/assets/site.js?v=20261105a"></script>
-<button class="ed-snd" type="button" aria-label="음악 켜기" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261106a" defer data-ed></script>
+<button class="ed-snd" type="button" aria-label="음악 켜기" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261107a" defer data-ed></script>
 </body>
 </html>
