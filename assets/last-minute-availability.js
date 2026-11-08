@@ -28,7 +28,7 @@
   // rather than a number that may not match what the client is actually quoted.
   const sessionPrices = {
     'first-half-sunset': 'From $399',
-    'last-half-sunset': 'From $499',
+    'last-half-sunset': 'From $550',
     'turquoise-water': 'From $399',
     'sunrise-max': 'From $299',
       'family-legacy': 'TBD',

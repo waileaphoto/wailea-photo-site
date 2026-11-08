@@ -511,13 +511,13 @@ document.addEventListener('DOMContentLoaded', function(){
       cardId: 'session-card-family-legacy',
       displayName: 'The Large Family Legacy',
       explanation: 'Large and multigenerational families need more time for the full group, individual households, grandparents, couples and children without feeling rushed.',
-      facts: '100+ images · Starting at $995'
+      facts: '100+ images · Starting at $1,200'
     },
     'poetic-wedding': {
       cardId: 'session-card-poetic-wedding',
       displayName: 'A Poetic Wedding in Maui',
       explanation: 'This experience allows the ceremony, family groupings and couple’s portraits to unfold together in beautiful Maui light.',
-      facts: '$2,599 all-inclusive'
+      facts: '$2,800 all-inclusive'
     },
     'turquoise-water': {
       cardId: 'session-card-turquoise-water',
@@ -529,13 +529,13 @@ document.addEventListener('DOMContentLoaded', function(){
       cardId: 'session-card-last-half-sunset',
       displayName: 'Last Half of Sunset',
       explanation: 'The final light of the day creates richer color, deeper contrast and the most cinematic sunset atmosphere.',
-      facts: 'Half hour · 50+ images · From $499'
+      facts: 'Half hour · 50+ images · From $550'
     },
     'first-half-sunset': {
       cardId: 'session-card-first-half-sunset',
       displayName: 'First Half of Sunset — “Light & Bright”',
       explanation: 'This is the best fit for families who want bright, natural color and a relaxed session during the softer opening portion of golden hour.',
-      facts: 'Half hour · From $399 · Add the Last Half—a $499 value—for $199 (special offer)'
+      facts: 'Half hour · From $399 · Add the Last Half—a $550 value—for $199 (special offer)'
     },
     'sunrise-max': {
       cardId: 'session-card-sunrise-max',
