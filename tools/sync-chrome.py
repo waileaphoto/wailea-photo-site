@@ -98,7 +98,12 @@ def render(s, name):
         s = s[:site_css.end()] + head_add + s[site_css.end():]
     else:
         s = s.replace('</head>', head_add + '\n</head>', 1)
-    s = s.replace('</head>', LUXE + '\n</head>', 1)
+    # sits just before the i18n head block (which tools/i18n/build.py re-adds before </head>), so the two never trade places
+    anchor = '<!-- i18n:head -->' if '<!-- i18n:head -->' in s else '</head>'
+    s = s.replace(anchor, LUXE + '\n' + anchor, 1)
+    # tools/i18n/build.py and this script both write just before </head>; keep the gap from growing
+    he = s.find('</head>')
+    s = re.sub(r'\n[ \t]*(?:\n[ \t]*){2,}', '\n\n', s[:he]) + s[he:]
     snd = SND.replace('data-src=', 'data-autostart data-src=') if autostart else SND
     body_add = snd + (BODY_END if not has_concierge else BODY_END.split('<script src="assets/concierge-widget.js" defer data-ed></script>')[0]
                       + '<script src="assets/editorial.js?v=%s" defer data-ed></script>' % EDITORIAL_V)
