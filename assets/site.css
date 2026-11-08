@@ -1051,3 +1051,15 @@ footer{background:var(--charcoal);color:var(--paper);padding:9vh 7vw 5vh}
 .hero-copy h1 .eyebrow{display:block;font-family:var(--sans);margin:0 0 1.1em;line-height:1.4}
 .page-guide .section-head{max-width:1180px;margin:0 auto;padding:0}
 .page-guide .section-head h2{white-space:normal;max-width:20ch;font-size:clamp(34px,4.6vw,64px);line-height:1.02}
+
+/* budget slider extras shared by the pricing page and the wedding cost guide */
+.market-hint{margin:10px 0 0;text-align:center;font-size:13px;color:#9e2b23;letter-spacing:.02em;transition:opacity .5s}
+.market-hint span{display:inline-block;animation:mhint 1.6s ease-in-out infinite}
+.market-hint span:last-child{animation-direction:reverse}
+@keyframes mhint{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
+.market-touched .market-hint{opacity:0}
+.market-plot{touch-action:pan-y;cursor:ew-resize}
+.mp-handle rect{fill:#b1443a}.mp-handle path{fill:#fffaf2}.mp-handle line{stroke:rgba(255,250,242,.6);stroke-width:1}
+.mp-nudge{animation:mnudge 1.8s ease-in-out infinite}
+@keyframes mnudge{0%,100%{translate:0 0}25%{translate:-6px 0}75%{translate:6px 0}}
+@media (prefers-reduced-motion:reduce){.market-hint span,.mp-nudge{animation:none}}
