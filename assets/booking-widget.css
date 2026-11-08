@@ -4,7 +4,7 @@
 .wbw-overlay {
   position: fixed; inset: 0; background: rgba(20, 18, 16, 0.55);
   display: flex; align-items: center; justify-content: center;
-  z-index: 9999; padding: 20px; font-family: 'Inter', -apple-system, sans-serif;
+  z-index: 9999; padding: 20px; font-family: "Jost", -apple-system, sans-serif;
 }
 .wbw-overlay[hidden] { display: none; }
 
@@ -21,23 +21,23 @@
 .wbw-close:hover { color: #171716; }
 
 .wbw-eyebrow {
-  font: 600 10px/1 'Inter', sans-serif; letter-spacing: .2em; text-transform: uppercase;
+  font: 600 10px/1 "Jost", sans-serif; letter-spacing: .2em; text-transform: uppercase;
   color: #b1443a; margin-bottom: 8px;
 }
-.wbw-title { font: 500 26px/1.2 'Cormorant Garamond', serif; margin: 0 0 24px; color: #171716; }
+.wbw-title { font: 500 26px/1.2 "Cormorant", serif; margin: 0 0 24px; color: #171716; }
 
 .wbw-step { display: flex; flex-direction: column; gap: 16px; }
 .wbw-step[hidden] { display: none; }
 
 .wbw-month-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
 .wbw-month-nav button { background: none; border: 1px solid #ddd; border-radius: 4px; padding: 6px 10px; cursor: pointer; }
-.wbw-month-label { font: 500 15px/1 'Inter', sans-serif; }
+.wbw-month-label { font: 500 15px/1 "Jost", sans-serif; }
 
 .wbw-day-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-.wbw-day-head { text-align: center; font: 600 10px/1 'Inter', sans-serif; color: #999; padding-bottom: 4px; }
+.wbw-day-head { text-align: center; font: 600 10px/1 "Jost", sans-serif; color: #999; padding-bottom: 4px; }
 .wbw-day {
   aspect-ratio: 1; border: 1px solid #eee; border-radius: 4px; background: #fff;
-  font: 400 13px/1 'Inter', sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font: 400 13px/1 "Jost", sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center;
   color: #333;
 }
 .wbw-day:disabled { color: #ddd; cursor: not-allowed; background: #fafafa; }
@@ -52,15 +52,15 @@
 .wbw-slots { display: flex; flex-wrap: wrap; gap: 8px; }
 .wbw-slot-btn {
   border: 1px solid #ddd; border-radius: 20px; padding: 8px 16px; background: #fff;
-  cursor: pointer; font: 500 13px/1 'Inter', sans-serif;
+  cursor: pointer; font: 500 13px/1 "Jost", sans-serif;
 }
 .wbw-slot-btn.wbw-selected { background: #171716; color: #fff; border-color: #171716; }
 
 .wbw-field { display: flex; flex-direction: column; gap: 6px; }
-.wbw-field label { font: 600 11px/1 'Inter', sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #666; }
+.wbw-field label { font: 600 11px/1 "Jost", sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #666; }
 .wbw-field input[type="text"], .wbw-field input[type="email"], .wbw-field input[type="tel"], .wbw-field input[type="number"],
 .wbw-field select, .wbw-field textarea {
-  border: 1px solid #ddd; border-radius: 4px; padding: 10px 12px; font: 400 14px/1.3 'Inter', sans-serif;
+  border: 1px solid #ddd; border-radius: 4px; padding: 10px 12px; font: 400 14px/1.3 "Jost", sans-serif;
   font-family: inherit; width: 100%; box-sizing: border-box; resize: vertical;
 }
 
@@ -71,30 +71,30 @@
 .wbw-policy-box p { font-size: 12px; line-height: 1.5; color: #555; margin: 0 0 10px; }
 .wbw-policy-box p:last-child { margin-bottom: 0; }
 .wbw-policy-agree {
-  display: flex; align-items: flex-start; gap: 8px; font: 400 13px/1.4 'Inter', sans-serif !important;
+  display: flex; align-items: flex-start; gap: 8px; font: 400 13px/1.4 "Jost", sans-serif !important;
   text-transform: none !important; letter-spacing: normal !important; color: #333 !important; cursor: pointer;
 }
 .wbw-policy-agree[hidden] { display: none; }
 .wbw-policy-agree input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
 
 .wbw-addons { display: flex; flex-direction: column; gap: 8px; }
-.wbw-addon { display: flex; align-items: center; gap: 10px; font: 400 13px/1.3 'Inter', sans-serif; }
+.wbw-addon { display: flex; align-items: center; gap: 10px; font: 400 13px/1.3 "Jost", sans-serif; }
 .wbw-addon[hidden] { display: none; }
 .wbw-addon .wbw-addon-price { margin-left: auto; color: #666; }
 .wbw-addon .wbw-addon-learn-more { margin-left: auto; color: #b1443a; font-size: 12px; text-decoration: underline; white-space: nowrap; }
 
 .wbw-quote { border-top: 1px solid #eee; padding-top: 16px; display: flex; flex-direction: column; gap: 6px; }
-.wbw-quote-row { display: flex; justify-content: space-between; font: 400 13px/1.4 'Inter', sans-serif; color: #555; }
+.wbw-quote-row { display: flex; justify-content: space-between; font: 400 13px/1.4 "Jost", sans-serif; color: #555; }
 .wbw-quote-row.wbw-total { font-weight: 700; color: #171716; font-size: 15px; border-top: 1px solid #eee; padding-top: 8px; margin-top: 4px; }
 .wbw-quote-note { font-size: 11px; color: #999; }
 
 .wbw-due-today { border-top: 1px solid #eee; padding-top: 10px; margin-top: 4px; }
-.wbw-due-today-label { font: 700 11px/1 'Inter', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #171716; }
-.wbw-due-today-amount { font: 700 24px/1.2 'Cormorant Garamond', serif; color: #b1443a; margin-top: 2px; }
+.wbw-due-today-label { font: 700 11px/1 "Jost", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #171716; }
+.wbw-due-today-amount { font: 700 24px/1.2 "Cormorant", serif; color: #b1443a; margin-top: 2px; }
 
 .wbw-btn {
   display: inline-block; text-align: center; padding: 14px 20px; border-radius: 4px; border: none;
-  background: #171716; color: #fff; font: 600 12px/1 'Inter', sans-serif; letter-spacing: .1em;
+  background: #171716; color: #fff; font: 600 12px/1 "Jost", sans-serif; letter-spacing: .1em;
   text-transform: uppercase; cursor: pointer;
 }
 .wbw-btn:disabled { background: #ccc; cursor: not-allowed; }
@@ -104,7 +104,7 @@
 
 .wbw-error { color: #b1443a; font-size: 13px; }
 .wbw-success { text-align: center; padding: 20px 0; }
-.wbw-success h3 { font: 500 24px/1.2 'Cormorant Garamond', serif; margin: 12px 0; }
+.wbw-success h3 { font: 500 24px/1.2 "Cormorant", serif; margin: 12px 0; }
 .wbw-success-icon { font-size: 40px; }
 
 .wbw-spinner {
@@ -124,7 +124,7 @@
 @keyframes wbw-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
 
 .wbw-calendar-status {
-  font: 400 12px/1.4 'Inter', sans-serif; color: #888; text-align: center; padding: 4px 0;
+  font: 400 12px/1.4 "Jost", sans-serif; color: #888; text-align: center; padding: 4px 0;
 }
 .wbw-calendar-status[hidden] { display: none; }
 
@@ -134,8 +134,8 @@
   border: 1px solid #eee; border-radius: 6px;
 }
 .wbw-calendar-empty[hidden] { display: none; }
-.wbw-calendar-empty-title { font: 500 17px/1.3 'Cormorant Garamond', serif; color: #171716; }
-.wbw-calendar-empty-sub { font: 400 12px/1.5 'Inter', sans-serif; color: #777; max-width: 34ch; }
+.wbw-calendar-empty-title { font: 500 17px/1.3 "Cormorant", serif; color: #171716; }
+.wbw-calendar-empty-sub { font: 400 12px/1.5 "Jost", sans-serif; color: #777; max-width: 34ch; }
 .wbw-jump-btn { margin-top: 2px; width: auto; padding: 10px 18px; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -148,7 +148,7 @@
    and the Concierge nudge. Palette follows the existing #b1443a / #171716. */
 
 .wbw-scarcity {
-  font: 500 12px/1.5 'Inter', sans-serif; color: #b1443a;
+  font: 500 12px/1.5 "Jost", sans-serif; color: #b1443a;
   background: #fdf6f5; border: 1px solid #f2dedb; border-radius: 4px;
   padding: 9px 12px; margin-bottom: 14px;
 }
@@ -156,20 +156,20 @@
 
 .wbw-conditions { margin-top: 10px; }
 .wbw-conditions:empty { display: none; }
-.wbw-conditions-line { font: 500 12px/1.5 'Inter', sans-serif; color: #555; }
-.wbw-conditions-note { font: 400 12px/1.5 'Inter', sans-serif; color: #7a8b6f; margin-top: 2px; }
+.wbw-conditions-line { font: 500 12px/1.5 "Jost", sans-serif; color: #555; }
+.wbw-conditions-note { font: 400 12px/1.5 "Jost", sans-serif; color: #7a8b6f; margin-top: 2px; }
 
 .wbw-gallery-promise { color: #555; font-weight: 500; }
 
 .wbw-hold { margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; }
-.wbw-hold-prompt { font: 500 12px/1.4 'Inter', sans-serif; color: #555; margin-bottom: 8px; }
+.wbw-hold-prompt { font: 500 12px/1.4 "Jost", sans-serif; color: #555; margin-bottom: 8px; }
 .wbw-hold-form { display: flex; flex-direction: column; gap: 8px; }
 .wbw-hold-email {
   width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 11px 12px;
-  font: 400 14px/1.2 'Inter', sans-serif; box-sizing: border-box;
+  font: 400 14px/1.2 "Jost", sans-serif; box-sizing: border-box;
 }
 .wbw-hold-btn { width: 100%; }
-.wbw-hold-status { font: 500 12px/1.5 'Inter', sans-serif; color: #5a7a52; margin-top: 8px; }
+.wbw-hold-status { font: 500 12px/1.5 "Jost", sans-serif; color: #5a7a52; margin-top: 8px; }
 .wbw-hold-status:empty { display: none; }
 .wbw-hold-status.wbw-hold-error { color: #b1443a; }
 
@@ -177,7 +177,7 @@
   border: 1px solid #eee; border-radius: 4px; padding: 10px 12px; margin-bottom: 4px;
 }
 .wbw-addons-collapsed > summary {
-  cursor: pointer; font: 600 11px/1 'Inter', sans-serif; letter-spacing: .08em;
+  cursor: pointer; font: 600 11px/1 "Jost", sans-serif; letter-spacing: .08em;
   text-transform: uppercase; color: #171716; list-style: none;
 }
 .wbw-addons-collapsed > summary::-webkit-details-marker { display: none; }
@@ -188,14 +188,14 @@
   text-transform: none; letter-spacing: 0; font-weight: 400; color: #999; margin-left: 6px;
 }
 
-.wbw-policy-summary { font: 400 12px/1.5 'Inter', sans-serif; color: #777; margin-bottom: 8px; }
+.wbw-policy-summary { font: 400 12px/1.5 "Jost", sans-serif; color: #777; margin-bottom: 8px; }
 .wbw-policy-summary a { color: #171716; text-decoration: underline; }
 
 .wbw-concierge-nudge {
   margin-top: 16px; padding: 12px 34px 12px 14px; position: relative;
   background: #f7f6f4; border: 1px solid #e8e5e0; border-radius: 4px;
   display: flex; flex-direction: column; gap: 10px;
-  font: 400 12px/1.5 'Inter', sans-serif; color: #444;
+  font: 400 12px/1.5 "Jost", sans-serif; color: #444;
 }
 .wbw-nudge-dismiss {
   position: absolute; top: 6px; right: 8px; background: none; border: none;
