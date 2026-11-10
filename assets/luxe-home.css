@@ -220,3 +220,6 @@
 }
 /* driftwood couple: keep both of them in frame on phones */
 @media (max-width:700px){.lx-bleed img{object-position:68% 92%}}
+/* driftwood couple: show the whole photograph at every screen size (no cropping) */
+.lx-home .lx-bleed{height:auto;aspect-ratio:16/10}
+.lx-home .lx-bleed img{object-position:50% 50%!important}
