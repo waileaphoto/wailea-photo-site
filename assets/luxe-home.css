@@ -208,10 +208,15 @@
 @media (max-width:700px){
   .lx-home .lx-dip:after{z-index:3}
   .lx-slides .sl.fit img:not(.bk){object-fit:contain}
+  .lx-slides .sl.mr img{object-position:68% 50%!important}
   .lx-slides .sl.fit .bk{display:block;filter:blur(22px) brightness(.8);transform:scale(1.15)}
 }
 @media (min-width:701px){
   .lx-home .lx-crest{transition:left 2s ease-in-out,top 2s ease-in-out,transform 2s ease-in-out}
   .lx-home .lx-dip.full .lx-crest{left:3vw;top:100%;transform:translate(0,calc(-100% - 4vh)) scale(.82);transform-origin:0 100%;width:min(34%,400px)}
+  .lx-home .lx-dip.full.cr .lx-crest{left:calc(97vw - min(34%,400px) * .82 - var(--lx-gut,0px) * 2)}
+  .lx-slides .sl.cr:after{inset:50% 0 0 55%;background:radial-gradient(ellipse at 100% 100%,rgba(20,17,14,.45),transparent 70%)}
   .lx-slides .sl:after{content:"";position:absolute;inset:50% 55% 0 0;background:radial-gradient(ellipse at 0 100%,rgba(20,17,14,.5),transparent 70%)}
 }
+/* driftwood couple: keep both of them in frame on phones */
+@media (max-width:700px){.lx-bleed img{object-position:68% 92%}}

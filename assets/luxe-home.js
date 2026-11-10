@@ -34,8 +34,9 @@
   /* hero slideshow: diptych first, then each full-frame photograph; 2s cross-fades */
   var dip = $('.lx-dip'), sl = [].slice.call(document.querySelectorAll('.lx-slides .sl'));
   if (dip && sl.length && !reduce) {
-    var HOLD = 5000, step = 0, cur = null;
     var mobile = function () { return matchMedia('(max-width:700px)').matches; };
+    // The first full-frame photograph is already showing when the page loads (holiday opener).
+    var HOLD = 5000, cur = sl[0].classList.contains('on') ? sl[0] : null, step = cur ? (mobile() ? 2 : 1) : 0;
     var states = function () { return (mobile() ? 2 : 1) + sl.length; };
     var show = function (i) {
       var lead = mobile() ? 2 : 1, next = i >= lead ? sl[i - lead] : null;
@@ -45,6 +46,7 @@
       if (cur && cur !== next) { var prev = cur; setTimeout(function () { prev.classList.remove('on'); }, next ? 2000 : 0); }
       cur = next;
       dip.classList.toggle('full', !!next);
+      dip.classList.toggle('cr', !!(next && next.classList.contains('cr')));
     };
     setInterval(function () { if (document.hidden) return; step = (step + 1) % states(); show(step); }, HOLD + 2000);
   }
