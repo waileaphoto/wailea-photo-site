@@ -37,11 +37,12 @@
   var dip = $('.lx-dip'), all = [].slice.call(document.querySelectorAll('.lx-slides .sl'));
   if (dip && all.length) {
     var phone = matchMedia('(max-width:700px)').matches;
-    var sl = all.filter(function (el) { return !(phone && el.classList.contains('wide')); });
-    if (phone) { all.forEach(function (el) { el.classList.remove('on'); }); dip.classList.remove('full'); }
+    // phones skip "wide" slides, computers skip "tall" (phone-only) slides
+    var sl = all.filter(function (el) { return !el.classList.contains(phone ? 'wide' : 'tall'); });
+    if (phone) { all.forEach(function (el) { el.classList.remove('on'); }); if (sl[0]) sl[0].classList.add('on'); }
     if (!reduce) {
       var HOLD = 5000, lead = phone ? 2 : 1;
-      var cur = !phone && sl[0] && sl[0].classList.contains('on') ? sl[0] : null;
+      var cur = sl[0] && sl[0].classList.contains('on') ? sl[0] : null;
       var step = cur ? lead : 0, states = lead + sl.length;
       var show = function (i) {
         var next = i >= lead ? sl[i - lead] : null;
