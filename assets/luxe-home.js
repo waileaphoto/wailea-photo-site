@@ -31,24 +31,29 @@
     run();
   }
 
-  /* hero slideshow: diptych first, then each full-frame photograph; 2s cross-fades */
-  var dip = $('.lx-dip'), sl = [].slice.call(document.querySelectorAll('.lx-slides .sl'));
-  if (dip && sl.length && !reduce) {
-    var mobile = function () { return matchMedia('(max-width:700px)').matches; };
-    // The first full-frame photograph is already showing when the page loads (holiday opener).
-    var HOLD = 5000, cur = sl[0].classList.contains('on') ? sl[0] : null, step = cur ? (mobile() ? 2 : 1) : 0;
-    var states = function () { return (mobile() ? 2 : 1) + sl.length; };
-    var show = function (i) {
-      var lead = mobile() ? 2 : 1, next = i >= lead ? sl[i - lead] : null;
-      if (i === 0) dip.classList.remove('m2');
-      if (i === 1 && lead === 2) dip.classList.add('m2');
-      if (next) next.classList.add('on');
-      if (cur && cur !== next) { var prev = cur; setTimeout(function () { prev.classList.remove('on'); }, next ? 2000 : 0); }
-      cur = next;
-      dip.classList.toggle('full', !!next);
-      dip.classList.toggle('cr', !!(next && next.classList.contains('cr')));
-    };
-    setInterval(function () { if (document.hidden) return; step = (step + 1) % states(); show(step); }, HOLD + 2000);
+  /* hero slideshow: 2s cross-fades. Computers open on the first full-frame photograph
+     (holiday family) and also show the diptych; phones skip the wide group shots
+     ("wide"), which cannot fill a tall frame, and open on the first portrait. */
+  var dip = $('.lx-dip'), all = [].slice.call(document.querySelectorAll('.lx-slides .sl'));
+  if (dip && all.length) {
+    var phone = matchMedia('(max-width:700px)').matches;
+    var sl = all.filter(function (el) { return !(phone && el.classList.contains('wide')); });
+    if (phone) { all.forEach(function (el) { el.classList.remove('on'); }); dip.classList.remove('full'); }
+    if (!reduce) {
+      var HOLD = 5000, lead = phone ? 2 : 1;
+      var cur = !phone && sl[0] && sl[0].classList.contains('on') ? sl[0] : null;
+      var step = cur ? lead : 0, states = lead + sl.length;
+      var show = function (i) {
+        var next = i >= lead ? sl[i - lead] : null;
+        if (i === 0) dip.classList.remove('m2');
+        if (i === 1 && lead === 2) dip.classList.add('m2');
+        if (next) next.classList.add('on');
+        if (cur && cur !== next) { var prev = cur; setTimeout(function () { prev.classList.remove('on'); }, next ? 2000 : 0); }
+        cur = next;
+        dip.classList.toggle('full', !!next);
+      };
+      setInterval(function () { if (document.hidden) return; step = (step + 1) % states; show(step); }, HOLD + 2000);
+    }
   }
 
   /* review counts: mirror the live totals (filled by the reviews widget) into the review section */
