@@ -223,3 +223,5 @@
 /* driftwood couple: show the whole photograph at every screen size (no cropping) */
 .lx-home .lx-bleed{height:auto;aspect-ratio:16/10}
 .lx-home .lx-bleed img{object-position:50% 50%!important}
+@media (max-width:700px){.lx-slides .sl.wide{display:none}}
+.lx-slides .sl.tall{display:none}@media (max-width:700px){.lx-slides .sl.tall{display:block}}
