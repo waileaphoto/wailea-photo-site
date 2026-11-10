@@ -218,3 +218,5 @@
   .lx-slides .sl.cr:after{inset:50% 0 0 55%;background:radial-gradient(ellipse at 100% 100%,rgba(20,17,14,.45),transparent 70%)}
   .lx-slides .sl:after{content:"";position:absolute;inset:50% 55% 0 0;background:radial-gradient(ellipse at 0 100%,rgba(20,17,14,.5),transparent 70%)}
 }
+/* driftwood couple: keep both of them in frame on phones */
+@media (max-width:700px){.lx-bleed img{object-position:68% 92%}}
