@@ -394,6 +394,12 @@
 .wd .wd-upg{margin-top:20px;font-size:14px;color:var(--dim)}
 @media (max-width:900px){.wd .wd-package{grid-template-columns:1fr}}
 .wd .wd-reviews{background:var(--paper2);padding-block:14vh}
+/* reviews over the behind-the-scenes film, softened by a linen veil (Nov 2026) */
+.wd .wd-reviews.bts{position:relative;overflow:hidden;isolation:isolate}
+.wd .wd-reviews.bts>.bts-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.wd .wd-reviews.bts:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(243,237,227,.74)}
+.wd .wd-reviews.bts .wd-rgrid figure{background:rgba(255,255,255,.28);border:1px solid rgba(36,32,28,.18)}
+@media (prefers-reduced-motion:reduce){.wd .wd-reviews.bts>.bts-vid{display:none}.wd .wd-reviews.bts{background:url(/assets/video/wedding-bts-poster.jpg) center/cover}}
 .wd .wd-reviews-in{max-width:1180px;margin:0 auto}
 .wd .wd-reviews h2{font:300 clamp(36px,4.2vw,56px)/1.08 var(--wserif);text-align:center}
 .wd .wd-reviews h2 em{font-weight:300}
@@ -453,6 +459,7 @@
 </style>
 
 <link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107e" data-ed>
+
 
 
 
@@ -522,7 +529,7 @@
 </section>
 
 <div class="wd-elope-pill-wrap" style="gap:14px;flex-wrap:wrap"><a class="wd-elope-pill" href="/zh/maui-signature-wedding">两位摄影师，Kodak 胶片，三个小时？<span>签名婚礼 · $4,800 →</span></a><a class="wd-elope-pill" href="/zh/maui-elopement-photographer">只想为两人安排一场简单的小型婚礼吗？<span>查看从 $995 起的婚礼拍摄方案 →</span></a></div>
-<section class="wd-reviews wd-wrap" aria-labelledby="rv-h"><div class="wd-reviews-in">
+<section class="wd-reviews wd-wrap bts" aria-labelledby="rv-h"><video class="bts-vid" autoplay muted loop playsinline preload="none" poster="/assets/video/wedding-bts-poster.jpg" aria-hidden="true"><source src="/assets/video/wedding-bts-540.mp4" type="video/mp4" media="(max-width:760px)"><source src="/assets/video/wedding-bts-1080.mp4" type="video/mp4"></video><div class="wd-reviews-in">
   <h2 id="rv-h">新人<em>怎么评价</em>我们</h2>
   <div class="wd-stars" aria-label="五星">★★★★★</div>
   <div class="wd-rgrid">
@@ -615,4 +622,5 @@
 <script src="/assets/site.js?v=20261107d"></script>
 <script src="/assets/session-tile-slider.js"></script>
 <button class="ed-snd" type="button" aria-label="开启音乐" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261107a" defer data-ed></script>
+<script>(function(){var v=document.querySelector(".wd-reviews.bts .bts-vid");if(!v||!("IntersectionObserver" in window))return;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(v.preload==="none"){v.preload="auto";v.load()}v.play().catch(function(){})}else v.pause()})},{rootMargin:"200px 0px"}).observe(v)})();</script>
 </body></html>
