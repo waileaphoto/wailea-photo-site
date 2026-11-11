@@ -214,6 +214,9 @@
 .wd .wd-package h2 em{font-weight:300}
 .wd .wd-package .wd-intro{margin-top:20px;color:var(--dim);max-width:44ch}
 .wd .wd-price{margin-top:34px;border:1px solid var(--line);background:#fff;padding:28px}
+/* the all-inclusive price: lifted off the page with a layered shadow and a brass hairline */
+.wd .wd-price{border-color:var(--ink);box-shadow:0 0 0 1px rgba(168,134,90,.55),0 2px 4px rgba(36,32,28,.10),0 14px 28px -6px rgba(36,32,28,.22),0 38px 70px -18px rgba(36,32,28,.32);position:relative;transform:translateY(-4px);transition:transform .4s ease}
+.wd .wd-price:hover{transform:translateY(-8px)}
 .wd .wd-price .wd-amt{font:400 64px/1 var(--wserif)}
 .wd .wd-price .wd-amt small{font:500 11px/1 var(--wsans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-left:8px;vertical-align:middle}
 .wd .wd-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
