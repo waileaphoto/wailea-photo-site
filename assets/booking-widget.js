@@ -50,7 +50,7 @@
     { slug: 'camera_upgrade_review', label: T('Camera upgrade — Leica SL3 or Q3, free for posting a review'), priceLabel: T('Free') },
     {
       slug: 'double-sunset',
-      label: T('Special-Double your session time to include Last Half Sunset ($550 value)'),
+      label: T('Special-Double your session time to include Last Half Sunset ($499 value)'),
       priceLabel: '$199',
       sessionSlugs: ['first-half-sunset'],
     },
