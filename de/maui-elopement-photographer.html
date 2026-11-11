@@ -318,6 +318,9 @@
 .wd .wd-opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:46px}
 .wd .wd-opt{background:#fff;border:1px solid var(--line);padding:34px;display:flex;flex-direction:column;gap:14px}
 .wd .wd-opt.wd-feature{border-color:var(--ink)}
+/* Best value: lifted off the page with a layered shadow and a brass hairline */
+.wd .wd-opt.wd-feature{border-color:var(--ink);box-shadow:0 0 0 1px rgba(168,134,90,.55),0 2px 4px rgba(36,32,28,.10),0 14px 28px -6px rgba(36,32,28,.22),0 38px 70px -18px rgba(36,32,28,.32);z-index:1;transform:translateY(-8px);transition:transform .4s ease,box-shadow .4s ease}
+.wd .wd-opt.wd-feature:hover{transform:translateY(-12px)}
 .wd .wd-opt .wd-amt{font:400 60px/1 var(--wserif)}
 .wd .wd-opt .wd-amt small{font:500 11px/1 var(--wsans);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-left:8px;vertical-align:middle}
 .wd .wd-opt h3{font:400 30px/1.15 var(--wserif)}
@@ -380,6 +383,7 @@
 </style>
 
 <link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107e" data-ed>
+
 
 
 
