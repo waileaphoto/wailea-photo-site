@@ -47,7 +47,9 @@
     // exists, so past bookings render correctly; restore this line to re-offer it.
     { slug: 'bw', label: T('Classic Black & White add-on'), learnMoreUrl: localizeUrl('https://waileaphoto.com/black-and-white-upgrade') },
     { slug: 'apo_lens', label: T('Leica APO lens upgrade'), learnMoreUrl: localizeUrl('https://waileaphoto.com/the-apo-difference') },
-    { slug: 'camera_upgrade_review', label: T('Camera upgrade — Leica SL3 or Q3, free for posting a review'), priceLabel: T('Free') },
+    // Removed Nov 2026 - 'free camera upgrade for posting a review' is an incentivized review,
+    // which Google, Tripadvisor and Yelp prohibit (and the FTC's 2024 review rule covers).
+    // Backend slug 'camera_upgrade_review' still exists so past bookings render correctly.
     {
       slug: 'double-sunset',
       label: T('Special-Double your session time to include Last Half Sunset ($499 value)'),
