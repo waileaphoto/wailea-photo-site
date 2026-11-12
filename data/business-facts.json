@@ -1,0 +1,62 @@
+{
+  "_about": "Single source of truth for Wailea Photo business facts. tools/check-site.py fails the build if index.html, pricing.html, llms.txt or llms-full.txt disagree with this file. Change a fact here first, then on the pages. Prices are maintained on pricing.html (and the booking engine); this file records the published starting prices so the checker can catch drift.",
+  "verified": "2026-11-12",
+  "business": {
+    "name": "Wailea Photo",
+    "url": "https://waileaphoto.com/",
+    "id": "https://waileaphoto.com/#organization",
+    "type": "Family-owned and operated professional photography studio",
+    "locality": "Wailea, Maui, Hawaii, United States",
+    "serviceArea": ["Wailea", "Makena", "South Maui"],
+    "foundingDate": "2000",
+    "founder": "Laurence Balter",
+    "photographers": ["Laurence Balter", "Jude Balter", "Max Balter", "Solomon Balter"],
+    "telephone": "+1-808-298-5188",
+    "telephoneDisplay": "808-298-5188",
+    "email": "photo@waileaphoto.com"
+  },
+  "delivery": {
+    "sessions": "24–72 hours",
+    "weddingsAndElopements": "24–48 hours",
+    "forbiddenPhrases": ["under 48 hours", "within about 48 hours", "within 48 hours", "48–72 hours", "48-72 hours"]
+  },
+  "prices": {
+    "_source": "https://waileaphoto.com/pricing (live booking engine shows the exact price before payment)",
+    "Sunrise with Max": 299,
+    "First Half of Sunset": 399,
+    "Last Half of Sunset": 499,
+    "Turquoise + Water Experience": 399,
+    "The Large Family Legacy": 1200,
+    "A Poetic Wedding in Maui": 2800,
+    "Elopement Photography": 995
+  },
+  "reviews": {
+    "_method": "Read per-listing from the Elfsight All-in-One Reviews data API that feeds the homepage widget (service-reviews-ultimate.elfsight.com/data/sources), each listing counted once. The widget itself currently lists the Tripadvisor product page d23983169 twice, so its on-page total runs 185 high until that duplicate source is removed in Elfsight.",
+    "asOf": "2026-11-12",
+    "total": 1103,
+    "platforms": {
+      "Tripadvisor": {
+        "count": 455,
+        "listings": [
+          {"url": "https://www.tripadvisor.com/AttractionProductReview-g29220-d23983169-Private_Beach_Photoshoot_in_Wailea-Maui_Hawaii.html", "count": 185, "rating": 5.0, "note": "Viator product (Private Beach Photoshoot in Wailea)"},
+          {"url": "https://www.tripadvisor.com/Attraction_Review-g60632-d24009609-Reviews-Wailea_Photo-Kihei_Maui_Hawaii.html", "count": 186, "rating": 5.0},
+          {"url": "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html", "count": 84, "rating": 4.9}
+        ]
+      },
+      "Google": {"count": 399, "rating": 5.0, "url": "https://g.page/r/Cc3XQvgWZf3-EAI/review"},
+      "Facebook": {"count": 123, "rating": 5.0, "url": "https://www.facebook.com/waileaphoto"},
+      "Airbnb": {"count": 94, "rating": 5.0, "url": "https://www.airbnb.com/experiences/3664620"},
+      "Yelp": {"count": 32, "rating": 5.0, "url": "https://www.yelp.com/biz/wailea-photo-wailea"}
+    }
+  },
+  "profiles": [
+    "https://www.instagram.com/waileaphoto",
+    "https://www.facebook.com/waileaphoto",
+    "https://g.page/r/Cc3XQvgWZf3-EAI/review",
+    "https://www.yelp.com/biz/wailea-photo-wailea",
+    "https://www.tripadvisor.com/Attraction_Review-g60632-d24009609-Reviews-Wailea_Photo-Kihei_Maui_Hawaii.html",
+    "https://www.tripadvisor.com/Attraction_Review-g29220-d22986948-Reviews-Wailea_Photo-Maui_Hawaii.html",
+    "https://www.viator.com/tours/Maui/Private-Beach-Photoshoot-in-Wailea/d671-7061P11",
+    "https://www.airbnb.com/experiences/3664620"
+  ]
+}
