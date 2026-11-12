@@ -224,16 +224,26 @@ def check_asset_versions():
              % (len(versions), ', '.join(sorted(versions))))
 
 
+def facts():
+    return json.loads(read('data/business-facts.json'))
+
+
 def check_review_counts():
-    """The combined review total is hand-maintained in several places at once."""
+    """The combined review total is hand-maintained in several places at once.
+
+    data/business-facts.json is the source of truth: it records each listing's
+    count as read from the review platforms, each listing counted once. Every
+    place that quotes the total must agree with it.
+    """
+    want = facts()['reviews']['total']
     s = read('index.html')
-    seen = {}
+    seen = {'data/business-facts.json': want}
 
     m = re.search(r'id="combinedReviewCount">([\d,]+)<', s)
     if m:
         seen['visible total'] = int(m.group(1).replace(',', ''))
 
-    rows = re.findall(r'class="crb-count">(\d+)<', s)
+    rows = re.findall(r'class="pc crb-count">(\d+)<', s) or re.findall(r'class="crb-count">(\d+)<', s)
     if rows:
         seen['breakdown rows'] = sum(int(r) for r in rows)
 
@@ -242,13 +252,9 @@ def check_review_counts():
             d = json.loads(b)
         except ValueError:
             continue
-        if d.get('@id', '').endswith('#organization'):
-            ar = d.get('aggregateRating', {}).get('ratingCount')
-            if ar:
-                seen['LocalBusiness ratingCount'] = int(ar)
         if d.get('@id', '').endswith('#review-breakdown'):
             seen['#review-breakdown schema'] = sum(
-                int(i['item']['ratingCount']) for i in d.get('itemListElement', []))
+                int(re.search(r'(\d+) reviews', i['name']).group(1)) for i in d.get('itemListElement', []))
 
     for f in ('llms.txt', 'llms-full.txt'):
         nums = {int(n.replace(',', '')) for n in re.findall(r'([\d,]{4,}) reviews', read(f))}
@@ -260,9 +266,97 @@ def check_review_counts():
     if len(set(seen.values())) > 1:
         detail = ', '.join('%s=%s' % (k, v) for k, v in sorted(seen.items()))
         fail('reviews', 'the combined review total disagrees between places: %s' % detail)
-    elif seen:
+    else:
         notes.append('review total consistent at %d across %d places'
-                     % (list(seen.values())[0], len(seen)))
+                     % (want, len(seen)))
+
+
+def check_business_facts():
+    """Facts that must read the same on every page: founding year, phone,
+    delivery times, published prices - and no self-serving rating markup.
+
+    Google does not show stars for a business's own LocalBusiness/Organization
+    review markup, and marking up ratings collected on other sites breaks its
+    review-snippet policy, so ratings stay as visible text and links only.
+    """
+    F = facts()
+    org_id = F['business']['id']
+    bad_phrases = F['delivery']['forbiddenPhrases']
+    for name in pages() + ['llms.txt', 'llms-full.txt']:
+        text = read(name)
+        for phrase in bad_phrases:
+            if phrase in text:
+                fail('facts', '%s says "%s" - session galleries are delivered in %s '
+                              '(data/business-facts.json)' % (name, phrase, F['delivery']['sessions']))
+
+    def walk(o, name):
+        if isinstance(o, dict):
+            t = o.get('@type')
+            ts = set(t if isinstance(t, list) else [t])
+            if o.get('name') == F['business']['name'] and ts & {'Organization', 'LocalBusiness', 'Photographer', 'ProfessionalService'} \
+                    and o.get('@id') != org_id:
+                fail('facts', '%s declares a second Wailea Photo entity (no @id %s)' % (name, org_id))
+            if o.get('@id') == org_id and ('aggregateRating' in o or 'review' in o):
+                fail('facts', '%s puts self-serving rating/review markup on the business entity' % name)
+            if 'AggregateRating' in ts and (o.get('itemReviewed') or {}).get('@id') == org_id:
+                fail('facts', '%s marks up a third-party aggregate rating for the business' % name)
+            for v in o.values():
+                walk(v, name)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v, name)
+
+    for name in pages():
+        for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', read(name), re.S):
+            try:
+                d = json.loads(b)
+            except ValueError:
+                continue
+            walk(d, name)
+            for node in (d.get('@graph') or [d]) if isinstance(d, dict) else d:
+                if node.get('@id') == org_id and 'telephone' in node:
+                    if node.get('telephone') != F['business']['telephone']:
+                        fail('facts', '%s gives the business telephone as %s' % (name, node.get('telephone')))
+                    if node.get('foundingDate') not in (None, F['business']['foundingDate']):
+                        fail('facts', '%s gives foundingDate %s' % (name, node.get('foundingDate')))
+                if 'OfferCatalog' in str(node.get('@type')):
+                    for offer in node.get('itemListElement', []):
+                        nm = offer.get('name') or (offer.get('itemOffered') or {}).get('name')
+                        want = F['prices'].get(nm)
+                        if want is not None and str(offer.get('price')) != str(want):
+                            fail('facts', '%s lists %s at $%s; data/business-facts.json says $%s'
+                                 % (name, nm, offer.get('price'), want))
+
+    for f in ('llms.txt', 'llms-full.txt'):
+        t = read(f)
+        if F['business']['foundingDate'] not in t:
+            fail('facts', '%s does not state the founding year %s' % (f, F['business']['foundingDate']))
+    if not problems:
+        notes.append('business facts agree with data/business-facts.json')
+
+
+def check_head_text():
+    """No stray text inside <head>.
+
+    A single stray character (a doubled ">" after a meta tag was the real case,
+    on 189 pages) makes every browser and Googlebot close <head> early, so the
+    canonical, hreflang, robots and Open Graph tags that follow land in <body>,
+    where search engines ignore them.
+    """
+    files = [os.path.relpath(p, ROOT) for p in glob.glob(os.path.join(ROOT, '*.html')) +
+             glob.glob(os.path.join(ROOT, '*', '*.html'))]
+    bad = []
+    for f in files:
+        if os.path.basename(f) in NOT_PAGES:
+            continue
+        head = read(f).split('</head>')[0]
+        head = re.sub(r'<script.*?</script>|<style.*?</style>|<!--.*?-->|<title>.*?</title>', '', head, flags=re.S)
+        if re.sub(r'<[^>]+>', '', head).strip():
+            bad.append(f)
+    for f in sorted(bad)[:20]:
+        fail('head', '%s has stray text inside <head>, which pushes canonical/hreflang into <body>' % f)
+    if len(bad) > 20:
+        fail('head', '...and %d more pages with stray text inside <head>' % (len(bad) - 20))
 
 
 def check_session_facts():
@@ -375,7 +469,7 @@ def check_redirects():
 
 CHECKS = [check_footer, check_head_tags, check_schema, check_sitemap,
           check_llms, check_orphans, check_asset_versions, check_review_counts,
-          check_session_facts, check_redirects]
+          check_session_facts, check_redirects, check_business_facts, check_head_text]
 
 
 def main():
