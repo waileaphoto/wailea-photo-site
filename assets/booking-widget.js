@@ -416,8 +416,13 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' ' + T('Text me a reminder with directions a few hours before my session.')]),
         el('div', { class: 'wbw-field' }, [
           this.policyBox,
-          el('label', { class: 'wbw-policy-agree' }, [this.policyCheckbox, ' ' + T('I agree to the session policies.')]),
-          this.textConfirmRow,
+          // One tick instead of two (Nov 2026): 24 of 62 people who started a booking were
+          // stopped by a required checkbox. The text-reply commitment is still stated in
+          // full and still recorded as acknowledged.
+          this.policyRow = el('label', { class: 'wbw-policy-agree' }, [
+            this.policyCheckbox,
+            ' ' + T('I agree to the session policies.') + ' ' + T('One of our team will be assigned to you, and your photographer will text you to confirm in case of any last-minute changes. Please have your phone charged and respond to their text — otherwise the photographer will assume you are a no-show.'),
+          ]),
           this.sunrisePunctualityRow,
         ]),
         this.quoteBox,
@@ -932,11 +937,17 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         this.slotsWrap.appendChild(btn);
         if (preferredStartTime && slot.startTime === preferredStartTime) btn.click();
       });
+      // Most dates have exactly one start time (set by the sun). Choose it so Continue
+      // works straight away instead of stopping people with "pick a time".
+      if (!this.state.selectedSlot && day.slots.length === 1 && this.slotsWrap.firstChild) {
+        this.slotsWrap.firstChild.click();
+      }
     }
 
     goToDetails() {
       if (!this.state.selectedDate || !this.state.selectedSlot) {
         this.dateError.textContent = T('Please pick a date and time first.');
+        this.flagField(this.state.selectedDate ? this.slotsWrap : this.dayGrid);
         this.trackStep('booking_form_blocked', { reason: 'no_date_time' }, 'blocked:no_date_time');
         return;
       }
@@ -947,6 +958,21 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.showStep('details');
       this.trackStep('booking_details_view');
       this.refreshQuote();
+    }
+
+    // Scrolls the missing field into view and outlines it, so a blocked Continue never
+    // leaves someone guessing what is wrong (the error line can sit off-screen on a phone).
+    flagField(target, focusEl) {
+      try {
+        if (!target) return;
+        target.classList.add('wbw-flag');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        (focusEl || target).focus?.({ preventScroll: true });
+        const clear = () => target.classList.remove('wbw-flag');
+        (focusEl || target).addEventListener('change', clear, { once: true });
+        (focusEl || target).addEventListener('input', clear, { once: true });
+        setTimeout(clear, 6000);
+      } catch (_) { /* never block a booking over a highlight */ }
     }
 
     selectedAddonSlugs() {
@@ -992,21 +1018,19 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.detailsError.textContent = '';
       if (!this.nameInput.value || !this.emailInput.value) {
         this.detailsError.textContent = T('Name and email are required.');
+        this.flagField(!this.nameInput.value ? this.nameInput : this.emailInput);
         this.trackStep('booking_form_blocked', { reason: 'name_email' }, 'blocked:name_email');
         return;
       }
       if (!this.policyCheckbox.checked) {
         this.detailsError.textContent = T('Please agree to the session policies to continue.');
+        this.flagField(this.policyRow, this.policyCheckbox);
         this.trackStep('booking_form_blocked', { reason: 'policies' }, 'blocked:policies');
-        return;
-      }
-      if (!this.textConfirmCheckbox.checked) {
-        this.detailsError.textContent = T("Please confirm you'll respond to your photographer's text to continue.");
-        this.trackStep('booking_form_blocked', { reason: 'text_confirm' }, 'blocked:text_confirm');
         return;
       }
       if (this.state.slug === 'sunrise-max' && !this.sunrisePunctualityCheckbox.checked) {
         this.detailsError.textContent = T('Please acknowledge the Sunrise session arrival-time policy to continue.');
+        this.flagField(this.sunrisePunctualityRow, this.sunrisePunctualityCheckbox);
         this.trackStep('booking_form_blocked', { reason: 'sunrise_policy' }, 'blocked:sunrise_policy');
         return;
       }
@@ -1023,7 +1047,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
           client: { name: this.nameInput.value, email: this.emailInput.value, phone: this.phoneInput.value, smsOptIn: this.smsOptInCheckbox.checked },
           questionnaire: {
             agreedToPolicies: this.policyCheckbox.checked,
-            acknowledgedTextConfirmation: this.textConfirmCheckbox.checked,
+            acknowledgedTextConfirmation: this.policyCheckbox.checked,
             acknowledgedSunrisePunctuality: this.state.slug === 'sunrise-max' ? this.sunrisePunctualityCheckbox.checked : undefined,
             // "How did you hear about us?" and the free-text notes box both left this form
             // (Sept 2026). The first was a required field blocking Continue that UTM
