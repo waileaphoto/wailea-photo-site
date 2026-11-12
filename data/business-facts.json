@@ -23,11 +23,12 @@
   "prices": {
     "_source": "https://waileaphoto.com/pricing (live booking engine shows the exact price before payment)",
     "Sunrise with Max": 299,
-    "First Half of Sunset": 399,
+    "First Half of Sunset": 449,
     "Last Half of Sunset": 499,
     "Turquoise + Water Experience": 399,
+    "Maternity Experience": 499,
     "The Large Family Legacy": 1200,
-    "A Poetic Wedding in Maui": 2800,
+    "A Poetic Wedding in Maui": 2995,
     "Elopement Photography": 995
   },
   "reviews": {
