@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Wailea Photo & Portrait â€” SmugMug custom CSS  (v8 â€” complete, consolidated)
+   Matches assets/site.css from waileaphoto.com
+
+   REPLACE THE ENTIRE CONTENTS of your CSS block with this file.
+   Do not append it â€” it supersedes every earlier version and snippet.
+   Scope: ALL GALLERIES.  Then DONE â†’ PUBLISH NOW.
+
+   WHY MANY SELECTORS START WITH "body"
+   SmugMug puts .sm-page on the <body> element itself, so a rule like
+   ".sm-page nav a" also matches SmugMug's own admin toolbar. The "body"
+   prefix raises specificity where rules were previously colliding and
+   cancelling each other out. Don't strip those prefixes.
+
+   SURFACES â€” which background each control actually sits on:
+     ON THE COVER PHOTO : gallery title            â†’ white
+     ON CREAM           : share / slideshow / download icons, commerce
+                          buttons, nav, wordmark   â†’ ocean or ink
+     ON NEAR-BLACK      : SmugMug's admin toolbar  â†’ white, protected below
+   ========================================================================== */
+
+/* ---------- ground + body type ------------------------------------------ */
+.sm-page{
+  background: #f5efe5 !important;
+  color: #1b1917 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 300 !important;
+}
+
+/* ---------- site wordmark ------------------------------------------------ */
+/* SmugMug ships this near-white (#f5f5f7) â€” invisible on cream. */
+body .sm-page-widget-logo-text,
+body .sm-page-widget-logo-text a{
+  color: #1b1917 !important;
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .35em !important;
+}
+
+/* ---------- site navigation (HOME / BROWSE / SEARCH) -------------------- */
+body .sm-page-widget-content a{ color: #1b1917 !important; opacity: 1 !important; }
+body .sm-page-widget-content a:hover{ color: #315f69 !important; }
+
+/* ---------- headings ----------------------------------------------------- */
+.sm-tile-title,
+.sm-gallery-content h1, .sm-gallery-content h2,
+.sm-gallery-content h3, .sm-gallery-content h4{
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  line-height: 1.05 !important;
+  color: #1b1917 !important;
+}
+
+/* ---------- gallery cover title (ON THE PHOTO â†’ white) ------------------ */
+body h1.sm-gallery-cover-title{
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.02 !important;
+  text-shadow: 0 1px 18px rgba(0,0,0,.45) !important;
+}
+
+/* ---------- small uppercase labels -------------------------------------- */
+.sm-gallery-cover-breadcrumbs,
+.sm-gallery-cover-readmore{
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+/* ---------- links inside the gallery ------------------------------------ */
+.sm-gallery-content a{ color: #315f69 !important; }
+.sm-gallery-content a:hover{ color: #527f87 !important; }
+
+/* ---------- COVER ACTION ICONS (ON CREAM â†’ ocean, not glass) ------------ */
+/* Share, slideshow, and download. Earlier versions styled these glassy on
+   the assumption they sat on the photograph. They sit below it on the cream
+   ground, where white-on-cream is invisible. */
+body .sm-gallery-cover-actions .sm-button,
+body .sm-gallery-cover-actions .sm-button-square,
+body .sm-gallery-cover-actions .sm-button-nochrome,
+body .sm-gallery-cover-buttons .sm-button{
+  background: #315f69 !important;
+  border: 1px solid #315f69 !important;
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+body .sm-gallery-cover-actions .sm-button:hover,
+body .sm-gallery-cover-buttons .sm-button:hover{
+  background: #527f87 !important;
+  border-color: #527f87 !important;
+}
+/* the icon glyphs themselves */
+body .sm-gallery-cover-actions .sm-button-fonticon,
+body .sm-gallery-cover-actions .sm-button svg,
+body .sm-gallery-cover-actions .sm-button i,
+body .sm-gallery-cover-buttons .sm-button-fonticon{
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* ---------- HIDE "BUY GALLERY DOWNLOAD" --------------------------------- */
+/* Digitals are free. :not() spares the print button. */
+body .sm-gallery-cover-commerce-actions .sm-button-skin-submit:not(.sm-gallery-cover-buy-button){
+  display: none !important;
+}
+
+/* ---------- COMMERCE BUTTON + RELABEL ----------------------------------- */
+body .sm-gallery-cover-commerce-actions .sm-button,
+body .sm-gallery-cover-buy-button{
+  background: #315f69 !important;
+  border: 1px solid #315f69 !important;
+  border-radius: 0 !important;
+}
+body .sm-gallery-cover-commerce-actions .sm-button:hover,
+body .sm-gallery-cover-buy-button:hover{
+  background: #527f87 !important;
+  border-color: #527f87 !important;
+}
+/* "Select photos to buy" â†’ "SELECT PHOTOS TO PRINT".
+   The body prefix matters: without it this ties with the generic label rule
+   below and loses, which made the button show BOTH labels at once. */
+body .sm-gallery-cover-buy-button .sm-button-label{
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+}
+body .sm-gallery-cover-buy-button .sm-button-label::after{
+  content: "Select photos to print";
+  font-family: 'Inter', sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+}
+
+/* ---------- generic gallery button labels ------------------------------- */
+.sm-gallery-content .sm-button-label{
+  font-family: 'Inter', sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+}
+
+/* ---------- ADMIN CHROME â€” ALWAYS READABLE. NEVER DELETE. --------------- */
+body .sm-nui a,
+body .sm-nui button,
+body .sm-nui .sm-button-label,
+body .sm-nui .sm-button-fonticon,
+body .sm-page-header a,
+body .sm-page-header button,
+body .sm-page-header .sm-button-label,
+body .sm-page-header .sm-button-fonticon{
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+body .sm-nui .sm-button-label::after,
+body .sm-page-header .sm-button-label::after{ content: none !important; }
+
+/* ---------- tiles / thumbnails ------------------------------------------ */
+.sm-tile img,
+.sm-gallery-cover-image,
+.sm-tile{ border-radius: 0 !important; }
+
+/* ---------- rules -------------------------------------------------------- */
+.sm-gallery-content hr{
+  border: 0 !important;
+  border-top: 1px solid rgba(27,25,23,.16) !important;
+}
+
+/* ---------- lightbox ----------------------------------------------------- */
+/* Deliberately dark: cream is right for navigation, wrong behind a photo. */
+.sm-lightbox,
+.sm-lightbox-content{ background: #14100e !important; }
+
+/* ===== PRINT-SHOP STYLE (test: Gloria Lo gallery only) ===== */
+/* ===== PRINT-SHOP FRAMES: ALL GALLERIES ===== */
+.ps-framelink{display:none}
+body.sm-page-gallery-album .ps-framelink{display:block;position:fixed;right:18px;bottom:18px;z-index:99990;background:#1b1917;padding:12px 18px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+body.sm-page-gallery-album .ps-framelink a{color:#fff !important;font:500 12px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+:root body.sm-page-gallery-album .sm-gallery-images .sm-tile-info,:root body.sm-page-gallery-album .sm-gallery-images .sm-gallery-image-tools{z-index:5}
+:root body.sm-page-gallery-album:not(.sm-page-node-PdHpGW) .sm-gallery-content > .sm-gallery-images:nth-child(2) .sm-gallery-tiles-container::before{content:"Your digital images are included \2014  download them all, no purchase needed. Love a photo? Print and frame it: tap the bag on any image, or see how it looks at home in our Print Shop at waileaphoto.com/print-shop";display:block;max-width:880px;margin:6px auto 22px;padding:14px 22px;background:#fffaf2;border:1px solid rgba(27,25,23,.16);border-left:3px solid #b99254;font:400 17px/1.55 "Cormorant Garamond",Georgia,serif;color:#1b1917;text-align:center}
+body.sm-page-node-hZWXLP .sm-gallery-content > .sm-gallery-images:nth-child(2) .sm-gallery-tiles-container::before{content:"Your digital images are included \2014  download them all, no purchase needed. Love a photo? Print and frame it: tap the bag on any image, or see how it looks at home in our Print Shop at waileaphoto.com/print-shop";display:block;max-width:880px;margin:6px auto 22px;padding:14px 22px;background:#fffaf2;border:1px solid rgba(27,25,23,.16);border-left:3px solid #b99254;font:400 17px/1.55 "Cormorant Garamond",Georgia,serif;color:#1b1917;text-align:center}
+body.sm-page-node-hZWXLP .sm-gallery-images .sm-tile-info,body.sm-page-node-hZWXLP .sm-gallery-images .sm-gallery-image-tools{z-index:5}
+
+/* ===== THIN WHITE BORDER BETWEEN IMAGES (replaces faux black frames) ===== */
+body.sm-page-gallery-album .sm-gallery-images .sm-tile{outline:2px solid #fff !important;outline-offset:0 !important;background:transparent !important;box-shadow:none !important}
+body.sm-page-gallery-album .sm-gallery-images .sm-tile::before,body.sm-page-gallery-album .sm-gallery-images .sm-tile::after{content:none !important;display:none !important}
