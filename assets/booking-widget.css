@@ -204,3 +204,6 @@
 .wbw-nudge-dismiss:hover { color: #171716; }
 
 .wbw-hint{margin-top:6px;font-size:12px;line-height:1.45;opacity:.72}
+
+/* Field a blocked Continue points at (Nov 2026) */
+.wbw-flag { outline: 2px solid #b4442c; outline-offset: 4px; border-radius: 6px; transition: outline-color .3s; }
