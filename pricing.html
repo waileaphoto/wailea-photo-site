@@ -154,6 +154,37 @@
         },
         {
           "@type": "Offer",
+          "name": "Surprise Proposal",
+          "price": "649",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "649",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "description": "Starting price for up to five people; larger parties add $50 per additional guest."
+          },
+          "availability": "https://schema.org/InStock",
+          "url": "https://waileaphoto.com/pricing#surprise-proposal",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Surprise Proposal",
+            "serviceType": "Photography session",
+            "description": "45-minute surprise proposal session ending at sunset, planned with you, 75+ edited images.",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Wailea Photo",
+              "url": "https://waileaphoto.com/",
+              "@id": "https://waileaphoto.com/#organization"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Wailea, Maui"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
           "name": "Turquoise + Water Experience",
           "price": "399",
           "priceCurrency": "USD",
@@ -345,7 +376,7 @@
 </section>
 
 <nav class="toc" id="sessions" aria-label="All sessions">
-  <ul><li><a href="#first-half-sunset"><span class="n">01</span><span class="t">First Half of Sunset</span><span class="p">From $449</span></a></li><li><a href="#last-half-sunset"><span class="n">02</span><span class="t">Last Half of Sunset</span><span class="p">From $499</span></a></li><li><a href="#turquoise-water"><span class="n">03</span><span class="t">Turquoise + Water</span><span class="p">From $399</span></a></li><li><a href="#sunrise-max"><span class="n">04</span><span class="t">Sunrise with Max</span><span class="p">From $299</span></a></li><li><a href="#babymoon"><span class="n">05</span><span class="t">Maternity Experience</span><span class="p">From $499</span></a></li><li><a href="#surprise-proposal"><span class="n">06</span><span class="t">Surprise Proposal</span><span class="p">From $499</span></a></li><li><a href="#family-legacy"><span class="n">07</span><span class="t">The Large Family Legacy</span><span class="p">From $1,200</span></a></li><li><a href="#wedding-elopement"><span class="n">08</span><span class="t">A Poetic Wedding in Maui</span><span class="p">$2,995</span></a></li></ul>
+  <ul><li><a href="#first-half-sunset"><span class="n">01</span><span class="t">First Half of Sunset</span><span class="p">From $449</span></a></li><li><a href="#last-half-sunset"><span class="n">02</span><span class="t">Last Half of Sunset</span><span class="p">From $499</span></a></li><li><a href="#turquoise-water"><span class="n">03</span><span class="t">Turquoise + Water</span><span class="p">From $399</span></a></li><li><a href="#sunrise-max"><span class="n">04</span><span class="t">Sunrise with Max</span><span class="p">From $299</span></a></li><li><a href="#babymoon"><span class="n">05</span><span class="t">Maternity Experience</span><span class="p">From $499</span></a></li><li><a href="#surprise-proposal"><span class="n">06</span><span class="t">Surprise Proposal</span><span class="p">From $649</span></a></li><li><a href="#family-legacy"><span class="n">07</span><span class="t">The Large Family Legacy</span><span class="p">From $1,200</span></a></li><li><a href="#wedding-elopement"><span class="n">08</span><span class="t">A Poetic Wedding in Maui</span><span class="p">$2,995</span></a></li></ul>
   <p class="fine">Sessions are priced for up to five people, with larger parties warmly welcomed — your exact price appears when you choose your date and time. Availability is shown live in each session’s calendar.</p>
   <p class="eng-wrap"><a class="eng-print" href="why-we-dont-hide-for-maui-proposals.html" tabindex="-1" aria-hidden="true"><img src="assets/pricing/engagement-guide-ring.webp?v=2" width="640" height="962" alt="" loading="lazy" decoding="async"></a><a class="eng-pill" href="why-we-dont-hide-for-maui-proposals.html">Planning a proposal? <span>Read our Engagement Guide →</span></a></p>
 </nav>
@@ -449,12 +480,12 @@
   <div class="txt p-rv">
     <div class="no">06</div>
     <h3 id="surprise-proposal-h">Surprise <em>Proposal</em></h3>
-    <div class="meta">Half hour · 50+ images</div>
-    <div class="price">From $499</div>
-    <p>One question, planned so the answer happens in the right light. We help you choose the beach and the timing, stage a small surprise so you are facing each other when it matters, then turn the moment into a relaxed couples session. Booked as a Last Half of Sunset session.</p>
+    <div class="meta">45 min · 75+ images</div>
+    <div class="price">From $649</div>
+    <p>One question, planned so the answer happens in the right light. We help you choose the beach and the timing, stage a small surprise so you are facing each other when it matters, then turn the moment into a relaxed couples session as the sun goes down. Forty-five minutes ending at sunset, with a $100 deposit to hold the date.</p>
     <p class="note">Planning one? Read <a href="why-we-dont-hide-for-maui-proposals.html">why we don&rsquo;t hide in the bushes</a> first.</p>
     <div class="acts">
-      <button class="btn" type="button" data-book-session="last-half-sunset" data-session-name="Last Half of Sunset">Book now · see open dates</button>
+      <button class="btn" type="button" data-book-session="surprise-proposal" data-session-name="Surprise Proposal">Book now · see open dates</button>
       <button class="ask" type="button" data-q="I'm planning a surprise proposal. How does it work?">Ask the Concierge</button>
     </div>
   </div>
@@ -664,7 +695,7 @@ apiBase: 'https://book.waileaphoto.com',
 stripePublishableKey: 'pk_live_51N35QgELtvKYuvgHsYqD3hfJAAAE0CB7WgEh8nhYt1AgzceJDpAV82RzYMm09P1l96kOjtRf52hYykmwanv10yBZ00PBeaLUg5',
 };
 </script>
-  <script src="assets/booking-widget.js?v=4b1ec998dc"></script><script src="assets/concierge-widget.js?v=c87177b612"></script><script src="assets/inquiry-widget.js?v=9c4f84864f"></script>
+  <script src="assets/booking-widget.js?v=df3ab2f110"></script><script src="assets/concierge-widget.js?v=c87177b612"></script><script src="assets/inquiry-widget.js?v=9c4f84864f"></script>
   <script src="assets/market-range.js?v=20261107b" defer></script>
   <script src="assets/pricing-ed.js?v=20261107a" defer></script>
 <button class="ed-snd" type="button" aria-label="Turn music on" aria-pressed="false" data-src="assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="assets/editorial.js?v=20261107a" defer data-ed></script>
