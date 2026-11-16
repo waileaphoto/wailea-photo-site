@@ -115,7 +115,7 @@
     return T('{mph} mph wind', { mph });
   }
 
-  const DEFAULT_DEPOSIT_CENTS = 4900;
+  const DEFAULT_DEPOSIT_CENTS = 5000;
   // Keep in sync with DEPOSIT_CENTS_BY_SLUG in booking-engine/src/routes/bookings.js.
 const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini-sunset': 2000, 'road-to-hana': 2000, 'last-half-sunset': 5000, 'wedding-elopement': 10000, 'elopement-photography': 10000, 'surprise-proposal': 10000 };  
   function depositCentsFor(slug) {

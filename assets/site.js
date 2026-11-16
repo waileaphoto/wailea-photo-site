@@ -529,13 +529,13 @@ document.addEventListener('DOMContentLoaded', function(){
       cardId: 'session-card-last-half-sunset',
       displayName: 'Last Half of Sunset',
       explanation: 'The final light of the day creates richer color, deeper contrast and the most cinematic sunset atmosphere.',
-      facts: 'Half hour · 50+ images · From $499'
+      facts: 'Half hour · 50+ images · From $550'
     },
     'first-half-sunset': {
       cardId: 'session-card-first-half-sunset',
       displayName: 'First Half of Sunset — “Light & Bright”',
       explanation: 'This is the best fit for families who want bright, natural color and a relaxed session during the softer opening portion of golden hour.',
-      facts: 'Half hour · From $449 · Add the Last Half—a $499 value—for $199 (special offer)'
+      facts: 'Half hour · From $450 · Add the Last Half—a $550 value—for $199 (special offer)'
     },
     'sunrise-max': {
       cardId: 'session-card-sunrise-max',
@@ -559,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // When a chosen timing overrides a conflicting style preference, we say so
   // plainly instead of silently picking one. Each entry's "key" must match
   // the outcome recommend() actually produces for that exact combination, so
-  var LARGE_FAMILY_TIME_FACTS = 'Half hour from $449 · Add the Last Half Sunset—a $499 value—for $199';
+  var LARGE_FAMILY_TIME_FACTS = 'Half hour from $450 · Add the Last Half Sunset—a $550 value—for $199';
   // this can never override an unrelated group-level result (family/wedding).
   var TRADEOFFS = {
     'bright-natural|final-light': {
