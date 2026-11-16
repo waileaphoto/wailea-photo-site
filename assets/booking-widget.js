@@ -297,11 +297,14 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.conditionsNote = el('div', { class: 'wbw-conditions' });
       this.dateError = el('div', { class: 'wbw-error' });
       this.scarcityNote = el('div', { class: 'wbw-scarcity' });
+      // DRAFT (Nov 16): the price appears here, under the chosen time, so the total on the
+      // next step is never the first time someone sees it.
+      this.datePriceNote = el('div', { class: 'wbw-quote-note wbw-date-price', style: 'font-weight:600;margin:8px 0;' });
       this.holdWrap = this.buildHoldRow();
       const nextBtn = el('button', { class: 'wbw-btn', onclick: () => this.goToDetails() }, [T('Continue')]);
       step.append(
         this.scarcityNote, nav, this.dayGrid, this.calendarStatus, this.calendarEmpty,
-        this.slotsWrap, this.conditionsNote, this.dateError, nextBtn, this.holdWrap,
+        this.slotsWrap, this.datePriceNote, this.conditionsNote, this.dateError, nextBtn, this.holdWrap,
         el('div', { class: 'wbw-quote-note wbw-gallery-promise' }, [GALLERY_PROMISE]),
         el('div', { class: 'wbw-quote-note' }, [CASH_DISCOUNT_NOTE])
       );
@@ -402,17 +405,28 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         addonsWrap,
       ]);
 
-      step.append(
-        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Name')]), this.nameInput]),
-        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Email')]), this.emailInput]),
-        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Phone')]), this.phoneInput]),
-        partyField,
+      // DRAFT (Nov 16): shorter form. GA4, Nov 9-15: 47 people saw this step, 16 reached the
+      // card page, and almost none typed an email first, so people leave on sight of a long
+      // form. Only what's needed to book stays open (name, email, phone, party size, the
+      // price and one policy tick). The occasion, florist offer and upgrades fold into one
+      // optional line; they are still sent with the booking exactly as before.
+      this.extrasDetails = el('details', { class: 'wbw-addons-collapsed wbw-extras' }, [
+        el('summary', {}, [T('Celebrating something, want flowers or an upgrade?') + ' ', el('span', { class: 'wbw-addons-hint' }, [T('optional')])]),
         el('div', { class: 'wbw-field' }, [el('label', {}, [T('What are you celebrating?')]), this.celebratingInput]),
         el('label', { class: 'wbw-policy-agree' }, [
           this.floristContactCheckbox,
           ' ' + T('Have Mya our florist contact you for flowers? (48 hr min lead time required)'),
         ]),
-        this.addonsDetails,
+        addonsWrap,
+      ]);
+
+      step.append(
+        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Name')]), this.nameInput]),
+        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Email')]), this.emailInput]),
+        el('div', { class: 'wbw-field' }, [el('label', {}, [T('Phone')]), this.phoneInput]),
+        partyField,
+        this.quoteBox,
+        this.extrasDetails,
         el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' ' + T('Text me a reminder with directions a few hours before my session.')]),
         el('div', { class: 'wbw-field' }, [
           this.policyBox,
@@ -425,7 +439,6 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
           ]),
           this.sunrisePunctualityRow,
         ]),
-        this.quoteBox,
         this.detailsError,
         el('div', { style: 'display:flex;gap:10px;' }, [
           el('button', { class: 'wbw-btn wbw-btn-secondary', onclick: () => this.showStep('date') }, [T('Back')]),
@@ -496,6 +509,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.celebratingInput.value = '';
       this.policyCheckbox.checked = false;
       if (this.addonsDetails) this.addonsDetails.open = false;
+      if (this.extrasDetails) this.extrasDetails.open = false;
+      if (this.datePriceNote) this.datePriceNote.innerHTML = '';
       this.holdForm.hidden = false;
       this.holdStatus.textContent = '';
       this.holdStatus.classList.remove('wbw-hold-error');
@@ -930,6 +945,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
           onclick: (e) => {
             this.state.selectedSlot = slot;
             this.trackStep('booking_time_selected');
+            this.previewPrice();
             Array.from(this.slotsWrap.children).forEach((c) => c.classList.remove('wbw-selected'));
             e.target.classList.add('wbw-selected');
           },
@@ -973,6 +989,27 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         (focusEl || target).addEventListener('input', clear, { once: true });
         setTimeout(clear, 6000);
       } catch (_) { /* never block a booking over a highlight */ }
+    }
+
+    // Real quote for the chosen date/time at the default party size, shown on the date step.
+    // Silent on failure: the full quote still appears on the details step.
+    async previewPrice() {
+      if (!this.datePriceNote || !this.state.selectedSlot) return;
+      const forSlot = this.state.selectedSlot;
+      try {
+        const quote = await api('POST', '/api/quote', {
+          sessionType: this.state.slug,
+          date: this.state.selectedDate,
+          startTime: forSlot.startTime,
+          partySize: Number(this.partySizeInput?.value) || 2,
+          addonSlugs: [],
+        });
+        if (this.state.selectedSlot !== forSlot) return; // a newer tap won
+        this.datePriceNote.textContent = T('{total} total · {deposit} today to reserve, balance at the end of your session.', {
+          total: quote.totalFormatted,
+          deposit: fmtDollars(depositCentsFor(this.state.slug)),
+        });
+      } catch (_) { this.datePriceNote.textContent = ''; }
     }
 
     selectedAddonSlugs() {
