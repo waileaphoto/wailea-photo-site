@@ -52,7 +52,7 @@
     // Backend slug 'camera_upgrade_review' still exists so past bookings render correctly.
     {
       slug: 'double-sunset',
-      label: T('Special-Double your session time to include Last Half Sunset ($499 value)'),
+      label: T('Special-Double your session time to include Last Half Sunset ($550 value)'),
       priceLabel: '$199',
       sessionSlugs: ['first-half-sunset'],
     },
