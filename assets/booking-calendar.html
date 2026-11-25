@@ -79,7 +79,7 @@
   .move-result { font-size: 12px; color: #2e7d32; }
   .history-list { margin: 10px 0 0; padding-left: 18px; color: #666; font-size: 12px; line-height: 1.5; }
   .contact-review { background: #f5f1e9; border: 1px solid #d8cdbd; border-radius: 4px; padding: 12px; font-size: 12px; line-height: 1.5; }
-  .contact-review[hidden], #contactForm[hidden] { display: none; }
+  .contact-review[hidden], #contactForm[hidden], #locationForm[hidden] { display: none; }
   .contact-review button { width: 100%; margin-top: 10px; }
   .cancel-panel form { border-color: #e6cbc7; background: #fffaf9; }
   .cancel-panel button[type="submit"] { background: #a4342a; }
@@ -220,6 +220,29 @@
           <div id="contactReviewSummary"></div>
           <p id="contactNote">No customer email will be sent. The existing Google Calendar event will be updated.</p>
           <button type="button" id="confirmContactBtn">Save contact details</button>
+        </div>
+      </form>
+    </div>
+    <div class="move-panel" id="locationPanel" hidden>
+      <button type="button" id="editLocationBtn">Change location</button>
+      <div id="locationResult" class="move-result"></div>
+      <form id="locationForm" hidden>
+        <strong>Change location</strong>
+        <div><label for="locationInput">Meeting location for this booking</label><input type="text" id="locationInput" maxlength="300" list="locationOptions" autocomplete="off" placeholder="Maluaka Beach, Grand Wailea Beach…"></div>
+        <datalist id="locationOptions">
+          <option value="Maluaka Beach (next to Kai Kanani Sailing Tours)"></option>
+          <option value="Wailea Beach (next to the Four Seasons Resort Maui)"></option>
+          <option value="Kanaha Beach Park, Lifeguard Station 10B"></option>
+          <option value="Grand Wailea Beach"></option>
+        </datalist>
+        <p class="hint">Pick one of our beaches and the client gets its map and parking guide. Leave it empty to go back to this session's usual location.</p>
+        <div id="locationError" class="error"></div>
+        <button type="submit">Review location change</button>
+        <div id="locationReview" class="contact-review" hidden>
+          <strong>Confirm location change</strong>
+          <div id="locationReviewSummary"></div>
+          <p>Nothing is sent to the client. The calendar event is updated, and every confirmation, move email and reminder text from now on names this location.</p>
+          <button type="button" id="confirmLocationBtn">Save location</button>
         </div>
       </form>
     </div>
@@ -766,7 +789,7 @@
       ['Email', b.client_email || '—'],
       ['Phone', b.client_phone || '—'],
       ['Party size', b.party_size || 1],
-      ...(b.location ? [['Location', b.location]] : []),
+      ...(b.location ? [['Location', b.location_override ? `${b.location} (set for this booking)` : b.location]] : []),
     ];
     if (b.source === 'airbnb') {
       rows.push(['Payment', 'Prepaid through Airbnb'], ['Balance due', '$0.00']);
@@ -806,6 +829,14 @@
       ? 'Add guest name & phone' : 'Edit contact details';
     const canCancel = b.source === 'wp' && b.status !== 'cancelled' && b.status !== 'rescheduled';
     document.getElementById('contactPanel').hidden = !canEditContact;
+    const canEditLocation = b.source === 'wp' && b.status !== 'rescheduled' && b.status !== 'cancelled';
+    document.getElementById('locationPanel').hidden = !canEditLocation;
+    document.getElementById('locationInput').value = b.location_override || '';
+    document.getElementById('locationError').textContent = '';
+    document.getElementById('locationResult').textContent = '';
+    document.getElementById('locationReview').hidden = true;
+    document.getElementById('locationForm').hidden = true;
+    document.getElementById('editLocationBtn').hidden = false;
     document.getElementById('movePanel').hidden = !canMove;
     document.getElementById('cancelPanel').hidden = !canCancel;
     document.getElementById('cancelReason').value = '';
@@ -1111,6 +1142,61 @@
     } finally {
       event.currentTarget.disabled = false;
       event.currentTarget.textContent = 'Save contact details';
+    }
+  });
+
+  function pendingLocation() {
+    return document.getElementById('locationInput').value.replace(/\s+/g, ' ').trim();
+  }
+
+  document.getElementById('editLocationBtn').addEventListener('click', () => {
+    document.getElementById('editLocationBtn').hidden = true;
+    document.getElementById('locationResult').textContent = '';
+    document.getElementById('locationForm').hidden = false;
+    document.getElementById('locationInput').focus();
+  });
+
+  document.getElementById('locationInput').addEventListener('input', () => {
+    document.getElementById('locationReview').hidden = true;
+  });
+
+  document.getElementById('locationForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    const next = pendingLocation();
+    const error = document.getElementById('locationError');
+    error.textContent = '';
+    if (next === (selectedBooking.location_override || '')) {
+      error.textContent = 'Location did not change.';
+      return;
+    }
+    const summary = document.getElementById('locationReviewSummary');
+    summary.textContent = `Location: ${selectedBooking.location || '—'} → ${next || "this session's usual location"}`;
+    document.getElementById('locationReview').hidden = false;
+  });
+
+  document.getElementById('confirmLocationBtn').addEventListener('click', async (event) => {
+    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    const button = event.currentTarget;
+    const error = document.getElementById('locationError');
+    error.textContent = '';
+    button.disabled = true;
+    button.textContent = 'Saving…';
+    try {
+      const updated = await api('PATCH', `/api/admin/bookings/${selectedBooking.id}/location`, {
+        location: pendingLocation(),
+        confirmed: true,
+      });
+      selectedBooking = { ...selectedBooking, location: updated.location, location_override: updated.location_override };
+      const resultMessage = `Location saved: ${updated.location}. ${updated.calendarSynced ? 'Calendar updated. ' : ''}No customer email was sent.`;
+      await loadMonth();
+      await openModal(selectedBooking);
+      document.getElementById('locationResult').textContent = resultMessage;
+    } catch (err) {
+      error.textContent = err.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Save location';
     }
   });
 
