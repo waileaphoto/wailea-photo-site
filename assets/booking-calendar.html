@@ -79,7 +79,9 @@
   .move-result { font-size: 12px; color: #2e7d32; }
   .history-list { margin: 10px 0 0; padding-left: 18px; color: #666; font-size: 12px; line-height: 1.5; }
   .contact-review { background: #f5f1e9; border: 1px solid #d8cdbd; border-radius: 4px; padding: 12px; font-size: 12px; line-height: 1.5; }
-  .contact-review[hidden], #contactForm[hidden], #locationForm[hidden] { display: none; }
+  .contact-review[hidden], #contactForm[hidden], #locationForm[hidden], #notesForm[hidden] { display: none; }
+  .modal-row .notes-value { white-space: pre-wrap; }
+  #notesInput { width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 9px 10px; font: 400 14px/1.4 'Inter', sans-serif; box-sizing: border-box; resize: vertical; }
   .contact-review button { width: 100%; margin-top: 10px; }
   .cancel-panel form { border-color: #e6cbc7; background: #fffaf9; }
   .cancel-panel button[type="submit"] { background: #a4342a; }
@@ -244,6 +246,17 @@
           <p>Nothing is sent to the client. The calendar event is updated, and every confirmation, move email and reminder text from now on names this location.</p>
           <button type="button" id="confirmLocationBtn">Save location</button>
         </div>
+      </form>
+    </div>
+    <div class="move-panel" id="notesPanel" hidden>
+      <button type="button" id="editNotesBtn">Add notes</button>
+      <div id="notesResult" class="move-result"></div>
+      <form id="notesForm" hidden>
+        <strong>Notes</strong>
+        <div><label for="notesInput">Notes for this booking</label><textarea id="notesInput" rows="4" maxlength="2000"></textarea></div>
+        <p class="hint">For you and the team only: shown here, in the team app and on the team calendar. Nothing is sent to the client.</p>
+        <div id="notesError" class="error"></div>
+        <button type="submit">Save notes</button>
       </form>
     </div>
     <div class="move-panel" id="movePanel" hidden>
@@ -803,11 +816,12 @@
     }
     rows.push(
       ['Booking reference', b.booking_reference || `#${b.id}`],
+      ...(b.source === 'wp' && b.team_notes ? [['Notes', b.team_notes]] : []),
       ...(b.source === 'acuity' && b.notes ? [['Acuity notes', b.notes]] : []),
       ...(b.source === 'airbnb' && b.notes ? [['Airbnb notes', b.notes]] : [])
     );
     document.getElementById('modalBody').innerHTML = rows.map(([label, value]) => `
-      <div class="modal-row"><span>${escapeHtml(label)}</span><span>${escapeHtml(value)}</span></div>
+      <div class="modal-row"><span>${escapeHtml(label)}</span><span${label === 'Notes' ? ' class="notes-value"' : ''}>${escapeHtml(value)}</span></div>
     `).join('');
     const alert = document.getElementById('modalAlert');
     const alerts = [];
@@ -837,6 +851,14 @@
     document.getElementById('locationReview').hidden = true;
     document.getElementById('locationForm').hidden = true;
     document.getElementById('editLocationBtn').hidden = false;
+    const canEditNotes = b.source === 'wp' && b.status !== 'rescheduled';
+    document.getElementById('notesPanel').hidden = !canEditNotes;
+    document.getElementById('notesInput').value = b.team_notes || '';
+    document.getElementById('notesError').textContent = '';
+    document.getElementById('notesResult').textContent = '';
+    document.getElementById('notesForm').hidden = true;
+    document.getElementById('editNotesBtn').hidden = false;
+    document.getElementById('editNotesBtn').textContent = b.team_notes ? 'Edit notes' : 'Add notes';
     document.getElementById('movePanel').hidden = !canMove;
     document.getElementById('cancelPanel').hidden = !canCancel;
     document.getElementById('cancelReason').value = '';
@@ -1197,6 +1219,49 @@
     } finally {
       button.disabled = false;
       button.textContent = 'Save location';
+    }
+  });
+
+  function pendingNotes() {
+    return document.getElementById('notesInput').value
+      .replace(/\r\n?/g, '\n')
+      .split('\n').map((line) => line.replace(/[ \t]+$/g, '')).join('\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  document.getElementById('editNotesBtn').addEventListener('click', () => {
+    document.getElementById('editNotesBtn').hidden = true;
+    document.getElementById('notesResult').textContent = '';
+    document.getElementById('notesForm').hidden = false;
+    document.getElementById('notesInput').focus();
+  });
+
+  document.getElementById('notesForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!selectedBooking || selectedBooking.source !== 'wp') return;
+    const button = event.currentTarget.querySelector('button[type="submit"]');
+    const error = document.getElementById('notesError');
+    error.textContent = '';
+    const next = pendingNotes();
+    if (next === (selectedBooking.team_notes || '')) {
+      error.textContent = 'Notes did not change.';
+      return;
+    }
+    button.disabled = true;
+    button.textContent = 'Saving…';
+    try {
+      const updated = await api('PATCH', `/api/admin/bookings/${selectedBooking.id}/notes`, { notes: next });
+      selectedBooking = { ...selectedBooking, team_notes: updated.team_notes };
+      const resultMessage = `${updated.team_notes ? 'Notes saved.' : 'Notes cleared.'} ${updated.calendarSynced ? 'Calendar updated. ' : ''}Nothing was sent to the client.`;
+      await loadMonth();
+      await openModal(selectedBooking);
+      document.getElementById('notesResult').textContent = resultMessage;
+    } catch (err) {
+      error.textContent = err.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Save notes';
     }
   });
 
