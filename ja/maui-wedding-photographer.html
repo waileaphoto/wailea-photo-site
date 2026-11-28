@@ -409,6 +409,10 @@
 .wd .wd-reviews.bts:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(243,237,227,.74)}
 .wd .wd-reviews.bts .wd-rgrid figure{background:rgba(255,255,255,.28);border:1px solid rgba(36,32,28,.18)}
 @media (prefers-reduced-motion:reduce){.wd .wd-reviews.bts>.bts-vid{display:none}.wd .wd-reviews.bts{background:url(/assets/video/wedding-bts-poster.jpg) center/cover}}
+.experience-cta.bts{position:relative;overflow:hidden;isolation:isolate}
+.experience-cta.bts>.bts-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.experience-cta.bts:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(243,237,227,.74)}
+@media (prefers-reduced-motion:reduce){.experience-cta.bts>.bts-vid{display:none}body:not(.home):not(.pricing-ed) main .experience-cta.bts{background:url(/assets/video/wedding-cta-poster.jpg) center/cover}}
 .wd .wd-reviews-in{max-width:1180px;margin:0 auto}
 .wd .wd-reviews h2{font:300 clamp(36px,4.2vw,56px)/1.08 var(--wserif);text-align:center}
 .wd .wd-reviews h2 em{font-weight:300}
@@ -485,6 +489,7 @@
 </style>
 
 <link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107e" data-ed>
+
 
 
 
@@ -620,7 +625,7 @@
 <details class="faq-item"><summary>撮影は、どのくらい前に予約すればいいですか？</summary><p>数か月前のご予約をおすすめします。特にウェディングのハイシーズンやサンセットの時間帯は早くに埋まってしまいます。</p></details>
 <details class="faq-item"><summary>Wailea以外の場所でのウェディング撮影は可能ですか？</summary><p>はい、拠点はWaileaですが、Makena、Kapalua、南Maui一帯で定期的にウェディングや駆け落ち婚の撮影を行っています。</p></details>
 </section>
-<section class="experience-cta"><div class="chapter" style="color:var(--gold)">当日について教えてください</div><h2>あなたのアーカイブは、ここから始まります。</h2><p>ご希望の日付、場所、そして写真に込めたい雰囲気をお聞かせください。</p><a class="button" href="mailto:photo@waileaphoto.com?subject=Maui%20Wedding%20Photography%20Inquiry">ウェディングについてお問い合わせ</a></section>
+<section class="experience-cta bts"><video class="bts-vid" autoplay muted loop playsinline preload="none" poster="/assets/video/wedding-cta-poster.jpg" aria-hidden="true"><source src="/assets/video/wedding-cta-540.mp4" type="video/mp4" media="(max-width:760px)"><source src="/assets/video/wedding-cta-720.mp4" type="video/mp4"></video><div class="chapter" style="color:var(--gold)">当日について教えてください</div><h2>あなたのアーカイブは、ここから始まります。</h2><p>ご希望の日付、場所、そして写真に込めたい雰囲気をお聞かせください。</p><a class="button" href="mailto:photo@waileaphoto.com?subject=Maui%20Wedding%20Photography%20Inquiry">ウェディングについてお問い合わせ</a></section>
 <!-- guides:from --><section class="guides-more" aria-labelledby="gm-h"><div class="gm-head"><span class="gm-k">ガイド</span><h2 id="gm-h">ガイドより</h2><a class="gm-all" href="/ja/atlas#guides">すべてのガイド</a></div><div class="ggrid"><a class="gcard" href="/ja/maui-wedding-cost"><figure><img src="/assets/guides/maui-wedding-cost.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">プロポーズ、ウェディング、大人数の集まり</span><h3>2027年、Mauiビーチウェディングの費用</h3><p>2027年、Mauiビーチウェディングの費用：パッケージ料金の比較、婚姻許可証、ハワイ州税、ゲスト人数の上限、そして含まれる内容について。</p><span class="go">ガイドを読む</span></a><a class="gcard" href="/ja/our-wedding-officiant-pick-for-maui-photography"><figure><img src="/assets/guides/our-wedding-officiant-pick-for-maui-photography.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">プロポーズ、ウェディング、大人数の集まり</span><h3>私たちが選ぶMauiウェディング司会者</h3><p>私たち自身がその式を撮影してきた経験から、正式なMauiの結婚式官吏でありウクレレアーティストのDerick Sebastianをおすすめする理由。</p><span class="go">ガイドを読む</span></a><a class="gcard" href="/ja/parking-wedding-maluaka-beach"><figure><img src="/assets/guides/parking-wedding-maluaka-beach.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">駐車場について</span><h3>マルアカビーチの駐車場について</h3><p>Mākenaでのポートレート撮影やウェディングセレモニーのための、正しい上側駐車場、歩道、地図リンク、そして集合場所。</p><span class="go">ガイドを読む</span></a></div></section><!-- /guides:from -->
 </main>
 
@@ -687,5 +692,5 @@
 <script src="/assets/site.js?v=20261107d"></script>
 <script src="/assets/session-tile-slider.js"></script>
 <button class="ed-snd" type="button" aria-label="音楽をオンにする" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261107a" defer data-ed></script>
-<script>(function(){var v=document.querySelector(".wd-reviews.bts .bts-vid");if(!v||!("IntersectionObserver" in window))return;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(v.preload==="none"){v.preload="auto";v.load()}v.play().catch(function(){})}else v.pause()})},{rootMargin:"200px 0px"}).observe(v)})();</script>
+<script>(function(){var vs=document.querySelectorAll(".bts .bts-vid");if(!vs.length||!("IntersectionObserver" in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(v.preload==="none"){v.preload="auto";v.load()}v.play().catch(function(){})}else v.pause()})},{rootMargin:"200px 0px"});vs.forEach(function(v){io.observe(v)})})();</script>
 </body></html>

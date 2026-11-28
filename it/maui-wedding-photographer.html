@@ -409,6 +409,10 @@
 .wd .wd-reviews.bts:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(243,237,227,.74)}
 .wd .wd-reviews.bts .wd-rgrid figure{background:rgba(255,255,255,.28);border:1px solid rgba(36,32,28,.18)}
 @media (prefers-reduced-motion:reduce){.wd .wd-reviews.bts>.bts-vid{display:none}.wd .wd-reviews.bts{background:url(/assets/video/wedding-bts-poster.jpg) center/cover}}
+.experience-cta.bts{position:relative;overflow:hidden;isolation:isolate}
+.experience-cta.bts>.bts-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.experience-cta.bts:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(243,237,227,.74)}
+@media (prefers-reduced-motion:reduce){.experience-cta.bts>.bts-vid{display:none}body:not(.home):not(.pricing-ed) main .experience-cta.bts{background:url(/assets/video/wedding-cta-poster.jpg) center/cover}}
 .wd .wd-reviews-in{max-width:1180px;margin:0 auto}
 .wd .wd-reviews h2{font:300 clamp(36px,4.2vw,56px)/1.08 var(--wserif);text-align:center}
 .wd .wd-reviews h2 em{font-weight:300}
@@ -485,6 +489,7 @@
 </style>
 
 <link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107e" data-ed>
+
 
 
 
@@ -620,7 +625,7 @@
 <details class="faq-item"><summary>Con quanto anticipo dobbiamo prenotare?</summary><p>Si consiglia di prenotare con diversi mesi di anticipo, soprattutto per l'alta stagione dei matrimoni e per le fasce orarie al tramonto, che si esauriscono per prime.</p></details>
 <details class="faq-item"><summary>Fotografate matrimoni anche fuori da Wailea?</summary><p>Sì. Pur avendo sede a Wailea, fotografiamo regolarmente matrimoni e fughe d'amore in tutta l'area di Makena, Kapalua e South Maui.</p></details>
 </section>
-<section class="experience-cta"><div class="chapter" style="color:var(--gold)">CI RACCONTI DELLA SUA GIORNATA</div><h2>Il Suo archivio inizia qui.</h2><p>Ci racconti la data, il luogo e l'atmosfera che desidera per le fotografie.</p><a class="button" href="mailto:photo@waileaphoto.com?subject=Maui%20Wedding%20Photography%20Inquiry">Richieda informazioni sul suo matrimonio</a></section>
+<section class="experience-cta bts"><video class="bts-vid" autoplay muted loop playsinline preload="none" poster="/assets/video/wedding-cta-poster.jpg" aria-hidden="true"><source src="/assets/video/wedding-cta-540.mp4" type="video/mp4" media="(max-width:760px)"><source src="/assets/video/wedding-cta-720.mp4" type="video/mp4"></video><div class="chapter" style="color:var(--gold)">CI RACCONTI DELLA SUA GIORNATA</div><h2>Il Suo archivio inizia qui.</h2><p>Ci racconti la data, il luogo e l'atmosfera che desidera per le fotografie.</p><a class="button" href="mailto:photo@waileaphoto.com?subject=Maui%20Wedding%20Photography%20Inquiry">Richieda informazioni sul suo matrimonio</a></section>
 <!-- guides:from --><section class="guides-more" aria-labelledby="gm-h"><div class="gm-head"><span class="gm-k">Guide</span><h2 id="gm-h">Dalle guide</h2><a class="gm-all" href="/it/atlas#guides">Tutte le guide</a></div><div class="ggrid"><a class="gcard" href="/it/maui-wedding-cost"><figure><img src="/assets/guides/maui-wedding-cost.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">Proposte di matrimonio, matrimoni e grandi raduni</span><h3>Quanto costa un matrimonio in spiaggia a Maui nel 2027</h3><p>Quanto costa un matrimonio in spiaggia a Maui nel 2027: confronto tra i prezzi dei pacchetti, la licenza di matrimonio, la tassa delle Hawaii, i limiti di ospiti e cosa è incluso.</p><span class="go">Legga la guida</span></a><a class="gcard" href="/it/our-wedding-officiant-pick-for-maui-photography"><figure><img src="/assets/guides/our-wedding-officiant-pick-for-maui-photography.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">Proposte di matrimonio, matrimoni e grandi raduni</span><h3>La Nostra Scelta per un Officiante di Matrimonio a Maui</h3><p>Perché consigliamo Derick Sebastian, un officiante autorizzato di Maui e artista di ukulele, in base alla nostra esperienza personale fotografando le sue cerimonie.</p><span class="go">Legga la guida</span></a><a class="gcard" href="/it/parking-wedding-maluaka-beach"><figure><img src="/assets/guides/parking-wedding-maluaka-beach.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">Dove parcheggiare</span><h3>Dove parcheggiare a Maluaka Beach</h3><p>Il parcheggio superiore corretto, il percorso a piedi, il link alla mappa e i punti d'incontro per sessioni di ritratto e cerimonie nuziali a Makena.</p><span class="go">Legga la guida</span></a></div></section><!-- /guides:from -->
 </main>
 
@@ -687,5 +692,5 @@
 <script src="/assets/site.js?v=20261107d"></script>
 <script src="/assets/session-tile-slider.js"></script>
 <button class="ed-snd" type="button" aria-label="Attiva la musica" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261107a" defer data-ed></script>
-<script>(function(){var v=document.querySelector(".wd-reviews.bts .bts-vid");if(!v||!("IntersectionObserver" in window))return;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(v.preload==="none"){v.preload="auto";v.load()}v.play().catch(function(){})}else v.pause()})},{rootMargin:"200px 0px"}).observe(v)})();</script>
+<script>(function(){var vs=document.querySelectorAll(".bts .bts-vid");if(!vs.length||!("IntersectionObserver" in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(v.preload==="none"){v.preload="auto";v.load()}v.play().catch(function(){})}else v.pause()})},{rootMargin:"200px 0px"});vs.forEach(function(v){io.observe(v)})})();</script>
 </body></html>

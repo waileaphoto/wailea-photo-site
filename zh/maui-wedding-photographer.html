@@ -409,6 +409,10 @@
 .wd .wd-reviews.bts:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(243,237,227,.74)}
 .wd .wd-reviews.bts .wd-rgrid figure{background:rgba(255,255,255,.28);border:1px solid rgba(36,32,28,.18)}
 @media (prefers-reduced-motion:reduce){.wd .wd-reviews.bts>.bts-vid{display:none}.wd .wd-reviews.bts{background:url(/assets/video/wedding-bts-poster.jpg) center/cover}}
+.experience-cta.bts{position:relative;overflow:hidden;isolation:isolate}
+.experience-cta.bts>.bts-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.experience-cta.bts:before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(243,237,227,.74)}
+@media (prefers-reduced-motion:reduce){.experience-cta.bts>.bts-vid{display:none}body:not(.home):not(.pricing-ed) main .experience-cta.bts{background:url(/assets/video/wedding-cta-poster.jpg) center/cover}}
 .wd .wd-reviews-in{max-width:1180px;margin:0 auto}
 .wd .wd-reviews h2{font:300 clamp(36px,4.2vw,56px)/1.08 var(--wserif);text-align:center}
 .wd .wd-reviews h2 em{font-weight:300}
@@ -485,6 +489,7 @@
 </style>
 
 <link rel="stylesheet" href="/assets/luxe-theme.css?v=20261107e" data-ed>
+
 
 
 
@@ -620,7 +625,7 @@
 <details class="faq-item"><summary>我们该提前多久预订？</summary><p>建议提前数月预订，尤其是婚礼旺季和日落时段，这些通常最先被订满。</p></details>
 <details class="faq-item"><summary>你们会在 Wailea 以外的地方拍摄婚礼吗？</summary><p>是的，虽然团队常驻 Wailea，但我们也经常在 Makena、Kapalua 和南 Maui 各地拍摄婚礼与私奔仪式。</p></details>
 </section>
-<section class="experience-cta"><div class="chapter" style="color:var(--gold)">和我们说说您的这一天</div><h2>您的影像档案，从这里开始。</h2><p>请告诉我们您的日期、地点，以及您希望照片呈现的感觉。</p><a class="button" href="mailto:photo@waileaphoto.com?subject=Maui%20Wedding%20Photography%20Inquiry">咨询您的婚礼</a></section>
+<section class="experience-cta bts"><video class="bts-vid" autoplay muted loop playsinline preload="none" poster="/assets/video/wedding-cta-poster.jpg" aria-hidden="true"><source src="/assets/video/wedding-cta-540.mp4" type="video/mp4" media="(max-width:760px)"><source src="/assets/video/wedding-cta-720.mp4" type="video/mp4"></video><div class="chapter" style="color:var(--gold)">和我们说说您的这一天</div><h2>您的影像档案，从这里开始。</h2><p>请告诉我们您的日期、地点，以及您希望照片呈现的感觉。</p><a class="button" href="mailto:photo@waileaphoto.com?subject=Maui%20Wedding%20Photography%20Inquiry">咨询您的婚礼</a></section>
 <!-- guides:from --><section class="guides-more" aria-labelledby="gm-h"><div class="gm-head"><span class="gm-k">指南合集</span><h2 id="gm-h">来自指南</h2><a class="gm-all" href="/zh/atlas#guides">全部指南</a></div><div class="ggrid"><a class="gcard" href="/zh/maui-wedding-cost"><figure><img src="/assets/guides/maui-wedding-cost.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">求婚、婚礼与大型聚会</span><h3>2027 年 Maui 海滩婚礼要花多少钱</h3><p>2027 年 Maui 海滩婚礼要花多少钱：套餐价格对比、结婚证、夏威夷税费、宾客人数限制以及套餐包含内容。</p><span class="go">阅读指南</span></a><a class="gcard" href="/zh/our-wedding-officiant-pick-for-maui-photography"><figure><img src="/assets/guides/our-wedding-officiant-pick-for-maui-photography.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">求婚、婚礼与大型聚会</span><h3>我们推荐的 Maui 婚礼主持人</h3><p>根据我们亲身拍摄他主持婚礼的经验，为什么我们推荐 Derick Sebastian——一位持证的 Maui 婚礼主持人兼尤克里里演奏者。</p><span class="go">阅读指南</span></a><a class="gcard" href="/zh/parking-wedding-maluaka-beach"><figure><img src="/assets/guides/parking-wedding-maluaka-beach.webp" width="720" height="480" alt="" loading="lazy" decoding="async"></figure><span class="gt">停车指南</span><h3>Maluaka Beach 停车指南</h3><p>在 Makena 拍摄人像和婚礼仪式时，正确的上方停车场、步行道、地图链接以及集合地点。</p><span class="go">阅读指南</span></a></div></section><!-- /guides:from -->
 </main>
 
@@ -687,5 +692,5 @@
 <script src="/assets/site.js?v=20261107d"></script>
 <script src="/assets/session-tile-slider.js"></script>
 <button class="ed-snd" type="button" aria-label="开启音乐" aria-pressed="false" data-src="/assets/ambient.mp3"><span class="bars"><i></i><i></i><i></i><i></i></span></button><script data-ed>window.WBW_CONFIG=window.WBW_CONFIG||{apiBase:"https://book.waileaphoto.com"};</script><script src="/assets/concierge-widget.js?v=c87177b612" defer data-ed></script><script src="/assets/editorial.js?v=20261107a" defer data-ed></script>
-<script>(function(){var v=document.querySelector(".wd-reviews.bts .bts-vid");if(!v||!("IntersectionObserver" in window))return;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(v.preload==="none"){v.preload="auto";v.load()}v.play().catch(function(){})}else v.pause()})},{rootMargin:"200px 0px"}).observe(v)})();</script>
+<script>(function(){var vs=document.querySelectorAll(".bts .bts-vid");if(!vs.length||!("IntersectionObserver" in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(v.preload==="none"){v.preload="auto";v.load()}v.play().catch(function(){})}else v.pause()})},{rootMargin:"200px 0px"});vs.forEach(function(v){io.observe(v)})})();</script>
 </body></html>
