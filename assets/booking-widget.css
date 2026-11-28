@@ -207,3 +207,17 @@
 
 /* Field a blocked Continue points at (Nov 2026) */
 .wbw-flag { outline: 2px solid #b4442c; outline-offset: 4px; border-radius: 6px; transition: outline-color .3s; }
+
+/* Florist offer, in plain view (Nov 27, 2026) */
+.wbw-florist {
+  display: flex; align-items: center; gap: 12px; margin: 4px 0 10px; padding: 10px 12px;
+  border: 1px solid #eee; border-radius: 4px; cursor: pointer;
+  font: 400 13px/1.4 "Jost", sans-serif !important; text-transform: none !important;
+  letter-spacing: normal !important; color: #333 !important;
+}
+.wbw-florist input[type="checkbox"] { flex-shrink: 0; width: 18px; height: 18px; accent-color: #b1443a; }
+.wbw-florist img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.wbw-florist strong { font-weight: 600; color: #171716; }
+.wbw-florist-sub { font-size: 12px; color: #777; }
+.wbw-florist-featured { border-color: #e9c9c4; background: #fdf6f4; }
+.wbw-florist:has(input:checked) { border-color: #b1443a; background: #fdf1ee; }

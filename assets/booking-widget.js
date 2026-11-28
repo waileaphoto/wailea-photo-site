@@ -373,7 +373,25 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.smsOptInCheckbox = el('input', { type: 'checkbox', checked: true });
 
       this.celebratingInput = el('input', { type: 'text', placeholder: T('Anniversary, Honeymoon, Maternity, Graduation… (optional)') });
-      this.floristContactCheckbox = el('input', { type: 'checkbox' });
+      this.floristContactCheckbox = el('input', {
+        type: 'checkbox',
+        onchange: () => { if (this.floristContactCheckbox.checked) this.trackStep('booking_florist_requested'); },
+      });
+      // Flowers sit in plain view (Nov 27, 2026). Folding them into the optional extras line
+      // on Nov 16 cut florist requests sharply. One optional tick, not a field, so it doesn't
+      // lengthen the form. Proposals, weddings, babymoons and Family Legacy get the
+      // highlighted version, as does anyone who types a celebration into the occasion box.
+      this.floristText = el('span', {}, []);
+      this.floristRow = el('label', { class: 'wbw-florist' }, [
+        this.floristContactCheckbox,
+        el('img', { src: 'https://waileaphoto.com/assets/florist-thumb.jpg', alt: '', width: '56', height: '56', loading: 'lazy', onerror: (e) => { e.target.hidden = true; } }),
+        this.floristText,
+      ]);
+      this.celebratingInput.addEventListener('input', () => {
+        if (/anniversar|honeymoon|propos|engag|birthday|wedding|vow|maternity|babymoon|graduat|retire/i.test(this.celebratingInput.value)) {
+          this.floristRow.classList.add('wbw-florist-featured');
+        }
+      });
 
       // One plain line plus a link, in place of the scrollable liability box that used to
       // sit directly above the card field.
@@ -411,12 +429,8 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       // price and one policy tick). The occasion, florist offer and upgrades fold into one
       // optional line; they are still sent with the booking exactly as before.
       this.extrasDetails = el('details', { class: 'wbw-addons-collapsed wbw-extras' }, [
-        el('summary', {}, [T('Celebrating something, want flowers or an upgrade?') + ' ', el('span', { class: 'wbw-addons-hint' }, [T('optional')])]),
+        el('summary', {}, [T('Celebrating something, or want an upgrade?') + ' ', el('span', { class: 'wbw-addons-hint' }, [T('optional')])]),
         el('div', { class: 'wbw-field' }, [el('label', {}, [T('What are you celebrating?')]), this.celebratingInput]),
-        el('label', { class: 'wbw-policy-agree' }, [
-          this.floristContactCheckbox,
-          ' ' + T('Have Mya our florist contact you for flowers? (48 hr min lead time required)'),
-        ]),
         addonsWrap,
       ]);
 
@@ -426,6 +440,7 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
         el('div', { class: 'wbw-field' }, [el('label', {}, [T('Phone')]), this.phoneInput]),
         partyField,
         this.quoteBox,
+        this.floristRow,
         this.extrasDetails,
         el('label', { class: 'wbw-policy-agree' }, [this.smsOptInCheckbox, ' ' + T('Text me a reminder with directions a few hours before my session.')]),
         el('div', { class: 'wbw-field' }, [
@@ -506,6 +521,17 @@ const DEPOSIT_CENTS_BY_SLUG = { 'sunrise-max': 2000, 'mini-morning': 2000, 'mini
       this.partySizeHint.hidden = !(slug === 'wedding-elopement' || slug === 'elopement-photography');
       this.textConfirmCheckbox.checked = false;
       this.floristContactCheckbox.checked = false;
+      const flowerSession = ['surprise-proposal', 'wedding-elopement', 'elopement-photography', 'babymoon', 'family-legacy'].includes(slug);
+      this.floristRow.classList.toggle('wbw-florist-featured', flowerSession);
+      this.floristText.replaceChildren(
+        el('strong', {}, [slug === 'wedding-elopement'
+          ? T('Want more flowers than the included bouquet and leis?')
+          : T('Add fresh flowers from Mya, our florist')]),
+        el('br'),
+        el('span', { class: 'wbw-florist-sub' }, [slug === 'wedding-elopement'
+          ? T('Mya will contact you about extra leis, haku or arrangements. Needs 48 hours notice.')
+          : T('Leis, haku flower crowns and bouquets that look beautiful in photos. Tick the box and Mya will contact you. Needs 48 hours notice.')]),
+      );
       this.celebratingInput.value = '';
       this.policyCheckbox.checked = false;
       if (this.addonsDetails) this.addonsDetails.open = false;
